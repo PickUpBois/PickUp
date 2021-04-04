@@ -15,6 +15,9 @@
 		8DB8EFA326198979004AADED /* PickUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFA226198979004AADED /* PickUpUITests.swift */; };
 		8DB8EFB4261989A9004AADED /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFB3261989A9004AADED /* SignUpView.swift */; };
 		8DB8EFB9261989B2004AADED /* AuthRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFB8261989B2004AADED /* AuthRepo.swift */; };
+		8DB8EFCC2619A04A004AADED /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFCB2619A04A004AADED /* SignUpViewModel.swift */; };
+		8DB8EFD12619A6B8004AADED /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFD02619A6B8004AADED /* ContentViewModel.swift */; };
+		8DB8EFD62619AB4A004AADED /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFD52619AB4A004AADED /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		8DB8EFA426198979004AADED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DB8EFB3261989A9004AADED /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		8DB8EFB8261989B2004AADED /* AuthRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRepo.swift; sourceTree = "<group>"; };
+		8DB8EFCB2619A04A004AADED /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		8DB8EFD02619A6B8004AADED /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		8DB8EFD52619AB4A004AADED /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +105,10 @@
 		8DB8EF8426198976004AADED /* PickUp */ = {
 			isa = PBXGroup;
 			children = (
+				8DB8EFC726199F6F004AADED /* viewmodels */,
+				8DB8EFBD26198CBD004AADED /* views */,
 				8DB8EF8526198976004AADED /* PickUpApp.swift */,
-				8DB8EF8726198976004AADED /* ContentView.swift */,
 				8DB8EFB8261989B2004AADED /* AuthRepo.swift */,
-				8DB8EFB3261989A9004AADED /* SignUpView.swift */,
 				8DB8EF8926198979004AADED /* Assets.xcassets */,
 				8DB8EF8E26198979004AADED /* Info.plist */,
 				8DB8EF8B26198979004AADED /* Preview Content */,
@@ -134,6 +140,25 @@
 				8DB8EFA426198979004AADED /* Info.plist */,
 			);
 			path = PickUpUITests;
+			sourceTree = "<group>";
+		};
+		8DB8EFBD26198CBD004AADED /* views */ = {
+			isa = PBXGroup;
+			children = (
+				8DB8EF8726198976004AADED /* ContentView.swift */,
+				8DB8EFB3261989A9004AADED /* SignUpView.swift */,
+				8DB8EFD52619AB4A004AADED /* HomeView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		8DB8EFC726199F6F004AADED /* viewmodels */ = {
+			isa = PBXGroup;
+			children = (
+				8DB8EFCB2619A04A004AADED /* SignUpViewModel.swift */,
+				8DB8EFD02619A6B8004AADED /* ContentViewModel.swift */,
+			);
+			path = viewmodels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,7 +291,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DB8EF8826198976004AADED /* ContentView.swift in Sources */,
+				8DB8EFD62619AB4A004AADED /* HomeView.swift in Sources */,
 				8DB8EFB9261989B2004AADED /* AuthRepo.swift in Sources */,
+				8DB8EFD12619A6B8004AADED /* ContentViewModel.swift in Sources */,
+				8DB8EFCC2619A04A004AADED /* SignUpViewModel.swift in Sources */,
 				8DB8EFB4261989A9004AADED /* SignUpView.swift in Sources */,
 				8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */,
 			);
