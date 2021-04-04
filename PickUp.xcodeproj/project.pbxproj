@@ -13,6 +13,8 @@
 		8DB8EF8D26198979004AADED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8C26198979004AADED /* Preview Assets.xcassets */; };
 		8DB8EF9826198979004AADED /* PickUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF9726198979004AADED /* PickUpTests.swift */; };
 		8DB8EFA326198979004AADED /* PickUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFA226198979004AADED /* PickUpUITests.swift */; };
+		8DB8EFB4261989A9004AADED /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFB3261989A9004AADED /* SignUpView.swift */; };
+		8DB8EFB9261989B2004AADED /* AuthRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFB8261989B2004AADED /* AuthRepo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		8DB8EF9E26198979004AADED /* PickUpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PickUpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DB8EFA226198979004AADED /* PickUpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpUITests.swift; sourceTree = "<group>"; };
 		8DB8EFA426198979004AADED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DB8EFB3261989A9004AADED /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		8DB8EFB8261989B2004AADED /* AuthRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRepo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 			children = (
 				8DB8EF8526198976004AADED /* PickUpApp.swift */,
 				8DB8EF8726198976004AADED /* ContentView.swift */,
+				8DB8EFB8261989B2004AADED /* AuthRepo.swift */,
+				8DB8EFB3261989A9004AADED /* SignUpView.swift */,
 				8DB8EF8926198979004AADED /* Assets.xcassets */,
 				8DB8EF8E26198979004AADED /* Info.plist */,
 				8DB8EF8B26198979004AADED /* Preview Content */,
@@ -260,6 +266,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DB8EF8826198976004AADED /* ContentView.swift in Sources */,
+				8DB8EFB9261989B2004AADED /* AuthRepo.swift in Sources */,
+				8DB8EFB4261989A9004AADED /* SignUpView.swift in Sources */,
 				8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
