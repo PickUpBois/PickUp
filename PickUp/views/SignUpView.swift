@@ -9,13 +9,18 @@ import SwiftUI
 import OSLog
 
 struct SignUpView: View {
-    @ObservedObject var viewModel: SignUpViewModel = SignUpViewModel()
-    @EnvironmentObject var router: ContentViewModel
+    @ObservedObject var viewModel: ViewModel
+    @EnvironmentObject var router: ContentView.ViewModel
+    init(viewModel: ViewModel = ViewModelFactory().getSignUpViewModel()) {
+        self.viewModel = viewModel
+    }
     
+
     var body: some View {
         if (viewModel.success) {
             router.currentPage = .home
         }
+        print("SignUpView init")
         return NavigationView {
             Form {
                 TextField("Email address", text: $viewModel.email)

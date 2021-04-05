@@ -7,12 +7,15 @@
 
 import Foundation
 import Combine
+import Firebase
 
 enum Page {
     case signup
     case home
 }
 
-class ContentViewModel: ObservableObject {
-    @Published var currentPage: Page = .signup
+extension ContentView {
+    class ViewModel: ObservableObject {
+        @Published var currentPage: Page = .signup
+    }
 }

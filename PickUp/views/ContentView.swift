@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var viewModel: ContentViewModel
-    
+    @EnvironmentObject var viewModel: ViewModel
     var body: some View {
         switch viewModel.currentPage {
         case .signup:
