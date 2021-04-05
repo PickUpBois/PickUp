@@ -80,7 +80,11 @@ class AuthFirebaseDataSource: AuthRepo {
     }
     
     func observeAuthState() -> CurrentValueSubject<String?, Never> {
-        let authSubject = CurrentValueSubject<String?, Never>(nil)
+        var userId: String? = nil
+        if self.auth.currentUser != nil {
+            userId = self.auth.currentUser?.uid
+        }
+        let authSubject = CurrentValueSubject<String?, Never>(userId)
         let handle = self.auth.addStateDidChangeListener({auth, user in
             print("AUTH STATE CHANGED \(user)")
             if let user = user {

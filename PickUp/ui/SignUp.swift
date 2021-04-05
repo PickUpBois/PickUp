@@ -1,12 +1,32 @@
 //
-//  SignUpViewModel.swift
+//  SignUpView.swift
 //  PickUp
 //
-//  Created by Arian Rahbar on 4/4/21.
+//  Created by Arian Rahbar on 4/3/21.
 //
 
-import Foundation
+import SwiftUI
 import Combine
+
+struct SignUpView: View {
+    @ObservedObject var viewModel: ViewModel
+    @EnvironmentObject var router: ContentView.ViewModel
+    init(viewModel: ViewModel = ViewModelFactory().getSignUpViewModel()) {
+        self.viewModel = viewModel
+    }
+    
+
+    var body: some View {
+        return NavigationView {
+            Form {
+                TextField("Email address", text: $viewModel.email)
+                TextField("Password", text: $viewModel.password)
+                Button("Sign up", action: viewModel.signup)
+            }
+        }
+    }
+}
+
 extension SignUpView {
     class ViewModel: ObservableObject {
         @Published var email: String = ""
@@ -15,7 +35,7 @@ extension SignUpView {
         private var cancellables = Set<AnyCancellable>()
         var authRepo: AuthRepo!
         
-        init(repo: AuthRepo) {
+        init(repo: AuthRepo = ViewModelFactory().getAuthRepo()) {
             print("signup viewmodel init")
             self.authRepo = repo
         }
@@ -35,5 +55,11 @@ extension SignUpView {
                     self.success = true
                 }).store(in: &cancellables)
         }
+    }
+}
+
+struct SignUpView_Previews: PreviewProvider {
+    static var previews: some View {
+        SignUpView()
     }
 }
