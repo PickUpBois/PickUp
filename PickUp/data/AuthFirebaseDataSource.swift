@@ -42,7 +42,7 @@ class AuthFirebaseDataSource: AuthRepo {
         return Future { promise in
             self.auth.createUser(withEmail: email, password: password, completion: {authResult, error in
                 guard let user = authResult?.user, error == nil else {
-                    print("\(AuthFirebaseDataSource.TAG) \(error?.localizedDescription)")
+                    print("\(AuthFirebaseDataSource.TAG) \(String(describing: error?.localizedDescription))")
                     return promise(.failure(error!))
                 }
                 print("\(AuthFirebaseDataSource.TAG) \(user.uid)")
@@ -58,6 +58,7 @@ class AuthFirebaseDataSource: AuthRepo {
                 promise(.success(()))
             }
             catch(let error) {
+                print("logout unsuccessfull")
                 promise(.failure(error))
             }
         }.eraseToAnyPublisher()
@@ -78,9 +79,10 @@ class AuthFirebaseDataSource: AuthRepo {
         }.eraseToAnyPublisher()
     }
     
-    func observeAuthState() -> AnyPublisher<String?, Never> {
+    func observeAuthState() -> CurrentValueSubject<String?, Never> {
         let authSubject = CurrentValueSubject<String?, Never>(nil)
         let handle = self.auth.addStateDidChangeListener({auth, user in
+            print("AUTH STATE CHANGED \(user)")
             if let user = user {
                 authSubject.send(user.uid)
             } else {
@@ -90,7 +92,7 @@ class AuthFirebaseDataSource: AuthRepo {
         _ = authSubject.handleEvents(receiveCancel: {
             self.auth.removeStateDidChangeListener(handle)
         })
-        return authSubject.eraseToAnyPublisher()
+        return authSubject
     }
     
     

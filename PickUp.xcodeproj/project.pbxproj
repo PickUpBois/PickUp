@@ -10,6 +10,19 @@
 		2BCB14BC98673B0E0405DA1A /* Pods_PickUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BD03789BD152139D962439 /* Pods_PickUp.framework */; };
 		5759BEB19CC7C7586D1CAA4A /* Pods_PickUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0D20760AA6BD396F53FB95 /* Pods_PickUpTests.framework */; };
 		861B30895CA33C3C99B5E486 /* Pods_PickUp_PickUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B10C264D4693EA67AE11366 /* Pods_PickUp_PickUpUITests.framework */; };
+		8D484AE7261B683100814A8F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFB3261989A9004AADED /* SignUpView.swift */; };
+		8D484AEB261B683100814A8F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFB3261989A9004AADED /* SignUpView.swift */; };
+		8D484AEF261B683500814A8F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFD52619AB4A004AADED /* HomeView.swift */; };
+		8D484AF3261B683500814A8F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFD52619AB4A004AADED /* HomeView.swift */; };
+		8D484AF7261B686200814A8F /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFCB2619A04A004AADED /* SignUpViewModel.swift */; };
+		8D484AFB261B686300814A8F /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFCB2619A04A004AADED /* SignUpViewModel.swift */; };
+		8D484AFF261B686500814A8F /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFD02619A6B8004AADED /* ContentViewModel.swift */; };
+		8D484B03261B686600814A8F /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFD02619A6B8004AADED /* ContentViewModel.swift */; };
+		8D484B07261B687B00814A8F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8726198976004AADED /* ContentView.swift */; };
+		8D484B0B261B687C00814A8F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8726198976004AADED /* ContentView.swift */; };
+		8D484B0F261B688900814A8F /* PickUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8526198976004AADED /* PickUpApp.swift */; };
+		8D484B13261B688900814A8F /* PickUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8526198976004AADED /* PickUpApp.swift */; };
+		8D484B91261B73A200814A8F /* AuthFirebaseDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFF6261A74F7004AADED /* AuthFirebaseDataSourceTest.swift */; };
 		8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8526198976004AADED /* PickUpApp.swift */; };
 		8DB8EF8826198976004AADED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8726198976004AADED /* ContentView.swift */; };
 		8DB8EF8A26198979004AADED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8926198979004AADED /* Assets.xcassets */; };
@@ -35,7 +48,6 @@
 		8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DB8F059261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DB8F05A261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
-		8DB8F062261AB14E004AADED /* AuthFirebaseDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFF6261A74F7004AADED /* AuthFirebaseDataSourceTest.swift */; };
 		8DB8F06A261AB3E9004AADED /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F069261AB3E9004AADED /* ViewModelFactory.swift */; };
 		8DB8F06B261AB3E9004AADED /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F069261AB3E9004AADED /* ViewModelFactory.swift */; };
 		8DB8F06C261AB3E9004AADED /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F069261AB3E9004AADED /* ViewModelFactory.swift */; };
@@ -194,6 +206,7 @@
 		8DB8EF9626198979004AADED /* PickUpTests */ = {
 			isa = PBXGroup;
 			children = (
+				8DB8EFF6261A74F7004AADED /* AuthFirebaseDataSourceTest.swift */,
 				8DB8EF9726198979004AADED /* PickUpTests.swift */,
 				8DB8EF9926198979004AADED /* Info.plist */,
 			);
@@ -203,7 +216,6 @@
 		8DB8EFA126198979004AADED /* PickUpUITests */ = {
 			isa = PBXGroup;
 			children = (
-				8DB8EFF6261A74F7004AADED /* AuthFirebaseDataSourceTest.swift */,
 				8DB8EFA226198979004AADED /* PickUpUITests.swift */,
 				8DB8EFA426198979004AADED /* Info.plist */,
 			);
@@ -277,6 +289,7 @@
 				8DB8EF8F26198979004AADED /* Sources */,
 				8DB8EF9026198979004AADED /* Frameworks */,
 				8DB8EF9126198979004AADED /* Resources */,
+				D666C825F5D3548A00C1873F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -463,6 +476,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D666C825F5D3548A00C1873F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PickUpTests/Pods-PickUpTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PickUpTests/Pods-PickUpTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PickUpTests/Pods-PickUpTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F3E96BB054F1D8F76A3AEFF9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -506,11 +536,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DB8F059261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
+				8D484B07261B687B00814A8F /* ContentView.swift in Sources */,
 				8DB8F022261A8A45004AADED /* UserDao.swift in Sources */,
 				8DB8F053261AAD5D004AADED /* AuthRepo.swift in Sources */,
+				8D484AEB261B683100814A8F /* SignUpView.swift in Sources */,
+				8D484AFF261B686500814A8F /* ContentViewModel.swift in Sources */,
+				8D484B91261B73A200814A8F /* AuthFirebaseDataSourceTest.swift in Sources */,
+				8D484AF7261B686200814A8F /* SignUpViewModel.swift in Sources */,
 				8DB8F06B261AB3E9004AADED /* ViewModelFactory.swift in Sources */,
+				8D484AEF261B683500814A8F /* HomeView.swift in Sources */,
 				8DB8F04B261AAD58004AADED /* AuthFirebaseDataSource.swift in Sources */,
 				8DB8EF9826198979004AADED /* PickUpTests.swift in Sources */,
+				8D484B0F261B688900814A8F /* PickUpApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,13 +555,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DB8F062261AB14E004AADED /* AuthFirebaseDataSourceTest.swift in Sources */,
+				8D484AF3261B683500814A8F /* HomeView.swift in Sources */,
+				8D484B0B261B687C00814A8F /* ContentView.swift in Sources */,
+				8D484AFB261B686300814A8F /* SignUpViewModel.swift in Sources */,
 				8DB8F047261AAD58004AADED /* AuthFirebaseDataSource.swift in Sources */,
 				8DB8F05A261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
 				8DB8F04F261AAD5D004AADED /* AuthRepo.swift in Sources */,
+				8D484AE7261B683100814A8F /* SignUpView.swift in Sources */,
+				8D484B03261B686600814A8F /* ContentViewModel.swift in Sources */,
 				8DB8EFA326198979004AADED /* PickUpUITests.swift in Sources */,
 				8DB8F023261A8A45004AADED /* UserDao.swift in Sources */,
 				8DB8F06C261AB3E9004AADED /* ViewModelFactory.swift in Sources */,
+				8D484B13261B688900814A8F /* PickUpApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

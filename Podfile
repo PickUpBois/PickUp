@@ -6,15 +6,18 @@ target 'PickUp' do
   use_frameworks!
 
   # Pods for PickUp
+  pod  'Firebase/Core'
   pod 'Firebase/Auth'
 
   target 'PickUpTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Firebase'
   end
 
   target 'PickUpUITests' do
     # Pods for testing
+    pod 'Firebase'
   end
 
 end

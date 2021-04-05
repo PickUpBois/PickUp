@@ -16,7 +16,5 @@ protocol AuthRepo {
     
     func delete() -> AnyPublisher<Void, Error>
     
-    func observeAuthState() -> AnyPublisher<String?, Never>
-    
-    
+    func observeAuthState() -> CurrentValueSubject<String?, Never>
 }
