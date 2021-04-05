@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct PickUpApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
-        WindowGroup {
-            ContentView().environmentObject(ContentViewModel())
+        print("app configured firebase")
+        return WindowGroup {
+            ContentView().environmentObject(ContentView.ViewModel())
         }
     }
 }

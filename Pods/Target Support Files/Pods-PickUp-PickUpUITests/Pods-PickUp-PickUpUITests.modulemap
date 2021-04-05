@@ -1,0 +1,6 @@
+framework module Pods_PickUp_PickUpUITests {
+  umbrella header "Pods-PickUp-PickUpUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
