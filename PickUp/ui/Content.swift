@@ -9,20 +9,19 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
-    @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject var session: Session
+    
+    func listen() {
+        session.listen()
+    }
         var body: some View {
-            switch viewModel.currentPage {
-            case .signup:
-                SignUpView()
-            case .login:
-                LoginView()
-            case .authHome:
-                AuthHomeView()
-            case .guestHome:
-                GuestHomeView()
-            case .none:
-                Text("Hello")
-            }
+            Group {
+                if session.authUser != nil {
+                    AuthHomeView()
+                } else {
+                    GuestRouterView()
+                }
+            }.onAppear(perform: listen)
     }
 }
 
@@ -54,6 +53,6 @@ extension ContentView {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(Session())
     }
 }

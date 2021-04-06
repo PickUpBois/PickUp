@@ -14,7 +14,7 @@ struct PickUpApp: App {
     var body: some Scene {
         print("app configured firebase")
         return WindowGroup {
-            ContentView().environmentObject(ContentView.ViewModel())
+            ContentView().environmentObject(Session())
         }
     }
 }

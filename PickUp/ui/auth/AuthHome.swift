@@ -16,9 +16,13 @@ struct AuthHomeView: View {
     }
     
     var body: some View {
-        Button("Logout", action: {() in
-            self.viewModel.logout()
-        })
+        if (viewModel.loading) {
+            Text("Loading!")
+        } else {
+            Button("Logout", action: {() in
+                self.viewModel.logout()
+            })
+        }
     }
 }
 
@@ -27,6 +31,7 @@ extension AuthHomeView {
         var authRepo: AuthRepo!
         var cancellables = Set<AnyCancellable>()
         @Published var logoutError = ""
+        @Published var loading = false
         
         init(authRepo: AuthRepo = ViewModelFactory().getAuthRepo()) {
             self.authRepo = authRepo

@@ -17,7 +17,9 @@ struct SignUpView: View {
     
 
     var body: some View {
-        return NavigationView {
+        if (viewModel.loading) {
+            Text("Loading!")
+        } else {
             Form {
                 TextField("Email address", text: $viewModel.email)
                 TextField("Password", text: $viewModel.password)
@@ -32,6 +34,7 @@ extension SignUpView {
         @Published var email: String = ""
         @Published var password: String = ""
         @Published var success: Bool = false
+        @Published var loading: Bool = false
         private var cancellables = Set<AnyCancellable>()
         var authRepo: AuthRepo!
         
@@ -52,7 +55,6 @@ extension SignUpView {
                     }
                 }, receiveValue: {uid in
                     print("SUCCESS: \(uid)")
-                    self.success = true
                 }).store(in: &cancellables)
         }
     }

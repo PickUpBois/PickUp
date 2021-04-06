@@ -15,10 +15,14 @@ struct LoginView: View {
         self.viewModel = viewModel
     }
     var body: some View {
-        Form {
-            TextField("Email address", text: $viewModel.email)
-            TextField("Password", text: $viewModel.password)
-            Button("Login", action: viewModel.login)
+        if (viewModel.loading) {
+            Text("Loading!")
+        } else {
+            Form {
+                TextField("Email address", text: $viewModel.email)
+                TextField("Password", text: $viewModel.password)
+                Button("Login", action: viewModel.login)
+            }
         }
     }
 }
@@ -29,6 +33,7 @@ extension LoginView {
         @Published var password = ""
         @Published var loginError = false
         @Published var loginSuccess = false
+        @Published var loading = false
         var cancellables = Set<AnyCancellable>()
         var authRepo: AuthRepo!
         
