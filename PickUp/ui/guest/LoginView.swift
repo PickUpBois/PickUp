@@ -1,19 +1,18 @@
 //
-//  SignUpUI.swift
+//  LoginUIView.swift
 //  PickUp
 //
-//  Created by Arian Rahbar on 4/7/21.
+//  Created by David Reynolds on 4/4/21.
 //
 
 import SwiftUI
 import Combine
 
-struct SignUpView: View {
+struct LoginView: View {
     @State var email = ""
     @State var password = ""
     @ObservedObject var viewModel = ViewModel()
     @EnvironmentObject var router: ContentView.ViewModel
-    @Environment(\.presentationMode) var presentation
     
     var body: some View {
         VStack (spacing: 5) {
@@ -23,29 +22,7 @@ struct SignUpView: View {
                 .padding(.top, 100.0)
                 .frame(width: 275, height: 200)
                 .scaledToFit()
-            
             Spacer()
-            
-            HStack {
-                //Hstack Email
-                TextField("First Name", text: $viewModel.firstName)
-            }
-            //First Name Text Field Settings
-            .padding(.all, 20.0)
-            .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
-            .cornerRadius(8)
-            .padding(.horizontal, 20)
-            
-            HStack {
-                //Hstack Email
-                TextField("Last Name", text: $viewModel.lastName)
-            }
-            //Last Name Text Field Settings
-            .padding(.all, 20.0)
-            .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
-            .cornerRadius(8)
-            .padding(.horizontal, 20)
-            
             
             HStack {
                 //Hstack Email
@@ -71,9 +48,9 @@ struct SignUpView: View {
             .cornerRadius(8)
             .padding(.horizontal, 20)
             
-            //Sign up Button Settings
-            Button(action: viewModel.signup){
-                Text("Sign up")
+            //Login Button Settings
+            Button(action: viewModel.login){
+                Text("Login")
                     .foregroundColor(.white)
                     .font(.system(size: 20, weight: .medium))
                     }.frame(maxWidth: .infinity)
@@ -81,10 +58,21 @@ struct SignUpView: View {
                     .background(Color.blue.opacity(0.8))
                     .cornerRadius(9)
                     .padding(.horizontal, 20)
+            //Forgot Password Button Settings
+            Button(action: {}){
+                Text("Forgot Password?")
+                    .foregroundColor(.black)
+                    .font(.system(size: 18, weight: .medium))
+                    }.frame(maxWidth: .infinity)
+                    .padding(.vertical, 10)
+                    .cornerRadius(9)
+                    .padding(.horizontal, 20)
+                Spacer()
+                .frame(minHeight: 70, maxHeight: 190)
             
-            //Login Button Settings
-            Button(action: {self.presentation.wrappedValue.dismiss()}) {
-                Text("Already have an account? Log in.")
+            //Sign Up Button Settings
+            NavigationLink(destination: SignUpView()) {
+                Text("Don't have an account? Sign Up.")
                     .foregroundColor(.black)
                     .font(.system(size: 18, weight: .medium))
                     .frame(width: /*@START_MENU_TOKEN@*/500.0/*@END_MENU_TOKEN@*/, height: 100.0)
@@ -95,13 +83,11 @@ struct SignUpView: View {
         }
     }
 }
-    
-extension SignUpView {
+
+extension LoginView {
     class ViewModel: ObservableObject {
         @Published var email = ""
         @Published var password = ""
-        @Published var firstName = ""
-        @Published var lastName = ""
         @Published var loginError = false
         @Published var loginSuccess = false
         @Published var loading = false
@@ -112,25 +98,31 @@ extension SignUpView {
             self.authRepo = authRepo
         }
         
-        func signup() {
-            print("Sign up executed")
-            self.authRepo.signup(email: email, password: password)
+        func login() {
+            self.authRepo.login(email: email, password: password)
                 .sink(receiveCompletion: {completion in
                     switch completion {
                     case .failure(let error):
-                        print("SignUpViewModel \(error.localizedDescription)")
+                        self.loginError = true
                     case .finished:
-                        print("SignUpViewModel SUCCESS")
+                        self.loginSuccess = true
                     }
-                }, receiveValue: {uid in
-                    print("SUCCESS: \(uid)")
-                }).store(in: &cancellables)
+                }, receiveValue: {userId in
+                    ()
+                }).store(in: &self.cancellables)
         }
     }
 }
 
-struct SignUpView_Previews: PreviewProvider {
+struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        Group {
+        //LoginUIView().previewDevice("iPhone 8")
+        //LoginUIView().previewDevice("iPhone XR")
+        //LoginUIView().previewDevice("iPhone 11")
+        LoginView().previewDevice("iPhone 12 Pro Max")
+            
+            
+        }
     }
 }

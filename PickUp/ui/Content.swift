@@ -19,7 +19,9 @@ struct ContentView: View {
                 if session.authUser != nil {
                     AuthHomeView()
                 } else {
-                    GuestRouterView()
+                    NavigationView {
+                        LoginView()
+                    }
                 }
             }.onAppear(perform: listen)
     }

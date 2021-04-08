@@ -26,7 +26,7 @@ class ViewModelFactory: ObservableObject {
     }
     
     func getSignUpViewModel() -> SignUpView.ViewModel {
-        return SignUpView.ViewModel(repo: getAuthRepo())
+        return SignUpView.ViewModel()
     }
     
     func getContentViewModel() -> ContentView.ViewModel {
