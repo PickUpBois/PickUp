@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 
 class ViewModelFactory: ObservableObject {
-    static let emulator: Bool = true
+    static let emulator: Bool = false
     
     static var auth: Auth = buildFirebaseAuth(emulator: emulator)
     
@@ -26,7 +26,7 @@ class ViewModelFactory: ObservableObject {
     }
     
     func getSignUpViewModel() -> SignUpView.ViewModel {
-        return SignUpView.ViewModel(repo: getAuthRepo())
+        return SignUpView.ViewModel()
     }
     
     func getContentViewModel() -> ContentView.ViewModel {

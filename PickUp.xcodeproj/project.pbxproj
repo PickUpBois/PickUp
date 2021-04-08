@@ -10,8 +10,7 @@
 		2BCB14BC98673B0E0405DA1A /* Pods_PickUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BD03789BD152139D962439 /* Pods_PickUp.framework */; };
 		5759BEB19CC7C7586D1CAA4A /* Pods_PickUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0D20760AA6BD396F53FB95 /* Pods_PickUpTests.framework */; };
 		861B30895CA33C3C99B5E486 /* Pods_PickUp_PickUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B10C264D4693EA67AE11366 /* Pods_PickUp_PickUpUITests.framework */; };
-		8D484AE7261B683100814A8F /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFB3261989A9004AADED /* SignUp.swift */; };
-		8D484AEB261B683100814A8F /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFB3261989A9004AADED /* SignUp.swift */; };
+		8D2A3EF3261EC3E100521A6A /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2A3EF2261EC3E100521A6A /* SignUp.swift */; };
 		8D484AEF261B683500814A8F /* AuthHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFD52619AB4A004AADED /* AuthHome.swift */; };
 		8D484AF3261B683500814A8F /* AuthHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFD52619AB4A004AADED /* AuthHome.swift */; };
 		8D484B07261B687B00814A8F /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8726198976004AADED /* Content.swift */; };
@@ -19,19 +18,22 @@
 		8D484B0F261B688900814A8F /* PickUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8526198976004AADED /* PickUpApp.swift */; };
 		8D484B13261B688900814A8F /* PickUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8526198976004AADED /* PickUpApp.swift */; };
 		8D484B91261B73A200814A8F /* AuthFirebaseDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFF6261A74F7004AADED /* AuthFirebaseDataSourceTest.swift */; };
-		8D484BAD261B9CEA00814A8F /* GuestHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D484BAC261B9CEA00814A8F /* GuestHome.swift */; };
-		8D484BB1261B9CEC00814A8F /* GuestHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D484BAC261B9CEA00814A8F /* GuestHome.swift */; };
-		8D484BB5261B9CED00814A8F /* GuestHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D484BAC261B9CEA00814A8F /* GuestHome.swift */; };
-		8D484BC4261B9DBE00814A8F /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D484BC3261B9DBE00814A8F /* Login.swift */; };
-		8D484BC5261B9DBE00814A8F /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D484BC3261B9DBE00814A8F /* Login.swift */; };
-		8D484BC6261B9DBE00814A8F /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D484BC3261B9DBE00814A8F /* Login.swift */; };
+		8D484BAD261B9CEA00814A8F /* GuestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D484BAC261B9CEA00814A8F /* GuestRouter.swift */; };
+		8D484BB1261B9CEC00814A8F /* GuestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D484BAC261B9CEA00814A8F /* GuestRouter.swift */; };
+		8D484BB5261B9CED00814A8F /* GuestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D484BAC261B9CEA00814A8F /* GuestRouter.swift */; };
+		8D484BF9261BC4AA00814A8F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D484BF8261BC4AA00814A8F /* Session.swift */; };
+		8D484C06261BD6E300814A8F /* GuestHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D484C05261BD6E300814A8F /* GuestHome.swift */; };
+		8D73B693261C3FF300170A1A /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73B692261C3FF300170A1A /* Navigator.swift */; };
+		8D73B694261C3FF300170A1A /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73B692261C3FF300170A1A /* Navigator.swift */; };
+		8D73B695261C3FF300170A1A /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73B692261C3FF300170A1A /* Navigator.swift */; };
+		8D73B69C261CF03C00170A1A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D484BF8261BC4AA00814A8F /* Session.swift */; };
+		8D73B6A0261CF03D00170A1A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D484BF8261BC4AA00814A8F /* Session.swift */; };
 		8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8526198976004AADED /* PickUpApp.swift */; };
 		8DB8EF8826198976004AADED /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8726198976004AADED /* Content.swift */; };
 		8DB8EF8A26198979004AADED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8926198979004AADED /* Assets.xcassets */; };
 		8DB8EF8D26198979004AADED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8C26198979004AADED /* Preview Assets.xcassets */; };
 		8DB8EF9826198979004AADED /* PickUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF9726198979004AADED /* PickUpTests.swift */; };
 		8DB8EFA326198979004AADED /* PickUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFA226198979004AADED /* PickUpUITests.swift */; };
-		8DB8EFB4261989A9004AADED /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFB3261989A9004AADED /* SignUp.swift */; };
 		8DB8EFB9261989B2004AADED /* AuthRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFB8261989B2004AADED /* AuthRepo.swift */; };
 		8DB8EFD62619AB4A004AADED /* AuthHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFD52619AB4A004AADED /* AuthHome.swift */; };
 		8DB8EFDD261A6BEB004AADED /* AuthFirebaseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFDC261A6BEB004AADED /* AuthFirebaseDataSource.swift */; };
@@ -51,6 +53,9 @@
 		8DB8F06A261AB3E9004AADED /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F069261AB3E9004AADED /* ViewModelFactory.swift */; };
 		8DB8F06B261AB3E9004AADED /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F069261AB3E9004AADED /* ViewModelFactory.swift */; };
 		8DB8F06C261AB3E9004AADED /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F069261AB3E9004AADED /* ViewModelFactory.swift */; };
+		8DFAD531261EBA910055BA76 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAD530261EBA910055BA76 /* LoginView.swift */; };
+		8DFAD532261EBA910055BA76 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAD530261EBA910055BA76 /* LoginView.swift */; };
+		8DFAD533261EBA910055BA76 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAD530261EBA910055BA76 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +81,11 @@
 		37B4D1F8385E9203AFDB1EEA /* Pods-PickUp-PickUpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp-PickUpUITests.release.xcconfig"; path = "Target Support Files/Pods-PickUp-PickUpUITests/Pods-PickUp-PickUpUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3B10C264D4693EA67AE11366 /* Pods_PickUp_PickUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUp_PickUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CAFA1516D4C68D02E665F97 /* Pods-PickUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUpTests.debug.xcconfig"; path = "Target Support Files/Pods-PickUpTests/Pods-PickUpTests.debug.xcconfig"; sourceTree = "<group>"; };
-		8D484BAC261B9CEA00814A8F /* GuestHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestHome.swift; sourceTree = "<group>"; };
-		8D484BC3261B9DBE00814A8F /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		8D2A3EF2261EC3E100521A6A /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		8D484BAC261B9CEA00814A8F /* GuestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestRouter.swift; sourceTree = "<group>"; };
+		8D484BF8261BC4AA00814A8F /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		8D484C05261BD6E300814A8F /* GuestHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestHome.swift; sourceTree = "<group>"; };
+		8D73B692261C3FF300170A1A /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		8DB8EF8226198976004AADED /* PickUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DB8EF8526198976004AADED /* PickUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpApp.swift; sourceTree = "<group>"; };
 		8DB8EF8726198976004AADED /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
@@ -90,7 +98,6 @@
 		8DB8EF9E26198979004AADED /* PickUpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PickUpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DB8EFA226198979004AADED /* PickUpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpUITests.swift; sourceTree = "<group>"; };
 		8DB8EFA426198979004AADED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8DB8EFB3261989A9004AADED /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		8DB8EFB8261989B2004AADED /* AuthRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRepo.swift; sourceTree = "<group>"; };
 		8DB8EFD52619AB4A004AADED /* AuthHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHome.swift; sourceTree = "<group>"; };
 		8DB8EFDC261A6BEB004AADED /* AuthFirebaseDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebaseDataSource.swift; sourceTree = "<group>"; };
@@ -99,6 +106,7 @@
 		8DB8F020261A8A45004AADED /* UserDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDao.swift; sourceTree = "<group>"; };
 		8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpAppDelegate.swift; sourceTree = "<group>"; };
 		8DB8F069261AB3E9004AADED /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
+		8DFAD530261EBA910055BA76 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8EB8B0A29B973038161B520F /* Pods-PickUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp.release.xcconfig"; path = "Target Support Files/Pods-PickUp/Pods-PickUp.release.xcconfig"; sourceTree = "<group>"; };
 		95F15E1C1D0B3D295628FFFF /* Pods-PickUp-PickUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp-PickUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-PickUp-PickUpUITests/Pods-PickUp-PickUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9D15CB2A404F9F6ED4D779DF /* Pods-PickUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp.debug.xcconfig"; path = "Target Support Files/Pods-PickUp/Pods-PickUp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -162,6 +170,25 @@
 				8DB8F069261AB3E9004AADED /* ViewModelFactory.swift */,
 			);
 			path = di;
+			sourceTree = "<group>";
+		};
+		8D484BFD261BD65900814A8F /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				8DB8EFD52619AB4A004AADED /* AuthHome.swift */,
+			);
+			path = auth;
+			sourceTree = "<group>";
+		};
+		8D484BFE261BD65E00814A8F /* guest */ = {
+			isa = PBXGroup;
+			children = (
+				8DFAD530261EBA910055BA76 /* LoginView.swift */,
+				8D484BAC261B9CEA00814A8F /* GuestRouter.swift */,
+				8D484C05261BD6E300814A8F /* GuestHome.swift */,
+				8D2A3EF2261EC3E100521A6A /* SignUp.swift */,
+			);
+			path = guest;
 			sourceTree = "<group>";
 		};
 		8DB8EF7926198976004AADED = {
@@ -232,11 +259,11 @@
 		8DB8EFBD26198CBD004AADED /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				8D484BFE261BD65E00814A8F /* guest */,
+				8D484BFD261BD65900814A8F /* auth */,
 				8DB8EF8726198976004AADED /* Content.swift */,
-				8DB8EFB3261989A9004AADED /* SignUp.swift */,
-				8DB8EFD52619AB4A004AADED /* AuthHome.swift */,
-				8D484BAC261B9CEA00814A8F /* GuestHome.swift */,
-				8D484BC3261B9DBE00814A8F /* Login.swift */,
+				8D484BF8261BC4AA00814A8F /* Session.swift */,
+				8D73B692261C3FF300170A1A /* Navigator.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -517,16 +544,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DFAD531261EBA910055BA76 /* LoginView.swift in Sources */,
 				8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
 				8DB8F021261A8A45004AADED /* UserDao.swift in Sources */,
-				8D484BAD261B9CEA00814A8F /* GuestHome.swift in Sources */,
+				8D484BAD261B9CEA00814A8F /* GuestRouter.swift in Sources */,
 				8DB8EF8826198976004AADED /* Content.swift in Sources */,
 				8DB8EFD62619AB4A004AADED /* AuthHome.swift in Sources */,
+				8D484C06261BD6E300814A8F /* GuestHome.swift in Sources */,
 				8DB8EFB9261989B2004AADED /* AuthRepo.swift in Sources */,
 				8DB8F06A261AB3E9004AADED /* ViewModelFactory.swift in Sources */,
 				8DB8EFDD261A6BEB004AADED /* AuthFirebaseDataSource.swift in Sources */,
-				8D484BC4261B9DBE00814A8F /* Login.swift in Sources */,
-				8DB8EFB4261989A9004AADED /* SignUp.swift in Sources */,
+				8D484BF9261BC4AA00814A8F /* Session.swift in Sources */,
+				8D73B693261C3FF300170A1A /* Navigator.swift in Sources */,
+				8D2A3EF3261EC3E100521A6A /* SignUp.swift in Sources */,
 				8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,15 +568,16 @@
 				8DB8F059261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
 				8D484B07261B687B00814A8F /* Content.swift in Sources */,
 				8DB8F022261A8A45004AADED /* UserDao.swift in Sources */,
-				8D484BC5261B9DBE00814A8F /* Login.swift in Sources */,
 				8DB8F053261AAD5D004AADED /* AuthRepo.swift in Sources */,
-				8D484BB1261B9CEC00814A8F /* GuestHome.swift in Sources */,
-				8D484AEB261B683100814A8F /* SignUp.swift in Sources */,
+				8D73B69C261CF03C00170A1A /* Session.swift in Sources */,
+				8D484BB1261B9CEC00814A8F /* GuestRouter.swift in Sources */,
 				8D484B91261B73A200814A8F /* AuthFirebaseDataSourceTest.swift in Sources */,
 				8DB8F06B261AB3E9004AADED /* ViewModelFactory.swift in Sources */,
 				8D484AEF261B683500814A8F /* AuthHome.swift in Sources */,
+				8D73B694261C3FF300170A1A /* Navigator.swift in Sources */,
 				8DB8F04B261AAD58004AADED /* AuthFirebaseDataSource.swift in Sources */,
 				8DB8EF9826198979004AADED /* PickUpTests.swift in Sources */,
+				8DFAD532261EBA910055BA76 /* LoginView.swift in Sources */,
 				8D484B0F261B688900814A8F /* PickUpApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,18 +586,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DFAD533261EBA910055BA76 /* LoginView.swift in Sources */,
+				8D73B6A0261CF03D00170A1A /* Session.swift in Sources */,
 				8D484AF3261B683500814A8F /* AuthHome.swift in Sources */,
 				8D484B0B261B687C00814A8F /* Content.swift in Sources */,
 				8DB8F047261AAD58004AADED /* AuthFirebaseDataSource.swift in Sources */,
 				8DB8F05A261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
 				8DB8F04F261AAD5D004AADED /* AuthRepo.swift in Sources */,
-				8D484AE7261B683100814A8F /* SignUp.swift in Sources */,
-				8D484BB5261B9CED00814A8F /* GuestHome.swift in Sources */,
-				8D484BC6261B9DBE00814A8F /* Login.swift in Sources */,
+				8D484BB5261B9CED00814A8F /* GuestRouter.swift in Sources */,
 				8DB8EFA326198979004AADED /* PickUpUITests.swift in Sources */,
 				8DB8F023261A8A45004AADED /* UserDao.swift in Sources */,
 				8DB8F06C261AB3E9004AADED /* ViewModelFactory.swift in Sources */,
 				8D484B13261B688900814A8F /* PickUpApp.swift in Sources */,
+				8D73B695261C3FF300170A1A /* Navigator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
