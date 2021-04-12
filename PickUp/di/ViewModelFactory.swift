@@ -33,8 +33,8 @@ class ViewModelFactory: ObservableObject {
         return ContentView.ViewModel(authRepo: getAuthRepo())
     }
     
-    func getAuthHomeViewModel() -> AuthHomeView.ViewModel {
-        return AuthHomeView.ViewModel(authRepo: getAuthRepo())
+    func getAuthTabViewModel() -> AuthTabView.ViewModel {
+        return AuthTabView.ViewModel(authRepo: getAuthRepo())
     }
     
     func getLoginViewModel() -> LoginView.ViewModel {

@@ -9,8 +9,6 @@ import SwiftUI
 import Combine
 
 struct SignUpView: View {
-    @State var email = ""
-    @State var password = ""
     @ObservedObject var viewModel = ViewModel()
     @EnvironmentObject var router: ContentView.ViewModel
     @Environment(\.presentationMode) var presentation
