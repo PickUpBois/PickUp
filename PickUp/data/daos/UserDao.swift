@@ -7,6 +7,8 @@
 
 import Foundation
 
-struct UserDao {
+struct AuthDao {
     var email: String? = nil
+    var isEmailVerified: Bool? = nil
+    var photoUri: String? = nil
 }

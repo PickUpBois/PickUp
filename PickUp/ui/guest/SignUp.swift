@@ -82,6 +82,13 @@ struct SignUpView: View {
                     .cornerRadius(9)
                     .padding(.horizontal, 20)
             
+            if !viewModel.errorMessage.isEmpty {
+                Text(viewModel.errorMessage)
+                    .foregroundColor(Color.red)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.horizontal, 20)
+            }
+            
             //Login Button Settings
             Button(action: {self.presentation.wrappedValue.dismiss()}) {
                 Text("Already have an account? Log in.")
@@ -102,7 +109,7 @@ extension SignUpView {
         @Published var password = ""
         @Published var firstName = ""
         @Published var lastName = ""
-        @Published var loginError = false
+        @Published var errorMessage: String = ""
         @Published var loginSuccess = false
         @Published var loading = false
         var cancellables = Set<AnyCancellable>()
@@ -117,8 +124,14 @@ extension SignUpView {
             self.authRepo.signup(email: email, password: password)
                 .sink(receiveCompletion: {completion in
                     switch completion {
-                    case .failure(let error):
-                        print("SignUpViewModel \(error.localizedDescription)")
+                    case .failure(let error) where error == AuthError.emailAlreadyInUse:
+                        self.errorMessage = "Email is already in use"
+                    case .failure(let error) where error == AuthError.invalidEmail:
+                        self.errorMessage = "Email is invalid or malformed"
+                    case .failure(let error) where error == AuthError.weakPassword:
+                        self.errorMessage = "Password must be greater than 6 characters."
+                    case .failure(_):
+                        self.errorMessage = "Error occurred"
                     case .finished:
                         print("SignUpViewModel SUCCESS")
                     }

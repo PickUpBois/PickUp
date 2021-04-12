@@ -9,12 +9,36 @@ import Foundation
 import Combine
 import FirebaseAuth
 
-enum AuthError: Error {
-    case error
+private func transformFirebaseErrorCode(error: Error?) -> AuthError {
+    guard let nsError = error as NSError? else {
+        return AuthError.error
+    }
+    guard let errorCode = AuthErrorCode(rawValue: nsError.code) else {
+        return AuthError.error
+    }
+    switch errorCode {
+    case .wrongPassword:
+        return AuthError.invalidPassword
+    case .invalidEmail:
+        return AuthError.invalidEmail
+    case .userDisabled:
+        return AuthError.userDisabled
+    case .operationNotAllowed:
+        return AuthError.notEnabled
+    case .emailAlreadyInUse:
+        return AuthError.emailAlreadyInUse
+    case .weakPassword:
+        return AuthError.weakPassword
+    case .requiresRecentLogin:
+        return AuthError.requiresRecentLogin
+    case .tooManyRequests:
+        return AuthError.tooManyRequests
+    default:
+        return AuthError.error
+    }
 }
 
 class AuthFirebaseDataSource: AuthRepo {
-    
     
     let auth: Auth
     
@@ -24,12 +48,27 @@ class AuthFirebaseDataSource: AuthRepo {
         self.auth = auth
     }
     
-    func login(email: String, password: String) -> AnyPublisher<String, Error> {
+    func sendVerificationEmail() -> AnyPublisher<Void, AuthError> {
+        return Future<Void, AuthError> { promise in
+            guard let user = self.auth.currentUser else {
+                return promise(.failure(AuthError.error))
+            }
+            user.sendEmailVerification(completion: { error in
+                if error != nil {
+                    return promise(.failure(transformFirebaseErrorCode(error: error)))
+                } else {
+                    return promise(.success(()))
+                }
+            })
+        }.eraseToAnyPublisher()
+    }
+    
+    func login(email: String, password: String) -> AnyPublisher<String, AuthError> {
         print("AuthFirebaseDataSource login executed")
-        return Future { promise in
+        return Future<String, AuthError> { promise in
             self.auth.signIn(withEmail: email, password: password, completion: { authResult, error in
                 guard let user = authResult?.user, error == nil else {
-                    return promise(.failure(AuthError.error))
+                    return promise(.failure(transformFirebaseErrorCode(error: error)))
                 }
                 
                 promise(.success(user.uid))
@@ -37,41 +76,47 @@ class AuthFirebaseDataSource: AuthRepo {
         }.eraseToAnyPublisher()
     }
     
-    func signup(email: String, password: String) -> AnyPublisher<String, Error> {
+    func signup(email: String, password: String) -> AnyPublisher<String, AuthError> {
         print("AuthFirebaseDataSource signup executed")
-        return Future { promise in
+        return Future<String, AuthError> { promise in
             self.auth.createUser(withEmail: email, password: password, completion: {authResult, error in
                 guard let user = authResult?.user, error == nil else {
                     print("\(AuthFirebaseDataSource.TAG) \(String(describing: error?.localizedDescription))")
-                    return promise(.failure(error!))
+                    return promise(.failure(transformFirebaseErrorCode(error: error)))
                 }
                 print("\(AuthFirebaseDataSource.TAG) \(user.uid)")
                 return promise(.success(user.uid as String))
             })
+        }
+        .flatMap { userId in
+            return self.sendVerificationEmail()
+                .flatMap { _ in
+                    return Just(userId)
+                }.eraseToAnyPublisher()
         }.eraseToAnyPublisher()
     }
     
-    func logout() -> AnyPublisher<Void, Error> {
-        return Future { promise in
+    func logout() -> AnyPublisher<Void, AuthError> {
+        return Future<Void, AuthError> { promise in
             do {
                 try self.auth.signOut()
                 promise(.success(()))
             }
             catch(let error) {
                 print("logout unsuccessfull")
-                promise(.failure(error))
+                promise(.failure(transformFirebaseErrorCode(error: error)))
             }
         }.eraseToAnyPublisher()
     }
     
-    func delete() -> AnyPublisher<Void, Error> {
-        return Future { promise in
+    func delete() -> AnyPublisher<Void, AuthError> {
+        return Future<Void, AuthError> { promise in
             guard let user = self.auth.currentUser else {
                 return promise(.failure(AuthError.error))
             }
             user.delete { error in
                 if let error = error {
-                    return promise(.failure(error))
+                    return promise(.failure(transformFirebaseErrorCode(error: error)))
                 } else {
                     return promise(.success(()))
                 }
