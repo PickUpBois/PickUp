@@ -9,8 +9,6 @@ import SwiftUI
 import Combine
 
 struct LoginView: View {
-    @State var email = ""
-    @State var password = ""
     @ObservedObject var viewModel = ViewModel()
     @EnvironmentObject var router: ContentView.ViewModel
     
@@ -58,6 +56,12 @@ struct LoginView: View {
                     .background(Color.blue.opacity(0.8))
                     .cornerRadius(9)
                     .padding(.horizontal, 20)
+            if !viewModel.errorMessage.isEmpty {
+                Text(viewModel.errorMessage)
+                    .foregroundColor(Color.red)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.horizontal, 20)
+            }
             //Forgot Password Button Settings
             Button(action: {}){
                 Text("Forgot Password?")
@@ -86,10 +90,9 @@ struct LoginView: View {
 
 extension LoginView {
     class ViewModel: ObservableObject {
-        @Published var email = ""
-        @Published var password = ""
-        @Published var loginError = false
-        @Published var loginSuccess = false
+        @Published var email: String = ""
+        @Published var password: String = ""
+        @Published var errorMessage: String = ""
         @Published var loading = false
         var cancellables = Set<AnyCancellable>()
         var authRepo: AuthRepo!
@@ -99,13 +102,28 @@ extension LoginView {
         }
         
         func login() {
+            self.errorMessage = ""
+            self.loading = false
             self.authRepo.login(email: email, password: password)
                 .sink(receiveCompletion: {completion in
                     switch completion {
-                    case .failure(let error):
-                        self.loginError = true
+                    case .failure(let error) where error == AuthError.invalidEmail:
+                        self.errorMessage = "Invalid email"
+                    case .failure(let error) where error == AuthError.invalidPassword:
+                        self.errorMessage = "Invalid password"
+                    case .failure(let error) where error ==
+                        AuthError.userDisabled:
+                        self.errorMessage = "Account is disabled"
+                    case .failure(let error) where error ==
+                        AuthError.notEnabled:
+                        self.errorMessage = "Account not enabled"
+                    case .failure(let error) where error ==
+                            AuthError.tooManyRequests:
+                        self.errorMessage = "Account is disabled due to receiving too many requests"
+                    case .failure(_):
+                        self.errorMessage = "Error occurred"
                     case .finished:
-                        self.loginSuccess = true
+                        ()
                     }
                 }, receiveValue: {userId in
                     ()
