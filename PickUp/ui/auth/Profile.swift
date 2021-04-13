@@ -1,5 +1,5 @@
 //
-//  AuthHome.swift
+//  Profile.swift
 //  PickUp
 //
 //  Created by Arian Rahbar on 4/11/21.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-struct AuthHomeView: View {
+struct ProfileView: View {
     @ObservedObject var viewModel: ViewModel
     
     init(viewModel: ViewModel = ViewModel()) {
@@ -16,17 +16,22 @@ struct AuthHomeView: View {
     }
     
     var body: some View {
-        Text("Hello, World!")
+        if (viewModel.loading) {
+            Text("Loading!")
+        } else {
+            Button("Logout", action: {() in
+                self.viewModel.logout()
+            })
+        }
     }
 }
 
-extension AuthHomeView {
+extension ProfileView {
     class ViewModel: ObservableObject {
         var authRepo: AuthRepo!
         var cancellables = Set<AnyCancellable>()
         @Published var logoutError = ""
         @Published var loading = false
-        @Published var selection: AuthViews = AuthViews.profile
         
         init(authRepo: AuthRepo = ViewModelFactory().getAuthRepo()) {
             self.authRepo = authRepo
@@ -46,8 +51,8 @@ extension AuthHomeView {
     }
 }
 
-struct AuthHomeView_Previews: PreviewProvider {
+struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthHomeView()
+        ProfileView()
     }
 }

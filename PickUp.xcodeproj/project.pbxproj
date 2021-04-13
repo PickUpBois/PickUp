@@ -10,9 +10,11 @@
 		2BCB14BC98673B0E0405DA1A /* Pods_PickUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BD03789BD152139D962439 /* Pods_PickUp.framework */; };
 		5759BEB19CC7C7586D1CAA4A /* Pods_PickUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0D20760AA6BD396F53FB95 /* Pods_PickUpTests.framework */; };
 		861B30895CA33C3C99B5E486 /* Pods_PickUp_PickUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B10C264D4693EA67AE11366 /* Pods_PickUp_PickUpUITests.framework */; };
+		8D09E70B2623E16E0007B871 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E70A2623E16E0007B871 /* Profile.swift */; };
+		8D09E7132623E2B70007B871 /* AuthHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E7122623E2B70007B871 /* AuthHome.swift */; };
 		8D2A3EF3261EC3E100521A6A /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2A3EF2261EC3E100521A6A /* SignUp.swift */; };
-		8D484AEF261B683500814A8F /* AuthHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFD52619AB4A004AADED /* AuthHome.swift */; };
-		8D484AF3261B683500814A8F /* AuthHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFD52619AB4A004AADED /* AuthHome.swift */; };
+		8D484AEF261B683500814A8F /* AuthTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFD52619AB4A004AADED /* AuthTab.swift */; };
+		8D484AF3261B683500814A8F /* AuthTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFD52619AB4A004AADED /* AuthTab.swift */; };
 		8D484B07261B687B00814A8F /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8726198976004AADED /* Content.swift */; };
 		8D484B0B261B687C00814A8F /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8726198976004AADED /* Content.swift */; };
 		8D484B0F261B688900814A8F /* PickUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8526198976004AADED /* PickUpApp.swift */; };
@@ -35,7 +37,7 @@
 		8DB8EF9826198979004AADED /* PickUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF9726198979004AADED /* PickUpTests.swift */; };
 		8DB8EFA326198979004AADED /* PickUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFA226198979004AADED /* PickUpUITests.swift */; };
 		8DB8EFB9261989B2004AADED /* AuthRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFB8261989B2004AADED /* AuthRepo.swift */; };
-		8DB8EFD62619AB4A004AADED /* AuthHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFD52619AB4A004AADED /* AuthHome.swift */; };
+		8DB8EFD62619AB4A004AADED /* AuthTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFD52619AB4A004AADED /* AuthTab.swift */; };
 		8DB8EFDD261A6BEB004AADED /* AuthFirebaseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFDC261A6BEB004AADED /* AuthFirebaseDataSource.swift */; };
 		8DB8F008261A8201004AADED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8F007261A8201004AADED /* GoogleService-Info.plist */; };
 		8DB8F009261A8201004AADED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8F007261A8201004AADED /* GoogleService-Info.plist */; };
@@ -81,6 +83,8 @@
 		37B4D1F8385E9203AFDB1EEA /* Pods-PickUp-PickUpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp-PickUpUITests.release.xcconfig"; path = "Target Support Files/Pods-PickUp-PickUpUITests/Pods-PickUp-PickUpUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3B10C264D4693EA67AE11366 /* Pods_PickUp_PickUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUp_PickUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CAFA1516D4C68D02E665F97 /* Pods-PickUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUpTests.debug.xcconfig"; path = "Target Support Files/Pods-PickUpTests/Pods-PickUpTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8D09E70A2623E16E0007B871 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		8D09E7122623E2B70007B871 /* AuthHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHome.swift; sourceTree = "<group>"; };
 		8D2A3EF2261EC3E100521A6A /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		8D484BAC261B9CEA00814A8F /* GuestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestRouter.swift; sourceTree = "<group>"; };
 		8D484BF8261BC4AA00814A8F /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -99,7 +103,7 @@
 		8DB8EFA226198979004AADED /* PickUpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpUITests.swift; sourceTree = "<group>"; };
 		8DB8EFA426198979004AADED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DB8EFB8261989B2004AADED /* AuthRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRepo.swift; sourceTree = "<group>"; };
-		8DB8EFD52619AB4A004AADED /* AuthHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHome.swift; sourceTree = "<group>"; };
+		8DB8EFD52619AB4A004AADED /* AuthTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTab.swift; sourceTree = "<group>"; };
 		8DB8EFDC261A6BEB004AADED /* AuthFirebaseDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebaseDataSource.swift; sourceTree = "<group>"; };
 		8DB8EFF6261A74F7004AADED /* AuthFirebaseDataSourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebaseDataSourceTest.swift; sourceTree = "<group>"; };
 		8DB8F007261A8201004AADED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -175,7 +179,9 @@
 		8D484BFD261BD65900814A8F /* auth */ = {
 			isa = PBXGroup;
 			children = (
-				8DB8EFD52619AB4A004AADED /* AuthHome.swift */,
+				8DB8EFD52619AB4A004AADED /* AuthTab.swift */,
+				8D09E70A2623E16E0007B871 /* Profile.swift */,
+				8D09E7122623E2B70007B871 /* AuthHome.swift */,
 			);
 			path = auth;
 			sourceTree = "<group>";
@@ -545,11 +551,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DFAD531261EBA910055BA76 /* LoginView.swift in Sources */,
+				8D09E70B2623E16E0007B871 /* Profile.swift in Sources */,
 				8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
 				8DB8F021261A8A45004AADED /* UserDao.swift in Sources */,
+				8D09E7132623E2B70007B871 /* AuthHome.swift in Sources */,
 				8D484BAD261B9CEA00814A8F /* GuestRouter.swift in Sources */,
 				8DB8EF8826198976004AADED /* Content.swift in Sources */,
-				8DB8EFD62619AB4A004AADED /* AuthHome.swift in Sources */,
+				8DB8EFD62619AB4A004AADED /* AuthTab.swift in Sources */,
 				8D484C06261BD6E300814A8F /* GuestHome.swift in Sources */,
 				8DB8EFB9261989B2004AADED /* AuthRepo.swift in Sources */,
 				8DB8F06A261AB3E9004AADED /* ViewModelFactory.swift in Sources */,
@@ -573,7 +581,7 @@
 				8D484BB1261B9CEC00814A8F /* GuestRouter.swift in Sources */,
 				8D484B91261B73A200814A8F /* AuthFirebaseDataSourceTest.swift in Sources */,
 				8DB8F06B261AB3E9004AADED /* ViewModelFactory.swift in Sources */,
-				8D484AEF261B683500814A8F /* AuthHome.swift in Sources */,
+				8D484AEF261B683500814A8F /* AuthTab.swift in Sources */,
 				8D73B694261C3FF300170A1A /* Navigator.swift in Sources */,
 				8DB8F04B261AAD58004AADED /* AuthFirebaseDataSource.swift in Sources */,
 				8DB8EF9826198979004AADED /* PickUpTests.swift in Sources */,
@@ -588,7 +596,7 @@
 			files = (
 				8DFAD533261EBA910055BA76 /* LoginView.swift in Sources */,
 				8D73B6A0261CF03D00170A1A /* Session.swift in Sources */,
-				8D484AF3261B683500814A8F /* AuthHome.swift in Sources */,
+				8D484AF3261B683500814A8F /* AuthTab.swift in Sources */,
 				8D484B0B261B687C00814A8F /* Content.swift in Sources */,
 				8DB8F047261AAD58004AADED /* AuthFirebaseDataSource.swift in Sources */,
 				8DB8F05A261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,

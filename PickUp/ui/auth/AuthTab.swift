@@ -1,32 +1,46 @@
 //
-//  AuthHome.swift
+//  HomeView.swift
 //  PickUp
 //
-//  Created by Arian Rahbar on 4/11/21.
+//  Created by Arian Rahbar on 4/4/21.
 //
 
 import SwiftUI
 import Combine
 
-struct AuthHomeView: View {
+struct AuthTabView: View {
     @ObservedObject var viewModel: ViewModel
     
-    init(viewModel: ViewModel = ViewModel()) {
+    init(viewModel: ViewModel = ViewModelFactory().getAuthTabViewModel()) {
         self.viewModel = viewModel
     }
     
     var body: some View {
-        Text("Hello, World!")
+        TabView(selection: $viewModel.selection) {
+            AuthHomeView()
+                .tabItem {
+                    Text("Home")
+                }.tag(AuthViews.home)
+            ProfileView()
+                .tabItem {
+                    Text("Profile")
+                }.tag(AuthViews.profile)
+        }
     }
 }
 
-extension AuthHomeView {
+enum AuthViews {
+    case home
+    case profile
+}
+
+extension AuthTabView {
     class ViewModel: ObservableObject {
         var authRepo: AuthRepo!
         var cancellables = Set<AnyCancellable>()
         @Published var logoutError = ""
         @Published var loading = false
-        @Published var selection: AuthViews = AuthViews.profile
+        @Published var selection: AuthViews = AuthViews.home
         
         init(authRepo: AuthRepo = ViewModelFactory().getAuthRepo()) {
             self.authRepo = authRepo
@@ -46,8 +60,8 @@ extension AuthHomeView {
     }
 }
 
-struct AuthHomeView_Previews: PreviewProvider {
+struct AuthTabView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthHomeView()
+        AuthTabView()
     }
 }
