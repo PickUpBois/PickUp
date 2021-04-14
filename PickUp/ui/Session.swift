@@ -13,7 +13,7 @@ class Session: ObservableObject  {
     var authHandle: AnyCancellable!
     var cancellables = Set<AnyCancellable>()
     
-    init(authRepo: AuthRepo = ViewModelFactory().getAuthRepo()) {
+    init(authRepo: AuthRepo = RepoFactory().getAuthRepo()) {
         self.authRepo = authRepo
     }
     

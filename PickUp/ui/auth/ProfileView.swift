@@ -1,48 +1,39 @@
 //
-//  HomeView.swift
+//  Profile.swift
 //  PickUp
 //
-//  Created by Arian Rahbar on 4/4/21.
+//  Created by Arian Rahbar on 4/11/21.
 //
 
 import SwiftUI
 import Combine
 
-struct AuthTabView: View {
+struct ProfileView: View {
     @ObservedObject var viewModel: ViewModel
     
-    init(viewModel: ViewModel = ViewModelFactory().getAuthTabViewModel()) {
+    init(viewModel: ViewModel = ViewModel()) {
         self.viewModel = viewModel
     }
     
     var body: some View {
-        TabView(selection: $viewModel.selection) {
-            AuthHomeView()
-                .tabItem {
-                    Text("Home")
-                }.tag(AuthViews.home)
-            ProfileView()
-                .tabItem {
-                    Text("Profile")
-                }.tag(AuthViews.profile)
+        if (viewModel.loading) {
+            Text("Loading!")
+        } else {
+            Button("Logout", action: {() in
+                self.viewModel.logout()
+            })
         }
     }
 }
 
-enum AuthViews {
-    case home
-    case profile
-}
-
-extension AuthTabView {
+extension ProfileView {
     class ViewModel: ObservableObject {
         var authRepo: AuthRepo!
         var cancellables = Set<AnyCancellable>()
         @Published var logoutError = ""
         @Published var loading = false
-        @Published var selection: AuthViews = AuthViews.home
         
-        init(authRepo: AuthRepo = ViewModelFactory().getAuthRepo()) {
+        init(authRepo: AuthRepo = RepoFactory().getAuthRepo()) {
             self.authRepo = authRepo
         }
         
@@ -60,8 +51,8 @@ extension AuthTabView {
     }
 }
 
-struct AuthTabView_Previews: PreviewProvider {
+struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthTabView()
+        ProfileView()
     }
 }

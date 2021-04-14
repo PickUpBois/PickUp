@@ -9,6 +9,15 @@ import Foundation
 import Combine
 import FirebaseAuth
 
+/**
+ Transforms Firebase Error codes into error codes that are useful for the UI.
+ 
+ - Parameters:
+    - error: nullable error object that represents a Firebase NSError
+ 
+ - Returns:
+    - An AuthError enum that matches the Firebase Error code
+ */
 private func transformFirebaseErrorCode(error: Error?) -> AuthError {
     guard let nsError = error as NSError? else {
         return AuthError.error
@@ -40,13 +49,24 @@ private func transformFirebaseErrorCode(error: Error?) -> AuthError {
 
 class AuthFirebaseDataSource: AuthRepo {
     
+    /// FIRAuth instance
     let auth: Auth
     
     private static let TAG = "AuthFirebaseDataSource"
     
-    init(auth: Auth) {
+    /**
+     Initializes a new AuthFirebaseDataSource with an Authentication instance of Firebase
+     
+     - Parameters:
+        - auth:  representing an FIRAuth instance for managing authentication
+     
+     - Returns:
+        - An initialized AuthFirebaseDataSource instance
+     */
+    init(auth: Auth = RepoFactory.auth) {
         self.auth = auth
     }
+    
     
     func sendVerificationEmail() -> AnyPublisher<Void, AuthError> {
         return Future<Void, AuthError> { promise in

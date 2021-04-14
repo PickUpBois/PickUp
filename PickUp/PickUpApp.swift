@@ -12,7 +12,6 @@ import Firebase
 struct PickUpApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
-        print("app configured firebase")
         return WindowGroup {
             ContentView().environmentObject(Session())
         }

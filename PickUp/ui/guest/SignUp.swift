@@ -10,7 +10,6 @@ import Combine
 
 struct SignUpView: View {
     @ObservedObject var viewModel = ViewModel()
-    @EnvironmentObject var router: ContentView.ViewModel
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
@@ -113,7 +112,7 @@ extension SignUpView {
         var cancellables = Set<AnyCancellable>()
         var authRepo: AuthRepo!
         
-        init(authRepo: AuthRepo = ViewModelFactory().getAuthRepo()) {
+        init(authRepo: AuthRepo = RepoFactory().getAuthRepo()) {
             self.authRepo = authRepo
         }
         

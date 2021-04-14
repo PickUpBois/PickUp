@@ -10,7 +10,6 @@ import Combine
 
 struct LoginView: View {
     @ObservedObject var viewModel = ViewModel()
-    @EnvironmentObject var router: ContentView.ViewModel
     
     var body: some View {
         VStack (spacing: 5) {
@@ -97,10 +96,14 @@ extension LoginView {
         var cancellables = Set<AnyCancellable>()
         var authRepo: AuthRepo!
         
-        init(authRepo: AuthRepo = ViewModelFactory().getAuthRepo()) {
+        init(authRepo: AuthRepo = RepoFactory().getAuthRepo()) {
             self.authRepo = authRepo
         }
         
+        /**
+         Function that calls the AuthRepo to login the user using the provided email and password.
+         Also provides proper error handling if the AuthRepo emits an error.
+         */
         func login() {
             self.errorMessage = ""
             self.loading = false
