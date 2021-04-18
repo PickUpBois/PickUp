@@ -8,7 +8,7 @@ Cocoapods is what we would be using for managing the dependencies in our app, su
 
 Open up your terminal and type:
 
-`shell
+`
 sudo gem install cocoapods
 `
 
