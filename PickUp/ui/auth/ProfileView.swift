@@ -14,18 +14,61 @@ struct ProfileView: View {
     init(viewModel: ViewModel = ViewModel()) {
         self.viewModel = viewModel
     }
-    
+    //Navigation bar
     var body: some View {
+        ScrollView {
+        // Stacks everything on page
+        VStack(alignment: .center) {
+            Text("Jim's Profile").font(.title3) // Leading title on page
+                .fontWeight(.bold)
+                .padding(.top)
+        Spacer().frame(minHeight: 10, maxHeight: 20) // Space between profile picture and leading title
+            
+            // Stacks for profile picture
+            HStack {
+                VStack{
+                Image("Jim").frame(width: 100, height: 100, alignment: .center)
+                .clipShape(Circle())
+                .shadow(radius: 2)
+                .overlay(Circle().stroke(Color.black, lineWidth: 5))
+                    .padding(.trailing, 20)
+                    Text("Jim Heise").font(.headline).fontWeight(.bold).foregroundColor(Color.black)
+                    Text("Cyclones").font(.headline).fontWeight(.light).foregroundColor(Color.red)
+                Spacer()//Space between profile picture center of page
+            }
+                VStack {
+                Text("Total").font(.headline).foregroundColor(Color.black)
+                Text("Pickups").font(.headline).foregroundColor(Color.black)
+                    Text("50").font(.title).fontWeight(.bold)
+                    Spacer()
+                }
+                VStack {
+                Text("Team").font(.headline).foregroundColor(Color.black)
+                Text("Members").font(.headline).foregroundColor(Color.black)
+                    Text("50").font(.title).fontWeight(.bold)
+                    Spacer()
+                }
+                VStack {
+                Text("GOAT").font(.headline).foregroundColor(Color.black)
+                Text("Meter").font(.headline).foregroundColor(Color.black)
+                Image(systemName: "battery.25").font(.system(size: 40))
+                    .foregroundColor(.green)
+                    Spacer()
+                }
+            }
+            
+        Spacer().frame(minHeight: 140, maxHeight: 800)
         if (viewModel.loading) {
             Text("Loading!")
         } else {
             Button("Logout", action: {() in
                 self.viewModel.logout()
-            })
+                })
+            }
+        }
         }
     }
 }
-
 extension ProfileView {
     class ViewModel: ObservableObject {
         var authRepo: AuthRepo!
