@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A358873262F616800AA6AF3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E70A2623E16E0007B871 /* ProfileView.swift */; };
+		1A35887A262F616900AA6AF3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E70A2623E16E0007B871 /* ProfileView.swift */; };
 		2BCB14BC98673B0E0405DA1A /* Pods_PickUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BD03789BD152139D962439 /* Pods_PickUp.framework */; };
 		5759BEB19CC7C7586D1CAA4A /* Pods_PickUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0D20760AA6BD396F53FB95 /* Pods_PickUpTests.framework */; };
 		861B30895CA33C3C99B5E486 /* Pods_PickUp_PickUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B10C264D4693EA67AE11366 /* Pods_PickUp_PickUpUITests.framework */; };
@@ -87,7 +89,7 @@
 		37B4D1F8385E9203AFDB1EEA /* Pods-PickUp-PickUpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp-PickUpUITests.release.xcconfig"; path = "Target Support Files/Pods-PickUp-PickUpUITests/Pods-PickUp-PickUpUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3B10C264D4693EA67AE11366 /* Pods_PickUp_PickUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUp_PickUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CAFA1516D4C68D02E665F97 /* Pods-PickUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUpTests.debug.xcconfig"; path = "Target Support Files/Pods-PickUpTests/Pods-PickUpTests.debug.xcconfig"; sourceTree = "<group>"; };
-		8D09E70A2623E16E0007B871 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		8D09E70A2623E16E0007B871 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8D2A3EF2261EC3E100521A6A /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		8D484BF8261BC4AA00814A8F /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		8DB8EF8226198976004AADED /* PickUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -586,6 +588,7 @@
 				8DB8F06B261AB3E9004AADED /* RepoFactory.swift in Sources */,
 				8DFCF519262788BD00BBFE66 /* MapView.swift in Sources */,
 				8DB8F04B261AAD58004AADED /* AuthFirebaseDataSource.swift in Sources */,
+				1A358873262F616800AA6AF3 /* ProfileView.swift in Sources */,
 				8DB8EF9826198979004AADED /* PickUpTests.swift in Sources */,
 				8DFAD532261EBA910055BA76 /* LoginView.swift in Sources */,
 				8DFCF505262788A000BBFE66 /* MainView.swift in Sources */,
@@ -608,6 +611,7 @@
 				8DB8F047261AAD58004AADED /* AuthFirebaseDataSource.swift in Sources */,
 				8DB8F05A261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
 				8DB8F04F261AAD5D004AADED /* AuthRepo.swift in Sources */,
+				1A35887A262F616900AA6AF3 /* ProfileView.swift in Sources */,
 				8DFCF52E262788E100BBFE66 /* HomeView.swift in Sources */,
 				8DB8EFA326198979004AADED /* PickUpUITests.swift in Sources */,
 				8DB8F023261A8A45004AADED /* UserDao.swift in Sources */,
