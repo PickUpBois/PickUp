@@ -79,7 +79,7 @@ struct ProfileView: View {
             // Stacks everything on page
 
                 VStack(alignment: .center) {
-                Text("Jim's Profile").font(.title3) // Leading title on page
+                    Text("\(self.observeAuthUseCase.authUser!.firstName)'s Profile").font(.title3) // Leading title on page
                     .fontWeight(.bold)
                     .padding(.top)
             Spacer().frame(minHeight: 10, maxHeight: 20) // Space between profile picture and leading title
@@ -87,12 +87,21 @@ struct ProfileView: View {
                 // Stacks for profile picture
                 HStack {
                     VStack{
-                    Image("Jim").frame(width: 100, height: 100, alignment: .center)
-                    .clipShape(Circle())
-                    .shadow(radius: 2)
-                    .overlay(Circle().stroke(Color.black, lineWidth: 5))
-                        .padding(.trailing, 20)
-                        Text("Jim Heise").font(.headline).fontWeight(.bold).foregroundColor(Color.black)
+                        Button(action: {
+                            self.viewModel.showPhotoLibrary = true
+                            print("image was tapped")
+                        }) {
+                            WebImage(url: URL(string: self.observeAuthUseCase.authUser?.photoUrl ?? ""))
+                                .resizable()
+                                .placeholder(Image("Jim"))
+                                .indicator(.activity)
+                                .frame(width: 100, height: 100, alignment: .center)
+                                .clipShape(Circle())
+                                .shadow(radius: 2)
+                                .overlay(Circle().stroke(Color.black, lineWidth: 5))
+                                .padding(.trailing, 20)
+                        }
+                        Text("\(self.observeAuthUseCase.authUser!.firstName) \(self.observeAuthUseCase.authUser!.lastName)").font(.headline).fontWeight(.bold).foregroundColor(Color.black)
                         Text("Cyclones").font(.headline).fontWeight(.light).foregroundColor(Color.red)
                     Spacer()//Space between profile picture center of page
                         }
@@ -132,6 +141,8 @@ struct ProfileView: View {
                         self.viewModel.logout()
                         })
                     }
+                }.sheet(isPresented: self.$viewModel.showPhotoLibrary) {
+                    ImagePicker(sourceType: .photoLibrary, userId: self.observeAuthUseCase.authUser!.id!)
                 }
 
             
@@ -182,6 +193,7 @@ extension ProfileView {
         @Published var loading = false
         @Published var imageUri: String? = nil
         @Published var textUrl: String = ""
+        @Published var showPhotoLibrary = false
         
         init(authRepo: AuthRepo = RepoFactory.getAuthRepo(),
              updateProfilePicByUrl: IUpdateProfilePictureFromExternalUrl = UpdateProfilePictureFromExternalUrl()) {

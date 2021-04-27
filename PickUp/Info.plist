@@ -64,5 +64,7 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Need to access the camera for taking photos and videos</string>
 </dict>
 </plist>

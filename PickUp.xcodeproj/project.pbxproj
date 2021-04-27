@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		1A358873262F616800AA6AF3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E70A2623E16E0007B871 /* ProfileView.swift */; };
 		1A35887A262F616900AA6AF3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E70A2623E16E0007B871 /* ProfileView.swift */; };
-		2BCB14BC98673B0E0405DA1A /* Pods_PickUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BD03789BD152139D962439 /* Pods_PickUp.framework */; };
-		5759BEB19CC7C7586D1CAA4A /* Pods_PickUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0D20760AA6BD396F53FB95 /* Pods_PickUpTests.framework */; };
-		861B30895CA33C3C99B5E486 /* Pods_PickUp_PickUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B10C264D4693EA67AE11366 /* Pods_PickUp_PickUpUITests.framework */; };
+		1F30A886AE165751D712C11B /* Pods_PickUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D2DCFAB236044BB62AF4D7 /* Pods_PickUp.framework */; };
 		8D09E70B2623E16E0007B871 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E70A2623E16E0007B871 /* ProfileView.swift */; };
 		8D2A3EF3261EC3E100521A6A /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2A3EF2261EC3E100521A6A /* SignUp.swift */; };
+		8D2B0C4A263817680032AE67 /* IUpdateProfilePicByImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B0C49263817680032AE67 /* IUpdateProfilePicByImage.swift */; };
+		8D2B0C50263819060032AE67 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B0C4F263819060032AE67 /* ImagePicker.swift */; };
+		8D2B0C572638190C0032AE67 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B0C4F263819060032AE67 /* ImagePicker.swift */; };
+		8D2B0C5B2638190D0032AE67 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B0C4F263819060032AE67 /* ImagePicker.swift */; };
 		8D3694E5262B52490062DD0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3694E4262B52490062DD0C /* User.swift */; };
 		8D3694E6262B52490062DD0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3694E4262B52490062DD0C /* User.swift */; };
 		8D3694E7262B52490062DD0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3694E4262B52490062DD0C /* User.swift */; };
@@ -42,11 +44,9 @@
 		8D36966D262C12C10062DD0C /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36966B262C12C10062DD0C /* UserRepo.swift */; };
 		8D36966E262C12C10062DD0C /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36966B262C12C10062DD0C /* UserRepo.swift */; };
 		8D369674262C1B6A0062DD0C /* DataUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D369673262C1B6A0062DD0C /* DataUser.swift */; };
-		8D369675262C1B6A0062DD0C /* DataUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D369673262C1B6A0062DD0C /* DataUser.swift */; };
 		8D369676262C1B6A0062DD0C /* DataUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D369673262C1B6A0062DD0C /* DataUser.swift */; };
 		8D36967E262C2AB40062DD0C /* IRegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36967D262C2AB40062DD0C /* IRegisterUseCase.swift */; };
 		8D36967F262C2AB40062DD0C /* IRegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36967D262C2AB40062DD0C /* IRegisterUseCase.swift */; };
-		8D369680262C2AB40062DD0C /* IRegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36967D262C2AB40062DD0C /* IRegisterUseCase.swift */; };
 		8D3696DC262C900C0062DD0C /* ObserveAuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3696DB262C900C0062DD0C /* ObserveAuthState.swift */; };
 		8D3696DD262C900C0062DD0C /* ObserveAuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3696DB262C900C0062DD0C /* ObserveAuthState.swift */; };
 		8D3696DE262C900C0062DD0C /* ObserveAuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3696DB262C900C0062DD0C /* ObserveAuthState.swift */; };
@@ -100,7 +100,8 @@
 		8DFCF52C262788E100BBFE66 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF52B262788E100BBFE66 /* HomeView.swift */; };
 		8DFCF52D262788E100BBFE66 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF52B262788E100BBFE66 /* HomeView.swift */; };
 		8DFCF52E262788E100BBFE66 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF52B262788E100BBFE66 /* HomeView.swift */; };
-		A522AC06EBEAAA763B5BF6AE /* Pods_PickUp_PickUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55245931E66BE1E85C9E4FCE /* Pods_PickUp_PickUpUITests.framework */; };
+		9499867C769D5AB3003A2BD4 /* Pods_PickUp_PickUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0E894F9584738F31FCC29B2 /* Pods_PickUp_PickUpUITests.framework */; };
+		A522AC06EBEAAA763B5BF6AE /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		C3A53BC40D77F97812A0D38D /* Pods_PickUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2FF25FDE8AC48FA9AC6775 /* Pods_PickUpTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -122,13 +123,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0F0D20760AA6BD396F53FB95 /* Pods_PickUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1713F0E8051208CEC621D8B8 /* Pods-PickUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUpTests.release.xcconfig"; path = "Target Support Files/Pods-PickUpTests/Pods-PickUpTests.release.xcconfig"; sourceTree = "<group>"; };
-		37B4D1F8385E9203AFDB1EEA /* Pods-PickUp-PickUpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp-PickUpUITests.release.xcconfig"; path = "Target Support Files/Pods-PickUp-PickUpUITests/Pods-PickUp-PickUpUITests.release.xcconfig"; sourceTree = "<group>"; };
-		3B10C264D4693EA67AE11366 /* Pods_PickUp_PickUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUp_PickUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3CAFA1516D4C68D02E665F97 /* Pods-PickUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUpTests.debug.xcconfig"; path = "Target Support Files/Pods-PickUpTests/Pods-PickUpTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3D2413990659958D11A4B251 /* Pods-PickUp-PickUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp-PickUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-PickUp-PickUpUITests/Pods-PickUp-PickUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		49D2DCFAB236044BB62AF4D7 /* Pods_PickUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6403E9CD6469737F34F86843 /* Pods-PickUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUpTests.release.xcconfig"; path = "Target Support Files/Pods-PickUpTests/Pods-PickUpTests.release.xcconfig"; sourceTree = "<group>"; };
 		8D09E70A2623E16E0007B871 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8D2A3EF2261EC3E100521A6A /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		8D2B0C49263817680032AE67 /* IUpdateProfilePicByImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUpdateProfilePicByImage.swift; sourceTree = "<group>"; };
+		8D2B0C4F263819060032AE67 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		8D3694E4262B52490062DD0C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8D3695E1262B8CB10062DD0C /* IStorageSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IStorageSource.swift; sourceTree = "<group>"; };
 		8D3695E9262B8D520062DD0C /* IDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDao.swift; sourceTree = "<group>"; };
@@ -168,8 +169,10 @@
 		8DFCF521262788D000BBFE66 /* CreateEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
 		8DFCF52B262788E100BBFE66 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		ABFBFDCD71D8610550461951 /* Pods-PickUp-PickUpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp-PickUpUITests.release.xcconfig"; path = "Target Support Files/Pods-PickUp-PickUpUITests/Pods-PickUp-PickUpUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D568A6AA78CFA5C7D7ABDE5C /* Pods-PickUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp.debug.xcconfig"; path = "Target Support Files/Pods-PickUp/Pods-PickUp.debug.xcconfig"; sourceTree = "<group>"; };
 		D9C81D62DA742F61743A615A /* Pods-PickUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp.release.xcconfig"; path = "Target Support Files/Pods-PickUp/Pods-PickUp.release.xcconfig"; sourceTree = "<group>"; };
 		DD2FF25FDE8AC48FA9AC6775 /* Pods_PickUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0E894F9584738F31FCC29B2 /* Pods_PickUp_PickUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUp_PickUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE5BA8CA4F7F27A8F1738504 /* Pods-PickUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUpTests.debug.xcconfig"; path = "Target Support Files/Pods-PickUpTests/Pods-PickUpTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,7 +181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				478E6B25D59E521A9728EC2D /* Pods_PickUp.framework in Frameworks */,
+				1F30A886AE165751D712C11B /* Pods_PickUp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +197,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A522AC06EBEAAA763B5BF6AE /* Pods_PickUp_PickUpUITests.framework in Frameworks */,
+				A522AC06EBEAAA763B5BF6AE /* (null) in Frameworks */,
+				9499867C769D5AB3003A2BD4 /* Pods_PickUp_PickUpUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,9 +208,9 @@
 		245CC24D0CB1FE80EFCDD25E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0196258204099818499A475F /* Pods_PickUp.framework */,
-				55245931E66BE1E85C9E4FCE /* Pods_PickUp_PickUpUITests.framework */,
 				DD2FF25FDE8AC48FA9AC6775 /* Pods_PickUpTests.framework */,
+				49D2DCFAB236044BB62AF4D7 /* Pods_PickUp.framework */,
+				E0E894F9584738F31FCC29B2 /* Pods_PickUp_PickUpUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -214,14 +218,22 @@
 		7964EE3F360AB642305B8B19 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				29EB1613943B6F9C27221369 /* Pods-PickUp.debug.xcconfig */,
 				D9C81D62DA742F61743A615A /* Pods-PickUp.release.xcconfig */,
-				06E7340B3B4E1600DD0AA52F /* Pods-PickUp-PickUpUITests.debug.xcconfig */,
 				ABFBFDCD71D8610550461951 /* Pods-PickUp-PickUpUITests.release.xcconfig */,
 				FE5BA8CA4F7F27A8F1738504 /* Pods-PickUpTests.debug.xcconfig */,
-				1A26B6E6EF71B8EC54B6D5A4 /* Pods-PickUpTests.release.xcconfig */,
+				D568A6AA78CFA5C7D7ABDE5C /* Pods-PickUp.debug.xcconfig */,
+				3D2413990659958D11A4B251 /* Pods-PickUp-PickUpUITests.debug.xcconfig */,
+				6403E9CD6469737F34F86843 /* Pods-PickUpTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8D2B0C4E263818EE0032AE67 /* misc */ = {
+			isa = PBXGroup;
+			children = (
+				8D2B0C4F263819060032AE67 /* ImagePicker.swift */,
+			);
+			path = misc;
 			sourceTree = "<group>";
 		};
 		8D3694E3262B52080062DD0C /* domain */ = {
@@ -258,6 +270,7 @@
 				8D36964A262C05560062DD0C /* IUpdateProfilePictureFromExternalUrl.swift */,
 				8D36967D262C2AB40062DD0C /* IRegisterUseCase.swift */,
 				8D3696DB262C900C0062DD0C /* ObserveAuthState.swift */,
+				8D2B0C49263817680032AE67 /* IUpdateProfilePicByImage.swift */,
 			);
 			path = usecases;
 			sourceTree = "<group>";
@@ -370,6 +383,7 @@
 		8DB8EFBD26198CBD004AADED /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				8D2B0C4E263818EE0032AE67 /* misc */,
 				8D484BFE261BD65E00814A8F /* guest */,
 				8D484BFD261BD65900814A8F /* auth */,
 				8DB8EF8726198976004AADED /* ContentView.swift */,
@@ -644,6 +658,7 @@
 				8D36965F262C0A360062DD0C /* IUserRepo.swift in Sources */,
 				8D3695EA262B8D520062DD0C /* IDao.swift in Sources */,
 				8D3696EC262CA8D40062DD0C /* DataAuth.swift in Sources */,
+				8D2B0C50263819060032AE67 /* ImagePicker.swift in Sources */,
 				8D3695E2262B8CB10062DD0C /* IStorageSource.swift in Sources */,
 				8D09E70B2623E16E0007B871 /* ProfileView.swift in Sources */,
 				8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
@@ -661,6 +676,7 @@
 				8D369674262C1B6A0062DD0C /* DataUser.swift in Sources */,
 				8DFCF52C262788E100BBFE66 /* HomeView.swift in Sources */,
 				8D3696DC262C900C0062DD0C /* ObserveAuthState.swift in Sources */,
+				8D2B0C4A263817680032AE67 /* IUpdateProfilePicByImage.swift in Sources */,
 				8D369617262BA3EC0062DD0C /* IUrlSource.swift in Sources */,
 				8D36966C262C12C10062DD0C /* UserRepo.swift in Sources */,
 				8DFCF518262788BD00BBFE66 /* MapView.swift in Sources */,
@@ -694,6 +710,7 @@
 				8DB8F04B261AAD58004AADED /* AuthFirebaseDataSource.swift in Sources */,
 				1A358873262F616800AA6AF3 /* ProfileView.swift in Sources */,
 				8DB8EF9826198979004AADED /* PickUpTests.swift in Sources */,
+				8D2B0C572638190C0032AE67 /* ImagePicker.swift in Sources */,
 				8DFAD532261EBA910055BA76 /* LoginView.swift in Sources */,
 				8D3696DD262C900C0062DD0C /* ObserveAuthState.swift in Sources */,
 				8D369618262BA3EC0062DD0C /* IUrlSource.swift in Sources */,
@@ -734,6 +751,7 @@
 				8D36966E262C12C10062DD0C /* UserRepo.swift in Sources */,
 				8DB8F023261A8A45004AADED /* UserDao.swift in Sources */,
 				8DFCF510262788AF00BBFE66 /* FindTeammatesView.swift in Sources */,
+				8D2B0C5B2638190D0032AE67 /* ImagePicker.swift in Sources */,
 				8DB8F06C261AB3E9004AADED /* RepoFactory.swift in Sources */,
 				8D484B13261B688900814A8F /* PickUpApp.swift in Sources */,
 				8DFCF524262788D000BBFE66 /* CreateEventView.swift in Sources */,
@@ -874,7 +892,7 @@
 		};
 		8DB8EFA826198979004AADED /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29EB1613943B6F9C27221369 /* Pods-PickUp.debug.xcconfig */;
+			baseConfigurationReference = D568A6AA78CFA5C7D7ABDE5C /* Pods-PickUp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -940,7 +958,7 @@
 		};
 		8DB8EFAC26198979004AADED /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A26B6E6EF71B8EC54B6D5A4 /* Pods-PickUpTests.release.xcconfig */;
+			baseConfigurationReference = 6403E9CD6469737F34F86843 /* Pods-PickUpTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -962,7 +980,7 @@
 		};
 		8DB8EFAE26198979004AADED /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06E7340B3B4E1600DD0AA52F /* Pods-PickUp-PickUpUITests.debug.xcconfig */;
+			baseConfigurationReference = 3D2413990659958D11A4B251 /* Pods-PickUp-PickUpUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
