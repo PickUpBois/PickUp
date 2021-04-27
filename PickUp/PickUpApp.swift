@@ -13,7 +13,7 @@ struct PickUpApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         return WindowGroup {
-            ContentView().environmentObject(Session())
+            ContentView()
         }
     }
 }

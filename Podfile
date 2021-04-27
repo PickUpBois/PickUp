@@ -6,18 +6,19 @@ target 'PickUp' do
   use_frameworks!
 
   # Pods for PickUp
-  pod  'Firebase/Core'
-  pod 'Firebase/Auth'
+pod 'Firebase/Auth', '7.10.0'
+pod 'Firebase/Firestore', '7.10.0'
+pod 'FirebaseFirestoreSwift', '~> 7.0-beta'
+pod 'Firebase/Storage', '7.10.0'
+pod 'SDWebImageSwiftUI', '2.0.2'
 
   target 'PickUpTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'Firebase'
   end
 
   target 'PickUpUITests' do
     # Pods for testing
-    pod 'Firebase'
   end
 
 end

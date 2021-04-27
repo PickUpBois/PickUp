@@ -51,13 +51,13 @@ protocol AuthRepo {
      */
     func login(email: String, password: String) -> AnyPublisher<String, AuthError>
     
-    func signup(email: String, password: String) -> AnyPublisher<String, AuthError>
+    func signup(email: String, password: String) -> AnyPublisher<String, Error>
     
-    func sendVerificationEmail() -> AnyPublisher<Void, AuthError>
+    func sendVerificationEmail() -> AnyPublisher<Void, Error>
     
     func logout() -> AnyPublisher<Void, AuthError>
     
     func delete() -> AnyPublisher<Void, AuthError>
     
-    func observeAuthState() -> CurrentValueSubject<String?, Never>
+    func observeAuthState() -> CurrentValueSubject<DataAuth?, Never>
 }
