@@ -23,7 +23,7 @@ struct DataUser: Codable {
     }
     
     func toUser() -> User {
-        return User(id: id!, username: username, firstName: firstName, lastName: lastName)
+        return User(id: id!, username: username, firstName: firstName, lastName: lastName, photoUrl: photoUrl)
     }
     
     enum CodingKeys: String, CodingKey {

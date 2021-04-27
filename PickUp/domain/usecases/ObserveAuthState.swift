@@ -26,7 +26,7 @@ class ObserveAuthState: ObservableObject {
     func listen() {
         self.authHandle = authRepo.observeAuthState().sink(receiveValue: {dataAuth in
             if dataAuth != nil {
-                self.userRepo.get(id: dataAuth!.id)
+                self.userHandle = self.userRepo.observe(id: dataAuth!.id)
                     .sink(receiveCompletion: { completion in
                         switch completion {
                         case .failure(let error):
@@ -38,20 +38,26 @@ class ObserveAuthState: ObservableObject {
                     }, receiveValue: { user in
                         self.authUser = user.toUserAuth(email: dataAuth!.email,
                                         isEmailVerified: dataAuth!.isEmailVerified)
+                        print(self.authUser?.photoUrl)
                         self.objectWillChange.send()
-                    }).store(in: &self.cancellables)
+                    })
             } else {
                 self.authUser = nil
+                if self.userHandle != nil {
+                    self.userHandle.cancel()
+                    self.userHandle = nil
+                }
                 self.objectWillChange.send()
             }
         })
     }
     
-    func refreshProfile() {
-    
-    }
-    
     func detach() {
         self.authHandle.cancel()
+        self.authHandle = nil
+        if (self.userHandle != nil) {
+            self.userHandle.cancel()
+            self.userHandle = nil
+        }
     }
 }

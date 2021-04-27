@@ -77,6 +77,33 @@ struct UserRepo: IUserRepo {
     
     func observe(id: String) -> AnyPublisher<User, Error> {
         var handle: ListenerRegistration!
-        
+        let subject = PassthroughSubject<User, Error>()
+        handle = db.collection("users").document(id)
+            .addSnapshotListener { snap, err in
+                print("got a new user")
+                guard let doc = snap else {
+                    subject.send(completion: .failure(UserError.error))
+                    return
+                }
+                
+                let result = Result {
+                    try doc.data(as: DataUser.self)
+                }
+                switch result {
+                case .success(let user):
+                    if var user = user {
+                        user.id = id
+                        subject.send(user.toUser())
+                        return
+                    } else {
+                        return subject.send(completion: .failure(UserError.error))
+                    }
+                case .failure(let error):
+                    return subject.send(completion: .failure(error))
+                }
+            }
+        return subject.handleEvents(receiveCancel: {
+            handle.remove()
+        }).eraseToAnyPublisher()
     }
 }

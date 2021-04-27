@@ -22,11 +22,18 @@ struct ProfileView: View {
             print("photoUrl: \(observeAuthUseCase.authUser!.photoUrl)")
         }
         return VStack {
+            
             if observeAuthUseCase.authUser != nil {
+                if (observeAuthUseCase.authUser?.photoUrl != nil) {
+                    WebImage(url: URL(string: observeAuthUseCase.authUser!.photoUrl!))
+                        .onSuccess { image, data, cacheType in
+                            print("succesfully displayed image")
+                        }
+                        .resizable()
+                        .placeholder(Image("Logo"))
+                }
                 Text(observeAuthUseCase.authUser!.firstName)
                 Text(observeAuthUseCase.authUser!.lastName)
-            } else {
-                Image("Logo")
             }
             TextField("Image url", text: $viewModel.textUrl)
             Button("Update Picture", action: { () in viewModel.updateProfilePicByUrl(userId: observeAuthUseCase.authUser!.id!)})
