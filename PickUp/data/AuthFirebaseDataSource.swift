@@ -68,8 +68,8 @@ class AuthFirebaseDataSource: AuthRepo {
     }
     
     
-    func sendVerificationEmail() -> AnyPublisher<Void, AuthError> {
-        return Future<Void, AuthError> { promise in
+    func sendVerificationEmail() -> AnyPublisher<Void, Error> {
+        return Future<Void, Error> { promise in
             guard let user = self.auth.currentUser else {
                 return promise(.failure(AuthError.error))
             }
@@ -96,9 +96,9 @@ class AuthFirebaseDataSource: AuthRepo {
         }.eraseToAnyPublisher()
     }
     
-    func signup(email: String, password: String) -> AnyPublisher<String, AuthError> {
+    func signup(email: String, password: String) -> AnyPublisher<String, Error> {
         print("AuthFirebaseDataSource signup executed")
-        return Future<String, AuthError> { promise in
+        return Future<String, Error> { promise in
             self.auth.createUser(withEmail: email, password: password, completion: {authResult, error in
                 guard let user = authResult?.user, error == nil else {
                     print("\(AuthFirebaseDataSource.TAG) \(String(describing: error?.localizedDescription))")
@@ -108,12 +108,7 @@ class AuthFirebaseDataSource: AuthRepo {
                 return promise(.success(user.uid as String))
             })
         }
-        .flatMap { userId in
-            return self.sendVerificationEmail()
-                .flatMap { _ in
-                    return Just(userId)
-                }.eraseToAnyPublisher()
-        }.eraseToAnyPublisher()
+        .eraseToAnyPublisher()
     }
     
     func logout() -> AnyPublisher<Void, AuthError> {
@@ -144,16 +139,20 @@ class AuthFirebaseDataSource: AuthRepo {
         }.eraseToAnyPublisher()
     }
     
-    func observeAuthState() -> CurrentValueSubject<String?, Never> {
-        var userId: String? = nil
+    func observeAuthState() -> CurrentValueSubject<DataAuth?, Never> {
+        var currUser: DataAuth? = nil
         if self.auth.currentUser != nil {
-            userId = self.auth.currentUser?.uid
+            currUser = DataAuth(id: self.auth.currentUser!.uid,
+                                email: self.auth.currentUser!.email! as String,
+                                isEmailVerified: self.auth.currentUser!.isEmailVerified)
         }
-        let authSubject = CurrentValueSubject<String?, Never>(userId)
+        let authSubject = CurrentValueSubject<DataAuth?, Never>(currUser)
         let handle = self.auth.addStateDidChangeListener({auth, user in
             print("AUTH STATE CHANGED \(user)")
             if let user = user {
-                authSubject.send(user.uid)
+                authSubject.send(DataAuth(id: user.uid,
+                                          email: user.email!,
+                                          isEmailVerified: user.isEmailVerified))
             } else {
                 authSubject.send(nil)
             }

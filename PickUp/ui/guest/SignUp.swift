@@ -104,28 +104,31 @@ extension SignUpView {
     class ViewModel: ObservableObject {
         @Published var email = ""
         @Published var password = ""
+        @Published var username = ""
         @Published var firstName = ""
         @Published var lastName = ""
         @Published var errorMessage: String = ""
         @Published var loginSuccess = false
         @Published var loading = false
         var cancellables = Set<AnyCancellable>()
-        var authRepo: AuthRepo!
+        var registerUseCase: IRegisterUseCase
         
-        init(authRepo: AuthRepo = RepoFactory().getAuthRepo()) {
-            self.authRepo = authRepo
+        
+        init(registerUseCase: IRegisterUseCase = RegisterUseCase()) {
+            self.registerUseCase = registerUseCase
         }
         
         func signup() {
             print("Sign up executed")
-            self.authRepo.signup(email: email, password: password)
+            let user = User(id: nil, username: username, firstName: firstName, lastName: lastName, photoUrl: nil)
+            self.registerUseCase.execute(email: email, password: password, user: user)
                 .sink(receiveCompletion: {completion in
                     switch completion {
-                    case .failure(let error) where error == AuthError.emailAlreadyInUse:
+                    case .failure(let error) where error as! AuthError == AuthError.emailAlreadyInUse:
                         self.errorMessage = "Email is already in use"
-                    case .failure(let error) where error == AuthError.invalidEmail:
+                    case .failure(let error) where error as! AuthError == AuthError.invalidEmail:
                         self.errorMessage = "Email is invalid or malformed"
-                    case .failure(let error) where error == AuthError.weakPassword:
+                    case .failure(let error) where error as! AuthError == AuthError.weakPassword:
                         self.errorMessage = "Password must be greater than 6 characters."
                     case .failure(_):
                         self.errorMessage = "Error occurred"

@@ -21,7 +21,7 @@ class RepoFactory {
         return auth
     }
     
-    func getAuthRepo() -> AuthRepo {
+    static func getAuthRepo() -> AuthRepo {
         return AuthFirebaseDataSource(auth: RepoFactory.auth)
     }
 }

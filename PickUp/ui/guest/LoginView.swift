@@ -96,7 +96,7 @@ extension LoginView {
         var cancellables = Set<AnyCancellable>()
         var authRepo: AuthRepo!
         
-        init(authRepo: AuthRepo = RepoFactory().getAuthRepo()) {
+        init(authRepo: AuthRepo = RepoFactory.getAuthRepo()) {
             self.authRepo = authRepo
         }
         
