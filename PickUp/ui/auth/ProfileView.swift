@@ -159,7 +159,7 @@ struct ProfileView: View {
 //                            }, label: {
 //                                Text("Open")
 //                            })
-                        NavigationLink(destination: SignUpView()) {
+                        NavigationLink(destination: ProfileSettingsView()) {
                             Image(systemName: "gearshape.fill")
                             }
 //                        }

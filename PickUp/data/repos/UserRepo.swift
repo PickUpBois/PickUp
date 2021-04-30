@@ -56,7 +56,7 @@ struct UserRepo: IUserRepo {
         }.eraseToAnyPublisher()
     }
     
-    func update(id: String, fields: [ AnyHashable : Any ]) -> AnyPublisher<Void, Error> {
+    func update(id: String, fields: [ AnyHashable : Any? ]) -> AnyPublisher<Void, Error> {
         return Future<Void, Error> { promise in
             let ref = collectionRef.document(id)
             ref.updateData(fields) { error in
@@ -82,10 +82,12 @@ struct UserRepo: IUserRepo {
             .addSnapshotListener { snap, err in
                 print("got a new user")
                 guard let doc = snap else {
+                    print(err?.localizedDescription)
                     subject.send(completion: .failure(UserError.error))
                     return
                 }
-                
+                print(id)
+                print(snap?.get("firstName"))
                 let result = Result {
                     try doc.data(as: DataUser.self)
                 }
@@ -96,9 +98,11 @@ struct UserRepo: IUserRepo {
                         subject.send(user.toUser())
                         return
                     } else {
+                        print("could not convert user")
                         return subject.send(completion: .failure(UserError.error))
                     }
                 case .failure(let error):
+                    print(error.localizedDescription)
                     return subject.send(completion: .failure(error))
                 }
             }

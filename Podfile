@@ -6,10 +6,10 @@ target 'PickUp' do
   use_frameworks!
 
   # Pods for PickUp
-pod 'Firebase/Auth'
-pod 'Firebase/Firestore'
+pod 'Firebase/Auth', '~> 7.10.0'
+pod 'Firebase/Firestore', '~> 7.10.0'
 pod 'FirebaseFirestoreSwift', '~> 7.0-beta'
-pod 'Firebase/Storage'
+pod 'Firebase/Storage', '~> 7.10.0'
 pod 'SDWebImageSwiftUI'
 
   target 'PickUpTests' do
