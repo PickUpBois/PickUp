@@ -12,18 +12,23 @@ struct ProfileHeaderView: View {
     @StateObject var observeAuthUseCase: ObserveAuthState = ObserveAuthState.shared
     var body: some View {
         HStack {
-            VStack{
+            VStack(alignment: .center){
                 Button(action: {
                     self.showPhotoLibrary = true
                     print("image was tapped")
                 }) {
                     ProfilePicture()
                 }
-                Text("\(self.observeAuthUseCase.authUser?.firstName ?? "Jim") \(self.observeAuthUseCase.authUser?.lastName ?? "Jim")")
+                Text("\(self.observeAuthUseCase.authUser?.firstName ?? "Serena") \(self.observeAuthUseCase.authUser?.lastName ?? "Williams")")
                     .font(.headline).fontWeight(.bold).foregroundColor(Color.black)
-                Text("Cyclones").font(.headline).fontWeight(.light).foregroundColor(Color.red)
-            Spacer()//Space between profile picture center of page
-                }
+                    .multilineTextAlignment(.center)
+                    .frame(minWidth: 150, maxWidth: 1000)
+                Text("ISU Cyclones").font(.headline).fontWeight(.light).foregroundColor(Color.red).multilineTextAlignment(.center)
+                    .frame(minWidth: 150, maxWidth: 1000)
+                Spacer()
+                    //Space between profile picture center of page
+            }
+            .frame(width: 100.0)
             VStack {
             Text("Total").font(.headline).foregroundColor(Color.black)
             Text("Pickups").font(.headline).foregroundColor(Color.black)

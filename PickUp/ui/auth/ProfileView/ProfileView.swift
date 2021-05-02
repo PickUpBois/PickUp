@@ -80,7 +80,7 @@ struct ProfileView: View {
                     Text("\(self.observeAuthUseCase.authUser?.firstName ?? "Jim")'s Profile").font(.title3) // Leading title on page
                     .fontWeight(.bold)
                     .padding(.top)
-            Spacer().frame(minHeight: 10, maxHeight: 20) // Space between profile picture and leading title
+            Spacer().frame(minHeight: 15, maxHeight: 15) // Space between profile picture and leading title
 
                 // Stacks for profile picture
                 ProfileHeaderView(showPhotoLibrary: self.$viewModel.showPhotoLibrary)
