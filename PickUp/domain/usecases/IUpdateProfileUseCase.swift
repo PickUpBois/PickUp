@@ -16,7 +16,7 @@ enum ProfileField: String, Hashable {
 }
 
 protocol IUpdateProfileUseCase {
-    func execute(userId: String, fields: [ProfileField: Any?]) -> AnyPublisher<Void, Error>
+    func execute(userId: String, fields: [String: Any?]) -> AnyPublisher<Void, Error>
 }
 
 class UpdateProfileUseCase: IUpdateProfileUseCase {
@@ -24,7 +24,7 @@ class UpdateProfileUseCase: IUpdateProfileUseCase {
     init(userRepo: UserRepo = RepoFactory.getUserRepo()) {
         self.userRepo = userRepo
     }
-    func execute(userId: String, fields: [ProfileField: Any?]) -> AnyPublisher<Void, Error> {
-        return userRepo.update(id: userId, fields: fields as [AnyHashable : Any?])
+    func execute(userId: String, fields: [String: Any?]) -> AnyPublisher<Void, Error> {
+        return userRepo.update(id: userId, fields: fields)
     }
 }

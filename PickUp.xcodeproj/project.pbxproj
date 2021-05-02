@@ -7,13 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A358873262F616800AA6AF3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E70A2623E16E0007B871 /* ProfileView.swift */; };
-		1A35887A262F616900AA6AF3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E70A2623E16E0007B871 /* ProfileView.swift */; };
 		1F30A886AE165751D712C11B /* Pods_PickUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D2DCFAB236044BB62AF4D7 /* Pods_PickUp.framework */; };
 		8D09E70B2623E16E0007B871 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E70A2623E16E0007B871 /* ProfileView.swift */; };
 		8D2094A1263C6F43009B1609 /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */; };
-		8D2094A2263C6F43009B1609 /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */; };
-		8D2094A3263C6F43009B1609 /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */; };
 		8D2094A8263C7849009B1609 /* IUpdateProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2094A7263C7849009B1609 /* IUpdateProfileUseCase.swift */; };
 		8D2094A9263C7849009B1609 /* IUpdateProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2094A7263C7849009B1609 /* IUpdateProfileUseCase.swift */; };
 		8D2094AA263C7849009B1609 /* IUpdateProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2094A7263C7849009B1609 /* IUpdateProfileUseCase.swift */; };
@@ -22,6 +18,8 @@
 		8D2B0C50263819060032AE67 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B0C4F263819060032AE67 /* ImagePicker.swift */; };
 		8D2B0C572638190C0032AE67 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B0C4F263819060032AE67 /* ImagePicker.swift */; };
 		8D2B0C5B2638190D0032AE67 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B0C4F263819060032AE67 /* ImagePicker.swift */; };
+		8D30B108263E2146002B4C62 /* ProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D30B107263E2146002B4C62 /* ProfilePicture.swift */; };
+		8D30B110263E232C002B4C62 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D30B10F263E232C002B4C62 /* ProfileHeaderView.swift */; };
 		8D3694E5262B52490062DD0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3694E4262B52490062DD0C /* User.swift */; };
 		8D3694E6262B52490062DD0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3694E4262B52490062DD0C /* User.swift */; };
 		8D3694E7262B52490062DD0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3694E4262B52490062DD0C /* User.swift */; };
@@ -138,6 +136,8 @@
 		8D2A3EF2261EC3E100521A6A /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		8D2B0C49263817680032AE67 /* IUpdateProfilePicByImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUpdateProfilePicByImage.swift; sourceTree = "<group>"; };
 		8D2B0C4F263819060032AE67 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		8D30B107263E2146002B4C62 /* ProfilePicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePicture.swift; sourceTree = "<group>"; };
+		8D30B10F263E232C002B4C62 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		8D3694E4262B52490062DD0C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8D3695E1262B8CB10062DD0C /* IStorageSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IStorageSource.swift; sourceTree = "<group>"; };
 		8D3695E9262B8D520062DD0C /* IDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDao.swift; sourceTree = "<group>"; };
@@ -244,6 +244,17 @@
 			path = misc;
 			sourceTree = "<group>";
 		};
+		8D30B106263E2122002B4C62 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				8D09E70A2623E16E0007B871 /* ProfileView.swift */,
+				8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */,
+				8D30B107263E2146002B4C62 /* ProfilePicture.swift */,
+				8D30B10F263E232C002B4C62 /* ProfileHeaderView.swift */,
+			);
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
 		8D3694E3262B52080062DD0C /* domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,13 +315,12 @@
 		8D484BFD261BD65900814A8F /* auth */ = {
 			isa = PBXGroup;
 			children = (
+				8D30B106263E2122002B4C62 /* ProfileView */,
 				8DFCF52B262788E100BBFE66 /* HomeView.swift */,
 				8DFCF521262788D000BBFE66 /* CreateEventView.swift */,
 				8DFCF517262788BD00BBFE66 /* MapView.swift */,
 				8DFCF50D262788AF00BBFE66 /* FindTeammatesView.swift */,
 				8DFCF503262788A000BBFE66 /* MainView.swift */,
-				8D09E70A2623E16E0007B871 /* ProfileView.swift */,
-				8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */,
 			);
 			path = auth;
 			sourceTree = "<group>";
@@ -683,7 +693,9 @@
 				8D36962F262BF5DD0062DD0C /* IFileRepo.swift in Sources */,
 				8D36964B262C05560062DD0C /* IUpdateProfilePictureFromExternalUrl.swift in Sources */,
 				8DFCF504262788A000BBFE66 /* MainView.swift in Sources */,
+				8D30B108263E2146002B4C62 /* ProfilePicture.swift in Sources */,
 				8DB8EFDD261A6BEB004AADED /* AuthFirebaseDataSource.swift in Sources */,
+				8D30B110263E232C002B4C62 /* ProfileHeaderView.swift in Sources */,
 				8D369674262C1B6A0062DD0C /* DataUser.swift in Sources */,
 				8DFCF52C262788E100BBFE66 /* HomeView.swift in Sources */,
 				8D3696DC262C900C0062DD0C /* ObserveAuthState.swift in Sources */,
@@ -706,7 +718,6 @@
 				8DB8F059261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
 				8D369660262C0A360062DD0C /* IUserRepo.swift in Sources */,
 				8D3695EB262B8D520062DD0C /* IDao.swift in Sources */,
-				8D2094A2263C6F43009B1609 /* ProfileSettingsView.swift in Sources */,
 				8D3696ED262CA8D40062DD0C /* DataAuth.swift in Sources */,
 				8D3695E3262B8CB10062DD0C /* IStorageSource.swift in Sources */,
 				8D484B07261B687B00814A8F /* ContentView.swift in Sources */,
@@ -721,7 +732,6 @@
 				8D36964C262C05560062DD0C /* IUpdateProfilePictureFromExternalUrl.swift in Sources */,
 				8DFCF519262788BD00BBFE66 /* MapView.swift in Sources */,
 				8DB8F04B261AAD58004AADED /* AuthFirebaseDataSource.swift in Sources */,
-				1A358873262F616800AA6AF3 /* ProfileView.swift in Sources */,
 				8DB8EF9826198979004AADED /* PickUpTests.swift in Sources */,
 				8D2B0C572638190C0032AE67 /* ImagePicker.swift in Sources */,
 				8DFAD532261EBA910055BA76 /* LoginView.swift in Sources */,
@@ -756,12 +766,10 @@
 				8D3694E7262B52490062DD0C /* User.swift in Sources */,
 				8D484B0B261B687C00814A8F /* ContentView.swift in Sources */,
 				8DB8F047261AAD58004AADED /* AuthFirebaseDataSource.swift in Sources */,
-				8D2094A3263C6F43009B1609 /* ProfileSettingsView.swift in Sources */,
 				8DB8F05A261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
 				8D36963C262BF6820062DD0C /* FileRepo.swift in Sources */,
 				8D3696EE262CA8D40062DD0C /* DataAuth.swift in Sources */,
 				8DB8F04F261AAD5D004AADED /* AuthRepo.swift in Sources */,
-				1A35887A262F616900AA6AF3 /* ProfileView.swift in Sources */,
 				8DFCF52E262788E100BBFE66 /* HomeView.swift in Sources */,
 				8DB8EFA326198979004AADED /* PickUpUITests.swift in Sources */,
 				8D36966E262C12C10062DD0C /* UserRepo.swift in Sources */,

@@ -57,6 +57,7 @@ struct UserRepo: IUserRepo {
     }
     
     func update(id: String, fields: [ AnyHashable : Any? ]) -> AnyPublisher<Void, Error> {
+        print(fields)
         return Future<Void, Error> { promise in
             let ref = collectionRef.document(id)
             ref.updateData(fields) { error in

@@ -73,66 +73,25 @@ struct ProfileView: View {
     //Navigation bar
     var body: some View {
         NavigationView{
-            
-            
             ScrollView {
             // Stacks everything on page
 
                 VStack(alignment: .center) {
-                    Text("\(self.observeAuthUseCase.authUser!.firstName)'s Profile").font(.title3) // Leading title on page
+                    Text("\(self.observeAuthUseCase.authUser?.firstName ?? "Jim")'s Profile").font(.title3) // Leading title on page
                     .fontWeight(.bold)
                     .padding(.top)
             Spacer().frame(minHeight: 10, maxHeight: 20) // Space between profile picture and leading title
-                
+
                 // Stacks for profile picture
-                HStack {
-                    VStack{
-                        Button(action: {
-                            self.viewModel.showPhotoLibrary = true
-                            print("image was tapped")
-                        }) {
-                            WebImage(url: URL(string: self.observeAuthUseCase.authUser?.photoUrl ?? ""))
-                                .resizable()
-                                .placeholder(Image("Jim"))
-                                .indicator(.activity)
-                                .frame(width: 100, height: 100, alignment: .center)
-                                .clipShape(Circle())
-                                .shadow(radius: 2)
-                                .overlay(Circle().stroke(Color.black, lineWidth: 5))
-                                .padding(.trailing, 20)
-                        }
-                        Text("\(self.observeAuthUseCase.authUser!.firstName) \(self.observeAuthUseCase.authUser!.lastName)").font(.headline).fontWeight(.bold).foregroundColor(Color.black)
-                        Text("Cyclones").font(.headline).fontWeight(.light).foregroundColor(Color.red)
-                    Spacer()//Space between profile picture center of page
-                        }
-                    VStack {
-                    Text("Total").font(.headline).foregroundColor(Color.black)
-                    Text("Pickups").font(.headline).foregroundColor(Color.black)
-                        Text("50").font(.title).fontWeight(.bold)
-                        Spacer()
-                    }
-                    VStack {
-                    Text("Team").font(.headline).foregroundColor(Color.black)
-                    Text("Members").font(.headline).foregroundColor(Color.black)
-                        Text("50").font(.title).fontWeight(.bold)
-                        Spacer()
-                    }
-                    VStack {
-                    Text("GOAT").font(.headline).foregroundColor(Color.black)
-                    Text("Meter").font(.headline).foregroundColor(Color.black)
-                    Image(systemName: "battery.25").font(.system(size: 40))
-                        .foregroundColor(.green)
-                        Spacer()
-                    }
-                }
-                
-            
+                ProfileHeaderView(showPhotoLibrary: self.$viewModel.showPhotoLibrary)
+
+
                 Picker("", selection: $selection) {
                     Image(systemName: "circle.grid.2x2.fill").tag(0)
                     Image(systemName: "person.circle").tag(1)
                 }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
-                
-                
+
+
                 Spacer().frame(minHeight: 140, maxHeight: 800)
                 if (viewModel.loading) {
                     Text("Loading!")
@@ -144,9 +103,6 @@ struct ProfileView: View {
                 }.sheet(isPresented: self.$viewModel.showPhotoLibrary) {
                     ImagePicker(sourceType: .photoLibrary, userId: self.observeAuthUseCase.authUser!.id!)
                 }
-
-            
-                
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
@@ -163,13 +119,13 @@ struct ProfileView: View {
                             Image(systemName: "gearshape.fill")
                             }
 //                        }
-                        
+
                     }
                     //calls the side menu
 //                    SideMenu(width:270,
 //                             isOpen: self.menuOpen,
 //                             menuClose: self.openMenu)
-                    
+
                 }
             }
         }
@@ -183,6 +139,8 @@ struct ProfileView: View {
 //        self.menuOpen.toggle()
 //    }
 }
+
+
 extension ProfileView {
     class ViewModel: ObservableObject {
         var authRepo: AuthRepo!

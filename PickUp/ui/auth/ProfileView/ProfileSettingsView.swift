@@ -17,6 +17,10 @@ struct ProfileSettingsView: View {
         TextField("first name", text: $viewModel.firstName)
         TextField("last name", text: $viewModel.lastName)
         TextField("college", text: $viewModel.college)
+        Text("\(observeAuthUseCase.authUser?.firstName ?? "Jim")")
+        Text("\(observeAuthUseCase.authUser?.lastName ?? "Jimmy")")
+        Text("\(observeAuthUseCase.authUser?.username ?? "username")")
+//        Text("\(observeAuthUseCase.authUser?.college ?? "USC")")
         
         Button("Update profile", action: {self.viewModel.updateProfile(userId: observeAuthUseCase.authUser!.id!)})
     }
@@ -37,18 +41,18 @@ extension ProfileSettingsView {
         @Published var college: String = ""
         
         func updateProfile(userId: String) {
-            var fields : [ ProfileField: Any? ] = [:]
+            var fields : [ String: Any? ] = [:]
             if !username.isEmpty {
-                fields[.username] = username
+                fields[ProfileField.username.rawValue] = username
             }
             if !firstName.isEmpty {
-                fields[.firstName] = firstName
+                fields[ProfileField.firstName.rawValue] = firstName
             }
             if !lastName.isEmpty {
-                fields[.lastName] = lastName
+                fields[ProfileField.lastName.rawValue] = lastName
             }
             if !college.isEmpty {
-                fields[.college]  =  college
+                fields[ProfileField.college.rawValue]  =  college
             }
             updateProfileUseCase.execute(userId: userId, fields: fields)
                 .sink(receiveCompletion: { completion in
