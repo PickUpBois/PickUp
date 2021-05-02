@@ -87,95 +87,20 @@ struct ProfileView: View {
 
 
                 Picker("", selection: $selection) {
-                    Image(systemName: "circle.grid.2x2.fill").tag(0)
-                    Image(systemName: "person.circle").tag(1)
+                    Text("Past Pickups").foregroundColor(Color.blue).tag(0)
+                    Text("Upcoming Pickups").foregroundColor(Color.red).tag(1)
                 }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
 
+                   
                     if selection == 0 {
-                        Spacer()
-                        HStack{Image(systemName:
-                                    "circle.fill").foregroundColor(Color.green)
-                            .padding(.leading, 25.0)
-                            .frame(minWidth: 1, maxWidth: 10)
-                                VStack{
-                                Spacer()
-                                    HStack{
-                                        Text("W or L")
-                                            .fontWeight(.heavy)
-                                    Spacer().frame(minWidth: 10, maxWidth: 45)
-                            Image(systemName:"calendar")
-                                        Text("Date")
-                                    Spacer()
-                                        .frame(minWidth: 10, maxWidth: 45)
-                            Image(systemName:"location.fill")
-                                        Text("Location")}
-                                    Image("wimby08").frame(width: UIScreen.main.bounds.width/1.5, height: UIScreen.main.bounds.height/5).clipped()
-                                }.padding([.leading, .bottom, .trailing], 25.0)
-                                    .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.5))
-                                    .cornerRadius(8)
-                                    .padding(.horizontal, 20)
-                        }
+                        
+                        PastPickupView()
                         }
                     //second picker option
-                    else {
-                    Spacer()
-                    VStack{
-                        HStack{
-                            Image(systemName:"circle.fill")
-                                .foregroundColor(Color.orange)
-                                .padding(.leading, 35.0)
-        .frame(minWidth: 1, maxWidth: 10)
-                        HStack{
-                            VStack{
-                Text("Event Name")
-                    .fontWeight(.heavy)
-                Spacer()
-                Text("Description")
-                Spacer()
-                Text("~~~~~~~~~~~")
-                Text("~~~~~~~~~~~")
-                Text("~~~~~~~~~~~")
-                Spacer()
-                //join event 'button'
-                Text("+ Join")
-                    .fontWeight(.heavy)
-                    .padding(.all, 5.0)
-                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                                  }
-                        Spacer()
-                            VStack{
-                                HStack{
-                                Image(systemName:"location.fill")
-                                    Text("Location")}
-                            Spacer()
-                                HStack{
-                                Image(systemName:"calendar")
-                                    Text("Date")}
-                            Spacer()
-                                HStack{
-                                Image(systemName:"clock.fill")
-                                    Text("Time")}
-                            Spacer()
-                                HStack{
-                                Image(systemName:"person.3.fill")
-                                    Text("2/4 people")}
-                            Spacer()
-                                Text("Invite")
-                                    .fontWeight(.heavy)
-                                    .padding(.all, 5.0)
-                                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                              }
-                                
-                                  }
-                        .padding(.all, 25.0)
-                        .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.5))
-                        .cornerRadius(8)
-                        .padding(.horizontal, 20)
-                        }
-                     
-                        
-                        
-                          }
+                    
+                        else {
+
+                            UpcomingPickupsView()
                         }
                     
                 Spacer().frame(minHeight: 140, maxHeight: 800)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A03F99D263F473000C2E2CD /* PastPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A03F99C263F473000C2E2CD /* PastPickupView.swift */; };
+		1A03F99F263F482F00C2E2CD /* UpcomingPickupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A03F99E263F482F00C2E2CD /* UpcomingPickupsView.swift */; };
 		1F30A886AE165751D712C11B /* Pods_PickUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D2DCFAB236044BB62AF4D7 /* Pods_PickUp.framework */; };
 		8D09E70B2623E16E0007B871 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E70A2623E16E0007B871 /* ProfileView.swift */; };
 		8D2094A1263C6F43009B1609 /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */; };
@@ -127,6 +129,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A03F99C263F473000C2E2CD /* PastPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastPickupView.swift; sourceTree = "<group>"; };
+		1A03F99E263F482F00C2E2CD /* UpcomingPickupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingPickupsView.swift; sourceTree = "<group>"; };
 		3D2413990659958D11A4B251 /* Pods-PickUp-PickUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp-PickUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-PickUp-PickUpUITests/Pods-PickUp-PickUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		49D2DCFAB236044BB62AF4D7 /* Pods_PickUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6403E9CD6469737F34F86843 /* Pods-PickUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUpTests.release.xcconfig"; path = "Target Support Files/Pods-PickUpTests/Pods-PickUpTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 				8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */,
 				8D30B107263E2146002B4C62 /* ProfilePicture.swift */,
 				8D30B10F263E232C002B4C62 /* ProfileHeaderView.swift */,
+				1A03F99C263F473000C2E2CD /* PastPickupView.swift */,
+				1A03F99E263F482F00C2E2CD /* UpcomingPickupsView.swift */,
 			);
 			path = ProfileView;
 			sourceTree = "<group>";
@@ -680,7 +686,9 @@
 				8D3696EC262CA8D40062DD0C /* DataAuth.swift in Sources */,
 				8D2B0C50263819060032AE67 /* ImagePicker.swift in Sources */,
 				8D3695E2262B8CB10062DD0C /* IStorageSource.swift in Sources */,
+				1A03F99D263F473000C2E2CD /* PastPickupView.swift in Sources */,
 				8D09E70B2623E16E0007B871 /* ProfileView.swift in Sources */,
+				1A03F99F263F482F00C2E2CD /* UpcomingPickupsView.swift in Sources */,
 				8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
 				8D36963A262BF6820062DD0C /* FileRepo.swift in Sources */,
 				8DB8F021261A8A45004AADED /* UserDao.swift in Sources */,
