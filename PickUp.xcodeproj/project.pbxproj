@@ -108,6 +108,7 @@
 		8DFCF52E262788E100BBFE66 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF52B262788E100BBFE66 /* HomeView.swift */; };
 		9499867C769D5AB3003A2BD4 /* Pods_PickUp_PickUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0E894F9584738F31FCC29B2 /* Pods_PickUp_PickUpUITests.framework */; };
 		A522AC06EBEAAA763B5BF6AE /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		C0D4716C264098BF00E7B6C7 /* CreateEventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D4716B264098BF00E7B6C7 /* CreateEventView.xib */; };
 		C3A53BC40D77F97812A0D38D /* Pods_PickUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2FF25FDE8AC48FA9AC6775 /* Pods_PickUpTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -181,6 +182,7 @@
 		8DFCF521262788D000BBFE66 /* CreateEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
 		8DFCF52B262788E100BBFE66 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		ABFBFDCD71D8610550461951 /* Pods-PickUp-PickUpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp-PickUpUITests.release.xcconfig"; path = "Target Support Files/Pods-PickUp-PickUpUITests/Pods-PickUp-PickUpUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C0D4716B264098BF00E7B6C7 /* CreateEventView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateEventView.xib; sourceTree = "<group>"; };
 		D568A6AA78CFA5C7D7ABDE5C /* Pods-PickUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp.debug.xcconfig"; path = "Target Support Files/Pods-PickUp/Pods-PickUp.debug.xcconfig"; sourceTree = "<group>"; };
 		D9C81D62DA742F61743A615A /* Pods-PickUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp.release.xcconfig"; path = "Target Support Files/Pods-PickUp/Pods-PickUp.release.xcconfig"; sourceTree = "<group>"; };
 		DD2FF25FDE8AC48FA9AC6775 /* Pods_PickUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -321,9 +323,9 @@
 		8D484BFD261BD65900814A8F /* auth */ = {
 			isa = PBXGroup;
 			children = (
+				C0D471652640975200E7B6C7 /* EventView */,
 				8D30B106263E2122002B4C62 /* ProfileView */,
 				8DFCF52B262788E100BBFE66 /* HomeView.swift */,
-				8DFCF521262788D000BBFE66 /* CreateEventView.swift */,
 				8DFCF517262788BD00BBFE66 /* MapView.swift */,
 				8DFCF50D262788AF00BBFE66 /* FindTeammatesView.swift */,
 				8DFCF503262788A000BBFE66 /* MainView.swift */,
@@ -440,6 +442,15 @@
 			path = daos;
 			sourceTree = "<group>";
 		};
+		C0D471652640975200E7B6C7 /* EventView */ = {
+			isa = PBXGroup;
+			children = (
+				8DFCF521262788D000BBFE66 /* CreateEventView.swift */,
+				C0D4716B264098BF00E7B6C7 /* CreateEventView.xib */,
+			);
+			path = EventView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -550,6 +561,7 @@
 			files = (
 				8DB8EF8D26198979004AADED /* Preview Assets.xcassets in Resources */,
 				8DB8EF8A26198979004AADED /* Assets.xcassets in Resources */,
+				C0D4716C264098BF00E7B6C7 /* CreateEventView.xib in Resources */,
 				8DB8F008261A8201004AADED /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

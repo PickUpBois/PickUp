@@ -9,9 +9,23 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        Text("Home")
+            NavigationView {
+                ScrollView {
+                    Spacer()
+                        
+                        
+                }.navigationBarTitleDisplayMode(.inline)
+                        .toolbar{
+                            ToolbarItem(placement: .principal) {
+                                HStack {
+                                    Text("Home").font(.headline)
+                                }
+                            }
+                                
+                        }
+                    }
+        }
     }
-}
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

@@ -1,5 +1,5 @@
 //
-//  MapView.swift
+//  CreateEventView.swift
 //  Tabbar
 //
 //  Created by David Reynolds on 4/12/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MapView: View {
+struct CreateEventView: View {
     var body: some View {
         NavigationView {
             ScrollView {
@@ -18,7 +18,7 @@ struct MapView: View {
                     .toolbar{
                         ToolbarItem(placement: .principal) {
                             HStack {
-                                Text("Map").font(.headline)
+                                Text("Create Event").font(.headline)
                             }
                         }
                             
@@ -27,8 +27,9 @@ struct MapView: View {
     }
 }
 
-struct MapView_Previews: PreviewProvider {
+
+struct CreateEventView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView()
+        CreateEventView()
     }
 }
