@@ -34,20 +34,20 @@ struct FindTeammatesView: View {
                         .frame(width: 60.0)
                         Spacer(minLength: 275)
                             
-                        Text("X")
+                    Text("X")
                             .frame(width: 25.0)
                             
-                    }.frame(width: 390.0)
+                    }.frame(width: 390.0)      .padding(.horizontal, 6.0)
+                    .padding(.vertical, 15.0)
+                .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                .cornerRadius(15)
+                    Spacer(minLength: 50)
                     
 
                     
                 //Email Text Field Settings
 
-                }                    .padding(.horizontal, 6.0)
-                .padding(.vertical, 15.0)
-            .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
-            .cornerRadius(15)
-                Spacer(minLength: 50)
+                }
                 
                     }.navigationBarTitleDisplayMode(.inline)
             .toolbar{

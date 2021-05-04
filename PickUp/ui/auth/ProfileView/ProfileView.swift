@@ -77,7 +77,7 @@ struct ProfileView: View {
             // Stacks everything on page
 
                 VStack(alignment: .center) {
-                    Text("\(self.observeAuthUseCase.authUser?.firstName ?? "Jim")'s Profile").font(.title3) // Leading title on page
+                    Text("\(self.observeAuthUseCase.authUser?.firstName ?? "Ashwin")'s Profile").font(.title3) // Leading title on page
                     .fontWeight(.bold)
                     .padding(.top)
             Spacer().frame(minHeight: 8, maxHeight: 8) // Space between profile picture and leading title

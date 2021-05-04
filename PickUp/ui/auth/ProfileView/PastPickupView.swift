@@ -9,12 +9,11 @@ import SwiftUI
 
 struct PastPickupView: View {
     var body: some View {
-            Spacer()
+        Spacer().frame(height: 15)
+        HStack{
+            Text("🎾").font(.system(size: 30))
+        }
         VStack{
-        HStack{Image(systemName:
-                        "circle.fill").foregroundColor(Color.green)
-                .padding(.leading, 25.0)
-                .frame(minWidth: 1, maxWidth: 10)
                     VStack{
                     Spacer()
                         HStack{
@@ -27,19 +26,24 @@ struct PastPickupView: View {
                             .frame(minWidth: 10, maxWidth: 45)
                 Image(systemName:"location.fill")
                             Text("Location")}
-                        Image("wimby08").frame(width: UIScreen.main.bounds.width/1.5, height: UIScreen.main.bounds.height/5).clipped()
-                    }.padding([.leading, .bottom, .trailing], 25.0)
-                        .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.5))
+                        Image("wimby08").frame(width: UIScreen.main.bounds.width/1, height: UIScreen.main.bounds.height/3).clipped()
+                    
+                    Spacer().frame(height: 10)
+                    HStack(alignment: .center){
+                        Image(systemName:"person.circle")
+                        Text("With Arian Rahbar + 2 more")}
+                    }.padding([.leading, .bottom, .trailing], 15.0)
+                        .background(Color(red: 0, green: 1, blue: 0, opacity: 0.25))
                         .cornerRadius(8)
                         .padding(.horizontal, 20)
-            }
-  Spacer()
-        HStack{Image(systemName:
-                            "circle.fill").foregroundColor(Color.orange)
-                    .padding(.leading, 25.0)
-                    .frame(minWidth: 1, maxWidth: 10)
-                        VStack{
-                        Spacer()
+    
+            
+            
+            Spacer().frame(height: 25)
+                HStack{
+            Text("🏀").font(.system(size: 25))}
+                VStack{
+                    Spacer()
                             HStack{
                                 Text("W or L")
                                     .fontWeight(.heavy)
@@ -50,12 +54,17 @@ struct PastPickupView: View {
                                 .frame(minWidth: 10, maxWidth: 45)
                     Image(systemName:"location.fill")
                                 Text("Location")}
-                            Image("Tyrese").frame(width: UIScreen.main.bounds.width/1.5, height: UIScreen.main.bounds.height/5).clipped()
-                        }.padding([.leading, .bottom, .trailing], 25.0)
-                            .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.5))
+                            Image("Tyrese").frame(width: UIScreen.main.bounds.width/1, height: UIScreen.main.bounds.height/3).clipped()
+                   
+                    Spacer().frame(height: 10)
+                    HStack(alignment: .center){
+                        Image(systemName:"person.circle")
+                        Text("With David Reynolds + 2 more")}
+                    
+                        }.padding([.leading, .bottom, .trailing], 15.0)
+                            .background(Color(red: 1, green: 0.5, blue: 0, opacity: 0.25))
                             .cornerRadius(8)
                         .padding(.horizontal, 20)
-        }
         }
     }
 }
