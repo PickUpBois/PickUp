@@ -119,7 +119,11 @@ struct ProfileView: View {
             .toolbar{
                 ToolbarItem(placement: .principal) {
                     HStack {
-                        Text("Profile").font(.headline)
+                        Image("logo2")
+                            .resizable()
+                            .padding(.top, -15)
+                            .frame(width: 125, height: 30)
+                            .scaledToFit()
 //                        if !self.menuOpen {
 //                            Button(action: {
 //                                self.openMenu()

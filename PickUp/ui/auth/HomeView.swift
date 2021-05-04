@@ -15,14 +15,18 @@ struct HomeView: View {
                         
                         
                 }.navigationBarTitleDisplayMode(.inline)
-                        .toolbar{
-                            ToolbarItem(placement: .principal) {
-                                HStack {
-                                    Text("Home").font(.headline)
-                                }
-                            }
-                                
+                .toolbar{
+                    ToolbarItem(placement: .principal) {
+                        HStack {
+                            Image("logo2")
+                                .resizable()
+                                .padding(.top, -15)
+                                .frame(width: 125, height: 30)
+                                .scaledToFit()
                         }
+                    }
+                        
+                }
                     }
         }
     }
