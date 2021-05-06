@@ -103,7 +103,7 @@ struct ProfileView: View {
                             UpcomingPickupsView()
                         }
                     
-                Spacer().frame(minHeight: 140, maxHeight: 800)
+                Spacer().frame(minHeight: 5, maxHeight: 10)
                 if (viewModel.loading) {
                     Text("Loading!")
                 } else {

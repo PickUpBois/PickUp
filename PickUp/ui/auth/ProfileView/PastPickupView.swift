@@ -26,7 +26,7 @@ struct PastPickupView: View {
                             .frame(minWidth: 10, maxWidth: 45)
                 Image(systemName:"location.fill")
                             Text("Location")}
-                        Image("wimby08").frame(width: UIScreen.main.bounds.width/1, height: UIScreen.main.bounds.height/3).clipped()
+                        Image("wimby08").resizable().aspectRatio(contentMode: .fit).frame(width: UIScreen.main.bounds.width/1, height: UIScreen.main.bounds.height/3).clipped()
                     
                     Spacer().frame(height: 10)
                     HStack(alignment: .center){
@@ -54,7 +54,7 @@ struct PastPickupView: View {
                                 .frame(minWidth: 10, maxWidth: 45)
                     Image(systemName:"location.fill")
                                 Text("Location")}
-                            Image("Tyrese").frame(width: UIScreen.main.bounds.width/1, height: UIScreen.main.bounds.height/3).clipped()
+                    Image("Tyrese").resizable().aspectRatio(contentMode: .fit).frame(width: UIScreen.main.bounds.width/1, height: UIScreen.main.bounds.height/3).clipped()
                    
                     Spacer().frame(height: 10)
                     HStack(alignment: .center){

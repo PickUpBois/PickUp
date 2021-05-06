@@ -11,7 +11,10 @@ struct MapView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                Spacer()
+                Spacer().frame(height: 15)
+                
+                Image("isucampus").resizable().aspectRatio(contentMode: .fit).frame(width: UIScreen.main.bounds.width/1, height: UIScreen.main.bounds.height/2).clipped()
+                
                     
                     
             }.navigationBarTitleDisplayMode(.inline)

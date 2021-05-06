@@ -15,7 +15,7 @@ struct MainView: View {
                 .tabItem {
                    Image(systemName: "magnifyingglass.circle.fill")
                     Text("Search")
-
+                    
                 }
             MapView()
                 .tabItem {
@@ -42,6 +42,7 @@ struct MainView: View {
                 .tabItem {
                    Image(systemName: "person.fill")
                     Text("Profile")
+                    
                 }
             
         }

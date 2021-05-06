@@ -13,7 +13,9 @@ struct ProfilePicture: View {
     var body: some View {
         WebImage(url: URL(string: self.observeAuthUseCase.authUser?.photoUrl ?? ""))
             .resizable()
-            .placeholder(Image("serena"))
+            .placeholder(Image("serena")
+                            .resizable()
+                            )
             .indicator(.activity)
             .frame(width: 100, height: 100, alignment: .center)
             .clipShape(Circle())
