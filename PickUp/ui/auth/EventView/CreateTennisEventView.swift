@@ -14,26 +14,25 @@ struct CreateTennisEventView: View {
         // Stacks everything on page
         
         //Name //e.g. King of the Court
-        TypingBlockView()
+            TypingBlockView(title: "Name", description: "e.g. King of the Court")
      
         //Description //e.g. Casual Tennis Match
-        TypingBlockView()
+        TypingBlockView(title: "Info", description: "e.g. Tennis Match")
         
         //Date
-        TypingBlockView()
+            TypingBlockView(title: "Date", description: "")
         //Calendar Selector tool?
         
         //Time
-        TypingBlockView()
+            TypingBlockView(title: "Time", description: "")
         //Scroll Menu (Like when setting alarm on iPhone)
         
         //Location //e.g. Dave's Backyard
-        TypingBlockView()
+        TypingBlockView(title: "Where", description: "e.g. Dave's Backyard")
         //busyness meter??
        
         //People //e.g. 4 (doubles)
-        
-        TypingBlockView()
+        TypingBlockView(title: "People", description: "e.g. 4 (doubles)")
         //Scroll Menu (Like when setting alarm on iPhone)
             
             

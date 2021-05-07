@@ -11,30 +11,29 @@ struct CreateBasketballEventView: View {
     var body: some View {
         
         VStack{
-        // Stacks everything on page
-        
-        //Name //e.g. King of the Court
-        TypingBlockView()
-     
-        //Description //e.g. Casual Tennis Match
-        TypingBlockView()
-        
-        //Date
-        TypingBlockView()
-        //Calendar Selector tool?
-        
-        //Time
-        TypingBlockView()
-        //Scroll Menu (Like when setting alarm on iPhone)
-        
-        //Location //e.g. Dave's Backyard
-        TypingBlockView()
-        //busyness meter??
-       
-        //People //e.g. 4 (doubles)
-        
-        TypingBlockView()
-        //Scroll Menu (Like when setting alarm on iPhone)
+            // Stacks everything on page
+            
+            //Name //e.g. King of the Court
+                TypingBlockView(title: "Name", description: "e.g. King of the Court")
+         
+            //Description //e.g. Casual Tennis Match
+            TypingBlockView(title: "Info", description: "e.g. casual pickup game")
+            
+            //Date
+                TypingBlockView(title: "Date", description: "")
+            //Calendar Selector tool?
+            
+            //Time
+                TypingBlockView(title: "Time", description: "")
+            //Scroll Menu (Like when setting alarm on iPhone)
+            
+            //Location //e.g. Dave's Backyard
+            TypingBlockView(title: "Where", description: "e.g. Arian's Driveway")
+            //busyness meter??
+           
+            //People //e.g. 4 (doubles)
+            TypingBlockView(title: "People", description: "e.g. 4 (doubles)")
+            //Scroll Menu (Like when setting alarm on iPhone)
             
             
         Spacer().frame(height: 25.0)

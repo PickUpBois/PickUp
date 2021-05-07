@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TypingBlockView: View {
+    @State var title: String
+    @State var description: String
     var body: some View {
        
         Spacer().frame(height: 25.0)
@@ -15,11 +17,11 @@ struct TypingBlockView: View {
             
             HStack(){
             
-                Text("Name:").fontWeight(.heavy).frame(width: 60)
+                Text(title).fontWeight(.heavy).frame(width: 60)
                 
                 HStack{
                 
-                    Text("e.g. King of the Court")
+                    Text(description)
                         .fontWeight(.thin)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
@@ -47,6 +49,6 @@ struct TypingBlockView: View {
 
 struct TypingBlock_Previews: PreviewProvider {
     static var previews: some View {
-        TypingBlockView()
+        TypingBlockView(title: "", description: "")
     }
 }
