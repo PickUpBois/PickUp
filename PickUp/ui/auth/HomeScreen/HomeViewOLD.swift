@@ -1,13 +1,13 @@
 //
-//  HomeView.swift
-//  Tabbar
+//  HomeViewOLD.swift
+//  PickUp
 //
-//  Created by David Reynolds on 4/12/21.
+//  Created by Ashwin Yedavalli on 5/11/21.
 //
 
 import SwiftUI
 
-struct HomeView: View {
+struct HomeViewOLD: View {
     
     @State private var selection = 1
     @State var menuOpen: Bool = false
@@ -17,32 +17,32 @@ struct HomeView: View {
             NavigationView {
                 ScrollView {
                     Spacer().frame(height:15)
-                    VStack{
+                    HStack{
                     
         //top, social media box
-                    VStack{
+                    HStack{
                 Text("Social Feed")
                     .font(.title3)
                     .fontWeight(.bold)
-                    }.frame(width: 375.0, height: 360.0, alignment: .top).padding(.horizontal, 6.0)
+                    }.frame(width: 175.0, height: 750.0, alignment: .top).padding(.horizontal, 6.0)
                 .padding(.vertical, 15.0)
                 .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                 .cornerRadius(20)
          
                         
-        //Bottom left, near me box
-            HStack{
+        //Top right, near me box
+            VStack{
                         VStack{
                 Text("Courts Near Me")
                     .font(.title3)
                     .fontWeight(.bold)
                                 
-                        }.frame(width: 175.0, height: 360.0, alignment: .top).padding(.horizontal, 9)
+                        }.frame(width: 175.0, height: 355.0, alignment: .top).padding(.horizontal, 6.0)
                         .padding(.vertical, 15.0)
                         .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                         .cornerRadius(20)
                         
-                Spacer().frame(width: 7)
+                Spacer().frame(height: 5)
        
         //Bottom Right, pickups near me
                         VStack{
@@ -56,7 +56,7 @@ struct HomeView: View {
                     Text("🎾").foregroundColor(Color.blue).tag(1)
                     Text("🏀").foregroundColor(Color.red).tag(1)}.pickerStyle(SegmentedPickerStyle())
                         
-                        }.frame(width: 175.0, height: 360.0, alignment: .top).padding(.horizontal, 9)
+                        }.frame(width: 175.0, height: 360.0, alignment: .top).padding(.horizontal, 6.0)
                     .padding(.vertical, 15.0)
                     .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                     .cornerRadius(20)
@@ -85,7 +85,7 @@ struct HomeView: View {
         }
     }
 
-struct HomeView_Previews: PreviewProvider {
+struct HomeViewOLD_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
     }
