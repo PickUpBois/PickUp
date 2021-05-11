@@ -16,22 +16,23 @@ struct CreateEventView: View {
 
         NavigationView {
             ScrollView {
-                Spacer()
+                Spacer().frame(height:15)
                     
                 Picker("", selection: $selection) {
-                    Text("🏀").foregroundColor(Color.blue).tag(0)
-                    Text("🎾").foregroundColor(Color.red).tag(1)
+                    Text("🎾").foregroundColor(Color.blue).tag(1)
+                    
+                    Text("🏀").foregroundColor(Color.red).tag(0)
                 }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
 
                    
-                    if selection == 0 {
+                    if selection == 1 {
                         
-                        CreateBasketballEventView()
+                        CreateTennisEventView()
                         }
                     //second picker option
                     
                     else {
-                            CreateTennisEventView()
+                            CreateBasketballEventView()
                          }
                     
             }.navigationBarTitleDisplayMode(.inline)

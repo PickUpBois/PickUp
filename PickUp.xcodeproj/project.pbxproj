@@ -95,8 +95,6 @@
 		8DFAD532261EBA910055BA76 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAD530261EBA910055BA76 /* LoginView.swift */; };
 		8DFAD533261EBA910055BA76 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAD530261EBA910055BA76 /* LoginView.swift */; };
 		8DFCF504262788A000BBFE66 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF503262788A000BBFE66 /* MainView.swift */; };
-		8DFCF505262788A000BBFE66 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF503262788A000BBFE66 /* MainView.swift */; };
-		8DFCF506262788A000BBFE66 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF503262788A000BBFE66 /* MainView.swift */; };
 		8DFCF50E262788AF00BBFE66 /* FindTeammatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF50D262788AF00BBFE66 /* FindTeammatesView.swift */; };
 		8DFCF50F262788AF00BBFE66 /* FindTeammatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF50D262788AF00BBFE66 /* FindTeammatesView.swift */; };
 		8DFCF510262788AF00BBFE66 /* FindTeammatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF50D262788AF00BBFE66 /* FindTeammatesView.swift */; };
@@ -107,8 +105,6 @@
 		8DFCF523262788D000BBFE66 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF521262788D000BBFE66 /* CreateEventView.swift */; };
 		8DFCF524262788D000BBFE66 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF521262788D000BBFE66 /* CreateEventView.swift */; };
 		8DFCF52C262788E100BBFE66 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF52B262788E100BBFE66 /* HomeView.swift */; };
-		8DFCF52D262788E100BBFE66 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF52B262788E100BBFE66 /* HomeView.swift */; };
-		8DFCF52E262788E100BBFE66 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF52B262788E100BBFE66 /* HomeView.swift */; };
 		9499867C769D5AB3003A2BD4 /* Pods_PickUp_PickUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0E894F9584738F31FCC29B2 /* Pods_PickUp_PickUpUITests.framework */; };
 		A522AC06EBEAAA763B5BF6AE /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		C0D4716C264098BF00E7B6C7 /* CreateEventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D4716B264098BF00E7B6C7 /* CreateEventView.xib */; };
@@ -225,6 +221,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1ADE7E28264AF7B30097138F /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				8DFCF52B262788E100BBFE66 /* HomeView.swift */,
+			);
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
 		245CC24D0CB1FE80EFCDD25E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,12 +333,12 @@
 		8D484BFD261BD65900814A8F /* auth */ = {
 			isa = PBXGroup;
 			children = (
+				1ADE7E28264AF7B30097138F /* HomeScreen */,
 				C0D471652640975200E7B6C7 /* EventView */,
 				8D30B106263E2122002B4C62 /* ProfileView */,
-				8DFCF52B262788E100BBFE66 /* HomeView.swift */,
+				8DFCF503262788A000BBFE66 /* MainView.swift */,
 				8DFCF517262788BD00BBFE66 /* MapView.swift */,
 				8DFCF50D262788AF00BBFE66 /* FindTeammatesView.swift */,
-				8DFCF503262788A000BBFE66 /* MainView.swift */,
 			);
 			path = auth;
 			sourceTree = "<group>";
@@ -771,11 +775,9 @@
 				8D369618262BA3EC0062DD0C /* IUrlSource.swift in Sources */,
 				8D2094A9263C7849009B1609 /* IUpdateProfileUseCase.swift in Sources */,
 				8D36966D262C12C10062DD0C /* UserRepo.swift in Sources */,
-				8DFCF505262788A000BBFE66 /* MainView.swift in Sources */,
 				8DFCF523262788D000BBFE66 /* CreateEventView.swift in Sources */,
 				8D484B0F261B688900814A8F /* PickUpApp.swift in Sources */,
 				8DFCF50F262788AF00BBFE66 /* FindTeammatesView.swift in Sources */,
-				8DFCF52D262788E100BBFE66 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,7 +792,6 @@
 				8DFAD533261EBA910055BA76 /* LoginView.swift in Sources */,
 				8D36964D262C05560062DD0C /* IUpdateProfilePictureFromExternalUrl.swift in Sources */,
 				8DFCF51A262788BD00BBFE66 /* MapView.swift in Sources */,
-				8DFCF506262788A000BBFE66 /* MainView.swift in Sources */,
 				8D3695EC262B8D520062DD0C /* IDao.swift in Sources */,
 				8D3696DE262C900C0062DD0C /* ObserveAuthState.swift in Sources */,
 				8D2094AA263C7849009B1609 /* IUpdateProfileUseCase.swift in Sources */,
@@ -802,7 +803,6 @@
 				8D36963C262BF6820062DD0C /* FileRepo.swift in Sources */,
 				8D3696EE262CA8D40062DD0C /* DataAuth.swift in Sources */,
 				8DB8F04F261AAD5D004AADED /* AuthRepo.swift in Sources */,
-				8DFCF52E262788E100BBFE66 /* HomeView.swift in Sources */,
 				8DB8EFA326198979004AADED /* PickUpUITests.swift in Sources */,
 				8D36966E262C12C10062DD0C /* UserRepo.swift in Sources */,
 				8DB8F023261A8A45004AADED /* UserDao.swift in Sources */,

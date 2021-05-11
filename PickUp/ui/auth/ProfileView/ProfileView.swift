@@ -87,12 +87,12 @@ struct ProfileView: View {
 
 
                 Picker("", selection: $selection) {
-                    Text("Past Pickups").foregroundColor(Color.blue).tag(0)
-                    Text("Upcoming Pickups").foregroundColor(Color.red).tag(1)
+                    Text("Past Pickups").foregroundColor(Color.blue).tag(1)
+                    Text("Upcoming Pickups").foregroundColor(Color.red).tag(0)
                 }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
 
                    
-                    if selection == 0 {
+                    if selection == 1 {
                         
                         PastPickupView()
                         }

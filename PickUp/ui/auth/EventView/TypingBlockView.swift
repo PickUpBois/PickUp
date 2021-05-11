@@ -20,13 +20,16 @@ struct TypingBlockView: View {
                 Text(title).fontWeight(.heavy).frame(width: 60)
                 
                 HStack{
-                
+                    Spacer()
+                        .frame(width: 8.0)
                     Text(description)
                         .fontWeight(.thin)
                 .foregroundColor(.black)
-                .multilineTextAlignment(.center)
-                .frame(width: 200.0)
-                Spacer(minLength: 50)
+                        .lineLimit(0)
+                        .padding(.trailing)
+                        .frame(width: 200.0, alignment: .leading)
+                    
+                Spacer(minLength: 60)
                     
                 Image(systemName: "x.circle.fill")
                     .frame(width: 25.0)
