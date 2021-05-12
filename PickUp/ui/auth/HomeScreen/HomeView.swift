@@ -40,10 +40,23 @@ struct HomeView: View {
         //Bottom left, near me box
             HStack{
                         VStack{
-                Text("Courts Near Me")
+            HStack{ Text("Courts Near Me")
                     .font(.title3)
-                    .fontWeight(.bold)
+                .fontWeight(.semibold)
                                 
+                Image(systemName:"location.fill")
+                                    .foregroundColor(Color.blue)
+                            }
+            ScrollView{
+                CourtsNearMeView(title: "State Gym", radius: "0.25",available: "🏀 2", total: "4", open: "open")
+                
+                CourtsNearMeView(title: "Lied Rec Center", radius: "1", available: "🏀 20", total: "20", open: "closed")
+                
+                CourtsNearMeView(title: "Forker Tennis Courts", radius: "1", available: "🎾 4", total: "8", open: "open")
+                
+                CourtsNearMeView(title: "Dunlap HS Courts", radius: "300", available: "🎾 8", total: "8", open: "open")
+        
+            }
                         }.frame(width: 175.0, height: 330.0, alignment: .top).padding(.horizontal, 9)
                         .padding(.vertical, 15.0)
                         .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
@@ -53,9 +66,10 @@ struct HomeView: View {
        
         //Bottom Right, pickups near me
                     VStack{
-                Text("Pickups Near Me")
-                    .font(.title3)
-                    .fontWeight(.bold)
+                        HStack{Text("Pickups Nearby").font(.title3)
+                            .fontWeight(.semibold)
+                    Image(systemName: "calendar").font(.system(size: 16, weight: .regular))
+                        .foregroundColor(Color.red)}
 
             Spacer().frame(height:5)
                             
@@ -67,13 +81,13 @@ struct HomeView: View {
                         
                     if selection == 1 {
                                 
-                    UpcomingPickupsView()
+                    TennisPickupView()
                                 }
                 //second picker option
                             
                     else {
 
-                    UpcomingPickupsView()
+                    BasketballPickupView()
                                 }
                             
                         }

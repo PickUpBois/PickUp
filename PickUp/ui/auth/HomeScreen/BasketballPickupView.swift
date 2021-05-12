@@ -5,66 +5,156 @@
 //  Created by Ashwin Yedavalli on 5/12/21.
 //
 
+
 import SwiftUI
+
 
 struct BasketballPickupView: View {
     var body: some View {
-        Spacer().frame(height: 15)
+        ScrollView{
         VStack{
-            HStack{
-                Text("🏀").font(.system(size: 30))}
-            HStack(alignment: .top){
-                VStack{
-    Text("Event Name")
-        .fontWeight(.heavy)
-    Spacer()
-    Text("Description")
-    Spacer()
-    Text("~~~~~~~~~~~")
-    Text("~~~~~~~~~~~")
-    Text("~~~~~~~~~~~")
-    Spacer()
-    //join event 'button'
-    Text("+ Join")
-        .fontWeight(.heavy)
-        .padding(.all, 5.0)
-        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                      }
             Spacer()
-                VStack{
-                    HStack{
-                    Image(systemName:"location.fill")
-                        Text("Location")}
-                Spacer()
-                    HStack{
-                    Image(systemName:"calendar")
-                        Text("Date")}
-                Spacer()
-                    HStack{
-                    Image(systemName:"clock.fill")
-                        Text("Time")}
-                Spacer()
-                    HStack{
-                    Image(systemName:"person.3.fill")
-                        Text("2/4 people")}
-                Spacer()
-                    Text("Invite")
+                HStack{
+                    Text("21")
                         .fontWeight(.heavy)
-                        .padding(.all, 5.0)
-                        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                  }
-                      }
-            .padding(.all, 25.0)
-            .background(Color(red: 1, green: 0.5, blue: 0, opacity: 0.2))
-            .cornerRadius(8)
-            .padding(.horizontal, 20)
+                        .lineLimit(1)
+                    Image(systemName:"calendar")
+                        .foregroundColor(Color.red)
+                    Text("Date")
+                            Spacer()
+                                .frame(minWidth: 10, maxWidth: 10)
+                                .lineLimit(1)
+                    
+                        }
+                        
+                        
+                        Spacer().frame(height: 2)
+                        HStack(alignment: .center){
+                            Image(systemName:"location.fill")
+                                .foregroundColor(Color.blue)
+                                .lineLimit(1)
+                            Text("Location")
+                            Text("Going")
+                                .foregroundColor(Color.green)
+                                .lineLimit(1)
+
+
+                                }
+        }.frame(width: 175, alignment: .center)
+                            .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                            .cornerRadius(8)
+        
+                Spacer().frame(height: 25)
             
-              }
+            VStack{
+                Spacer()
+                    HStack{
+                        Text("Intramural")
+                            .fontWeight(.heavy)
+                            .lineLimit(1)
+                        Image(systemName:"calendar")
+                            .foregroundColor(Color.red)
+                        Text("Date")
+                                Spacer()
+                                    .frame(minWidth: 10, maxWidth: 10)
+                                    .lineLimit(1)
+                        
+                            }
+                            
+                            
+                            Spacer().frame(height: 2)
+                            HStack(alignment: .center){
+                                Image(systemName:"location.fill")
+                                    .foregroundColor(Color.blue)
+                                    .lineLimit(1)
+                                Text("Location")
+                                Text("Going")
+                                    .foregroundColor(Color.green)
+                                    .lineLimit(1)
+
+
+                                    }
+            }.frame(width: 175, alignment: .center)
+            .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                                .cornerRadius(8)
+            
+                    Spacer().frame(height: 25)
+            VStack{
+                Spacer()
+                    HStack{
+                        Text("5 vs 5")
+                            .fontWeight(.heavy)
+                            .lineLimit(1)
+                        Image(systemName:"calendar")
+                            .foregroundColor(Color.red)
+                        Text("Date")
+                                Spacer()
+                                    .frame(minWidth: 10, maxWidth: 10)
+                                    .lineLimit(1)
+                        
+                            }
+                            
+                            
+                            Spacer().frame(height: 2)
+                            HStack(alignment: .center){
+                                Image(systemName:"location.fill")
+                                    .foregroundColor(Color.blue)
+                                    .lineLimit(1)
+                                Text("Location")
+                                Text("Closeby")
+                                    .foregroundColor(Color.orange)
+                                    .lineLimit(1)
+
+
+                                    }
+            }.frame(width: 175, alignment: .center)
+                                .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                                .cornerRadius(8)
+            
+                    Spacer().frame(height: 25)
+            VStack{
+                Spacer()
+                    HStack{
+                        Text("Knockout")
+                            .fontWeight(.heavy)
+                            .lineLimit(1)
+
+
+                        Image(systemName:"calendar")
+                            .foregroundColor(Color.red)
+                        Text("Date")
+                            .lineLimit(1)
+                                Spacer()
+                                    .frame(minWidth: 10, maxWidth: 10)
+                        
+                            }
+                            
+                            
+                            Spacer().frame(height: 2)
+                            HStack(alignment: .center){
+                                Image(systemName:"location.fill")
+                                    .lineLimit(1)
+                                    .foregroundColor(Color.blue)
+                                Text("Location")
+                                Text("Going")
+                                    .foregroundColor(Color.green)
+                                    .lineLimit(1)
+
+
+                                    }
+            }.frame(width: 175, alignment: .center)
+                                .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                                .cornerRadius(8)
+            
+                    Spacer().frame(height: 25)
+            }
     }
 }
+
 
 struct BasketballPickupView_Previews: PreviewProvider {
     static var previews: some View {
         BasketballPickupView()
     }
 }
+
