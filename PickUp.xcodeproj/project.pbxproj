@@ -12,7 +12,10 @@
 		1AB44ED72643963E00568ECB /* CreateBasketballEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB44ED62643963D00568ECB /* CreateBasketballEventView.swift */; };
 		1AB44ED92643964F00568ECB /* CreateTennisEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB44ED82643964F00568ECB /* CreateTennisEventView.swift */; };
 		1AB44EDB26439DB300568ECB /* TypingBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB44EDA26439DB300568ECB /* TypingBlockView.swift */; };
-		1ADE7E2C264B1B530097138F /* HomeViewOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E2B264B1B530097138F /* HomeViewOLD.swift */; };
+		1ADE7E2E264C479C0097138F /* TennisPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E2D264C479C0097138F /* TennisPickupView.swift */; };
+		1ADE7E30264C47C70097138F /* BasketballPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E2F264C47C70097138F /* BasketballPickupView.swift */; };
+		1ADE7E32264C47F40097138F /* CourtsNearMeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E31264C47F40097138F /* CourtsNearMeView.swift */; };
+		1ADE7E34264C48060097138F /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E33264C48060097138F /* SocialView.swift */; };
 		1F30A886AE165751D712C11B /* Pods_PickUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D2DCFAB236044BB62AF4D7 /* Pods_PickUp.framework */; };
 		8D09E70B2623E16E0007B871 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E70A2623E16E0007B871 /* ProfileView.swift */; };
 		8D2094A1263C6F43009B1609 /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */; };
@@ -135,7 +138,10 @@
 		1AB44ED62643963D00568ECB /* CreateBasketballEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBasketballEventView.swift; sourceTree = "<group>"; };
 		1AB44ED82643964F00568ECB /* CreateTennisEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTennisEventView.swift; sourceTree = "<group>"; };
 		1AB44EDA26439DB300568ECB /* TypingBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingBlockView.swift; sourceTree = "<group>"; };
-		1ADE7E2B264B1B530097138F /* HomeViewOLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewOLD.swift; sourceTree = "<group>"; };
+		1ADE7E2D264C479C0097138F /* TennisPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisPickupView.swift; sourceTree = "<group>"; };
+		1ADE7E2F264C47C70097138F /* BasketballPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketballPickupView.swift; sourceTree = "<group>"; };
+		1ADE7E31264C47F40097138F /* CourtsNearMeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtsNearMeView.swift; sourceTree = "<group>"; };
+		1ADE7E33264C48060097138F /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
 		3D2413990659958D11A4B251 /* Pods-PickUp-PickUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp-PickUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-PickUp-PickUpUITests/Pods-PickUp-PickUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		49D2DCFAB236044BB62AF4D7 /* Pods_PickUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6403E9CD6469737F34F86843 /* Pods-PickUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUpTests.release.xcconfig"; path = "Target Support Files/Pods-PickUpTests/Pods-PickUpTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -227,7 +233,10 @@
 			isa = PBXGroup;
 			children = (
 				8DFCF52B262788E100BBFE66 /* HomeView.swift */,
-				1ADE7E2B264B1B530097138F /* HomeViewOLD.swift */,
+				1ADE7E2D264C479C0097138F /* TennisPickupView.swift */,
+				1ADE7E2F264C47C70097138F /* BasketballPickupView.swift */,
+				1ADE7E31264C47F40097138F /* CourtsNearMeView.swift */,
+				1ADE7E33264C48060097138F /* SocialView.swift */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";
@@ -726,14 +735,17 @@
 				8D2094A1263C6F43009B1609 /* ProfileSettingsView.swift in Sources */,
 				8DB8F06A261AB3E9004AADED /* RepoFactory.swift in Sources */,
 				8D36967E262C2AB40062DD0C /* IRegisterUseCase.swift in Sources */,
+				1ADE7E2E264C479C0097138F /* TennisPickupView.swift in Sources */,
 				8D3694E5262B52490062DD0C /* User.swift in Sources */,
 				8D36962F262BF5DD0062DD0C /* IFileRepo.swift in Sources */,
 				8D36964B262C05560062DD0C /* IUpdateProfilePictureFromExternalUrl.swift in Sources */,
 				8DFCF504262788A000BBFE66 /* MainView.swift in Sources */,
 				8D30B108263E2146002B4C62 /* ProfilePicture.swift in Sources */,
 				8DB8EFDD261A6BEB004AADED /* AuthFirebaseDataSource.swift in Sources */,
+				1ADE7E34264C48060097138F /* SocialView.swift in Sources */,
 				1AB44ED72643963E00568ECB /* CreateBasketballEventView.swift in Sources */,
 				8D30B110263E232C002B4C62 /* ProfileHeaderView.swift in Sources */,
+				1ADE7E30264C47C70097138F /* BasketballPickupView.swift in Sources */,
 				8D369674262C1B6A0062DD0C /* DataUser.swift in Sources */,
 				8DFCF52C262788E100BBFE66 /* HomeView.swift in Sources */,
 				8D3696DC262C900C0062DD0C /* ObserveAuthState.swift in Sources */,
@@ -741,13 +753,13 @@
 				8D369617262BA3EC0062DD0C /* IUrlSource.swift in Sources */,
 				8D36966C262C12C10062DD0C /* UserRepo.swift in Sources */,
 				8DFCF518262788BD00BBFE66 /* MapView.swift in Sources */,
+				1ADE7E32264C47F40097138F /* CourtsNearMeView.swift in Sources */,
 				8D2A3EF3261EC3E100521A6A /* SignUp.swift in Sources */,
 				8D2094A8263C7849009B1609 /* IUpdateProfileUseCase.swift in Sources */,
 				8DFCF522262788D000BBFE66 /* CreateEventView.swift in Sources */,
 				8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */,
 				8DFCF50E262788AF00BBFE66 /* FindTeammatesView.swift in Sources */,
 				1AB44EDB26439DB300568ECB /* TypingBlockView.swift in Sources */,
-				1ADE7E2C264B1B530097138F /* HomeViewOLD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

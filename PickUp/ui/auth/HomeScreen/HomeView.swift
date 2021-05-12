@@ -21,10 +21,17 @@ struct HomeView: View {
                     
         //top, social media box
                     VStack{
-                Text("Social Feed")
+                        HStack{ Text("Social Feed")
                     .font(.title3)
-                    .fontWeight(.bold)
-                    }.frame(width: 375.0, height: 360.0, alignment: .top).padding(.horizontal, 6.0)
+                            .fontWeight(.bold)
+                            Image(systemName:"newspaper.fill")
+                                .foregroundColor(Color.green)
+                        }
+                        
+                        ScrollView{
+                            SocialView()}
+                    
+                    }.frame(width: 375.0, height: 330.0, alignment: .top).padding(.horizontal, 6.0)
                 .padding(.vertical, 15.0)
                 .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                 .cornerRadius(20)
@@ -37,7 +44,7 @@ struct HomeView: View {
                     .font(.title3)
                     .fontWeight(.bold)
                                 
-                        }.frame(width: 175.0, height: 360.0, alignment: .top).padding(.horizontal, 9)
+                        }.frame(width: 175.0, height: 330.0, alignment: .top).padding(.horizontal, 9)
                         .padding(.vertical, 15.0)
                         .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                         .cornerRadius(20)
@@ -45,7 +52,7 @@ struct HomeView: View {
                 Spacer().frame(width: 7)
        
         //Bottom Right, pickups near me
-                        VStack{
+                    VStack{
                 Text("Pickups Near Me")
                     .font(.title3)
                     .fontWeight(.bold)
@@ -54,20 +61,31 @@ struct HomeView: View {
                             
                 Picker("", selection: $selection) {
                     Text("🎾").foregroundColor(Color.blue).tag(1)
-                    Text("🏀").foregroundColor(Color.red).tag(1)}.pickerStyle(SegmentedPickerStyle())
+                    Text("🏀").foregroundColor(Color.red).tag(0)}.pickerStyle(SegmentedPickerStyle())
+                   
+                        ScrollView{
                         
-                        }.frame(width: 175.0, height: 360.0, alignment: .top).padding(.horizontal, 9)
+                    if selection == 1 {
+                                
+                    UpcomingPickupsView()
+                                }
+                //second picker option
+                            
+                    else {
+
+                    UpcomingPickupsView()
+                                }
+                            
+                        }
+                        }.frame(width: 175.0, height: 330.0, alignment: .top).padding(.horizontal, 9)
                     .padding(.vertical, 15.0)
                     .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                     .cornerRadius(20)
-                        
+                    
             }
-                    }.frame(alignment: /*@START_MENU_TOKEN@*/.topLeading/*@END_MENU_TOKEN@*/)
+            }.frame(alignment: /*@START_MENU_TOKEN@*/.topLeading/*@END_MENU_TOKEN@*/)
                         
-                        
-                        
-                        
-                        }
+                }
 .navigationBarTitleDisplayMode(.inline)
                 .toolbar{
                     ToolbarItem(placement: .principal) {

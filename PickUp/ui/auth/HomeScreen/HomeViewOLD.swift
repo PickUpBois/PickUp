@@ -53,7 +53,7 @@ struct HomeViewOLD: View {
             Spacer().frame(height:5)
                             
                 Picker("", selection: $selection) {
-                    Text("🎾").foregroundColor(Color.blue).tag(1)
+                    Text("🎾").foregroundColor(Color.blue).tag(0)
                     Text("🏀").foregroundColor(Color.red).tag(1)}.pickerStyle(SegmentedPickerStyle())
                         
                         }.frame(width: 175.0, height: 360.0, alignment: .top).padding(.horizontal, 6.0)
