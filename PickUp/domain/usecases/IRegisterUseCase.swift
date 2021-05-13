@@ -17,7 +17,7 @@ struct RegisterUseCase: IRegisterUseCase {
     let userRepo: IUserRepo
     
     init(authRepo: AuthRepo = RepoFactory.getAuthRepo(),
-         userRepo: IUserRepo = UserRepo()) {
+         userRepo: IUserRepo = RepoFactory.getUserRepo()) {
         self.authRepo = authRepo
         self.userRepo = userRepo
     }

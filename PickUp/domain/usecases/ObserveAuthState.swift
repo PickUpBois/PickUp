@@ -18,7 +18,7 @@ class ObserveAuthState: ObservableObject {
     var cancellables = Set<AnyCancellable>()
     
     init(authRepo: AuthRepo = RepoFactory.getAuthRepo(),
-         userRepo: IUserRepo = UserRepo()) {
+         userRepo: IUserRepo = RepoFactory.getUserRepo()) {
         self.authRepo = authRepo
         self.userRepo = userRepo
     }
@@ -26,7 +26,8 @@ class ObserveAuthState: ObservableObject {
     func listen() {
         self.authHandle = authRepo.observeAuthState().sink(receiveValue: {dataAuth in
             if dataAuth != nil {
-                self.userHandle = self.userRepo.observe(id: dataAuth!.id)
+                self.userHandle = self.userRepo.get(id: dataAuth!.id)
+                    .receive(on: DispatchQueue.main)
                     .sink(receiveCompletion: { completion in
                         switch completion {
                         case .failure(let error):
@@ -38,7 +39,6 @@ class ObserveAuthState: ObservableObject {
                     }, receiveValue: { user in
                         self.authUser = user.toUserAuth(email: dataAuth!.email,
                                         isEmailVerified: dataAuth!.isEmailVerified)
-                        print(self.authUser?.photoUrl)
                         self.objectWillChange.send()
                     })
             } else {
@@ -50,6 +50,24 @@ class ObserveAuthState: ObservableObject {
                 self.objectWillChange.send()
             }
         })
+    }
+    
+    func refreshUser() {
+        if self.authUser == nil {
+            return
+        }
+        self.userRepo.get(id: self.authUser!.id!)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure(let error):
+                    print("error refreshing user \(error.localizedDescription)")
+                case .finished:
+                    print("success")
+                }
+            }, receiveValue: { user in
+                self.authUser = user.toUserAuth(email: self.authUser!.email, isEmailVerified: self.authUser!.isEmailVerified);
+                self.objectWillChange.send()
+            }).store(in: &self.cancellables)
     }
     
     func detach() {

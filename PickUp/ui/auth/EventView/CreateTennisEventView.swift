@@ -56,6 +56,16 @@ struct CreateTennisEventView: View {
     }
 }
 
+extension CreateTennisEventView {
+    class ViewModel {
+        @Published var type: EventType = .tennis
+        @Published var name: String = ""
+        @Published var info: String = ""
+        @Published var capacity: Int = 0
+        @Published var locationId: String = ""
+    }
+}
+
 struct CreateTennisEvent_Previews: PreviewProvider {
     static var previews: some View {
         CreateTennisEventView()

@@ -56,6 +56,17 @@ struct CreateBasketballEventView: View {
     }
 }
 
+extension CreateEventView {
+    class ViewModel {
+        @Published var name: String = ""
+        @Published var info: String = ""
+        @Published var startDate: Date = Date()
+        @Published var locationId: String = ""
+        @Published var capacity: Int = 0
+        @Published var eventType: EventType = .tennis
+    }
+}
+
 struct CreateBasketballEvent_Previews: PreviewProvider {
     static var previews: some View {
         CreateBasketballEventView()

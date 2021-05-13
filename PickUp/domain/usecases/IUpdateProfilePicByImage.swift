@@ -17,7 +17,7 @@ struct UpdateProfilePicByImage: IUpdateProfilePicByImage {
     let userRepo: IUserRepo
     
     init(fileRepo: IFileRepo = FileRepo(),
-         userRepo: IUserRepo = UserRepo()) {
+         userRepo: IUserRepo = RepoFactory.getUserRepo()) {
         self.fileRepo = fileRepo
         self.userRepo = userRepo
     }
