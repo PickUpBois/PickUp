@@ -13,12 +13,17 @@ class UserRepo: IUserRepo {
         let url = URL(string: RepoFactory.TARGET_URL + "users/\(item.id!)")!
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         var dataUser = DataUser(user: item)
         dataUser.id = nil
-        guard let postData = try? JSONSerialization.data(withJSONObject: dataUser, options: []) else {
-            print("failed to encode json data")
-            return Fail(error: EventError.error("failed to encode jsond ata")).eraseToAnyPublisher()
+//        guard let postData = try? JSONSerialization.data(withJSONObject: dataUser, options: []) else {
+//            print("failed to encode json data")
+//            return Fail(error: EventError.error("failed to encode jsond ata")).eraseToAnyPublisher()
+//        }
+        guard let postData = try? JSONEncoder().encode(dataUser) else {
+            return Fail(error: UserError.error).eraseToAnyPublisher()
         }
+        print(postData)
         urlRequest.httpBody = postData
         return URLSession.shared.dataTaskPublisher(for: urlRequest)
             .tryMap { element -> Void in

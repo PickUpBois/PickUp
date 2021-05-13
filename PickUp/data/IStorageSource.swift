@@ -26,8 +26,6 @@ struct GoogleStorageSource: IStorageSource {
         return Future<String, Error> { promise in
             let ref = storage.reference(withPath: path)
             uploadTask = ref.putData(file, metadata: nil) { (metadata, error) in
-                print("metadata \(metadata)")
-                print(error)
                 if error != nil {
                     return promise(.failure(error!))
                 } else {

@@ -46,7 +46,7 @@ struct ImagePicker: UIViewControllerRepresentable {
                             switch completion {
                             case .failure(let error):
                                 self.parent.presentationMode.wrappedValue.dismiss()
-                                print("failure")
+                                print(error.localizedDescription)
                             case .finished:
                                 print("success")
                                 self.parent.presentationMode.wrappedValue.dismiss()
