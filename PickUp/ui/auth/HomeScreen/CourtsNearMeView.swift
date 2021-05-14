@@ -23,6 +23,7 @@ struct CourtsNearMeView: View {
                 .fontWeight(.bold)
                 Spacer().frame(width:1)
                 Text(":")
+                .lineLimit(1)
                 Spacer().frame(width:5)
                 Text(radius)
                 Spacer().frame(width:1.5)
@@ -55,3 +56,5 @@ struct CourtsNearMeView_Previews: PreviewProvider {
         CourtsNearMeView(title: "", radius: "",available: "", total: "", open: "")
     }
 }
+
+

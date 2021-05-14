@@ -45,7 +45,7 @@ struct HomeView: View {
                 .fontWeight(.semibold)
                                 
                 Image(systemName:"location.fill")
-                                    .foregroundColor(Color.blue)
+                        .foregroundColor(Color.blue)
                             }
             ScrollView{
                 CourtsNearMeView(title: "State Gym", radius: "0.25",available: "🏀 2", total: "4", open: "open")
