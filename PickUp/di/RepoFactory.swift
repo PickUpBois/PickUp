@@ -46,4 +46,8 @@ class RepoFactory {
     static func getUserRepo() -> IUserRepo {
         return UserRepo()
     }
+    
+    static func getEventRepo() -> IEventRepo {
+        return EventRepo()
+    }
 }

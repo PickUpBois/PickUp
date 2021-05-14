@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol IEventRepo {
-    func create(event: EventDto) -> AnyPublisher<Void, Error>
+    func create(event: CreateEventDto) -> AnyPublisher<Void, Error>
 }
 
 enum EventError: Error {
@@ -17,7 +17,7 @@ enum EventError: Error {
 }
 
 class EventRepo: IEventRepo {
-    func create(event: EventDto) -> AnyPublisher<Void, Error> {
+    func create(event: CreateEventDto) -> AnyPublisher<Void, Error> {
         let url = URL(string: RepoFactory.TARGET_URL + "events/")!
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
