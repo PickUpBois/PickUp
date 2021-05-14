@@ -19,12 +19,16 @@ struct EventDatePickerView: View {
             calendar.date(from:endComponents)!
     }()
     var body: some View {
-        DatePicker(
-                "Start Date",
+        HStack{
+            Text("When")
+                .fontWeight(.heavy)
+            Spacer().frame(width: 20)
+        DatePicker("",
             selection: self.$date,
                  in: dateRange,
                  displayedComponents: [.date, .hourAndMinute]
-            )
+        ).datePickerStyle(GraphicalDatePickerStyle())
+        }.padding(.trailing, 50.0).frame(width:390, alignment: .leading)
     }
 }
 

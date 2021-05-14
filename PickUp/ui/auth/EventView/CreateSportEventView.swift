@@ -22,14 +22,17 @@ struct CreateSportEventView: View {
             //Location //e.g. Dave's Backyard
             EventLocationPickerView(value: self.$eventViewModel.eventInfo.locationId)
             
+           
+            //People //e.g. 4 (doubles)
+            TypingBlockView(title: "People", description: "e.g. 4 (doubles)", value: self.$eventViewModel.eventInfo.capacity)
+            Spacer().frame(height: 20)
+            //Scroll Menu (Like when setting alarm on iPhone)
+            
             //busyness meter??
             
             EventDatePickerView(date: self.$eventViewModel.eventInfo.startDate)
             
-           
-            //People //e.g. 4 (doubles)
-            TypingBlockView(title: "People", description: "e.g. 4 (doubles)", value: self.$eventViewModel.eventInfo.capacity)
-            //Scroll Menu (Like when setting alarm on iPhone)
+
             
             
         Spacer().frame(height: 25.0)
@@ -37,7 +40,8 @@ struct CreateSportEventView: View {
             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                 Text("Invite Friends")
                 .fontWeight(.heavy)
-                .padding(.all, 10.0)
+                    .foregroundColor(Color.black)
+                    .padding(.all, 10.0)
                     .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2.5)
                     .background(Color(red: 0, green: 0.7, blue: 0, opacity: 0.55))
                     .cornerRadius(7)
@@ -46,6 +50,7 @@ struct CreateSportEventView: View {
             
             Button(action: self.eventViewModel.createEvent, label: {
                 Text("Create Event").fontWeight(.heavy)
+                    .foregroundColor(Color.black)
                     .padding(.all, 10.0)      .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2.5)
                     .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 1))
                     .cornerRadius(/*@START_MENU_TOKEN@*/7.0/*@END_MENU_TOKEN@*/)
