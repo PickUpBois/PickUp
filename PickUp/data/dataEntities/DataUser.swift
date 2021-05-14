@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestoreSwift
 
 struct DataUser: Codable {
-    @DocumentID var id: String?
+    var id: String?
     var username: String
     var firstName: String
     var lastName: String
@@ -31,6 +31,7 @@ struct DataUser: Codable {
         case firstName
         case lastName
         case photoUrl
+        case id
     }
 }
 
