@@ -39,26 +39,7 @@ struct TennisPickupView: View {
                                 .foregroundColor(Color.green)
                                 .lineLimit(1)
                         }
-            
-                        Spacer().frame(height: 2)
-                        HStack(alignment: .center){
-                            Button(action: {
-                                self.showPopUp.toggle()
-                            }, label: {
-                                Text("More Details?")
-                                    .foregroundColor(Color.purple)
-                                
-                            })
-                                
-                            }.sheet(isPresented: $showPopUp, content: {
-                                Button(action: {
-                                    self.showPopUp.toggle()
-                                },label: {
-                                    Text("Dismiss")
-                                })
-                            })
 
-                Spacer().frame(height: 8)
         }.frame(width: 175, height: 80, alignment: .center)
                             .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                             .cornerRadius(8)

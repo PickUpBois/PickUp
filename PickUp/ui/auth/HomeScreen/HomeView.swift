@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    
+    @State private var showPopUp = false
     @State private var selection = 1
     @State var menuOpen: Bool = false
     @StateObject var observeAuthUseCase: ObserveAuthState = ObserveAuthState.shared
@@ -76,6 +76,24 @@ struct HomeView: View {
                 Picker("", selection: $selection) {
                     Text("🎾").foregroundColor(Color.blue).tag(1)
                     Text("🏀").foregroundColor(Color.red).tag(0)}.pickerStyle(SegmentedPickerStyle())
+                        
+            Spacer().frame(height: 2)
+                        HStack(alignment: .center){
+                            Button(action: {
+                                self.showPopUp.toggle()
+                            }, label: {
+                                Text("More Details?")
+                                    .foregroundColor(Color.purple)
+                                
+                            })
+                                
+                            }.sheet(isPresented: $showPopUp, content: {
+                                Button(action: {
+                                    self.showPopUp.toggle()
+                                },label: {
+                                    Text("Dismiss")
+                                })
+                            })
                    
                         ScrollView{
                         
