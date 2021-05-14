@@ -21,9 +21,9 @@ struct CourtsNearMeView: View {
         VStack{
             HStack{Text(title)
                 .fontWeight(.bold)
+                .lineLimit(1)
                 Spacer().frame(width:1)
                 Text(":")
-                .lineLimit(1)
                 Spacer().frame(width:5)
                 Text(radius)
                 Spacer().frame(width:1.5)
