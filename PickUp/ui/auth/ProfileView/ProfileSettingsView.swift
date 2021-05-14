@@ -29,7 +29,7 @@ struct ProfileSettingsView: View {
 extension ProfileSettingsView {
     class ViewModel: ObservableObject {
         let updateProfileUseCase: IUpdateProfileUseCase
-//        var observeAuthUseCase: ObserveAuthState = ObserveAuthState.shared
+        var observeAuthUseCase: ObserveAuthState = ObserveAuthState.shared
         var cancellables = Set<AnyCancellable>()
         init(updateProfileUseCase: IUpdateProfileUseCase = UpdateProfileUseCase()) {
             self.updateProfileUseCase = updateProfileUseCase
@@ -41,7 +41,7 @@ extension ProfileSettingsView {
         @Published var college: String = ""
         
         func updateProfile(userId: String) {
-            var fields : [ String: Any? ] = [:]
+            var fields : [ String: Any ] = [:]
             if !username.isEmpty {
                 fields[ProfileField.username.rawValue] = username
             }
@@ -61,6 +61,7 @@ extension ProfileSettingsView {
                         print(error.localizedDescription)
                     case .finished:
                         print("successfully updated profile")
+                        self.observeAuthUseCase.refreshUser()
                     }
                 }, receiveValue: {})
                 .store(in: &cancellables)

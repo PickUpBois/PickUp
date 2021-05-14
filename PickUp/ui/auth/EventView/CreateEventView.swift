@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct CreateEventView: View {
-    @State private var selection = 1
-    @State var menuOpen: Bool = false
     @StateObject var observeAuthUseCase: ObserveAuthState = ObserveAuthState.shared
+    @ObservedObject var viewModel: ViewModel
+    init(viewModel: ViewModel = ViewModel()) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
 
@@ -18,22 +20,13 @@ struct CreateEventView: View {
             ScrollView {
                 Spacer().frame(height:15)
                     
-                Picker("", selection: $selection) {
-                    Text("🎾").foregroundColor(Color.blue).tag(1)
+                Picker("", selection: self.$viewModel.eventInfo.eventType) {
+                    Text("🎾").foregroundColor(Color.blue).tag(EventType.tennis)
                     
-                    Text("🏀").foregroundColor(Color.red).tag(0)
+                    Text("🏀").foregroundColor(Color.red).tag(EventType.basketball)
                 }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
 
-                   
-                    if selection == 1 {
-                        
-                        CreateTennisEventView()
-                        }
-                    //second picker option
-                    
-                    else {
-                            CreateBasketballEventView()
-                         }
+                CreateSportEventView().environmentObject(self.viewModel)
                     
             }.navigationBarTitleDisplayMode(.inline)
             .toolbar{
@@ -51,6 +44,29 @@ struct CreateEventView: View {
                 }
     }
 }
+
+extension CreateEventView {
+    class ViewModel: ObservableObject {
+        @Published var eventInfo: EventInfo = EventInfo()
+        func createEvent() {
+            let dto = CreateEventDto(name: eventInfo.name, info: eventInfo.info, startDate: eventInfo.startDate, locationId: eventInfo.locationId, capacity: Int(eventInfo.capacity) ?? 0, eventType: eventInfo.eventType)
+            print(dto)
+        }
+    }
+}
+
+extension CreateEventView.ViewModel {
+    struct EventInfo {
+        var name: String = ""
+        var info: String = ""
+        var startDate: Date = Date()
+        var locationId: String = ""
+        var capacity: String = ""
+        var eventType: EventType = .tennis
+    }
+}
+
+
 
 
 struct CreateEventView_Previews: PreviewProvider {

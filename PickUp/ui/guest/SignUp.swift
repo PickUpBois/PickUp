@@ -122,6 +122,7 @@ extension SignUpView {
         @Published var loading = false
         var cancellables = Set<AnyCancellable>()
         var registerUseCase: IRegisterUseCase
+        var observeAuthUseCase = ObserveAuthState.shared
         
         
         init(registerUseCase: IRegisterUseCase = RegisterUseCase()) {
@@ -144,9 +145,11 @@ extension SignUpView {
                         self.errorMessage = "Error occurred"
                     case .finished:
                         print("SignUpViewModel SUCCESS")
+                        self.observeAuthUseCase.refreshUser()
                     }
                 }, receiveValue: {uid in
                     print("SUCCESS: \(uid)")
+//                    self.observeAuthUseCase.refreshUser()
                 }).store(in: &cancellables)
         }
     }

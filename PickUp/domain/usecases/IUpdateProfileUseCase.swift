@@ -16,15 +16,15 @@ enum ProfileField: String, Hashable {
 }
 
 protocol IUpdateProfileUseCase {
-    func execute(userId: String, fields: [String: Any?]) -> AnyPublisher<Void, Error>
+    func execute(userId: String, fields: [String: Any]) -> AnyPublisher<Void, Error>
 }
 
 class UpdateProfileUseCase: IUpdateProfileUseCase {
-    var userRepo: UserRepo
-    init(userRepo: UserRepo = RepoFactory.getUserRepo()) {
+    var userRepo: IUserRepo
+    init(userRepo: IUserRepo = RepoFactory.getUserRepo()) {
         self.userRepo = userRepo
     }
-    func execute(userId: String, fields: [String: Any?]) -> AnyPublisher<Void, Error> {
+    func execute(userId: String, fields: [String: Any]) -> AnyPublisher<Void, Error> {
         return userRepo.update(id: userId, fields: fields)
     }
 }

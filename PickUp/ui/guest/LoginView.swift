@@ -95,6 +95,7 @@ extension LoginView {
         @Published var loading = false
         var cancellables = Set<AnyCancellable>()
         var authRepo: AuthRepo!
+        var observeAuthUseCase = ObserveAuthState.shared
         
         init(authRepo: AuthRepo = RepoFactory.getAuthRepo()) {
             self.authRepo = authRepo
@@ -126,7 +127,7 @@ extension LoginView {
                     case .failure(_):
                         self.errorMessage = "Error occurred"
                     case .finished:
-                        ()
+                        self.observeAuthUseCase.refreshUser()
                     }
                 }, receiveValue: {userId in
                     ()

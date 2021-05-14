@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		1A03F99D263F473000C2E2CD /* PastPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A03F99C263F473000C2E2CD /* PastPickupView.swift */; };
 		1A03F99F263F482F00C2E2CD /* UpcomingPickupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A03F99E263F482F00C2E2CD /* UpcomingPickupsView.swift */; };
-		1AB44ED72643963E00568ECB /* CreateBasketballEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB44ED62643963D00568ECB /* CreateBasketballEventView.swift */; };
-		1AB44ED92643964F00568ECB /* CreateTennisEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB44ED82643964F00568ECB /* CreateTennisEventView.swift */; };
 		1AB44EDB26439DB300568ECB /* TypingBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB44EDA26439DB300568ECB /* TypingBlockView.swift */; };
 		1ADE7E2E264C479C0097138F /* TennisPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E2D264C479C0097138F /* TennisPickupView.swift */; };
 		1ADE7E30264C47C70097138F /* BasketballPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E2F264C47C70097138F /* BasketballPickupView.swift */; };
@@ -20,56 +18,23 @@
 		8D09E70B2623E16E0007B871 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E70A2623E16E0007B871 /* ProfileView.swift */; };
 		8D2094A1263C6F43009B1609 /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */; };
 		8D2094A8263C7849009B1609 /* IUpdateProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2094A7263C7849009B1609 /* IUpdateProfileUseCase.swift */; };
-		8D2094A9263C7849009B1609 /* IUpdateProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2094A7263C7849009B1609 /* IUpdateProfileUseCase.swift */; };
-		8D2094AA263C7849009B1609 /* IUpdateProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2094A7263C7849009B1609 /* IUpdateProfileUseCase.swift */; };
 		8D2A3EF3261EC3E100521A6A /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2A3EF2261EC3E100521A6A /* SignUp.swift */; };
 		8D2B0C4A263817680032AE67 /* IUpdateProfilePicByImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B0C49263817680032AE67 /* IUpdateProfilePicByImage.swift */; };
 		8D2B0C50263819060032AE67 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B0C4F263819060032AE67 /* ImagePicker.swift */; };
-		8D2B0C572638190C0032AE67 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B0C4F263819060032AE67 /* ImagePicker.swift */; };
-		8D2B0C5B2638190D0032AE67 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B0C4F263819060032AE67 /* ImagePicker.swift */; };
 		8D30B108263E2146002B4C62 /* ProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D30B107263E2146002B4C62 /* ProfilePicture.swift */; };
 		8D30B110263E232C002B4C62 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D30B10F263E232C002B4C62 /* ProfileHeaderView.swift */; };
 		8D3694E5262B52490062DD0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3694E4262B52490062DD0C /* User.swift */; };
-		8D3694E6262B52490062DD0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3694E4262B52490062DD0C /* User.swift */; };
-		8D3694E7262B52490062DD0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3694E4262B52490062DD0C /* User.swift */; };
 		8D3695E2262B8CB10062DD0C /* IStorageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3695E1262B8CB10062DD0C /* IStorageSource.swift */; };
-		8D3695E3262B8CB10062DD0C /* IStorageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3695E1262B8CB10062DD0C /* IStorageSource.swift */; };
-		8D3695E4262B8CB10062DD0C /* IStorageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3695E1262B8CB10062DD0C /* IStorageSource.swift */; };
 		8D3695EA262B8D520062DD0C /* IDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3695E9262B8D520062DD0C /* IDao.swift */; };
-		8D3695EB262B8D520062DD0C /* IDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3695E9262B8D520062DD0C /* IDao.swift */; };
-		8D3695EC262B8D520062DD0C /* IDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3695E9262B8D520062DD0C /* IDao.swift */; };
 		8D369617262BA3EC0062DD0C /* IUrlSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D369616262BA3EC0062DD0C /* IUrlSource.swift */; };
-		8D369618262BA3EC0062DD0C /* IUrlSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D369616262BA3EC0062DD0C /* IUrlSource.swift */; };
-		8D369619262BA3EC0062DD0C /* IUrlSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D369616262BA3EC0062DD0C /* IUrlSource.swift */; };
 		8D36962F262BF5DD0062DD0C /* IFileRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36962E262BF5DD0062DD0C /* IFileRepo.swift */; };
-		8D369630262BF5DD0062DD0C /* IFileRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36962E262BF5DD0062DD0C /* IFileRepo.swift */; };
-		8D369631262BF5DD0062DD0C /* IFileRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36962E262BF5DD0062DD0C /* IFileRepo.swift */; };
 		8D36963A262BF6820062DD0C /* FileRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D369639262BF6820062DD0C /* FileRepo.swift */; };
-		8D36963B262BF6820062DD0C /* FileRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D369639262BF6820062DD0C /* FileRepo.swift */; };
-		8D36963C262BF6820062DD0C /* FileRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D369639262BF6820062DD0C /* FileRepo.swift */; };
 		8D36964B262C05560062DD0C /* IUpdateProfilePictureFromExternalUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36964A262C05560062DD0C /* IUpdateProfilePictureFromExternalUrl.swift */; };
-		8D36964C262C05560062DD0C /* IUpdateProfilePictureFromExternalUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36964A262C05560062DD0C /* IUpdateProfilePictureFromExternalUrl.swift */; };
-		8D36964D262C05560062DD0C /* IUpdateProfilePictureFromExternalUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36964A262C05560062DD0C /* IUpdateProfilePictureFromExternalUrl.swift */; };
 		8D36965F262C0A360062DD0C /* IUserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36965E262C0A360062DD0C /* IUserRepo.swift */; };
-		8D369660262C0A360062DD0C /* IUserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36965E262C0A360062DD0C /* IUserRepo.swift */; };
-		8D369661262C0A360062DD0C /* IUserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36965E262C0A360062DD0C /* IUserRepo.swift */; };
-		8D36966C262C12C10062DD0C /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36966B262C12C10062DD0C /* UserRepo.swift */; };
-		8D36966D262C12C10062DD0C /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36966B262C12C10062DD0C /* UserRepo.swift */; };
-		8D36966E262C12C10062DD0C /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36966B262C12C10062DD0C /* UserRepo.swift */; };
 		8D369674262C1B6A0062DD0C /* DataUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D369673262C1B6A0062DD0C /* DataUser.swift */; };
-		8D369676262C1B6A0062DD0C /* DataUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D369673262C1B6A0062DD0C /* DataUser.swift */; };
 		8D36967E262C2AB40062DD0C /* IRegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36967D262C2AB40062DD0C /* IRegisterUseCase.swift */; };
-		8D36967F262C2AB40062DD0C /* IRegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36967D262C2AB40062DD0C /* IRegisterUseCase.swift */; };
 		8D3696DC262C900C0062DD0C /* ObserveAuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3696DB262C900C0062DD0C /* ObserveAuthState.swift */; };
-		8D3696DD262C900C0062DD0C /* ObserveAuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3696DB262C900C0062DD0C /* ObserveAuthState.swift */; };
-		8D3696DE262C900C0062DD0C /* ObserveAuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3696DB262C900C0062DD0C /* ObserveAuthState.swift */; };
 		8D3696EC262CA8D40062DD0C /* DataAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3696EB262CA8D40062DD0C /* DataAuth.swift */; };
-		8D3696ED262CA8D40062DD0C /* DataAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3696EB262CA8D40062DD0C /* DataAuth.swift */; };
-		8D3696EE262CA8D40062DD0C /* DataAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3696EB262CA8D40062DD0C /* DataAuth.swift */; };
-		8D484B07261B687B00814A8F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8726198976004AADED /* ContentView.swift */; };
-		8D484B0B261B687C00814A8F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8726198976004AADED /* ContentView.swift */; };
-		8D484B0F261B688900814A8F /* PickUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8526198976004AADED /* PickUpApp.swift */; };
-		8D484B13261B688900814A8F /* PickUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8526198976004AADED /* PickUpApp.swift */; };
 		8D484B91261B73A200814A8F /* AuthFirebaseDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFF6261A74F7004AADED /* AuthFirebaseDataSourceTest.swift */; };
 		8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8526198976004AADED /* PickUpApp.swift */; };
 		8DB8EF8826198976004AADED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8726198976004AADED /* ContentView.swift */; };
@@ -83,31 +48,26 @@
 		8DB8F009261A8201004AADED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8F007261A8201004AADED /* GoogleService-Info.plist */; };
 		8DB8F00A261A8201004AADED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8F007261A8201004AADED /* GoogleService-Info.plist */; };
 		8DB8F021261A8A45004AADED /* UserDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F020261A8A45004AADED /* UserDao.swift */; };
-		8DB8F022261A8A45004AADED /* UserDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F020261A8A45004AADED /* UserDao.swift */; };
-		8DB8F023261A8A45004AADED /* UserDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F020261A8A45004AADED /* UserDao.swift */; };
-		8DB8F047261AAD58004AADED /* AuthFirebaseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFDC261A6BEB004AADED /* AuthFirebaseDataSource.swift */; };
-		8DB8F04B261AAD58004AADED /* AuthFirebaseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFDC261A6BEB004AADED /* AuthFirebaseDataSource.swift */; };
-		8DB8F04F261AAD5D004AADED /* AuthRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFB8261989B2004AADED /* AuthRepo.swift */; };
-		8DB8F053261AAD5D004AADED /* AuthRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFB8261989B2004AADED /* AuthRepo.swift */; };
 		8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DB8F059261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DB8F05A261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DB8F06A261AB3E9004AADED /* RepoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F069261AB3E9004AADED /* RepoFactory.swift */; };
-		8DB8F06B261AB3E9004AADED /* RepoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F069261AB3E9004AADED /* RepoFactory.swift */; };
-		8DB8F06C261AB3E9004AADED /* RepoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F069261AB3E9004AADED /* RepoFactory.swift */; };
 		8DFAD531261EBA910055BA76 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAD530261EBA910055BA76 /* LoginView.swift */; };
-		8DFAD532261EBA910055BA76 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAD530261EBA910055BA76 /* LoginView.swift */; };
-		8DFAD533261EBA910055BA76 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAD530261EBA910055BA76 /* LoginView.swift */; };
+		8DFB9988264E2C9F00254C57 /* EventDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */; };
+		8DFB998D264E342800254C57 /* EventLocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB998C264E342800254C57 /* EventLocationPickerView.swift */; };
+		8DFB9995264E464F00254C57 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB9994264E464F00254C57 /* Event.swift */; };
+		8DFB999A264E46B000254C57 /* ICreateEventUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB9999264E46B000254C57 /* ICreateEventUseCase.swift */; };
+		8DFB99A7264ECBE400254C57 /* CreateSportEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB99A6264ECBE400254C57 /* CreateSportEventView.swift */; };
+		8DFCCA82264CEE1000D19210 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCCA81264CEE1000D19210 /* Config.swift */; };
+		8DFCCA89264D218200D19210 /* EventRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCCA88264D218200D19210 /* EventRepo.swift */; };
+		8DFCCA90264D21C300D19210 /* EventDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCCA8F264D21C300D19210 /* EventDto.swift */; };
+		8DFCCB23264D8C1F00D19210 /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCCB22264D8C1E00D19210 /* UserRepo.swift */; };
+		8DFCCB24264D8C1F00D19210 /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCCB22264D8C1E00D19210 /* UserRepo.swift */; };
+		8DFCCB25264D8C1F00D19210 /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCCB22264D8C1E00D19210 /* UserRepo.swift */; };
 		8DFCF504262788A000BBFE66 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF503262788A000BBFE66 /* MainView.swift */; };
 		8DFCF50E262788AF00BBFE66 /* FindTeammatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF50D262788AF00BBFE66 /* FindTeammatesView.swift */; };
-		8DFCF50F262788AF00BBFE66 /* FindTeammatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF50D262788AF00BBFE66 /* FindTeammatesView.swift */; };
-		8DFCF510262788AF00BBFE66 /* FindTeammatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF50D262788AF00BBFE66 /* FindTeammatesView.swift */; };
 		8DFCF518262788BD00BBFE66 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF517262788BD00BBFE66 /* MapView.swift */; };
-		8DFCF519262788BD00BBFE66 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF517262788BD00BBFE66 /* MapView.swift */; };
-		8DFCF51A262788BD00BBFE66 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF517262788BD00BBFE66 /* MapView.swift */; };
 		8DFCF522262788D000BBFE66 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF521262788D000BBFE66 /* CreateEventView.swift */; };
-		8DFCF523262788D000BBFE66 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF521262788D000BBFE66 /* CreateEventView.swift */; };
-		8DFCF524262788D000BBFE66 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF521262788D000BBFE66 /* CreateEventView.swift */; };
 		8DFCF52C262788E100BBFE66 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF52B262788E100BBFE66 /* HomeView.swift */; };
 		9499867C769D5AB3003A2BD4 /* Pods_PickUp_PickUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0E894F9584738F31FCC29B2 /* Pods_PickUp_PickUpUITests.framework */; };
 		A522AC06EBEAAA763B5BF6AE /* (null) in Frameworks */ = {isa = PBXBuildFile; };
@@ -135,8 +95,6 @@
 /* Begin PBXFileReference section */
 		1A03F99C263F473000C2E2CD /* PastPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastPickupView.swift; sourceTree = "<group>"; };
 		1A03F99E263F482F00C2E2CD /* UpcomingPickupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingPickupsView.swift; sourceTree = "<group>"; };
-		1AB44ED62643963D00568ECB /* CreateBasketballEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBasketballEventView.swift; sourceTree = "<group>"; };
-		1AB44ED82643964F00568ECB /* CreateTennisEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTennisEventView.swift; sourceTree = "<group>"; };
 		1AB44EDA26439DB300568ECB /* TypingBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingBlockView.swift; sourceTree = "<group>"; };
 		1ADE7E2D264C479C0097138F /* TennisPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisPickupView.swift; sourceTree = "<group>"; };
 		1ADE7E2F264C47C70097138F /* BasketballPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketballPickupView.swift; sourceTree = "<group>"; };
@@ -161,7 +119,6 @@
 		8D369639262BF6820062DD0C /* FileRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRepo.swift; sourceTree = "<group>"; };
 		8D36964A262C05560062DD0C /* IUpdateProfilePictureFromExternalUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUpdateProfilePictureFromExternalUrl.swift; sourceTree = "<group>"; };
 		8D36965E262C0A360062DD0C /* IUserRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IUserRepo.swift; path = ../../data/repos/IUserRepo.swift; sourceTree = "<group>"; };
-		8D36966B262C12C10062DD0C /* UserRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepo.swift; sourceTree = "<group>"; };
 		8D369673262C1B6A0062DD0C /* DataUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUser.swift; sourceTree = "<group>"; };
 		8D36967D262C2AB40062DD0C /* IRegisterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRegisterUseCase.swift; sourceTree = "<group>"; };
 		8D3696DB262C900C0062DD0C /* ObserveAuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserveAuthState.swift; sourceTree = "<group>"; };
@@ -186,6 +143,15 @@
 		8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpAppDelegate.swift; sourceTree = "<group>"; };
 		8DB8F069261AB3E9004AADED /* RepoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoFactory.swift; sourceTree = "<group>"; };
 		8DFAD530261EBA910055BA76 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDatePickerView.swift; sourceTree = "<group>"; };
+		8DFB998C264E342800254C57 /* EventLocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationPickerView.swift; sourceTree = "<group>"; };
+		8DFB9994264E464F00254C57 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		8DFB9999264E46B000254C57 /* ICreateEventUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICreateEventUseCase.swift; sourceTree = "<group>"; };
+		8DFB99A6264ECBE400254C57 /* CreateSportEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSportEventView.swift; sourceTree = "<group>"; };
+		8DFCCA81264CEE1000D19210 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		8DFCCA88264D218200D19210 /* EventRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepo.swift; sourceTree = "<group>"; };
+		8DFCCA8F264D21C300D19210 /* EventDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDto.swift; sourceTree = "<group>"; };
+		8DFCCB22264D8C1E00D19210 /* UserRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepo.swift; sourceTree = "<group>"; };
 		8DFCF503262788A000BBFE66 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8DFCF50D262788AF00BBFE66 /* FindTeammatesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTeammatesView.swift; sourceTree = "<group>"; };
 		8DFCF517262788BD00BBFE66 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -291,6 +257,7 @@
 				8D369649262C05360062DD0C /* usecases */,
 				8D36962D262BF5A20062DD0C /* repos */,
 				8D3694E4262B52490062DD0C /* User.swift */,
+				8DFB9994264E464F00254C57 /* Event.swift */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -308,7 +275,8 @@
 			isa = PBXGroup;
 			children = (
 				8D369639262BF6820062DD0C /* FileRepo.swift */,
-				8D36966B262C12C10062DD0C /* UserRepo.swift */,
+				8DFCCA88264D218200D19210 /* EventRepo.swift */,
+				8DFCCB22264D8C1E00D19210 /* UserRepo.swift */,
 			);
 			path = repos;
 			sourceTree = "<group>";
@@ -321,6 +289,7 @@
 				8D3696DB262C900C0062DD0C /* ObserveAuthState.swift */,
 				8D2B0C49263817680032AE67 /* IUpdateProfilePicByImage.swift */,
 				8D2094A7263C7849009B1609 /* IUpdateProfileUseCase.swift */,
+				8DFB9999264E46B000254C57 /* ICreateEventUseCase.swift */,
 			);
 			path = usecases;
 			sourceTree = "<group>";
@@ -330,6 +299,7 @@
 			children = (
 				8D369673262C1B6A0062DD0C /* DataUser.swift */,
 				8D3696EB262CA8D40062DD0C /* DataAuth.swift */,
+				8DFCCA8F264D21C300D19210 /* EventDto.swift */,
 			);
 			path = dataEntities;
 			sourceTree = "<group>";
@@ -338,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				8DB8F069261AB3E9004AADED /* RepoFactory.swift */,
+				8DFCCA81264CEE1000D19210 /* Config.swift */,
 			);
 			path = di;
 			sourceTree = "<group>";
@@ -464,14 +435,23 @@
 			path = daos;
 			sourceTree = "<group>";
 		};
+		8DFCCB2F264D9DB400D19210 /* Inputs */ = {
+			isa = PBXGroup;
+			children = (
+				8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */,
+				1AB44EDA26439DB300568ECB /* TypingBlockView.swift */,
+				8DFB998C264E342800254C57 /* EventLocationPickerView.swift */,
+			);
+			path = Inputs;
+			sourceTree = "<group>";
+		};
 		C0D471652640975200E7B6C7 /* EventView */ = {
 			isa = PBXGroup;
 			children = (
+				8DFCCB2F264D9DB400D19210 /* Inputs */,
 				8DFCF521262788D000BBFE66 /* CreateEventView.swift */,
+				8DFB99A6264ECBE400254C57 /* CreateSportEventView.swift */,
 				C0D4716B264098BF00E7B6C7 /* CreateEventView.xib */,
-				1AB44ED62643963D00568ECB /* CreateBasketballEventView.swift */,
-				1AB44ED82643964F00568ECB /* CreateTennisEventView.swift */,
-				1AB44EDA26439DB300568ECB /* TypingBlockView.swift */,
 			);
 			path = EventView;
 			sourceTree = "<group>";
@@ -719,6 +699,8 @@
 			files = (
 				8DFAD531261EBA910055BA76 /* LoginView.swift in Sources */,
 				8D36965F262C0A360062DD0C /* IUserRepo.swift in Sources */,
+				8DFCCA82264CEE1000D19210 /* Config.swift in Sources */,
+				8DFB99A7264ECBE400254C57 /* CreateSportEventView.swift in Sources */,
 				8D3695EA262B8D520062DD0C /* IDao.swift in Sources */,
 				8D3696EC262CA8D40062DD0C /* DataAuth.swift in Sources */,
 				8D2B0C50263819060032AE67 /* ImagePicker.swift in Sources */,
@@ -729,8 +711,9 @@
 				8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
 				8D36963A262BF6820062DD0C /* FileRepo.swift in Sources */,
 				8DB8F021261A8A45004AADED /* UserDao.swift in Sources */,
+				8DFCCA90264D21C300D19210 /* EventDto.swift in Sources */,
+				8DFB999A264E46B000254C57 /* ICreateEventUseCase.swift in Sources */,
 				8DB8EF8826198976004AADED /* ContentView.swift in Sources */,
-				1AB44ED92643964F00568ECB /* CreateTennisEventView.swift in Sources */,
 				1ADE7E36264C50E90097138F /* CourtsNearMeView.swift in Sources */,
 				8DB8EFB9261989B2004AADED /* AuthRepo.swift in Sources */,
 				8D2094A1263C6F43009B1609 /* ProfileSettingsView.swift in Sources */,
@@ -744,22 +727,25 @@
 				8D30B108263E2146002B4C62 /* ProfilePicture.swift in Sources */,
 				8DB8EFDD261A6BEB004AADED /* AuthFirebaseDataSource.swift in Sources */,
 				1ADE7E34264C48060097138F /* SocialView.swift in Sources */,
-				1AB44ED72643963E00568ECB /* CreateBasketballEventView.swift in Sources */,
 				8D30B110263E232C002B4C62 /* ProfileHeaderView.swift in Sources */,
 				1ADE7E30264C47C70097138F /* BasketballPickupView.swift in Sources */,
 				8D369674262C1B6A0062DD0C /* DataUser.swift in Sources */,
 				8DFCF52C262788E100BBFE66 /* HomeView.swift in Sources */,
+				8DFB9988264E2C9F00254C57 /* EventDatePickerView.swift in Sources */,
 				8D3696DC262C900C0062DD0C /* ObserveAuthState.swift in Sources */,
 				8D2B0C4A263817680032AE67 /* IUpdateProfilePicByImage.swift in Sources */,
 				8D369617262BA3EC0062DD0C /* IUrlSource.swift in Sources */,
-				8D36966C262C12C10062DD0C /* UserRepo.swift in Sources */,
 				8DFCF518262788BD00BBFE66 /* MapView.swift in Sources */,
 				8D2A3EF3261EC3E100521A6A /* SignUp.swift in Sources */,
+				8DFB9995264E464F00254C57 /* Event.swift in Sources */,
 				8D2094A8263C7849009B1609 /* IUpdateProfileUseCase.swift in Sources */,
 				8DFCF522262788D000BBFE66 /* CreateEventView.swift in Sources */,
+				8DFCCA89264D218200D19210 /* EventRepo.swift in Sources */,
 				8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */,
 				8DFCF50E262788AF00BBFE66 /* FindTeammatesView.swift in Sources */,
+				8DFB998D264E342800254C57 /* EventLocationPickerView.swift in Sources */,
 				1AB44EDB26439DB300568ECB /* TypingBlockView.swift in Sources */,
+				8DFCCB23264D8C1F00D19210 /* UserRepo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,33 +753,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DFCCB24264D8C1F00D19210 /* UserRepo.swift in Sources */,
 				8DB8F059261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
-				8D369660262C0A360062DD0C /* IUserRepo.swift in Sources */,
-				8D3695EB262B8D520062DD0C /* IDao.swift in Sources */,
-				8D3696ED262CA8D40062DD0C /* DataAuth.swift in Sources */,
-				8D3695E3262B8CB10062DD0C /* IStorageSource.swift in Sources */,
-				8D484B07261B687B00814A8F /* ContentView.swift in Sources */,
-				8DB8F022261A8A45004AADED /* UserDao.swift in Sources */,
-				8D36963B262BF6820062DD0C /* FileRepo.swift in Sources */,
-				8DB8F053261AAD5D004AADED /* AuthRepo.swift in Sources */,
 				8D484B91261B73A200814A8F /* AuthFirebaseDataSourceTest.swift in Sources */,
-				8DB8F06B261AB3E9004AADED /* RepoFactory.swift in Sources */,
-				8D36967F262C2AB40062DD0C /* IRegisterUseCase.swift in Sources */,
-				8D3694E6262B52490062DD0C /* User.swift in Sources */,
-				8D369630262BF5DD0062DD0C /* IFileRepo.swift in Sources */,
-				8D36964C262C05560062DD0C /* IUpdateProfilePictureFromExternalUrl.swift in Sources */,
-				8DFCF519262788BD00BBFE66 /* MapView.swift in Sources */,
-				8DB8F04B261AAD58004AADED /* AuthFirebaseDataSource.swift in Sources */,
 				8DB8EF9826198979004AADED /* PickUpTests.swift in Sources */,
-				8D2B0C572638190C0032AE67 /* ImagePicker.swift in Sources */,
-				8DFAD532261EBA910055BA76 /* LoginView.swift in Sources */,
-				8D3696DD262C900C0062DD0C /* ObserveAuthState.swift in Sources */,
-				8D369618262BA3EC0062DD0C /* IUrlSource.swift in Sources */,
-				8D2094A9263C7849009B1609 /* IUpdateProfileUseCase.swift in Sources */,
-				8D36966D262C12C10062DD0C /* UserRepo.swift in Sources */,
-				8DFCF523262788D000BBFE66 /* CreateEventView.swift in Sources */,
-				8D484B0F261B688900814A8F /* PickUpApp.swift in Sources */,
-				8DFCF50F262788AF00BBFE66 /* FindTeammatesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -801,32 +764,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D369661262C0A360062DD0C /* IUserRepo.swift in Sources */,
-				8D369619262BA3EC0062DD0C /* IUrlSource.swift in Sources */,
-				8D369631262BF5DD0062DD0C /* IFileRepo.swift in Sources */,
-				8D3695E4262B8CB10062DD0C /* IStorageSource.swift in Sources */,
-				8DFAD533261EBA910055BA76 /* LoginView.swift in Sources */,
-				8D36964D262C05560062DD0C /* IUpdateProfilePictureFromExternalUrl.swift in Sources */,
-				8DFCF51A262788BD00BBFE66 /* MapView.swift in Sources */,
-				8D3695EC262B8D520062DD0C /* IDao.swift in Sources */,
-				8D3696DE262C900C0062DD0C /* ObserveAuthState.swift in Sources */,
-				8D2094AA263C7849009B1609 /* IUpdateProfileUseCase.swift in Sources */,
-				8D369676262C1B6A0062DD0C /* DataUser.swift in Sources */,
-				8D3694E7262B52490062DD0C /* User.swift in Sources */,
-				8D484B0B261B687C00814A8F /* ContentView.swift in Sources */,
-				8DB8F047261AAD58004AADED /* AuthFirebaseDataSource.swift in Sources */,
 				8DB8F05A261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
-				8D36963C262BF6820062DD0C /* FileRepo.swift in Sources */,
-				8D3696EE262CA8D40062DD0C /* DataAuth.swift in Sources */,
-				8DB8F04F261AAD5D004AADED /* AuthRepo.swift in Sources */,
 				8DB8EFA326198979004AADED /* PickUpUITests.swift in Sources */,
-				8D36966E262C12C10062DD0C /* UserRepo.swift in Sources */,
-				8DB8F023261A8A45004AADED /* UserDao.swift in Sources */,
-				8DFCF510262788AF00BBFE66 /* FindTeammatesView.swift in Sources */,
-				8D2B0C5B2638190D0032AE67 /* ImagePicker.swift in Sources */,
-				8DB8F06C261AB3E9004AADED /* RepoFactory.swift in Sources */,
-				8D484B13261B688900814A8F /* PickUpApp.swift in Sources */,
-				8DFCF524262788D000BBFE66 /* CreateEventView.swift in Sources */,
+				8DFCCB25264D8C1F00D19210 /* UserRepo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
