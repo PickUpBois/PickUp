@@ -14,7 +14,6 @@ struct TennisPickupView: View {
     var body: some View {
         ScrollView{
         VStack{
-            Spacer()
                 HStack{
                     Text("Singles")
                         .fontWeight(.heavy)
@@ -40,14 +39,13 @@ struct TennisPickupView: View {
                                 .lineLimit(1)
                         }
 
-        }.frame(width: 175, height: 80, alignment: .center)
+        }.frame(width: 175, height: 60, alignment: .center)
                             .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                             .cornerRadius(8)
         
                 Spacer().frame(height: 25)
             
             VStack{
-                Spacer()
                     HStack{
                         Text("Doubles")
                             .fontWeight(.heavy)
@@ -75,13 +73,12 @@ struct TennisPickupView: View {
 
 
                                     }
-            }.frame(width: 175, alignment: .center)
+            }.frame(width: 175, height: 60, alignment: .center)
             .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                                 .cornerRadius(8)
             
                     Spacer().frame(height: 25)
             VStack{
-                Spacer()
                     HStack{
                         Text("Doubles")
                             .fontWeight(.heavy)
@@ -109,13 +106,12 @@ struct TennisPickupView: View {
 
 
                                     }
-            }.frame(width: 175, alignment: .center)
+            }.frame(width: 175, height: 60, alignment: .center)
                                 .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                                 .cornerRadius(8)
             
                     Spacer().frame(height: 25)
             VStack{
-                Spacer()
                     HStack{
                         Text("Singles")
                             .fontWeight(.heavy)
@@ -143,7 +139,7 @@ struct TennisPickupView: View {
 
 
                                     }
-            }.frame(width: 175, alignment: .center)
+            }.frame(width: 175, height: 60, alignment: .center)
                                 .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                                 .cornerRadius(8)
             
