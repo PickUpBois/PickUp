@@ -34,13 +34,13 @@
 		8D3696DC262C900C0062DD0C /* ObserveAuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3696DB262C900C0062DD0C /* ObserveAuthState.swift */; };
 		8D3696EC262CA8D40062DD0C /* DataAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3696EB262CA8D40062DD0C /* DataAuth.swift */; };
 		8D484B91261B73A200814A8F /* AuthFirebaseDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFF6261A74F7004AADED /* AuthFirebaseDataSourceTest.swift */; };
-		8D5EE00A26528A9900EE7840 /* ProfileUpcomingEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE00926528A9900EE7840 /* ProfileUpcomingEventView.swift */; };
-		8D5EE0122652972400EE7840 /* ProfilePastEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE0112652972400EE7840 /* ProfilePastEventView.swift */; };
 		8D5EE01726529AC700EE7840 /* IGetEventsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE01626529AC700EE7840 /* IGetEventsUseCase.swift */; };
 		8D5EE0242652D1A400EE7840 /* PickUpListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE0232652D1A400EE7840 /* PickUpListView.swift */; };
 		8D5EE0292652D2CD00EE7840 /* PickUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE0282652D2CD00EE7840 /* PickUpView.swift */; };
 		8D5EE02F2652D58300EE7840 /* CourtsNearMeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE02E2652D58300EE7840 /* CourtsNearMeListView.swift */; };
 		8D5EE0372652D6AF00EE7840 /* PickUpTabListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE0362652D6AF00EE7840 /* PickUpTabListView.swift */; };
+		8D5EE07226531C4800EE7840 /* ProfileUpcomingEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE07126531C4800EE7840 /* ProfileUpcomingEventView.swift */; };
+		8D5EE07A26531EC200EE7840 /* ProfilePastEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE07926531EC200EE7840 /* ProfilePastEventView.swift */; };
 		8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8526198976004AADED /* PickUpApp.swift */; };
 		8DB8EF8826198976004AADED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8726198976004AADED /* ContentView.swift */; };
 		8DB8EF8A26198979004AADED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8926198979004AADED /* Assets.xcassets */; };
@@ -131,14 +131,14 @@
 		8D3696EB262CA8D40062DD0C /* DataAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAuth.swift; sourceTree = "<group>"; };
 		8D5EDFF526520C8300EE7840 /* CreateEventMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CreateEventMutation.graphql; sourceTree = "<group>"; };
 		8D5EE002265280E100EE7840 /* GetUserEventsQuery.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetUserEventsQuery.graphql; sourceTree = "<group>"; };
-		8D5EE00926528A9900EE7840 /* ProfileUpcomingEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpcomingEventView.swift; sourceTree = "<group>"; };
-		8D5EE0112652972400EE7840 /* ProfilePastEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePastEventView.swift; sourceTree = "<group>"; };
 		8D5EE01626529AC700EE7840 /* IGetEventsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGetEventsUseCase.swift; sourceTree = "<group>"; };
 		8D5EE0232652D1A400EE7840 /* PickUpListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpListView.swift; sourceTree = "<group>"; };
 		8D5EE0282652D2CD00EE7840 /* PickUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpView.swift; sourceTree = "<group>"; };
 		8D5EE02E2652D58300EE7840 /* CourtsNearMeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtsNearMeListView.swift; sourceTree = "<group>"; };
 		8D5EE0362652D6AF00EE7840 /* PickUpTabListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpTabListView.swift; sourceTree = "<group>"; };
 		8D5EE0572652E09300EE7840 /* QueryEventsQuery.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = QueryEventsQuery.graphql; sourceTree = "<group>"; };
+		8D5EE07126531C4800EE7840 /* ProfileUpcomingEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpcomingEventView.swift; sourceTree = "<group>"; };
+		8D5EE07926531EC200EE7840 /* ProfilePastEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePastEventView.swift; sourceTree = "<group>"; };
 		8DB8EF8226198976004AADED /* PickUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DB8EF8526198976004AADED /* PickUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpApp.swift; sourceTree = "<group>"; };
 		8DB8EF8726198976004AADED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -268,8 +268,8 @@
 				8D30B10F263E232C002B4C62 /* ProfileHeaderView.swift */,
 				1A03F99C263F473000C2E2CD /* PastPickupView.swift */,
 				1A03F99E263F482F00C2E2CD /* UpcomingPickupsView.swift */,
-				8D5EE00926528A9900EE7840 /* ProfileUpcomingEventView.swift */,
-				8D5EE0112652972400EE7840 /* ProfilePastEventView.swift */,
+				8D5EE07126531C4800EE7840 /* ProfileUpcomingEventView.swift */,
+				8D5EE07926531EC200EE7840 /* ProfilePastEventView.swift */,
 			);
 			path = ProfileView;
 			sourceTree = "<group>";
@@ -799,6 +799,7 @@
 				8DFB99A7264ECBE400254C57 /* CreateSportEventView.swift in Sources */,
 				8D3695EA262B8D520062DD0C /* IDao.swift in Sources */,
 				8D3696EC262CA8D40062DD0C /* DataAuth.swift in Sources */,
+				8D5EE07226531C4800EE7840 /* ProfileUpcomingEventView.swift in Sources */,
 				8D2B0C50263819060032AE67 /* ImagePicker.swift in Sources */,
 				8D3695E2262B8CB10062DD0C /* IStorageSource.swift in Sources */,
 				1A03F99D263F473000C2E2CD /* PastPickupView.swift in Sources */,
@@ -833,7 +834,6 @@
 				8D3696DC262C900C0062DD0C /* ObserveAuthState.swift in Sources */,
 				8D2B0C4A263817680032AE67 /* IUpdateProfilePicByImage.swift in Sources */,
 				8D369617262BA3EC0062DD0C /* IUrlSource.swift in Sources */,
-				8D5EE00A26528A9900EE7840 /* ProfileUpcomingEventView.swift in Sources */,
 				8DFCF518262788BD00BBFE66 /* MapView.swift in Sources */,
 				8D5EE0242652D1A400EE7840 /* PickUpListView.swift in Sources */,
 				8D2A3EF3261EC3E100521A6A /* SignUp.swift in Sources */,
@@ -844,7 +844,7 @@
 				8DFB9A4E2650A65800254C57 /* Network.swift in Sources */,
 				8DFCCA89264D218200D19210 /* EventRepo.swift in Sources */,
 				8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */,
-				8D5EE0122652972400EE7840 /* ProfilePastEventView.swift in Sources */,
+				8D5EE07A26531EC200EE7840 /* ProfilePastEventView.swift in Sources */,
 				8DFCF50E262788AF00BBFE66 /* FindTeammatesView.swift in Sources */,
 				8DFB998D264E342800254C57 /* EventLocationPickerView.swift in Sources */,
 				1AB44EDB26439DB300568ECB /* TypingBlockView.swift in Sources */,

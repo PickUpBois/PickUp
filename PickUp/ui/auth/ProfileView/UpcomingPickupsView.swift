@@ -16,7 +16,7 @@ struct UpcomingPickupsView: View {
         ScrollView {
             ForEach(self.viewModel.events, id: \.self.id) { event in
                 Spacer().frame(height: 15)
-                ProfileUpcomingEventView(viewModel: ProfileUpcomingEventView.ViewModel(event: event))
+                ProfileUpcomingEventView(viewModel: ProfileUpcomingEventViewModel(event: event))
             }
         }
         

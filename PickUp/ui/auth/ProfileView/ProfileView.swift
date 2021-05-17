@@ -211,6 +211,7 @@ class ProfileViewModel: IProfileViewModel {
                 }
             }, receiveValue: { events in
                 self.upcomingEvents = events
+                print(events)
             }).store(in: &self.cancellables)
     }
 }
