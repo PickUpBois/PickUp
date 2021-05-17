@@ -31,14 +31,14 @@ struct MainView: View {
                 
                 }
             
-            HomeView()
+            HomeView(viewModel: HomeViewModel())
                 .tabItem {
                    Image(systemName: "house.fill")
                     Text("Home")
     
                 }
             
-            ProfileView()
+            ProfileView(viewModel: ProfileViewModel())
                 .tabItem {
                    Image(systemName: "person.fill")
                     Text("Profile")

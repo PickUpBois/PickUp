@@ -1,0 +1,20 @@
+query GetUserEvents($userId: String!, $status: EventStatus!) {
+  userEvents(userId: $userId, status: $status) {
+    id,
+    name,
+    info,
+    startDate,
+    endDate,
+    capacity,
+    type,
+    status,
+    attendees {
+      id,
+      firstName,
+      lastName,
+      username,
+      photoUrl,
+      college,
+    }
+  }
+}

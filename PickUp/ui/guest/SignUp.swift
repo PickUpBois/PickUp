@@ -145,11 +145,10 @@ extension SignUpView {
                         self.errorMessage = "Error occurred"
                     case .finished:
                         print("SignUpViewModel SUCCESS")
-                        self.observeAuthUseCase.refreshUser()
                     }
                 }, receiveValue: {uid in
                     print("SUCCESS: \(uid)")
-//                    self.observeAuthUseCase.refreshUser()
+                    self.observeAuthUseCase.refreshUser()
                 }).store(in: &cancellables)
         }
     }
