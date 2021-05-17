@@ -6,16 +6,15 @@
 //
 
 import Foundation
-
-struct CreateEventDto {
-    let name: String
-    let info: String
-    let startDate: Date
-    let locationId: String
-    let capacity: Int
-    let eventType: EventType
-}
+import Combine
 
 protocol ICreateEventUseCase {
-    func execute(item: CreateEventDto)
+    func execute(item: CreateEventInput) -> AnyPublisher<Void, Error>
+}
+
+struct CreateEventUseCase: ICreateEventUseCase {
+    let eventRepo: IEventRepo = RepoFactory.getEventRepo()
+    func execute(item: CreateEventInput) -> AnyPublisher<Void, Error> {
+        return eventRepo.create(event: item)
+    }
 }

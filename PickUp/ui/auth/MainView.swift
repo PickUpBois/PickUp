@@ -38,7 +38,7 @@ struct MainView: View {
     
                 }
             
-            ProfileView()
+            ProfileView(viewModel: ProfileViewModel())
                 .tabItem {
                    Image(systemName: "person.fill")
                     Text("Profile")

@@ -10,8 +10,6 @@
 		1A03F99D263F473000C2E2CD /* PastPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A03F99C263F473000C2E2CD /* PastPickupView.swift */; };
 		1A03F99F263F482F00C2E2CD /* UpcomingPickupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A03F99E263F482F00C2E2CD /* UpcomingPickupsView.swift */; };
 		1AB44EDB26439DB300568ECB /* TypingBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB44EDA26439DB300568ECB /* TypingBlockView.swift */; };
-		1ADE7E2E264C479C0097138F /* TennisPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E2D264C479C0097138F /* TennisPickupView.swift */; };
-		1ADE7E30264C47C70097138F /* BasketballPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E2F264C47C70097138F /* BasketballPickupView.swift */; };
 		1ADE7E34264C48060097138F /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E33264C48060097138F /* SocialView.swift */; };
 		1ADE7E36264C50E90097138F /* CourtsNearMeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E35264C50E90097138F /* CourtsNearMeView.swift */; };
 		1F30A886AE165751D712C11B /* Pods_PickUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D2DCFAB236044BB62AF4D7 /* Pods_PickUp.framework */; };
@@ -39,6 +37,10 @@
 		8D5EE00A26528A9900EE7840 /* ProfileUpcomingEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE00926528A9900EE7840 /* ProfileUpcomingEventView.swift */; };
 		8D5EE0122652972400EE7840 /* ProfilePastEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE0112652972400EE7840 /* ProfilePastEventView.swift */; };
 		8D5EE01726529AC700EE7840 /* IGetEventsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE01626529AC700EE7840 /* IGetEventsUseCase.swift */; };
+		8D5EE0242652D1A400EE7840 /* PickUpListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE0232652D1A400EE7840 /* PickUpListView.swift */; };
+		8D5EE0292652D2CD00EE7840 /* PickUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE0282652D2CD00EE7840 /* PickUpView.swift */; };
+		8D5EE02F2652D58300EE7840 /* CourtsNearMeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE02E2652D58300EE7840 /* CourtsNearMeListView.swift */; };
+		8D5EE0372652D6AF00EE7840 /* PickUpTabListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE0362652D6AF00EE7840 /* PickUpTabListView.swift */; };
 		8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8526198976004AADED /* PickUpApp.swift */; };
 		8DB8EF8826198976004AADED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8726198976004AADED /* ContentView.swift */; };
 		8DB8EF8A26198979004AADED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8926198979004AADED /* Assets.xcassets */; };
@@ -102,8 +104,6 @@
 		1A03F99C263F473000C2E2CD /* PastPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastPickupView.swift; sourceTree = "<group>"; };
 		1A03F99E263F482F00C2E2CD /* UpcomingPickupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingPickupsView.swift; sourceTree = "<group>"; };
 		1AB44EDA26439DB300568ECB /* TypingBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingBlockView.swift; sourceTree = "<group>"; };
-		1ADE7E2D264C479C0097138F /* TennisPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisPickupView.swift; sourceTree = "<group>"; };
-		1ADE7E2F264C47C70097138F /* BasketballPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketballPickupView.swift; sourceTree = "<group>"; };
 		1ADE7E33264C48060097138F /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
 		1ADE7E35264C50E90097138F /* CourtsNearMeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtsNearMeView.swift; sourceTree = "<group>"; };
 		3D2413990659958D11A4B251 /* Pods-PickUp-PickUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp-PickUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-PickUp-PickUpUITests/Pods-PickUp-PickUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +134,11 @@
 		8D5EE00926528A9900EE7840 /* ProfileUpcomingEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpcomingEventView.swift; sourceTree = "<group>"; };
 		8D5EE0112652972400EE7840 /* ProfilePastEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePastEventView.swift; sourceTree = "<group>"; };
 		8D5EE01626529AC700EE7840 /* IGetEventsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGetEventsUseCase.swift; sourceTree = "<group>"; };
+		8D5EE0232652D1A400EE7840 /* PickUpListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpListView.swift; sourceTree = "<group>"; };
+		8D5EE0282652D2CD00EE7840 /* PickUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpView.swift; sourceTree = "<group>"; };
+		8D5EE02E2652D58300EE7840 /* CourtsNearMeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtsNearMeListView.swift; sourceTree = "<group>"; };
+		8D5EE0362652D6AF00EE7840 /* PickUpTabListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpTabListView.swift; sourceTree = "<group>"; };
+		8D5EE0572652E09300EE7840 /* QueryEventsQuery.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = QueryEventsQuery.graphql; sourceTree = "<group>"; };
 		8DB8EF8226198976004AADED /* PickUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DB8EF8526198976004AADED /* PickUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpApp.swift; sourceTree = "<group>"; };
 		8DB8EF8726198976004AADED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -215,11 +220,10 @@
 		1ADE7E28264AF7B30097138F /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				8D5EE0402652D96B00EE7840 /* CourtsNearMe */,
+				8D5EE03F2652D95E00EE7840 /* SocialFeed */,
+				8D5EE03E2652D94A00EE7840 /* UpcomingPickUps */,
 				8DFCF52B262788E100BBFE66 /* HomeView.swift */,
-				1ADE7E2D264C479C0097138F /* TennisPickupView.swift */,
-				1ADE7E2F264C47C70097138F /* BasketballPickupView.swift */,
-				1ADE7E33264C48060097138F /* SocialView.swift */,
-				1ADE7E35264C50E90097138F /* CourtsNearMeView.swift */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";
@@ -356,6 +360,33 @@
 			path = guest;
 			sourceTree = "<group>";
 		};
+		8D5EE03E2652D94A00EE7840 /* UpcomingPickUps */ = {
+			isa = PBXGroup;
+			children = (
+				8D5EE0362652D6AF00EE7840 /* PickUpTabListView.swift */,
+				8D5EE0282652D2CD00EE7840 /* PickUpView.swift */,
+				8D5EE0232652D1A400EE7840 /* PickUpListView.swift */,
+			);
+			path = UpcomingPickUps;
+			sourceTree = "<group>";
+		};
+		8D5EE03F2652D95E00EE7840 /* SocialFeed */ = {
+			isa = PBXGroup;
+			children = (
+				1ADE7E33264C48060097138F /* SocialView.swift */,
+			);
+			path = SocialFeed;
+			sourceTree = "<group>";
+		};
+		8D5EE0402652D96B00EE7840 /* CourtsNearMe */ = {
+			isa = PBXGroup;
+			children = (
+				8D5EE02E2652D58300EE7840 /* CourtsNearMeListView.swift */,
+				1ADE7E35264C50E90097138F /* CourtsNearMeView.swift */,
+			);
+			path = CourtsNearMe;
+			sourceTree = "<group>";
+		};
 		8DB8EF7926198976004AADED = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +506,7 @@
 				8DFB9A682650AF0A00254C57 /* UpdateUserMutation.graphql */,
 				8D5EDFF526520C8300EE7840 /* CreateEventMutation.graphql */,
 				8D5EE002265280E100EE7840 /* GetUserEventsQuery.graphql */,
+				8D5EE0572652E09300EE7840 /* QueryEventsQuery.graphql */,
 			);
 			path = graphql;
 			sourceTree = "<group>";
@@ -779,20 +811,20 @@
 				8DFB999A264E46B000254C57 /* ICreateEventUseCase.swift in Sources */,
 				8DB8EF8826198976004AADED /* ContentView.swift in Sources */,
 				1ADE7E36264C50E90097138F /* CourtsNearMeView.swift in Sources */,
+				8D5EE0292652D2CD00EE7840 /* PickUpView.swift in Sources */,
 				8DB8EFB9261989B2004AADED /* AuthRepo.swift in Sources */,
 				8D2094A1263C6F43009B1609 /* ProfileSettingsView.swift in Sources */,
 				8DB8F06A261AB3E9004AADED /* RepoFactory.swift in Sources */,
 				8D36967E262C2AB40062DD0C /* IRegisterUseCase.swift in Sources */,
-				1ADE7E2E264C479C0097138F /* TennisPickupView.swift in Sources */,
 				8D3694E5262B52490062DD0C /* User.swift in Sources */,
 				8D36962F262BF5DD0062DD0C /* IFileRepo.swift in Sources */,
 				8D36964B262C05560062DD0C /* IUpdateProfilePictureFromExternalUrl.swift in Sources */,
 				8DFCF504262788A000BBFE66 /* MainView.swift in Sources */,
 				8D30B108263E2146002B4C62 /* ProfilePicture.swift in Sources */,
 				8DB8EFDD261A6BEB004AADED /* AuthFirebaseDataSource.swift in Sources */,
+				8D5EE0372652D6AF00EE7840 /* PickUpTabListView.swift in Sources */,
 				1ADE7E34264C48060097138F /* SocialView.swift in Sources */,
 				8D30B110263E232C002B4C62 /* ProfileHeaderView.swift in Sources */,
-				1ADE7E30264C47C70097138F /* BasketballPickupView.swift in Sources */,
 				8D369674262C1B6A0062DD0C /* DataUser.swift in Sources */,
 				8D5EE01726529AC700EE7840 /* IGetEventsUseCase.swift in Sources */,
 				8DFB9A5B2650AA1C00254C57 /* API.swift in Sources */,
@@ -803,9 +835,11 @@
 				8D369617262BA3EC0062DD0C /* IUrlSource.swift in Sources */,
 				8D5EE00A26528A9900EE7840 /* ProfileUpcomingEventView.swift in Sources */,
 				8DFCF518262788BD00BBFE66 /* MapView.swift in Sources */,
+				8D5EE0242652D1A400EE7840 /* PickUpListView.swift in Sources */,
 				8D2A3EF3261EC3E100521A6A /* SignUp.swift in Sources */,
 				8DFB9995264E464F00254C57 /* Event.swift in Sources */,
 				8D2094A8263C7849009B1609 /* IUpdateProfileUseCase.swift in Sources */,
+				8D5EE02F2652D58300EE7840 /* CourtsNearMeListView.swift in Sources */,
 				8DFCF522262788D000BBFE66 /* CreateEventView.swift in Sources */,
 				8DFB9A4E2650A65800254C57 /* Network.swift in Sources */,
 				8DFCCA89264D218200D19210 /* EventRepo.swift in Sources */,
