@@ -108,6 +108,7 @@ struct ProfileView<Model>: View where Model: IProfileViewModel {
                     ImagePicker(sourceType: .photoLibrary, userId: self.observeAuthUseCase.authUser!.id!)
                 }
             .onAppear { () in
+                print("getting profile events")
                 self.viewModel.getEvents(status: .open)
                 self.viewModel.getEvents(status: .closed)
             }
@@ -171,7 +172,6 @@ class ProfileViewModel: IProfileViewModel {
         self.authRepo = authRepo
         self.updateProfilePicByUrlUseCase = updateProfilePicByUrl
         self.getUserEventsUseCase = getUserEvents
-        
     }
     
     func logout() {

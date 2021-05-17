@@ -38,7 +38,7 @@ class EventApolloRepo: IEventRepo {
     
     func queryEvents(userId: String?, status: EventStatus?, type: EventType?) -> AnyPublisher<[Event], Error> {
         return Future<[Event], Error> { promise in
-            Network.shared.apollo.fetch(query: QueryEventsQuery(userId: userId, type: type, status: status)) { response in
+            Network.shared.apollo.fetch(query: QueryEventsQuery(userId: userId, type: type, status: status), cachePolicy: .fetchIgnoringCacheCompletely) { response in
                 switch response {
                 case .success(let result):
                     if let errors = result.errors {

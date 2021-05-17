@@ -7,7 +7,11 @@
 
 import SwiftUI
 
-struct PickUpListView: View {
+struct PickUpListView<Model>: View where Model: IPickUpListViewModel{
+    var viewModel: Model
+    init(viewModel: Model) {
+        self.viewModel = viewModel
+    }
     var body: some View {
         ScrollView{
             ForEach(1..<4) {_ in
@@ -22,8 +26,21 @@ struct PickUpListView: View {
     }
 }
 
+protocol IPickUpListViewModel: ObservableObject {
+    var events: [Event] { get }
+}
+
+class PickUpListViewModel: IPickUpListViewModel {
+    var events: [Event]
+    init(events: [Event]) {
+        self.events = events
+    }
+}
+
 struct PickUpListView_Previews: PreviewProvider {
+    static let user = User(id: "1", username: "username", firstName: "firstName", lastName: "lastName", photoUrl: nil)
+    static let tennisEvent = Event(id: "2", name: "tennis event", info: "info", startDate: Date(), endDate: nil, capacity: 4, attendees: [user], type: .tennis, status: .open)
     static var previews: some View {
-        PickUpListView()
+        PickUpListView(viewModel: PickUpListViewModel(events: [tennisEvent]))
     }
 }

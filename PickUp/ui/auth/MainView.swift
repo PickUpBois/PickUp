@@ -31,7 +31,7 @@ struct MainView: View {
                 
                 }
             
-            HomeView()
+            HomeView(viewModel: HomeViewModel())
                 .tabItem {
                    Image(systemName: "house.fill")
                     Text("Home")
