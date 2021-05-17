@@ -7,10 +7,9 @@ target 'PickUp' do
 
   # Pods for PickUp
 pod 'Firebase/Auth', '~> 7.10.0'
-pod 'Firebase/Firestore', '~> 7.10.0'
-pod 'FirebaseFirestoreSwift', '~> 7.0-beta'
 pod 'Firebase/Storage', '~> 7.10.0'
 pod 'SDWebImageSwiftUI'
+pod 'Apollo'
 
   target 'PickUpTests' do
     inherit! :search_paths

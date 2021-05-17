@@ -28,13 +28,13 @@ class ObserveAuthState: ObservableObject {
         self.authHandle = authRepo.observeAuthState().sink(receiveValue: {dataAuth in
             if dataAuth != nil {
                 self.dataAuth = dataAuth
-                self.refreshUser()
             } else {
                 self.authUser = nil
                 if self.userHandle != nil {
                     self.userHandle.cancel()
                     self.userHandle = nil
                 }
+                self.dataAuth = nil
                 self.objectWillChange.send()
             }
         })
@@ -43,6 +43,7 @@ class ObserveAuthState: ObservableObject {
     func refreshUser() {
         print("refreshing user")
         if self.dataAuth == nil {
+            print("data auth was nil, returning")
             return
         }
         self.userRepo.get(id: self.dataAuth!.id)
@@ -56,6 +57,7 @@ class ObserveAuthState: ObservableObject {
                 }
             }, receiveValue: { user in
                 self.authUser = user.toUserAuth(email: self.dataAuth!.email, isEmailVerified: self.dataAuth!.isEmailVerified);
+                print(user.firstName)
                 self.objectWillChange.send()
             }).store(in: &self.cancellables)
     }

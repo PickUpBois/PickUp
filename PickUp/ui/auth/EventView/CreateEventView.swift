@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct CreateEventView: View {
     @StateObject var observeAuthUseCase: ObserveAuthState = ObserveAuthState.shared
@@ -48,9 +49,24 @@ struct CreateEventView: View {
 extension CreateEventView {
     class ViewModel: ObservableObject {
         @Published var eventInfo: EventInfo = EventInfo()
+        let createEventUseCase: ICreateEventUseCase = CreateEventUseCase()
+        var observeAuthUseCase: ObserveAuthState = ObserveAuthState.shared
+        var cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
+        
         func createEvent() {
-            let dto = CreateEventDto(name: eventInfo.name, info: eventInfo.info, startDate: eventInfo.startDate, locationId: eventInfo.locationId, capacity: Int(eventInfo.capacity) ?? 0, eventType: eventInfo.eventType)
-            print(dto)
+            self.eventInfo.attendess.append(observeAuthUseCase.dataAuth?.id ?? "None")
+//            let dto = CreateEventInput(name: eventInfo.name, info: eventInfo.info, startDate: eventInfo.startDate, locationId: eventInfo.locationId, capacity: Int(eventInfo.capacity) ?? 0, eventType: eventInfo.eventType, attendees: eventInfo.attendess)
+            let input = CreateEventInput(name: eventInfo.name, info: eventInfo.info, startDate: ISO8601DateFormatter().string(from: eventInfo.startDate), capacity: Int(eventInfo.capacity) ?? 1, attendees: eventInfo.attendess, type: eventInfo.eventType, status: EventStatus.open)
+            createEventUseCase.execute(item: input)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    case .finished:
+                        self.eventInfo = EventInfo()
+                    }
+                }, receiveValue: {_ in })
+                .store(in: &cancellables)
         }
     }
 }
@@ -63,6 +79,7 @@ extension CreateEventView.ViewModel {
         var locationId: String = ""
         var capacity: String = ""
         var eventType: EventType = .tennis
+        var attendess: [String] = []
     }
 }
 
