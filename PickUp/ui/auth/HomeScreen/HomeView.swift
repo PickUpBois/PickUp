@@ -34,7 +34,7 @@ struct HomeView<Model>: View where Model: IHomeViewModel {
                         Spacer().frame(width: 7)
                
                         //Bottom Right, pickups near me
-                        PickUpTabListView(showPopUp: self.$showPopUp, viewModel: PickUpTabListViewModel(tennisEvents: self.viewModel.tennisEvents, basketballEvents: self.viewModel.basketballEvents))
+                        PickUpTabListView(showPopUp: self.showPopUp, viewModel: PickUpTabListViewModel(tennisEvents: self.viewModel.tennisEvents, basketballEvents: self.viewModel.basketballEvents))
                             .frame(width: 175.0, height: 330.0, alignment: .top)
                             .padding(.horizontal, 9)
                             .padding(.vertical, 15.0)

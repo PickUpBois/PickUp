@@ -12,9 +12,30 @@ struct ProfileHeaderView: View {
     @StateObject var observeAuthUseCase: ObserveAuthState = ObserveAuthState.shared
     var body: some View {
         VStack(alignment: .center) {
-            Text("\(self.observeAuthUseCase.authUser?.firstName ?? "Ashwin")'s Profile").font(.title3) // Leading title on page
+            HStack{Text("\(self.observeAuthUseCase.authUser?.firstName ?? "Ashwin")'s Profile").font(.title3) // Leading title on page
             .fontWeight(.bold)
             .padding(.top)
+           
+                //not following yet
+            Button(action: {},
+                   label: {Image(systemName: "plus.square.fill")
+                    .foregroundColor(Color.red)
+                    .padding(.top)
+                   })
+                    
+           //if following, click to unfollow
+            Button(action: {},
+                    label: {Image(systemName: "checkmark.square.fill")
+                            .foregroundColor(Color.green)
+                            .padding(.top)
+                   })
+                
+                //Text("Add")
+                    //.font(.title3)
+                    //.padding(.top)
+                
+            }
+            
             Spacer().frame(minHeight: 8, maxHeight: 8) // Space between profile
             HStack {
                 VStack(alignment: .center){
@@ -45,6 +66,7 @@ struct ProfileHeaderView: View {
                 Text("Members").font(.headline).foregroundColor(Color.black)
                     Text("50").font(.title).fontWeight(.bold)
                     Spacer()
+                    
                 }
                 VStack {
                 Text("GOAT").font(.headline).foregroundColor(Color.black)

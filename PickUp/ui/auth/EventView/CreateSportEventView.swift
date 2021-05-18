@@ -32,10 +32,8 @@ struct CreateSportEventView: View {
             
             EventDatePickerView(date: self.$eventViewModel.eventInfo.startDate)
             
-
             
-            
-        Spacer().frame(height: 25.0)
+        Spacer().frame(height: 15.0)
         HStack{
             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                 Text("Invite Friends")

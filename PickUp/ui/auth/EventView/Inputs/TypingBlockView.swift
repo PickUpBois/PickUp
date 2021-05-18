@@ -13,7 +13,7 @@ struct TypingBlockView: View {
     @Binding var value: String
     var body: some View {
        
-        Spacer().frame(height: 25.0)
+        Spacer().frame(height: 15.0)
         VStack(alignment: .leading){
             
             HStack() {

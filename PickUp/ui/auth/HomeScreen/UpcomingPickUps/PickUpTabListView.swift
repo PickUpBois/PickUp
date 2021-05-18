@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PickUpTabListView<Model>: View where Model: IPickUpTabListViewModel{
     @State private var selection: EventType = .tennis
-    @Binding var showPopUp: Bool
+    @State var showPopUp = false
     var viewModel: Model
     var body: some View {
         VStack{
@@ -36,12 +36,18 @@ struct PickUpTabListView<Model>: View where Model: IPickUpTabListViewModel{
                     
                 })
             }.sheet(isPresented: $showPopUp, content: {
+                
+                PopupView()
+            
+                
                     Button(action: {
                         self.showPopUp.toggle()
                     },label: {
                         Text("Dismiss")
                     })
-                })
+            })
+            
+
        
             ScrollView {
                 if selection == .tennis {
@@ -83,6 +89,6 @@ class MockPickUpTabListViewModel: IPickUpTabListViewModel {
 
 struct PickUpTabListView_Previews: PreviewProvider {
     static var previews: some View {
-        PickUpTabListView(showPopUp: .constant(false), viewModel: MockPickUpTabListViewModel())
+        PickUpTabListView(viewModel: MockPickUpTabListViewModel())
     }
 }

@@ -20,7 +20,7 @@ struct CourtsNearMeListView: View {
                         }
             ScrollView {
                 ForEach(0..<4) { _ in
-                    CourtsNearMeView(title: "example", radius: "0.25", available: "🎾 20", total: "4", open: "open")
+                    CourtsNearMeView(title: "example", radius: "0.25", available: "🎾 2", total: "4", open: "open")
                 }
             }
         }
