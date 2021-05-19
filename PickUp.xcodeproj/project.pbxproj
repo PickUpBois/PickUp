@@ -11,6 +11,7 @@
 		1A03F99F263F482F00C2E2CD /* UpcomingPickupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A03F99E263F482F00C2E2CD /* UpcomingPickupsView.swift */; };
 		1A49DC0B26544D2D007F28FD /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49DC0A26544D2D007F28FD /* PopupView.swift */; };
 		1A49DC0D265466BD007F28FD /* OLDpastpickups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49DC0C265466BD007F28FD /* OLDpastpickups.swift */; };
+		1A49DC0F2655BC92007F28FD /* FinishPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49DC0E2655BC92007F28FD /* FinishPickupView.swift */; };
 		1AB44EDB26439DB300568ECB /* TypingBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB44EDA26439DB300568ECB /* TypingBlockView.swift */; };
 		1ADE7E34264C48060097138F /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E33264C48060097138F /* SocialView.swift */; };
 		1ADE7E36264C50E90097138F /* CourtsNearMeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E35264C50E90097138F /* CourtsNearMeView.swift */; };
@@ -107,6 +108,7 @@
 		1A03F99E263F482F00C2E2CD /* UpcomingPickupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingPickupsView.swift; sourceTree = "<group>"; };
 		1A49DC0A26544D2D007F28FD /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		1A49DC0C265466BD007F28FD /* OLDpastpickups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OLDpastpickups.swift; sourceTree = "<group>"; };
+		1A49DC0E2655BC92007F28FD /* FinishPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishPickupView.swift; sourceTree = "<group>"; };
 		1AB44EDA26439DB300568ECB /* TypingBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingBlockView.swift; sourceTree = "<group>"; };
 		1ADE7E33264C48060097138F /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
 		1ADE7E35264C50E90097138F /* CourtsNearMeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtsNearMeView.swift; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				8D5EE0362652D6AF00EE7840 /* PickUpTabListView.swift */,
 				8D5EE0282652D2CD00EE7840 /* PickUpView.swift */,
 				8D5EE0232652D1A400EE7840 /* PickUpListView.swift */,
+				1A49DC0E2655BC92007F28FD /* FinishPickupView.swift */,
 			);
 			path = UpcomingPickUps;
 			sourceTree = "<group>";
@@ -822,6 +825,7 @@
 				8DB8EFB9261989B2004AADED /* AuthRepo.swift in Sources */,
 				1A49DC0B26544D2D007F28FD /* PopupView.swift in Sources */,
 				8D2094A1263C6F43009B1609 /* ProfileSettingsView.swift in Sources */,
+				1A49DC0F2655BC92007F28FD /* FinishPickupView.swift in Sources */,
 				8DB8F06A261AB3E9004AADED /* RepoFactory.swift in Sources */,
 				8D36967E262C2AB40062DD0C /* IRegisterUseCase.swift in Sources */,
 				8D3694E5262B52490062DD0C /* User.swift in Sources */,
