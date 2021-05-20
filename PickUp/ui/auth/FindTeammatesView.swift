@@ -9,7 +9,6 @@ import SwiftUI
 
 struct FindTeammatesView: View {
     var body: some View {
-        
         NavigationView {
                     ScrollView {
                     // Stacks everything on page

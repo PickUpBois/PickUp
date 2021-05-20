@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PickUpTabListView<Model>: View where Model: IPickUpTabListViewModel{
     @State private var selection: EventType = .tennis
-    @State var showPopUp = false
     var viewModel: Model
     var body: some View {
         VStack{
@@ -26,28 +25,7 @@ struct PickUpTabListView<Model>: View where Model: IPickUpTabListViewModel{
                 Text("🏀").foregroundColor(Color.red).tag(EventType.basketball)}.pickerStyle(SegmentedPickerStyle())
             
             Spacer().frame(height: 2)
-            
-            HStack(alignment: .center) {
-                Button(action: {
-                    self.showPopUp.toggle()
-                }, label: {
-                    Text("More Details?")
-                        .foregroundColor(Color.purple)
-                    
-                })
-            }.sheet(isPresented: $showPopUp, content: {
-                
-                PopupView()
-            
-                
-                    Button(action: {
-                        self.showPopUp.toggle()
-                    },label: {
-                        Text("Dismiss")
-                    })
-            })
-            
-
+                        
        
             ScrollView {
                 if selection == .tennis {

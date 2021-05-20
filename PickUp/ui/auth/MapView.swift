@@ -12,10 +12,8 @@ struct MapView: View {
         NavigationView {
             ScrollView {
                 Spacer().frame(height: 15)
-                
                 Image("isucampus").resizable().aspectRatio(contentMode: .fit).frame(width: UIScreen.main.bounds.width/1, height: UIScreen.main.bounds.height/2).clipped()
                 
-                    
                     
             }.navigationBarTitleDisplayMode(.inline)
             .toolbar{
@@ -30,9 +28,10 @@ struct MapView: View {
                 }
                     
             }
-                }
+        }
     }
 }
+    
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {

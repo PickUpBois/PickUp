@@ -25,7 +25,11 @@ struct OLDpastpickups: View {
                                     .frame(minWidth: 10, maxWidth: 45)
                         Image(systemName:"location.fill")
                                     Text("Location")}
-                                Image("wimby08").resizable().aspectRatio(contentMode: .fit).frame(width: UIScreen.main.bounds.width/1, height: UIScreen.main.bounds.height/3).clipped()
+                                
+                                Spacer().frame(minHeight: 10, maxHeight: 10)
+                                
+                                Image("wimby08").resizable().aspectRatio(contentMode: .fit).frame(width: UIScreen.main.bounds.width/1, height: UIScreen.main.bounds.height/4.75).clipped()
+                
                             
                             Spacer().frame(height: 10)
                             HStack(alignment: .center){
@@ -55,7 +59,11 @@ struct OLDpastpickups: View {
                                         .frame(minWidth: 10, maxWidth: 45)
                             Image(systemName:"location.fill")
                                         Text("Location")}
-                            Image("Tyrese").resizable().aspectRatio(contentMode: .fit).frame(width: UIScreen.main.bounds.width/1, height: UIScreen.main.bounds.height/3).clipped()
+                            
+                            Spacer().frame(minHeight: 10, maxHeight: 10)
+                            
+                            Image("Tyrese").resizable().aspectRatio(contentMode: .fit).frame(width: UIScreen.main.bounds.width/1, height: UIScreen.main.bounds.height/4.75).clipped()
+                                .cornerRadius(20)
                            
                             Spacer().frame(height: 10)
                             HStack(alignment: .center){

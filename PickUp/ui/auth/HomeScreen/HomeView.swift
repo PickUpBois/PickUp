@@ -9,7 +9,6 @@ import SwiftUI
 import Combine
 
 struct HomeView<Model>: View where Model: IHomeViewModel {
-    @State private var showPopUp = false
     @State var menuOpen: Bool = false
     @StateObject var observeAuthUseCase: ObserveAuthState = ObserveAuthState.shared
     var viewModel: Model
@@ -34,7 +33,7 @@ struct HomeView<Model>: View where Model: IHomeViewModel {
                         Spacer().frame(width: 7)
                
                         //Bottom Right, pickups near me
-                        PickUpTabListView(showPopUp: self.showPopUp, viewModel: PickUpTabListViewModel(tennisEvents: self.viewModel.tennisEvents, basketballEvents: self.viewModel.basketballEvents))
+                        PickUpTabListView(viewModel: PickUpTabListViewModel(tennisEvents: self.viewModel.tennisEvents, basketballEvents: self.viewModel.basketballEvents))
                             .frame(width: 175.0, height: 330.0, alignment: .top)
                             .padding(.horizontal, 9)
                             .padding(.vertical, 15.0)
@@ -49,13 +48,21 @@ struct HomeView<Model>: View where Model: IHomeViewModel {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem(placement: .principal) {
-                    HStack {
+                    HStack(spacing: 0.0) {
                         Image("logo2")
                             .resizable()
                             .padding(.top, -15)
                             .frame(width: 125, height: 30)
                             .scaledToFit()
-                            }
+                        
+                        Spacer().frame(minWidth: 100, idealWidth: 100, maxWidth: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        NavigationLink(destination: NotificationsView()) {
+                            Image(systemName: "bell.circle.fill")
+                            
+                        }
+
+                    }
+                    .padding(.leading, 110)
                                 }
                     
                         }

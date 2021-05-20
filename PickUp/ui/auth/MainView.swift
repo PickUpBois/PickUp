@@ -21,8 +21,9 @@ struct MainView: View {
                 .tabItem {
                    Image(systemName: "location.fill")
                     Text("Map")
-
+                   
                 }
+
             
             CreateEventView()
                 .tabItem {

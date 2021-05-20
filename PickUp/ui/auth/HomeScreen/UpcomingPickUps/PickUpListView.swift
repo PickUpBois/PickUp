@@ -14,7 +14,7 @@ struct PickUpListView<Model>: View where Model: IPickUpListViewModel{
     }
     var body: some View {
         ScrollView{
-            ForEach(1..<4) {_ in
+            ForEach(1..<5) {_ in
                 PickUpView()
                     .frame(width: 175, height: 60, alignment: .center)
                     .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
