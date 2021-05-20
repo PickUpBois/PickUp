@@ -9,6 +9,15 @@ import SwiftUI
 
 struct PickUpView: View {
     @State var showPopUp = false
+    var event: Event
+    
+    func getDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        return dateFormatter.string(from: date)
+    }
+    
     var body: some View {
        
         HStack(alignment: .center) {
@@ -18,14 +27,14 @@ struct PickUpView: View {
 
                 VStack {
                     HStack{
-                        Text("Singles")
+                        Text(event.name)
                             .fontWeight(.heavy)
                             .foregroundColor(Color.black)
                             .multilineTextAlignment(.center)
                             .lineLimit(1)
                         Image(systemName:"calendar")
                             .foregroundColor(Color.red)
-                        Text("Date")
+                        Text(getDate(date: event.startDate))
                             .foregroundColor(Color.black)
                                 Spacer()
                                 .frame(minWidth: 10, maxWidth: 10)
@@ -62,15 +71,26 @@ struct PickUpView: View {
                     .cornerRadius(9)
                     .padding(.horizontal, 20)
             })
-            
             Spacer().frame(height: 300)
             .background(BackgroundClearView())
-            
         })
         
         
     }
 }
+
+protocol IPickUpViewModel: ObservableObject {
+    var event: Event { get }
+}
+
+class PickUpViewModel: IPickUpViewModel {
+    var event: Event
+    init(event: Event) {
+        self.event = event
+    }
+}
+
+
 
 struct BackgroundClearView: UIViewRepresentable {
     func makeUIView(context: Context) -> UIView {
@@ -86,6 +106,6 @@ struct BackgroundClearView: UIViewRepresentable {
 
 struct PickUpView_Previews: PreviewProvider {
     static var previews: some View {
-        PickUpView()
+        PickUpView(event: Event(id: "1", name: "Arian", info: "Info", startDate: Date(), endDate: nil, capacity: 4, attendees: [], type: .tennis, status: .open))
     }
 }
