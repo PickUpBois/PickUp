@@ -11,7 +11,7 @@ import Combine
 struct HomeView<Model>: View where Model: IHomeViewModel {
     @State var menuOpen: Bool = false
     @StateObject var observeAuthUseCase: ObserveAuthState = ObserveAuthState.shared
-    var viewModel: Model
+    @ObservedObject var viewModel: Model
     init(viewModel: Model) {
         self.viewModel = viewModel
     }
@@ -45,6 +45,9 @@ struct HomeView<Model>: View where Model: IHomeViewModel {
                 .frame(alignment: .topLeading)
                     
             }
+            .onAppear(perform: {
+                self.viewModel.getUpcomingEvents()
+            })
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem(placement: .principal) {
@@ -79,8 +82,8 @@ protocol IHomeViewModel: ObservableObject {
 class HomeViewModel: IHomeViewModel {
     var getEventsUseCase: IGetEventsUseCase
     var cancellables = Set<AnyCancellable>()
-    var tennisEvents: [Event] = []
-    var basketballEvents: [Event] = []
+    @Published var tennisEvents: [Event] = []
+    @Published var basketballEvents: [Event] = []
     init(getEventsUseCase: IGetEventsUseCase = GetEventsUseCase()) {
         self.getEventsUseCase = getEventsUseCase
     }
@@ -94,6 +97,7 @@ class HomeViewModel: IHomeViewModel {
                     print(error.localizedDescription)
                 }
             }, receiveValue: { events in
+                print(events)
                 self.tennisEvents = events.filter { event in
                     return event.type == .tennis
                 }

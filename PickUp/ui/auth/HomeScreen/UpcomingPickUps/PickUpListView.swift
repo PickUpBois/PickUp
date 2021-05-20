@@ -14,8 +14,13 @@ struct PickUpListView<Model>: View where Model: IPickUpListViewModel{
     }
     var body: some View {
         ScrollView{
+<<<<<<< HEAD
             ForEach(1..<5) {_ in
                 PickUpView()
+=======
+            ForEach(self.viewModel.events, id: \.self.id) {event in
+                PickUpView(event: event)
+>>>>>>> backend-profile
                     .frame(width: 175, height: 60, alignment: .center)
                     .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                     .cornerRadius(8)
