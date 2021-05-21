@@ -15,14 +15,15 @@ struct MainView: View {
                 .tabItem {
                    Image(systemName: "magnifyingglass.circle.fill")
                     Text("Search")
-
+                    
                 }
-            MapView()
+            MapMainView()
                 .tabItem {
                    Image(systemName: "location.fill")
                     Text("Map")
-
+                   
                 }
+
             
             CreateEventView()
                 .tabItem {
@@ -31,17 +32,18 @@ struct MainView: View {
                 
                 }
             
-            HomeView()
+            HomeView(viewModel: HomeViewModel())
                 .tabItem {
                    Image(systemName: "house.fill")
                     Text("Home")
     
                 }
             
-            ProfileView()
+            ProfileView(viewModel: ProfileViewModel())
                 .tabItem {
                    Image(systemName: "person.fill")
                     Text("Profile")
+                    
                 }
             
         }

@@ -43,6 +43,16 @@ struct SignUpView: View {
             .cornerRadius(8)
             .padding(.horizontal, 20)
             
+            HStack {
+                //Hstack Email
+                TextField("Username", text: $viewModel.username)
+            }
+            //Username Text Field Settings
+            .padding(.all, 20.0)
+            .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+            .cornerRadius(8)
+            .padding(.horizontal, 20)
+            
             
             HStack {
                 //Hstack Email
@@ -112,6 +122,7 @@ extension SignUpView {
         @Published var loading = false
         var cancellables = Set<AnyCancellable>()
         var registerUseCase: IRegisterUseCase
+        var observeAuthUseCase = ObserveAuthState.shared
         
         
         init(registerUseCase: IRegisterUseCase = RegisterUseCase()) {
@@ -137,6 +148,7 @@ extension SignUpView {
                     }
                 }, receiveValue: {uid in
                     print("SUCCESS: \(uid)")
+                    self.observeAuthUseCase.refreshUser()
                 }).store(in: &cancellables)
         }
     }

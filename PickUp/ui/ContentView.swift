@@ -13,14 +13,17 @@ struct ContentView: View {
         var body: some View {
             Group {
                 // if the user is logged in
-                if observeAuthUseCase.authUser != nil {
+                if observeAuthUseCase.dataAuth != nil {
                     MainView()
+                        .onAppear { observeAuthUseCase.refreshUser() }
                 } else {
                     NavigationView {
                         LoginView()
                     }
                 }
-            }.onAppear(perform: observeAuthUseCase.listen)
+            }.onAppear(perform: {
+                observeAuthUseCase.listen()
+            })
     }
 }
 

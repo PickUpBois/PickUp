@@ -1,54 +1,94 @@
 //
-//  UserRepo.swift
+//  UserRestRepo.swift
 //  PickUp
 //
-//  Created by Arian Rahbar on 4/18/21.
+//  Created by Arian Rahbar on 5/13/21.
 //
 
 import Foundation
 import Combine
-import Firebase
 
-enum UserError: Error {
-    case error
-}
-
-struct UserRepo: IUserRepo {
-    let db: Firestore
-    let collectionRef: CollectionReference
-    
-    init(db: Firestore = Firestore.firestore()) {
-        self.db = db
-        self.collectionRef = db.collection("users")
-    }
-    
+class UserRepo: IUserRepo {
     func create(item: User) -> AnyPublisher<Void, Error> {
-        return Future<Void, Error> { promise in
-            let _ = collectionRef.document(item.id!).setData(DataUser(user: item).getDictionary()!, completion: {error in
-                if let error = error {
-                    return promise(.failure(error))
-                } else {
-                    return promise(.success(()))
+        let url = URL(string: RepoFactory.TARGET_URL + "users/\(item.id!)")!
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        var dataUser = DataUser(user: item)
+        dataUser.id = nil
+        guard let postData = try? JSONEncoder().encode(dataUser) else {
+            return Fail(error: UserError.error).eraseToAnyPublisher()
+        }
+        print(postData)
+        urlRequest.httpBody = postData
+        return URLSession.shared.dataTaskPublisher(for: urlRequest)
+            .tryMap { element -> Void in
+                guard let httpResponse = element.response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                    throw URLError(.badServerResponse)
                 }
-            })
-        }.eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
     }
     
     func get(id: String) -> AnyPublisher<User, Error> {
-        return Future<User, Error> { promise in
-            collectionRef.document(id).getDocument { document, error in
-                let result = Result {
-                    try document?.data(as: DataUser.self)
+        let url = URL(string: RepoFactory.TARGET_URL + "users/\(id)")!
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        return URLSession.shared.dataTaskPublisher(for: urlRequest)
+            .tryMap { element -> Data in
+                guard let httpResponse = element.response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                    throw URLError(.badServerResponse)
                 }
-                switch result {
-                case .success(var user):
-                    if var user = user {
-                        user.id = id
-                        return promise(.success(user.toUser()))
-                    } else {
+                return element.data
+            }
+            .decode(type: DataUser.self, decoder: JSONDecoder())
+            .map { dataUser -> User in
+                print(dataUser)
+                let user = dataUser.toUser()
+                return user
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    func update(id: String, fields: [String : Any]) -> AnyPublisher<Void, Error> {
+        let url = URL(string: RepoFactory.TARGET_URL + "users/\(id)")!
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "PATCH"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        guard let patchData = try? JSONSerialization.data(withJSONObject: fields, options: []) else {
+            print("failed to encode json data")
+            return Fail(error: UserError.error).eraseToAnyPublisher()
+        }
+        urlRequest.httpBody = patchData
+        return URLSession.shared.dataTaskPublisher(for: urlRequest)
+            .tryMap { element -> Void in
+                guard let httpResponse = element.response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                    throw URLError(.badServerResponse)
+                }
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    func delete(id: String) -> AnyPublisher<Void, Error> {
+        return Just(()).setFailureType(to: Error.self).eraseToAnyPublisher()
+    }
+    
+    func observe(id: String) -> AnyPublisher<User, Error> {
+        return Just(User(id: "hello", username: "hello", firstName: "hello", lastName: "hello", photoUrl: "hello")).setFailureType(to: Error.self).eraseToAnyPublisher()
+    }
+}
+
+class UserApolloRepo: IUserRepo {
+    func create(item: User) -> AnyPublisher<Void, Error> {
+        return Future<Void, Error> { promise in
+            let input = CreateUserInput(id: item.id!, username: item.username, firstName: item.firstName, lastName: item.lastName)
+            Network.shared.apollo.perform(mutation: CreateUserMutation(createUserInput: input)) { response in
+                switch response {
+                case .success(let result):
+                    if let errors = result.errors {
+                        print(errors[0])
                         return promise(.failure(UserError.error))
                     }
-                    return promise(.success(user!.toUser()))
                 case .failure(let error):
                     return promise(.failure(error))
                 }
@@ -56,54 +96,56 @@ struct UserRepo: IUserRepo {
         }.eraseToAnyPublisher()
     }
     
-    func update(id: String, fields: [ AnyHashable : Any ]) -> AnyPublisher<Void, Error> {
-        return Future<Void, Error> { promise in
-            let ref = collectionRef.document(id)
-            ref.updateData(fields) { error in
-                if let error = error {
+    func get(id: String) -> AnyPublisher<User, Error> {
+        return Future<User, Error> { promise in
+            Network.shared.apollo.fetch(query: GetUserQuery(id: id), cachePolicy: .fetchIgnoringCacheCompletely) { response in
+                switch response {
+                case .success(let result):
+                    if let errors = result.errors {
+                        print(errors[0])
+                        return promise(.failure(errors[0]))
+                    }
+                    guard let data = result.data else {
+                        return promise(.failure(UserError.error))
+                    }
+                    
+                    var user: User = User(id: data.user.id, username: data.user.username, firstName: data.user.firstName, lastName: data.user.lastName, photoUrl: data.user.photoUrl)
+                    return promise(.success(user))
+                    
+                case .failure(let error):
                     return promise(.failure(error))
-                } else {
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func update(id: String, fields: [String : Any]) -> AnyPublisher<Void, Error> {
+        return Future<Void, Error> { promise in
+            let input = UpdateUserInput(id: id, firstName: fields["firstName"] as! String? , lastName: fields["lastName"] as! String?, username: fields["username"] as! String? , photoUrl: fields["photoUrl"] as! String? )
+            
+            Network.shared.apollo.perform(mutation: UpdateUserMutation(input: input)) { response in
+                switch response {
+                case .success(let result):
+                    if let errors = result.errors {
+                        print(errors[0].localizedDescription)
+                        return promise(.failure(errors[0]))
+                    }
                     return promise(.success(()))
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    return promise(.failure(error))
                 }
             }
         }.eraseToAnyPublisher()
     }
     
     func delete(id: String) -> AnyPublisher<Void, Error> {
-        return Future<Void, Error> { promise in
-            
-        }.eraseToAnyPublisher()
+        return Fail(error: UserError.error).eraseToAnyPublisher()
     }
     
     func observe(id: String) -> AnyPublisher<User, Error> {
-        var handle: ListenerRegistration!
-        let subject = PassthroughSubject<User, Error>()
-        handle = db.collection("users").document(id)
-            .addSnapshotListener { snap, err in
-                print("got a new user")
-                guard let doc = snap else {
-                    subject.send(completion: .failure(UserError.error))
-                    return
-                }
-                
-                let result = Result {
-                    try doc.data(as: DataUser.self)
-                }
-                switch result {
-                case .success(let user):
-                    if var user = user {
-                        user.id = id
-                        subject.send(user.toUser())
-                        return
-                    } else {
-                        return subject.send(completion: .failure(UserError.error))
-                    }
-                case .failure(let error):
-                    return subject.send(completion: .failure(error))
-                }
-            }
-        return subject.handleEvents(receiveCancel: {
-            handle.remove()
-        }).eraseToAnyPublisher()
+        return Fail(error: UserError.error).eraseToAnyPublisher()
     }
+    
+    
 }

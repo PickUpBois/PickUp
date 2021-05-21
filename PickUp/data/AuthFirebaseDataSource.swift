@@ -148,7 +148,7 @@ class AuthFirebaseDataSource: AuthRepo {
         }
         let authSubject = CurrentValueSubject<DataAuth?, Never>(currUser)
         let handle = self.auth.addStateDidChangeListener({auth, user in
-            print("AUTH STATE CHANGED \(user)")
+            print("AUTH STATE CHANGED \(String(describing: user))")
             if let user = user {
                 authSubject.send(DataAuth(id: user.uid,
                                           email: user.email!,
