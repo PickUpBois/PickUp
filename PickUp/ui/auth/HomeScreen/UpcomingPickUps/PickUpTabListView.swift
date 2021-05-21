@@ -9,14 +9,40 @@ import SwiftUI
 
 struct PickUpTabListView<Model>: View where Model: IPickUpTabListViewModel{
     @State private var selection: EventType = .tennis
+    @State var showPopUp = false
     var viewModel: Model
     var body: some View {
         VStack{
-            HStack {
-                Text("Pickups Nearby").font(.title3)
-                    .fontWeight(.semibold)
-                Image(systemName: "calendar").font(.system(size: 16, weight: .regular))
-                    .foregroundColor(Color.red)}
+            HStack(alignment: .center) {
+                Button(action: {
+                    self.showPopUp.toggle()
+                }, label: {
+            HStack{ Text("Pickups Nearby").font(.title3)
+                .fontWeight(.semibold)
+                .foregroundColor(Color.black)
+            Image(systemName: "calendar").font(.system(size: 16, weight: .regular))
+                .foregroundColor(Color.red)
+            }
+                })
+            }.sheet(isPresented: $showPopUp, content: {
+                
+                SocialViewScrollView()
+                
+                Spacer()
+                
+                Button(action: {
+                    self.showPopUp.toggle()
+                },label: {
+                    Text("Dismiss")
+                        .foregroundColor(Color.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(Color.black.opacity(0.8))
+                        .cornerRadius(9)
+                        .padding(.horizontal, 20)
+                })
+                Spacer().frame(height: 50)
+            })
 
             Spacer().frame(height:5)
                 
