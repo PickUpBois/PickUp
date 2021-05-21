@@ -17,7 +17,7 @@ struct MainView: View {
                     Text("Search")
                     
                 }
-            MapView()
+            MapMainView()
                 .tabItem {
                    Image(systemName: "location.fill")
                     Text("Map")
