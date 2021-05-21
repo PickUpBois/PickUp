@@ -121,11 +121,15 @@ struct ProfileView<Model>: View where Model: IProfileViewModel {
                             .padding(.top, -15)
                             .frame(width: 125, height: 30)
                             .scaledToFit()
+                        
+                        Spacer().frame(minWidth: 100, idealWidth: 100, maxWidth: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         NavigationLink(destination: ProfileSettingsView()) {
                             Image(systemName: "gearshape.fill")
+                                
                             }
-
+                        
                     }
+                    .padding(.leading, 110)
 
                 }
             }
