@@ -17,7 +17,7 @@ struct CourtsNearMeView: View {
     
     var body: some View {
   
-        Spacer().frame(height: 15)
+        Spacer().frame(height: 8)
         VStack{
             HStack{Text(title)
                 .fontWeight(.bold)

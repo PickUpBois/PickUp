@@ -21,6 +21,7 @@ struct HomeView<Model>: View where Model: IHomeViewModel {
                 Spacer().frame(height:15)
                 VStack{
     //top, social media box
+                    
                     SocialView()
                         .frame(width: 375.0, height: 330.0, alignment: .top)
                         .padding(.horizontal, 6.0)
@@ -58,14 +59,14 @@ struct HomeView<Model>: View where Model: IHomeViewModel {
                             .frame(width: 125, height: 30)
                             .scaledToFit()
                         
-                        Spacer().frame(minWidth: 100, idealWidth: 100, maxWidth: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        Spacer().frame(minWidth: 95, idealWidth: 95, maxWidth: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         NavigationLink(destination: NotificationsView()) {
                             Image(systemName: "bell.circle.fill")
                             
                         }
 
                     }
-                    .padding(.leading, 110)
+                    .padding(.leading, 115)
                                 }
                     
                         }
