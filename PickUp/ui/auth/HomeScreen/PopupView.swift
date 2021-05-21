@@ -66,7 +66,7 @@ Text("+ Join")
                 .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.purple/*@END_MENU_TOKEN@*/)
                })
         
-            Button(action: {FinishPickupView()},
+            Button(action: {},
                label: {Text("Finish Pickup")
                 .padding(.all, 5.0)
                 .font(.body)
