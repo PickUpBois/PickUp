@@ -36,6 +36,7 @@
 		8D36967E262C2AB40062DD0C /* IRegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36967D262C2AB40062DD0C /* IRegisterUseCase.swift */; };
 		8D3696DC262C900C0062DD0C /* ObserveAuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3696DB262C900C0062DD0C /* ObserveAuthState.swift */; };
 		8D3696EC262CA8D40062DD0C /* DataAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3696EB262CA8D40062DD0C /* DataAuth.swift */; };
+		8D3CDD3226583A93000EE754 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3CDD3126583A92000EE754 /* SearchView.swift */; };
 		8D484B91261B73A200814A8F /* AuthFirebaseDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EFF6261A74F7004AADED /* AuthFirebaseDataSourceTest.swift */; };
 		8D5EE01726529AC700EE7840 /* IGetEventsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE01626529AC700EE7840 /* IGetEventsUseCase.swift */; };
 		8D5EE0242652D1A400EE7840 /* PickUpListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE0232652D1A400EE7840 /* PickUpListView.swift */; };
@@ -141,6 +142,7 @@
 		8D36967D262C2AB40062DD0C /* IRegisterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRegisterUseCase.swift; sourceTree = "<group>"; };
 		8D3696DB262C900C0062DD0C /* ObserveAuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserveAuthState.swift; sourceTree = "<group>"; };
 		8D3696EB262CA8D40062DD0C /* DataAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAuth.swift; sourceTree = "<group>"; };
+		8D3CDD3126583A92000EE754 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		8D5EDFF526520C8300EE7840 /* CreateEventMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CreateEventMutation.graphql; sourceTree = "<group>"; };
 		8D5EE002265280E100EE7840 /* GetUserEventsQuery.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetUserEventsQuery.graphql; sourceTree = "<group>"; };
 		8D5EE01626529AC700EE7840 /* IGetEventsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGetEventsUseCase.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				8DFCF503262788A000BBFE66 /* MainView.swift */,
 				C088BBA526578057007301F7 /* MapView */,
 				8DFCF50D262788AF00BBFE66 /* FindTeammatesView.swift */,
+				8D3CDD3126583A92000EE754 /* SearchView.swift */,
 			);
 			path = auth;
 			sourceTree = "<group>";
@@ -848,6 +851,7 @@
 				8D36963A262BF6820062DD0C /* FileRepo.swift in Sources */,
 				8DB8F021261A8A45004AADED /* UserDao.swift in Sources */,
 				8DFCCA90264D21C300D19210 /* EventDto.swift in Sources */,
+				8D3CDD3226583A93000EE754 /* SearchView.swift in Sources */,
 				8DFB999A264E46B000254C57 /* ICreateEventUseCase.swift in Sources */,
 				8DB8EF8826198976004AADED /* ContentView.swift in Sources */,
 				1ADE7E36264C50E90097138F /* CourtsNearMeView.swift in Sources */,
