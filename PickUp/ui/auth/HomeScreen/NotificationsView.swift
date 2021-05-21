@@ -15,9 +15,13 @@ struct NotificationsView: View {
             VStack (spacing: 5) {
                 VStack{
                 HStack {
-                    Image(systemName: "person.circle.fill")
+                    Image("serena")
+                        .resizable()
                         .foregroundColor(.blue)
-                        .padding(.leading, 5.0)
+                        .frame(width: 25, height: 25, alignment: .center)
+                        .clipShape(Circle())
+                        .shadow(radius: 2)
+                        .overlay(Circle().stroke(Color.black, lineWidth: 2))
                     
                     Button(action: {
                         self.showPopUp.toggle()
@@ -50,9 +54,13 @@ struct NotificationsView: View {
                 
                 VStack{
                 HStack {
-                    Image(systemName: "person.circle.fill")
+                    Image("serena")
+                        .resizable()
                         .foregroundColor(.blue)
-                        .padding(.leading, 5.0)
+                        .frame(width: 25, height: 25, alignment: .center)
+                        .clipShape(Circle())
+                        .shadow(radius: 2)
+                        .overlay(Circle().stroke(Color.black, lineWidth: 2))
                     
                     Button(action: {
                         self.showPopUp.toggle()

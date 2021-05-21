@@ -67,7 +67,13 @@ struct OLDpastpickups: View {
                            
                             Spacer().frame(height: 10)
                             HStack(alignment: .center){
-                                Image(systemName:"person.circle")
+                                Image("serena")
+                                    .resizable()
+                                    .foregroundColor(.blue)
+                                    .frame(width: 25, height: 25, alignment: .center)
+                                    .clipShape(Circle())
+                                    .shadow(radius: 2)
+                                    .overlay(Circle().stroke(Color.black, lineWidth: 2))
                                 Text("With David Reynolds + 2 more")}
                             
                                 }.padding([.leading, .bottom, .trailing], 15.0)
