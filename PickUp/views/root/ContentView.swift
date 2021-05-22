@@ -9,20 +9,24 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
-    @ObservedObject var observeAuthUseCase: ObserveAuthState = ObserveAuthState.shared
+    @ObservedObject var appState: AppState = AppState.shared
         var body: some View {
             Group {
                 // if the user is logged in
-                if observeAuthUseCase.dataAuth != nil {
-                    MainView()
-                        .onAppear { observeAuthUseCase.refreshUser() }
+                if appState.authId != nil {
+                    MainView().onAppear(perform: {
+                        appState.listen()
+                    })
                 } else {
                     NavigationView {
                         LoginView()
+                            .onAppear(perform: {
+                                appState.detach()
+                            })
                     }
                 }
             }.onAppear(perform: {
-                observeAuthUseCase.listen()
+                appState.authId = Services.shared.auth.getCurrentUser()
             })
     }
 }

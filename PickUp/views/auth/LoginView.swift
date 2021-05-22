@@ -9,7 +9,11 @@ import SwiftUI
 import Combine
 
 struct LoginView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject var viewModel: LoginViewModel
+    
+    init(viewModel: LoginViewModel = LoginViewModel()) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         VStack (spacing: 5) {
@@ -94,12 +98,7 @@ extension LoginView {
         @Published var errorMessage: String = ""
         @Published var loading = false
         var cancellables = Set<AnyCancellable>()
-        var authRepo: AuthRepo!
-        var observeAuthUseCase = ObserveAuthState.shared
-        
-        init(authRepo: AuthRepo = RepoFactory.getAuthRepo()) {
-            self.authRepo = authRepo
-        }
+        var appState: AppState = AppState.shared
         
         /**
          Function that calls the AuthRepo to login the user using the provided email and password.
@@ -108,7 +107,7 @@ extension LoginView {
         func login() {
             self.errorMessage = ""
             self.loading = false
-            self.authRepo.login(email: email, password: password)
+            Services.shared.auth.login(email: email, password: password)
                 .sink(receiveCompletion: {completion in
                     switch completion {
                     case .failure(let error) where error == AuthError.invalidEmail:
@@ -127,10 +126,10 @@ extension LoginView {
                     case .failure(_):
                         self.errorMessage = "Error occurred"
                     case .finished:
-                        self.observeAuthUseCase.refreshUser()
+                        print("login success")
                     }
                 }, receiveValue: {userId in
-                    ()
+                    self.appState.authId = userId
                 }).store(in: &self.cancellables)
         }
     }

@@ -9,10 +9,22 @@ import SwiftUI
 
 struct ProfileHeaderView: View {
     @Binding var showPhotoLibrary: Bool
-    @StateObject var observeAuthUseCase: ObserveAuthState = ObserveAuthState.shared
+    let firstName: String
+    let lastName: String
+    let username: String
+    let college: String?
+    let photoUrl: String?
+    init(user: GetUserQuery.Data.User?, showPhotoLibrary: Binding<Bool>) {
+        self.firstName = user?.firstName ?? "NA"
+        self.lastName = user?.lastName ?? "NA"
+        self.username = user?.username ?? "NA"
+        self.college = user?.college
+        self.photoUrl = user?.photoUrl
+        self._showPhotoLibrary = showPhotoLibrary
+    }
     var body: some View {
         VStack(alignment: .center) {
-            HStack{Text("\(self.observeAuthUseCase.authUser?.firstName ?? "Ashwin")'s Profile").font(.title3) // Leading title on page
+            HStack{Text("\(firstName)'s Profile").font(.title3) // Leading title on page
             .fontWeight(.bold)
             .padding(.top)
            
@@ -40,16 +52,17 @@ struct ProfileHeaderView: View {
             HStack {
                 VStack(alignment: .center){
                     Button(action: {
-                        self.showPhotoLibrary = true
+//                        IN PROGRESS
+//                        self.showPhotoLibrary = true
                         print("image was tapped")
                     }) {
-                        ProfilePicture()
+                        ProfilePicture(photoUrl: self.photoUrl)
                     }
-                    Text("\(self.observeAuthUseCase.authUser?.firstName ?? "Serena") \(self.observeAuthUseCase.authUser?.lastName ?? "Williams")")
+                    Text("\(firstName) \(lastName)")
                         .font(.headline).fontWeight(.bold).foregroundColor(Color.black)
                         .multilineTextAlignment(.center)
                         .frame(minWidth: 150, maxWidth: 1000)
-                    Text("ISU Cyclones").font(.headline).fontWeight(.light).foregroundColor(Color.red).multilineTextAlignment(.center)
+                    Text(college ?? "No College").font(.headline).fontWeight(.light).foregroundColor(Color.red).multilineTextAlignment(.center)
                         .frame(minWidth: 150, maxWidth: 1000)
                     Spacer()
                         //Space between profile picture center of page
@@ -84,6 +97,6 @@ struct ProfileHeaderView: View {
 
 struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileHeaderView(showPhotoLibrary: .constant(false))
+        ProfileHeaderView(user: GetUserQuery.Data.User(id: "1", firstName: "Ashwin", lastName: "Reynolds", username: "Arahbar", college: "ISU Cyclones"), showPhotoLibrary: .constant(false))
     }
 }

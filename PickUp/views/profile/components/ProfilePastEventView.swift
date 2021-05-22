@@ -46,12 +46,12 @@ struct ProfilePastEventView: View {
 }
 
 protocol IProfilePastEventViewModel: ObservableObject {
-    var event: Event { get }
+    var event: GetUserEventsQuery.Data.UserEvent { get }
 }
 
 class ProfilePastEventViewModel: IProfilePastEventViewModel {
-    var event: Event
-    init(event: Event) {
+    var event: GetUserEventsQuery.Data.UserEvent
+    init(event: GetUserEventsQuery.Data.UserEvent) {
         self.event = event
     }
 }

@@ -9,9 +9,12 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ProfilePicture: View {
-    @StateObject var observeAuthUseCase: ObserveAuthState = ObserveAuthState.shared
+    var photoUrl: String?
+    init(photoUrl: String?) {
+        self.photoUrl = photoUrl
+    }
     var body: some View {
-        WebImage(url: URL(string: self.observeAuthUseCase.authUser?.photoUrl ?? ""))
+        WebImage(url: URL(string: photoUrl ?? ""))
             .resizable()
             .placeholder(Image("serena")
                             .resizable()
@@ -33,6 +36,6 @@ extension ProfilePicture {
 
 struct ProfilePicture_Previews: PreviewProvider {
     static var previews: some View {
-        ProfilePicture()
+        ProfilePicture(photoUrl: nil)
     }
 }

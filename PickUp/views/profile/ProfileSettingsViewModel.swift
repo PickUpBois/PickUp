@@ -1,0 +1,42 @@
+//
+//  ProfileSettingsViewModel.swift
+//  PickUp
+//
+//  Created by Arian Rahbar on 5/22/21.
+//
+
+import Foundation
+import Combine
+
+class ProfileSettingsViewModel: ObservableObject {
+    var cancellables = Set<AnyCancellable>()
+    
+    @Published var username: String = ""
+    @Published var firstName: String = ""
+    @Published var lastName: String = ""
+    @Published var college: String = ""
+    
+    func updateProfile() {
+        let input = UpdateUserInput(id: AppState.shared.authId!, firstName: !firstName.isEmpty ? firstName : nil , lastName: !lastName.isEmpty ? lastName : nil, username: !username.isEmpty ? username : nil , photoUrl: nil)
+        Services.shared.apollo.perform(mutation: UpdateUserMutation(input: input)) { response in
+            switch response {
+            case .success(let result):
+                if let errors = result.errors {
+                    print(errors[0].localizedDescription)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+    }
+}
+
+class MockProfileSettingsViewModel: ProfileSettingsViewModel {
+    override func updateProfile() {
+        return
+    }
+}
+
+    
+    

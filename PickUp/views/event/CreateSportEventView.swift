@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CreateSportEventView: View {
-    @EnvironmentObject var eventViewModel: CreateEventView.ViewModel
+    @EnvironmentObject var eventViewModel: CreateEventViewModel
     var body: some View {
         VStack{
             // Stacks everything on page
@@ -60,6 +60,6 @@ struct CreateSportEventView: View {
 
 struct CreateSportEventView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateSportEventView().environmentObject(CreateEventView.ViewModel())
+        CreateSportEventView().environmentObject(CreateEventViewModel())
     }
 }

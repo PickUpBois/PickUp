@@ -61,13 +61,12 @@ import SDWebImageSwiftUI
 //    }
 //}
 
-struct ProfileView<Model>: View where Model: IProfileViewModel {
-    @ObservedObject var viewModel: Model
+struct ProfileView: View {
+    @ObservedObject var viewModel: ProfileViewModel
     @State private var selection = 1
     @State var menuOpen: Bool = false
-    @StateObject var observeAuthUseCase: ObserveAuthState = ObserveAuthState.shared
     
-    init(viewModel: Model) {
+    init(viewModel: ProfileViewModel) {
         self.viewModel = viewModel
     }
     //Navigation bar
@@ -76,7 +75,7 @@ struct ProfileView<Model>: View where Model: IProfileViewModel {
             VStack {
             // Stacks everything on page
                 // Stacks for profile picture
-                ProfileHeaderView(showPhotoLibrary: self.$viewModel.showPhotoLibrary)
+                ProfileHeaderView(user: self.viewModel.user, showPhotoLibrary: self.$viewModel.showPhotoLibrary)
                     .frame(height: 200)
 
 
@@ -87,12 +86,12 @@ struct ProfileView<Model>: View where Model: IProfileViewModel {
 
                
                 if selection == 1 {
-                    PastPickupView()
+                    PastPickupView().environmentObject(viewModel)
                 }
                 //second picker option
                 
                 else {
-                    UpcomingPickupsView(viewModel: UpcomingPickupsView.ViewModel(events: self.viewModel.upcomingEvents))
+                    UpcomingPickupsView().environmentObject(viewModel)
                 }
                 
                 Spacer().frame(minHeight: 5, maxHeight: 10)
@@ -105,10 +104,11 @@ struct ProfileView<Model>: View where Model: IProfileViewModel {
                     }
             }
             .sheet(isPresented: self.$viewModel.showPhotoLibrary) {
-                    ImagePicker(sourceType: .photoLibrary, userId: self.observeAuthUseCase.authUser!.id!)
+                ImagePicker(sourceType: .photoLibrary, userId: self.viewModel.userId)
                 }
             .onAppear { () in
                 print("getting profile events")
+                self.viewModel.retrieveUser()
                 self.viewModel.getEvents(status: .open)
                 self.viewModel.getEvents(status: .closed)
             }
@@ -123,7 +123,7 @@ struct ProfileView<Model>: View where Model: IProfileViewModel {
                             .scaledToFit()
                         
                         Spacer().frame(minWidth: 100, idealWidth: 100, maxWidth: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        NavigationLink(destination: ProfileSettingsView()) {
+                        NavigationLink(destination: ProfileSettingsView().environmentObject(self.viewModel)) {
                             Image(systemName: "gearshape.fill")
                                 
                             }
@@ -139,115 +139,9 @@ struct ProfileView<Model>: View where Model: IProfileViewModel {
     }
 }
 
-protocol IProfileViewModel: ObservableObject {
-    var logoutError: String { get set }
-    var updateProfileError: String { get set}
-    var loading: Bool { get set}
-    var imageUri: String? { get set }
-    var textUrl: String { get set }
-    var showPhotoLibrary: Bool { get set }
-    var upcomingEvents: [Event] { get set }
-    var pastEvents: [Event] { get set }
-    
-    func logout()
-    func updateProfilePicByUrl(userId: String)
-    func getEvents(status: EventStatus)
-}
-
-
-class ProfileViewModel: IProfileViewModel {
-    var authRepo: AuthRepo!
-    var updateProfilePicByUrlUseCase: IUpdateProfilePictureFromExternalUrl
-    var getUserEventsUseCase: IGetEventsUseCase
-    let observeAuthUseCase = ObserveAuthState.shared
-    var cancellables = Set<AnyCancellable>()
-    @Published var logoutError = ""
-    @Published var updateProfileError = ""
-    @Published var loading = false
-    @Published var imageUri: String? = nil
-    @Published var textUrl: String = ""
-    @Published var showPhotoLibrary = false
-    @Published var upcomingEvents: [Event] = []
-    @Published var pastEvents: [Event] = []
-    
-    init(authRepo: AuthRepo = RepoFactory.getAuthRepo(),
-         updateProfilePicByUrl: IUpdateProfilePictureFromExternalUrl = UpdateProfilePictureFromExternalUrl(),
-         getUserEvents: IGetEventsUseCase = GetEventsUseCase()) {
-        self.authRepo = authRepo
-        self.updateProfilePicByUrlUseCase = updateProfilePicByUrl
-        self.getUserEventsUseCase = getUserEvents
-    }
-    
-    func logout() {
-        self.authRepo.logout().sink(receiveCompletion: {completion in
-            switch completion {
-            case .failure(let error):
-                self.logoutError = error.localizedDescription
-            default:
-                ()
-            }
-        }, receiveValue: {() in ()})
-        .store(in: &self.cancellables)
-    }
-    
-    func updateProfilePicByUrl(userId: String) {
-        updateProfilePicByUrlUseCase.execute(url: textUrl, userId: userId)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .failure(let error):
-                    print(error.localizedDescription)
-                case .finished:
-                    print("successfully updated profile picture")
-                }
-            }, receiveValue: { downloadUrl in
-                self.imageUri = downloadUrl
-            }).store(in: &cancellables)
-    }
-    
-    func getEvents(status: EventStatus) {
-        getUserEventsUseCase.execute(userId: observeAuthUseCase.dataAuth!.id, status: status, type: nil)
-            .sink(receiveCompletion: {completion in
-                switch completion {
-                case .finished:
-                    print("getting events successfull")
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }, receiveValue: { events in
-                self.upcomingEvents = events
-                print(events)
-            }).store(in: &self.cancellables)
-    }
-}
-
-class MockProfileViewModel: IProfileViewModel {
-    @Published var logoutError = ""
-    @Published var updateProfileError = ""
-    @Published var loading = false
-    @Published var imageUri: String? = nil
-    @Published var textUrl: String = ""
-    @Published var showPhotoLibrary = false
-    @Published var upcomingEvents: [Event] = []
-    @Published var pastEvents: [Event] = []
-    
-    func logout() {
-        return
-    }
-    
-    func updateProfilePicByUrl(userId: String) {
-        return
-    }
-    
-    func getEvents(status: EventStatus) {
-        let event1 = Event(id: "1", name: "event", info: "info", startDate: Date(), endDate: nil, capacity: 4, attendees: [], type: .tennis, status: .open)
-        let event2 = Event(id: "2", name: "event", info: "info", startDate: Date(), endDate: nil, capacity: 4, attendees: [], type: .tennis, status: .open)
-        self.upcomingEvents = [event1, event2]
-        self.pastEvents = []
-    }
-}
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(viewModel: MockProfileViewModel())
+        ProfileView(viewModel: MockProfileViewModel(userId: "1"))
     }
 }

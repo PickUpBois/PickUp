@@ -9,7 +9,8 @@ import SwiftUI
 
 struct PickUpView: View {
     @State var showPopUp = false
-    var event: Event
+    var name: String
+    var startDate: Date
     
     func getDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
@@ -27,14 +28,14 @@ struct PickUpView: View {
 
                 VStack {
                     HStack{
-                        Text(event.name)
+                        Text(name)
                             .fontWeight(.heavy)
                             .foregroundColor(Color.black)
                             .multilineTextAlignment(.center)
                             .lineLimit(1)
                         Image(systemName:"calendar")
                             .foregroundColor(Color.red)
-                        Text(getDate(date: event.startDate))
+                        Text(getDate(date: startDate))
                             .foregroundColor(Color.black)
                                 Spacer()
                                 .frame(minWidth: 10, maxWidth: 10)
@@ -79,17 +80,6 @@ struct PickUpView: View {
     }
 }
 
-protocol IPickUpViewModel: ObservableObject {
-    var event: Event { get }
-}
-
-class PickUpViewModel: IPickUpViewModel {
-    var event: Event
-    init(event: Event) {
-        self.event = event
-    }
-}
-
 
 
 struct BackgroundClearView: UIViewRepresentable {
@@ -106,6 +96,6 @@ struct BackgroundClearView: UIViewRepresentable {
 
 struct PickUpView_Previews: PreviewProvider {
     static var previews: some View {
-        PickUpView(event: Event(id: "1", name: "Arian", info: "Info", startDate: Date(), endDate: nil, capacity: 4, attendees: [], type: .tennis, status: .open))
+        PickUpView(name: "Event", startDate: Date())
     }
 }
