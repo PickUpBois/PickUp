@@ -5,6 +5,6 @@ mutation UpdateUser($input: UpdateUserInput!) {
     lastName,
     username,
     college,
-    photoUrl
+	photoUrl
   }
 }

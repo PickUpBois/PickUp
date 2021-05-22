@@ -7,37 +7,24 @@
 
 import SwiftUI
 
+extension SearchUsersQuery.Data.SearchUser: Identifiable {
+    
+}
+
 struct FindTeammatesView: View {
+    @StateObject var viewModel: FindTeammatesViewModel = FindTeammatesViewModel()
     var body: some View {
         NavigationView {
-                    ScrollView {
+                    VStack {
                     // Stacks everything on page
                         Spacer().frame(height: 10.0)
                         VStack(alignment: .leading){
                             
-                            HStack(){
-                            HStack{
-                                Image(systemName: "magnifyingglass.circle.fill")
-                                
-                                    .multilineTextAlignment(.leading)
-                                
-                            Text("Search")
-                                .foregroundColor(.black)
-                                .multilineTextAlignment(.center)
-                                .frame(width: 60.0)
-                                Spacer(minLength: 200)
-                                    
-                                Image(systemName: "x.circle.fill")
-                                    .frame(width: 25.0)
-                                    
-                            }.frame(width: 320).padding(.horizontal, 6.0)
-                            .padding(.vertical, 15.0)
-                        .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
-                        .cornerRadius(20)
-                            
-                                Text("Cancel")
-                            }
-
+                        SearchBarView(text: $viewModel.query, placeholder: "Search")
+                        Spacer().frame(height: 10.0)
+                        List(viewModel.users) {
+                            SearchItemView(id: $0.id, username: $0.username)
+                        }
 
                             
                         //Email Text Field Settings
@@ -45,7 +32,8 @@ struct FindTeammatesView: View {
 
                         }
                         
-                            }.navigationBarTitleDisplayMode(.inline)
+                    }
+                    .navigationBarTitleDisplayMode(.inline)
                     .toolbar{
                         ToolbarItem(placement: .principal) {
                             HStack {
@@ -63,7 +51,7 @@ struct FindTeammatesView: View {
         }
         struct FindTeammatesView_Previews: PreviewProvider {
             static var previews: some View {
-                FindTeammatesView()
+                FindTeammatesView(viewModel: MockFindTeammatesViewModel())
             }
         }
 
