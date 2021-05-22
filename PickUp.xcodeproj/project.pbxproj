@@ -243,31 +243,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A2E5BDB265862A5006A803A /* NotifactionsView */ = {
-			isa = PBXGroup;
-			children = (
-				C0B81C6D2657064B000555BD /* NotificationsView.swift */,
-				1A2E5BDE2658637F006A803A /* EditedPickupNotificationView.swift */,
-				1A2E5BE026586455006A803A /* FriendRequestNotificationView.swift */,
-				1A2E5BE2265865EA006A803A /* ConfirmationNotificationView.swift */,
-				1A2E5BE426586698006A803A /* FinishPickupNotificationView.swift */,
-			);
-			path = NotifactionsView;
-			sourceTree = "<group>";
-		};
-		1ADE7E28264AF7B30097138F /* HomeScreen */ = {
-			isa = PBXGroup;
-			children = (
-				1A2E5BDB265862A5006A803A /* NotifactionsView */,
-				8D5EE0402652D96B00EE7840 /* CourtsNearMe */,
-				8D5EE03F2652D95E00EE7840 /* SocialFeed */,
-				8D5EE03E2652D94A00EE7840 /* UpcomingPickUps */,
-				8DFCF52B262788E100BBFE66 /* HomeView.swift */,
-				1A49DC0A26544D2D007F28FD /* PopupView.swift */,
-			);
-			path = HomeScreen;
-			sourceTree = "<group>";
-		};
 		245CC24D0CB1FE80EFCDD25E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,29 +264,6 @@
 				6403E9CD6469737F34F86843 /* Pods-PickUpTests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		8D2B0C4E263818EE0032AE67 /* misc */ = {
-			isa = PBXGroup;
-			children = (
-				8D2B0C4F263819060032AE67 /* ImagePicker.swift */,
-			);
-			path = misc;
-			sourceTree = "<group>";
-		};
-		8D30B106263E2122002B4C62 /* ProfileView */ = {
-			isa = PBXGroup;
-			children = (
-				8D09E70A2623E16E0007B871 /* ProfileView.swift */,
-				8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */,
-				8D30B107263E2146002B4C62 /* ProfilePicture.swift */,
-				8D30B10F263E232C002B4C62 /* ProfileHeaderView.swift */,
-				1A03F99C263F473000C2E2CD /* PastPickupView.swift */,
-				1A03F99E263F482F00C2E2CD /* UpcomingPickupsView.swift */,
-				8D5EE07126531C4800EE7840 /* ProfileUpcomingEventView.swift */,
-				8D5EE07926531EC200EE7840 /* ProfilePastEventView.swift */,
-			);
-			path = ProfileView;
 			sourceTree = "<group>";
 		};
 		8D3694E3262B52080062DD0C /* domain */ = {
@@ -378,56 +330,148 @@
 			path = di;
 			sourceTree = "<group>";
 		};
-		8D484BFD261BD65900814A8F /* auth */ = {
+		8D65B2542658C4340085D5EE /* views */ = {
 			isa = PBXGroup;
 			children = (
-				1ADE7E28264AF7B30097138F /* HomeScreen */,
-				C0D471652640975200E7B6C7 /* EventView */,
-				8D30B106263E2122002B4C62 /* ProfileView */,
+				8D65B25F2658C81A0085D5EE /* search */,
+				8D65B25D2658C4760085D5EE /* auth */,
+				8D65B25A2658C4620085D5EE /* root */,
+				8D65B2592658C44F0085D5EE /* map */,
+				8D65B2582658C44A0085D5EE /* event */,
+				8D65B2572658C4450085D5EE /* profile */,
+				8D65B2562658C4400085D5EE /* home */,
+				8D65B2552658C43A0085D5EE /* notifications */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		8D65B2552658C43A0085D5EE /* notifications */ = {
+			isa = PBXGroup;
+			children = (
+				C0B81C6D2657064B000555BD /* NotificationsView.swift */,
+				1A2E5BDE2658637F006A803A /* EditedPickupNotificationView.swift */,
+				1A2E5BE026586455006A803A /* FriendRequestNotificationView.swift */,
+				1A2E5BE426586698006A803A /* FinishPickupNotificationView.swift */,
+				1A2E5BE2265865EA006A803A /* ConfirmationNotificationView.swift */,
+			);
+			path = notifications;
+			sourceTree = "<group>";
+		};
+		8D65B2562658C4400085D5EE /* home */ = {
+			isa = PBXGroup;
+			children = (
+				8D65B25E2658C7450085D5EE /* components */,
+				8DFCF52B262788E100BBFE66 /* HomeView.swift */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		8D65B2572658C4450085D5EE /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */,
+				8D09E70A2623E16E0007B871 /* ProfileView.swift */,
+				8D65B25B2658C46A0085D5EE /* components */,
+			);
+			path = profile;
+			sourceTree = "<group>";
+		};
+		8D65B2582658C44A0085D5EE /* event */ = {
+			isa = PBXGroup;
+			children = (
+				8DFCF521262788D000BBFE66 /* CreateEventView.swift */,
+				8DFB99A6264ECBE400254C57 /* CreateSportEventView.swift */,
+				C0D4716B264098BF00E7B6C7 /* CreateEventView.xib */,
+				8D65B25C2658C4700085D5EE /* components */,
+			);
+			path = event;
+			sourceTree = "<group>";
+		};
+		8D65B2592658C44F0085D5EE /* map */ = {
+			isa = PBXGroup;
+			children = (
+				8DFCF517262788BD00BBFE66 /* MapView.swift */,
+				C088BBA8265785BE007301F7 /* MapMainView.swift */,
+				C088BBAD2657ABE2007301F7 /* MapSideMenuView.swift */,
+				C088BBAB26579A79007301F7 /* Place.swift */,
+				C088BBA6265780CB007301F7 /* MapViewModel.swift */,
+			);
+			path = map;
+			sourceTree = "<group>";
+		};
+		8D65B25A2658C4620085D5EE /* root */ = {
+			isa = PBXGroup;
+			children = (
+				8DB8EF8726198976004AADED /* ContentView.swift */,
 				8DFCF503262788A000BBFE66 /* MainView.swift */,
-				C088BBA526578057007301F7 /* MapView */,
-				8DFCF50D262788AF00BBFE66 /* FindTeammatesView.swift */,
-				8D3CDD3126583A92000EE754 /* SearchView.swift */,
+			);
+			path = root;
+			sourceTree = "<group>";
+		};
+		8D65B25B2658C46A0085D5EE /* components */ = {
+			isa = PBXGroup;
+			children = (
+				8D2B0C4F263819060032AE67 /* ImagePicker.swift */,
+				8D5EE07926531EC200EE7840 /* ProfilePastEventView.swift */,
+				8D5EE07126531C4800EE7840 /* ProfileUpcomingEventView.swift */,
+				1A03F99E263F482F00C2E2CD /* UpcomingPickupsView.swift */,
+				1A03F99C263F473000C2E2CD /* PastPickupView.swift */,
+				8D30B10F263E232C002B4C62 /* ProfileHeaderView.swift */,
+				8D30B107263E2146002B4C62 /* ProfilePicture.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		8D65B25C2658C4700085D5EE /* components */ = {
+			isa = PBXGroup;
+			children = (
+				8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */,
+				8DFB998C264E342800254C57 /* EventLocationPickerView.swift */,
+				1AB44EDA26439DB300568ECB /* TypingBlockView.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		8D65B25D2658C4760085D5EE /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				8D2A3EF2261EC3E100521A6A /* SignUp.swift */,
+				8DFAD530261EBA910055BA76 /* LoginView.swift */,
 			);
 			path = auth;
 			sourceTree = "<group>";
 		};
-		8D484BFE261BD65E00814A8F /* guest */ = {
+		8D65B25E2658C7450085D5EE /* components */ = {
 			isa = PBXGroup;
 			children = (
-				8DFAD530261EBA910055BA76 /* LoginView.swift */,
-				8D2A3EF2261EC3E100521A6A /* SignUp.swift */,
-			);
-			path = guest;
-			sourceTree = "<group>";
-		};
-		8D5EE03E2652D94A00EE7840 /* UpcomingPickUps */ = {
-			isa = PBXGroup;
-			children = (
-				8D5EE0362652D6AF00EE7840 /* PickUpTabListView.swift */,
-				8D5EE0282652D2CD00EE7840 /* PickUpView.swift */,
 				8D5EE0232652D1A400EE7840 /* PickUpListView.swift */,
-			);
-			path = UpcomingPickUps;
-			sourceTree = "<group>";
-		};
-		8D5EE03F2652D95E00EE7840 /* SocialFeed */ = {
-			isa = PBXGroup;
-			children = (
-				1ADE7E33264C48060097138F /* SocialView.swift */,
-				C088BBAF26582B4B007301F7 /* SocialViewScrollView.swift */,
+				8D5EE0282652D2CD00EE7840 /* PickUpView.swift */,
+				8D5EE0362652D6AF00EE7840 /* PickUpTabListView.swift */,
 				1A49DC0C265466BD007F28FD /* OLDpastpickups.swift */,
+				C088BBAF26582B4B007301F7 /* SocialViewScrollView.swift */,
+				1ADE7E33264C48060097138F /* SocialView.swift */,
+				1ADE7E35264C50E90097138F /* CourtsNearMeView.swift */,
+				8D5EE02E2652D58300EE7840 /* CourtsNearMeListView.swift */,
+				1A49DC0A26544D2D007F28FD /* PopupView.swift */,
 			);
-			path = SocialFeed;
+			path = components;
 			sourceTree = "<group>";
 		};
-		8D5EE0402652D96B00EE7840 /* CourtsNearMe */ = {
+		8D65B25F2658C81A0085D5EE /* search */ = {
 			isa = PBXGroup;
 			children = (
-				8D5EE02E2652D58300EE7840 /* CourtsNearMeListView.swift */,
-				1ADE7E35264C50E90097138F /* CourtsNearMeView.swift */,
+				8DFCF50D262788AF00BBFE66 /* FindTeammatesView.swift */,
+				8D65B2602658C8200085D5EE /* components */,
 			);
-			path = CourtsNearMe;
+			path = search;
+			sourceTree = "<group>";
+		};
+		8D65B2602658C8200085D5EE /* components */ = {
+			isa = PBXGroup;
+			children = (
+				8D3CDD3126583A92000EE754 /* SearchView.swift */,
+			);
+			path = components;
 			sourceTree = "<group>";
 		};
 		8DB8EF7926198976004AADED = {
@@ -456,12 +500,12 @@
 		8DB8EF8426198976004AADED /* PickUp */ = {
 			isa = PBXGroup;
 			children = (
+				8D65B2542658C4340085D5EE /* views */,
 				8DFB9A5A2650AA1B00254C57 /* API.swift */,
 				8DFB9A2526509D1E00254C57 /* schema.json */,
 				8D484BF4261BB08000814A8F /* di */,
 				8DB8EFDB261A69A3004AADED /* data */,
 				8D3694E3262B52080062DD0C /* domain */,
-				8DB8EFBD26198CBD004AADED /* ui */,
 				8DB8EF8526198976004AADED /* PickUpApp.swift */,
 				8DB8EF8926198979004AADED /* Assets.xcassets */,
 				8DB8EF8E26198979004AADED /* Info.plist */,
@@ -496,17 +540,6 @@
 				8DB8EFA426198979004AADED /* Info.plist */,
 			);
 			path = PickUpUITests;
-			sourceTree = "<group>";
-		};
-		8DB8EFBD26198CBD004AADED /* ui */ = {
-			isa = PBXGroup;
-			children = (
-				8D2B0C4E263818EE0032AE67 /* misc */,
-				8D484BFE261BD65E00814A8F /* guest */,
-				8D484BFD261BD65900814A8F /* auth */,
-				8DB8EF8726198976004AADED /* ContentView.swift */,
-			);
-			path = ui;
 			sourceTree = "<group>";
 		};
 		8DB8EFDB261A69A3004AADED /* data */ = {
@@ -552,39 +585,6 @@
 				8D5EE0572652E09300EE7840 /* QueryEventsQuery.graphql */,
 			);
 			path = graphql;
-			sourceTree = "<group>";
-		};
-		8DFCCB2F264D9DB400D19210 /* Inputs */ = {
-			isa = PBXGroup;
-			children = (
-				8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */,
-				1AB44EDA26439DB300568ECB /* TypingBlockView.swift */,
-				8DFB998C264E342800254C57 /* EventLocationPickerView.swift */,
-			);
-			path = Inputs;
-			sourceTree = "<group>";
-		};
-		C088BBA526578057007301F7 /* MapView */ = {
-			isa = PBXGroup;
-			children = (
-				8DFCF517262788BD00BBFE66 /* MapView.swift */,
-				C088BBA6265780CB007301F7 /* MapViewModel.swift */,
-				C088BBA8265785BE007301F7 /* MapMainView.swift */,
-				C088BBAB26579A79007301F7 /* Place.swift */,
-				C088BBAD2657ABE2007301F7 /* MapSideMenuView.swift */,
-			);
-			path = MapView;
-			sourceTree = "<group>";
-		};
-		C0D471652640975200E7B6C7 /* EventView */ = {
-			isa = PBXGroup;
-			children = (
-				8DFCCB2F264D9DB400D19210 /* Inputs */,
-				8DFCF521262788D000BBFE66 /* CreateEventView.swift */,
-				8DFB99A6264ECBE400254C57 /* CreateSportEventView.swift */,
-				C0D4716B264098BF00E7B6C7 /* CreateEventView.xib */,
-			);
-			path = EventView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
