@@ -32,7 +32,33 @@ struct MapSideMenuView: View {
                 Spacer(minLength: 0)
             }
             .padding()
+                
             
+            ScrollView(.horizontal, showsIndicators: false) {
+                    
+                HStack(spacing: 18){
+                        
+                    Button(action: {
+                            
+                        }) {
+                        
+                        ForEach(1...7,id: \.self){i in
+                            
+                            Button(action: {
+                            }) {
+                                
+                                Image("a\(i)")
+                                    .resizable()
+                                    .renderingMode(.original)
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(Circle())
+                            }
+                        }
+                    }
+                }
+            }
+            .padding()
+                
             HStack{
                 Image(systemName: "doc.text.fill")
                     .foregroundColor(Color.purple)

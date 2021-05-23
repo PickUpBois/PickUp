@@ -55,14 +55,24 @@ struct HomeView: View {
                             .frame(width: 125, height: 30)
                             .scaledToFit()
                         
-                        Spacer().frame(minWidth: 95, idealWidth: 95, maxWidth: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        Spacer().frame(minWidth: 70, idealWidth: 70, maxWidth: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        NavigationLink(destination: MessageView()) {
+                            Image(systemName: "message.circle.fill")
+                                .resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
+                                .foregroundColor(Color.blue)
+                                .frame(width: 25.0, height: 25.0)
+                        }
+                        Spacer().frame(width: 10)
+                        
                         NavigationLink(destination: NotificationsView()) {
                             Image(systemName: "bell.circle.fill")
-                            
+                                .resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
+                                .foregroundColor(Color.black)
+                                .frame(width: 25.0, height: 25.0)
                         }
 
                     }
-                    .padding(.leading, 115)
+                    .padding(.leading, 140)
                                 }
                     
             }

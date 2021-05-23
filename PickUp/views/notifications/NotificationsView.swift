@@ -10,7 +10,6 @@ import SwiftUI
 struct NotificationsView: View {
     @State var showPopUp = false
     var body: some View {
-        NavigationView {
         ScrollView{
             VStack {
 
@@ -22,20 +21,22 @@ struct NotificationsView: View {
                 
                 FinishPickupNotificationView()
                 
+                PostNotificationView()
+                
+                
             }.frame(width: .infinity, height: .infinity, alignment: .topLeading)
-        }
             
-            
-            
-                }
-        .navigationBarTitleDisplayMode(.inline)
+        }        .navigationBarTitleDisplayMode(.inline)
         .toolbar{
             ToolbarItem(placement: .principal) {
                 HStack(spacing: 0.0) {
                     Text("Notifications")
                         .fontWeight(.heavy)
-
+                        .foregroundColor(Color.black)
+            
+            
                 }
+
             }
         }
     }

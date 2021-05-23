@@ -12,6 +12,7 @@ struct ConfirmationNotificationView: View {
       
         VStack{
         HStack {
+            NavigationLink(destination: ProfileView(viewModel: MockProfileViewModel(userId: "1"), auth: true)) {
             Image("serena")
                 .resizable()
                 .foregroundColor(.blue)
@@ -20,13 +21,11 @@ struct ConfirmationNotificationView: View {
                 .shadow(radius: 2)
                 .overlay(Circle().stroke(Color.black, lineWidth: 2))
             
-            Button(action: {
-            },label: {
             Text("David Reynolds")
                 .fontWeight(.heavy)
                 .foregroundColor(Color.black)
                 .lineLimit(1)
-            })
+            }
             Spacer()
             Text("5/21/2021 @ 7:00 P.M.")
             .lineLimit(1)

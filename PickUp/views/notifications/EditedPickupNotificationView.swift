@@ -12,6 +12,7 @@ struct EditedPickupNotificationView: View {
        
         VStack{
             HStack {
+                NavigationLink(destination: ProfileView(viewModel: MockProfileViewModel(userId: "1"), auth: true)) {
                 Image("serena")
                     .resizable()
                     .foregroundColor(.blue)
@@ -20,15 +21,12 @@ struct EditedPickupNotificationView: View {
                     .shadow(radius: 2)
                     .overlay(Circle().stroke(Color.black, lineWidth: 2))
                 
-                Button(action: {}
-                ,label: {
                 Text("Ashwin Yedavalli")
                     .fontWeight(.heavy)
                     .foregroundColor(Color.black)
                     .lineLimit(1)
-                })
+                }
                 
-        
                 Spacer()
                 Text("11/05/2021 @ 11:45 P.M.")
                 .lineLimit(1)

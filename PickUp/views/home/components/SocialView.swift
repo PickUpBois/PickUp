@@ -32,11 +32,11 @@ struct SocialView: View {
                 Button(action: {
                     self.postPopup.toggle()
                 },label: {
-                Text("Create Post +")
+                Text("Filters")
                     .foregroundColor(Color.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 10)
-                    .background(Color.blue.opacity(0.8))
+                    .background(Color.green.opacity(0.8))
                     .cornerRadius(9)
                     .padding(.horizontal, 20)
                 })
@@ -60,7 +60,7 @@ struct SocialView: View {
             
             ScrollView {
                 Spacer().frame(height: 0)
-                OLDpastpickups()
+                PostedPickUpsView()
             }
         
             }

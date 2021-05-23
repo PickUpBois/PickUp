@@ -12,6 +12,7 @@ struct FinishPickupNotificationView: View {
 
         VStack{
                 HStack {
+                    NavigationLink(destination: ProfileView(viewModel: MockProfileViewModel(userId: "1"), auth: true)) {
                     Image("logo2")
                         .resizable()
                         .foregroundColor(.blue)
@@ -20,13 +21,11 @@ struct FinishPickupNotificationView: View {
                         .shadow(radius: 2)
                         .overlay(Circle().stroke(Color.black, lineWidth: 2))
                     
-                    Button(action: {
-                    },label: {
                     Text("PickUp")
                         .fontWeight(.heavy)
                         .foregroundColor(Color.black)
                         .lineLimit(1)
-                    })
+                    }
                     Spacer()
                     Text("5/22/2021 @ 8:00 P.M.")
                     .lineLimit(1)
