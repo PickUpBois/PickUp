@@ -18,14 +18,13 @@ struct ContentView: View {
                         appState.listen()
                     })
                 } else {
-                    NavigationView {
-                        LoginView()
-                            .onAppear(perform: {
-                                appState.detach()
-                            })
-                    }
+                    LoginView()
+                        .onAppear(perform: {
+                            appState.detach()
+                    })
                 }
-            }.onAppear(perform: {
+            }
+            .onAppear(perform: {
                 appState.authId = Services.shared.auth.getCurrentUser()
             })
     }

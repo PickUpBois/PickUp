@@ -14,13 +14,15 @@ struct ProfileHeaderView: View {
     let username: String
     let college: String?
     let photoUrl: String?
-    init(user: GetUserQuery.Data.User?, showPhotoLibrary: Binding<Bool>) {
+    let auth: Bool
+    init(user: GetUserQuery.Data.User?, showPhotoLibrary: Binding<Bool>, auth: Bool) {
         self.firstName = user?.firstName ?? "NA"
         self.lastName = user?.lastName ?? "NA"
         self.username = user?.username ?? "NA"
         self.college = user?.college
         self.photoUrl = user?.photoUrl
         self._showPhotoLibrary = showPhotoLibrary
+        self.auth = auth
     }
     var body: some View {
         VStack(alignment: .center) {
@@ -29,18 +31,20 @@ struct ProfileHeaderView: View {
             .padding(.top)
            
                 //not following yet
-            Button(action: {},
-                   label: {Image(systemName: "plus.square.fill")
-                    .foregroundColor(Color.red)
-                    .padding(.top)
-                   })
-                    
-           //if following, click to unfollow
-            Button(action: {},
-                    label: {Image(systemName: "checkmark.square.fill")
-                            .foregroundColor(Color.green)
+                if !auth {
+                    Button(action: {},
+                           label: {Image(systemName: "plus.square.fill")
+                            .foregroundColor(Color.red)
                             .padding(.top)
-                   })
+                           })
+                            
+                   //if following, click to unfollow
+                    Button(action: {},
+                            label: {Image(systemName: "checkmark.square.fill")
+                                    .foregroundColor(Color.green)
+                                    .padding(.top)
+                    })
+                }
                 
                 //Text("Add")
                     //.font(.title3)
@@ -97,6 +101,6 @@ struct ProfileHeaderView: View {
 
 struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileHeaderView(user: GetUserQuery.Data.User(id: "1", firstName: "Ashwin", lastName: "Reynolds", username: "Arahbar", college: "ISU Cyclones"), showPhotoLibrary: .constant(false))
+        ProfileHeaderView(user: GetUserQuery.Data.User(id: "1", firstName: "Ashwin", lastName: "Reynolds", username: "Arahbar", college: "ISU Cyclones"), showPhotoLibrary: .constant(false), auth: false)
     }
 }

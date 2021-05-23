@@ -13,7 +13,7 @@ class HomeViewModel: ObservableObject {
     @Published var events: [EventType: [QueryEventsQuery.Data.QueryEvent]] = [:]
     func getUpcomingEvents() {
         if (AppState.shared.authId != nil) {
-            Services.shared.apollo.fetch(query: QueryEventsQuery(userId: AppState.shared.authId!, type: nil, status: .open)) { response in
+            Services.shared.apollo.fetch(query: QueryEventsQuery(userId: AppState.shared.authId!, type: nil, status: .open), cachePolicy: .fetchIgnoringCacheCompletely) { response in
                 switch response {
                 case .success(let result):
                     if let errors = result.errors {

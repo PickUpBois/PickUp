@@ -25,6 +25,9 @@ struct ProfileSettingsView: View {
         Text("\(userViewModel.user?.username ?? "username")")
         
         Button("Update profile", action: {self.viewModel.updateProfile()})
+        Button("Logout", action: { () in
+            self.viewModel.logout()
+        })
     }
 }
 

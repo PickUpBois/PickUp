@@ -65,9 +65,10 @@ struct ProfileView: View {
     @ObservedObject var viewModel: ProfileViewModel
     @State private var selection = 1
     @State var menuOpen: Bool = false
-    
-    init(viewModel: ProfileViewModel) {
+    var auth: Bool
+    init(viewModel: ProfileViewModel, auth: Bool) {
         self.viewModel = viewModel
+        self.auth = auth
     }
     //Navigation bar
     var body: some View {
@@ -75,7 +76,7 @@ struct ProfileView: View {
             VStack {
             // Stacks everything on page
                 // Stacks for profile picture
-                ProfileHeaderView(user: self.viewModel.user, showPhotoLibrary: self.$viewModel.showPhotoLibrary)
+                ProfileHeaderView(user: self.viewModel.user, showPhotoLibrary: self.$viewModel.showPhotoLibrary, auth: auth)
                     .frame(height: 200)
 
 
@@ -95,13 +96,6 @@ struct ProfileView: View {
                 }
                 
                 Spacer().frame(minHeight: 5, maxHeight: 10)
-                if (viewModel.loading) {
-                    Text("Loading!")
-                } else {
-                    Button("Logout", action: {() in
-                        self.viewModel.logout()
-                        })
-                    }
             }
             .sheet(isPresented: self.$viewModel.showPhotoLibrary) {
                 ImagePicker(sourceType: .photoLibrary, userId: self.viewModel.userId)
@@ -122,15 +116,14 @@ struct ProfileView: View {
                             .frame(width: 125, height: 30)
                             .scaledToFit()
                         
-                        Spacer().frame(minWidth: 100, idealWidth: 100, maxWidth: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        NavigationLink(destination: ProfileSettingsView().environmentObject(self.viewModel)) {
-                            Image(systemName: "gearshape.fill")
-                                
+                        if auth {
+                            Spacer().frame(minWidth: 100, idealWidth: 100, maxWidth: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            NavigationLink(destination: ProfileSettingsView().environmentObject(self.viewModel)) {
+                                Image(systemName: "gearshape.fill")
                             }
-                        
+                        }
                     }
                     .padding(.leading, 110)
-
                 }
             }
         }
@@ -142,6 +135,6 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(viewModel: MockProfileViewModel(userId: "1"))
+        ProfileView(viewModel: MockProfileViewModel(userId: "1"), auth: true)
     }
 }

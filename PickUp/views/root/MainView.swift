@@ -39,7 +39,7 @@ struct MainView: View {
     
                 }
             
-            ProfileView(viewModel: ProfileViewModel(userId: AppState.shared.authId!))
+            ProfileView(viewModel: ProfileViewModel(userId: AppState.shared.authId!), auth: true)
                 .tabItem {
                    Image(systemName: "person.fill")
                     Text("Profile")

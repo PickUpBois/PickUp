@@ -16,77 +16,79 @@ struct LoginView: View {
     }
     
     var body: some View {
-        VStack (spacing: 5) {
-            //Logo Image at Top
-            Image("Logo")
-                .resizable()
-                .padding(.top, 100.0)
-                .frame(width: 275, height: 200)
-                .scaledToFit()
-            Spacer()
-            
-            HStack {
-                //Hstack Email
-                Image(systemName: "envelope")
-                    .foregroundColor(.black)
-                TextField("Email", text: $viewModel.email)
-            }
-            //Email Text Field Settings
-            .padding(.all, 20.0)
-            .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
-            .cornerRadius(8)
-            .padding(.horizontal, 20)
-            
-            HStack {
-                //Hstack Password
-                Image(systemName: "lock")
-                    .foregroundColor(.black)
-                TextField("Password", text: $viewModel.password)
-            }
-            //Password Text Field Settings
-            .padding(.all, 20)
-            .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
-            .cornerRadius(8)
-            .padding(.horizontal, 20)
-            
-            //Login Button Settings
-            Button(action: viewModel.login){
-                Text("Login")
-                    .foregroundColor(.white)
-                    .font(.system(size: 20, weight: .medium))
-                    }.frame(maxWidth: .infinity)
-                    .padding(.vertical, 10)
-                    .background(Color.blue.opacity(0.8))
-                    .cornerRadius(9)
-                    .padding(.horizontal, 20)
-            if !viewModel.errorMessage.isEmpty {
-                Text(viewModel.errorMessage)
-                    .foregroundColor(Color.red)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.horizontal, 20)
-            }
-            //Forgot Password Button Settings
-            Button(action: {}){
-                Text("Forgot Password?")
-                    .foregroundColor(.black)
-                    .font(.system(size: 18, weight: .medium))
-                    }.frame(maxWidth: .infinity)
-                    .padding(.vertical, 10)
-                    .cornerRadius(9)
-                    .padding(.horizontal, 20)
+        NavigationView {
+            VStack (spacing: 5) {
+                //Logo Image at Top
+                Image("Logo")
+                    .resizable()
+                    .padding(.top, 100.0)
+                    .frame(width: 275, height: 200)
+                    .scaledToFit()
                 Spacer()
-                .frame(minHeight: 70, maxHeight: 190)
-            
-            //Sign Up Button Settings
-            NavigationLink(destination: SignUpView()) {
-                Text("Don't have an account? Sign Up.")
-                    .foregroundColor(.black)
-                    .font(.system(size: 18, weight: .medium))
-                    .frame(width: /*@START_MENU_TOKEN@*/500.0/*@END_MENU_TOKEN@*/, height: 100.0)
-            }.frame(maxWidth: .infinity)
-            .padding(.vertical, 10)
-            .cornerRadius(9)
-            .padding(.horizontal, 20)
+                
+                HStack {
+                    //Hstack Email
+                    Image(systemName: "envelope")
+                        .foregroundColor(.black)
+                    TextField("Email", text: $viewModel.email)
+                }
+                //Email Text Field Settings
+                .padding(.all, 20.0)
+                .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                .cornerRadius(8)
+                .padding(.horizontal, 20)
+                
+                HStack {
+                    //Hstack Password
+                    Image(systemName: "lock")
+                        .foregroundColor(.black)
+                    TextField("Password", text: $viewModel.password)
+                }
+                //Password Text Field Settings
+                .padding(.all, 20)
+                .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                .cornerRadius(8)
+                .padding(.horizontal, 20)
+                
+                //Login Button Settings
+                Button(action: viewModel.login){
+                    Text("Login")
+                        .foregroundColor(.white)
+                        .font(.system(size: 20, weight: .medium))
+                        }.frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(Color.blue.opacity(0.8))
+                        .cornerRadius(9)
+                        .padding(.horizontal, 20)
+                if !viewModel.errorMessage.isEmpty {
+                    Text(viewModel.errorMessage)
+                        .foregroundColor(Color.red)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.horizontal, 20)
+                }
+                //Forgot Password Button Settings
+                Button(action: {}){
+                    Text("Forgot Password?")
+                        .foregroundColor(.black)
+                        .font(.system(size: 18, weight: .medium))
+                        }.frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .cornerRadius(9)
+                        .padding(.horizontal, 20)
+                    Spacer()
+                    .frame(minHeight: 70, maxHeight: 190)
+                
+                //Sign Up Button Settings
+                NavigationLink(destination: SignUpView()) {
+                    Text("Don't have an account? Sign Up.")
+                        .foregroundColor(.black)
+                        .font(.system(size: 18, weight: .medium))
+                        .frame(width: /*@START_MENU_TOKEN@*/500.0/*@END_MENU_TOKEN@*/, height: 100.0)
+                }.frame(maxWidth: .infinity)
+                .padding(.vertical, 10)
+                .cornerRadius(9)
+                .padding(.horizontal, 20)
+            }
         }
     }
 }

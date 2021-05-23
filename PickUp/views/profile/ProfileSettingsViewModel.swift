@@ -28,12 +28,27 @@ class ProfileSettingsViewModel: ObservableObject {
                 print(error.localizedDescription)
             }
         }
-        
+    }
+    
+    func logout() {
+        Services.shared.auth.logout().sink(receiveCompletion: {completion in
+            switch completion {
+            case .failure(let error):
+                print(error.localizedDescription)
+            default:
+                ()
+            }
+        }, receiveValue: {() in ()})
+        .store(in: &self.cancellables)
     }
 }
 
 class MockProfileSettingsViewModel: ProfileSettingsViewModel {
     override func updateProfile() {
+        return
+    }
+    
+    override func logout() {
         return
     }
 }
