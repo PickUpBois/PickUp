@@ -51,7 +51,7 @@
 		8D65B2E626592AA00085D5EE /* SearchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B2E526592AA00085D5EE /* SearchItemView.swift */; };
 		8D65B2F626592FA70085D5EE /* FindTeammatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B2F526592FA70085D5EE /* FindTeammatesViewModel.swift */; };
 		8D65B2FB265931900085D5EE /* FindTeammatesViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8D65B2FA265931900085D5EE /* FindTeammatesViewModel.graphql */; };
-		8D65B30A2659386E0085D5EE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B3092659386D0085D5EE /* API.swift */; };
+		8D65B377265B06900085D5EE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B376265B06900085D5EE /* API.swift */; };
 		8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8526198976004AADED /* PickUpApp.swift */; };
 		8DB8EF8826198976004AADED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8726198976004AADED /* ContentView.swift */; };
 		8DB8EF8A26198979004AADED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8926198979004AADED /* Assets.xcassets */; };
@@ -107,6 +107,18 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8D65B36C265B00980085D5EE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1A03F99C263F473000C2E2CD /* PastPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastPickupView.swift; sourceTree = "<group>"; };
 		1A03F99E263F482F00C2E2CD /* UpcomingPickupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingPickupsView.swift; sourceTree = "<group>"; };
@@ -152,8 +164,8 @@
 		8D65B2E526592AA00085D5EE /* SearchItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemView.swift; sourceTree = "<group>"; };
 		8D65B2F526592FA70085D5EE /* FindTeammatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindTeammatesViewModel.swift; sourceTree = "<group>"; };
 		8D65B2FA265931900085D5EE /* FindTeammatesViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FindTeammatesViewModel.graphql; sourceTree = "<group>"; };
-		8D65B308265938670085D5EE /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		8D65B3092659386D0085D5EE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		8D65B376265B06900085D5EE /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		8D65B37B265B06B20085D5EE /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		8DB8EF8226198976004AADED /* PickUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DB8EF8526198976004AADED /* PickUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpApp.swift; sourceTree = "<group>"; };
 		8DB8EF8726198976004AADED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -422,8 +434,6 @@
 		8D65B29B2658DD760085D5EE /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				8D65B308265938670085D5EE /* schema.json */,
-				8D65B3092659386D0085D5EE /* API.swift */,
 				8D65B29C2658DD7D0085D5EE /* graphql */,
 			);
 			path = resources;
@@ -483,6 +493,8 @@
 				8DB8EF8926198979004AADED /* Assets.xcassets */,
 				8DB8EF8E26198979004AADED /* Info.plist */,
 				8DB8EF8B26198979004AADED /* Preview Content */,
+				8D65B376265B06900085D5EE /* API.swift */,
+				8D65B37B265B06B20085D5EE /* schema.json */,
 			);
 			path = PickUp;
 			sourceTree = "<group>";
@@ -531,11 +543,13 @@
 			buildConfigurationList = 8DB8EFA726198979004AADED /* Build configuration list for PBXNativeTarget "PickUp" */;
 			buildPhases = (
 				7F950FCCE08E3A888A5C5035 /* [CP] Check Pods Manifest.lock */,
+				8D65B349265AF9B50085D5EE /* Apollo Schema Download */,
 				8DFB9A2126509AB600254C57 /* Apollo CLI */,
 				8DB8EF7E26198976004AADED /* Sources */,
 				8DB8EF7F26198976004AADED /* Frameworks */,
 				8DB8EF8026198976004AADED /* Resources */,
 				EA4B581B1EE8AC51FFE7FC37 /* [CP] Embed Pods Frameworks */,
+				8D65B36C265B00980085D5EE /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -725,23 +739,45 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8DFB9A2126509AB600254C57 /* Apollo CLI */ = {
+		8D65B349265AF9B50085D5EE /* Apollo Schema Download */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
 			);
+			name = "Apollo Schema Download";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${SRCROOT}/${TARGET_NAME}/schema.json",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=http://localhost:3000/graphql $SCRIPT_OUTPUT_FILE_0\n";
+		};
+		8DFB9A2126509AB600254C57 /* Apollo CLI */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(DERIVED_FILE_DIR)/schema.json",
+			);
 			name = "Apollo CLI";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(SRCROOT)/${TARGET_NAME}/API.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}/resources\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=${GRAPHQL_URL}\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
+			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" $SCRIPT_OUTPUT_FILE_0\n";
+			showEnvVarsInLog = 0;
 		};
 		EA4B581B1EE8AC51FFE7FC37 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -795,7 +831,6 @@
 				8DFB99A7264ECBE400254C57 /* CreateSportEventView.swift in Sources */,
 				8D5EE07226531C4800EE7840 /* ProfileUpcomingEventView.swift in Sources */,
 				8D2B0C50263819060032AE67 /* ImagePicker.swift in Sources */,
-				8D65B30A2659386E0085D5EE /* API.swift in Sources */,
 				1A2E5BDF2658637F006A803A /* EditedPickupNotificationView.swift in Sources */,
 				8D65B28B2658CF6F0085D5EE /* ProfileSettingsViewModel.swift in Sources */,
 				8D65B2E626592AA00085D5EE /* SearchItemView.swift in Sources */,
@@ -824,6 +859,7 @@
 				8DFCF52C262788E100BBFE66 /* HomeView.swift in Sources */,
 				8DFB9988264E2C9F00254C57 /* EventDatePickerView.swift in Sources */,
 				8DFCF518262788BD00BBFE66 /* MapView.swift in Sources */,
+				8D65B377265B06900085D5EE /* API.swift in Sources */,
 				8D5EE0242652D1A400EE7840 /* PickUpListView.swift in Sources */,
 				8D65B2AB265904EA0085D5EE /* CreateEventViewModel.swift in Sources */,
 				8D65B2682658C91D0085D5EE /* AppState.swift in Sources */,
