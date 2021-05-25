@@ -8,19 +8,28 @@
 import SwiftUI
 
 struct PastPickupView: View {
+    @State private var selection = 1
+ 
     var body: some View {
-        ScrollView {
-            Spacer().frame(height: 15)
-            ProfilePastEventView(type: .tennis)
-            Spacer().frame(height: 25)
-            ProfilePastEventView(type: .basketball)
+        Picker("", selection: $selection) {
+            Text("Past Posts").foregroundColor(Color.blue).tag(1)
+            Text("Past Scores").foregroundColor(Color.red).tag(0)
+        }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
+        
+        if selection == 0 {
+            PastScoresView()
         }
+        
+        else {
+            SocialView()
+        }
+        
     }
 }
 
 struct PastPickupView_Previews: PreviewProvider {
     static var previews: some View {
         PastPickupView()
-    }
 }
 
+}

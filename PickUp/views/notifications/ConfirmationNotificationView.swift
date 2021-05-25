@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ConfirmationNotificationView: View {
+    @State var showPopUp = false
     var body: some View {
       
         VStack{
@@ -32,17 +33,32 @@ struct ConfirmationNotificationView: View {
                 
             }
             Spacer().frame(height: 10)
-            HStack {
                 HStack{
                     Button(action: {
+                        self.showPopUp.toggle()
                     },label: {
                         Text("David has entered a score of 21-19 (W) for the event '2v2 Pickup at Lied Rec. Press here to confirm score and finish Pickup!")
                             .foregroundColor(Color.purple)
                             .padding(.leading, 10.0)
                             .lineLimit(3)
                     })
-                }
-        }
+                }.sheet(isPresented: $showPopUp, content: {
+                    
+                    FinishPickupView()
+                    
+                    Button(action: {
+                        self.showPopUp.toggle()
+                    },label: {
+                        Text("Dismiss")
+                            .foregroundColor(Color.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 10)
+                            .background(Color.black.opacity(0.8))
+                            .cornerRadius(9)
+                            .padding(.horizontal, 20)
+                    })
+                    //Spacer().frame(height: 300)
+                })
         }
             .padding(.all, 10)
             .frame(width: 400.0)

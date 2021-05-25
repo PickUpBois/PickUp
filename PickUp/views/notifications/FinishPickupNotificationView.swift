@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct FinishPickupNotificationView: View {
+    @State var showPopUp = false
     var body: some View {
-
         VStack{
                 HStack {
                     NavigationLink(destination: ProfileView(viewModel: MockProfileViewModel(userId: "1"), auth: true)) {
@@ -32,9 +32,9 @@ struct FinishPickupNotificationView: View {
                         
                     }
                     Spacer().frame(height: 10)
-                    HStack {
                         HStack{
                             Button(action: {
+                                self.showPopUp.toggle()
                             },label: {
                                 Text("Press here to enter score for your event 'Doubles match'")
                                     .foregroundColor(Color.purple)
@@ -42,8 +42,24 @@ struct FinishPickupNotificationView: View {
                                     .lineLimit(3)
                             })
                             
-                        }
-                }
+                        }.sheet(isPresented: $showPopUp, content: {
+                            
+                            InputScoreView()
+                            
+                            Button(action: {
+                                self.showPopUp.toggle()
+                            },label: {
+                                Text("Dismiss")
+                                    .foregroundColor(Color.white)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 10)
+                                    .background(Color.black.opacity(0.8))
+                                    .cornerRadius(9)
+                                    .padding(.horizontal, 20)
+                            })
+                            Spacer().frame(height: 300)
+                            .background(BackgroundClearView())
+                        })
                 }
                     .padding(.all, 10)
         .frame(width: 400.0)
