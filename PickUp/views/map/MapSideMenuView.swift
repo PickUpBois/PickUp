@@ -42,12 +42,12 @@ struct MapSideMenuView: View {
                             
                         }) {
                         
-                        ForEach(1...7,id: \.self){i in
+                        ForEach(1...16,id: \.self){i in
                             
                             Button(action: {
                             }) {
                                 
-                                Image("a\(i)")
+                                Image("b\(i)")
                                     .resizable()
                                     .renderingMode(.original)
                                     .frame(width: 40, height: 40)
