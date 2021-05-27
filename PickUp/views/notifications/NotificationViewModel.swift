@@ -15,6 +15,11 @@ class NotificationViewModel: ObservableObject {
                 if let errors = result.errors {
                     print(errors[0].localizedDescription)
                 }
+                guard let data = result.data else {
+                    print("data is null")
+                    return
+                }
+                
             case .failure(let error):
                 print(error.localizedDescription)
             }

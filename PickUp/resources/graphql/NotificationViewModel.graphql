@@ -3,6 +3,7 @@ query GetNotifications($userId: String!) {
 	id,
 	type,
 	createdAt,
+	message,
 	userId,
 	actorId,
 	eventId
