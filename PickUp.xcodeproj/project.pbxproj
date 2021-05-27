@@ -405,16 +405,10 @@
 		8D65B25E2658C7450085D5EE /* components */ = {
 			isa = PBXGroup;
 			children = (
-				8D5EE0232652D1A400EE7840 /* PickUpListView.swift */,
-				8D5EE0282652D2CD00EE7840 /* PickUpView.swift */,
-				8D5EE0362652D6AF00EE7840 /* PickUpTabListView.swift */,
-				1A49DC0C265466BD007F28FD /* PostedPickUpsView.swift */,
-				C088BBAF26582B4B007301F7 /* SocialViewScrollView.swift */,
-				1ADE7E33264C48060097138F /* SocialView.swift */,
-				1ADE7E35264C50E90097138F /* CourtsNearMeView.swift */,
-				8D5EE02E2652D58300EE7840 /* CourtsNearMeListView.swift */,
+				C0977310266034A80045B978 /* PickupsNearBy */,
+				C097730F266034670045B978 /* CourtsNearBy */,
+				C097730E2660344F0045B978 /* Social */,
 				1A49DC0A26544D2D007F28FD /* PopupView.swift */,
-				C015111F265A09FB005EF24A /* CreatePostView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -551,6 +545,36 @@
 				C0151126265A36B8005EF24A /* ChatView.swift */,
 			);
 			path = message;
+			sourceTree = "<group>";
+		};
+		C097730E2660344F0045B978 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				1ADE7E33264C48060097138F /* SocialView.swift */,
+				C088BBAF26582B4B007301F7 /* SocialViewScrollView.swift */,
+				C015111F265A09FB005EF24A /* CreatePostView.swift */,
+				1A49DC0C265466BD007F28FD /* PostedPickUpsView.swift */,
+			);
+			path = Social;
+			sourceTree = "<group>";
+		};
+		C097730F266034670045B978 /* CourtsNearBy */ = {
+			isa = PBXGroup;
+			children = (
+				1ADE7E35264C50E90097138F /* CourtsNearMeView.swift */,
+				8D5EE02E2652D58300EE7840 /* CourtsNearMeListView.swift */,
+			);
+			path = CourtsNearBy;
+			sourceTree = "<group>";
+		};
+		C0977310266034A80045B978 /* PickupsNearBy */ = {
+			isa = PBXGroup;
+			children = (
+				8D5EE0232652D1A400EE7840 /* PickUpListView.swift */,
+				8D5EE0282652D2CD00EE7840 /* PickUpView.swift */,
+				8D5EE0362652D6AF00EE7840 /* PickUpTabListView.swift */,
+			);
+			path = PickupsNearBy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

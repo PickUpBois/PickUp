@@ -46,20 +46,22 @@ struct PickUpTabListView: View {
 
             Spacer().frame(height:5)
                 
-            Picker("", selection: $selection) {
-                Text("🎾").foregroundColor(Color.blue).tag(EventType.tennis)
-                Text("🏀").foregroundColor(Color.red).tag(EventType.basketball)}.pickerStyle(SegmentedPickerStyle())
+//            Picker("", selection: $selection) {
+//                Text("🎾").foregroundColor(Color.blue).tag(EventType.tennis)
+//                Text("🏀").foregroundColor(Color.red).tag(EventType.basketball)}.pickerStyle(SegmentedPickerStyle())
             
             Spacer().frame(height: 2)
                         
        
             ScrollView {
-                if selection == .tennis {
-                    PickUpListView(type: .tennis)
-                }
-                else {
-                    PickUpListView(type: .basketball)
-                }
+                PickUpListView(type: .basketball)
+                PickUpListView(type: .tennis)
+//                if selection == .tennis {
+//                    PickUpListView(type: .tennis)
+//                }
+//                else {
+//                    PickUpListView(type: .basketball)
+//                }
             }
         }
     }
