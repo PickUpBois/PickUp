@@ -13,7 +13,6 @@
 		1A2E5BE126586455006A803A /* FriendRequestNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E5BE026586455006A803A /* FriendRequestNotificationView.swift */; };
 		1A2E5BE3265865EB006A803A /* ConfirmationNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E5BE2265865EA006A803A /* ConfirmationNotificationView.swift */; };
 		1A2E5BE526586698006A803A /* FinishPickupNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E5BE426586698006A803A /* FinishPickupNotificationView.swift */; };
-		1A2E5BE7265C9AEB006A803A /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A2E5BE6265C9AEA006A803A /* schema.json */; };
 		1A2E5BEA265CA9E5006A803A /* InputScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E5BE9265CA9E5006A803A /* InputScoreView.swift */; };
 		1A2E5BEC265CB784006A803A /* FinishPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E5BEB265CB784006A803A /* FinishPickupView.swift */; };
 		1A2E5BEE265CBE38006A803A /* PastScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E5BED265CBE38006A803A /* PastScoresView.swift */; };
@@ -130,7 +129,6 @@
 		1A2E5BE026586455006A803A /* FriendRequestNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestNotificationView.swift; sourceTree = "<group>"; };
 		1A2E5BE2265865EA006A803A /* ConfirmationNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationNotificationView.swift; sourceTree = "<group>"; };
 		1A2E5BE426586698006A803A /* FinishPickupNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishPickupNotificationView.swift; sourceTree = "<group>"; };
-		1A2E5BE6265C9AEA006A803A /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = schema.json; path = ../../../Downloads/schema.json; sourceTree = "<group>"; };
 		1A2E5BE9265CA9E5006A803A /* InputScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputScoreView.swift; sourceTree = "<group>"; };
 		1A2E5BEB265CB784006A803A /* FinishPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishPickupView.swift; sourceTree = "<group>"; };
 		1A2E5BED265CBE38006A803A /* PastScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastScoresView.swift; sourceTree = "<group>"; };
@@ -188,6 +186,7 @@
 		8DB8EFF6261A74F7004AADED /* AuthFirebaseDataSourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebaseDataSourceTest.swift; sourceTree = "<group>"; };
 		8DB8F007261A8201004AADED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpAppDelegate.swift; sourceTree = "<group>"; };
+		8DE520EB265F549B0077AF09 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		8DFAD530261EBA910055BA76 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDatePickerView.swift; sourceTree = "<group>"; };
 		8DFB998C264E342800254C57 /* EventLocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationPickerView.swift; sourceTree = "<group>"; };
@@ -512,7 +511,7 @@
 				8DB8EF8E26198979004AADED /* Info.plist */,
 				8DB8EF8B26198979004AADED /* Preview Content */,
 				8D65B376265B06900085D5EE /* API.swift */,
-				1A2E5BE6265C9AEA006A803A /* schema.json */,
+				8DE520EB265F549B0077AF09 /* schema.json */,
 			);
 			path = PickUp;
 			sourceTree = "<group>";
@@ -670,7 +669,6 @@
 				8D65B2FB265931900085D5EE /* FindTeammatesViewModel.graphql in Resources */,
 				8D65B2A52658E04E0085D5EE /* CreateEventViewModel.graphql in Resources */,
 				C0D4716C264098BF00E7B6C7 /* CreateEventView.xib in Resources */,
-				1A2E5BE7265C9AEB006A803A /* schema.json in Resources */,
 				8DB8F008261A8201004AADED /* GoogleService-Info.plist in Resources */,
 				8D65B2A62658E04E0085D5EE /* HomeViewModel.graphql in Resources */,
 				8D65B2972658DCF40085D5EE /* ProfileViewModel.graphql in Resources */,
