@@ -24,6 +24,7 @@ struct ProfileHeaderView: View {
         self._showPhotoLibrary = showPhotoLibrary
         self.auth = auth
     }
+    @State private var showingAlert = false
     var body: some View {
         VStack(alignment: .center) {
             HStack{Text("\(firstName)'s Profile").font(.title3) // Leading title on page
@@ -39,11 +40,19 @@ struct ProfileHeaderView: View {
                            })
                             
                    //if following, click to unfollow
-                    Button(action: {},
-                            label: {Image(systemName: "checkmark.square.fill")
-                                    .foregroundColor(Color.green)
-                                    .padding(.top)
+                    Button(action: {
+                        self.showingAlert = true
+                    },label: {
+                        Image(systemName: "checkmark.square.fill")
+                                .foregroundColor(Color.green)
+                                .padding(.top)
+                        .alert(isPresented:$showingAlert) {
+                            Alert(title: Text("Confirm Unfollow!"), message: Text("Are you sure you want to remove Arian as a teammate?"), primaryButton: .default(Text("Yes")) {
+                                    print("Yeah")
+                            }, secondaryButton: .destructive(Text("Cancel")))
+                        }
                     })
+                    
                 }
                 
                 //Text("Add")

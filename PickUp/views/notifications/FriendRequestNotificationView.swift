@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct FriendRequestNotificationView: View {
+    @State private var showingAlert = false
     var body: some View {
       
         VStack{
                 HStack {
-                    NavigationLink(destination: ProfileView(viewModel: MockProfileViewModel(userId: "1"), auth: true)) {
+                    NavigationLink(destination: ProfileView(viewModel: MockProfileViewModel(userId: "1"), auth: true))
+                    {
                     Image("serena")
                         .resizable()
                         .foregroundColor(.blue)
@@ -32,6 +34,7 @@ struct FriendRequestNotificationView: View {
                     .lineLimit(1)
                     
                 }
+
             Spacer().frame(height: 10)
                     HStack {
                         Text("Arian Rahbar sent you a friend request:")
@@ -41,13 +44,16 @@ struct FriendRequestNotificationView: View {
                         Spacer().frame(minWidth: 5, maxWidth: 5)
                         
                         Button(action: {
+                            self.showingAlert = true
                         },label: {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(Color.green)
                             .lineLimit(1)
                         })
                         
-                        Button(action: {},
+                        Button(action: {
+                            
+                        },
                                label: {
                         Image(systemName: "x.circle.fill")
                             .foregroundColor(Color.red)
