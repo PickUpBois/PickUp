@@ -55,6 +55,10 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
+    func addFriend() {
+        
+    }
+    
     
     func getEvents(status: EventStatus) {
         Services.shared.apollo.fetch(query: GetUserEventsQuery(userId: userId, status: status), cachePolicy: .fetchIgnoringCacheCompletely) { response in

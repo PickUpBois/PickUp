@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,7 +13,6 @@
 		1A2E5BE126586455006A803A /* FriendRequestNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E5BE026586455006A803A /* FriendRequestNotificationView.swift */; };
 		1A2E5BE3265865EB006A803A /* ConfirmationNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E5BE2265865EA006A803A /* ConfirmationNotificationView.swift */; };
 		1A2E5BE526586698006A803A /* FinishPickupNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E5BE426586698006A803A /* FinishPickupNotificationView.swift */; };
-		1A2E5BE7265C9AEB006A803A /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A2E5BE6265C9AEA006A803A /* schema.json */; };
 		1A2E5BEA265CA9E5006A803A /* InputScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E5BE9265CA9E5006A803A /* InputScoreView.swift */; };
 		1A2E5BEC265CB784006A803A /* FinishPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E5BEB265CB784006A803A /* FinishPickupView.swift */; };
 		1A2E5BEE265CBE38006A803A /* PastScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E5BED265CBE38006A803A /* PastScoresView.swift */; };
@@ -69,6 +68,7 @@
 		8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DB8F059261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DB8F05A261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
+		8DE520FA265F7F6F0077AF09 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE520F9265F7F6F0077AF09 /* NotificationViewModel.swift */; };
 		8DFAD531261EBA910055BA76 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAD530261EBA910055BA76 /* LoginView.swift */; };
 		8DFB9988264E2C9F00254C57 /* EventDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */; };
 		8DFB998D264E342800254C57 /* EventLocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB998C264E342800254C57 /* EventLocationPickerView.swift */; };
@@ -131,7 +131,6 @@
 		1A2E5BE026586455006A803A /* FriendRequestNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestNotificationView.swift; sourceTree = "<group>"; };
 		1A2E5BE2265865EA006A803A /* ConfirmationNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationNotificationView.swift; sourceTree = "<group>"; };
 		1A2E5BE426586698006A803A /* FinishPickupNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishPickupNotificationView.swift; sourceTree = "<group>"; };
-		1A2E5BE6265C9AEA006A803A /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = schema.json; path = ../../../Downloads/schema.json; sourceTree = "<group>"; };
 		1A2E5BE9265CA9E5006A803A /* InputScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputScoreView.swift; sourceTree = "<group>"; };
 		1A2E5BEB265CB784006A803A /* FinishPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishPickupView.swift; sourceTree = "<group>"; };
 		1A2E5BED265CBE38006A803A /* PastScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastScoresView.swift; sourceTree = "<group>"; };
@@ -190,6 +189,9 @@
 		8DB8EFF6261A74F7004AADED /* AuthFirebaseDataSourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebaseDataSourceTest.swift; sourceTree = "<group>"; };
 		8DB8F007261A8201004AADED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpAppDelegate.swift; sourceTree = "<group>"; };
+		8DE520F2265F78F60077AF09 /*  schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = " schema.json"; sourceTree = "<group>"; };
+		8DE520F9265F7F6F0077AF09 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		8DE520FE265F7FDE0077AF09 /* NotificationViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = NotificationViewModel.graphql; sourceTree = "<group>"; };
 		8DFAD530261EBA910055BA76 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDatePickerView.swift; sourceTree = "<group>"; };
 		8DFB998C264E342800254C57 /* EventLocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationPickerView.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				1A2E5BE426586698006A803A /* FinishPickupNotificationView.swift */,
 				1A2E5BE2265865EA006A803A /* ConfirmationNotificationView.swift */,
 				C0151121265A2612005EF24A /* PostNotificationView.swift */,
+				8DE520F9265F7F6F0077AF09 /* NotificationViewModel.swift */,
 			);
 			path = notifications;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				8D5EE0572652E09300EE7840 /* HomeViewModel.graphql */,
 				8D5EE002265280E100EE7840 /* ProfileViewModel.graphql */,
 				8D65B2FA265931900085D5EE /* FindTeammatesViewModel.graphql */,
+				8DE520FE265F7FDE0077AF09 /* NotificationViewModel.graphql */,
 			);
 			path = graphql;
 			sourceTree = "<group>";
@@ -515,7 +519,7 @@
 				8DB8EF8E26198979004AADED /* Info.plist */,
 				8DB8EF8B26198979004AADED /* Preview Content */,
 				8D65B376265B06900085D5EE /* API.swift */,
-				1A2E5BE6265C9AEA006A803A /* schema.json */,
+				8DE520F2265F78F60077AF09 /*  schema.json */,
 			);
 			path = PickUp;
 			sourceTree = "<group>";
@@ -673,7 +677,6 @@
 				8D65B2FB265931900085D5EE /* FindTeammatesViewModel.graphql in Resources */,
 				8D65B2A52658E04E0085D5EE /* CreateEventViewModel.graphql in Resources */,
 				C0D4716C264098BF00E7B6C7 /* CreateEventView.xib in Resources */,
-				1A2E5BE7265C9AEB006A803A /* schema.json in Resources */,
 				8DB8F008261A8201004AADED /* GoogleService-Info.plist in Resources */,
 				8D65B2A62658E04E0085D5EE /* HomeViewModel.graphql in Resources */,
 				8D65B2972658DCF40085D5EE /* ProfileViewModel.graphql in Resources */,
@@ -763,6 +766,7 @@
 		};
 		8D65B349265AF9B50085D5EE /* Apollo Schema Download */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 12;
 			files = (
 			);
@@ -782,6 +786,7 @@
 		};
 		8DFB9A2126509AB600254C57 /* Apollo CLI */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 12;
 			files = (
 			);
@@ -888,6 +893,7 @@
 				8D5EE0242652D1A400EE7840 /* PickUpListView.swift in Sources */,
 				8D65B2AB265904EA0085D5EE /* CreateEventViewModel.swift in Sources */,
 				8D65B2682658C91D0085D5EE /* AppState.swift in Sources */,
+				8DE520FA265F7F6F0077AF09 /* NotificationViewModel.swift in Sources */,
 				8D65B27C2658CD790085D5EE /* StorageService.swift in Sources */,
 				8D65B2D826590F310085D5EE /* HomeViewModel.swift in Sources */,
 				8D2A3EF3261EC3E100521A6A /* SignUpView.swift in Sources */,

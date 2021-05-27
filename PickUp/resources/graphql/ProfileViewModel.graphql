@@ -29,3 +29,9 @@ query GetUser($id: String!) {
 	photoUrl,
   }
 }
+
+mutation SendFriendRequest($userId: String!, $friendId: String!) {
+  sendFriendRequest(user_id: $userId, friend_id: $friendId) {
+	id
+  }
+}

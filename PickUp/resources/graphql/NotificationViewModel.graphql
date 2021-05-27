@@ -1,0 +1,10 @@
+query GetNotifications($userId: String!) {
+  notifications(user_id: $userId) {
+	id,
+	type,
+	createdAt,
+	userId,
+	actorId,
+	eventId
+  }
+}
