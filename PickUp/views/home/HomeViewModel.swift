@@ -10,7 +10,7 @@ import Combine
 
 class HomeViewModel: ObservableObject {
     var cancellables = Set<AnyCancellable>()
-    @Published var events: [EventType: [QueryEventsQuery.Data.QueryEvent]] = [:]
+    @Published var events: [QueryEventsQuery.Data.QueryEvent] = []
     func getUpcomingEvents() {
         if (AppState.shared.authId != nil) {
             Services.shared.apollo.fetch(query: QueryEventsQuery(userId: AppState.shared.authId!, type: nil, status: .open), cachePolicy: .fetchIgnoringCacheCompletely) { response in
@@ -23,12 +23,8 @@ class HomeViewModel: ObservableObject {
                         print("error in graphql query")
                         return
                     }
-                    let events = data.queryEvents
-                    for type in EventType.allCases {
-                        self.events[type] = events.filter { event in
-                            return event.type == type
-                        }
-                    }
+                    self.events = data.queryEvents
+                    
                     self.objectWillChange.send()
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -40,6 +36,6 @@ class HomeViewModel: ObservableObject {
 
 class MockHomeViewModel: HomeViewModel {
     override func getUpcomingEvents() {
-        self.events = [:]
+        self.events = []
     }
 }

@@ -55,7 +55,7 @@ struct PickUpTabListView: View {
        
             ScrollView {
                 PickUpListView(type: .basketball)
-                PickUpListView(type: .tennis)
+//                PickUpListView(type: .tennis)
 //                if selection == .tennis {
 //                    PickUpListView(type: .tennis)
 //                }
