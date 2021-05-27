@@ -17,7 +17,7 @@ struct PickUpTabListView: View {
                 Button(action: {
                     self.showPopUp.toggle()
                 }, label: {
-            HStack{ Text("Pickups Nearby").font(.title3)
+            HStack{ Text("PickUps Nearby").font(.title3)
                 .fontWeight(.semibold)
                 .foregroundColor(Color.black)
             Image(systemName: "calendar").font(.system(size: 16, weight: .regular))
@@ -26,7 +26,7 @@ struct PickUpTabListView: View {
                 })
             }.sheet(isPresented: $showPopUp, content: {
                 
-                SocialViewScrollView()
+                PickUpNearMeScrollView()
                 
                 Spacer()
                 
@@ -49,8 +49,6 @@ struct PickUpTabListView: View {
 //            Picker("", selection: $selection) {
 //                Text("🎾").foregroundColor(Color.blue).tag(EventType.tennis)
 //                Text("🏀").foregroundColor(Color.red).tag(EventType.basketball)}.pickerStyle(SegmentedPickerStyle())
-            
-            Spacer().frame(height: 2)
                         
        
             ScrollView {
