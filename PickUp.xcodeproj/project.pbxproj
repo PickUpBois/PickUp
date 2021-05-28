@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,7 @@
 		1A2E5BEE265CBE38006A803A /* PastScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E5BED265CBE38006A803A /* PastScoresView.swift */; };
 		1A49DC0B26544D2D007F28FD /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49DC0A26544D2D007F28FD /* PopupView.swift */; };
 		1A49DC0D265466BD007F28FD /* PostedPickUpsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49DC0C265466BD007F28FD /* PostedPickUpsView.swift */; };
+		1A9BEBCD265F57470020A381 /* OtherPersonProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BEBCC265F57470020A381 /* OtherPersonProfileView.swift */; };
 		1AB44EDB26439DB300568ECB /* TypingBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB44EDA26439DB300568ECB /* TypingBlockView.swift */; };
 		1ADE7E34264C48060097138F /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E33264C48060097138F /* SocialView.swift */; };
 		1ADE7E36264C50E90097138F /* CourtsNearMeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E35264C50E90097138F /* CourtsNearMeView.swift */; };
@@ -67,6 +68,8 @@
 		8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DB8F059261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DB8F05A261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
+		8DE520FA265F7F6F0077AF09 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE520F9265F7F6F0077AF09 /* NotificationViewModel.swift */; };
+		8DE52125266047360077AF09 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE52124266047360077AF09 /* NotificationView.swift */; };
 		8DFAD531261EBA910055BA76 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAD530261EBA910055BA76 /* LoginView.swift */; };
 		8DFB9988264E2C9F00254C57 /* EventDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */; };
 		8DFB998D264E342800254C57 /* EventLocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB998C264E342800254C57 /* EventLocationPickerView.swift */; };
@@ -136,6 +139,7 @@
 		1A2E5BED265CBE38006A803A /* PastScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastScoresView.swift; sourceTree = "<group>"; };
 		1A49DC0A26544D2D007F28FD /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		1A49DC0C265466BD007F28FD /* PostedPickUpsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedPickUpsView.swift; sourceTree = "<group>"; };
+		1A9BEBCC265F57470020A381 /* OtherPersonProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPersonProfileView.swift; sourceTree = "<group>"; };
 		1AB44EDA26439DB300568ECB /* TypingBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingBlockView.swift; sourceTree = "<group>"; };
 		1ADE7E33264C48060097138F /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
 		1ADE7E35264C50E90097138F /* CourtsNearMeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtsNearMeView.swift; sourceTree = "<group>"; };
@@ -188,6 +192,10 @@
 		8DB8EFF6261A74F7004AADED /* AuthFirebaseDataSourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebaseDataSourceTest.swift; sourceTree = "<group>"; };
 		8DB8F007261A8201004AADED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpAppDelegate.swift; sourceTree = "<group>"; };
+		8DE520F2265F78F60077AF09 /*  schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = " schema.json"; sourceTree = "<group>"; };
+		8DE520F9265F7F6F0077AF09 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		8DE520FE265F7FDE0077AF09 /* NotificationViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = NotificationViewModel.graphql; sourceTree = "<group>"; };
+		8DE52124266047360077AF09 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		8DFAD530261EBA910055BA76 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDatePickerView.swift; sourceTree = "<group>"; };
 		8DFB998C264E342800254C57 /* EventLocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationPickerView.swift; sourceTree = "<group>"; };
@@ -307,6 +315,8 @@
 				1A2E5BE426586698006A803A /* FinishPickupNotificationView.swift */,
 				1A2E5BE2265865EA006A803A /* ConfirmationNotificationView.swift */,
 				C0151121265A2612005EF24A /* PostNotificationView.swift */,
+				8DE520F9265F7F6F0077AF09 /* NotificationViewModel.swift */,
+				8DE52124266047360077AF09 /* NotificationView.swift */,
 			);
 			path = notifications;
 			sourceTree = "<group>";
@@ -326,6 +336,7 @@
 			children = (
 				8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */,
 				8D09E70A2623E16E0007B871 /* ProfileView.swift */,
+				1A9BEBCC265F57470020A381 /* OtherPersonProfileView.swift */,
 				8D65B25B2658C46A0085D5EE /* components */,
 				8D65B2852658CEBE0085D5EE /* ProfileViewModel.swift */,
 				8D65B28A2658CF6F0085D5EE /* ProfileSettingsViewModel.swift */,
@@ -461,6 +472,7 @@
 				8D5EE0572652E09300EE7840 /* HomeViewModel.graphql */,
 				8D5EE002265280E100EE7840 /* ProfileViewModel.graphql */,
 				8D65B2FA265931900085D5EE /* FindTeammatesViewModel.graphql */,
+				8DE520FE265F7FDE0077AF09 /* NotificationViewModel.graphql */,
 			);
 			path = graphql;
 			sourceTree = "<group>";
@@ -507,6 +519,7 @@
 				8DB8EF8E26198979004AADED /* Info.plist */,
 				8DB8EF8B26198979004AADED /* Preview Content */,
 				8D65B376265B06900085D5EE /* API.swift */,
+				8DE520F2265F78F60077AF09 /*  schema.json */,
 			);
 			path = PickUp;
 			sourceTree = "<group>";
@@ -786,6 +799,7 @@
 		};
 		8D65B349265AF9B50085D5EE /* Apollo Schema Download */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 12;
 			files = (
 			);
@@ -805,6 +819,7 @@
 		};
 		8DFB9A2126509AB600254C57 /* Apollo CLI */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 12;
 			files = (
 			);
@@ -900,6 +915,7 @@
 				8D5EE0372652D6AF00EE7840 /* PickUpTabListView.swift in Sources */,
 				8D65B2B3265905400085D5EE /* SignUpViewModel.swift in Sources */,
 				8D65B2862658CEBE0085D5EE /* ProfileViewModel.swift in Sources */,
+				1A9BEBCD265F57470020A381 /* OtherPersonProfileView.swift in Sources */,
 				1ADE7E34264C48060097138F /* SocialView.swift in Sources */,
 				C0151125265A2DF6005EF24A /* MessageView.swift in Sources */,
 				C088BBB026582B4C007301F7 /* SocialViewScrollView.swift in Sources */,
@@ -912,11 +928,13 @@
 				8D5EE0242652D1A400EE7840 /* PickUpListView.swift in Sources */,
 				8D65B2AB265904EA0085D5EE /* CreateEventViewModel.swift in Sources */,
 				8D65B2682658C91D0085D5EE /* AppState.swift in Sources */,
+				8DE520FA265F7F6F0077AF09 /* NotificationViewModel.swift in Sources */,
 				8D65B27C2658CD790085D5EE /* StorageService.swift in Sources */,
 				8D65B2D826590F310085D5EE /* HomeViewModel.swift in Sources */,
 				8D2A3EF3261EC3E100521A6A /* SignUpView.swift in Sources */,
 				1A2E5BE526586698006A803A /* FinishPickupNotificationView.swift in Sources */,
 				8D5EE02F2652D58300EE7840 /* CourtsNearMeListView.swift in Sources */,
+				8DE52125266047360077AF09 /* NotificationView.swift in Sources */,
 				8DFCF522262788D000BBFE66 /* CreateEventView.swift in Sources */,
 				1A2E5BE126586455006A803A /* FriendRequestNotificationView.swift in Sources */,
 				8D65B26F2658C9F50085D5EE /* AuthService.swift in Sources */,

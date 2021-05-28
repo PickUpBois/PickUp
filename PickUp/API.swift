@@ -174,6 +174,46 @@ public enum EventStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Ap
   }
 }
 
+public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  case friendRequestSend
+  case friendRequestAccept
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "friendRequestSend": self = .friendRequestSend
+      case "friendRequestAccept": self = .friendRequestAccept
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .friendRequestSend: return "friendRequestSend"
+      case .friendRequestAccept: return "friendRequestAccept"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: NotificationType, rhs: NotificationType) -> Bool {
+    switch (lhs, rhs) {
+      case (.friendRequestSend, .friendRequestSend): return true
+      case (.friendRequestAccept, .friendRequestAccept): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+
+  public static var allCases: [NotificationType] {
+    return [
+      .friendRequestSend,
+      .friendRequestAccept,
+    ]
+  }
+}
+
 public struct UpdateUserInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
@@ -786,6 +826,307 @@ public final class QueryEventsQuery: GraphQLQuery {
   }
 }
 
+public final class GetNotificationsQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query GetNotifications($userId: String!) {
+      user(id: $userId) {
+        __typename
+        notifications {
+          __typename
+          id
+          type
+          createdAt
+          actor {
+            __typename
+            id
+            firstName
+            lastName
+            username
+          }
+          event {
+            __typename
+            id
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "GetNotifications"
+
+  public var userId: String
+
+  public init(userId: String) {
+    self.userId = userId
+  }
+
+  public var variables: GraphQLMap? {
+    return ["userId": userId]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("user", arguments: ["id": GraphQLVariable("userId")], type: .nonNull(.object(User.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(user: User) {
+      self.init(unsafeResultMap: ["__typename": "Query", "user": user.resultMap])
+    }
+
+    public var user: User {
+      get {
+        return User(unsafeResultMap: resultMap["user"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "user")
+      }
+    }
+
+    public struct User: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["User"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("notifications", type: .nonNull(.list(.nonNull(.object(Notification.selections))))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(notifications: [Notification]) {
+        self.init(unsafeResultMap: ["__typename": "User", "notifications": notifications.map { (value: Notification) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var notifications: [Notification] {
+        get {
+          return (resultMap["notifications"] as! [ResultMap]).map { (value: ResultMap) -> Notification in Notification(unsafeResultMap: value) }
+        }
+        set {
+          resultMap.updateValue(newValue.map { (value: Notification) -> ResultMap in value.resultMap }, forKey: "notifications")
+        }
+      }
+
+      public struct Notification: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["Notification"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+            GraphQLField("type", type: .nonNull(.scalar(NotificationType.self))),
+            GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
+            GraphQLField("actor", type: .nonNull(.object(Actor.selections))),
+            GraphQLField("event", type: .object(Event.selections)),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID, type: NotificationType, createdAt: String, actor: Actor, event: Event? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Notification", "id": id, "type": type, "createdAt": createdAt, "actor": actor.resultMap, "event": event.flatMap { (value: Event) -> ResultMap in value.resultMap }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var type: NotificationType {
+          get {
+            return resultMap["type"]! as! NotificationType
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "type")
+          }
+        }
+
+        public var createdAt: String {
+          get {
+            return resultMap["createdAt"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "createdAt")
+          }
+        }
+
+        public var actor: Actor {
+          get {
+            return Actor(unsafeResultMap: resultMap["actor"]! as! ResultMap)
+          }
+          set {
+            resultMap.updateValue(newValue.resultMap, forKey: "actor")
+          }
+        }
+
+        public var event: Event? {
+          get {
+            return (resultMap["event"] as? ResultMap).flatMap { Event(unsafeResultMap: $0) }
+          }
+          set {
+            resultMap.updateValue(newValue?.resultMap, forKey: "event")
+          }
+        }
+
+        public struct Actor: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["User"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+              GraphQLField("firstName", type: .nonNull(.scalar(String.self))),
+              GraphQLField("lastName", type: .nonNull(.scalar(String.self))),
+              GraphQLField("username", type: .nonNull(.scalar(String.self))),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(id: GraphQLID, firstName: String, lastName: String, username: String) {
+            self.init(unsafeResultMap: ["__typename": "User", "id": id, "firstName": firstName, "lastName": lastName, "username": username])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          /// ID of user
+          public var id: GraphQLID {
+            get {
+              return resultMap["id"]! as! GraphQLID
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
+            }
+          }
+
+          /// first name of user
+          public var firstName: String {
+            get {
+              return resultMap["firstName"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "firstName")
+            }
+          }
+
+          /// last name of user
+          public var lastName: String {
+            get {
+              return resultMap["lastName"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "lastName")
+            }
+          }
+
+          /// username of user
+          public var username: String {
+            get {
+              return resultMap["username"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "username")
+            }
+          }
+        }
+
+        public struct Event: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["Event"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(id: GraphQLID) {
+            self.init(unsafeResultMap: ["__typename": "Event", "id": id])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          /// id of event
+          public var id: GraphQLID {
+            get {
+              return resultMap["id"]! as! GraphQLID
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 public final class UpdateUserMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
@@ -1377,6 +1718,102 @@ public final class GetUserQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "photoUrl")
+        }
+      }
+    }
+  }
+}
+
+public final class SendFriendRequestMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation SendFriendRequest($userId: String!, $friendId: String!) {
+      sendFriendRequest(user_id: $userId, friend_id: $friendId) {
+        __typename
+        id
+      }
+    }
+    """
+
+  public let operationName: String = "SendFriendRequest"
+
+  public var userId: String
+  public var friendId: String
+
+  public init(userId: String, friendId: String) {
+    self.userId = userId
+    self.friendId = friendId
+  }
+
+  public var variables: GraphQLMap? {
+    return ["userId": userId, "friendId": friendId]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("sendFriendRequest", arguments: ["user_id": GraphQLVariable("userId"), "friend_id": GraphQLVariable("friendId")], type: .object(SendFriendRequest.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(sendFriendRequest: SendFriendRequest? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "sendFriendRequest": sendFriendRequest.flatMap { (value: SendFriendRequest) -> ResultMap in value.resultMap }])
+    }
+
+    public var sendFriendRequest: SendFriendRequest? {
+      get {
+        return (resultMap["sendFriendRequest"] as? ResultMap).flatMap { SendFriendRequest(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "sendFriendRequest")
+      }
+    }
+
+    public struct SendFriendRequest: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["User"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID) {
+        self.init(unsafeResultMap: ["__typename": "User", "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// ID of user
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
     }

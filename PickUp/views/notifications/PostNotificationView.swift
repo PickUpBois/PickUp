@@ -31,12 +31,13 @@ struct PostNotificationView: View {
                     .lineLimit(1)
                     
                 }
-            Spacer().frame(height: 10)
+            Spacer().frame(height: 15)
                     HStack {
                         Text("Arian Rahbar liked your post")
                             .foregroundColor(Color.purple)
                             .lineLimit(1)
                             .padding(.leading, 10.0)
+                            .frame(width: 400, alignment: .leading)
                     }
                 }
                 .padding(.all, 10)
