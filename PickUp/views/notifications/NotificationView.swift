@@ -7,19 +7,16 @@
 
 import SwiftUI
 
-struct NotificationView: View {
-    var type: NotificationType
-    var firstName: String
-    var lastName: String
-    var username: String
-    var actorId: String
+struct NotificationView: View, Identifiable {
+    var id: Int
+    @EnvironmentObject var viewModel: HomeViewModel
     var body: some View {
-        FriendRequestNotificationView(id: actorId, firstName: "Arian", lastName: "Rahbar", username: "arahbar", timestamp: Date())
+        FriendRequestNotificationView(notification: viewModel.notifications[id])
     }
 }
 
 struct NotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationView(type: .friendRequestSend, firstName: "Arian", lastName: "Rahbar", username: "arahbar", actorId: "1")
+        NotificationView(id: 1).environmentObject(MockHomeViewModel())
     }
 }

@@ -93,7 +93,7 @@
 		C088BBB026582B4C007301F7 /* SocialViewScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088BBAF26582B4B007301F7 /* SocialViewScrollView.swift */; };
 		C09773122660412D0045B978 /* CourtsNearMeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09773112660412D0045B978 /* CourtsNearMeScrollView.swift */; };
 		C0977314266041900045B978 /* PickUpNearMeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0977313266041900045B978 /* PickUpNearMeScrollView.swift */; };
-		C0B81C6E2657064B000555BD /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B81C6D2657064B000555BD /* NotificationsView.swift */; };
+		C0B81C6E2657064B000555BD /* NotificationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B81C6D2657064B000555BD /* NotificationListView.swift */; };
 		C0D4716C264098BF00E7B6C7 /* CreateEventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D4716B264098BF00E7B6C7 /* CreateEventView.xib */; };
 		C3A53BC40D77F97812A0D38D /* Pods_PickUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2FF25FDE8AC48FA9AC6775 /* Pods_PickUpTests.framework */; };
 /* End PBXBuildFile section */
@@ -219,7 +219,7 @@
 		C088BBAF26582B4B007301F7 /* SocialViewScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewScrollView.swift; sourceTree = "<group>"; };
 		C09773112660412D0045B978 /* CourtsNearMeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtsNearMeScrollView.swift; sourceTree = "<group>"; };
 		C0977313266041900045B978 /* PickUpNearMeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpNearMeScrollView.swift; sourceTree = "<group>"; };
-		C0B81C6D2657064B000555BD /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		C0B81C6D2657064B000555BD /* NotificationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListView.swift; sourceTree = "<group>"; };
 		C0D4716B264098BF00E7B6C7 /* CreateEventView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateEventView.xib; sourceTree = "<group>"; };
 		D568A6AA78CFA5C7D7ABDE5C /* Pods-PickUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp.debug.xcconfig"; path = "Target Support Files/Pods-PickUp/Pods-PickUp.debug.xcconfig"; sourceTree = "<group>"; };
 		D9C81D62DA742F61743A615A /* Pods-PickUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUp.release.xcconfig"; path = "Target Support Files/Pods-PickUp/Pods-PickUp.release.xcconfig"; sourceTree = "<group>"; };
@@ -309,7 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				1A2E5BE8265CA9C8006A803A /* FinishPickupViews */,
-				C0B81C6D2657064B000555BD /* NotificationsView.swift */,
+				C0B81C6D2657064B000555BD /* NotificationListView.swift */,
 				1A2E5BDE2658637F006A803A /* EditedPickupNotificationView.swift */,
 				1A2E5BE026586455006A803A /* FriendRequestNotificationView.swift */,
 				1A2E5BE426586698006A803A /* FinishPickupNotificationView.swift */,
@@ -898,7 +898,7 @@
 				1A03F99D263F473000C2E2CD /* PastPickupView.swift in Sources */,
 				C088BBA9265785BE007301F7 /* MapMainView.swift in Sources */,
 				8D09E70B2623E16E0007B871 /* ProfileView.swift in Sources */,
-				C0B81C6E2657064B000555BD /* NotificationsView.swift in Sources */,
+				C0B81C6E2657064B000555BD /* NotificationListView.swift in Sources */,
 				1A03F99F263F482F00C2E2CD /* UpcomingPickupsView.swift in Sources */,
 				8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
 				8D65B2812658CE550085D5EE /* RestService.swift in Sources */,
