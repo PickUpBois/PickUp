@@ -40,7 +40,7 @@ struct MapSideMenuView: View {
                         
                     Button(action: {
                             
-                        }) {
+                    }) {}
                         
                         ForEach(1...16,id: \.self){i in
                             
@@ -54,7 +54,6 @@ struct MapSideMenuView: View {
                                     .clipShape(Circle())
                             }
                         }
-                    }
                 }
             }
             .padding()
