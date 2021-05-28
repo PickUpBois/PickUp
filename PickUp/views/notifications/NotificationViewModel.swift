@@ -20,6 +20,7 @@ class NotificationViewModel: ObservableObject {
                     return
                 }
                 
+                
             case .failure(let error):
                 print(error.localizedDescription)
             }

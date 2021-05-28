@@ -8,7 +8,35 @@
 import SwiftUI
 
 struct FriendRequestNotificationView: View {
+    
     @State private var showingAlert = false
+    var firstName: String
+    var id: String
+    var lastName: String
+    var username: String
+    var timestamp: Date
+    init(notification: GetNotificationsQuery.Data.User.Notification) {
+        self.firstName = notification.actor.firstName
+        self.lastName = notification.actor.lastName
+        self.id = notification.actor.id
+        self.username = notification.actor.username
+        self.timestamp = notification.createdAt.dateFromIso!
+    }
+    
+    init(id: String, firstName: String, lastName: String, username: String, timestamp: Date) {
+        self.id = id
+        self.firstName = firstName
+        self.lastName = lastName
+        self.username = username
+        self.timestamp = timestamp
+    }
+    
+    func getDate(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
+    }
     var body: some View {
       
         VStack{
@@ -23,21 +51,21 @@ struct FriendRequestNotificationView: View {
                         .shadow(radius: 2)
                         .overlay(Circle().stroke(Color.black, lineWidth: 2))
                     
-                    Text("Arian Rahbar")
+                    Text("\(firstName) \(lastName)")
                         .fontWeight(.heavy)
                         .foregroundColor(Color.black)
                         .lineLimit(1)
                         
                     }
                     Spacer()
-                    Text("12/11/2020 @ 1:45 A.M.")
+                    Text(getDate(date: timestamp))
                     .lineLimit(1)
                     
                 }
 
             Spacer().frame(height: 10)
                     HStack {
-                        Text("Arian Rahbar sent you a friend request:")
+                        Text("\(firstName) \(lastName) sent you a friend request:")
                             .foregroundColor(Color.purple)
                             .lineLimit(1)
                             .padding(.leading, 10.0)
@@ -71,6 +99,6 @@ struct FriendRequestNotificationView: View {
 
 struct FriendRequestNotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendRequestNotificationView()
+        FriendRequestNotificationView(id: "1", firstName: "Arian", lastName: "Rahbar", username: "arahbar", timestamp: Date())
     }
 }

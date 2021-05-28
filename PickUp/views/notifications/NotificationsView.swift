@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct NotificationsView: View {
+struct NotificationListView: View {
     @State var showPopUp = false
+    var notificationIndex: Int
     var body: some View {
         ScrollView{
             VStack {
-
                 EditedPickupNotificationView()
                 
-                FriendRequestNotificationView()
+                FriendRequestNotificationView(id: "1", firstName: "Arian", lastName: "Rahbar", username: "arahbar", timestamp: Date())
                 
                 ConfirmationNotificationView()
                 
@@ -43,8 +43,8 @@ struct NotificationsView: View {
 }
 
 
-struct NotificationsView_Previews: PreviewProvider {
+struct NotificationListView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationsView()
+        NotificationListView(notificationIndex: 1)
     }
 }
