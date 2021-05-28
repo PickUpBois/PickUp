@@ -38,7 +38,7 @@ struct FinishPickupNotificationView: View {
                             },label: {
                                 Text("Press here to enter score for your event 'Doubles match'")
                                     .foregroundColor(Color.purple)
-                                    .padding(.leading, 10.0)
+                                    .frame(width: 400, alignment: .leading)
                                     .lineLimit(3)
                             })
                             

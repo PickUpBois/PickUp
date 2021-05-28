@@ -72,7 +72,7 @@ struct FinishPickupView: View {
                             .cornerRadius(9)
                     })
 
-                }
+            }.frame(width: 400)
             
             Spacer().frame(height: 10)
             
@@ -80,7 +80,7 @@ struct FinishPickupView: View {
             HStack{
                 Text(" Caption...").fontWeight(.ultraLight)
                     .foregroundColor(Color.black).opacity(0.8)
-            }.frame(width: 380, height: 180, alignment: .topLeading)
+            }.frame(width: 405, height: 180, alignment: .topLeading)
             .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 0.5)
             
             //Add Teammates Stack
@@ -90,7 +90,7 @@ struct FinishPickupView: View {
                 Text("Add Teammates")
                     .foregroundColor(Color.blue).opacity(0.8)
                     .padding(.vertical, 10)
-                        .padding(.horizontal, 130)
+                    .padding(.horizontal, 140)
                         .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                         .cornerRadius(9)
             })
@@ -103,7 +103,7 @@ struct FinishPickupView: View {
                 Text("Post")
                     .foregroundColor(Color.blue).opacity(0.8)
                     .padding(.vertical, 10)
-                        .padding(.horizontal, 175)
+                        .padding(.horizontal, 185)
                         .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                         .cornerRadius(9)
             })

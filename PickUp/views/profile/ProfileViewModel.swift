@@ -37,7 +37,7 @@ class ProfileViewModel: ObservableObject {
     }
     
     func retrieveUser() {
-        Services.shared.apollo.fetch(query: GetUserQuery(id: userId), cachePolicy: .fetchIgnoringCacheCompletely) { response in
+        Services.shared.apollo.fetch(query: GetUserQuery(id: userId, authId: AppState.shared.authId ?? "1"), cachePolicy: .fetchIgnoringCacheCompletely) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -53,6 +53,10 @@ class ProfileViewModel: ObservableObject {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func addFriend() {
+        
     }
     
     

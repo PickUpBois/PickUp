@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+enum ProfileAlertType {
+    case none
+    case unfollowAlert
+    case followAlert
+}
+
 struct ProfileHeaderView: View {
     @Binding var showPhotoLibrary: Bool
     let firstName: String
@@ -15,6 +21,7 @@ struct ProfileHeaderView: View {
     let college: String?
     let photoUrl: String?
     let auth: Bool
+    @EnvironmentObject var profileViewModel: ProfileViewModel
     init(user: GetUserQuery.Data.User?, showPhotoLibrary: Binding<Bool>, auth: Bool) {
         self.firstName = user?.firstName ?? "NA"
         self.lastName = user?.lastName ?? "NA"
@@ -24,6 +31,7 @@ struct ProfileHeaderView: View {
         self._showPhotoLibrary = showPhotoLibrary
         self.auth = auth
     }
+    @State private var showingAlert = false
     var body: some View {
         VStack(alignment: .center) {
             HStack{Text("\(firstName)'s Profile").font(.title3) // Leading title on page
@@ -39,11 +47,19 @@ struct ProfileHeaderView: View {
                            })
                             
                    //if following, click to unfollow
-                    Button(action: {},
-                            label: {Image(systemName: "checkmark.square.fill")
-                                    .foregroundColor(Color.green)
-                                    .padding(.top)
+                    Button(action: {
+                        self.showingAlert = true
+                    },label: {
+                        Image(systemName: "checkmark.square.fill")
+                                .foregroundColor(Color.green)
+                                .padding(.top)
+                            .alert(isPresented: $showingAlert) {
+                            Alert(title: Text("Confirm Unfollow!"), message: Text("Are you sure you want to remove Arian as a teammate?"), primaryButton: .default(Text("Yes")) {
+                                    print("Yeah")
+                            }, secondaryButton: .destructive(Text("Cancel")))
+                        }
                     })
+                    
                 }
                 
                 //Text("Add")
@@ -101,6 +117,6 @@ struct ProfileHeaderView: View {
 
 struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileHeaderView(user: GetUserQuery.Data.User(id: "1", firstName: "Ashwin", lastName: "Reynolds", username: "Arahbar", college: "ISU Cyclones"), showPhotoLibrary: .constant(false), auth: false)
+        ProfileHeaderView(user: GetUserQuery.Data.User(id: "1", firstName: "Ashwin", lastName: "Reynolds", username: "Arahbar", college: "ISU Cyclones"), showPhotoLibrary: .constant(false), auth: false).environmentObject(MockProfileViewModel(userId: "1"))
     }
 }

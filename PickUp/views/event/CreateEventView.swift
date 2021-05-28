@@ -15,8 +15,6 @@ struct CreateEventView: View {
     }
     
     var body: some View {
-
-        NavigationView {
             ScrollView {
                 Spacer().frame(height:15)
                     
@@ -41,7 +39,6 @@ struct CreateEventView: View {
                 }
                     
             }
-                }
     }
 }
 

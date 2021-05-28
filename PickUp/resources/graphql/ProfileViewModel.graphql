@@ -19,7 +19,7 @@ query GetUserEvents($userId: String!, $status: EventStatus!) {
   }
 }
 
-query GetUser($id: String!) {
+query GetUser($id: String!, $authId: String!) {
   user(id: $id) {
 	  id,
 	firstName,
@@ -27,5 +27,12 @@ query GetUser($id: String!) {
 	username,
 	college,
 	photoUrl,
+	friendStatus(user_id: $authId),
+  }
+}
+
+mutation SendFriendRequest($userId: String!, $friendId: String!) {
+  sendFriendRequest(user_id: $userId, friend_id: $friendId) {
+	id
   }
 }

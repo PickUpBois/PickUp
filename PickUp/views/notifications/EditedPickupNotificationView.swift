@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EditedPickupNotificationView: View {
+    @State private var showingAlert = false
     var body: some View {
        
         VStack{
@@ -37,7 +38,7 @@ struct EditedPickupNotificationView: View {
                 HStack {
                     Text("Ashwin's event location was moved from Los Angeles, California to Las Vegas, Nevada")
                         .foregroundColor(Color.purple)
-                        .padding(.horizontal, 10.0)
+                        .frame(width: 400, alignment: .leading)
                     
                 }
             Spacer().frame(height: 10)
@@ -56,14 +57,21 @@ struct EditedPickupNotificationView: View {
                     Spacer().frame(width: 15)
                     
                     Button(action: {
+                        self.showingAlert = true
                     },label: {
-                    Text("Leave Pickup:")
-                        .foregroundColor(.red)
+                        HStack{Text("Leave Pickup:")
+                            .foregroundColor(.red)
                         Spacer().frame(width: 3)
-                    Image(systemName: "x.circle.fill")
-                        .foregroundColor(Color.red)
-                        .lineLimit(1)
-                    })
+                        Image(systemName: "x.circle.fill")
+                            .foregroundColor(Color.red)
+                            .lineLimit(1)}
+                            .alert(isPresented:$showingAlert) {
+                                Alert(title: Text("Leave PickUp?"), message: Text("Are you sure you want to leave this PickUp?"), primaryButton: .default(Text("Yes")) {
+                                    
+                                    print("Cool beans. Check it out later.")
+                                    
+                                }, secondaryButton: .destructive(Text("Cancel")))
+                            }})
 
                 }
             }
