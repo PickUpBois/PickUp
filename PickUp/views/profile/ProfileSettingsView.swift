@@ -14,6 +14,8 @@ struct ProfileSettingsView: View {
     init(viewModel: ProfileSettingsViewModel = ProfileSettingsViewModel()) {
         self.viewModel = viewModel
     }
+    @State private var updateProfileAlert = false
+    @State private var logoutAlert = false
     @State private var showingAlert = false
     var body: some View {
         TextField("username", text: $viewModel.username)
@@ -25,24 +27,24 @@ struct ProfileSettingsView: View {
         Text("\(userViewModel.user?.username ?? "username")")
         
         Button(action: {
-            self.showingAlert = true
+            self.updateProfileAlert = true
         },label: {
             Text("Update Profile")
                 .foregroundColor(Color.green)
                 .padding(.top)
-                .alert(isPresented:$showingAlert) {
+                .alert(isPresented:$updateProfileAlert) {
                     Alert(title: Text("Confirm Profile Update"), message: Text("Are you sure you want to update your profile to these changes?"), primaryButton: .default(Text("Yes")) {
                         self.viewModel.updateProfile()
                     }, secondaryButton: .destructive(Text("Cancel")))
                 }})
        
         Button(action: {
-            self.showingAlert = true
+            self.logoutAlert = true
             },label: {
             Text("Logout")
                 .foregroundColor(Color.green)
                 .padding(.top)
-                .alert(isPresented:$showingAlert) {
+                .alert(isPresented:$logoutAlert) {
                     Alert(title: Text("Confirm Sign Out"), message: Text("Are you sure you want to log out?"), primaryButton: .default(Text("Yes")) {
                         () in
                         self.viewModel.logout()

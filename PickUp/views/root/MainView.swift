@@ -10,41 +10,46 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            
-            FindTeammatesView()
-                .tabItem {
-                   Image(systemName: "magnifyingglass.circle.fill")
-                    Text("Search")
-                    
-                }
-            MapMainView()
-                .tabItem {
-                   Image(systemName: "location.fill")
-                    Text("Map")
-                   
-                }
-
-            
-            CreateEventView()
-                .tabItem {
-                   Image(systemName: "plus.square.fill")
-                    Text("Event")
+            NavigationView {
+                FindTeammatesView()
+            }
+            .tabItem {
+               Image(systemName: "magnifyingglass.circle.fill")
+                Text("Search")
                 
-                }
+            }
+            NavigationView {
+                MapMainView()
+            }
+            .tabItem {
+               Image(systemName: "location.fill")
+                Text("Map")
+               
+            }
+
+            NavigationView {
+                CreateEventView()
+            }
+            .tabItem {
+               Image(systemName: "plus.square.fill")
+                Text("Event")
+            }
+            NavigationView {
+                HomeView(viewModel: HomeViewModel())
+            }
+            .tabItem {
+               Image(systemName: "house.fill")
+                Text("Home")
+
+            }
             
-            HomeView(viewModel: HomeViewModel())
-                .tabItem {
-                   Image(systemName: "house.fill")
-                    Text("Home")
-    
-                }
-            
-            ProfileView(viewModel: ProfileViewModel(userId: AppState.shared.authId!), auth: true)
-                .tabItem {
-                   Image(systemName: "person.fill")
-                    Text("Profile")
-                    
-                }
+            NavigationView {
+                ProfileView(viewModel: ProfileViewModel(userId: AppState.shared.authId!), auth: true)
+            }
+            .tabItem {
+               Image(systemName: "person.fill")
+                Text("Profile")
+            }
             
         }
         .onAppear() {

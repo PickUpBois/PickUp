@@ -283,6 +283,41 @@ public struct UpdateUserInput: GraphQLMapConvertible {
   }
 }
 
+public enum FriendStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  case friend
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "friend": self = .friend
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .friend: return "friend"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: FriendStatus, rhs: FriendStatus) -> Bool {
+    switch (lhs, rhs) {
+      case (.friend, .friend): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+
+  public static var allCases: [FriendStatus] {
+    return [
+      .friend,
+    ]
+  }
+}
+
 public struct CreateUserInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
@@ -1574,7 +1609,7 @@ public final class GetUserQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query GetUser($id: String!) {
+    query GetUser($id: String!, $authId: String!) {
       user(id: $id) {
         __typename
         id
@@ -1583,6 +1618,7 @@ public final class GetUserQuery: GraphQLQuery {
         username
         college
         photoUrl
+        friendStatus(user_id: $authId)
       }
     }
     """
@@ -1590,13 +1626,15 @@ public final class GetUserQuery: GraphQLQuery {
   public let operationName: String = "GetUser"
 
   public var id: String
+  public var authId: String
 
-  public init(id: String) {
+  public init(id: String, authId: String) {
     self.id = id
+    self.authId = authId
   }
 
   public var variables: GraphQLMap? {
-    return ["id": id]
+    return ["id": id, "authId": authId]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -1639,6 +1677,7 @@ public final class GetUserQuery: GraphQLQuery {
           GraphQLField("username", type: .nonNull(.scalar(String.self))),
           GraphQLField("college", type: .scalar(String.self)),
           GraphQLField("photoUrl", type: .scalar(String.self)),
+          GraphQLField("friendStatus", arguments: ["user_id": GraphQLVariable("authId")], type: .scalar(FriendStatus.self)),
         ]
       }
 
@@ -1648,8 +1687,8 @@ public final class GetUserQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID, firstName: String, lastName: String, username: String, college: String? = nil, photoUrl: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "User", "id": id, "firstName": firstName, "lastName": lastName, "username": username, "college": college, "photoUrl": photoUrl])
+      public init(id: GraphQLID, firstName: String, lastName: String, username: String, college: String? = nil, photoUrl: String? = nil, friendStatus: FriendStatus? = nil) {
+        self.init(unsafeResultMap: ["__typename": "User", "id": id, "firstName": firstName, "lastName": lastName, "username": username, "college": college, "photoUrl": photoUrl, "friendStatus": friendStatus])
       }
 
       public var __typename: String {
@@ -1718,6 +1757,16 @@ public final class GetUserQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "photoUrl")
+        }
+      }
+
+      /// Friend status of user
+      public var friendStatus: FriendStatus? {
+        get {
+          return resultMap["friendStatus"] as? FriendStatus
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "friendStatus")
         }
       }
     }

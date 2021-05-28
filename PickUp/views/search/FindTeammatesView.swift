@@ -14,36 +14,34 @@ extension SearchUsersQuery.Data.SearchUser: Identifiable {
 struct FindTeammatesView: View {
     @StateObject var viewModel: FindTeammatesViewModel = FindTeammatesViewModel()
     var body: some View {
-        NavigationView {
-            VStack {
-            // Stacks everything on page
+        VStack {
+        // Stacks everything on page
+            Spacer().frame(height: 10.0)
+                VStack(alignment: .leading){
+                    
+                SearchBarView(text: $viewModel.query, placeholder: "Search")
                 Spacer().frame(height: 10.0)
-                    VStack(alignment: .leading){
-                        
-                    SearchBarView(text: $viewModel.query, placeholder: "Search")
-                    Spacer().frame(height: 10.0)
-                    List(viewModel.users) { user in
-                        NavigationLink(
-                            destination: ProfileView(viewModel: ProfileViewModel(userId: user.id), auth: false),
-                            label: {
-                                SearchItemView(id: user.id, username: user.username)
-                            })
-                    }
-
-                }
-                
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar{
-                ToolbarItem(placement: .principal) {
-                        Image("logo2")
-                            .resizable()
-                            .padding(.top, -15)
-                            .frame(width: 125, height: 30)
-                            .scaledToFit()
+                List(viewModel.users) { user in
+                    NavigationLink(
+                        destination: ProfileView(viewModel: ProfileViewModel(userId: user.id), auth: false),
+                        label: {
+                            SearchItemView(id: user.id, username: user.username)
+                        })
                 }
 
             }
+            
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar{
+            ToolbarItem(placement: .principal) {
+                    Image("logo2")
+                        .resizable()
+                        .padding(.top, -15)
+                        .frame(width: 125, height: 30)
+                        .scaledToFit()
+            }
+
         }
     }
 }

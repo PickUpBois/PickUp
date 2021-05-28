@@ -13,7 +13,6 @@ struct MapMainView: View {
         @StateObject var mapData = MapViewModel()
         @State var locationManager = CLLocationManager()
     var body: some View {
-        NavigationView{
         ZStack{
             
             
@@ -176,7 +175,6 @@ struct MapMainView: View {
                 }
             }
         })
-    }
     }
     
 }
