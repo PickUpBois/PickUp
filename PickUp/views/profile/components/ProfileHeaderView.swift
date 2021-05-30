@@ -14,6 +14,7 @@ enum ProfileAlertType {
 }
 
 struct ProfileHeaderView: View {
+    @EnvironmentObject var profileViewModel: ProfileViewModel
     @Binding var showPhotoLibrary: Bool
     let firstName: String
     let lastName: String
@@ -21,7 +22,8 @@ struct ProfileHeaderView: View {
     let college: String?
     let photoUrl: String?
     let auth: Bool
-    @EnvironmentObject var profileViewModel: ProfileViewModel
+    @State private var showingUnfollowAlert = false
+    @State private var showingFollowAlert = false
     init(user: GetUserQuery.Data.User?, showPhotoLibrary: Binding<Bool>, auth: Bool) {
         self.firstName = user?.firstName ?? "NA"
         self.lastName = user?.lastName ?? "NA"
@@ -31,7 +33,6 @@ struct ProfileHeaderView: View {
         self._showPhotoLibrary = showPhotoLibrary
         self.auth = auth
     }
-    @State private var showingAlert = false
     var body: some View {
         VStack(alignment: .center) {
             HStack{Text("\(firstName)'s Profile").font(.title3) // Leading title on page
@@ -40,21 +41,28 @@ struct ProfileHeaderView: View {
            
                 //not following yet
                 if !auth {
-                    Button(action: {},
+                    Button(action: {
+                        self.showingFollowAlert = true
+                    },
                            label: {Image(systemName: "plus.square.fill")
                             .foregroundColor(Color.red)
                             .padding(.top)
+                            .alert(isPresented: $showingFollowAlert) {
+                                Alert(title: Text("Confirm Follow!"), message: Text("Are you sure you want to add \(firstName) as a teammate?"), primaryButton: .default(Text("Yes")) {
+                                    self.profileViewModel.addFriend()
+                                }, secondaryButton: .destructive(Text("Cancel")))
+                            }
                            })
                             
                    //if following, click to unfollow
                     Button(action: {
-                        self.showingAlert = true
+                        self.showingUnfollowAlert = true
                     },label: {
                         Image(systemName: "checkmark.square.fill")
                                 .foregroundColor(Color.green)
                                 .padding(.top)
-                            .alert(isPresented: $showingAlert) {
-                            Alert(title: Text("Confirm Unfollow!"), message: Text("Are you sure you want to remove Arian as a teammate?"), primaryButton: .default(Text("Yes")) {
+                            .alert(isPresented: $showingUnfollowAlert) {
+                            Alert(title: Text("Confirm Unfollow!"), message: Text("Are you sure you want to remove \(firstName) as a teammate?"), primaryButton: .default(Text("Yes")) {
                                     print("Yeah")
                             }, secondaryButton: .destructive(Text("Cancel")))
                         }

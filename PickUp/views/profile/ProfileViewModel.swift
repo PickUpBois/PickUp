@@ -56,7 +56,18 @@ class ProfileViewModel: ObservableObject {
     }
     
     func addFriend() {
-        
+        Services.shared.apollo.perform(mutation: SendFriendRequestMutation(userId: AppState.shared.authId!, friendId: userId)) { response in
+            switch response {
+            case .success(let result):
+                if let errors = result.errors {
+                    print(errors[0].localizedDescription)
+                    return
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                return
+            }
+        }
     }
     
     

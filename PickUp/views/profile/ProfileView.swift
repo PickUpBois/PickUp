@@ -75,7 +75,7 @@ struct ProfileView: View {
         VStack {
         // Stacks everything on page
             // Stacks for profile picture
-            ProfileHeaderView(user: self.viewModel.user, showPhotoLibrary: self.$viewModel.showPhotoLibrary, auth: auth)
+            ProfileHeaderView(user: self.viewModel.user, showPhotoLibrary: self.$viewModel.showPhotoLibrary, auth: auth).environmentObject(self.viewModel)
                 .frame(height: 200)
 
 

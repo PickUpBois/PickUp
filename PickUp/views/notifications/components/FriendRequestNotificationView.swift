@@ -7,28 +7,42 @@
 
 import SwiftUI
 
-struct FriendRequestNotificationView: View {
+struct FriendRequestNotificationView: View, Identifiable {
     
     @State private var showingAlert = false
+    @EnvironmentObject var viewModel: HomeViewModel
     var firstName: String
-    var id: String
+    var actorId: String
     var lastName: String
     var username: String
     var timestamp: Date
-    init(notification: GetNotificationsQuery.Data.User.Notification) {
-        self.firstName = notification.actor.firstName
-        self.lastName = notification.actor.lastName
-        self.id = notification.actor.id
-        self.username = notification.actor.username
-        self.timestamp = notification.createdAt.dateFromIso!
+    var id: Int
+    
+    init(index: Int, friendRequest: GetFriendRequestsQuery.Data.User.FriendRequest) {
+        self.firstName = friendRequest.user.firstName
+        self.lastName = friendRequest.user.lastName
+        self.id = index
+        self.username = friendRequest.user.username
+        self.timestamp = friendRequest.createdAt.dateFromIso!
+        self.actorId = friendRequest.user.id
     }
     
-    init(id: String, firstName: String, lastName: String, username: String, timestamp: Date) {
+    init(id: Int, notification: GetNotificationsQuery.Data.User.Notification) {
         self.id = id
+        self.actorId = notification.asFriendRequest!.user.id
+        self.firstName = notification.asFriendRequest!.user.firstName
+        self.lastName = notification.asFriendRequest!.user.lastName
+        self.username = notification.asFriendRequest!.user.username
+        self.timestamp = notification.asFriendRequest!.createdAt.dateFromIso!
+    }
+    
+    init(index: Int, actorId: String, firstName: String, lastName: String, username: String, timestamp: Date) {
+        self.id = index
         self.firstName = firstName
         self.lastName = lastName
         self.username = username
         self.timestamp = timestamp
+        self.actorId = actorId
     }
     
     func getDate(date: Date) -> String {
@@ -41,7 +55,7 @@ struct FriendRequestNotificationView: View {
       
         VStack{
                 HStack {
-                    NavigationLink(destination: ProfileView(viewModel: MockProfileViewModel(userId: "1"), auth: true))
+                    NavigationLink(destination: ProfileView(viewModel: ProfileViewModel(userId: self.actorId), auth: false))
                     {
                     Image("serena")
                         .resizable()
@@ -72,7 +86,7 @@ struct FriendRequestNotificationView: View {
                         Spacer().frame(minWidth: 5, maxWidth: 5)
                         
                         Button(action: {
-                            self.showingAlert = true
+                            self.viewModel.acceptFriendRequest(friendId: self.actorId)
                         },label: {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(Color.green)
@@ -80,7 +94,7 @@ struct FriendRequestNotificationView: View {
                         })
                         
                         Button(action: {
-                            
+                            self.viewModel.rejectFriendRequest(friendId: self.actorId)
                         },
                                label: {
                         Image(systemName: "x.circle.fill")
@@ -99,6 +113,6 @@ struct FriendRequestNotificationView: View {
 
 struct FriendRequestNotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendRequestNotificationView(id: "1", firstName: "Arian", lastName: "Rahbar", username: "arahbar", timestamp: Date())
+        FriendRequestNotificationView(index: 0, actorId: "1", firstName: "Arian", lastName: "Rahbar", username: "arahbar", timestamp: Date()).environmentObject(MockHomeViewModel())
     }
 }

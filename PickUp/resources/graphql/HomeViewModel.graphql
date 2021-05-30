@@ -18,3 +18,48 @@ query QueryEvents($userId: String, $type: EventType, $status: EventStatus) {
     status,
   }
 }
+
+mutation AcceptFriendRequest($userId: String!, $friendId: String!) {
+  acceptFriendRequest(user_id: $userId, friend_id: $friendId) {
+	id
+  }
+}
+
+mutation RejectFriendRequest($userId: String!, $friendId: String!) {
+  rejectFriendRequest(user_id: $userId, friend_id: $friendId) {
+	id
+  }
+}
+
+query GetFriendRequests($userId: String!) {
+  user(id: $userId) {
+	friendRequests {
+	  createdAt,
+	  user {
+		id,
+		username,
+		firstName,
+		lastName
+	  }
+	}
+  }
+}
+
+query GetNotifications($userId: String!) {
+  user(id: $userId) {
+	id,
+	notifications {
+		id,
+	  createdAt,
+	  type,
+	  ... on FriendRequest {
+		user {
+		  id,
+		  firstName,
+		  lastName,
+		  username,
+		}
+	  }
+	}
+  }
+}

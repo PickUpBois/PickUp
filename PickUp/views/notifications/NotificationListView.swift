@@ -9,11 +9,19 @@ import SwiftUI
 
 struct NotificationListView: View {
     @State var showPopUp = false
-    @EnvironmentObject var viewModel: HomeViewModel
+    @ObservedObject var viewModel: HomeViewModel
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+    }
     var body: some View {
-        ScrollView{
-            List(0..<self.viewModel.notifications.count) { i in
-                NotificationView(id: i)
+        ScrollView {
+            ForEach(self.viewModel.notifications.indices, id: \.self) { i in
+                switch self.viewModel.notifications[i].type {
+                case .friendRequestSend:
+                    FriendRequestNotificationView(id: i, notification: self.viewModel.notifications[i]).environmentObject(self.viewModel)
+                default:
+                    FriendRequestNotificationView(id: i, notification: self.viewModel.notifications[i]).environmentObject(self.viewModel)
+                }
             }
         }
         .frame(width: .infinity, height: .infinity, alignment: .topLeading)
@@ -24,8 +32,6 @@ struct NotificationListView: View {
                     Text("Notifications")
                         .fontWeight(.heavy)
                         .foregroundColor(Color.black)
-            
-            
                 }
 
             }
@@ -36,6 +42,6 @@ struct NotificationListView: View {
 
 struct NotificationListView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationListView().environmentObject(MockHomeViewModel())
+        NotificationListView(viewModel: MockHomeViewModel())
     }
 }

@@ -68,8 +68,7 @@
 		8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DB8F059261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DB8F05A261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
-		8DE520FA265F7F6F0077AF09 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE520F9265F7F6F0077AF09 /* NotificationViewModel.swift */; };
-		8DE52125266047360077AF09 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE52124266047360077AF09 /* NotificationView.swift */; };
+		8DE5216D2663FC760077AF09 /* FriendRequestAcceptNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5216C2663FC760077AF09 /* FriendRequestAcceptNotificationView.swift */; };
 		8DFAD531261EBA910055BA76 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAD530261EBA910055BA76 /* LoginView.swift */; };
 		8DFB9988264E2C9F00254C57 /* EventDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */; };
 		8DFB998D264E342800254C57 /* EventLocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB998C264E342800254C57 /* EventLocationPickerView.swift */; };
@@ -193,9 +192,7 @@
 		8DB8F007261A8201004AADED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpAppDelegate.swift; sourceTree = "<group>"; };
 		8DE520F2265F78F60077AF09 /*  schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = " schema.json"; sourceTree = "<group>"; };
-		8DE520F9265F7F6F0077AF09 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
-		8DE520FE265F7FDE0077AF09 /* NotificationViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = NotificationViewModel.graphql; sourceTree = "<group>"; };
-		8DE52124266047360077AF09 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		8DE5216C2663FC760077AF09 /* FriendRequestAcceptNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestAcceptNotificationView.swift; sourceTree = "<group>"; };
 		8DFAD530261EBA910055BA76 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDatePickerView.swift; sourceTree = "<group>"; };
 		8DFB998C264E342800254C57 /* EventLocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationPickerView.swift; sourceTree = "<group>"; };
@@ -308,15 +305,13 @@
 		8D65B2552658C43A0085D5EE /* notifications */ = {
 			isa = PBXGroup;
 			children = (
+				8DE5216B2663FC4B0077AF09 /* components */,
 				1A2E5BE8265CA9C8006A803A /* FinishPickupViews */,
 				C0B81C6D2657064B000555BD /* NotificationListView.swift */,
 				1A2E5BDE2658637F006A803A /* EditedPickupNotificationView.swift */,
-				1A2E5BE026586455006A803A /* FriendRequestNotificationView.swift */,
 				1A2E5BE426586698006A803A /* FinishPickupNotificationView.swift */,
 				1A2E5BE2265865EA006A803A /* ConfirmationNotificationView.swift */,
 				C0151121265A2612005EF24A /* PostNotificationView.swift */,
-				8DE520F9265F7F6F0077AF09 /* NotificationViewModel.swift */,
-				8DE52124266047360077AF09 /* NotificationView.swift */,
 			);
 			path = notifications;
 			sourceTree = "<group>";
@@ -472,7 +467,6 @@
 				8D5EE0572652E09300EE7840 /* HomeViewModel.graphql */,
 				8D5EE002265280E100EE7840 /* ProfileViewModel.graphql */,
 				8D65B2FA265931900085D5EE /* FindTeammatesViewModel.graphql */,
-				8DE520FE265F7FDE0077AF09 /* NotificationViewModel.graphql */,
 			);
 			path = graphql;
 			sourceTree = "<group>";
@@ -549,6 +543,15 @@
 				8DB8EFA426198979004AADED /* Info.plist */,
 			);
 			path = PickUpUITests;
+			sourceTree = "<group>";
+		};
+		8DE5216B2663FC4B0077AF09 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				1A2E5BE026586455006A803A /* FriendRequestNotificationView.swift */,
+				8DE5216C2663FC760077AF09 /* FriendRequestAcceptNotificationView.swift */,
+			);
+			path = components;
 			sourceTree = "<group>";
 		};
 		C0151123265A2DE0005EF24A /* message */ = {
@@ -928,13 +931,11 @@
 				8D5EE0242652D1A400EE7840 /* PickUpListView.swift in Sources */,
 				8D65B2AB265904EA0085D5EE /* CreateEventViewModel.swift in Sources */,
 				8D65B2682658C91D0085D5EE /* AppState.swift in Sources */,
-				8DE520FA265F7F6F0077AF09 /* NotificationViewModel.swift in Sources */,
 				8D65B27C2658CD790085D5EE /* StorageService.swift in Sources */,
 				8D65B2D826590F310085D5EE /* HomeViewModel.swift in Sources */,
 				8D2A3EF3261EC3E100521A6A /* SignUpView.swift in Sources */,
 				1A2E5BE526586698006A803A /* FinishPickupNotificationView.swift in Sources */,
 				8D5EE02F2652D58300EE7840 /* CourtsNearMeListView.swift in Sources */,
-				8DE52125266047360077AF09 /* NotificationView.swift in Sources */,
 				8DFCF522262788D000BBFE66 /* CreateEventView.swift in Sources */,
 				1A2E5BE126586455006A803A /* FriendRequestNotificationView.swift in Sources */,
 				8D65B26F2658C9F50085D5EE /* AuthService.swift in Sources */,
@@ -953,6 +954,7 @@
 				8D65B2F626592FA70085D5EE /* FindTeammatesViewModel.swift in Sources */,
 				8DFB998D264E342800254C57 /* EventLocationPickerView.swift in Sources */,
 				1AB44EDB26439DB300568ECB /* TypingBlockView.swift in Sources */,
+				8DE5216D2663FC760077AF09 /* FriendRequestAcceptNotificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
