@@ -15,6 +15,25 @@ struct FriendRequestAcceptNotificationView: View {
     var username: String
     var timestamp: Date
     
+    init(id: Int, actorId: String, firstName: String, lastName: String, username: String, timestamp: Date) {
+        self.id = id
+        self.actorId = actorId
+        self.firstName = firstName
+        self.lastName = lastName
+        self.username = username
+        self.timestamp = timestamp
+    }
+    
+    init(id: Int, notification: GetNotificationsQuery.Data.User.Notification)
+    {
+        self.id = id
+        self.actorId = notification.asInfoNotification!.actor.id
+        self.firstName = notification.asInfoNotification!.actor.firstName
+        self.lastName = notification.asInfoNotification!.actor.lastName
+        self.username = notification.asInfoNotification!.actor.username
+        self.timestamp = notification.asInfoNotification!.createdAt.dateFromIso!
+    }
+    
     func getDate(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .short

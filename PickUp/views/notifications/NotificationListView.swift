@@ -19,6 +19,8 @@ struct NotificationListView: View {
                 switch self.viewModel.notifications[i].type {
                 case .friendRequestSend:
                     FriendRequestNotificationView(id: i, notification: self.viewModel.notifications[i]).environmentObject(self.viewModel)
+                case .friendRequestAccept:
+                    FriendRequestAcceptNotificationView(id: i, notification: self.viewModel.notifications[i]).environmentObject(self.viewModel)
                 default:
                     FriendRequestNotificationView(id: i, notification: self.viewModel.notifications[i]).environmentObject(self.viewModel)
                 }

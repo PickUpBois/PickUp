@@ -60,6 +60,17 @@ query GetNotifications($userId: String!) {
 		  username,
 		}
 	  }
+	  ... on InfoNotification {
+		actor {
+		  id,
+		  firstName,
+		  lastName,
+		  username
+		},
+		event {
+		  id,
+		},
+	  }
 	}
   }
 }
