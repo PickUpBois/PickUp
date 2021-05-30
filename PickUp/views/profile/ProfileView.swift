@@ -94,7 +94,15 @@ struct ProfileView: View {
                 UpcomingPickupsView().environmentObject(viewModel)
             }
             
+            
             Spacer().frame(minHeight: 5, maxHeight: 10)
+            
+            // friends list
+            NavigationLink(
+                destination: FriendsListView(viewModel: FriendsListViewModel(userId: self.viewModel.userId)),
+                label: {
+                    Text("Friend List")
+                })
         }
         .sheet(isPresented: self.$viewModel.showPhotoLibrary) {
             ImagePicker(sourceType: .photoLibrary, userId: self.viewModel.userId)

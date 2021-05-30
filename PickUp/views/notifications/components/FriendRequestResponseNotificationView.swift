@@ -14,15 +14,18 @@ enum FriendRequestResponseType {
 
 struct FriendRequestResponseNotificationView: View {
     var id: Int
+    var notificationId: String
     var response: FriendRequestResponseType
     var actorId: String
     var firstName: String
     var lastName: String
     var username: String
     var timestamp: Date
+    @EnvironmentObject var viewModel: HomeViewModel
     
-    init(id: Int, response: FriendRequestResponseType, actorId: String, firstName: String, lastName: String, username: String, timestamp: Date) {
+    init(id: Int, notificationId: String, response: FriendRequestResponseType, actorId: String, firstName: String, lastName: String, username: String, timestamp: Date) {
         self.id = id
+        self.notificationId = notificationId
         self.response = response
         self.actorId = actorId
         self.firstName = firstName
@@ -35,6 +38,7 @@ struct FriendRequestResponseNotificationView: View {
     {
         self.id = id
         self.response = response
+        self.notificationId = notification.asInfoNotification!.id
         self.actorId = notification.asInfoNotification!.actor.id
         self.firstName = notification.asInfoNotification!.actor.firstName
         self.lastName = notification.asInfoNotification!.actor.lastName
@@ -74,12 +78,20 @@ struct FriendRequestResponseNotificationView: View {
                 }
             Spacer().frame(height: 15)
                     HStack {
-                        Text("\(firstName) \(lastName) accepted your friend request")
+                        Text("\(firstName) \(lastName) \(response == FriendRequestResponseType.accept ? "accepted" : "rejected") your friend request")
                             .foregroundColor(Color.purple)
                             .lineLimit(1)
                             .padding(.leading, 10.0)
                             .frame(width: 400, alignment: .leading)
                     }
+            Spacer().frame(height: 15)
+            HStack(alignment: .lastTextBaseline) {
+                Button(action: {
+                    self.viewModel.readNotification(id: self.notificationId)
+                }, label: {
+                    Text("Mark as read")
+                })
+            }
                 }
                 .padding(.all, 10)
                 .frame(width: 400.0)
@@ -90,6 +102,6 @@ struct FriendRequestResponseNotificationView: View {
 
 struct FriendRequestResoibseNotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendRequestResponseNotificationView(id: 0, response: .accept, actorId: "1", firstName: "John", lastName: "Cena", username: "John", timestamp: Date())
+        FriendRequestResponseNotificationView(id: 0, notificationId: "1", response: .accept, actorId: "1", firstName: "John", lastName: "Cena", username: "John", timestamp: Date()).environmentObject(MockHomeViewModel())
     }
 }

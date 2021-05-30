@@ -74,3 +74,9 @@ query GetNotifications($userId: String!) {
 	}
   }
 }
+
+mutation ReadNotification($id: ID!) {
+  markNotificationAsRead(id: $id) {
+	id
+  }
+}

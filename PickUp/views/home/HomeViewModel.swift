@@ -109,14 +109,40 @@ class HomeViewModel: ObservableObject {
             }
         }
     }
+    
+    func readNotification(id: String) {
+        Services.shared.apollo.perform(mutation: ReadNotificationMutation(id: String(id))) { response in
+            switch response {
+            case .success(let result):
+                if let errors = result.errors {
+                    print(errors[0].localizedDescription)
+                    return
+                }
+                guard let data = result.data else {
+                    print("error in graphql mutation")
+                    return
+                }
+                self.getNotifications()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 class MockHomeViewModel: HomeViewModel {
+    override init() {
+        let actor = GetNotificationsQuery.Data.User.Notification.AsInfoNotification.Actor(id: "1", firstName: "test", lastName: "test", username: "test")
+        let notification = GetNotificationsQuery.Data.User.Notification.makeInfoNotification(id: "1", createdAt: Date().isoString, type: .friendRequestAccept, actor: actor, event: nil)
+        super.init()
+        self.notifications = [notification]
+    }
     override func getUpcomingEvents() {
         self.events = []
     }
     
     override func getNotifications() {
+        
     }
     
     override func acceptFriendRequest(friendId: String) {
