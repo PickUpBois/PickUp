@@ -7,16 +7,23 @@
 
 import SwiftUI
 
-struct FriendRequestAcceptNotificationView: View {
+enum FriendRequestResponseType {
+    case accept
+    case reject
+}
+
+struct FriendRequestResponseNotificationView: View {
     var id: Int
+    var response: FriendRequestResponseType
     var actorId: String
     var firstName: String
     var lastName: String
     var username: String
     var timestamp: Date
     
-    init(id: Int, actorId: String, firstName: String, lastName: String, username: String, timestamp: Date) {
+    init(id: Int, response: FriendRequestResponseType, actorId: String, firstName: String, lastName: String, username: String, timestamp: Date) {
         self.id = id
+        self.response = response
         self.actorId = actorId
         self.firstName = firstName
         self.lastName = lastName
@@ -24,9 +31,10 @@ struct FriendRequestAcceptNotificationView: View {
         self.timestamp = timestamp
     }
     
-    init(id: Int, notification: GetNotificationsQuery.Data.User.Notification)
+    init(id: Int, response: FriendRequestResponseType, notification: GetNotificationsQuery.Data.User.Notification)
     {
         self.id = id
+        self.response = response
         self.actorId = notification.asInfoNotification!.actor.id
         self.firstName = notification.asInfoNotification!.actor.firstName
         self.lastName = notification.asInfoNotification!.actor.lastName
@@ -80,8 +88,8 @@ struct FriendRequestAcceptNotificationView: View {
     }
 }
 
-struct FriendRequestAcceptNotificationView_Previews: PreviewProvider {
+struct FriendRequestResoibseNotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendRequestAcceptNotificationView(id: 0, actorId: "1", firstName: "John", lastName: "Cena", username: "John", timestamp: Date())
+        FriendRequestResponseNotificationView(id: 0, response: .accept, actorId: "1", firstName: "John", lastName: "Cena", username: "John", timestamp: Date())
     }
 }

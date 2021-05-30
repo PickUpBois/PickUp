@@ -20,7 +20,7 @@ struct NotificationListView: View {
                 case .friendRequestSend:
                     FriendRequestNotificationView(id: i, notification: self.viewModel.notifications[i]).environmentObject(self.viewModel)
                 case .friendRequestAccept:
-                    FriendRequestAcceptNotificationView(id: i, notification: self.viewModel.notifications[i]).environmentObject(self.viewModel)
+                    FriendRequestResponseNotificationView(id: i, response: .accept, notification: self.viewModel.notifications[i]).environmentObject(self.viewModel)
                 default:
                     FriendRequestNotificationView(id: i, notification: self.viewModel.notifications[i]).environmentObject(self.viewModel)
                 }

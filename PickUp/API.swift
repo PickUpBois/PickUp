@@ -178,6 +178,7 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
   public typealias RawValue = String
   case friendRequestSend
   case friendRequestAccept
+  case friendRequestReject
   /// Auto generated constant for unknown enum values
   case __unknown(RawValue)
 
@@ -185,6 +186,7 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
     switch rawValue {
       case "friendRequestSend": self = .friendRequestSend
       case "friendRequestAccept": self = .friendRequestAccept
+      case "friendRequestReject": self = .friendRequestReject
       default: self = .__unknown(rawValue)
     }
   }
@@ -193,6 +195,7 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
     switch self {
       case .friendRequestSend: return "friendRequestSend"
       case .friendRequestAccept: return "friendRequestAccept"
+      case .friendRequestReject: return "friendRequestReject"
       case .__unknown(let value): return value
     }
   }
@@ -201,6 +204,7 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
     switch (lhs, rhs) {
       case (.friendRequestSend, .friendRequestSend): return true
       case (.friendRequestAccept, .friendRequestAccept): return true
+      case (.friendRequestReject, .friendRequestReject): return true
       case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
       default: return false
     }
@@ -210,6 +214,7 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
     return [
       .friendRequestSend,
       .friendRequestAccept,
+      .friendRequestReject,
     ]
   }
 }
