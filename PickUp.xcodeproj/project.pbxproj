@@ -195,7 +195,7 @@
 		8DB8EFF6261A74F7004AADED /* AuthFirebaseDataSourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebaseDataSourceTest.swift; sourceTree = "<group>"; };
 		8DB8F007261A8201004AADED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpAppDelegate.swift; sourceTree = "<group>"; };
-		8DE520F2265F78F60077AF09 /*  schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = " schema.json"; sourceTree = "<group>"; };
+		8DD29A442664807E005DFCB2 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		8DE5216C2663FC760077AF09 /* FriendRequestResponseNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestResponseNotificationView.swift; sourceTree = "<group>"; };
 		8DE52178266427FC0077AF09 /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		8DE52180266428130077AF09 /* FriendItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendItemView.swift; sourceTree = "<group>"; };
@@ -523,7 +523,7 @@
 				8DB8EF8E26198979004AADED /* Info.plist */,
 				8DB8EF8B26198979004AADED /* Preview Content */,
 				8D65B376265B06900085D5EE /* API.swift */,
-				8DE520F2265F78F60077AF09 /*  schema.json */,
+				8DD29A442664807E005DFCB2 /* schema.json */,
 			);
 			path = PickUp;
 			sourceTree = "<group>";

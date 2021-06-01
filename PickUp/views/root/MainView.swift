@@ -40,7 +40,6 @@ struct MainView: View {
             .tabItem {
                Image(systemName: "house.fill")
                 Text("Home")
-
             }
             
             NavigationView {

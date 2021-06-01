@@ -37,7 +37,6 @@ struct NotificationListView: View {
                         .fontWeight(.heavy)
                         .foregroundColor(Color.black)
                 }
-
             }
         }
     }
