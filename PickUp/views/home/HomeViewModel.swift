@@ -17,7 +17,7 @@ class HomeViewModel: ObservableObject {
     @Published var notifications: [GetNotificationsQuery.Data.User.Notification] = []
     func getUpcomingEvents() {
         if (AppState.shared.authId != nil) {
-            Services.shared.apollo.fetch(query: QueryEventsQuery(userId: AppState.shared.authId!, type: nil, status: .open), cachePolicy: .fetchIgnoringCacheCompletely) { response in
+            Services.shared.apollo.fetch(query: QueryEventsQuery(userId: nil, type: nil, status: .open), cachePolicy: .fetchIgnoringCacheCompletely) { response in
                 switch response {
                 case .success(let result):
                     if let errors = result.errors {
@@ -39,23 +39,22 @@ class HomeViewModel: ObservableObject {
     
     func getNotifications() {
         if AppState.shared.authId != nil {
-                Services.shared.apollo.fetch(query: GetNotificationsQuery(userId: AppState.shared.authId!), cachePolicy: .fetchIgnoringCacheCompletely) { response in
-                    switch response {
-                    case .success(let result):
-                        if let errors = result.errors {
-                            print(errors[0].localizedDescription)
-                        }
-                        guard let data = result.data else {
-                            print("error in graphql query")
-                            return
-                        }
-                        self.notifications = data.user.notifications
-                        self.objectWillChange.send()
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                }
-            
+            Services.shared.apollo.fetch(query: GetNotificationsQuery(userId: AppState.shared.authId!), cachePolicy: .fetchIgnoringCacheCompletely) { response in
+                switch response {
+                case .success(let result):
+                    if let errors = result.errors {
+                        print(errors[0].localizedDescription)
+                    }
+                    guard let data = result.data else {
+                        print("error in graphql query")
+                        return
+                    }
+                    self.notifications = data.user.notifications
+                    self.objectWillChange.send()
+                case .failure(let error):
+                    print(error.localizedDescription)
             }
+        }
         }
     }
     
@@ -123,6 +122,25 @@ class HomeViewModel: ObservableObject {
                     return
                 }
                 self.getNotifications()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func joinEvent(eventId: String) {
+        Services.shared.apollo.perform(mutation: JoinEventMutation(userId: AppState.shared.authId!, eventId: eventId)) { response in
+            switch response {
+            case .success(let result):
+                if let errors = result.errors {
+                    print(errors[0].localizedDescription)
+                    return
+                }
+                guard let data = result.data else {
+                    print("error joining event")
+                    return
+                }
+                self.getUpcomingEvents()
             case .failure(let error):
                 print(error.localizedDescription)
             }

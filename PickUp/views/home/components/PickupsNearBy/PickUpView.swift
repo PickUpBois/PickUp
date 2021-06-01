@@ -7,11 +7,30 @@
 
 import SwiftUI
 
-struct PickUpView: View {
+struct PickUpView: View, Identifiable {
+    @EnvironmentObject var viewModel: HomeViewModel
     @State var showPopUp = false
     var name: String
     var startDate: Date
+    var id: Int
+    var going: Bool
     
+    init(name: String, startDate: Date, id: Int, going: Bool) {
+        self.name = name
+        self.startDate = startDate
+        self.id = id
+        self.going = going
+    }
+    
+    init(id: Int, event: QueryEventsQuery.Data.QueryEvent) {
+        self.name = event.name
+        self.id = id
+        self.startDate = event.startDate.dateFromIso!
+        let attendees = event.attendees.map { (attendee) -> String in
+            return attendee.id
+        }
+        self.going = attendees.contains(AppState.shared.authId ?? "") ? true : false
+    }
     func getDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
@@ -48,7 +67,7 @@ struct PickUpView: View {
                                 .lineLimit(1)
                             Text("Location")
                                 .foregroundColor(Color.blue)
-                            Text("Going")
+                            Text(going ? "Going" : "Not going")
                                 .foregroundColor(Color.green)
                                 .lineLimit(1)
                     }
@@ -59,7 +78,7 @@ struct PickUpView: View {
             })
         }.sheet(isPresented: $showPopUp, content: {
            
-            PopupView()
+            PopupView(id: id, event: self.viewModel.events[id])
             
             Button(action: {
                 self.showPopUp.toggle()
@@ -96,6 +115,6 @@ struct BackgroundClearView: UIViewRepresentable {
 
 struct PickUpView_Previews: PreviewProvider {
     static var previews: some View {
-        PickUpView(name: "Event", startDate: Date())
+        PickUpView(name: "Event", startDate: Date(), id: 0, going: true).environmentObject(MockHomeViewModel())
     }
 }

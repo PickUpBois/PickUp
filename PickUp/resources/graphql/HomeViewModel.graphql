@@ -80,3 +80,9 @@ mutation ReadNotification($id: ID!) {
 	id
   }
 }
+
+mutation JoinEvent($userId: ID!, $eventId: ID!) {
+  joinEvent(userId: $userId, eventId: $eventId) {
+	id
+  }
+}

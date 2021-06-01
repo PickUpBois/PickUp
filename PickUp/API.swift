@@ -2116,6 +2116,102 @@ public final class ReadNotificationMutation: GraphQLMutation {
   }
 }
 
+public final class JoinEventMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation JoinEvent($userId: ID!, $eventId: ID!) {
+      joinEvent(userId: $userId, eventId: $eventId) {
+        __typename
+        id
+      }
+    }
+    """
+
+  public let operationName: String = "JoinEvent"
+
+  public var userId: GraphQLID
+  public var eventId: GraphQLID
+
+  public init(userId: GraphQLID, eventId: GraphQLID) {
+    self.userId = userId
+    self.eventId = eventId
+  }
+
+  public var variables: GraphQLMap? {
+    return ["userId": userId, "eventId": eventId]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("joinEvent", arguments: ["userId": GraphQLVariable("userId"), "eventId": GraphQLVariable("eventId")], type: .nonNull(.object(JoinEvent.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(joinEvent: JoinEvent) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "joinEvent": joinEvent.resultMap])
+    }
+
+    public var joinEvent: JoinEvent {
+      get {
+        return JoinEvent(unsafeResultMap: resultMap["joinEvent"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "joinEvent")
+      }
+    }
+
+    public struct JoinEvent: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Event"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID) {
+        self.init(unsafeResultMap: ["__typename": "Event", "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// id of event
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+    }
+  }
+}
+
 public final class UpdateUserMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
