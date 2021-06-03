@@ -98,11 +98,11 @@ struct ProfileView: View {
             Spacer().frame(minHeight: 5, maxHeight: 10)
             
             // friends list
-            NavigationLink(
-                destination: FriendsListView(viewModel: FriendsListViewModel(userId: self.viewModel.userId)),
-                label: {
-                    Text("Friend List")
-                })
+//            NavigationLink(
+//                destination: FriendsListView(viewModel: FriendsListViewModel(userId: self.viewModel.userId)),
+//                label: {
+//                    Text("Friend List")
+//                })
         }
         .sheet(isPresented: self.$viewModel.showPhotoLibrary) {
             ImagePicker(sourceType: .photoLibrary, userId: self.viewModel.userId)
@@ -122,6 +122,7 @@ struct ProfileView: View {
                         .padding(.top, -15)
                         .frame(width: 125, height: 30)
                         .scaledToFit()
+                        
                     
                     if auth {
                         Spacer().frame(minWidth: 100, idealWidth: 100, maxWidth: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -129,6 +130,12 @@ struct ProfileView: View {
                             Image(systemName: "gearshape.fill")
                         }
                     }
+                    
+                    else{
+                        Spacer().frame(minWidth: 120, idealWidth: 120, maxWidth: 100, alignment: .center)
+                    }
+
+                    
                 }
                 .padding(.leading, 110)
             }

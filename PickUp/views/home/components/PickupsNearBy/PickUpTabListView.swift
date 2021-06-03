@@ -17,11 +17,11 @@ struct PickUpTabListView: View {
                 Button(action: {
                     self.showPopUp.toggle()
                 }, label: {
-            HStack{ Text("PickUps Nearby").font(.title3)
+            HStack{ Text("Future PickUps").font(.title3)
                 .fontWeight(.semibold)
                 .foregroundColor(Color.black)
-            Image(systemName: "calendar").font(.system(size: 16, weight: .regular))
-                .foregroundColor(Color.red)
+            Image(systemName: "clock.fill").font(.system(size: 16, weight: .regular))
+                .foregroundColor(Color.black)
             }
                 })
             }.sheet(isPresented: $showPopUp, content: {

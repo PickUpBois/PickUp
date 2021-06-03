@@ -14,6 +14,7 @@ enum ProfileAlertType {
 }
 
 struct ProfileHeaderView: View {
+    @State var showPopUp = false
     @EnvironmentObject var profileViewModel: ProfileViewModel
     @Binding var showPhotoLibrary: Bool
     let firstName: String
@@ -103,12 +104,49 @@ struct ProfileHeaderView: View {
                     Spacer()
                 }
                 VStack {
-                Text("Team").font(.headline).foregroundColor(Color.black)
-                Text("Members").font(.headline).foregroundColor(Color.black)
-                    Text("50").font(.title).fontWeight(.bold)
-                    Spacer()
-                    
+                   
+                    NavigationLink(
+                        destination: FriendsListView(viewModel: FriendsListViewModel(userId: self.profileViewModel.userId)),
+                        label: {
+                            VStack{
+                                Text("Team").font(.headline).foregroundColor(Color.black)
+                                Text("Members").font(.headline).foregroundColor(Color.black)
+                                Text("50").font(.title).fontWeight(.bold).foregroundColor(Color.black)
+                                
+                                Spacer()
+                            }
+                        })
                 }
+                    
+//                    Button(action: {
+//                        self.showPopUp.toggle()
+//                    },label: {
+//                        VStack{
+//                            Text("Team").font(.headline).foregroundColor(Color.black)
+//                            Text("Members").font(.headline).foregroundColor(Color.black)
+//                            Text("50").font(.title).fontWeight(.bold).foregroundColor(Color.black)
+//
+//                            Spacer()
+//                        }
+//                    })
+//                }.sheet(isPresented: $showPopUp, content: {
+//
+//                    FinishPickupView()
+//
+//                    Button(action: {
+//                        self.showPopUp.toggle()
+//                    },label: {
+//                        Text("Dismiss")
+//                            .foregroundColor(Color.white)
+//                            .frame(maxWidth: .infinity)
+//                            .padding(.vertical, 10)
+//                            .background(Color.black.opacity(0.8))
+//                            .cornerRadius(9)
+//                            .padding(.horizontal, 20)
+//                    })
+//                    //Spacer().frame(height: 300)
+//                })
+
                 VStack {
                 Text("GOAT").font(.headline).foregroundColor(Color.black)
                 Text("Meter").font(.headline).foregroundColor(Color.black)
@@ -116,10 +154,10 @@ struct ProfileHeaderView: View {
                     .foregroundColor(.green)
                     Spacer()
                 }
+                }
             }
         }
     }
-}
 
 
 

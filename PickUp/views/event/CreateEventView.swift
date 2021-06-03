@@ -10,6 +10,7 @@ import Combine
 
 struct CreateEventView: View {
     @ObservedObject var viewModel: CreateEventViewModel
+    @State private var selection = 1
     init(viewModel: CreateEventViewModel = CreateEventViewModel()) {
         self.viewModel = viewModel
     }
@@ -18,13 +19,21 @@ struct CreateEventView: View {
             ScrollView {
                 Spacer().frame(height:15)
                     
-                Picker("", selection: self.$viewModel.eventInfo.eventType) {
-                    Text("🎾").foregroundColor(Color.blue).tag(EventType.tennis)
+                Picker("", selection: $selection) {
+                    Text("Create Event").foregroundColor(Color.blue).tag(1)
                     
-                    Text("🏀").foregroundColor(Color.red).tag(EventType.basketball)
+                    Text("Edit Your Pickup").foregroundColor(Color.red).tag(0)
                 }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
+                
+                if selection == 1 {
+                    CreateSportEventView().environmentObject(self.viewModel)
+                }
+                //second picker option
+                
+                else {
+                    EditPickupView()
+                }
 
-                CreateSportEventView().environmentObject(self.viewModel)
                     
             }.navigationBarTitleDisplayMode(.inline)
             .toolbar{

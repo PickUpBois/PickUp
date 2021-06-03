@@ -102,25 +102,6 @@ Spacer()
             .background(Color(red: 1, green: 0.7, blue: 0, opacity: 0.9))
         .cornerRadius(8)
         .padding(.horizontal, 20)
-            
-        HStack{
-            
-        Button(action: {},
-               label: {Text("Start Pickup")
-                .padding(.all, 5.0)
-                .font(.body)
-                .foregroundColor(Color.white)
-                .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.purple/*@END_MENU_TOKEN@*/)
-               })
-        
-            Button(action: {},
-               label: {Text("Finish Pickup")
-                .padding(.all, 5.0)
-                .font(.body)
-                .foregroundColor(Color.white)
-                .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.purple/*@END_MENU_TOKEN@*/)
-               })
-        }
         
         }
 
