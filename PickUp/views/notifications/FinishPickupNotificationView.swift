@@ -46,6 +46,17 @@ struct FinishPickupNotificationView: View {
                             
                             InputScoreView()
                             
+                            Button(action: {},
+                                   label: {
+                                    Text("Finish Pickup")
+                                    .foregroundColor(Color.white)
+                                    .frame(maxWidth: .infinity)
+                                    .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.pink/*@END_MENU_TOKEN@*/.opacity(0.8))
+                                    .cornerRadius(9)
+                                    .padding(.all, 20)
+                                    
+                                   })
+                            
                             Button(action: {
                                 self.showPopUp.toggle()
                             },label: {

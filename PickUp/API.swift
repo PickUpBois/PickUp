@@ -138,7 +138,6 @@ public enum EventStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Ap
   public typealias RawValue = String
   case `open`
   case closed
-  case ip
   /// Auto generated constant for unknown enum values
   case __unknown(RawValue)
 
@@ -146,7 +145,6 @@ public enum EventStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Ap
     switch rawValue {
       case "open": self = .open
       case "closed": self = .closed
-      case "ip": self = .ip
       default: self = .__unknown(rawValue)
     }
   }
@@ -155,7 +153,6 @@ public enum EventStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Ap
     switch self {
       case .open: return "open"
       case .closed: return "closed"
-      case .ip: return "ip"
       case .__unknown(let value): return value
     }
   }
@@ -164,7 +161,6 @@ public enum EventStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Ap
     switch (lhs, rhs) {
       case (.open, .open): return true
       case (.closed, .closed): return true
-      case (.ip, .ip): return true
       case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
       default: return false
     }
@@ -174,7 +170,6 @@ public enum EventStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Ap
     return [
       .open,
       .closed,
-      .ip,
     ]
   }
 }
