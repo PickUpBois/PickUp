@@ -68,6 +68,8 @@
 		8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DB8F059261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DB8F05A261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
+		8DD29A4A26684FEC005DFCB2 /* UserDetails.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DD29A4926684FEC005DFCB2 /* UserDetails.graphql */; };
+		8DD29A4F26685007005DFCB2 /* EventDetails.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DD29A4E26685007005DFCB2 /* EventDetails.graphql */; };
 		8DE5216D2663FC760077AF09 /* FriendRequestResponseNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5216C2663FC760077AF09 /* FriendRequestResponseNotificationView.swift */; };
 		8DE52179266427FC0077AF09 /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE52178266427FC0077AF09 /* FriendsListView.swift */; };
 		8DE52181266428130077AF09 /* FriendItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE52180266428130077AF09 /* FriendItemView.swift */; };
@@ -196,6 +198,8 @@
 		8DB8F007261A8201004AADED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpAppDelegate.swift; sourceTree = "<group>"; };
 		8DD29A442664807E005DFCB2 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		8DD29A4926684FEC005DFCB2 /* UserDetails.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UserDetails.graphql; sourceTree = "<group>"; };
+		8DD29A4E26685007005DFCB2 /* EventDetails.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = EventDetails.graphql; sourceTree = "<group>"; };
 		8DE5216C2663FC760077AF09 /* FriendRequestResponseNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestResponseNotificationView.swift; sourceTree = "<group>"; };
 		8DE52178266427FC0077AF09 /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		8DE52180266428130077AF09 /* FriendItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendItemView.swift; sourceTree = "<group>"; };
@@ -470,6 +474,7 @@
 		8D65B29C2658DD7D0085D5EE /* graphql */ = {
 			isa = PBXGroup;
 			children = (
+				8DD29A4826684FD6005DFCB2 /* fragments */,
 				8DFB9A522650A73000254C57 /* SignUpViewModel.graphql */,
 				8DFB9A682650AF0A00254C57 /* ProfileSettingsViewModel.graphql */,
 				8D5EDFF526520C8300EE7840 /* CreateEventViewModel.graphql */,
@@ -553,6 +558,15 @@
 				8DB8EFA426198979004AADED /* Info.plist */,
 			);
 			path = PickUpUITests;
+			sourceTree = "<group>";
+		};
+		8DD29A4826684FD6005DFCB2 /* fragments */ = {
+			isa = PBXGroup;
+			children = (
+				8DD29A4926684FEC005DFCB2 /* UserDetails.graphql */,
+				8DD29A4E26685007005DFCB2 /* EventDetails.graphql */,
+			);
+			path = fragments;
 			sourceTree = "<group>";
 		};
 		8DE5216B2663FC4B0077AF09 /* components */ = {
@@ -736,7 +750,9 @@
 				C0D4716C264098BF00E7B6C7 /* CreateEventView.xib in Resources */,
 				8DB8F008261A8201004AADED /* GoogleService-Info.plist in Resources */,
 				8D65B2A62658E04E0085D5EE /* HomeViewModel.graphql in Resources */,
+				8DD29A4A26684FEC005DFCB2 /* UserDetails.graphql in Resources */,
 				8D65B2972658DCF40085D5EE /* ProfileViewModel.graphql in Resources */,
+				8DD29A4F26685007005DFCB2 /* EventDetails.graphql in Resources */,
 				8DFB9A532650A73000254C57 /* SignUpViewModel.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

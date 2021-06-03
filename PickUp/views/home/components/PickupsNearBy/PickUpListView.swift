@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-extension QueryEventsQuery.Data.QueryEvent: Identifiable {}
-
 struct PickUpListView: View {
     @EnvironmentObject var viewModel: HomeViewModel
     var type: EventType

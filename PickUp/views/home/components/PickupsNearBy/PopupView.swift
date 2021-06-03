@@ -36,7 +36,7 @@ struct PopupView: View, Identifiable {
         self.going = going
     }
     
-    init(id: Int, event: QueryEventsQuery.Data.QueryEvent) {
+    init(id: Int, event: EventDetails) {
         self.name = event.name
         self.info = event.info
         self.eventId = event.id
@@ -48,7 +48,7 @@ struct PopupView: View, Identifiable {
         self.numAttendees = event.attendees.count
         self.type = event.type
         let attendees = event.attendees.map { (attendee) -> String in
-            return attendee.id
+            return attendee.fragments.userDetails.id
         }
         self.going = attendees.contains(AppState.shared.authId ?? "") ? true : false
     }

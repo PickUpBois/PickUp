@@ -15,8 +15,8 @@ class ProfileViewModel: ObservableObject {
     @Published var imageUri: String? = nil
     @Published var textUrl: String = ""
     @Published var showPhotoLibrary = false
-    @Published var upcomingEvents: [GetUserEventsQuery.Data.UserEvent] = []
-    @Published var pastEvents: [GetUserEventsQuery.Data.UserEvent] = []
+    @Published var upcomingEvents: [EventDetails] = []
+    @Published var pastEvents: [EventDetails] = []
     var userId: String
     var cancellables = Set<AnyCancellable>()
     @Published var user: GetUserQuery.Data.User?
@@ -82,7 +82,9 @@ class ProfileViewModel: ObservableObject {
                     print("error in graphql query")
                     return
                 }
-                self.upcomingEvents = data.userEvents
+                self.upcomingEvents = data.userEvents.map { userEvent in
+                    return userEvent.fragments.eventDetails
+                }
                 
                 return
             case .failure(let error):
@@ -108,8 +110,8 @@ class MockProfileViewModel: ProfileViewModel {
     }
     
     override func getEvents(status: EventStatus) {
-        let event1 = GetUserEventsQuery.Data.UserEvent(id: "1", name: "2", info: "3", startDate: Date().isoString, capacity: 4, type: .tennis, status: .open, attendees: [])
-        let event2 = GetUserEventsQuery.Data.UserEvent(id: "2", name: "2", info: "3", startDate: Date().isoString, capacity: 4, type: .tennis, status: .open, attendees: [])
+        let event1 = EventDetails(id: "1", name: "1", info: "1", capacity: 4, attendees: [EventDetails.Attendee(id: "1", firstName: "1", lastName: "1", username: "1")], startDate: Date().isoString, type: .tennis, status: .open)
+        let event2 = event1
         self.upcomingEvents = [event1, event2]
         self.pastEvents = []
     }

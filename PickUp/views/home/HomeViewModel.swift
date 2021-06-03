@@ -12,7 +12,7 @@ import Combine
 
 class HomeViewModel: ObservableObject {
     var cancellables = Set<AnyCancellable>()
-    @Published var events: [QueryEventsQuery.Data.QueryEvent] = []
+    @Published var events: [EventDetails] = []
     @Published var friendRequests: [GetFriendRequestsQuery.Data.User.FriendRequest] = []
     @Published var notifications: [GetNotificationsQuery.Data.User.Notification] = []
     func getUpcomingEvents() {
@@ -27,7 +27,9 @@ class HomeViewModel: ObservableObject {
                         print("error in graphql query")
                         return
                     }
-                    self.events = data.queryEvents
+                    self.events = data.queryEvents.map { queryEvent in
+                        return queryEvent.fragments.eventDetails
+                    }
                     
                     self.objectWillChange.send()
                 case .failure(let error):

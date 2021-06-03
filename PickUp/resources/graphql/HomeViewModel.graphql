@@ -1,21 +1,6 @@
 query QueryEvents($userId: String, $type: EventType, $status: EventStatus) {
   queryEvents(userId: $userId, type: $type, status: $status) {
-    id,
-    name,
-    info,
-    capacity,
-    attendees {
-        id,
-        firstName,
-        lastName,
-        username,
-        college,
-        photoUrl,
-    },
-    startDate,
-    endDate,
-    type,
-    status,
+    ...EventDetails
   }
 }
 

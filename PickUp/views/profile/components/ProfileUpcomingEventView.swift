@@ -49,7 +49,7 @@ struct ProfileUpcomingEventView: View {
     var capacity: Int
     var numAttendees: Int
     
-    init(event: GetUserEventsQuery.Data.UserEvent) {
+    init(event: EventDetails) {
         self.name = event.name
         self.info = event.info
         self.type = event.type
@@ -137,7 +137,7 @@ class ProfileUpcomingEventViewModel: IProfileUpcomingEventView {
 }
 
 struct ProfileUpcomingEventView_Previews: PreviewProvider {
-    static let event1 = GetUserEventsQuery.Data.UserEvent(id: "1", name: "2", info: "3", startDate: Date().isoString, capacity: 4, type: .tennis, status: .open, attendees: [])
+    static let event1 = EventDetails(id: "1", name: "name", info: "info", capacity: 4, attendees: [EventDetails.Attendee(id: "id", firstName: "firstName", lastName: "lastName", username: "username")], startDate: Date().isoString, type: .tennis, status: .open)
     static var previews: some View {
         ProfileUpcomingEventView(event: event1)
     }

@@ -22,15 +22,16 @@ struct PickUpView: View, Identifiable {
         self.going = going
     }
     
-    init(id: Int, event: QueryEventsQuery.Data.QueryEvent) {
+    init(id: Int, event: EventDetails) {
         self.name = event.name
         self.id = id
         self.startDate = event.startDate.dateFromIso!
         let attendees = event.attendees.map { (attendee) -> String in
-            return attendee.id
+            return attendee.fragments.userDetails.id
         }
         self.going = attendees.contains(AppState.shared.authId ?? "") ? true : false
     }
+    
     func getDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short

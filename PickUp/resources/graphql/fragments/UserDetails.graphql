@@ -1,0 +1,9 @@
+fragment UserDetails on User {
+	__typename,
+	id,
+	firstName,
+	lastName,
+	username,
+	photoUrl,
+	college
+}
