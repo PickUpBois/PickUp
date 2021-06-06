@@ -10,53 +10,11 @@ import SwiftUI
 struct InputScoreView: View {
     @State var showPopUp = false
     @State private var checked = true
-    
+    @EnvironmentObject var viewModel: HomeViewModel
+    var id: Int
     var body: some View {
-        
         Spacer().frame(height: 200)
-            HStack{
-            VStack{
-                Text("Singles") //self.viewModel.event.name
-                    .fontWeight(.heavy)
-                    .foregroundColor(Color.white)
-                    
-Spacer()
-                Text("Description.................................................................................................................................................................................................................")
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-                    .lineLimit(3)
-                    .frame(alignment: .leading)
-                    //self.viewModel.event.info
-Spacer()
-//join event 'button'
-            }.frame(alignment: .leading)
-            
-        Spacer()
-            VStack{
-                HStack{
-                Image(systemName:"location.fill")
-                    Text("Location")
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.white)}
-            Spacer().frame(height: 5)
-                HStack{
-                Image(systemName:"calendar")
-                    Text("Date")                        .fontWeight(.bold)
-                        .foregroundColor(Color.white)}
-            Spacer().frame(height: 5)
-                HStack{
-                Image(systemName:"clock.fill")
-                    Text("Time")                        .fontWeight(.bold)
-                        .foregroundColor(Color.white)}
-            Spacer().frame(height: 5)
-                HStack{
-                Image(systemName:"person.3.fill")
-                    Text("People")                        .fontWeight(.bold)
-                        .foregroundColor(Color.white)}
-            Spacer().frame(height: 5)
-                
-              }
-                  }
+        EventDetailsBoxView(event: self.viewModel.events[id], fontColor: .white, joinEvent: self.viewModel.joinEvent)
             .frame(width: 300)
             .padding(.all, 30.0)
             .background(Color.gray)
@@ -157,7 +115,7 @@ Spacer()
 
 struct InputScoreView_Previews: PreviewProvider {
     static var previews: some View {
-        InputScoreView()
+        InputScoreView(id: 0).environmentObject(MockHomeViewModel())
     }
 }
 

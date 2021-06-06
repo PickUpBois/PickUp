@@ -85,7 +85,6 @@ class ProfileViewModel: ObservableObject {
                 self.upcomingEvents = data.userEvents.map { userEvent in
                     return userEvent.fragments.eventDetails
                 }
-                
                 return
             case .failure(let error):
                 print(error.localizedDescription)

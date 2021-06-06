@@ -16,45 +16,21 @@ mutation RejectFriendRequest($userId: String!, $friendId: String!) {
   }
 }
 
-query GetFriendRequests($userId: String!) {
-  user(id: $userId) {
-	friendRequests {
-	  createdAt,
-	  user {
-		id,
-		username,
-		firstName,
-		lastName
-	  }
-	}
-  }
-}
-
 query GetNotifications($userId: String!) {
   user(id: $userId) {
 	id,
 	notifications {
-		id,
+	  id,
 	  createdAt,
 	  type,
-	  ... on FriendRequest {
-		user {
-		  id,
-		  firstName,
-		  lastName,
-		  username,
-		}
-	  }
-	  ... on InfoNotification {
-		actor {
-		  id,
-		  firstName,
-		  lastName,
-		  username
-		},
-		event {
-		  id,
-		},
+	  actor {
+		id,
+		firstName,
+		lastName,
+		username
+	  },
+	  event {
+		... EventDetails
 	  }
 	}
   }
@@ -70,4 +46,22 @@ mutation JoinEvent($userId: ID!, $eventId: ID!) {
   joinEvent(userId: $userId, eventId: $eventId) {
 	id
   }
+}
+
+mutation AcceptEventInvitation($eventId: ID!, $userId: ID!) {
+  acceptEventInvitation(eventId: $eventId, userId: $userId) {
+	id
+  }
+}
+
+mutation DeclineEventInvitation($eventId: ID!, $userId: ID!) {
+  declineEventInvitation(eventId: $eventId, userId: $userId) {
+	id
+  }
+}
+
+mutation EndEvent($input: EndEventInput!) {
+	endEvent(input: $input) {
+	  id,
+	}
 }

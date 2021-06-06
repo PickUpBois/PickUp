@@ -1,13 +1,13 @@
 //
-//  FriendRequestNotificationView.swift
+//  EventInvitationNotificationView.swift
 //  PickUp
 //
-//  Created by Ashwin Yedavalli on 5/21/21.
+//  Created by Arian Rahbar on 6/5/21.
 //
 
 import SwiftUI
 
-struct FriendRequestNotificationView: View, Identifiable {
+struct EventInvitationNotificationView: View {
     
     @State private var showingAlert = false
     @EnvironmentObject var viewModel: HomeViewModel
@@ -17,6 +17,7 @@ struct FriendRequestNotificationView: View, Identifiable {
     var username: String
     var timestamp: Date
     var id: Int
+    var eventId: String
     
     init(id: Int, notification: GetNotificationsQuery.Data.User.Notification) {
         self.id = id
@@ -25,15 +26,7 @@ struct FriendRequestNotificationView: View, Identifiable {
         self.lastName = notification.actor!.lastName
         self.username = notification.actor!.username
         self.timestamp = notification.createdAt.dateFromIso!
-    }
-    
-    init(index: Int, actorId: String, firstName: String, lastName: String, username: String, timestamp: Date) {
-        self.id = index
-        self.firstName = firstName
-        self.lastName = lastName
-        self.username = username
-        self.timestamp = timestamp
-        self.actorId = actorId
+        self.eventId = notification.event!.fragments.eventDetails.id
     }
     
     func getDate(date: Date) -> String {
@@ -42,8 +35,18 @@ struct FriendRequestNotificationView: View, Identifiable {
         formatter.timeStyle = .short
         return formatter.string(from: date)
     }
+    
+    init(index: Int, actorId: String, firstName: String, lastName: String, username: String, timestamp: Date, eventId: String) {
+        self.id = index
+        self.firstName = firstName
+        self.lastName = lastName
+        self.username = username
+        self.timestamp = timestamp
+        self.actorId = actorId
+        self.eventId = eventId
+    }
+    
     var body: some View {
-      
         VStack{
                 HStack {
                     NavigationLink(destination: ProfileView(viewModel: ProfileViewModel(userId: self.actorId), auth: false))
@@ -70,14 +73,14 @@ struct FriendRequestNotificationView: View, Identifiable {
 
             Spacer().frame(height: 10)
                     HStack {
-                        Text("\(firstName) \(lastName) sent you a friend request:")
+                        Text("\(firstName) \(lastName) invited you to their event:")
                             .foregroundColor(Color.purple)
                             .lineLimit(1)
                             .padding(.leading, 10.0)
                         Spacer().frame(minWidth: 5, maxWidth: 5)
                         
                         Button(action: {
-                            self.viewModel.acceptFriendRequest(friendId: self.actorId)
+                            self.viewModel.acceptEventInvitation(eventId: eventId)
                         },label: {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(Color.green)
@@ -85,7 +88,7 @@ struct FriendRequestNotificationView: View, Identifiable {
                         })
                         
                         Button(action: {
-                            self.viewModel.rejectFriendRequest(friendId: self.actorId)
+                            self.viewModel.declineEventInvitation(eventId: eventId)
                         },
                                label: {
                         Image(systemName: "x.circle.fill")
@@ -98,12 +101,11 @@ struct FriendRequestNotificationView: View, Identifiable {
                 .frame(width: 400.0)
                 .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                 .cornerRadius(8)
-        
     }
 }
 
-struct FriendRequestNotificationView_Previews: PreviewProvider {
+struct EventInvitationNotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendRequestNotificationView(index: 0, actorId: "1", firstName: "Arian", lastName: "Rahbar", username: "arahbar", timestamp: Date()).environmentObject(MockHomeViewModel())
+        EventInvitationNotificationView(index: 0, actorId: "1", firstName: "Arian", lastName: "Rahbar", username: "arahbar", timestamp: Date(), eventId: "1").environmentObject(MockHomeViewModel())
     }
 }

@@ -13,7 +13,6 @@ import Combine
 class HomeViewModel: ObservableObject {
     var cancellables = Set<AnyCancellable>()
     @Published var events: [EventDetails] = []
-    @Published var friendRequests: [GetFriendRequestsQuery.Data.User.FriendRequest] = []
     @Published var notifications: [GetNotificationsQuery.Data.User.Notification] = []
     func getUpcomingEvents() {
         if (AppState.shared.authId != nil) {
@@ -89,28 +88,6 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    func getFriendRequests() {
-        if AppState.shared.authId != nil {
-            Services.shared.apollo.fetch(query: GetFriendRequestsQuery(userId: AppState.shared.authId!), cachePolicy: .fetchIgnoringCacheCompletely) { response in
-                switch response {
-                case .success(let result):
-                    if let errors = result.errors {
-                        print(errors[0].localizedDescription)
-                        return
-                    }
-                    guard let data = result.data else {
-                        print("error in getting friend requests")
-                        return
-                    }
-                    self.friendRequests = data.user.friendRequests
-                case .failure(let error):
-                    print(error.localizedDescription)
-                    return
-                }
-            }
-        }
-    }
-    
     func readNotification(id: String) {
         Services.shared.apollo.perform(mutation: ReadNotificationMutation(id: String(id))) { response in
             switch response {
@@ -148,15 +125,74 @@ class HomeViewModel: ObservableObject {
             }
         }
     }
+    
+    func acceptEventInvitation(eventId: String) {
+        Services.shared.apollo.perform(mutation: AcceptEventInvitationMutation(eventId: eventId, userId: AppState.shared.authId!)) { response in
+            switch response {
+            case .success(let result):
+                if let errors = result.errors {
+                    print(errors[0].localizedDescription)
+                    return
+                }
+                guard let data = result.data else {
+                    print("error in accepting event inivitation")
+                    return
+                }
+                self.getNotifications()
+                return
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func declineEventInvitation(eventId: String) {
+        Services.shared.apollo.perform(mutation: DeclineEventInvitationMutation(eventId: eventId, userId: AppState.shared.authId!)) { response in
+            switch response {
+            case .success(let result):
+                if let errors = result.errors {
+                    print(errors[0].localizedDescription)
+                    return
+                }
+                guard let data = result.data else {
+                    print("error in declining event inivitation")
+                    return
+                }
+                self.getNotifications()
+                return
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func endEvent(input: EndEventInput) {
+        Services.shared.apollo.perform(mutation: EndEventMutation(input: input)) { response in
+            switch response {
+            case .success(let result):
+                if let errors = result.errors {
+                    print(errors[0].localizedDescription)
+                    return
+                }
+                self.getNotifications()
+            case .failure(let error):
+                print(error.localizedDescription)
+                return
+            }
+        }
+    }
+    
+    
 }
 
 class MockHomeViewModel: HomeViewModel {
     override init() {
-        let actor = GetNotificationsQuery.Data.User.Notification.AsInfoNotification.Actor(id: "1", firstName: "test", lastName: "test", username: "test")
-        let notification = GetNotificationsQuery.Data.User.Notification.makeInfoNotification(id: "1", createdAt: Date().isoString, type: .friendRequestAccept, actor: actor, event: nil)
+        let actor = GetNotificationsQuery.Data.User.Notification.Actor(id: "1", firstName: "1", lastName: "lastName", username: "username")
+        let notification = GetNotificationsQuery.Data.User.Notification(id: "1", createdAt: Date().isoString, type: .friendRequestAccept, actor: actor, event: nil)
         super.init()
         self.notifications = [notification]
     }
+    
     override func getUpcomingEvents() {
         self.events = []
     }

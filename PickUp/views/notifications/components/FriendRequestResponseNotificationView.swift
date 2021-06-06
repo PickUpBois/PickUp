@@ -38,12 +38,12 @@ struct FriendRequestResponseNotificationView: View {
     {
         self.id = id
         self.response = response
-        self.notificationId = notification.asInfoNotification!.id
-        self.actorId = notification.asInfoNotification!.actor.id
-        self.firstName = notification.asInfoNotification!.actor.firstName
-        self.lastName = notification.asInfoNotification!.actor.lastName
-        self.username = notification.asInfoNotification!.actor.username
-        self.timestamp = notification.asInfoNotification!.createdAt.dateFromIso!
+        self.notificationId = notification.id
+        self.actorId = notification.actor!.id
+        self.firstName = notification.actor!.firstName
+        self.lastName = notification.actor!.lastName
+        self.username = notification.actor!.username
+        self.timestamp = notification.createdAt.dateFromIso!
     }
     
     func getDate(date: Date) -> String {
