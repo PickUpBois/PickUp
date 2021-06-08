@@ -64,7 +64,7 @@ struct HomeView: View {
                     }
                     Spacer().frame(width: 10)
                     
-                    NavigationLink(destination: NotificationListView(viewModel: self.viewModel)) {
+                    NavigationLink(destination: NotificationListView(viewModel: NotificationListViewModel())) {
                         Image(systemName: "bell.circle.fill")
                             .resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
                             .foregroundColor(Color.black)

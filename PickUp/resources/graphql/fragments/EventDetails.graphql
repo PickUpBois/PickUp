@@ -1,14 +1,24 @@
 fragment EventDetails on Event {
-  __typename,
-  id,
-  name,
-  info,
-  capacity,
-  attendees {
-	...UserDetails
-  },
-  startDate,
-  endDate,
-  type,
-  status
+	  __typename,
+	  id,
+	  name,
+	  info,
+	  capacity,
+	  attendees {
+		...UserDetails,
+	  },
+	  startDate,
+	  endDate,
+	  type,
+	  status,
+	winner {
+		id,
+	},
+	teams {
+		id,
+		scores,
+		members {
+			id,
+		}
+	},
 }

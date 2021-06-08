@@ -7,34 +7,10 @@
 
 import SwiftUI
 
-struct FriendRequestNotificationView: View, Identifiable {
+struct FriendRequestNotificationView: View {
     
     @State private var showingAlert = false
-    @EnvironmentObject var viewModel: HomeViewModel
-    var firstName: String
-    var actorId: String
-    var lastName: String
-    var username: String
-    var timestamp: Date
-    var id: Int
-    
-    init(id: Int, notification: GetNotificationsQuery.Data.User.Notification) {
-        self.id = id
-        self.actorId = notification.actor!.id
-        self.firstName = notification.actor!.firstName
-        self.lastName = notification.actor!.lastName
-        self.username = notification.actor!.username
-        self.timestamp = notification.createdAt.dateFromIso!
-    }
-    
-    init(index: Int, actorId: String, firstName: String, lastName: String, username: String, timestamp: Date) {
-        self.id = index
-        self.firstName = firstName
-        self.lastName = lastName
-        self.username = username
-        self.timestamp = timestamp
-        self.actorId = actorId
-    }
+    let viewModel: NotificationViewModel
     
     func getDate(date: Date) -> String {
         let formatter = DateFormatter()
@@ -46,7 +22,7 @@ struct FriendRequestNotificationView: View, Identifiable {
       
         VStack{
                 HStack {
-                    NavigationLink(destination: ProfileView(viewModel: ProfileViewModel(userId: self.actorId), auth: false))
+                    NavigationLink(destination: ProfileView(viewModel: ProfileViewModel(userId: viewModel.actor!.id), auth: false))
                     {
                     Image("serena")
                         .resizable()
@@ -56,28 +32,28 @@ struct FriendRequestNotificationView: View, Identifiable {
                         .shadow(radius: 2)
                         .overlay(Circle().stroke(Color.black, lineWidth: 2))
                     
-                    Text("\(firstName) \(lastName)")
+                        Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName)")
                         .fontWeight(.heavy)
                         .foregroundColor(Color.black)
                         .lineLimit(1)
                         
                     }
                     Spacer()
-                    Text(getDate(date: timestamp))
+                    Text(getDate(date: viewModel.timestamp))
                     .lineLimit(1)
                     
                 }
 
             Spacer().frame(height: 10)
                     HStack {
-                        Text("\(firstName) \(lastName) sent you a friend request:")
+                        Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName) sent you a friend request:")
                             .foregroundColor(Color.purple)
                             .lineLimit(1)
                             .padding(.leading, 10.0)
                         Spacer().frame(minWidth: 5, maxWidth: 5)
                         
                         Button(action: {
-                            self.viewModel.acceptFriendRequest(friendId: self.actorId)
+                            self.viewModel.acceptFriendRequest(friendId: viewModel.actor!.id)
                         },label: {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(Color.green)
@@ -85,7 +61,7 @@ struct FriendRequestNotificationView: View, Identifiable {
                         })
                         
                         Button(action: {
-                            self.viewModel.rejectFriendRequest(friendId: self.actorId)
+                            self.viewModel.rejectFriendRequest(friendId: viewModel.actor!.id)
                         },
                                label: {
                         Image(systemName: "x.circle.fill")
@@ -103,7 +79,8 @@ struct FriendRequestNotificationView: View, Identifiable {
 }
 
 struct FriendRequestNotificationView_Previews: PreviewProvider {
+    static let actor = UserDetails(id: "1", firstName: "1", lastName: "last", username: "username")
     static var previews: some View {
-        FriendRequestNotificationView(index: 0, actorId: "1", firstName: "Arian", lastName: "Rahbar", username: "arahbar", timestamp: Date()).environmentObject(MockHomeViewModel())
+        FriendRequestNotificationView(viewModel: MockNotificationViewModel())
     }
 }

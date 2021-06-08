@@ -10,15 +10,7 @@ import SwiftUI
 struct FinishPickupNotificationView: View {
     @State var showPopUp = false
     @State private var showingAlert = false
-    @EnvironmentObject var viewModel: HomeViewModel
-    var firstName: String
-    var actorId: String
-    var lastName: String
-    var username: String
-    var timestamp: Date
-    var id: Int
-    var eventId: String
-    var eventName: String
+    var viewModel: NotificationViewModel
     @State var team1Members: [String] = []
     @State var team2Members: [String] = []
     @State var team1Scores: [Int] = []
@@ -26,33 +18,11 @@ struct FinishPickupNotificationView: View {
     @State var team1Win: Bool = false
     @State var team2Win: Bool = false
     
-    init(id: Int, notification: GetNotificationsQuery.Data.User.Notification) {
-        self.id = id
-        self.actorId = notification.actor!.id
-        self.firstName = notification.actor!.firstName
-        self.lastName = notification.actor!.lastName
-        self.username = notification.actor!.username
-        self.timestamp = notification.createdAt.dateFromIso!
-        self.eventId = notification.event!.fragments.eventDetails.id
-        self.eventName = notification.event!.fragments.eventDetails.name
-    }
-    
     func getDate(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .short
         return formatter.string(from: date)
-    }
-    
-    init(index: Int, actorId: String, firstName: String, lastName: String, username: String, timestamp: Date, eventId: String, eventName: String) {
-        self.id = index
-        self.firstName = firstName
-        self.lastName = lastName
-        self.username = username
-        self.timestamp = timestamp
-        self.actorId = actorId
-        self.eventId = eventId
-        self.eventName = eventName
     }
     
     var body: some View {
@@ -73,7 +43,7 @@ struct FinishPickupNotificationView: View {
                         .lineLimit(1)
                     }
                     Spacer()
-                    Text(getDate(date: timestamp))
+                    Text(getDate(date: viewModel.event!.startDate.dateFromIso!))
                     .lineLimit(1)
                         
                     }
@@ -82,7 +52,7 @@ struct FinishPickupNotificationView: View {
                             Button(action: {
                                 self.showPopUp.toggle()
                             },label: {
-                                Text("Press here to enter score for your event '\(eventName)'")
+                                Text("Press here to enter score for your event '\(viewModel.event!.name)'")
                                     .foregroundColor(Color.purple)
                                     .frame(width: 400, alignment: .leading)
                                     .lineLimit(3)
@@ -90,18 +60,7 @@ struct FinishPickupNotificationView: View {
                             
                         }.sheet(isPresented: $showPopUp, content: {
                             
-                            InputScoreView(id: self.id)
-                            
-                            Button(action: {},
-                                   label: {
-                                    Text("Finish Pickup")
-                                    .foregroundColor(Color.white)
-                                    .frame(maxWidth: .infinity)
-                                    .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.pink/*@END_MENU_TOKEN@*/.opacity(0.8))
-                                    .cornerRadius(9)
-                                    .padding(.all, 20)
-                                    
-                                   })
+                            InputScoreView(showPopUp: $showPopUp, viewModel: viewModel)
                             
                             Button(action: {
                                 self.showPopUp.toggle()
@@ -128,6 +87,6 @@ struct FinishPickupNotificationView: View {
 
 struct FinishPickupNotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        FinishPickupNotificationView(index: 0, actorId: "1", firstName: "Arian", lastName: "Rahbar", username: "arahbar", timestamp: Date(), eventId: "1", eventName: "name").environmentObject(MockHomeViewModel())
+        FinishPickupNotificationView(viewModel: MockNotificationViewModel())
     }
 }

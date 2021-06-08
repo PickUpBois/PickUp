@@ -44,7 +44,8 @@ extension UpcomingPickupsView {
 
 
 struct UpcomingPickupsView_Previews: PreviewProvider {
-    static let event1 = EventDetails(id: "1", name: "1", info: "1", capacity: 4, attendees: [EventDetails.Attendee(id: "1", firstName: "1", lastName: "1", username: "1")], startDate: Date().isoString, type: .tennis, status: .open)
+    static let attendees = [EventDetails.Attendee(id: "1", firstName: "1", lastName: "last", username: "username")]
+    static let event1 = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open)
     static let event2 = event1
     static var previews: some View {
         UpcomingPickupsView().environmentObject(MockProfileViewModel(userId: "1"))

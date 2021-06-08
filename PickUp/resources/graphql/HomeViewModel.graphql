@@ -24,10 +24,7 @@ query GetNotifications($userId: String!) {
 	  createdAt,
 	  type,
 	  actor {
-		id,
-		firstName,
-		lastName,
-		username
+		... UserDetails
 	  },
 	  event {
 		... EventDetails

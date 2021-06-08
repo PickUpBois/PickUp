@@ -10,6 +10,7 @@ import SwiftUI
 struct FinishPickupView: View {
     var arrayOfNames = ["Arian", "David", "Ashwin", "Jimmy"]
     @State private var selectedIndex = 0
+    let viewModel: NotificationViewModel
 
     var body: some View {
         
@@ -120,6 +121,6 @@ struct FinishPickupView: View {
 
 struct FinishPickupView_Previews: PreviewProvider {
     static var previews: some View {
-        FinishPickupView()
+        FinishPickupView(viewModel: MockNotificationViewModel())
     }
 }

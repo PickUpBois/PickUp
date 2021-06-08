@@ -87,6 +87,14 @@ Spacer()
                 //self.viewModel.event.info
 Spacer()
 //join event 'button'
+            if !self.going {
+               Button(action: { joinEvent(eventId) }) {
+                   Text("+ Join")
+                       .fontWeight(.heavy)
+                       .padding(.all, 5.0)
+                       .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+                }
+            }
         }.frame(alignment: .leading)
 
     Spacer()
@@ -118,8 +126,11 @@ Spacer()
 }
 
 struct EventDetailsBoxView_Previews: PreviewProvider {
+    static let actor = UserDetails(id: "1", firstName: "1", lastName: "last", username: "username")
+    static let attendees = [EventDetails.Attendee(id: "1", firstName: "1", lastName: "last", username: "username")]
+    static let eventDetails = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open)
     static var previews: some View {
-        EventDetailsBoxView(event: EventDetails(id: "1", name: "name", info: "info", capacity: 4, attendees: [], startDate: Date().isoString, endDate: nil, type: .tennis, status: .open), joinEvent: { eventId in
+        EventDetailsBoxView(event: eventDetails, joinEvent: { eventId in
             return
         })
     }
