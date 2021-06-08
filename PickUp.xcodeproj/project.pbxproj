@@ -1191,7 +1191,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PickUp/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5D593G8Q6L;
 				ENABLE_PREVIEWS = YES;
 				GRAPHQL_URL = "http://localhost:3000/graphql";
 				HOST = "http://localhost:3000/";
@@ -1216,7 +1216,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PickUp/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5D593G8Q6L;
 				ENABLE_PREVIEWS = YES;
 				GRAPHQL_URL = "http://localhost:3000/graphql";
 				HOST = "http://localhost:3000/";
