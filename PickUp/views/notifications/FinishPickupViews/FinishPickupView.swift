@@ -42,8 +42,8 @@ struct FinishPickupView: View {
                 .fontWeight(.bold)
             Spacer().frame(width: 5)
                 Picker("Names", selection: $selectedIndex) {
-                    ForEach(0 ..< arrayOfNames.count) {
-                            Text(self.arrayOfNames[$0])
+                    ForEach(viewModel.event!.attendees.indices, id: \.self) { i in
+                        Text(viewModel.event!.attendees[i].fragments.userDetails.firstName)
                                    }
                     .pickerStyle(WheelPickerStyle())
                            }

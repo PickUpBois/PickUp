@@ -13,6 +13,13 @@ struct ConfirmationNotificationView: View {
     let location: String
     var owner: UserDetails?
     
+    func getDate(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
+    }
+    
     init(viewModel: NotificationViewModel) {
         self.owner = nil
         for attendee in viewModel.event!.attendees {
@@ -40,6 +47,7 @@ struct ConfirmationNotificationView: View {
         let team2Scores = viewModel.event!.teams![1].scores
         var scoreString: String = ""
         for i in 0..<team1Scores.count {
+            print(team1Scores)
             switch teamIndex {
             case 0:
                 scoreString += "\(team1Scores[i])-\(team2Scores[i]) "
@@ -64,7 +72,6 @@ struct ConfirmationNotificationView: View {
       
         VStack{
         HStack {
-            NavigationLink(destination: ProfileView(viewModel: MockProfileViewModel(userId: "1"), auth: true)) {
             Image("serena")
                 .resizable()
                 .foregroundColor(.blue)
@@ -73,13 +80,12 @@ struct ConfirmationNotificationView: View {
                 .shadow(radius: 2)
                 .overlay(Circle().stroke(Color.black, lineWidth: 2))
             
-            Text("David Reynolds")
+                Text("\(owner!.firstName) \(owner!.lastName)")
                 .fontWeight(.heavy)
                 .foregroundColor(Color.black)
                 .lineLimit(1)
-            }
             Spacer()
-            Text("5/21/2021 @ 7:00 P.M.")
+            Text(getDate(date: viewModel.timestamp))
             .lineLimit(1)
                 
             }

@@ -12,19 +12,20 @@ struct InputScoreView: View {
     @State private var checked = true
     
     @State var teamSelections: [TeamSelection]
-    @State var setScores: [[Int]] = [[0], [0]]
     @State var winningTeam: TeamSelection
     var viewModel: NotificationViewModel
+    @ObservedObject var setScoreViewModel: SetScoresViewModel
     init(showPopUp: Binding<Bool>, viewModel: NotificationViewModel) {
         self.viewModel = viewModel
         let team = self.viewModel.event!.attendees.map { _ in return TeamSelection.team1}
         self._teamSelections = State(initialValue: team)
         self._winningTeam = State(initialValue: .team1)
         self._showPopUp = showPopUp
+        self.setScoreViewModel = SetScoresViewModel()
     }
     
     func removeRows(at offsets: IndexSet) {
-        self.setScores.remove(atOffsets: offsets)
+        self.setScoreViewModel.setScores.remove(atOffsets: offsets)
     }
     
     func finishEvent() {
@@ -34,7 +35,13 @@ struct InputScoreView: View {
         let team2 = teamSelections.enumerated().compactMap {
             $0.element == .team2 ? viewModel.event!.attendees[$0.offset].fragments.userDetails.id : nil
         }
-        let input = EndEventInput(eventId: viewModel.event!.id, team1Members: team1, team1Scores: setScores[0], team1Win: winningTeam == .team1, team2Members: team2, team2Scores: setScores[1], team2Win: winningTeam == .team2)
+        let team1Scores = setScoreViewModel.setScores.map { set in
+            return Int(set.team1Score) ?? 0
+        }
+        let team2Scores = setScoreViewModel.setScores.map { set in
+            return Int(set.team2Score) ?? 0
+        }
+        let input = EndEventInput(eventId: viewModel.event!.id, team1Members: team1, team1Scores: team1Scores, team1Win: winningTeam == .team1, team2Members: team2, team2Scores: team2Scores, team2Win: winningTeam == .team2)
         self.viewModel.endEvent(input: input)
         self.showPopUp.toggle()
     }
@@ -70,23 +77,12 @@ struct InputScoreView: View {
                 .cornerRadius(8)
                 .frame(alignment: .topLeading)
                 Spacer().frame(height: 10)
-                ForEach(setScores[0].indices, id: \.self) { i in
-                    HStack{
-                        Text("Set \(i + 1)")
-                            .frame(width: 180, alignment:.leading).lineLimit(1)
-                        Spacer().frame(width: 5)
-                        TextField("", value: $setScores[0][i], formatter: NumberFormatter())
-                        Spacer().frame(width: 45)
-                        TextField("", value: $setScores[1][i], formatter: NumberFormatter())
-                    }
+                ForEach(setScoreViewModel.setScores.indices, id: \.self) { i in
+                    SetScoreView(index: i, viewModel: self.setScoreViewModel.setScores[i])
                 }
                 .onDelete(perform: removeRows)
             
-            Button(action: {
-                setScores[0].append(0)
-                setScores[1].append(0)
-                
-            },
+                Button(action: setScoreViewModel.addSet,
                    label: {
                     Text("Add Set")
                         .foregroundColor(Color.blue).opacity(0.8)

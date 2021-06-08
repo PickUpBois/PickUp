@@ -28,7 +28,6 @@ struct FinishPickupNotificationView: View {
     var body: some View {
         VStack{
                 HStack {
-                    NavigationLink(destination: ProfileView(viewModel: MockProfileViewModel(userId: "1"), auth: true)) {
                     Image("logo2")
                         .resizable()
                         .foregroundColor(.blue)
@@ -41,7 +40,6 @@ struct FinishPickupNotificationView: View {
                         .fontWeight(.heavy)
                         .foregroundColor(Color.black)
                         .lineLimit(1)
-                    }
                     Spacer()
                     Text(getDate(date: viewModel.event!.startDate.dateFromIso!))
                     .lineLimit(1)
