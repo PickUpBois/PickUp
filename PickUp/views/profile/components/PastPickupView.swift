@@ -8,65 +8,46 @@
 import SwiftUI
 
 struct PastPickupView: View {
-    @State private var selection = 1
- 
+@EnvironmentObject var viewModel: ProfileViewModel
     var body: some View {
         ScrollView {
-        VStack{
-            VStack{
-                //Picture Posted
-                Image("wimby08").resizable().aspectRatio(contentMode: .fit).frame(width: UIScreen.main.bounds.width/1, height: UIScreen.main.bounds.height/4).clipped()
-                    .overlay(ImageOverlayPerson(), alignment: .topLeading)
-                    .overlay(ImageOverlayLikes(), alignment: .bottomTrailing)
-
-            
-            Spacer().frame(height: 10)
-                
-                //HStack for W/L, Date, and Location
+            ForEach(self.viewModel.upcomingEvents, id: \.self.id) { event in
+                Spacer().frame(height: 15)
+                VStack {
+                        EventDetailsBoxView(event: event, joinEvent: { _ in return})
+                        Spacer().frame(height: 10)
                 HStack{
-                    Text("W or L")
-                        .fontWeight(.heavy)
-                        .foregroundColor(Color.purple)
-                Spacer().frame(minWidth: 10, maxWidth: 45)
-                    Image(systemName:"calendar")
-                        .foregroundColor(Color.red)
-                    Text("Date")
-                Spacer()
-                    .frame(minWidth: 10, maxWidth: 45)
-                    Image(systemName:"location.fill")
-                        .foregroundColor(Color.blue)
-                    Text("Location")}
-                
-            Spacer().frame(height: 10)
-                
+                HStack(alignment: .top){
+                        Text("🐐")
+                        Text("MVP")
+                            .fontWeight(.bold)
+                            .foregroundColor(.black)
+                            .lineLimit(1)
+                            .frame(alignment: .leading)}
+                    Spacer()
                 HStack{
-                    Text("Caption...")
-                        .lineLimit(3)
-
-                }.frame(width: 380, height: 80, alignment: .topLeading)
-                
-            
-            }.padding([.leading, .bottom, .trailing], 15.0)
-            .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
-            .cornerRadius(8)
-            .padding(.horizontal, 20)
-            
-            Spacer().frame(height: 20)
+                        Text("🏅")
+                        Text("W/L")
+                            .fontWeight(.bold)
+                            .foregroundColor(.black)
+                            .lineLimit(1)
+                }.padding(.trailing, 60)
+                        }
+                    }.padding(.all, 25.0)
+                .background(Color.gray.opacity(0.15))
+                .cornerRadius(8)
+                .padding(.horizontal, 20)
+                }
             }
+        }
 
         }
+
+extension PastPickupView{
+    class ViewModel {
+        var events: [GetUserEventsQuery.Data.UserEvent]
+        init(events: [GetUserEventsQuery.Data.UserEvent]) {
+            self.events = events
+}
     }
-}
-        //}
-        
-//        else {
-//            SocialView()
-//        }
-        
-
-struct PastPickupView_Previews: PreviewProvider {
-    static var previews: some View {
-        PastPickupView()
-}
-
 }
