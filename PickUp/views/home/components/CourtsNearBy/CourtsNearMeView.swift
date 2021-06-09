@@ -16,8 +16,6 @@ struct CourtsNearMeView: View {
     @State var open: String
     
     var body: some View {
-  
-        Spacer().frame(height: 8)
         VStack{
             HStack{Text(title)
                 .fontWeight(.bold)
@@ -38,7 +36,12 @@ struct CourtsNearMeView: View {
                 Spacer().frame(width: 1)
                 Text(total)
                 Spacer().frame(width: 5)
-                Text("open courts")
+                ZStack(alignment: .leading){
+                Capsule().frame(width: 100, height: 20)
+                    .foregroundColor(.blue)
+                Capsule().frame(width: 50, height: 20)
+                    .foregroundColor(.orange)
+                }
             }.frame(width: 175, alignment: .leading)
             Spacer().frame(height: 5)
     
@@ -47,7 +50,9 @@ struct CourtsNearMeView: View {
             Text(open)
                 .fontWeight(.semibold)}.frame(width: 175, alignment: .leading)
         
-        }
+        }.background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.3))
+        .cornerRadius(8)
+        Spacer().frame(height: 10)
     }
 }
 

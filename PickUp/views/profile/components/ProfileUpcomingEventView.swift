@@ -77,47 +77,71 @@ struct ProfileUpcomingEventView: View {
     var body: some View {
         let emoji = type == .tennis ? "🎾" : "🏀"
         return VStack{
-                    HStack{
-                        Text(emoji).font(.system(size: 30))}
                     HStack(alignment: .top){
-                        VStack{
+                    VStack{
+                    VStack(alignment: .leading){
+                        HStack{
+                            Text(emoji).font(.system(size: 20))
                             Text(name)
-                .fontWeight(.heavy)
-            Spacer()
-            Text(info)
-            Spacer()
-            //join event 'button'
-            Text("+ Join")
-                .fontWeight(.heavy)
-                .padding(.all, 5.0)
-                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+                                .fontWeight(.heavy)
+                                .lineLimit(1)
+                                Spacer().frame(height: 10)
+                            }
+                        Spacer().frame(height: 5.0)
+                        HStack{
+                            Image(systemName:"pencil.circle.fill")
+                                .font(.system(size: 20))
+                                .foregroundColor(Color.orange)
+                            Text(info)
+                                .lineLimit(3)
+                        }
+                    }
+                            
+                        Spacer()
+                        //join event 'button'
+                            Text("+ Join")
+                                .fontWeight(.heavy)
+                                .foregroundColor(Color.blue).opacity(0.8)
+                                .padding(.top, 5.0)
+                                .padding(.bottom, 5.0)
+                                .padding(.horizontal, 60)
+                                .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                               }
                     Spacer()
-                        VStack {
+                        VStack{
+                        VStack(alignment: .leading){
                             HStack{
-                            Image(systemName:"location.fill")
+                                Image(systemName:"location.fill")
+                                    .foregroundColor(Color.blue)
                                 Text("Location")}
                         Spacer()
                             HStack{
-                            Image(systemName:"calendar")
+                                Image(systemName:"calendar")
+                                    .foregroundColor(Color.red)
                                 Text(startDate)}
                         Spacer()
                             HStack{
-                            Image(systemName:"clock.fill")
+                                Image(systemName:"clock.fill")
+                                    .foregroundColor(Color.black)
                                 Text(startTime)}
                         Spacer()
                             HStack{
-                            Image(systemName:"person.3.fill")
+                                Image(systemName:"person.3.fill")
+                                    .foregroundColor(Color.purple)
                                 Text("\(numAttendees)/\(capacity) people")}
+                        }
                         Spacer()
                             Text("Invite")
                                 .fontWeight(.heavy)
-                                .padding(.all, 5.0)
-                                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                          }
+                                .foregroundColor(Color.blue).opacity(0.8)
+                                .padding(.top, 5.0)
+                                .padding(.bottom, 5.0)
+                                .padding(.horizontal, 30)
+                                .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                        }
                               }
                     .padding(.all, 25.0)
-                    .background(Color(red: 1, green: 0.5, blue: 0, opacity: 0.2))
+                    .background(Color.gray.opacity(0.1))
                     .cornerRadius(8)
                     .padding(.horizontal, 20)
                     

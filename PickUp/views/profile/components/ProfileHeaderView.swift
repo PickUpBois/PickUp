@@ -150,8 +150,13 @@ struct ProfileHeaderView: View {
                 VStack {
                 Text("GOAT").font(.headline).foregroundColor(Color.black)
                 Text("Meter").font(.headline).foregroundColor(Color.black)
-                Image(systemName: "battery.25").font(.system(size: 40))
-                    .foregroundColor(.green)
+                    Spacer().frame(height: 8)
+               ZStack(alignment: .leading){
+                    Capsule().frame(width: 50, height: 20)
+                        .foregroundColor(.blue)
+                    Capsule().frame(width: 20, height: 20)
+                        .foregroundColor(.green)
+                    }
                     Spacer()
                 }
                 }

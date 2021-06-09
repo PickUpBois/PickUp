@@ -49,11 +49,12 @@ struct FinishPickupNotificationView: View {
                             Button(action: {},
                                    label: {
                                     Text("Finish Pickup")
-                                    .foregroundColor(Color.white)
-                                    .frame(maxWidth: .infinity)
-                                    .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.pink/*@END_MENU_TOKEN@*/.opacity(0.8))
-                                    .cornerRadius(9)
-                                    .padding(.all, 20)
+                                        .foregroundColor(Color.white)
+                                        .frame(maxWidth: .infinity)
+                                        .padding(.vertical, 10)
+                                        .background(Color.green.opacity(0.8))
+                                        .cornerRadius(9)
+                                        .padding(.horizontal, 20)
                                     
                                    })
                             

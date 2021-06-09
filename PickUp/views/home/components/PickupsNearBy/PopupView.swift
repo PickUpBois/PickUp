@@ -53,53 +53,75 @@ struct PopupView: View, Identifiable {
         self.going = attendees.contains(AppState.shared.authId ?? "") ? true : false
     }
     var body: some View {
-        
+        let emoji = type == .tennis ? "🎾" : "🏀"
             Spacer().frame(height: 300)
             HStack{
-            VStack{
-                Text(name) //self.viewModel.event.name
-    .fontWeight(.heavy)
-Spacer()
-Text(info) //self.viewModel.event.info
-Spacer()
-//join event 'button'
+                VStack{
+                    VStack (alignment: .leading){
+                    HStack{
+                        Text(emoji).font(.system(size: 20))
+                        Text(name)
+                            .fontWeight(.heavy)
+                            .lineLimit(1)
+                        }
+                    Spacer().frame(height: 10)
+                    HStack{
+                        Image(systemName:"pencil.circle.fill")
+                            .font(.system(size: 20))
+                            .foregroundColor(Color.orange)
+                        Text(info)
+                            .lineLimit(3)
+                    } //self.viewModel.event.info
+                    }
+                Spacer()
+                //join event 'button'
                 if !self.going {
                     Button(action: { self.viewModel.joinEvent(eventId: eventId)}) {
                         Text("+ Join")
                             .fontWeight(.heavy)
-                            .padding(.all, 5.0)
-                            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                    }
-                }
+                            .foregroundColor(Color.blue).opacity(0.8)
+                            .padding(.top, 5.0)
+                            .padding(.bottom, 5.0)
+                            .padding(.horizontal, 60)
+                            .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.5))
+                            }
                   }
+            }
         Spacer()
-            VStack{
-                
-                HStack{
-                Image(systemName:"location.fill")
-                    Text("Location")}
-            Spacer().frame(height: 5)
-                HStack{
-                Image(systemName:"calendar")
-                    Text(startDate)}
-            Spacer().frame(height: 5)
-                HStack{
-                Image(systemName:"clock.fill")
-                    Text(startTime)}
-            Spacer().frame(height: 5)
-                HStack{
-                Image(systemName:"person.3.fill")
-                    Text("\(numAttendees)/\(capacity)")}
-            Spacer().frame(height: 5)
+                VStack{
+                VStack(alignment: .leading){
+                    HStack{
+                        Image(systemName:"location.fill")
+                            .foregroundColor(Color.blue)
+                        Text("Location")}
+                Spacer()
+                    HStack{
+                        Image(systemName:"calendar")
+                            .foregroundColor(Color.red)
+                        Text(startDate)}
+                Spacer()
+                    HStack{
+                        Image(systemName:"clock.fill")
+                            .foregroundColor(Color.black)
+                        Text(startTime)}
+                Spacer()
+                    HStack{
+                        Image(systemName:"person.3.fill")
+                            .foregroundColor(Color.purple)
+                        Text("\(numAttendees)/\(capacity) people")}
+                }
+                Spacer()
                     Text("Invite")
                         .fontWeight(.heavy)
-                        .padding(.all, 5.0)
-                        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                
-              }
+                        .foregroundColor(Color.blue).opacity(0.8)
+                        .padding(.top, 5.0)
+                        .padding(.bottom, 5.0)
+                        .padding(.horizontal, 30)
+                        .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.4))
+                }
                   }
         .padding(.all, 30.0)
-            .background(Color(red: 1, green: 0.7, blue: 0, opacity: 0.9))
+            .background(Color.white.opacity(0.9))
         .cornerRadius(8)
         .padding(.horizontal, 20)
         

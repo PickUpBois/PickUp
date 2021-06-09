@@ -34,7 +34,7 @@ struct PickUpNearMeScrollView: View {
                 }
                 .padding()
         
-        PickUpListView(type: .basketball)
+        UpcomingPickupsView()
         
         }.navigationBarTitleDisplayMode(.inline)
         .toolbar{
@@ -58,5 +58,5 @@ struct PickUpNearMeScrollView: View {
 struct PickUpNearMeScrollView_Previews: PreviewProvider {
     static var previews: some View {
         PickUpNearMeScrollView()
-    }
+}
 }

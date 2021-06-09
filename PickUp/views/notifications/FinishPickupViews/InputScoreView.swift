@@ -12,57 +12,66 @@ struct InputScoreView: View {
     @State private var checked = true
     
     var body: some View {
-        
         Spacer().frame(height: 200)
             HStack{
-            VStack{
+            VStack (alignment: .leading){
+                HStack{
+                    Image(systemName: "sportscourt.fill")
+                        .foregroundColor(Color.green)
                 Text("Singles") //self.viewModel.event.name
                     .fontWeight(.heavy)
-                    .foregroundColor(Color.white)
-                    
-Spacer()
+                    .foregroundColor(Color.black)
+                }
+                Spacer()
+                HStack(alignment: .top) {
+                Image(systemName:"pencil.circle.fill")
                 Text("Description.................................................................................................................................................................................................................")
                     .fontWeight(.bold)
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color.black)
                     .lineLimit(3)
                     .frame(alignment: .leading)
                     //self.viewModel.event.info
+                }
 Spacer()
 //join event 'button'
             }.frame(alignment: .leading)
             
         Spacer()
-            VStack{
+            VStack(alignment: .leading){
                 HStack{
-                Image(systemName:"location.fill")
+                    Image(systemName:"location.fill")
+                        .foregroundColor(Color.blue)
                     Text("Location")
                         .fontWeight(.bold)
-                        .foregroundColor(Color.white)}
+                        .foregroundColor(Color.black)}
             Spacer().frame(height: 5)
                 HStack{
-                Image(systemName:"calendar")
+                    Image(systemName:"calendar")
+                        .foregroundColor(Color.red)
                     Text("Date")                        .fontWeight(.bold)
-                        .foregroundColor(Color.white)}
+                        .foregroundColor(Color.black)}
             Spacer().frame(height: 5)
                 HStack{
-                Image(systemName:"clock.fill")
+                    Image(systemName:"clock.fill")
+                        .foregroundColor(Color.black)
                     Text("Time")                        .fontWeight(.bold)
-                        .foregroundColor(Color.white)}
+                        .foregroundColor(Color.black)}
             Spacer().frame(height: 5)
                 HStack{
-                Image(systemName:"person.3.fill")
+                    Image(systemName:"person.3.fill")
+                        .foregroundColor(Color.purple)
                     Text("People")                        .fontWeight(.bold)
-                        .foregroundColor(Color.white)}
+                        .foregroundColor(Color.black)}
             Spacer().frame(height: 5)
+
                 
               }
                   }
             .frame(width: 300)
             .padding(.all, 30.0)
-            .background(Color.gray)
+            .background(Color.white.opacity(0.9))
         .cornerRadius(8)
         .padding(.horizontal, 20)
-        
         
         VStack{
             HStack{
@@ -109,11 +118,10 @@ Spacer()
                 Spacer().frame(width: 45)
                 CheckBoxView(checked: $checked)
             }
-            
             }
         .frame(width: 300)
         .padding(.all, 30.0)
-        .background(Color.gray)
+        .background(Color.white.opacity(0.9))
         .cornerRadius(8)
         
         VStack{
@@ -122,7 +130,7 @@ Spacer()
             }
             .padding(.all, 5.0)
             .font(.body)
-            .foregroundColor(Color.white)
+            .foregroundColor(Color.black)
             .cornerRadius(8)
             .frame(alignment: .topLeading)
             Spacer().frame(height: 10)
@@ -148,7 +156,7 @@ Spacer()
         }
         .frame(width: 300)
         .padding(.all, 30.0)
-        .background(Color.gray)
+        .background(Color.white.opacity(0.9))
         .cornerRadius(8)
         
     }

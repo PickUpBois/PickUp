@@ -11,6 +11,7 @@ struct MapSideMenuView: View {
     @ObservedObject var mapData : MapViewModel
     @State private var selection = 1
     var body: some View {
+        ScrollView{
         VStack{
             Button(action: {}, label: {
                 HStack(spacing: 15){
@@ -66,20 +67,25 @@ struct MapSideMenuView: View {
                 
                 }
             .padding()
-                
+            
+            VStack{
             HStack{
                 Image(systemName: "tablecells.badge.ellipsis")
                     .foregroundColor(Color.red)
                 Text("Extra Information")
                 Spacer(minLength: 0)
-                    
+                
                     }
-                .padding()
+            .padding()
+//            BusynessView()
+//                .scaleEffect(0.8)
+                
+            }
                 
             }
             
             //Creates the Popout Menu Space (Top -> Bottom)...
-            Spacer()
+            Spacer().frame(height: 500)
             
             HStack{
                 Spacer()
@@ -88,6 +94,7 @@ struct MapSideMenuView: View {
                     .foregroundColor(Color.blue)
             }
             .padding(10)
+        }
         }
         .frame(width: UIScreen.main.bounds.width / 1.6)
         .background(Color.white.ignoresSafeArea())
