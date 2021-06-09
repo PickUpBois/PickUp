@@ -31,6 +31,7 @@ struct FinishPickupView: View {
                     .fontWeight(.heavy)
                     .foregroundColor(Color.black)
                     .lineLimit(1)
+                    .padding(.top, 20)
             }
             
             Spacer().frame(height: 10)
@@ -40,7 +41,7 @@ struct FinishPickupView: View {
             Text("Vote for MVP:")
                 .font(.subheadline)
                 .fontWeight(.bold)
-            Spacer().frame(width: 5)
+            Spacer().frame(width: 15)
                 Picker("Names", selection: $selectedIndex) {
                     ForEach(viewModel.event!.attendees.indices, id: \.self) { i in
                         Text(viewModel.event!.attendees[i].fragments.userDetails.firstName)
@@ -48,14 +49,10 @@ struct FinishPickupView: View {
                     .pickerStyle(WheelPickerStyle())
                            }
 
-                .frame(width: 300.0, height: 175.0)
+                .frame(width: 270, height: 120.0)
             }
             
         }
-                
-        
-        Spacer()
-        
         }
 }
 

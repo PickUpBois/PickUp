@@ -102,6 +102,7 @@ struct ConfirmationNotificationView: View {
                 }.sheet(isPresented: $showPopUp, content: {
                     
                     FinishPickupView(viewModel: viewModel)
+                        .background(Color.white.opacity(0.9))
                     
                     Button(action: {
                         self.showPopUp.toggle()
@@ -115,6 +116,8 @@ struct ConfirmationNotificationView: View {
                             .padding(.horizontal, 20)
                     })
                     //Spacer().frame(height: 300)
+                    .background(BackgroundClearView())
+
                 })
         }
             .padding(.all, 10)
