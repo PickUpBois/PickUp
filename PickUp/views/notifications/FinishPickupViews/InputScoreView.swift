@@ -8,151 +8,105 @@
 import SwiftUI
 
 struct InputScoreView: View {
-    @State var showPopUp = false
+    @Binding var showPopUp: Bool
     @State private var checked = true
     
+    @State var teamSelections: [TeamSelection]
+    @State var winningTeam: TeamSelection
+    var viewModel: NotificationViewModel
+    @ObservedObject var setScoreViewModel: SetScoresViewModel
+    init(showPopUp: Binding<Bool>, viewModel: NotificationViewModel) {
+        self.viewModel = viewModel
+        let team = self.viewModel.event!.attendees.map { _ in return TeamSelection.team1}
+        self._teamSelections = State(initialValue: team)
+        self._winningTeam = State(initialValue: .team1)
+        self._showPopUp = showPopUp
+        self.setScoreViewModel = SetScoresViewModel()
+    }
+    
+    func removeRows(at offsets: IndexSet) {
+        self.setScoreViewModel.setScores.remove(atOffsets: offsets)
+    }
+    
+    func finishEvent() {
+        let team1 = teamSelections.enumerated().compactMap {
+            $0.element == .team1 ?  viewModel.event!.attendees[$0.offset].fragments.userDetails.id : nil
+        }
+        let team2 = teamSelections.enumerated().compactMap {
+            $0.element == .team2 ? viewModel.event!.attendees[$0.offset].fragments.userDetails.id : nil
+        }
+        let team1Scores = setScoreViewModel.setScores.map { set in
+            return Int(set.team1Score) ?? 0
+        }
+        let team2Scores = setScoreViewModel.setScores.map { set in
+            return Int(set.team2Score) ?? 0
+        }
+        let input = EndEventInput(eventId: viewModel.event!.id, team1Members: team1, team1Scores: team1Scores, team1Win: winningTeam == .team1, team2Members: team2, team2Scores: team2Scores, team2Win: winningTeam == .team2)
+        self.viewModel.endEvent(input: input)
+        self.showPopUp.toggle()
+    }
+    
+    func mapAttendees(attendees: [EventDetails.Attendee]) -> [UserDetails] {
+        return attendees.map { attendee in
+            return attendee.fragments.userDetails
+        }
+    }
+    
     var body: some View {
-        Spacer().frame(height: 200)
-            HStack{
-            VStack (alignment: .leading){
-                HStack{
-                    Image(systemName: "sportscourt.fill")
-                        .foregroundColor(Color.green)
-                Text("Singles") //self.viewModel.event.name
-                    .fontWeight(.heavy)
-                    .foregroundColor(Color.black)
-                }
-                Spacer()
-                HStack(alignment: .top) {
-                Image(systemName:"pencil.circle.fill")
-                Text("Description.................................................................................................................................................................................................................")
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.black)
-                    .lineLimit(3)
-                    .frame(alignment: .leading)
-                    //self.viewModel.event.info
-                }
-Spacer()
-//join event 'button'
-            }.frame(alignment: .leading)
+        VStack {
+            Spacer().frame(height: 200)
+            EventDetailsBoxView(event: viewModel.event!, fontColor: .white, joinEvent: {_ in return})
+                .frame(width: 300)
+                .padding(.all, 30.0)
+                .background(Color.gray)
+                .cornerRadius(8)
+                .padding(.horizontal, 20)
+            TeamatePickerView(attendees: mapAttendees(attendees: viewModel.event!.attendees), teamSelections: $teamSelections, winningTeam: $winningTeam)
+                .frame(width: 300)
+                .padding(.all, 30.0)
+                .background(Color.gray)
+                .cornerRadius(8)
             
-        Spacer()
-            VStack(alignment: .leading){
+            VStack{
                 HStack{
-                    Image(systemName:"location.fill")
-                        .foregroundColor(Color.blue)
-                    Text("Location")
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)}
-            Spacer().frame(height: 5)
-                HStack{
-                    Image(systemName:"calendar")
-                        .foregroundColor(Color.red)
-                    Text("Date")                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)}
-            Spacer().frame(height: 5)
-                HStack{
-                    Image(systemName:"clock.fill")
-                        .foregroundColor(Color.black)
-                    Text("Time")                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)}
-            Spacer().frame(height: 5)
-                HStack{
-                    Image(systemName:"person.3.fill")
-                        .foregroundColor(Color.purple)
-                    Text("People")                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)}
-            Spacer().frame(height: 5)
-
-                
-              }
-                  }
+                    Text("Input Score:").fontWeight(.bold)
+                }
+                .padding(.all, 5.0)
+                .font(.body)
+                .foregroundColor(Color.white)
+                .cornerRadius(8)
+                .frame(alignment: .topLeading)
+                Spacer().frame(height: 10)
+                ForEach(setScoreViewModel.setScores.indices, id: \.self) { i in
+                    SetScoreView(index: i, viewModel: self.setScoreViewModel.setScores[i])
+                }
+                .onDelete(perform: removeRows)
+            
+                Button(action: setScoreViewModel.addSet,
+                   label: {
+                    Text("Add Set")
+                        .foregroundColor(Color.blue).opacity(0.8)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 20)
+                        .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                        .cornerRadius(9)
+                   })
+            }
             .frame(width: 300)
             .padding(.all, 30.0)
-            .background(Color.white.opacity(0.9))
-        .cornerRadius(8)
-        .padding(.horizontal, 20)
-        
-        VStack{
-            HStack{
-                Text("Team 1")
-                Spacer().frame(width: 15)
-                Text("Team 2")
-            }.frame(width: 300, alignment: .trailing)
-            Spacer().frame(height: 10)
-            
-            HStack{
-                Text("Dave Reynolds").frame(width: 180,alignment:.leading).lineLimit(1)
-                Spacer().frame(width: 5)
-                CheckBoxView(checked: $checked)
-                Spacer().frame(width: 45)
-                CheckBoxView(checked: $checked)
-            }
-            Spacer().frame(height: 10)
-            
-            HStack{
-            Text("Manikrishnakumar Bhuma")
-                .frame(width: 180, alignment:.leading).lineLimit(1)
-                Spacer().frame(width: 5)
-                CheckBoxView(checked: $checked)
-                Spacer().frame(width: 45)
-                CheckBoxView(checked: $checked)
-            }
-            Spacer().frame(height: 10)
-            
-            HStack{
-            Text("Arian Rahbar")
-                    .frame(width: 180, alignment:.leading).lineLimit(1)
-                Spacer().frame(width: 5)
-                CheckBoxView(checked: $checked)
-                Spacer().frame(width: 45)
-                CheckBoxView(checked: $checked)
-            }
-            Spacer().frame(height: 10)
-            
-            HStack{
-            Text("Ashwin Yedavalli")
-                    .frame(width: 180, alignment:.leading).lineLimit(1)
-                Spacer().frame(width: 5)
-                CheckBoxView(checked: $checked)
-                Spacer().frame(width: 45)
-                CheckBoxView(checked: $checked)
-            }
-            }
-        .frame(width: 300)
-        .padding(.all, 30.0)
-        .background(Color.white.opacity(0.9))
-        .cornerRadius(8)
-        
-        VStack{
-            HStack{
-                Text("Input Score:").fontWeight(.bold)
-            }
-            .padding(.all, 5.0)
-            .font(.body)
-            .foregroundColor(Color.black)
+            .background(Color.gray)
             .cornerRadius(8)
-            .frame(alignment: .topLeading)
-            Spacer().frame(height: 10)
             
-        HStack{
-            Text("Set 1")
-                .frame(width: 180, alignment:.leading).lineLimit(1)
-            Spacer().frame(width: 5)
-            Text(" 6")
-            Spacer().frame(width: 45)
-            Text(" 1")
-        }
-        
-        Button(action: {},
-               label: {
-                Text("Add Set")
-                    .foregroundColor(Color.blue).opacity(0.8)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 20)
-                    .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+            Button(action: finishEvent,
+                   label: {
+                    Text("Finish Pickup")
+                    .foregroundColor(Color.white)
+                    .frame(maxWidth: .infinity)
+                    .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.pink/*@END_MENU_TOKEN@*/.opacity(0.8))
                     .cornerRadius(9)
-               })
+                    .padding(.all, 20)
+                    
+            })
         }
         .frame(width: 300)
         .padding(.all, 30.0)
@@ -165,32 +119,6 @@ Spacer()
 
 struct InputScoreView_Previews: PreviewProvider {
     static var previews: some View {
-        InputScoreView()
-    }
-}
-
-struct CheckBoxView: View {
-    @Binding var checked: Bool
-    
-    var body: some View {
-        Image(systemName: checked ? "checkmark.square.fill" : "square")
-            .foregroundColor(checked ? Color(UIColor.systemBlue) : Color.secondary)
-            .onTapGesture {
-                self.checked.toggle()
-            }
-    }
-}
-
-struct CheckBoxView_Previews: PreviewProvider {
-    struct CheckBoxViewHolder: View {
-        @State var checked = false
-        
-        var body: some View {
-            CheckBoxView(checked: $checked)
-        }
-    }
-    
-    static var previews: some View {
-        CheckBoxViewHolder()
+        InputScoreView(showPopUp: .constant(false), viewModel: MockNotificationViewModel())
     }
 }

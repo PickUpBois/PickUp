@@ -1,13 +1,13 @@
 //
-//  FriendRequestNotificationView.swift
+//  EventInvitationNotificationView.swift
 //  PickUp
 //
-//  Created by Ashwin Yedavalli on 5/21/21.
+//  Created by Arian Rahbar on 6/5/21.
 //
 
 import SwiftUI
 
-struct FriendRequestNotificationView: View {
+struct EventInvitationNotificationView: View {
     
     @State private var showingAlert = false
     let viewModel: NotificationViewModel
@@ -18,8 +18,8 @@ struct FriendRequestNotificationView: View {
         formatter.timeStyle = .short
         return formatter.string(from: date)
     }
+    
     var body: some View {
-      
         VStack{
                 HStack {
                     NavigationLink(destination: ProfileView(viewModel: ProfileViewModel(userId: viewModel.actor!.id), auth: false))
@@ -46,14 +46,14 @@ struct FriendRequestNotificationView: View {
 
             Spacer().frame(height: 10)
                     HStack {
-                        Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName) sent you a friend request:")
+                        Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName) invited you to their event:")
                             .foregroundColor(Color.purple)
                             .lineLimit(1)
                             .padding(.leading, 10.0)
                         Spacer().frame(minWidth: 5, maxWidth: 5)
                         
                         Button(action: {
-                            self.viewModel.acceptFriendRequest(friendId: viewModel.actor!.id)
+                            self.viewModel.acceptEventInvitation(eventId: viewModel.event!.id)
                         },label: {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(Color.green)
@@ -61,7 +61,7 @@ struct FriendRequestNotificationView: View {
                         })
                         
                         Button(action: {
-                            self.viewModel.rejectFriendRequest(friendId: viewModel.actor!.id)
+                            self.viewModel.declineEventInvitation(eventId: viewModel.event!.id)
                         },
                                label: {
                         Image(systemName: "x.circle.fill")
@@ -74,13 +74,11 @@ struct FriendRequestNotificationView: View {
                 .frame(width: 400.0)
                 .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                 .cornerRadius(8)
-        
     }
 }
 
-struct FriendRequestNotificationView_Previews: PreviewProvider {
-    static let actor = UserDetails(id: "1", firstName: "1", lastName: "last", username: "username")
+struct EventInvitationNotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendRequestNotificationView(viewModel: MockNotificationViewModel())
+        EventInvitationNotificationView(viewModel: MockNotificationViewModel())
     }
 }

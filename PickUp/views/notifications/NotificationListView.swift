@@ -9,24 +9,30 @@ import SwiftUI
 
 struct NotificationListView: View {
     @State var showPopUp = false
-    @ObservedObject var viewModel: HomeViewModel
-    init(viewModel: HomeViewModel) {
+    @ObservedObject var viewModel: NotificationListViewModel
+    init(viewModel: NotificationListViewModel) {
         self.viewModel = viewModel
     }
     var body: some View {
-        ScrollView {
-            ForEach(self.viewModel.notifications.indices, id: \.self) { i in
-                switch self.viewModel.notifications[i].type {
-                case .friendRequestSend:
-                    FriendRequestNotificationView(id: i, notification: self.viewModel.notifications[i]).environmentObject(self.viewModel)
-                case .friendRequestAccept:
-                    FriendRequestResponseNotificationView(id: i, response: .accept, notification: self.viewModel.notifications[i]).environmentObject(self.viewModel)
-                case .friendRequestReject:
-                    FriendRequestResponseNotificationView(id: i, response: .reject, notification: self.viewModel.notifications[i]).environmentObject(self.viewModel)
-                default:
-                    FriendRequestNotificationView(id: i, notification: self.viewModel.notifications[i]).environmentObject(self.viewModel)
-                }
+        List(self.viewModel.notifications.indices, id: \.self) { i in
+            let notificationViewModel = self.viewModel.notifications[i]
+            switch self.viewModel.notifications[i].type {
+            case .friendRequestSend:
+                FriendRequestNotificationView(viewModel: notificationViewModel)
+            case .friendRequestAccept:
+                FriendRequestResponseNotificationView(viewModel: notificationViewModel)
+            case .friendRequestReject:
+                FriendRequestResponseNotificationView(viewModel: notificationViewModel)
+            case .finishEvent:
+                FinishPickupNotificationView(viewModel: notificationViewModel)
+            case .voteForMvp:
+                ConfirmationNotificationView(viewModel: notificationViewModel)
+            default:
+                Text("error")
             }
+        }
+        .onAppear {
+            self.viewModel.getNotifications()
         }
         .frame(width: .infinity, height: .infinity, alignment: .topLeading)
         .navigationBarTitleDisplayMode(.inline)
@@ -45,6 +51,6 @@ struct NotificationListView: View {
 
 struct NotificationListView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationListView(viewModel: MockHomeViewModel())
+        NotificationListView(viewModel: MockNotificationListViewModel())
     }
 }

@@ -9,11 +9,69 @@ import SwiftUI
 
 struct ConfirmationNotificationView: View {
     @State var showPopUp = false
+    let viewModel: NotificationViewModel
+    let location: String
+    var owner: UserDetails?
+    
+    func getDate(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
+    }
+    
+    init(viewModel: NotificationViewModel) {
+        self.owner = nil
+        for attendee in viewModel.event!.attendees {
+            let userDetails = attendee.fragments.userDetails
+            if userDetails.eventAttendeeStatus == EventAttendeeStatus.owner {
+                self.owner = userDetails
+                break
+            }
+        }
+        self.viewModel = viewModel
+        self.location = "Lied Rec"
+        self._showPopUp = State(initialValue: false)
+    }
+    
+    func getScoreString() -> String {
+        var teamIndex = 0
+        for i in 0..<viewModel.event!.teams![1].members.count {
+            let memberId = viewModel.event!.teams![1].members[i].id
+            if AppState.shared.authId! == memberId {
+                teamIndex = 1
+                break
+            }
+        }
+        let team1Scores = viewModel.event!.teams![0].scores
+        let team2Scores = viewModel.event!.teams![1].scores
+        var scoreString: String = ""
+        for i in 0..<team1Scores.count {
+            print(team1Scores)
+            switch teamIndex {
+            case 0:
+                scoreString += "\(team1Scores[i])-\(team2Scores[i]) "
+            case 1:
+                scoreString += "\(team2Scores[i])-\(team1Scores[i]) "
+            default:
+                scoreString += "\(team1Scores[i])-\(team2Scores[i]) "
+            }
+        }
+        let teamId = viewModel.event!.teams![teamIndex].id
+        let winnerId = viewModel.event!.winner!.id
+        if teamId == winnerId {
+            scoreString += "(W)"
+        } else {
+            scoreString += "(L)"
+        }
+        
+        return scoreString
+        
+    }
     var body: some View {
       
         VStack{
         HStack {
-            NavigationLink(destination: ProfileView(viewModel: MockProfileViewModel(userId: "1"), auth: true)) {
             Image("serena")
                 .resizable()
                 .foregroundColor(.blue)
@@ -22,13 +80,12 @@ struct ConfirmationNotificationView: View {
                 .shadow(radius: 2)
                 .overlay(Circle().stroke(Color.black, lineWidth: 2))
             
-            Text("David Reynolds")
+                Text("\(owner!.firstName) \(owner!.lastName)")
                 .fontWeight(.heavy)
                 .foregroundColor(Color.black)
                 .lineLimit(1)
-            }
             Spacer()
-            Text("5/21/2021 @ 7:00 P.M.")
+            Text(getDate(date: viewModel.timestamp))
             .lineLimit(1)
                 
             }
@@ -37,14 +94,14 @@ struct ConfirmationNotificationView: View {
                     Button(action: {
                         self.showPopUp.toggle()
                     },label: {
-                        Text("David has entered a score of 21-19 (W) for the event '2v2 Pickup at Lied Rec. Press here to confirm score and finish Pickup!")
+                        Text("\(owner!.firstName) has entered a score of \(getScoreString()) for the event \(viewModel.event!.name) at \(location). Press here to confirm score and finish Pickup!")
                             .foregroundColor(Color.purple)
                             .padding(.leading, 10.0)
                             .lineLimit(3)
                     })
                 }.sheet(isPresented: $showPopUp, content: {
                     
-                    FinishPickupView()
+                    FinishPickupView(viewModel: viewModel)
                     
                     Button(action: {
                         self.showPopUp.toggle()
@@ -70,6 +127,6 @@ struct ConfirmationNotificationView: View {
 
 struct ConfirmationNotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfirmationNotificationView()
+        ConfirmationNotificationView(viewModel: MockNotificationViewModel())
     }
 }

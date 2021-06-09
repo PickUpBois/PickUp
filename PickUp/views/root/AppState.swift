@@ -18,6 +18,8 @@ class AppState: ObservableObject {
         })
     }
     
+    
+    
     func detach() {
         self.authHandle?.cancel()
         self.authHandle = nil

@@ -1,63 +1,30 @@
 //
-//  HomeViewModel.swift
+//  NotificationViewModel.swift
 //  PickUp
 //
-//  Created by Arian Rahbar on 5/22/21.
+//  Created by Arian Rahbar on 6/7/21.
 //
 
 import Foundation
-import Combine
 
-
-
-class HomeViewModel: ObservableObject {
-    var cancellables = Set<AnyCancellable>()
-    @Published var events: [EventDetails] = []
-    @Published var notifications: [GetNotificationsQuery.Data.User.Notification] = []
-    func getUpcomingEvents() {
-        if (AppState.shared.authId != nil) {
-            Services.shared.apollo.fetch(query: QueryEventsQuery(userId: nil, type: nil, status: .open), cachePolicy: .fetchIgnoringCacheCompletely) { response in
-                switch response {
-                case .success(let result):
-                    if let errors = result.errors {
-                        print(errors[0].localizedDescription)
-                    }
-                    guard let data = result.data else {
-                        print("error in graphql query")
-                        return
-                    }
-                    self.events = data.queryEvents.map { queryEvent in
-                        return queryEvent.fragments.eventDetails
-                    }
-                    
-                    self.objectWillChange.send()
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
-        }
+class NotificationViewModel: ObservableObject {
+    let notificationId: String
+    let type: NotificationType
+    let timestamp: Date
+    let event: EventDetails?
+    let actor: UserDetails?
+    let getNotifications: () -> Void
+    
+    
+    init(notificationId: String, type: NotificationType, timestamp: Date, event: EventDetails?, actor: UserDetails?, getNotifications: @escaping () -> Void) {
+        self.getNotifications = getNotifications
+        self.event = event
+        self.actor = actor
+        self.notificationId = notificationId
+        self.timestamp = timestamp
+        self.type = type
     }
     
-    func getNotifications() {
-        if AppState.shared.authId != nil {
-            Services.shared.apollo.fetch(query: GetNotificationsQuery(userId: AppState.shared.authId!), cachePolicy: .fetchIgnoringCacheCompletely) { response in
-                switch response {
-                case .success(let result):
-                    if let errors = result.errors {
-                        print(errors[0].localizedDescription)
-                    }
-                    guard let data = result.data else {
-                        print("error in graphql query")
-                        return
-                    }
-                    self.notifications = data.user.notifications
-                    self.objectWillChange.send()
-                case .failure(let error):
-                    print(error.localizedDescription)
-            }
-        }
-        }
-    }
     
     func acceptFriendRequest(friendId: String) {
         Services.shared.apollo.perform(mutation: AcceptFriendRequestMutation(userId: AppState.shared.authId!, friendId: friendId)) { response in
@@ -101,25 +68,6 @@ class HomeViewModel: ObservableObject {
                     return
                 }
                 self.getNotifications()
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func joinEvent(eventId: String) {
-        Services.shared.apollo.perform(mutation: JoinEventMutation(userId: AppState.shared.authId!, eventId: eventId)) { response in
-            switch response {
-            case .success(let result):
-                if let errors = result.errors {
-                    print(errors[0].localizedDescription)
-                    return
-                }
-                guard let data = result.data else {
-                    print("error joining event")
-                    return
-                }
-                self.getUpcomingEvents()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -181,31 +129,13 @@ class HomeViewModel: ObservableObject {
             }
         }
     }
-    
-    
 }
 
-class MockHomeViewModel: HomeViewModel {
-    override init() {
-        let actor = GetNotificationsQuery.Data.User.Notification.Actor(id: "1", firstName: "1", lastName: "lastName", username: "username")
-        let notification = GetNotificationsQuery.Data.User.Notification(id: "1", createdAt: Date().isoString, type: .friendRequestAccept, actor: actor, event: nil)
-        super.init()
-        self.notifications = [notification]
-    }
-    
-    override func getUpcomingEvents() {
-        self.events = []
-    }
-    
-    override func getNotifications() {
-        
-    }
-    
-    override func acceptFriendRequest(friendId: String) {
-        return
-    }
-    
-    override func rejectFriendRequest(friendId: String) {
-        return
+class MockNotificationViewModel: NotificationViewModel {
+    init() {
+        let actor = UserDetails(id: "1", firstName: "1", lastName: "last", username: "username")
+        let attendees: [EventDetails.Attendee] = []
+        let event = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open)
+        super.init(notificationId: "0", type: .friendRequestSend, timestamp: Date(), event: event, actor: actor, getNotifications: { return })
     }
 }

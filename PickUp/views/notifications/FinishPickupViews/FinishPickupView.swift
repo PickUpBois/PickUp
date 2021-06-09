@@ -10,6 +10,7 @@ import SwiftUI
 struct FinishPickupView: View {
     var arrayOfNames = ["Arian", "David", "Ashwin", "Jimmy"]
     @State private var selectedIndex = 0
+    let viewModel: NotificationViewModel
 
     var body: some View {
         
@@ -41,8 +42,8 @@ struct FinishPickupView: View {
                 .fontWeight(.bold)
             Spacer().frame(width: 5)
                 Picker("Names", selection: $selectedIndex) {
-                    ForEach(0 ..< arrayOfNames.count) {
-                            Text(self.arrayOfNames[$0])
+                    ForEach(viewModel.event!.attendees.indices, id: \.self) { i in
+                        Text(viewModel.event!.attendees[i].fragments.userDetails.firstName)
                                    }
                     .pickerStyle(WheelPickerStyle())
                            }
@@ -120,6 +121,6 @@ struct FinishPickupView: View {
 
 struct FinishPickupView_Previews: PreviewProvider {
     static var previews: some View {
-        FinishPickupView()
+        FinishPickupView(viewModel: MockNotificationViewModel())
     }
 }

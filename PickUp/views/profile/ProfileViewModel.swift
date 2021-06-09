@@ -85,7 +85,6 @@ class ProfileViewModel: ObservableObject {
                 self.upcomingEvents = data.userEvents.map { userEvent in
                     return userEvent.fragments.eventDetails
                 }
-                
                 return
             case .failure(let error):
                 print(error.localizedDescription)
@@ -110,7 +109,8 @@ class MockProfileViewModel: ProfileViewModel {
     }
     
     override func getEvents(status: EventStatus) {
-        let event1 = EventDetails(id: "1", name: "1", info: "1", capacity: 4, attendees: [EventDetails.Attendee(id: "1", firstName: "1", lastName: "1", username: "1")], startDate: Date().isoString, type: .tennis, status: .open)
+        let attendees: [EventDetails.Attendee] = []
+        let event1 = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open)
         let event2 = event1
         self.upcomingEvents = [event1, event2]
         self.pastEvents = []

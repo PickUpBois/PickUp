@@ -14,12 +14,14 @@ struct PickUpView: View, Identifiable {
     var startDate: Date
     var id: Int
     var going: Bool
+    var status: EventStatus
     
-    init(name: String, startDate: Date, id: Int, going: Bool) {
+    init(name: String, startDate: Date, id: Int, going: Bool, status: EventStatus) {
         self.name = name
         self.startDate = startDate
         self.id = id
         self.going = going
+        self.status = status
     }
     
     init(id: Int, event: EventDetails) {
@@ -30,6 +32,7 @@ struct PickUpView: View, Identifiable {
             return attendee.fragments.userDetails.id
         }
         self.going = attendees.contains(AppState.shared.authId ?? "") ? true : false
+        self.status = event.status
     }
     
     func getDate(date: Date) -> String {
@@ -78,8 +81,12 @@ struct PickUpView: View, Identifiable {
                 
             })
         }.sheet(isPresented: $showPopUp, content: {
-           
-            PopupView(id: id, event: self.viewModel.events[id])
+            Spacer().frame(height: 300)
+            EventDetailsBoxView(event: self.viewModel.events[id], joinEvent: self.viewModel.joinEvent)
+                .padding(.all, 30.0)
+                    .background(Color(red: 1, green: 0.7, blue: 0, opacity: 0.9))
+                .cornerRadius(8)
+                .padding(.horizontal, 20)
             
             Button(action: {
                 self.showPopUp.toggle()
@@ -116,6 +123,6 @@ struct BackgroundClearView: UIViewRepresentable {
 
 struct PickUpView_Previews: PreviewProvider {
     static var previews: some View {
-        PickUpView(name: "Event", startDate: Date(), id: 0, going: true).environmentObject(MockHomeViewModel())
+        PickUpView(name: "Event", startDate: Date(), id: 0, going: true, status: .open).environmentObject(MockHomeViewModel())
     }
 }
