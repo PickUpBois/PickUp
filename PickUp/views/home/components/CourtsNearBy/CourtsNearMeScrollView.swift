@@ -35,7 +35,10 @@ struct CourtsNearByScrollView: View {
                 }
                 .padding()
             
-            BusynessView()
+            CourtsNearMeFullView(type: .tennis)
+                .padding(.horizontal, 30)
+            
+            Spacer()
         
         }.navigationBarTitleDisplayMode(.inline)
         .toolbar{

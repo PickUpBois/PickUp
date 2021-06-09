@@ -12,40 +12,15 @@ struct BusynessView: View {
     
         Spacer().frame(height:10)
         VStack{
-        VStack{
-        Text("State Gym")
         HStack (spacing: 16){
             BarViewDay(value: 40, date: "Su")
             BarViewDay(value: 80, date: "M")
             BarViewDay(value: 20, date: "T")
             BarViewDay(value: 30, date: "W")
             BarViewDay(value: 90, date: "Th")
-            BarViewDay(value: 30, date: "Sa")
-            
+            BarViewDay(value: 30, date: "F")
+            BarViewDay(value: 40, date: "S")
         }
-        }
-        VStack{
-        Text("Lied")
-        HStack (spacing: 16){
-            BarViewDay(value: 30, date: "Su")
-            BarViewDay(value: 20, date: "M")
-            BarViewDay(value: 50, date: "T")
-            BarViewDay(value: 73, date: "W")
-            BarViewDay(value: 50, date: "Th")
-            BarViewDay(value: 23, date: "Sa")
-        }
-        }
-        VStack{
-        Text("Lied")
-        HStack (spacing: 16){
-            BarViewDay(value: 44, date: "Su")
-            BarViewDay(value: 22, date: "M")
-            BarViewDay(value: 77, date: "T")
-            BarViewDay(value: 98, date: "W")
-            BarViewDay(value: 59, date: "Th")
-            BarViewDay(value: 44, date: "Sa")
-            }
-            }
         }
     }
 }

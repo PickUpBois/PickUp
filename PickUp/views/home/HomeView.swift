@@ -26,7 +26,13 @@ struct HomeView: View {
                 HStack {
                     //Bottom left, near me box
                     CourtsNearMeListView()
-                    Spacer().frame(width: 7)
+                        .frame(width: 175.0, height: 330.0, alignment: .top)
+                        .padding(.horizontal, 9)
+                        .padding(.vertical, 15.0)
+                        .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                        .cornerRadius(20)
+                    
+                    Spacer().frame(width: 8)
            
                     //Bottom Right, pickups near me
                     PickUpTabListView().environmentObject(viewModel)

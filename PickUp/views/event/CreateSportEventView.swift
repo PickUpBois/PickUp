@@ -68,6 +68,8 @@ struct CreateSportEventView: View {
                     .background(Color(red: 0, green: 0.7, blue: 0, opacity: 0.55))
                     .cornerRadius(7)
             })
+            
+            
             Spacer().frame(width: 17.5)
             
             HStack{

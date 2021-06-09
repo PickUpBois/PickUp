@@ -13,6 +13,7 @@ struct FriendsListView: View {
         self.viewModel = viewModel
     }
     var body: some View {
+        NavigationView{
         VStack {
             Text("Friends")
             Spacer().frame(height: 20)
@@ -24,6 +25,7 @@ struct FriendsListView: View {
         }.onAppear(perform: {
             self.viewModel.getFriends()
         })
+        }.navigationTitle("Teammates")
     }
 }
 

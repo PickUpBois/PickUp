@@ -50,7 +50,8 @@ struct CourtsNearMeView: View {
             Text(open)
                 .fontWeight(.semibold)}.frame(width: 175, alignment: .leading)
         
-        }.background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.3))
+        }.padding(.top, 5)
+        .background(Color.white.opacity(0.9))
         .cornerRadius(8)
         Spacer().frame(height: 10)
     }

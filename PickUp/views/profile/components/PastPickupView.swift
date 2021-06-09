@@ -11,13 +11,6 @@ struct PastPickupView: View {
     @State private var selection = 1
  
     var body: some View {
-//        Picker("", selection: $selection) {
-//            Text("Past Posts").foregroundColor(Color.blue).tag(1)
-//            Text("Past Scores").foregroundColor(Color.red).tag(0)
-//        }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
-        
-        //if selection == 0 {
-        //ProfilePastEventView(type: .tennis)
         ScrollView {
         VStack{
             VStack{
@@ -54,12 +47,13 @@ struct PastPickupView: View {
                 
             
             }.padding([.leading, .bottom, .trailing], 15.0)
-                        .background(Color(red: 0, green: 1, blue: 0, opacity: 0.1))
-                        .cornerRadius(8)
-                        .padding(.horizontal, 20)
+            .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+            .cornerRadius(8)
+            .padding(.horizontal, 20)
             
             Spacer().frame(height: 20)
             }
+
         }
     }
 }

@@ -43,12 +43,10 @@ struct PickUpView: View, Identifiable {
     }
     
     var body: some View {
-       
         HStack(alignment: .center) {
             Button(action: {
                 self.showPopUp.toggle()
             }, label: {
-
                 VStack {
                     HStack{
                         Text(name)
@@ -84,7 +82,7 @@ struct PickUpView: View, Identifiable {
             Spacer().frame(height: 300)
             EventDetailsBoxView(event: self.viewModel.events[id], joinEvent: self.viewModel.joinEvent)
                 .padding(.all, 30.0)
-                    .background(Color(red: 1, green: 0.7, blue: 0, opacity: 0.9))
+                .background(Color.white.opacity(0.9))
                 .cornerRadius(8)
                 .padding(.horizontal, 20)
             

@@ -47,7 +47,7 @@ struct PostedPickUpsView: View {
                         
                     
                     }.padding([.leading, .bottom, .trailing], 15.0)
-                                .background(Color(red: 0, green: 1, blue: 0, opacity: 0.1))
+                        .background(Color.white.opacity(0.9))
                                 .cornerRadius(8)
                                 .padding(.horizontal, 20)
                     
@@ -88,7 +88,7 @@ struct PostedPickUpsView: View {
                             
 
                     }.padding([.leading, .bottom, .trailing], 15.0)
-                        .background(Color(red: 1, green: 0, blue: 0, opacity: 0.1))
+                        .background(Color.white.opacity(0.9))
                         .cornerRadius(8)
                         .padding(.horizontal, 20)
                     
@@ -128,7 +128,7 @@ struct PostedPickUpsView: View {
                             
 
                     }.padding([.leading, .bottom, .trailing], 15.0)
-                        .background(Color(red: 0, green: 0, blue: 1, opacity: 0.1))
+                        .background(Color.white.opacity(0.9))
                         .cornerRadius(8)
                         .padding(.horizontal, 20)
                     

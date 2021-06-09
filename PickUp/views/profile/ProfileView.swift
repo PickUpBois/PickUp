@@ -100,3 +100,35 @@ struct ProfileView_Previews: PreviewProvider {
         ProfileView(viewModel: MockProfileViewModel(userId: "1"), auth: true)
     }
 }
+
+
+
+
+//                    Button(action: {
+//                        self.showPopUp.toggle()
+//                    },label: {
+//                        VStack{
+//                            Text("Team").font(.headline).foregroundColor(Color.black)
+//                            Text("Members").font(.headline).foregroundColor(Color.black)
+//                            Text("50").font(.title).fontWeight(.bold).foregroundColor(Color.black)
+//
+//                            Spacer()
+//                        }
+//                    })
+//                }.sheet(isPresented: $showPopUp, content: {
+//
+//                    FinishPickupView()
+//
+//                    Button(action: {
+//                        self.showPopUp.toggle()
+//                    },label: {
+//                        Text("Dismiss")
+//                            .foregroundColor(Color.white)
+//                            .frame(maxWidth: .infinity)
+//                            .padding(.vertical, 10)
+//                            .background(Color.black.opacity(0.8))
+//                            .cornerRadius(9)
+//                            .padding(.horizontal, 20)
+//                    })
+//                    //Spacer().frame(height: 300)
+//                })
