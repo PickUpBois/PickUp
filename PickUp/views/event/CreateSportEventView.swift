@@ -10,6 +10,7 @@ import SwiftUI
 struct CreateSportEventView: View {
     @EnvironmentObject var eventViewModel: CreateEventViewModel
     @State var showPopUp = false
+    @State private var eventAlert = false
     var body: some View {
         VStack{
             // Stacks everything on page
@@ -64,7 +65,6 @@ struct CreateSportEventView: View {
                 .fontWeight(.heavy)
                     .foregroundColor(Color.black)
                     .padding(.all, 10.0)
-                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2.5)
                     .background(Color(red: 0, green: 0.7, blue: 0, opacity: 0.55))
                     .cornerRadius(7)
             })
@@ -72,41 +72,25 @@ struct CreateSportEventView: View {
             
             HStack{
                 Button(action: {
-                        self.eventViewModel.createEvent()
-                        self.showPopUp.toggle()}
-                   ,label: {
+                    self.eventViewModel.createEvent()
+                    self.eventAlert = true
+                }) {
                 Text("Create Pickup").fontWeight(.heavy)
                     .foregroundColor(Color.black)
-                    .padding(.all, 10.0)      .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2.5)
-                    .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 1))
-                    .cornerRadius(/*@START_MENU_TOKEN@*/7.0/*@END_MENU_TOKEN@*/)
-            })
-            }.sheet(isPresented: $showPopUp, content: {
-            
-                Text("Your Pickup Event has been created!").fontWeight(.heavy)
-                    .foregroundColor(Color.black)
-                    .padding(.all, 50.0)      .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2.5)
-                    .background(Color.white.opacity(1))
-                    .cornerRadius(/*@START_MENU_TOKEN@*/7.0/*@END_MENU_TOKEN@*/)
-                
-                Button(action: {
-                    self.showPopUp.toggle()
-                },label: {
-                    Text("Dismiss")
-                        .foregroundColor(Color.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 10)
-                        .background(Color.black.opacity(0.8))
-                        .cornerRadius(9)
-                        .padding(.horizontal, 20)
-                })
-                
-                Spacer().frame(height: 300)
-                    .background(BackgroundClearView())
-            })
-            
+                    .padding(.all, 10.0)
+                    .background(Color(red: 0, green: 0.5, blue: 0.7, opacity: 0.3))
+                    .cornerRadius(7)
+
+                }
+                .alert(isPresented: $eventAlert) { () -> Alert in
+                            let button = Alert.Button.default(Text("OK")) {
+                                print("OK Button Pressed")
+                            }
+                            return Alert(title: Text("Congratuations, Pickup Was Created!"), message: Text(""), dismissButton: button)
+                        }
             }
         }
+    }
     }
 }
 

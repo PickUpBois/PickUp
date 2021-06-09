@@ -14,14 +14,10 @@ struct UpcomingPickupsView: View {
             ForEach(self.viewModel.upcomingEvents, id: \.self.id) { event in
                 Spacer().frame(height: 15)
                 VStack {
-                    let emoji = event.type == .tennis ? "🎾" : "🏀"
-                    HStack{
-                        Text(emoji).font(.system(size: 30))
-                    }
                     HStack {
                         EventDetailsBoxView(event: event, joinEvent: { _ in return})
                             .padding(.all, 25.0)
-                            .background(Color(red: 1, green: 0.5, blue: 0, opacity: 0.2))
+                            .background(Color.gray.opacity(0.15))
                             .cornerRadius(8)
                             .padding(.horizontal, 20)
                     }

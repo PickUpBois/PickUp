@@ -72,53 +72,69 @@ struct EventDetailsBoxView: View {
         self.fontColor = fontColor
     }
     var body: some View {
+        let emoji = type == .tennis ? "🎾" : "🏀"
         HStack{
         VStack{
+        VStack(alignment: .leading){
+            HStack{
+            Text(emoji).font(.system(size: 20))
             Text(name) //self.viewModel.event.name
                 .fontWeight(.heavy)
-                .foregroundColor(fontColor)
-
+                .foregroundColor(.black)
+            }
 Spacer()
+            HStack(alignment: .top) {
+            Image(systemName:"pencil.circle.fill")
             Text(info)
                 .fontWeight(.bold)
-                .foregroundColor(fontColor)
+                .foregroundColor(.black)
                 .lineLimit(3)
                 .frame(alignment: .leading)
                 //self.viewModel.event.info
+            }
 Spacer()
 //join event 'button'
             if !self.going {
                Button(action: { joinEvent(eventId) }) {
                    Text("+ Join")
-                       .fontWeight(.heavy)
-                       .padding(.all, 5.0)
-                       .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+                        .fontWeight(.heavy)
+                        .foregroundColor(Color.blue).opacity(0.8)
+                        .padding(.top, 5.0)
+                        .padding(.bottom, 5.0)
+                        .padding(.horizontal, 50)
+                        .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                        .cornerRadius(9.0)
                 }
-            }
+        }
         }.frame(alignment: .leading)
+        }
 
     Spacer()
-        VStack{
+        VStack(alignment: .leading){
             HStack{
             Image(systemName:"location.fill")
+                .foregroundColor(Color.blue)
                 Text("Location")
                     .fontWeight(.bold)
-                    .foregroundColor(fontColor)}
+                    .foregroundColor(.black)}
         Spacer().frame(height: 5)
             HStack{
             Image(systemName:"calendar")
+                .foregroundColor(Color.red)
                 Text(startDate)                        .fontWeight(.bold)
-                    .foregroundColor(fontColor)}
+                    .foregroundColor(.black)}
         Spacer().frame(height: 5)
             HStack{
             Image(systemName:"clock.fill")
+                .foregroundColor(Color.black)
                 Text(startTime)                        .fontWeight(.bold)
-                    .foregroundColor(fontColor)}
+                    .foregroundColor(.black)}
         Spacer().frame(height: 5)
             HStack{
             Image(systemName:"person.3.fill")
+                .foregroundColor(Color.purple)
                 Text("\(numAttendees)/\(capacity)")                        .fontWeight(.bold)
-                    .foregroundColor(fontColor)}
+                    .foregroundColor(.black)}
         Spacer().frame(height: 5)
           }
         }

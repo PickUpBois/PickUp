@@ -58,13 +58,13 @@ struct InputScoreView: View {
             EventDetailsBoxView(event: viewModel.event!, fontColor: .white, joinEvent: {_ in return})
                 .frame(width: 300)
                 .padding(.all, 30.0)
-                .background(Color.gray)
+                .background(Color.white.opacity(0.9))
                 .cornerRadius(8)
                 .padding(.horizontal, 20)
             TeamatePickerView(attendees: mapAttendees(attendees: viewModel.event!.attendees), teamSelections: $teamSelections, winningTeam: $winningTeam)
                 .frame(width: 300)
                 .padding(.all, 30.0)
-                .background(Color.gray)
+                .background(Color.white.opacity(0.9))
                 .cornerRadius(8)
             
             VStack{
@@ -73,7 +73,7 @@ struct InputScoreView: View {
                 }
                 .padding(.all, 5.0)
                 .font(.body)
-                .foregroundColor(Color.white)
+                .background(Color.white.opacity(0.9))
                 .cornerRadius(8)
                 .frame(alignment: .topLeading)
                 Spacer().frame(height: 10)
@@ -94,17 +94,17 @@ struct InputScoreView: View {
             }
             .frame(width: 300)
             .padding(.all, 30.0)
-            .background(Color.gray)
+            .background(Color.white.opacity(0.9))
             .cornerRadius(8)
             
             Button(action: finishEvent,
                    label: {
                     Text("Finish Pickup")
-                    .foregroundColor(Color.white)
-                    .frame(maxWidth: .infinity)
-                    .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.pink/*@END_MENU_TOKEN@*/.opacity(0.8))
-                    .cornerRadius(9)
-                    .padding(.all, 20)
+                        .foregroundColor(Color.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(Color.green.opacity(0.8))
+                        .cornerRadius(9)
                     
             })
         }
