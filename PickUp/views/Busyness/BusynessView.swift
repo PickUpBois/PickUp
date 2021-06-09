@@ -24,16 +24,28 @@ struct BusynessView: View {
             
         }
         }
-            BarViewHour(value: 30, hour: "6 A.M.")
-            BarViewHour(value: 30, hour: "7 A.M.")
-            BarViewHour(value: 30, hour: "8 A.M.")
-            BarViewHour(value: 30, hour: "9 A.M.")
-            BarViewHour(value: 30, hour: "10 A.M.")
-            BarViewHour(value: 30, hour: "11 A.M.")
-            BarViewHour(value: 30, hour: "12 P.M.")
-            BarViewHour(value: 30, hour: "1 P.M.")
-            BarViewHour(value: 30, hour: "2 P.M.")
-
+        VStack{
+        Text("Lied")
+        HStack (spacing: 16){
+            BarViewDay(value: 30, date: "Su")
+            BarViewDay(value: 20, date: "M")
+            BarViewDay(value: 50, date: "T")
+            BarViewDay(value: 73, date: "W")
+            BarViewDay(value: 50, date: "Th")
+            BarViewDay(value: 23, date: "Sa")
+        }
+        }
+        VStack{
+        Text("Lied")
+        HStack (spacing: 16){
+            BarViewDay(value: 44, date: "Su")
+            BarViewDay(value: 22, date: "M")
+            BarViewDay(value: 77, date: "T")
+            BarViewDay(value: 98, date: "W")
+            BarViewDay(value: 59, date: "Th")
+            BarViewDay(value: 44, date: "Sa")
+            }
+            }
         }
     }
 }

@@ -34,8 +34,8 @@ struct PickUpNearMeScrollView: View {
                 }
                 .padding()
         
-        UpcomingPickupsView()
-        
+            UpcomingPickupsView().environmentObject(ProfileViewModel(userId: "1"))
+            
         }.navigationBarTitleDisplayMode(.inline)
         .toolbar{
             ToolbarItem(placement: .principal) {
