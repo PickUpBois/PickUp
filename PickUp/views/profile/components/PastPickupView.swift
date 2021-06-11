@@ -11,6 +11,7 @@ struct PastPickupView: View {
 @EnvironmentObject var viewModel: ProfileViewModel
     var body: some View {
         ScrollView {
+            //viewModel.upcomingEvents needs to change to Past - For Arian
             ForEach(self.viewModel.upcomingEvents, id: \.self.id) { event in
                 Spacer().frame(height: 15)
                 VStack {
