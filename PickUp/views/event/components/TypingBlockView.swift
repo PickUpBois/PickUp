@@ -40,8 +40,6 @@ struct TypingBlockView: View {
         .cornerRadius(20)
         }
 
-
-            
         //Email Text Field Settings
 
 

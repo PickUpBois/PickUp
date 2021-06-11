@@ -22,13 +22,13 @@ struct EventDatePickerView: View {
         HStack{
             Text("When")
                 .fontWeight(.heavy)
-            Spacer().frame(width: 20)
+            Spacer().frame(width: 15)
         DatePicker("",
             selection: self.$date,
                  in: dateRange,
                  displayedComponents: [.date, .hourAndMinute]
-        ).datePickerStyle(GraphicalDatePickerStyle())
-        }.padding(.trailing, 50.0).frame(width:390, alignment: .leading)
+        ).datePickerStyle(DefaultDatePickerStyle())
+        }.padding(.trailing, 60.0).frame(width:390, alignment: .leading)
     }
 }
 

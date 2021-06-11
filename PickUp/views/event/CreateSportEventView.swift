@@ -40,16 +40,16 @@ struct CreateSportEventView: View {
             
             //Name //e.g. King of the Court
             TypingBlockView(title: "Name", description: "e.g. King of the Court", value: self.$eventViewModel.eventInfo.name)
-         
+
             //Description //e.g. Casual Tennis Match
             TypingBlockView(title: "Info", description: "e.g. casual pickup game", value: self.$eventViewModel.eventInfo.info)
             
             //Location //e.g. Dave's Backyard
             EventLocationPickerView(value: self.$eventViewModel.eventInfo.locationId)
-            
-           
+
             //People //e.g. 4 (doubles)
             TypingBlockView(title: "People", description: "e.g. 4 (doubles)", value: self.$eventViewModel.eventInfo.capacity)
+            
             Spacer().frame(height: 20)
             //Scroll Menu (Like when setting alarm on iPhone)
             
@@ -58,7 +58,8 @@ struct CreateSportEventView: View {
             EventDatePickerView(date: self.$eventViewModel.eventInfo.startDate)
             
             
-        Spacer().frame(height: 15.0)
+            Spacer().frame(height: 35.0)
+            
         HStack{
             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                 Text("Invite Friends")
