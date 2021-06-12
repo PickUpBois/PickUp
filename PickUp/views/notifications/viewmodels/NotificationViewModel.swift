@@ -129,6 +129,21 @@ class NotificationViewModel: ObservableObject {
             }
         }
     }
+    
+    func voteForMvp(eventId: String, voteeId: String) {
+        let voterId = AppState.shared.authId!
+        Services.shared.apollo.perform(mutation: VoteForMvpMutation(eventId: eventId, voterId: voterId, voteeId: voteeId)) { response in
+            switch response {
+            case .success(let result):
+                if let errors = result.errors {
+                    print(errors[0].localizedDescription)
+                    return
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 class MockNotificationViewModel: NotificationViewModel {

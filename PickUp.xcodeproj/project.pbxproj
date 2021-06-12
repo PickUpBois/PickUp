@@ -24,6 +24,7 @@
 		1ADE7E36264C50E90097138F /* CourtsNearMeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E35264C50E90097138F /* CourtsNearMeView.swift */; };
 		1F30A886AE165751D712C11B /* Pods_PickUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D2DCFAB236044BB62AF4D7 /* Pods_PickUp.framework */; };
 		8D09E70B2623E16E0007B871 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E70A2623E16E0007B871 /* ProfileView.swift */; };
+		8D0FD6A42674616D006C84D3 /* NotificationViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8D0FD6A32674616D006C84D3 /* NotificationViewModel.graphql */; };
 		8D2094A1263C6F43009B1609 /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */; };
 		8D2A3EF3261EC3E100521A6A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2A3EF2261EC3E100521A6A /* SignUpView.swift */; };
 		8D2B0C50263819060032AE67 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B0C4F263819060032AE67 /* ImagePicker.swift */; };
@@ -163,6 +164,7 @@
 		49D2DCFAB236044BB62AF4D7 /* Pods_PickUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6403E9CD6469737F34F86843 /* Pods-PickUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUpTests.release.xcconfig"; path = "Target Support Files/Pods-PickUpTests/Pods-PickUpTests.release.xcconfig"; sourceTree = "<group>"; };
 		8D09E70A2623E16E0007B871 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		8D0FD6A32674616D006C84D3 /* NotificationViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = NotificationViewModel.graphql; sourceTree = "<group>"; };
 		8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsView.swift; sourceTree = "<group>"; };
 		8D2A3EF2261EC3E100521A6A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		8D2B0C4F263819060032AE67 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				8D5EE002265280E100EE7840 /* ProfileViewModel.graphql */,
 				8D65B2FA265931900085D5EE /* FindTeammatesViewModel.graphql */,
 				8DE5218A266428980077AF09 /* FriendsListViewModel.graphql */,
+				8D0FD6A32674616D006C84D3 /* NotificationViewModel.graphql */,
 			);
 			path = graphql;
 			sourceTree = "<group>";
@@ -787,6 +790,7 @@
 				8DB8EF8A26198979004AADED /* Assets.xcassets in Resources */,
 				8D65B2FB265931900085D5EE /* FindTeammatesViewModel.graphql in Resources */,
 				8D65B2A52658E04E0085D5EE /* CreateEventViewModel.graphql in Resources */,
+				8D0FD6A42674616D006C84D3 /* NotificationViewModel.graphql in Resources */,
 				8DE5218B266428980077AF09 /* FriendsListViewModel.graphql in Resources */,
 				C0D4716C264098BF00E7B6C7 /* CreateEventView.xib in Resources */,
 				8DB8F008261A8201004AADED /* GoogleService-Info.plist in Resources */,

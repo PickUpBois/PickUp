@@ -187,6 +187,7 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
   case eventInvitation
   case finishEvent
   case voteForMvp
+  case selectedMvp
   /// Auto generated constant for unknown enum values
   case __unknown(RawValue)
 
@@ -198,6 +199,7 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
       case "eventInvitation": self = .eventInvitation
       case "finishEvent": self = .finishEvent
       case "voteForMvp": self = .voteForMvp
+      case "selectedMvp": self = .selectedMvp
       default: self = .__unknown(rawValue)
     }
   }
@@ -210,6 +212,7 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
       case .eventInvitation: return "eventInvitation"
       case .finishEvent: return "finishEvent"
       case .voteForMvp: return "voteForMvp"
+      case .selectedMvp: return "selectedMvp"
       case .__unknown(let value): return value
     }
   }
@@ -222,6 +225,7 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
       case (.eventInvitation, .eventInvitation): return true
       case (.finishEvent, .finishEvent): return true
       case (.voteForMvp, .voteForMvp): return true
+      case (.selectedMvp, .selectedMvp): return true
       case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
       default: return false
     }
@@ -235,6 +239,7 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
       .eventInvitation,
       .finishEvent,
       .voteForMvp,
+      .selectedMvp,
     ]
   }
 }
@@ -1973,6 +1978,104 @@ public final class EndEventMutation: GraphQLMutation {
     }
 
     public struct EndEvent: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Event"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID) {
+        self.init(unsafeResultMap: ["__typename": "Event", "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// id of event
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+    }
+  }
+}
+
+public final class VoteForMvpMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation VoteForMVP($eventId: ID!, $voterId: ID!, $voteeId: ID!) {
+      voteForMvp(eventId: $eventId, voterId: $voterId, voteeId: $voteeId) {
+        __typename
+        id
+      }
+    }
+    """
+
+  public let operationName: String = "VoteForMVP"
+
+  public var eventId: GraphQLID
+  public var voterId: GraphQLID
+  public var voteeId: GraphQLID
+
+  public init(eventId: GraphQLID, voterId: GraphQLID, voteeId: GraphQLID) {
+    self.eventId = eventId
+    self.voterId = voterId
+    self.voteeId = voteeId
+  }
+
+  public var variables: GraphQLMap? {
+    return ["eventId": eventId, "voterId": voterId, "voteeId": voteeId]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("voteForMvp", arguments: ["eventId": GraphQLVariable("eventId"), "voterId": GraphQLVariable("voterId"), "voteeId": GraphQLVariable("voteeId")], type: .object(VoteForMvp.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(voteForMvp: VoteForMvp? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "voteForMvp": voteForMvp.flatMap { (value: VoteForMvp) -> ResultMap in value.resultMap }])
+    }
+
+    public var voteForMvp: VoteForMvp? {
+      get {
+        return (resultMap["voteForMvp"] as? ResultMap).flatMap { VoteForMvp(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "voteForMvp")
+      }
+    }
+
+    public struct VoteForMvp: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["Event"]
 
       public static var selections: [GraphQLSelection] {

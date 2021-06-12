@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct FinishPickupView: View {
-    var arrayOfNames = ["Arian", "David", "Ashwin", "Jimmy"]
     @State private var selectedIndex = 0
     let viewModel: NotificationViewModel
 
@@ -51,7 +50,13 @@ struct FinishPickupView: View {
 
                 .frame(width: 270, height: 120.0)
             }
-            
+            Button(action: {
+                let eventId = self.viewModel.event!.id
+                let voteeId = self.viewModel.event!.attendees[selectedIndex].fragments.userDetails.id
+                self.viewModel.voteForMvp(eventId: eventId, voteeId: voteeId)
+            }) {
+                Text("Vote")
+            }
         }
         }
 }
