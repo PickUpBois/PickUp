@@ -139,6 +139,6 @@ struct ProfileHeaderView: View {
 
 struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileHeaderView(user: GetUserQuery.Data.User(id: "1", firstName: "Ashwin", lastName: "Reynolds", username: "Arahbar", college: "ISU Cyclones"), showPhotoLibrary: .constant(false), auth: false).environmentObject(MockProfileViewModel(userId: "1"))
+        ProfileHeaderView(user: GetUserQuery.Data.User(id: "1", firstName: "Ashwin", lastName: "Reynolds", username: "Arahbar", college: "ISU Cyclones", goatScore: 4), showPhotoLibrary: .constant(false), auth: false).environmentObject(MockProfileViewModel(userId: "1"))
     }
 }

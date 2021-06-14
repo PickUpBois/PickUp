@@ -97,7 +97,7 @@ class ProfileViewModel: ObservableObject {
 class MockProfileViewModel: ProfileViewModel {
     
     override func retrieveUser() {
-        self.user = GetUserQuery.Data.User(id: "1", firstName: "arahbar", lastName: "David", username: "Reynolds", college: "")
+        self.user = GetUserQuery.Data.User(id: "1", firstName: "arahbar", lastName: "David", username: "Reynolds", college: "", goatScore: 4)
     }
     
     override func logout() {

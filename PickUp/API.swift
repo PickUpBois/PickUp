@@ -2400,6 +2400,7 @@ public final class GetUserQuery: GraphQLQuery {
         college
         photoUrl
         friendStatus(user_id: $authId)
+        goatScore
       }
     }
     """
@@ -2459,6 +2460,7 @@ public final class GetUserQuery: GraphQLQuery {
           GraphQLField("college", type: .scalar(String.self)),
           GraphQLField("photoUrl", type: .scalar(String.self)),
           GraphQLField("friendStatus", arguments: ["user_id": GraphQLVariable("authId")], type: .scalar(FriendStatus.self)),
+          GraphQLField("goatScore", type: .nonNull(.scalar(Int.self))),
         ]
       }
 
@@ -2468,8 +2470,8 @@ public final class GetUserQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID, firstName: String, lastName: String, username: String, college: String? = nil, photoUrl: String? = nil, friendStatus: FriendStatus? = nil) {
-        self.init(unsafeResultMap: ["__typename": "User", "id": id, "firstName": firstName, "lastName": lastName, "username": username, "college": college, "photoUrl": photoUrl, "friendStatus": friendStatus])
+      public init(id: GraphQLID, firstName: String, lastName: String, username: String, college: String? = nil, photoUrl: String? = nil, friendStatus: FriendStatus? = nil, goatScore: Int) {
+        self.init(unsafeResultMap: ["__typename": "User", "id": id, "firstName": firstName, "lastName": lastName, "username": username, "college": college, "photoUrl": photoUrl, "friendStatus": friendStatus, "goatScore": goatScore])
       }
 
       public var __typename: String {
@@ -2548,6 +2550,15 @@ public final class GetUserQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "friendStatus")
+        }
+      }
+
+      public var goatScore: Int {
+        get {
+          return resultMap["goatScore"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "goatScore")
         }
       }
     }
@@ -2823,6 +2834,10 @@ public struct EventDetails: GraphQLFragment {
           id
         }
       }
+      mvp {
+        __typename
+        id
+      }
     }
     """
 
@@ -2842,6 +2857,7 @@ public struct EventDetails: GraphQLFragment {
       GraphQLField("status", type: .nonNull(.scalar(EventStatus.self))),
       GraphQLField("winner", type: .object(Winner.selections)),
       GraphQLField("teams", type: .list(.nonNull(.object(Team.selections)))),
+      GraphQLField("mvp", type: .object(Mvp.selections)),
     ]
   }
 
@@ -2851,8 +2867,8 @@ public struct EventDetails: GraphQLFragment {
     self.resultMap = unsafeResultMap
   }
 
-  public init(id: GraphQLID, name: String, info: String, capacity: Int, attendees: [Attendee], startDate: String, endDate: String? = nil, type: EventType, status: EventStatus, winner: Winner? = nil, teams: [Team]? = nil) {
-    self.init(unsafeResultMap: ["__typename": "Event", "id": id, "name": name, "info": info, "capacity": capacity, "attendees": attendees.map { (value: Attendee) -> ResultMap in value.resultMap }, "startDate": startDate, "endDate": endDate, "type": type, "status": status, "winner": winner.flatMap { (value: Winner) -> ResultMap in value.resultMap }, "teams": teams.flatMap { (value: [Team]) -> [ResultMap] in value.map { (value: Team) -> ResultMap in value.resultMap } }])
+  public init(id: GraphQLID, name: String, info: String, capacity: Int, attendees: [Attendee], startDate: String, endDate: String? = nil, type: EventType, status: EventStatus, winner: Winner? = nil, teams: [Team]? = nil, mvp: Mvp? = nil) {
+    self.init(unsafeResultMap: ["__typename": "Event", "id": id, "name": name, "info": info, "capacity": capacity, "attendees": attendees.map { (value: Attendee) -> ResultMap in value.resultMap }, "startDate": startDate, "endDate": endDate, "type": type, "status": status, "winner": winner.flatMap { (value: Winner) -> ResultMap in value.resultMap }, "teams": teams.flatMap { (value: [Team]) -> [ResultMap] in value.map { (value: Team) -> ResultMap in value.resultMap } }, "mvp": mvp.flatMap { (value: Mvp) -> ResultMap in value.resultMap }])
   }
 
   public var __typename: String {
@@ -2963,6 +2979,15 @@ public struct EventDetails: GraphQLFragment {
     }
     set {
       resultMap.updateValue(newValue.flatMap { (value: [Team]) -> [ResultMap] in value.map { (value: Team) -> ResultMap in value.resultMap } }, forKey: "teams")
+    }
+  }
+
+  public var mvp: Mvp? {
+    get {
+      return (resultMap["mvp"] as? ResultMap).flatMap { Mvp(unsafeResultMap: $0) }
+    }
+    set {
+      resultMap.updateValue(newValue?.resultMap, forKey: "mvp")
     }
   }
 
@@ -3156,6 +3181,46 @@ public struct EventDetails: GraphQLFragment {
         set {
           resultMap.updateValue(newValue, forKey: "id")
         }
+      }
+    }
+  }
+
+  public struct Mvp: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["User"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(id: GraphQLID) {
+      self.init(unsafeResultMap: ["__typename": "User", "id": id])
+    }
+
+    public var __typename: String {
+      get {
+        return resultMap["__typename"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    /// ID of user
+    public var id: GraphQLID {
+      get {
+        return resultMap["id"]! as! GraphQLID
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "id")
       }
     }
   }

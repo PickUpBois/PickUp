@@ -13,6 +13,7 @@ query GetUser($id: String!, $authId: String!) {
 	college,
 	photoUrl,
 	friendStatus(user_id: $authId),
+	goatScore,
   }
 }
 

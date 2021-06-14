@@ -12,20 +12,24 @@ struct PastPickupView: View {
     var body: some View {
         ScrollView {
             //viewModel.upcomingEvents needs to change to Past - For Arian
-            ForEach(self.viewModel.upcomingEvents, id: \.self.id) { event in
+            ForEach(self.viewModel.pastEvents, id: \.self.id) { event in
                 Spacer().frame(height: 15)
                 VStack {
                         EventDetailsBoxView(event: event, joinEvent: { _ in return})
                         Spacer().frame(height: 10)
                 HStack{
                 HStack(alignment: .top){
-                        Text("🐐")
-                        Text("MVP")
-                            .fontWeight(.bold)
-                            .foregroundColor(.black)
-                            .lineLimit(1)
-                            .frame(alignment: .leading)}
-                    Spacer()
+                    Text("🐐")
+                    if event.mvp != nil {
+                        if event.mvp!.id == AppState.shared.authId {
+                            Text("MVP")
+                                .fontWeight(.bold)
+                                .foregroundColor(.black)
+                                .lineLimit(1)
+                                .frame(alignment: .leading)}
+                            Spacer()
+                        }
+                    }
                 HStack{
                         Text("🏅")
                         Text("W/L")

@@ -21,4 +21,7 @@ fragment EventDetails on Event {
 			id,
 		}
 	},
+	mvp {
+		id,
+	}
 }

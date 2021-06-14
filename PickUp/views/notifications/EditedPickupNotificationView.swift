@@ -13,7 +13,7 @@ struct EditedPickupNotificationView: View {
        
         VStack{
             HStack {
-                NavigationLink(destination: ProfileView(viewModel: MockProfileViewModel(userId: "1"), auth: true)) {
+                NavigationLink(destination: ProfileView(viewModel: ProfileViewModel(userId: "1"), auth: true)) {
                 Image("serena")
                     .resizable()
                     .foregroundColor(.blue)
