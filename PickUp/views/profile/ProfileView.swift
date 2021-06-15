@@ -14,6 +14,7 @@ struct ProfileView: View {
     @ObservedObject var viewModel: ProfileViewModel
     @State private var selection = 1
     @State var menuOpen: Bool = false
+    @State var popover = false
     var auth: Bool
     init(viewModel: ProfileViewModel, auth: Bool) {
         self.viewModel = viewModel
@@ -46,12 +47,21 @@ struct ProfileView: View {
             
             Spacer().frame(minHeight: 5, maxHeight: 10)
             
-            // friends list
-//            NavigationLink(
-//                destination: FriendsListView(viewModel: FriendsListViewModel(userId: self.viewModel.userId)),
-//                label: {
-//                    Text("Friend List")
-//                })
+            //popover for unfriending, blocking, and reporting
+            if auth{
+                
+            }
+            
+            else{
+                
+                if popover == true{
+            
+                    PopOverView()
+                    
+                }
+            }
+            
+
         }
         .sheet(isPresented: self.$viewModel.showPhotoLibrary) {
             ImagePicker(sourceType: .photoLibrary, userId: self.viewModel.userId)
@@ -82,6 +92,13 @@ struct ProfileView: View {
                     
                     else{
                         Spacer().frame(minWidth: 120, idealWidth: 120, maxWidth: 100, alignment: .center)
+                        Button( action: {
+                            withAnimation(.easeIn){popover.toggle()}
+
+                        }, label: {
+                            Image(systemName: "list.dash")
+                                .padding(.trailing)
+                        })
                     }
 
                     
@@ -92,6 +109,7 @@ struct ProfileView: View {
         
             
     }
+    
 }
 
 
@@ -131,4 +149,13 @@ struct ProfileView_Previews: PreviewProvider {
 //                            .padding(.horizontal, 20)
 //                    })
 //                    //Spacer().frame(height: 300)
+//                })
+
+
+
+// friends list
+//            NavigationLink(
+//                destination: FriendsListView(viewModel: FriendsListViewModel(userId: self.viewModel.userId)),
+//                label: {
+//                    Text("Friend List")
 //                })
