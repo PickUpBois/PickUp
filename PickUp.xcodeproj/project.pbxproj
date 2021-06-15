@@ -62,6 +62,7 @@
 		8D65B377265B06900085D5EE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B376265B06900085D5EE /* API.swift */; };
 		8D69FE8F2676FDC5009D2AFF /* VotedForMvpNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D69FE8E2676FDC5009D2AFF /* VotedForMvpNotificationView.swift */; };
 		8D69FE9326790B78009D2AFF /* InfoNotificationMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D69FE9226790B78009D2AFF /* InfoNotificationMessageView.swift */; };
+		8D69FE9626792CC6009D2AFF /* AuthenticationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D69FE9526792CC5009D2AFF /* AuthenticationInterceptor.swift */; };
 		8D7AC469266C772300672918 /* EventInvitationNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7AC468266C772300672918 /* EventInvitationNotificationView.swift */; };
 		8D7AC479266D081B00672918 /* EventSportSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7AC478266D081B00672918 /* EventSportSelectionView.swift */; };
 		8D7AC47E266D636400672918 /* EventDetailsBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7AC47D266D636400672918 /* EventDetailsBoxView.swift */; };
@@ -203,6 +204,7 @@
 		8D65B376265B06900085D5EE /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8D69FE8E2676FDC5009D2AFF /* VotedForMvpNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedForMvpNotificationView.swift; sourceTree = "<group>"; };
 		8D69FE9226790B78009D2AFF /* InfoNotificationMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoNotificationMessageView.swift; sourceTree = "<group>"; };
+		8D69FE9526792CC5009D2AFF /* AuthenticationInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationInterceptor.swift; sourceTree = "<group>"; };
 		8D7AC468266C772300672918 /* EventInvitationNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInvitationNotificationView.swift; sourceTree = "<group>"; };
 		8D7AC478266D081B00672918 /* EventSportSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSportSelectionView.swift; sourceTree = "<group>"; };
 		8D7AC47D266D636400672918 /* EventDetailsBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsBoxView.swift; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 		8D65B26D2658C9600085D5EE /* services */ = {
 			isa = PBXGroup;
 			children = (
+				8D69FE9426792CB3009D2AFF /* interceptors */,
 				8D65B26E2658C9F50085D5EE /* AuthService.swift */,
 				8D65B2762658CCF30085D5EE /* Services.swift */,
 				8D65B27B2658CD790085D5EE /* StorageService.swift */,
@@ -532,6 +535,14 @@
 				8D0FD6A32674616D006C84D3 /* NotificationViewModel.graphql */,
 			);
 			path = graphql;
+			sourceTree = "<group>";
+		};
+		8D69FE9426792CB3009D2AFF /* interceptors */ = {
+			isa = PBXGroup;
+			children = (
+				8D69FE9526792CC5009D2AFF /* AuthenticationInterceptor.swift */,
+			);
+			path = interceptors;
 			sourceTree = "<group>";
 		};
 		8DB8EF7926198976004AADED = {
@@ -909,7 +920,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=http://localhost:3000/graphql $SCRIPT_OUTPUT_FILE_0\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=${GRAPHQL_URL} $SCRIPT_OUTPUT_FILE_0\n";
 		};
 		8DFB9A2126509AB600254C57 /* Apollo CLI */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1056,6 +1067,7 @@
 				1A2E5BEC265CB784006A803A /* FinishPickupView.swift in Sources */,
 				C0151120265A09FB005EF24A /* CreatePostView.swift in Sources */,
 				8D65B2F626592FA70085D5EE /* FindTeammatesViewModel.swift in Sources */,
+				8D69FE9626792CC6009D2AFF /* AuthenticationInterceptor.swift in Sources */,
 				8DFB998D264E342800254C57 /* EventLocationPickerView.swift in Sources */,
 				1AB44EDB26439DB300568ECB /* TypingBlockView.swift in Sources */,
 				8DE52179266427FC0077AF09 /* FriendsListView.swift in Sources */,
