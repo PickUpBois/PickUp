@@ -1229,7 +1229,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PickUp/Preview Content\"";
 				DEVELOPMENT_TEAM = 5D593G8Q6L;
 				ENABLE_PREVIEWS = YES;
-				GRAPHQL_URL = "http://localhost:3000/graphql";
+				GRAPHQL_URL = "http://pickupserver.herokuapp.com/graphql";
 				HOST = "http://localhost:3000/";
 				INFOPLIST_FILE = PickUp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1254,7 +1254,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PickUp/Preview Content\"";
 				DEVELOPMENT_TEAM = 5D593G8Q6L;
 				ENABLE_PREVIEWS = YES;
-				GRAPHQL_URL = "http://localhost:3000/graphql";
+				GRAPHQL_URL = "http://pickupserver.herokuapp.com/graphql";
 				HOST = "http://localhost:3000/";
 				INFOPLIST_FILE = PickUp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
