@@ -101,6 +101,7 @@
 		C0151125265A2DF6005EF24A /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0151124265A2DF6005EF24A /* MessageView.swift */; };
 		C0151127265A36B8005EF24A /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0151126265A36B8005EF24A /* ChatView.swift */; };
 		C055C3CA2673074200FF40AA /* EditPickupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C055C3C92673074200FF40AA /* EditPickupViewModel.swift */; };
+		C06A97D326790DF2004966F0 /* PopOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A97D226790DF2004966F0 /* PopOverView.swift */; };
 		C088BBA7265780CB007301F7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088BBA6265780CB007301F7 /* MapViewModel.swift */; };
 		C088BBA9265785BE007301F7 /* MapMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088BBA8265785BE007301F7 /* MapMainView.swift */; };
 		C088BBAC26579A79007301F7 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088BBAB26579A79007301F7 /* Place.swift */; };
@@ -243,6 +244,7 @@
 		C0151124265A2DF6005EF24A /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		C0151126265A36B8005EF24A /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		C055C3C92673074200FF40AA /* EditPickupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPickupViewModel.swift; sourceTree = "<group>"; };
+		C06A97D226790DF2004966F0 /* PopOverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopOverView.swift; sourceTree = "<group>"; };
 		C088BBA6265780CB007301F7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		C088BBA8265785BE007301F7 /* MapMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMainView.swift; sourceTree = "<group>"; };
 		C088BBAB26579A79007301F7 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				8D30B10F263E232C002B4C62 /* ProfileHeaderView.swift */,
 				8D30B107263E2146002B4C62 /* ProfilePicture.swift */,
 				1A2E5BED265CBE38006A803A /* PastScoresView.swift */,
+				C06A97D226790DF2004966F0 /* PopOverView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -1022,6 +1025,7 @@
 				8D65B27C2658CD790085D5EE /* StorageService.swift in Sources */,
 				8D65B2D826590F310085D5EE /* HomeViewModel.swift in Sources */,
 				C0B63B38267059A4008237EE /* CourtsNearMeFullView.swift in Sources */,
+				C06A97D326790DF2004966F0 /* PopOverView.swift in Sources */,
 				8D2A3EF3261EC3E100521A6A /* SignUpView.swift in Sources */,
 				1A2E5BE526586698006A803A /* FinishPickupNotificationView.swift in Sources */,
 				8D5EE02F2652D58300EE7840 /* CourtsNearMeListView.swift in Sources */,
