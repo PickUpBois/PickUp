@@ -14,7 +14,7 @@ struct PopOverView: View {
             
             Button(action:{
             }) {
-                    Text("Remove Friend")
+                Text("Remove Friend")
             }
             
             Divider()
@@ -33,7 +33,6 @@ struct PopOverView: View {
         .foregroundColor(.black)
         .frame(width: 150)
         .padding()
-        .background(Color.white.opacity(0.2))
 }
 }
 

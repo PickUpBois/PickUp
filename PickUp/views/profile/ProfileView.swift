@@ -47,7 +47,7 @@ struct ProfileView: View {
             
             Spacer().frame(minHeight: 5, maxHeight: 10)
             
-            
+            //popover for unfriending, blocking, and reporting
             if auth{
                 
             }
@@ -55,8 +55,7 @@ struct ProfileView: View {
             else{
                 
                 if popover == true{
-                    
-                    Spacer()
+            
                     PopOverView()
                     
                 }
@@ -93,12 +92,12 @@ struct ProfileView: View {
                     
                     else{
                         Spacer().frame(minWidth: 120, idealWidth: 120, maxWidth: 100, alignment: .center)
-                        
                         Button( action: {
                             withAnimation(.easeIn){popover.toggle()}
 
                         }, label: {
                             Image(systemName: "list.dash")
+                                .padding(.trailing)
                         })
                     }
 
