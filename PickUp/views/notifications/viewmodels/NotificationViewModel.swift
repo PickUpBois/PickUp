@@ -7,6 +7,20 @@
 
 import Foundation
 
+enum ResultStatus {
+    case loading
+    case success
+    case failure
+}
+
+enum ActionStatus {
+    case none
+    case ip
+    case loading
+    case success
+    case failure
+}
+
 class NotificationViewModel: ObservableObject {
     let notificationId: String
     let type: NotificationType
@@ -14,6 +28,7 @@ class NotificationViewModel: ObservableObject {
     let event: EventDetails?
     let actor: UserDetails?
     let getNotifications: () -> Void
+    @Published var actionStatus: ActionStatus = .none
     
     
     init(notificationId: String, type: NotificationType, timestamp: Date, event: EventDetails?, actor: UserDetails?, getNotifications: @escaping () -> Void) {
@@ -132,13 +147,16 @@ class NotificationViewModel: ObservableObject {
     
     func voteForMvp(eventId: String, voteeId: String) {
         let voterId = AppState.shared.authId!
+        self.actionStatus = .loading
         Services.shared.apollo.perform(mutation: VoteForMvpMutation(eventId: eventId, voterId: voterId, voteeId: voteeId)) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
                     print(errors[0].localizedDescription)
+                    self.actionStatus = .failure
                     return
                 }
+                self.actionStatus = .success
                 self.getNotifications()
             case .failure(let error):
                 print(error.localizedDescription)

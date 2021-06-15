@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ConfirmationNotificationView: View {
     @State var showPopUp = false
-    let viewModel: NotificationViewModel
+    @ObservedObject var viewModel: NotificationViewModel
     let location: String
     var owner: UserDetails?
     
@@ -92,20 +92,29 @@ struct ConfirmationNotificationView: View {
             Spacer().frame(height: 10)
                 HStack{
                     Button(action: {
-                        self.showPopUp.toggle()
+                        self.viewModel.actionStatus = .ip
                     },label: {
                         Text("\(owner!.firstName) has entered a score of \(getScoreString()) for the event \(viewModel.event!.name) at \(location). Press here to confirm score and finish Pickup!")
                             .foregroundColor(Color.purple)
                             .padding(.leading, 10.0)
                             .lineLimit(3)
                     })
-                }.sheet(isPresented: $showPopUp, content: {
+                }.sheet(isPresented: Binding(get: {
+                    switch self.viewModel.actionStatus {
+                    case .none, .success:
+                        return false
+                    case .ip, .failure, .loading:
+                        return true
+                    }
+                }, set: {_ in
+                    return
+                }), content: {
                     
-                    FinishPickupView(viewModel: viewModel)
+                    FinishPickupView(showPopUp: $showPopUp, viewModel: viewModel)
                         .background(Color.white.opacity(0.9))
                     
                     Button(action: {
-                        self.showPopUp.toggle()
+                        self.viewModel.actionStatus = .none
                     },label: {
                         Text("Dismiss")
                             .foregroundColor(Color.white)

@@ -9,6 +9,27 @@ import SwiftUI
 
 struct PastPickupView: View {
 @EnvironmentObject var viewModel: ProfileViewModel
+    
+    func getWinLoss(event: EventDetails) -> String {
+        print(event)
+        var teamIndex = 0
+        for i in 0..<event.teams![1].members.count {
+            let memberId = event.teams![1].members[i].id
+            if AppState.shared.authId == memberId {
+                teamIndex = 1
+                break
+            }
+        }
+        let teamId = event.teams![teamIndex].id
+        let winnerId = event.winner!.id
+        if teamId == winnerId {
+            return "W"
+        } else {
+            return "L"
+        }
+        
+        
+    }
     var body: some View {
         ScrollView {
             //viewModel.upcomingEvents needs to change to Past - For Arian
@@ -32,7 +53,7 @@ struct PastPickupView: View {
                     }
                 HStack{
                         Text("🏅")
-                        Text("W/L")
+                        Text(getWinLoss(event: event))
                             .fontWeight(.bold)
                             .foregroundColor(.black)
                             .lineLimit(1)

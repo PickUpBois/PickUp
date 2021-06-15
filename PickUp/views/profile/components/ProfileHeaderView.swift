@@ -17,57 +17,49 @@ struct ProfileHeaderView: View {
     @State var showPopUp = false
     @EnvironmentObject var profileViewModel: ProfileViewModel
     @Binding var showPhotoLibrary: Bool
-    let firstName: String
-    let lastName: String
-    let username: String
-    let college: String?
-    let photoUrl: String?
     let auth: Bool
     @State private var showingUnfollowAlert = false
     @State private var showingFollowAlert = false
-    init(user: GetUserQuery.Data.User?, showPhotoLibrary: Binding<Bool>, auth: Bool) {
-        self.firstName = user?.firstName ?? "NA"
-        self.lastName = user?.lastName ?? "NA"
-        self.username = user?.username ?? "NA"
-        self.college = user?.college
-        self.photoUrl = user?.photoUrl
+    init(showPhotoLibrary: Binding<Bool>, auth: Bool) {
         self._showPhotoLibrary = showPhotoLibrary
         self.auth = auth
     }
     var body: some View {
         VStack(alignment: .center) {
-            HStack{Text("\(firstName)'s Profile").font(.title3) // Leading title on page
+            HStack{Text("\(self.profileViewModel.user?.firstName ?? "NA")'s Profile").font(.title3) // Leading title on page
             .fontWeight(.bold)
             .padding(.top)
-           
+                
                 //not following yet
                 if !auth {
-                    Button(action: {
-                        self.showingFollowAlert = true
-                    },
-                           label: {Image(systemName: "plus.square.fill")
-                            .foregroundColor(Color.red)
-                            .padding(.top)
-                            .alert(isPresented: $showingFollowAlert) {
-                                Alert(title: Text("Confirm Follow!"), message: Text("Are you sure you want to add \(firstName) as a teammate?"), primaryButton: .default(Text("Yes")) {
-                                    self.profileViewModel.addFriend()
-                                }, secondaryButton: .destructive(Text("Cancel")))
-                            }
-                           })
-                            
-                   //if following, click to unfollow
-                    Button(action: {
-                        self.showingUnfollowAlert = true
-                    },label: {
-                        Image(systemName: "checkmark.square.fill")
-                                .foregroundColor(Color.green)
+                    if self.profileViewModel.user?.friendStatus == nil {
+                        Button(action: {
+                            self.showingFollowAlert = true
+                        },
+                               label: {Image(systemName: "plus.square.fill")
+                                .foregroundColor(Color.red)
                                 .padding(.top)
-                            .alert(isPresented: $showingUnfollowAlert) {
-                            Alert(title: Text("Confirm Unfollow!"), message: Text("Are you sure you want to remove \(firstName) as a teammate?"), primaryButton: .default(Text("Yes")) {
-                                    print("Yeah")
-                            }, secondaryButton: .destructive(Text("Cancel")))
-                        }
-                    })
+                                .alert(isPresented: $showingFollowAlert) {
+                                    Alert(title: Text("Confirm Follow!"), message: Text("Are you sure you want to add \(self.profileViewModel.user?.firstName ?? "NA") as a teammate?"), primaryButton: .default(Text("Yes")) {
+                                        self.profileViewModel.addFriend()
+                                    }, secondaryButton: .destructive(Text("Cancel")))
+                                }
+                               })
+                    } else {
+                        //if following, click to unfollow
+                         Button(action: {
+                             self.showingUnfollowAlert = true
+                         },label: {
+                             Image(systemName: "checkmark.square.fill")
+                                     .foregroundColor(Color.green)
+                                     .padding(.top)
+                                 .alert(isPresented: $showingUnfollowAlert) {
+                                     Alert(title: Text("Confirm Unfollow!"), message: Text("Are you sure you want to remove \(self.profileViewModel.user?.firstName ?? "NA") as a teammate?"), primaryButton: .default(Text("Yes")) {
+                                         print("Yeah")
+                                 }, secondaryButton: .destructive(Text("Cancel")))
+                             }
+                         })
+                    }
                     
                 }
                 
@@ -85,13 +77,13 @@ struct ProfileHeaderView: View {
 //                        self.showPhotoLibrary = true
                         print("image was tapped")
                     }) {
-                        ProfilePicture(photoUrl: self.photoUrl)
+                        ProfilePicture(photoUrl: self.profileViewModel.user?.photoUrl)
                     }
-                    Text("\(firstName) \(lastName)")
+                    Text("\(self.profileViewModel.user?.firstName ?? "NA") \(self.profileViewModel.user?.lastName ?? "NA")")
                         .font(.headline).fontWeight(.bold).foregroundColor(Color.black)
                         .multilineTextAlignment(.center)
                         .frame(minWidth: 150, maxWidth: 1000)
-                    Text(college ?? "No College").font(.headline).fontWeight(.light).foregroundColor(Color.red).multilineTextAlignment(.center)
+                    Text(self.profileViewModel.user?.college ?? "No College").font(.headline).fontWeight(.light).foregroundColor(Color.red).multilineTextAlignment(.center)
                         .frame(minWidth: 150, maxWidth: 1000)
                     Spacer()
                         //Space between profile picture center of page
@@ -100,7 +92,7 @@ struct ProfileHeaderView: View {
                 VStack {
                 Text("Total").font(.headline).foregroundColor(Color.black)
                 Text("Pickups").font(.headline).foregroundColor(Color.black)
-                    Text("50").font(.title).fontWeight(.bold)
+                    Text("\(self.profileViewModel.pastEvents.count)").font(.title).fontWeight(.bold)
                     Spacer()
                 }
                 VStack {
@@ -111,7 +103,7 @@ struct ProfileHeaderView: View {
                             VStack{
                                 Text("Team").font(.headline).foregroundColor(Color.black)
                                 Text("Members").font(.headline).foregroundColor(Color.black)
-                                Text("50").font(.title).fontWeight(.bold).foregroundColor(Color.black)
+                                Text("\(self.profileViewModel.user?.friends.count ?? 0)").font(.title).fontWeight(.bold).foregroundColor(Color.black)
                                 
                                 Spacer()
                             }
@@ -139,6 +131,6 @@ struct ProfileHeaderView: View {
 
 struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileHeaderView(user: GetUserQuery.Data.User(id: "1", firstName: "Ashwin", lastName: "Reynolds", username: "Arahbar", college: "ISU Cyclones", goatScore: 4), showPhotoLibrary: .constant(false), auth: false).environmentObject(MockProfileViewModel(userId: "1"))
+        ProfileHeaderView(showPhotoLibrary: .constant(false), auth: false).environmentObject(MockProfileViewModel(userId: "1"))
     }
 }

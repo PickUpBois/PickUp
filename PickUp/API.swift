@@ -2401,6 +2401,10 @@ public final class GetUserQuery: GraphQLQuery {
         photoUrl
         friendStatus(user_id: $authId)
         goatScore
+        friends {
+          __typename
+          id
+        }
       }
     }
     """
@@ -2461,6 +2465,7 @@ public final class GetUserQuery: GraphQLQuery {
           GraphQLField("photoUrl", type: .scalar(String.self)),
           GraphQLField("friendStatus", arguments: ["user_id": GraphQLVariable("authId")], type: .scalar(FriendStatus.self)),
           GraphQLField("goatScore", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("friends", type: .nonNull(.list(.nonNull(.object(Friend.selections))))),
         ]
       }
 
@@ -2470,8 +2475,8 @@ public final class GetUserQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID, firstName: String, lastName: String, username: String, college: String? = nil, photoUrl: String? = nil, friendStatus: FriendStatus? = nil, goatScore: Int) {
-        self.init(unsafeResultMap: ["__typename": "User", "id": id, "firstName": firstName, "lastName": lastName, "username": username, "college": college, "photoUrl": photoUrl, "friendStatus": friendStatus, "goatScore": goatScore])
+      public init(id: GraphQLID, firstName: String, lastName: String, username: String, college: String? = nil, photoUrl: String? = nil, friendStatus: FriendStatus? = nil, goatScore: Int, friends: [Friend]) {
+        self.init(unsafeResultMap: ["__typename": "User", "id": id, "firstName": firstName, "lastName": lastName, "username": username, "college": college, "photoUrl": photoUrl, "friendStatus": friendStatus, "goatScore": goatScore, "friends": friends.map { (value: Friend) -> ResultMap in value.resultMap }])
       }
 
       public var __typename: String {
@@ -2559,6 +2564,55 @@ public final class GetUserQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "goatScore")
+        }
+      }
+
+      public var friends: [Friend] {
+        get {
+          return (resultMap["friends"] as! [ResultMap]).map { (value: ResultMap) -> Friend in Friend(unsafeResultMap: value) }
+        }
+        set {
+          resultMap.updateValue(newValue.map { (value: Friend) -> ResultMap in value.resultMap }, forKey: "friends")
+        }
+      }
+
+      public struct Friend: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["User"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID) {
+          self.init(unsafeResultMap: ["__typename": "User", "id": id])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// ID of user
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
         }
       }
     }

@@ -9,10 +9,10 @@ import SwiftUI
 
 struct FinishPickupView: View {
     @State private var selectedIndex = 0
+    @Binding var showPopUp: Bool
     let viewModel: NotificationViewModel
 
     var body: some View {
-        
         Spacer().frame(height: 20)
         
         VStack (alignment: .leading){
@@ -63,6 +63,6 @@ struct FinishPickupView: View {
 
 struct FinishPickupView_Previews: PreviewProvider {
     static var previews: some View {
-        FinishPickupView(viewModel: MockNotificationViewModel())
+        FinishPickupView(showPopUp: .constant(false), viewModel: MockNotificationViewModel())
     }
 }
