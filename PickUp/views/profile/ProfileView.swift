@@ -56,7 +56,7 @@ struct ProfileView: View {
                 
                 if popover == true{
             
-                    PopOverView()
+                    PopOverView().environmentObject(self.viewModel)
                     
                 }
             }

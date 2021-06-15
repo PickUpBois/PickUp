@@ -442,9 +442,9 @@
 				1A03F99E263F482F00C2E2CD /* UpcomingPickupsView.swift */,
 				1A03F99C263F473000C2E2CD /* PastPickupView.swift */,
 				8D30B10F263E232C002B4C62 /* ProfileHeaderView.swift */,
-				8D30B107263E2146002B4C62 /* ProfilePicture.swift */,
 				1A2E5BED265CBE38006A803A /* PastScoresView.swift */,
 				C06A97D226790DF2004966F0 /* PopOverView.swift */,
+				8D30B107263E2146002B4C62 /* ProfilePicture.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";

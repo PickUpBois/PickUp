@@ -8,13 +8,23 @@
 import SwiftUI
 
 struct PopOverView: View {
+    @EnvironmentObject var viewModel: ProfileViewModel
     var body: some View {
         
         VStack(alignment: .center, spacing: 18) {
             
             Button(action:{
+                if self.viewModel.user?.friendStatus == .friend {
+                    self.viewModel.removeFriend()
+                } else {
+                    self.viewModel.addFriend()
+                }
             }) {
-                Text("Remove Friend")
+                if self.viewModel.user?.friendStatus == .friend {
+                    Text("Remove Friend")
+                } else {
+                    Text("Add Friend")
+                }
             }
             
             Divider()
