@@ -25,3 +25,9 @@ mutation SendFriendRequest($userId: String!, $friendId: String!) {
 	id
   }
 }
+
+mutation RemoveFriend($userId: ID!, $friendId: ID!) {
+  removeFriend(userId: $userId, friendId: $friendId) {
+	id,
+  }
+}

@@ -55,7 +55,7 @@ struct ProfileHeaderView: View {
                                      .padding(.top)
                                  .alert(isPresented: $showingUnfollowAlert) {
                                      Alert(title: Text("Confirm Unfollow!"), message: Text("Are you sure you want to remove \(self.profileViewModel.user?.firstName ?? "NA") as a teammate?"), primaryButton: .default(Text("Yes")) {
-                                         print("Yeah")
+                                        self.profileViewModel.removeFriend()
                                  }, secondaryButton: .destructive(Text("Cancel")))
                              }
                          })

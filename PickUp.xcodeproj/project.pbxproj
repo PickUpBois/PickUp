@@ -61,6 +61,7 @@
 		8D65B2FB265931900085D5EE /* FindTeammatesViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8D65B2FA265931900085D5EE /* FindTeammatesViewModel.graphql */; };
 		8D65B377265B06900085D5EE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B376265B06900085D5EE /* API.swift */; };
 		8D69FE8F2676FDC5009D2AFF /* VotedForMvpNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D69FE8E2676FDC5009D2AFF /* VotedForMvpNotificationView.swift */; };
+		8D69FE9326790B78009D2AFF /* InfoNotificationMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D69FE9226790B78009D2AFF /* InfoNotificationMessageView.swift */; };
 		8D7AC469266C772300672918 /* EventInvitationNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7AC468266C772300672918 /* EventInvitationNotificationView.swift */; };
 		8D7AC479266D081B00672918 /* EventSportSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7AC478266D081B00672918 /* EventSportSelectionView.swift */; };
 		8D7AC47E266D636400672918 /* EventDetailsBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7AC47D266D636400672918 /* EventDetailsBoxView.swift */; };
@@ -200,6 +201,7 @@
 		8D65B2FA265931900085D5EE /* FindTeammatesViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FindTeammatesViewModel.graphql; sourceTree = "<group>"; };
 		8D65B376265B06900085D5EE /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8D69FE8E2676FDC5009D2AFF /* VotedForMvpNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedForMvpNotificationView.swift; sourceTree = "<group>"; };
+		8D69FE9226790B78009D2AFF /* InfoNotificationMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoNotificationMessageView.swift; sourceTree = "<group>"; };
 		8D7AC468266C772300672918 /* EventInvitationNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInvitationNotificationView.swift; sourceTree = "<group>"; };
 		8D7AC478266D081B00672918 /* EventSportSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSportSelectionView.swift; sourceTree = "<group>"; };
 		8D7AC47D266D636400672918 /* EventDetailsBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsBoxView.swift; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 				8DE5216C2663FC760077AF09 /* FriendRequestResponseNotificationView.swift */,
 				8D7AC468266C772300672918 /* EventInvitationNotificationView.swift */,
 				8D69FE8E2676FDC5009D2AFF /* VotedForMvpNotificationView.swift */,
+				8D69FE9226790B78009D2AFF /* InfoNotificationMessageView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -1044,6 +1047,7 @@
 				C0151127265A36B8005EF24A /* ChatView.swift in Sources */,
 				8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */,
 				8D5EE07A26531EC200EE7840 /* ProfilePastEventView.swift in Sources */,
+				8D69FE9326790B78009D2AFF /* InfoNotificationMessageView.swift in Sources */,
 				8DFCF50E262788AF00BBFE66 /* FindTeammatesView.swift in Sources */,
 				1A2E5BEC265CB784006A803A /* FinishPickupView.swift in Sources */,
 				C0151120265A09FB005EF24A /* CreatePostView.swift in Sources */,

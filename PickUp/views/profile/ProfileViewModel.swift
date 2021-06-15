@@ -63,6 +63,23 @@ class ProfileViewModel: ObservableObject {
                     print(errors[0].localizedDescription)
                     return
                 }
+                self.retrieveUser()
+            case .failure(let error):
+                print(error.localizedDescription)
+                return
+            }
+        }
+    }
+    
+    func removeFriend() {
+        Services.shared.apollo.perform(mutation: RemoveFriendMutation(userId: AppState.shared.authId!, friendId: userId)) { response in
+            switch response {
+            case .success(let result):
+                if let errors = result.errors {
+                    print(errors[0].localizedDescription)
+                    return
+                }
+                self.retrieveUser()
             case .failure(let error):
                 print(error.localizedDescription)
                 return
