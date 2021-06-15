@@ -14,21 +14,25 @@ struct NotificationListView: View {
         self.viewModel = viewModel
     }
     var body: some View {
-        List(self.viewModel.notifications.indices, id: \.self) { i in
-            let notificationViewModel = self.viewModel.notifications[i]
-            switch self.viewModel.notifications[i].type {
-            case .friendRequestSend:
-                FriendRequestNotificationView(viewModel: notificationViewModel)
-            case .friendRequestAccept:
-                FriendRequestResponseNotificationView(viewModel: notificationViewModel)
-            case .friendRequestReject:
-                FriendRequestResponseNotificationView(viewModel: notificationViewModel)
-            case .finishEvent:
-                FinishPickupNotificationView(viewModel: notificationViewModel)
-            case .voteForMvp:
-                ConfirmationNotificationView(viewModel: notificationViewModel)
-            default:
-                Text("error")
+        ScrollView {
+            ForEach(self.viewModel.notifications.indices, id: \.self) { i in
+                let notificationViewModel = self.viewModel.notifications[i]
+                switch self.viewModel.notifications[i].type {
+                case .friendRequestSend:
+                    FriendRequestNotificationView(viewModel: notificationViewModel)
+                case .friendRequestAccept:
+                    FriendRequestResponseNotificationView(viewModel: notificationViewModel)
+                case .friendRequestReject:
+                    FriendRequestResponseNotificationView(viewModel: notificationViewModel)
+                case .finishEvent:
+                    FinishPickupNotificationView(viewModel: notificationViewModel)
+                case .voteForMvp:
+                    ConfirmationNotificationView(viewModel: notificationViewModel)
+                case .selectedMvp:
+                    VotedForMvpNotificationView(viewModel: notificationViewModel)
+                default:
+                    Text("error")
+                }
             }
         }
         .onAppear {

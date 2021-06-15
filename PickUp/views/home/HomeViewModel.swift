@@ -20,7 +20,8 @@ class HomeViewModel: ObservableObject {
                 switch response {
                 case .success(let result):
                     if let errors = result.errors {
-                        print(errors[0].localizedDescription)
+                        print("error in getting events")
+                        print(errors[0].errorDescription)
                     }
                     guard let data = result.data else {
                         print("error in graphql query")

@@ -82,8 +82,14 @@ class ProfileViewModel: ObservableObject {
                     print("error in graphql query")
                     return
                 }
-                self.upcomingEvents = data.userEvents.map { userEvent in
-                    return userEvent.fragments.eventDetails
+                if status == .open {
+                    self.upcomingEvents = data.userEvents.map { userEvent in
+                        return userEvent.fragments.eventDetails
+                    }
+                } else {
+                    self.pastEvents = data.userEvents.map { userEvent in
+                        return userEvent.fragments.eventDetails
+                    }
                 }
                 return
             case .failure(let error):

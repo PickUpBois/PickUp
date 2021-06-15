@@ -8,16 +8,12 @@
 import SwiftUI
 
 struct FriendsListView: View {
-    @ObservedObject var viewModel: FriendsListViewModel
-    init(viewModel: FriendsListViewModel) {
-        self.viewModel = viewModel
-    }
+    @StateObject var viewModel: FriendsListViewModel
     @State private var showingFollowAlert = false
     var body: some View {
-        NavigationView{
-        VStack{
             ScrollView {
-                ForEach(self.viewModel.friends, id: \.self.id) { user in
+                ForEach(self.viewModel.friends.indices, id: \.self) { i in
+                    let friend = self.viewModel.friends[i]
                     HStack{
                     Image("serena")
                         .resizable()
@@ -27,17 +23,17 @@ struct FriendsListView: View {
                         .shadow(radius: 2)
                         .overlay(Circle().stroke(Color.black, lineWidth: 2))
                         .padding()
-                        
+
                         VStack(alignment: .leading){
-                        FriendItemView(id: user.id, username: user.username)
+                        FriendItemView(id: friend.id, username: friend.username)
                             .frame(alignment: .leading)
-                            
+
                             HStack{
-                            Text("Ashwin Yedavalli")
+                                Text("\(friend.firstName) \(friend.lastName)")
                                 .fontWeight(.light)
-                                
+
                             Spacer()
-                            
+
                             Button(action: {
                                     self.showingFollowAlert = true
                                 }, label: {
@@ -50,20 +46,19 @@ struct FriendsListView: View {
                                 }})
 
                             }
-                            
+
                             Text("69 mutual friends")
                                 .fontWeight(.light)
-                            
+
                         }.frame(width: 300, alignment: .leading)
-                        
+
                     }.frame(alignment: .topLeading)
                 }
             }
-        }.onAppear(perform: {
+            .onAppear(perform: {
             self.viewModel.getFriends()
         })
-
-        }.navigationTitle("Teammates")
+        .navigationTitle("Teammates")
     }
 }
 

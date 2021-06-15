@@ -12,7 +12,7 @@ import FirebaseAuth
 
 class Services {
     
-    static let emulator: Bool = false
+    static let emulator: Bool = true
     
     static var auth: Auth = buildFirebaseAuth(emulator: emulator)
     
@@ -27,7 +27,7 @@ class Services {
     
     
     static let shared = Services()
-    private(set) lazy var apollo = ApolloClient(url: URL(string: "https://pickupserver.herokuapp.com/graphql")!)
+    private(set) lazy var apollo = ApolloClient(url: URL(string: "http://localhost:3000/graphql")!)
     private(set) lazy var auth = AuthService(auth: Services.auth)
     private(set) lazy var storage = StorageService(storage: Storage.storage())
     private(set) lazy var rest = RestService()

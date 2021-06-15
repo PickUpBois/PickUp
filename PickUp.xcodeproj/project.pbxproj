@@ -60,6 +60,7 @@
 		8D65B2F626592FA70085D5EE /* FindTeammatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B2F526592FA70085D5EE /* FindTeammatesViewModel.swift */; };
 		8D65B2FB265931900085D5EE /* FindTeammatesViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8D65B2FA265931900085D5EE /* FindTeammatesViewModel.graphql */; };
 		8D65B377265B06900085D5EE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B376265B06900085D5EE /* API.swift */; };
+		8D69FE8F2676FDC5009D2AFF /* VotedForMvpNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D69FE8E2676FDC5009D2AFF /* VotedForMvpNotificationView.swift */; };
 		8D7AC469266C772300672918 /* EventInvitationNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7AC468266C772300672918 /* EventInvitationNotificationView.swift */; };
 		8D7AC479266D081B00672918 /* EventSportSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7AC478266D081B00672918 /* EventSportSelectionView.swift */; };
 		8D7AC47E266D636400672918 /* EventDetailsBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7AC47D266D636400672918 /* EventDetailsBoxView.swift */; };
@@ -198,6 +199,7 @@
 		8D65B2F526592FA70085D5EE /* FindTeammatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindTeammatesViewModel.swift; sourceTree = "<group>"; };
 		8D65B2FA265931900085D5EE /* FindTeammatesViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FindTeammatesViewModel.graphql; sourceTree = "<group>"; };
 		8D65B376265B06900085D5EE /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		8D69FE8E2676FDC5009D2AFF /* VotedForMvpNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedForMvpNotificationView.swift; sourceTree = "<group>"; };
 		8D7AC468266C772300672918 /* EventInvitationNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInvitationNotificationView.swift; sourceTree = "<group>"; };
 		8D7AC478266D081B00672918 /* EventSportSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSportSelectionView.swift; sourceTree = "<group>"; };
 		8D7AC47D266D636400672918 /* EventDetailsBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsBoxView.swift; sourceTree = "<group>"; };
@@ -610,6 +612,7 @@
 				1A2E5BE026586455006A803A /* FriendRequestNotificationView.swift */,
 				8DE5216C2663FC760077AF09 /* FriendRequestResponseNotificationView.swift */,
 				8D7AC468266C772300672918 /* EventInvitationNotificationView.swift */,
+				8D69FE8E2676FDC5009D2AFF /* VotedForMvpNotificationView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -900,7 +903,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=${GRAPHQL_URL} $SCRIPT_OUTPUT_FILE_0\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=http://localhost:3000/graphql $SCRIPT_OUTPUT_FILE_0\n";
 		};
 		8DFB9A2126509AB600254C57 /* Apollo CLI */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1036,6 +1039,7 @@
 				1A2E5BE3265865EB006A803A /* ConfirmationNotificationView.swift in Sources */,
 				1A49DC0D265466BD007F28FD /* PostedPickUpsView.swift in Sources */,
 				8D7AC479266D081B00672918 /* EventSportSelectionView.swift in Sources */,
+				8D69FE8F2676FDC5009D2AFF /* VotedForMvpNotificationView.swift in Sources */,
 				C088BBA7265780CB007301F7 /* MapViewModel.swift in Sources */,
 				C0151127265A36B8005EF24A /* ChatView.swift in Sources */,
 				8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */,

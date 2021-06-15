@@ -49,7 +49,6 @@ struct HomeView: View {
         }
         .onAppear(perform: {
             self.viewModel.getUpcomingEvents()
-            self.viewModel.getNotifications()
         })
         .navigationBarTitleDisplayMode(.inline)
         .toolbar{

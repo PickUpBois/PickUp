@@ -139,6 +139,7 @@ class NotificationViewModel: ObservableObject {
                     print(errors[0].localizedDescription)
                     return
                 }
+                self.getNotifications()
             case .failure(let error):
                 print(error.localizedDescription)
             }

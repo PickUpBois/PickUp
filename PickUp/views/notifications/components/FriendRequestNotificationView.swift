@@ -22,22 +22,24 @@ struct FriendRequestNotificationView: View {
       
         VStack{
                 HStack {
-                    NavigationLink(destination: ProfileView(viewModel: ProfileViewModel(userId: viewModel.actor!.id), auth: false))
-                    {
-                    Image("serena")
-                        .resizable()
-                        .foregroundColor(.blue)
-                        .frame(width: 25, height: 25, alignment: .center)
-                        .clipShape(Circle())
-                        .shadow(radius: 2)
-                        .overlay(Circle().stroke(Color.black, lineWidth: 2))
-                    
-                        Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName)")
-                        .fontWeight(.heavy)
-                        .foregroundColor(Color.black)
-                        .lineLimit(1)
+                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                        NavigationLink(destination: ProfileView(viewModel: ProfileViewModel(userId: viewModel.actor!.id), auth: false))
+                        {
+                        Image("serena")
+                            .resizable()
+                            .foregroundColor(.blue)
+                            .frame(width: 25, height: 25, alignment: .center)
+                            .clipShape(Circle())
+                            .shadow(radius: 2)
+                            .overlay(Circle().stroke(Color.black, lineWidth: 2))
                         
-                    }
+                            Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName)")
+                            .fontWeight(.heavy)
+                            .foregroundColor(Color.black)
+                            .lineLimit(1)
+                            
+                        }
+                    })
                     Spacer()
                     Text(getDate(date: viewModel.timestamp))
                     .lineLimit(1)
