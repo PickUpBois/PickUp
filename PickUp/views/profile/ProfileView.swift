@@ -74,6 +74,9 @@ struct ProfileView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar{
+            ToolbarItem(placement: .navigationBarLeading) {
+                HStack {}
+            }
             ToolbarItem(placement: .principal) {
                 HStack {
                     Image("logo2")

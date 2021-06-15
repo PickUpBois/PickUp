@@ -38,6 +38,6 @@ struct PopOverView: View {
 
 struct PopOverView_Previews: PreviewProvider {
     static var previews: some View {
-        PopOverView()
+        PopOverView().environmentObject(MockProfileViewModel(userId: "1"))
     }
 }
