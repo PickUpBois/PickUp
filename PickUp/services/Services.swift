@@ -29,9 +29,11 @@ class NetworkInterceptorProvider: LegacyInterceptorProvider {
 
 class Services {
     
-    static let emulator: Bool = false
+    static let emulator: Bool = true
     
     static var auth: Auth = buildFirebaseAuth(emulator: emulator)
+    
+    static var storage: Storage = buildFirebaseStorage(emulator: emulator)
     
     static private func buildFirebaseAuth(emulator: Bool = false) -> Auth {
         let auth = Auth.auth()
@@ -39,6 +41,14 @@ class Services {
             auth.useEmulator(withHost: "localhost", port: 9099)
         }
         return auth
+    }
+    
+    static private func buildFirebaseStorage(emulator: Bool = false) -> Storage {
+        let storage = Storage.storage()
+        if emulator {
+            storage.useEmulator(withHost:"localhost", port:9199)
+        }
+        return storage
     }
     
     
@@ -51,7 +61,7 @@ class Services {
       
       let client = URLSessionClient()
         let provider = NetworkInterceptorProvider(store: store, client: client, auth: Services.auth)
-      let url = URL(string: "https://pickupserver.herokuapp.com/graphql")!
+        let url =  URL(string: Services.emulator ? "http://localhost:3000/graphql" : "https://pickupserver.herokuapp.com/graphql")!
 
       let requestChainTransport = RequestChainNetworkTransport(interceptorProvider: provider,
                                                                endpointURL: url)
@@ -63,6 +73,6 @@ class Services {
                           store: store)
     }()
     private(set) lazy var auth = AuthService(auth: Services.auth)
-    private(set) lazy var storage = StorageService(storage: Storage.storage())
+    private(set) lazy var storage = StorageService(storage: Services.storage)
     private(set) lazy var rest = RestService()
 }

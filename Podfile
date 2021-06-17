@@ -6,8 +6,10 @@ target 'PickUp' do
   use_frameworks!
 
   # Pods for PickUp
-pod 'Firebase/Auth', '~> 7.10.0'
-pod 'Firebase/Storage', '~> 7.10.0'
+pod 'Firebase/Auth', '8.0'
+pod 'Firebase/Storage', '8.0'
+# Add the pod for Firebase Cloud Messaging
+pod 'Firebase/Messaging'
 pod 'SDWebImageSwiftUI'
 pod 'Apollo'
 

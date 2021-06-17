@@ -37,25 +37,29 @@ struct ImagePicker: UIViewControllerRepresentable {
 
             if let imageUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL {
                 do {
-//                    let data = try Data(contentsOf: imageUrl)
-//                    let path = "profilePictures/\(AppState.shared.authId!).jpg"
-//                    Services.shared.storage.upload(file: data, path: path)
-//                        .sink(receiveValue: { downloadUrl in
-//                            Services.shared.apollo.perform(mutation: UpdateUserMutation(input: UpdateUserInput(id: self.parent.userId, firstName: nil, lastName: nil, college: nil, username: nil, photoUrl: nil)))(id: self.parent.userId)
-//                            { response in
-//                                switch response {
-//                                case .success(let result):
-//                                    if let errors = result.errors {
-//                                        print(errors[0].localizedDescription)
-//                                        self.parent.presentationMode.wrappedValue.dismiss()
-//                                        return
-//                                    }
-//                                case .failure(let error):
-//                                    print(error.localizedDescription)
-//                                    self.parent.presentationMode.wrappedValue.dismiss()
-//                                }
-//                            }
-//                        })
+                    let data = try Data(contentsOf: imageUrl)
+                    let path = "profilePictures/\(AppState.shared.authId!).jpg"
+                    Services.shared.storage.upload(file: data, path: path).sink(receiveCompletion: { completion in
+                        switch completion {
+                        case .failure(let error):
+                            print(error)
+                        case .finished:
+                            self.parent.presentationMode.wrappedValue.dismiss()
+                        }
+                    }, receiveValue: { downloadUrl in
+                        Services.shared.apollo.perform(mutation: UpdateUserMutation(input: UpdateUserInput(id: AppState.shared.authId!, photoUrl: downloadUrl))) { response in
+                            switch response {
+                            case .success(let result):
+                                if let errors = result.errors {
+                                    print(errors[0].localizedDescription)
+                                }
+                                self.parent.presentationMode.wrappedValue.dismiss()
+                            case .failure(let error):
+                                print(error.localizedDescription)
+                                self.parent.presentationMode.wrappedValue.dismiss()
+                            }
+                            
+                        }}).store(in: &self.parent.cancellables)
                 } catch(let error) {
                     self.parent.presentationMode.wrappedValue.dismiss()
                     print(error.localizedDescription)
