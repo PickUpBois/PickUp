@@ -41,8 +41,9 @@ struct PopOverView: View {
             
         }
         .foregroundColor(.black)
-        .frame(width: 150)
+        .frame(width: .infinity)
         .padding()
+        .background(Color.gray.opacity(0.1))
 }
 }
 
