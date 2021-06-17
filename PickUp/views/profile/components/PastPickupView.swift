@@ -11,7 +11,6 @@ struct PastPickupView: View {
 @EnvironmentObject var viewModel: ProfileViewModel
     
     func getWinLoss(event: EventDetails) -> String {
-        print(event)
         var teamIndex = 0
         for i in 0..<event.teams![1].members.count {
             let memberId = event.teams![1].members[i].id

@@ -48,6 +48,7 @@ class ProfileViewModel: ObservableObject {
                     print("error in graphql query")
                     return
                 }
+                print("user \(data.user)")
                 self.user = data.user
             case .failure(let error):
                 print(error.localizedDescription)

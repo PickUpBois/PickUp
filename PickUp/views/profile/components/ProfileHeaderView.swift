@@ -30,51 +30,13 @@ struct ProfileHeaderView: View {
             .fontWeight(.bold)
             .padding(.top)
                 
-//                //not following yet
-//                if !auth {
-//                    if self.profileViewModel.user?.friendStatus == nil {
-//                        Button(action: {
-//                            self.showingFollowAlert = true
-//                        },
-//                               label: {Image(systemName: "plus.square.fill")
-//                                .foregroundColor(Color.red)
-//                                .padding(.top)
-//                                .alert(isPresented: $showingFollowAlert) {
-//                                    Alert(title: Text("Confirm Follow!"), message: Text("Are you sure you want to add \(self.profileViewModel.user?.firstName ?? "NA") as a teammate?"), primaryButton: .default(Text("Yes")) {
-//                                        self.profileViewModel.addFriend()
-//                                    }, secondaryButton: .destructive(Text("Cancel")))
-//                                }
-//                               })
-//                    } else {
-//                        //if following, click to unfollow
-//                         Button(action: {
-//                             self.showingUnfollowAlert = true
-//                         },label: {
-//                             Image(systemName: "checkmark.square.fill")
-//                                     .foregroundColor(Color.green)
-//                                     .padding(.top)
-//                                 .alert(isPresented: $showingUnfollowAlert) {
-//                                     Alert(title: Text("Confirm Unfollow!"), message: Text("Are you sure you want to remove \(self.profileViewModel.user?.firstName ?? "NA") as a teammate?"), primaryButton: .default(Text("Yes")) {
-//                                        self.profileViewModel.removeFriend()
-//                                 }, secondaryButton: .destructive(Text("Cancel")))
-//                             }
-//                         })
-//                    }
-//
-//                }
-                
-                //Text("Add")
-                    //.font(.title3)
-                    //.padding(.top)
-                
             }
             
             Spacer().frame(minHeight: 8, maxHeight: 8) // Space between profile
             HStack {
                 VStack(alignment: .center){
                     Button(action: {
-//                        IN PROGRESS
-//                        self.showPhotoLibrary = true
+                        self.showPhotoLibrary = true
                         print("image was tapped")
                     }) {
                         ProfilePicture(photoUrl: self.profileViewModel.user?.photoUrl)

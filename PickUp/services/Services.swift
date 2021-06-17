@@ -33,12 +33,22 @@ class Services {
     
     static var auth: Auth = buildFirebaseAuth(emulator: emulator)
     
+    static var storage: Storage = buildFirebaseStorage(emulator: emulator)
+    
     static private func buildFirebaseAuth(emulator: Bool = false) -> Auth {
         let auth = Auth.auth()
         if emulator {
             auth.useEmulator(withHost: "localhost", port: 9099)
         }
         return auth
+    }
+    
+    static private func buildFirebaseStorage(emulator: Bool = false) -> Storage {
+        let storage = Storage.storage()
+        if emulator {
+            storage.useEmulator(withHost:"localhost", port:9199)
+        }
+        return storage
     }
     
     
@@ -63,6 +73,6 @@ class Services {
                           store: store)
     }()
     private(set) lazy var auth = AuthService(auth: Services.auth)
-    private(set) lazy var storage = StorageService(storage: Storage.storage())
+    private(set) lazy var storage = StorageService(storage: Services.storage)
     private(set) lazy var rest = RestService()
 }

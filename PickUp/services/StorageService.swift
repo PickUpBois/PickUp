@@ -42,6 +42,19 @@ class StorageService {
         .eraseToAnyPublisher()
     }
     
+    func getDownloadUrl(path: String) -> AnyPublisher<String, Error> {
+        let ref = self.storage.reference(withPath: path)
+        return Future<String, Error> { promise in
+            ref.downloadURL(completion: { url, error in
+                if error != nil {
+                    return promise(.failure(error!))
+                } else {
+                    return promise(.success(url!.absoluteString))
+                }
+            })
+        }.eraseToAnyPublisher()
+    }
+    
     func delete(path: String) -> AnyPublisher<Void, Error> {
         return Future<Void, Error> { promise in
             let ref = self.storage.reference(withPath: path)
