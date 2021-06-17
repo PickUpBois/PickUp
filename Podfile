@@ -8,6 +8,8 @@ target 'PickUp' do
   # Pods for PickUp
 pod 'Firebase/Auth', '~> 7.10.0'
 pod 'Firebase/Storage', '~> 7.10.0'
+# Add the pod for Firebase Cloud Messaging
+pod 'Firebase/Messaging', '~> 7.10.0'
 pod 'SDWebImageSwiftUI'
 pod 'Apollo'
 
