@@ -11,15 +11,11 @@ import SDWebImageSwiftUI
 
 
 struct ProfileView: View {
-    @ObservedObject var viewModel: ProfileViewModel
+    @StateObject var viewModel: ProfileViewModel
     @State private var selection = 1
     @State var menuOpen: Bool = false
     @State var popover = false
     var auth: Bool
-    init(viewModel: ProfileViewModel, auth: Bool) {
-        self.viewModel = viewModel
-        self.auth = auth
-    }
     //Navigation bar
     var body: some View {
         VStack {
