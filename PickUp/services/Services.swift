@@ -29,7 +29,7 @@ class NetworkInterceptorProvider: LegacyInterceptorProvider {
 
 class Services {
     
-    static let emulator: Bool = true
+    static let emulator: Bool = false
     
     static var auth: Auth = buildFirebaseAuth(emulator: emulator)
     
