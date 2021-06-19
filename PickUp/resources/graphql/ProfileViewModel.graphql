@@ -31,3 +31,15 @@ mutation RemoveFriend($userId: ID!, $friendId: ID!) {
 	id,
   }
 }
+
+mutation PutDeviceToken($userId: ID!, $token: String!) {
+	putDeviceToken(userId: $userId, token: $token) {
+	id,
+  }
+}
+
+mutation RemoveDeviceToken($userId: ID!, $token: String!) {
+	removeDeviceToken(userId: $userId, token: $token) {
+	id,
+  }
+}

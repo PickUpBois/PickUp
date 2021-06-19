@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>325425861941-bt4ech1gvci5m0krh33550se4ql7lv2q.apps.googleusercontent.com</string>
+	<string>325425861941-6cbbqh10ge2hts9rf78cfqrpuhc5jk48.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.325425861941-bt4ech1gvci5m0krh33550se4ql7lv2q</string>
+	<string>com.googleusercontent.apps.325425861941-6cbbqh10ge2hts9rf78cfqrpuhc5jk48</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBnVt6f2fQQqRYf-xaAcvu9TKpDxQqn61c</string>
 	<key>GCM_SENDER_ID</key>
@@ -19,16 +19,16 @@
 	<key>STORAGE_BUCKET</key>
 	<string>pickup-774f9.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:325425861941:ios:49f8169a4aa90974a0a87c</string>
+	<string>1:325425861941:ios:492294a8b83f92d7a0a87c</string>
 </dict>
 </plist>

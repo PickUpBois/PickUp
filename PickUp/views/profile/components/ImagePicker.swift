@@ -34,7 +34,8 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-
+            
+//            self.parent.presentationMode.wrappedValue.dismiss()
             if let imageUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL {
                 do {
                     let data = try Data(contentsOf: imageUrl)
@@ -44,6 +45,7 @@ struct ImagePicker: UIViewControllerRepresentable {
                         case .failure(let error):
                             print(error)
                         case .finished:
+                            print("uploaded image")
                             self.parent.presentationMode.wrappedValue.dismiss()
                         }
                     }, receiveValue: { downloadUrl in
@@ -53,16 +55,15 @@ struct ImagePicker: UIViewControllerRepresentable {
                                 if let errors = result.errors {
                                     print(errors[0].localizedDescription)
                                 }
-                                self.parent.presentationMode.wrappedValue.dismiss()
                             case .failure(let error):
                                 print(error.localizedDescription)
-                                self.parent.presentationMode.wrappedValue.dismiss()
                             }
+                            self.parent.presentationMode.wrappedValue.dismiss()
                             
                         }}).store(in: &self.parent.cancellables)
                 } catch(let error) {
-                    self.parent.presentationMode.wrappedValue.dismiss()
                     print(error.localizedDescription)
+                    self.parent.presentationMode.wrappedValue.dismiss()
                 }
             }
 

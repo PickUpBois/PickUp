@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import FirebaseMessaging
 
 class SignUpViewModel: ObservableObject {
     @Published var email = ""
@@ -50,11 +51,33 @@ class SignUpViewModel: ObservableObject {
                     return
                 }
                 self.appState.authId = id
+                self.putDeviceToken(id: id)
                 
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func putDeviceToken(id: String) {
+        Messaging.messaging().token(completion: {token, error in
+            if let error = error {
+                return print("unable to get token: \(error.localizedDescription)")
+            }
+            if let token = token {
+                Services.shared.apollo.perform(mutation: PutDeviceTokenMutation(userId: id, token: token)) { response in
+                    switch response {
+                    case .success(let result):
+                        if let errors = result.errors {
+                            print("unable to get token: \(errors[0].localizedDescription)")
+                        }
+                        
+                    case .failure(let error):
+                        return print("unable to get token: \(error.localizedDescription)")
+                    }
+                }
+            }
+        })
     }
 }
 

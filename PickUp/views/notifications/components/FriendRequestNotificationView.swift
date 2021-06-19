@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct FriendRequestNotificationView: View {
     
@@ -25,13 +26,15 @@ struct FriendRequestNotificationView: View {
                     Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                         NavigationLink(destination: ProfileView(viewModel: ProfileViewModel(userId: viewModel.actor!.id), auth: false))
                         {
-                        Image("serena")
-                            .resizable()
-                            .foregroundColor(.blue)
-                            .frame(width: 25, height: 25, alignment: .center)
-                            .clipShape(Circle())
-                            .shadow(radius: 2)
-                            .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                            WebImage(url: URL(string: viewModel.actor?.photoUrl ?? ""))
+                                .placeholder(Image("serena")
+                                                .resizable())
+                                .resizable()
+                                .foregroundColor(.blue)
+                                .frame(width: 25, height: 25, alignment: .center)
+                                .clipShape(Circle())
+                                .shadow(radius: 2)
+                                .overlay(Circle().stroke(Color.black, lineWidth: 2))
                         
                             Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName)")
                             .fontWeight(.heavy)

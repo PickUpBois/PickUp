@@ -31,7 +31,6 @@ struct ProfileHeaderView: View {
             .padding(.top)
                 
             }
-            let _ = print("user at header: \(profileViewModel.user)")
             Spacer().frame(minHeight: 8, maxHeight: 8) // Space between profile
             HStack {
                 VStack(alignment: .center){

@@ -2811,6 +2811,198 @@ public final class RemoveFriendMutation: GraphQLMutation {
   }
 }
 
+public final class PutDeviceTokenMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation PutDeviceToken($userId: ID!, $token: String!) {
+      putDeviceToken(userId: $userId, token: $token) {
+        __typename
+        id
+      }
+    }
+    """
+
+  public let operationName: String = "PutDeviceToken"
+
+  public var userId: GraphQLID
+  public var token: String
+
+  public init(userId: GraphQLID, token: String) {
+    self.userId = userId
+    self.token = token
+  }
+
+  public var variables: GraphQLMap? {
+    return ["userId": userId, "token": token]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("putDeviceToken", arguments: ["userId": GraphQLVariable("userId"), "token": GraphQLVariable("token")], type: .object(PutDeviceToken.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(putDeviceToken: PutDeviceToken? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "putDeviceToken": putDeviceToken.flatMap { (value: PutDeviceToken) -> ResultMap in value.resultMap }])
+    }
+
+    public var putDeviceToken: PutDeviceToken? {
+      get {
+        return (resultMap["putDeviceToken"] as? ResultMap).flatMap { PutDeviceToken(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "putDeviceToken")
+      }
+    }
+
+    public struct PutDeviceToken: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["User"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID) {
+        self.init(unsafeResultMap: ["__typename": "User", "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// ID of user
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+    }
+  }
+}
+
+public final class RemoveDeviceTokenMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation RemoveDeviceToken($userId: ID!, $token: String!) {
+      removeDeviceToken(userId: $userId, token: $token) {
+        __typename
+        id
+      }
+    }
+    """
+
+  public let operationName: String = "RemoveDeviceToken"
+
+  public var userId: GraphQLID
+  public var token: String
+
+  public init(userId: GraphQLID, token: String) {
+    self.userId = userId
+    self.token = token
+  }
+
+  public var variables: GraphQLMap? {
+    return ["userId": userId, "token": token]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("removeDeviceToken", arguments: ["userId": GraphQLVariable("userId"), "token": GraphQLVariable("token")], type: .object(RemoveDeviceToken.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(removeDeviceToken: RemoveDeviceToken? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "removeDeviceToken": removeDeviceToken.flatMap { (value: RemoveDeviceToken) -> ResultMap in value.resultMap }])
+    }
+
+    public var removeDeviceToken: RemoveDeviceToken? {
+      get {
+        return (resultMap["removeDeviceToken"] as? ResultMap).flatMap { RemoveDeviceToken(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "removeDeviceToken")
+      }
+    }
+
+    public struct RemoveDeviceToken: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["User"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID) {
+        self.init(unsafeResultMap: ["__typename": "User", "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// ID of user
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+    }
+  }
+}
+
 public final class CreateUserMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =

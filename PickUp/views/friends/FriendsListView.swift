@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct FriendsListView: View {
     @StateObject var viewModel: FriendsListViewModel
@@ -15,14 +16,25 @@ struct FriendsListView: View {
                 ForEach(self.viewModel.friends.indices, id: \.self) { i in
                     let friend = self.viewModel.friends[i]
                     HStack{
-                    Image("serena")
-                        .resizable()
-                        .foregroundColor(.blue)
-                        .frame(width: 60, height: 60, alignment: .center)
-                        .clipShape(Circle())
-                        .shadow(radius: 2)
-                        .overlay(Circle().stroke(Color.black, lineWidth: 2))
-                        .padding()
+//                    Image("serena")
+//                        .resizable()
+//                        .foregroundColor(.blue)
+//                        .frame(width: 60, height: 60, alignment: .center)
+//                        .clipShape(Circle())
+//                        .shadow(radius: 2)
+//                        .overlay(Circle().stroke(Color.black, lineWidth: 2))
+//                        .padding()
+                        WebImage(url: URL(string: friend.photoUrl ?? ""))
+                            .placeholder(Image("serena")
+                                            .resizable())
+                            .resizable()
+                            .indicator(.activity)
+                            .foregroundColor(.blue)
+                            .frame(width: 60, height: 60, alignment: .center)
+                            .clipShape(Circle())
+                            .shadow(radius: 2)
+                            .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                            .padding()
 
                         VStack(alignment: .leading){
                         FriendItemView(id: friend.id, username: friend.username)
@@ -37,8 +49,8 @@ struct FriendsListView: View {
                             Button(action: {
                                     self.showingFollowAlert = true
                                 }, label: {
-                            Image(systemName: "checkmark.square.fill")
-                                    .foregroundColor(Color.green)
+                                    Image(systemName: "checkmark.square.fill")
+                                            .foregroundColor(Color.green)
                                 .alert(isPresented:$showingFollowAlert) {
                                     Alert(title: Text("Confirm Follow!"), message: Text("Are you sure you want to add this person as a teammate?"), primaryButton: .default(Text("Yes")) {
                                         //Add Action for updating - Arian
@@ -47,8 +59,8 @@ struct FriendsListView: View {
 
                             }
 
-                            Text("69 mutual friends")
-                                .fontWeight(.light)
+//                            Text("69 mutual friends")
+//                                .fontWeight(.light)
 
                         }.frame(width: 300, alignment: .leading)
 

@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import FirebaseAuth
+import FirebaseMessaging
 
 private func transformFirebaseErrorCode(error: Error?) -> AuthError {
     guard let nsError = error as NSError? else {
@@ -55,6 +56,8 @@ enum AuthError: Error {
     case requiresRecentLogin
     /// The user is performing too many requests on their account in a short period of time
     case tooManyRequests
+    /// Unable to extract the device's currernt registration token
+    case unableToGetDeviceToken
     /// Any other error that may have occurred with authentication
     case error
 }
@@ -73,7 +76,6 @@ class AuthService {
                 guard let user = authResult?.user, error == nil else {
                     return promise(.failure(transformFirebaseErrorCode(error: error)))
                 }
-                
                 promise(.success(user.uid))
             })
         }.eraseToAnyPublisher()

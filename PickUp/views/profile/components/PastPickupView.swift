@@ -14,7 +14,7 @@ struct PastPickupView: View {
         var teamIndex = 0
         for i in 0..<event.teams![1].members.count {
             let memberId = event.teams![1].members[i].id
-            if AppState.shared.authId == memberId {
+            if viewModel.user?.id == memberId {
                 teamIndex = 1
                 break
             }
@@ -41,7 +41,7 @@ struct PastPickupView: View {
                 HStack(alignment: .top){
                     Text("🐐")
                     if event.mvp != nil {
-                        if event.mvp!.id == AppState.shared.authId {
+                        if event.mvp!.id == viewModel.user?.id {
                             Text("MVP")
                                 .fontWeight(.bold)
                                 .foregroundColor(.black)
