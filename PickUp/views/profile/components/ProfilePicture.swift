@@ -23,7 +23,7 @@ struct ProfilePicture: View {
             .frame(width: 100, height: 100, alignment: .center)
             .clipShape(Circle())
             .shadow(radius: 2)
-            .overlay(Circle().stroke(Color.black, lineWidth: 5))
+            .overlay(Circle().stroke(Color.black, lineWidth: 3))
             .padding(.trailing, 20)
     }
 }

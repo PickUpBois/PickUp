@@ -14,11 +14,10 @@ struct PickUpListView: View {
         ForEach(self.viewModel.events.indices, id: \.self) {i in
             let event = self.viewModel.events[i]
             PickUpView(id: i, event: event)
-                    .frame(width: 175, height: 60, alignment: .center)
+                .frame(maxWidth: UIScreen.main.bounds.width * 0.4, maxHeight: UIScreen.main.bounds.height * 0.4)
                     .background(Color.white.opacity(0.9))
-                    .cornerRadius(8)
-
-                    Spacer().frame(height: 25)
+                    .cornerRadius(20)
+                Spacer().frame(height: 10)
             }
     }
 }

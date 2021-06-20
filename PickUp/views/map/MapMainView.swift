@@ -13,8 +13,8 @@ struct MapMainView: View {
         @StateObject var mapData = MapViewModel()
         @State var locationManager = CLLocationManager()
     var body: some View {
+        
         ZStack{
-            
             
             //MapView..
             MapView()
@@ -34,6 +34,8 @@ struct MapMainView: View {
                     .padding(.vertical,10)
                     .padding(.horizontal)
                     .background(Color.white)
+                    .cornerRadius(20)
+                    
                     
                     // Displaying Results...
                     if !mapData.places.isEmpty && mapData.searchTxt != ""{
@@ -67,24 +69,24 @@ struct MapMainView: View {
                 
             //Button for Tab View
                 
-                HStack{
-                
-                Image(systemName: "list.bullet")
-                            .foregroundColor(Color.black)
-                    .padding(.leading, 20.0)
+                HStack (alignment: .top){
                     
                 Button(action: {
                     withAnimation(.easeIn){mapData.showMenu.toggle()}
                         //Open Menu
                 },label: {
-                    Text("Filters")
-                        .fontWeight(.semibold)
+                    Image(systemName: "list.bullet")
                         .foregroundColor(Color.black)
+                        .font(.title2)
+                        .padding(10)
+                        .background(Color.green)
+                        .clipShape(Circle())
                     
                 })
                 
                 
-                } .frame(maxWidth: .infinity, alignment: .leading)
+                }.frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 10)
                 
                 Spacer()
                 
@@ -92,17 +94,19 @@ struct MapMainView: View {
                     
                     Button(action: mapData.focusLocation, label: {
                         Image(systemName: "location.fill")
+                            .foregroundColor(Color.black)
                             .font(.title2)
                             .padding(10)
-                            .background(Color.primary)
+                            .background(Color.green)
                             .clipShape(Circle())
                     })
                     
                     Button(action: mapData.updateMapType, label: {
                         Image(systemName: mapData.mapType == .standard ? "network" : "map")
+                            .foregroundColor(Color.black)
                             .font(.title2)
                             .padding(10)
-                            .background(Color.primary)
+                            .background(Color.green)
                             .clipShape(Circle())
                     })
                     

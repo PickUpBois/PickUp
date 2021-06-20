@@ -73,18 +73,22 @@ struct ProfileHeaderView: View {
                 }
 
                 VStack {
-                Text("GOAT").font(.headline).foregroundColor(Color.black)
-                Text("Meter").font(.headline).foregroundColor(Color.black)
+                Text("GOAT").font(.headline)
+                    .lineLimit(1)
+                    .foregroundColor(Color.black)
+                Text("Meter").font(.headline)
+                    .lineLimit(1)
+                    .foregroundColor(Color.black)
                     Spacer().frame(height: 8)
                ZStack(alignment: .leading){
-                    Capsule().frame(width: 50, height: 20)
+                    Capsule().frame(width: 40, height: 20)
                         .foregroundColor(.blue)
                     Capsule().frame(width: 20, height: 20)
                         .foregroundColor(.green)
                     }
                     Spacer()
                 }
-                }
+            }
             }
         }
     }

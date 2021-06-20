@@ -70,39 +70,49 @@ struct ProfileView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar{
-            ToolbarItem(placement: .navigationBarLeading) {
-                HStack {}
-            }
             ToolbarItem(placement: .principal) {
                 HStack {
-                    Image("logo2")
-                        .resizable()
-                        .padding(.top, -15)
-                        .frame(width: 125, height: 30)
-                        .scaledToFit()
-                        
                     
                     if auth {
-                        Spacer().frame(minWidth: 100, idealWidth: 100, maxWidth: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        
+                        Spacer().frame(minWidth: 38, idealWidth: 38, maxWidth: 38, alignment: .center)
+                        Image("logo2")
+                            .resizable()
+                            .padding(.top, -15)
+                            .frame(width: 125, height: 30)
+                            .scaledToFit()
+                        
+                        Spacer().frame(minWidth: 110, idealWidth: 110, maxWidth: 110, alignment: .center)
                         NavigationLink(destination: ProfileSettingsView().environmentObject(self.viewModel)) {
-                            Image(systemName: "gearshape.fill")
+                            Image(systemName: "gearshape.fill").resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
+                                .foregroundColor(Color.green)
+                                .frame(width: 25.0, height: 25.0)
+                                .padding(.trailing, 5)
+                            
                         }
                     }
                     
                     else{
-                        Spacer().frame(minWidth: 120, idealWidth: 120, maxWidth: 100, alignment: .center)
+                        Image("logo2")
+                            .resizable()
+                            .padding(.top, -15)
+                            .frame(width: 125, height: 30)
+                            .scaledToFit()
+                        
+                        Spacer().frame(minWidth: 110, idealWidth: 110, maxWidth: 110, alignment: .center)
                         Button( action: {
                             withAnimation(.easeIn){popover.toggle()}
 
                         }, label: {
-                            Image(systemName: "list.dash")
-                                .padding(.trailing)
+                            Image(systemName: "square.and.arrow.up.fill")
+                                .resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
+                                .foregroundColor(Color.green)
+                                .frame(width: 25.0, height: 25.0)
                         })
                     }
-
                     
                 }
-                .padding(.leading, 110)
+                .padding(.leading, 102.5)
             }
         }
         

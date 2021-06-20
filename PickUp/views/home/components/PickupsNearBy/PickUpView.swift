@@ -43,42 +43,52 @@ struct PickUpView: View, Identifiable {
     }
     
     var body: some View {
-        HStack(alignment: .center) {
             Button(action: {
                 self.showPopUp.toggle()
             }, label: {
-                VStack {
-                    HStack{
+                VStack(spacing: 5){
+                    
+                    HStack(spacing: 5){
                         Text(name)
-                            .fontWeight(.heavy)
-                            .foregroundColor(Color.black)
-                            .multilineTextAlignment(.center)
-                            .lineLimit(1)
-                        Image(systemName:"calendar")
-                            .foregroundColor(Color.red)
-                        Text(getDate(date: startDate))
-                            .foregroundColor(Color.black)
-                                Spacer()
-                                .frame(minWidth: 10, maxWidth: 10)
-                                .lineLimit(1)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.black)
+                        .lineLimit(1)
+                        
                     }
-                        Spacer().frame(height: 2)
-                        HStack(alignment: .center){
-                            Image(systemName:"location.fill")
-                                .foregroundColor(Color.blue)
-                                .lineLimit(1)
-                            Text("Location")
-                                .foregroundColor(Color.blue)
-                            Text(going ? "Going" : "Not going")
-                                .foregroundColor(Color.green)
-                                .lineLimit(1)
+                    HStack(spacing: 5){
+                        HStack (spacing: 2){
+                        Image(systemName:"calendar")
+                        .foregroundColor(Color.red)
+                        Text(getDate(date: startDate))
+                        .foregroundColor(Color.black)
+                        .lineLimit(1)
+                        }
+                        HStack (spacing: 2){
+                        Text("0.25")
+                        Text("mi")
+                        }.foregroundColor(Color.black)
+                        .lineLimit(1)
+
+                    }
+
+                    HStack(spacing: 5){
+                        Text(going ? "Going" : "Not Going")
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color.green)
+                            .lineLimit(1)
+
                     }
 
                 }
+                .frame(maxWidth: 175, alignment: .center)
+                .padding(.vertical, 5)
+                .background(Color.white.opacity(0.9))
+                .cornerRadius(20)
                 
                 
-            })
-        }.sheet(isPresented: $showPopUp, content: {
+                
+                
+            }).sheet(isPresented: $showPopUp, content: {
             Spacer().frame(height: 300)
             EventDetailsBoxView(event: self.viewModel.events[id], joinEvent: self.viewModel.joinEvent)
                 .padding(.all, 30.0)

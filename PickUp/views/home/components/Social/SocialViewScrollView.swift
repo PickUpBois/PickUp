@@ -49,7 +49,7 @@ struct SocialViewScrollView: View {
                             .padding(.horizontal, 20)
                     })
                     
-                    Spacer().frame(height: 50)
+                    Spacer().frame(height: 20)
                     
                 })
             }

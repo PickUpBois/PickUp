@@ -56,12 +56,15 @@ struct CreateSportEventView: View {
             //busyness meter??
             
             EventDatePickerView(date: self.$eventViewModel.eventInfo.startDate)
-            
+
             
             Spacer().frame(height: 35.0)
             
         HStack{
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            HStack{
+                Button(action: {
+                    self.showPopUp.toggle()
+                }, label: {
                 Text("Invite Friends")
                 .fontWeight(.heavy)
                     .foregroundColor(Color.black)
@@ -69,6 +72,29 @@ struct CreateSportEventView: View {
                     .background(Color(red: 0, green: 0.7, blue: 0, opacity: 0.55))
                     .cornerRadius(7)
             })
+            }.sheet(isPresented: $showPopUp, content: {
+            
+            VStack{
+            Spacer()
+                
+            //Check mark function needs to be replaced with selector, not "follower"
+            FriendsListView(viewModel: MockFriendsListViewModel(userId: "1"))
+    
+            Spacer()
+    
+            Button(action: {
+            self.showPopUp.toggle()
+                },label: {
+            Text("Invite")
+            .foregroundColor(Color.white)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 10)
+            .background(Color.green.opacity(0.8))
+            .cornerRadius(9)
+            .padding(.horizontal, 20)
+                }).padding()
+            }
+        })
             
             
             Spacer().frame(width: 17.5)
@@ -93,7 +119,7 @@ struct CreateSportEventView: View {
                         }
             }
         }
-    }
+        }
     }
 }
 

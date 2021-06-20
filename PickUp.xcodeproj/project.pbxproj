@@ -103,6 +103,7 @@
 		C0151122265A2612005EF24A /* PostNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0151121265A2612005EF24A /* PostNotificationView.swift */; };
 		C0151125265A2DF6005EF24A /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0151124265A2DF6005EF24A /* MessageView.swift */; };
 		C0151127265A36B8005EF24A /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0151126265A36B8005EF24A /* ChatView.swift */; };
+		C04BFC1C267E6643006DE620 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04BFC1B267E6643006DE620 /* LoadingView.swift */; };
 		C055C3CA2673074200FF40AA /* EditPickupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C055C3C92673074200FF40AA /* EditPickupViewModel.swift */; };
 		C06A97D326790DF2004966F0 /* PopOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A97D226790DF2004966F0 /* PopOverView.swift */; };
 		C088BBA7265780CB007301F7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088BBA6265780CB007301F7 /* MapViewModel.swift */; };
@@ -249,6 +250,7 @@
 		C0151121265A2612005EF24A /* PostNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNotificationView.swift; sourceTree = "<group>"; };
 		C0151124265A2DF6005EF24A /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		C0151126265A36B8005EF24A /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		C04BFC1B267E6643006DE620 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		C055C3C92673074200FF40AA /* EditPickupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPickupViewModel.swift; sourceTree = "<group>"; };
 		C06A97D226790DF2004966F0 /* PopOverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopOverView.swift; sourceTree = "<group>"; };
 		C088BBA6265780CB007301F7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 				8DFCF503262788A000BBFE66 /* MainView.swift */,
 				8D65B2672658C91D0085D5EE /* AppState.swift */,
 				8D7AC47D266D636400672918 /* EventDetailsBoxView.swift */,
+				C04BFC1B267E6643006DE620 /* LoadingView.swift */,
 			);
 			path = root;
 			sourceTree = "<group>";
@@ -1009,6 +1012,7 @@
 				C0B81C6E2657064B000555BD /* NotificationListView.swift in Sources */,
 				1A03F99F263F482F00C2E2CD /* UpcomingPickupsView.swift in Sources */,
 				8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
+				C04BFC1C267E6643006DE620 /* LoadingView.swift in Sources */,
 				8D65B2812658CE550085D5EE /* RestService.swift in Sources */,
 				8D7AC469266C772300672918 /* EventInvitationNotificationView.swift in Sources */,
 				8D3CDD3226583A93000EE754 /* SearchBarView.swift in Sources */,

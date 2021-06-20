@@ -29,7 +29,7 @@ struct EditPickupView: View {
                         .fontWeight(.heavy)
                             .foregroundColor(Color.black)
                             .padding(.all, 10.0)
-                            .background(Color(red: 1, green: 0.0, blue: 0, opacity: 0.55))
+                            .background(Color(red: 1, green: 0.0, blue: 0, opacity: 0.6))
                             .cornerRadius(7)
                             .alert(isPresented:$deletePickupAlert) {
                                 Alert(title: Text("Confirm Delete Event"), message: Text("Are you sure you want to delete this Pickup?"), primaryButton: .default(Text("Yes")) {

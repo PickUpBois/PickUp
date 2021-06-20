@@ -15,7 +15,8 @@ struct PostedPickUpsView: View {
                 VStack{
                     VStack{
                         //Picture Posted
-                        Image("wimby08").resizable().aspectRatio(contentMode: .fit).frame(width: UIScreen.main.bounds.width/1, height: UIScreen.main.bounds.height/4).clipped()
+                        Image("wimby08").resizable()
+                            .aspectRatio(contentMode: .fit)
                             .overlay(ImageOverlayPerson(), alignment: .topLeading)
                             .overlay(ImageOverlayLikes(), alignment: .bottomTrailing)
         
@@ -44,6 +45,7 @@ struct PostedPickUpsView: View {
                                 .lineLimit(3)
 
                         }.frame(width: 380, height: 80, alignment: .topLeading)
+                        .padding(.leading, 30)
                         
                     
                     }.padding([.leading, .bottom, .trailing], 15.0)
@@ -56,14 +58,16 @@ struct PostedPickUpsView: View {
                     
                     // Repeated Post from before
                     VStack{
-                        
-                        Image("wimby08").resizable().aspectRatio(contentMode: .fit).frame(width: UIScreen.main.bounds.width/1, height: UIScreen.main.bounds.height/4).clipped()
+                        //Picture Posted
+                        Image("wimby08").resizable()
+                            .aspectRatio(contentMode: .fit)
                             .overlay(ImageOverlayPerson(), alignment: .topLeading)
                             .overlay(ImageOverlayLikes(), alignment: .bottomTrailing)
         
                     
                     Spacer().frame(height: 10)
                         
+                        //HStack for W/L, Date, and Location
                         HStack{
                             Text("W or L")
                                 .fontWeight(.heavy)
@@ -78,32 +82,36 @@ struct PostedPickUpsView: View {
                                 .foregroundColor(Color.blue)
                             Text("Location")}
                         
-                        Spacer().frame(height: 10)
-                            
-                            HStack{
-                                Text("Caption...")
-                                    .lineLimit(3)
+                    Spacer().frame(height: 10)
+                        
+                        HStack{
+                            Text("Caption...")
+                                .lineLimit(3)
 
-                            }.frame(width: 380, height: 80, alignment: .topLeading)
-                            
-
+                        }.frame(width: 380, height: 80, alignment: .topLeading)
+                        .padding(.leading, 30)
+                        
+                    
                     }.padding([.leading, .bottom, .trailing], 15.0)
                         .background(Color.white.opacity(0.9))
-                        .cornerRadius(8)
-                        .padding(.horizontal, 20)
+                                .cornerRadius(8)
+                                .padding(.horizontal, 20)
+                    
                     
                     Spacer().frame(height: 20)
                     
                     // Repeated Post from before
                     VStack{
-                        
-                        Image("wimby08").resizable().aspectRatio(contentMode: .fit).frame(width: UIScreen.main.bounds.width/1, height: UIScreen.main.bounds.height/4).clipped()
+                        //Picture Posted
+                        Image("wimby08").resizable()
+                            .aspectRatio(contentMode: .fit)
                             .overlay(ImageOverlayPerson(), alignment: .topLeading)
                             .overlay(ImageOverlayLikes(), alignment: .bottomTrailing)
         
                     
                     Spacer().frame(height: 10)
                         
+                        //HStack for W/L, Date, and Location
                         HStack{
                             Text("W or L")
                                 .fontWeight(.heavy)
@@ -118,19 +126,21 @@ struct PostedPickUpsView: View {
                                 .foregroundColor(Color.blue)
                             Text("Location")}
                         
-                        Spacer().frame(height: 10)
-                            
-                            HStack{
-                                Text("Caption...")
-                                    .lineLimit(3)
+                    Spacer().frame(height: 10)
+                        
+                        HStack{
+                            Text("Caption...")
+                                .lineLimit(3)
 
-                            }.frame(width: 380, height: 80, alignment: .topLeading)
-                            
-
+                        }.frame(width: 380, height: 80, alignment: .topLeading)
+                        .padding(.leading, 30)
+                        
+                    
                     }.padding([.leading, .bottom, .trailing], 15.0)
                         .background(Color.white.opacity(0.9))
-                        .cornerRadius(8)
-                        .padding(.horizontal, 20)
+                                .cornerRadius(8)
+                                .padding(.horizontal, 20)
+                    
                     
                     
                 }
@@ -159,7 +169,7 @@ struct ImageOverlayPerson: View {
         .opacity(0.8)
         .cornerRadius(10.0)
         .padding(.top, 10)
-        .padding(.leading, 28)
+        .padding(.leading, 20)
         .lineLimit(1)
         
     }
@@ -184,7 +194,7 @@ struct ImageOverlayLikes: View {
 
         }
         .padding(.bottom, 5)
-        .padding(.trailing, 28)
+        .padding(.trailing, 20)
         
     }
 }

@@ -71,75 +71,169 @@ struct EventDetailsBoxView: View {
         self.joinEvent = joinEvent
         self.fontColor = fontColor
     }
+    @State var showPopUp = false
     var body: some View {
         let emoji = type == .tennis ? "🎾" : "🏀"
-        HStack{
-        VStack{
-        VStack(alignment: .leading){
-            HStack{
-            Text(emoji).font(.system(size: 20))
-            Text(name) //self.viewModel.event.name
-                .fontWeight(.heavy)
-                .foregroundColor(.black)
+            VStack(){
+                HStack(alignment: .center, spacing: 5){
+                Text(emoji).font(.system(size: 20))
+                Text(name) //self.viewModel.event.name
+                    .fontWeight(.heavy)
+                    .foregroundColor(.black)
+                    .lineLimit(1)
             }
-Spacer()
-            HStack(alignment: .top) {
-            Image(systemName:"pencil.circle.fill")
-            Text(info)
-                .fontWeight(.bold)
-                .foregroundColor(.black)
-                .lineLimit(3)
-                .frame(alignment: .leading)
-                //self.viewModel.event.info
-            }
-Spacer()
-//join event 'button'
-            if !self.going {
-               Button(action: { joinEvent(eventId) }) {
-                   Text("+ Join")
-                        .fontWeight(.heavy)
-                        .foregroundColor(Color.blue).opacity(0.8)
-                        .padding(.top, 5.0)
-                        .padding(.bottom, 5.0)
-                        .padding(.horizontal, 50)
-                        .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
-                        .cornerRadius(9.0)
+                Spacer().frame(height:2)
+                Divider()
+                    .frame(height: 5)
+                    .background(Color.white)
+                
+            HStack(alignment: .top){
+                VStack (alignment: .leading){
+                    HStack{
+                        Image(systemName:"location.fill")
+                            .foregroundColor(Color.blue)
+                        Text("Location")
+                            .fontWeight(.bold)
+                            .foregroundColor(.black)
+                            .lineLimit(1)
+                    }
+                    Spacer().frame(height: 5)
+                    HStack{
+                        Image(systemName:"calendar")
+                            .foregroundColor(Color.red)
+                        Text(startDate)                        .fontWeight(.bold)
+                            .foregroundColor(.black)
+                            .lineLimit(1)
+                    }
+                    }
+                Spacer().frame(width: 10)
+                VStack (alignment: .leading){
+                    HStack{
+                        Image(systemName:"clock.fill")
+                            .foregroundColor(Color.black)
+                        Text(startTime)                        .fontWeight(.bold)
+                            .foregroundColor(.black)
+                    }
+                    Spacer().frame(height: 5)
+                    HStack{
+                        Button(action: {
+                            self.showPopUp.toggle()
+                        }, label: {
+                            Image(systemName:"person.3.fill")
+                                .foregroundColor(Color.purple)
+                            Text("\(numAttendees)/\(capacity)")  .fontWeight(.bold)
+                                .foregroundColor(.black)
+                        })
+                }.sheet(isPresented: $showPopUp, content: {
+                
+                VStack{
+                Spacer()
+                    
+                //Check mark function needs to be replaced with selector, not "follower"
+                FriendsListView(viewModel: MockFriendsListViewModel(userId: "1"))
+        
+                Spacer()
+        
+                Button(action: {
+                self.showPopUp.toggle()
+                    },label: {
+                Text("Invite")
+                .foregroundColor(Color.white)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 10)
+                .background(Color.green.opacity(0.8))
+                .cornerRadius(9)
+                .padding(.horizontal, 20)
+                    }).padding()
                 }
-        }
-        }.frame(alignment: .leading)
-        }
-
-    Spacer()
-        VStack(alignment: .leading){
-            HStack{
-            Image(systemName:"location.fill")
-                .foregroundColor(Color.blue)
-                Text("Location")
-                    .fontWeight(.bold)
-                    .foregroundColor(.black)}
-        Spacer().frame(height: 5)
-            HStack{
-            Image(systemName:"calendar")
-                .foregroundColor(Color.red)
-                Text(startDate)                        .fontWeight(.bold)
-                    .foregroundColor(.black)}
-        Spacer().frame(height: 5)
-            HStack{
-            Image(systemName:"clock.fill")
-                .foregroundColor(Color.black)
-                Text(startTime)                        .fontWeight(.bold)
-                    .foregroundColor(.black)}
-        Spacer().frame(height: 5)
-            HStack{
-            Image(systemName:"person.3.fill")
-                .foregroundColor(Color.purple)
-                Text("\(numAttendees)/\(capacity)")                        .fontWeight(.bold)
-                    .foregroundColor(.black)}
-        Spacer().frame(height: 5)
-          }
-        }
+            })
+                }
+                VStack (alignment: .leading){
+                    HStack{
+                        //join event 'button'
+                        if !self.going {
+                            Button(action: { joinEvent(eventId) }) {
+                            Text("+ Join")
+                                .fontWeight(.heavy)
+                                .foregroundColor(Color.blue)
+                                .multilineTextAlignment(.center)
+                                .opacity(0.8)
+                                .padding(.top, 12.0)
+                                .padding(.bottom, 12.0)
+                                .padding(.horizontal, 20)
+                                .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                                .cornerRadius(9.0)
+                                }
+                            }
+                        else{
+                            HStack{
+                            Button(action: {
+                                self.showPopUp.toggle()
+                            }, label: {
+                            Text("+ Invite")
+                                .fontWeight(.heavy)
+                                .foregroundColor(Color.blue)
+                                .multilineTextAlignment(.center)
+                                .opacity(0.8)
+                                .padding(.top, 12.0)
+                                .padding(.bottom, 12.0)
+                                .padding(.horizontal, 20)
+                                .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                                .cornerRadius(9.0)
+                                })
+                        }.sheet(isPresented: $showPopUp, content: {
+                        
+                        VStack{
+                        Spacer()
+                            
+                        //Check mark function needs to be replaced with selector, not "follower"
+                        FriendsListView(viewModel: MockFriendsListViewModel(userId: "1"))
+                
+                        Spacer()
+                
+                        Button(action: {
+                        self.showPopUp.toggle()
+                            },label: {
+                        Text("Invite")
+                        .foregroundColor(Color.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(Color.green.opacity(0.8))
+                        .cornerRadius(9)
+                        .padding(.horizontal, 20)
+                            }).padding()
+                        }
+                    })
+                            
+                        }
+                        }
+                }
+            }
+                
+                Spacer().frame(height:5)
+                Divider()
+                    .frame(height: 5)
+                    .background(Color.white)
+                
+                HStack(alignment: .top){
+                    VStack (alignment: .leading){
+                        HStack{
+                    Image(systemName:"pencil.circle.fill")
+                    Text(info)
+                        .fontWeight(.bold)
+                        .foregroundColor(.black)
+                        .lineLimit(3)
+                        .frame(alignment: .leading)
+                            //self.viewModel.event.info
+                    }
+                    }
+                }
+                }
+                    
     }
 }
+
+
 
 struct EventDetailsBoxView_Previews: PreviewProvider {
     static let actor = UserDetails(id: "1", firstName: "1", lastName: "last", username: "username")
