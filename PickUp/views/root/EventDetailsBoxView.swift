@@ -71,10 +71,11 @@ struct EventDetailsBoxView: View {
         self.joinEvent = joinEvent
         self.fontColor = fontColor
     }
-    @State var showPopUp = false
+    @State var friendPopUp = false
     var body: some View {
         let emoji = type == .tennis ? "🎾" : "🏀"
-            VStack(){
+        ZStack{
+        VStack{
                 HStack(alignment: .center, spacing: 5){
                 Text(emoji).font(.system(size: 20))
                 Text(name) //self.viewModel.event.name
@@ -119,7 +120,9 @@ struct EventDetailsBoxView: View {
                     Spacer().frame(height: 5)
                     HStack{
                         Button(action: {
-                            self.showPopUp.toggle()
+                            withAnimation{
+                            self.friendPopUp.toggle()
+                            }
                         }, label: {
                             Image(systemName:"person.3.fill")
                                 .foregroundColor(Color.purple)
@@ -127,29 +130,7 @@ struct EventDetailsBoxView: View {
                                 .fontWeight(.bold)
                                 .foregroundColor(Color("Text"))
                         })
-                    }.sheet(isPresented: $showPopUp, content: {
-                
-                        VStack{
-                        Spacer()
-                            
-                        //Check mark function needs to be replaced with selector, not "follower"
-                        FriendsListView(viewModel: MockFriendsListViewModel(userId: "1"))
-                
-                        Spacer()
-                
-                        Button(action: {
-                        self.showPopUp.toggle()
-                            },label: {
-                        Text("Invite")
-                        .foregroundColor(Color.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 10)
-                        .background(Color.green.opacity(0.8))
-                        .cornerRadius(9)
-                        .padding(.horizontal, 20)
-                            }).padding()
-                        }
-                    })
+                    }
                 }
                 VStack (alignment: .leading){
                     HStack{
@@ -171,7 +152,6 @@ struct EventDetailsBoxView: View {
                         else{
                             HStack{
                             Button(action: {
-                                self.showPopUp.toggle()
                             }, label: {
                             Text("+ Invite")
                                 .fontWeight(.heavy)
@@ -184,29 +164,7 @@ struct EventDetailsBoxView: View {
                                 .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                                 .cornerRadius(9.0)
                                 })
-                        }.sheet(isPresented: $showPopUp, content: {
-                        
-                        VStack{
-                        Spacer()
-                            
-                        //Check mark function needs to be replaced with selector, not "follower"
-                        FriendsListView(viewModel: MockFriendsListViewModel(userId: "1"))
-                
-                        Spacer()
-                
-                        Button(action: {
-                        self.showPopUp.toggle()
-                            },label: {
-                        Text("Invite")
-                        .foregroundColor(Color.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 10)
-                        .background(Color.green.opacity(0.8))
-                        .cornerRadius(9)
-                        .padding(.horizontal, 20)
-                            }).padding()
                         }
-                    })
                             
                         }
                         }
@@ -232,7 +190,7 @@ struct EventDetailsBoxView: View {
                     }
                 }
                 }
-                    
+        }
     }
 }
 

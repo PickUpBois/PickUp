@@ -43,6 +43,7 @@ struct FriendsListView: View {
                             HStack{
                                 Text("\(friend.firstName) \(friend.lastName)")
                                 .fontWeight(.light)
+                                .foregroundColor(Color("Text"))
 
                             Spacer()
 
