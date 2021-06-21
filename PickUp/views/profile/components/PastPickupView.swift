@@ -64,9 +64,9 @@ struct PastPickupView: View {
                 .padding(.horizontal, 20)
                 }
             }
-        }
+    }
 
-        }
+}
 
 extension PastPickupView{
     class ViewModel {

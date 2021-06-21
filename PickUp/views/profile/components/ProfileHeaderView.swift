@@ -16,14 +16,8 @@ enum ProfileAlertType {
 struct ProfileHeaderView: View {
     @State var showPopUp = false
     @EnvironmentObject var profileViewModel: ProfileViewModel
-    @Binding var showPhotoLibrary: Bool
     let auth: Bool
-    @State private var showingUnfollowAlert = false
-    @State private var showingFollowAlert = false
-    init(showPhotoLibrary: Binding<Bool>, auth: Bool) {
-        self._showPhotoLibrary = showPhotoLibrary
-        self.auth = auth
-    }
+    @Binding var alertType: ProfileView.AlertType?
     var body: some View {
         VStack(alignment: .center) {
             HStack{Text("\(self.profileViewModel.user?.firstName ?? "NA")'s Profile").font(.title3) // Leading title on page
@@ -34,12 +28,7 @@ struct ProfileHeaderView: View {
             Spacer().frame(minHeight: 8, maxHeight: 8) // Space between profile
             HStack {
                 VStack(alignment: .center){
-                    Button(action: {
-                        self.showPhotoLibrary = true
-                        print("image was tapped")
-                    }) {
-                        ProfilePicture(photoUrl: self.profileViewModel.user?.photoUrl)
-                    }
+                    ProfilePicture(viewModel: ProfilePictureViewModel(photoUrl: self.profileViewModel.user?.photoUrl))
                     Text("\(self.profileViewModel.user?.firstName ?? "NA") \(self.profileViewModel.user?.lastName ?? "NA")")
                         .font(.headline).fontWeight(.bold).foregroundColor(Color.black)
                         .multilineTextAlignment(.center)
@@ -53,8 +42,8 @@ struct ProfileHeaderView: View {
                 VStack {
                 Text("Total").font(.headline).foregroundColor(Color.black)
                 Text("Pickups").font(.headline).foregroundColor(Color.black)
-                    Text("\(self.profileViewModel.pastEvents.count)").font(.title).fontWeight(.bold)
-                    Spacer()
+                Text("\(self.profileViewModel.pastEvents.count)").font(.title).fontWeight(.bold)
+                Spacer()
                 }
                 VStack {
                    
@@ -92,6 +81,6 @@ struct ProfileHeaderView: View {
 
 struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileHeaderView(showPhotoLibrary: .constant(false), auth: false).environmentObject(MockProfileViewModel(userId: "1"))
+        ProfileHeaderView(auth: false, alertType: .constant(nil)).environmentObject(MockProfileViewModel(userId: "1"))
     }
 }
