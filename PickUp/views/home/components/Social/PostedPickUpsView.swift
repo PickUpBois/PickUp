@@ -49,11 +49,11 @@ struct PostedPickUpsView: View {
                         
                     
                     }.padding([.leading, .bottom, .trailing], 15.0)
-                        .background(Color.white.opacity(0.9))
+                    .background(Color("Background_SmallView"))
                                 .cornerRadius(8)
                                 .padding(.horizontal, 20)
                     
-                    Spacer().frame(height: 20)
+                    Spacer().frame(height: 0)
                     
                     
                     // Repeated Post from before
@@ -93,12 +93,12 @@ struct PostedPickUpsView: View {
                         
                     
                     }.padding([.leading, .bottom, .trailing], 15.0)
-                        .background(Color.white.opacity(0.9))
+                    .background(Color("Background_SmallView"))
                                 .cornerRadius(8)
                                 .padding(.horizontal, 20)
                     
                     
-                    Spacer().frame(height: 20)
+                    Spacer().frame(height: 0)
                     
                     // Repeated Post from before
                     VStack{
@@ -137,7 +137,7 @@ struct PostedPickUpsView: View {
                         
                     
                     }.padding([.leading, .bottom, .trailing], 15.0)
-                        .background(Color.white.opacity(0.9))
+                    .background(Color("Background_SmallView"))
                                 .cornerRadius(8)
                                 .padding(.horizontal, 20)
                     

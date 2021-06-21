@@ -20,14 +20,15 @@ struct HomeView: View {
                     .frame(maxWidth: UIScreen.main.bounds.width * 0.9, maxHeight: UIScreen.main.bounds.height * 0.4, alignment: .top)
                     .padding(.horizontal, 6.0)
                     .padding(.vertical, 15.0)
-                    .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                    .background(Color("Background"))
                     .cornerRadius(20)
+                    
                 HStack {
                     //Bottom left, near me box
                     CourtsNearMeListView()
                         .frame(maxWidth: UIScreen.main.bounds.width * 0.45, maxHeight: UIScreen.main.bounds.height * 0.4, alignment: .top)
                         .padding(.vertical, 15.0)
-                        .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                        .background(Color("Background"))
                         .cornerRadius(20)
                     
                     Spacer().frame(width: 8)
@@ -36,7 +37,7 @@ struct HomeView: View {
                     PickUpTabListView().environmentObject(viewModel)
                         .frame(maxWidth: UIScreen.main.bounds.width * 0.45, maxHeight: UIScreen.main.bounds.height * 0.4, alignment: .top)
                         .padding(.vertical, 15.0)
-                        .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                        .background(Color("Background"))
                         .cornerRadius(20)
                         
                 }
@@ -52,13 +53,13 @@ struct HomeView: View {
         .toolbar{
             ToolbarItem(placement: .principal) {
                 HStack(spacing: 0.0) {
-                    Image("logo2")
+                    Image("logo")
                         .resizable()
-                        .padding(.top, -15)
-                        .frame(width: 125, height: 30)
+                        .padding(.top, -5)
+                        .frame(width: 130, height: 40)
                         .scaledToFit()
                     
-                    Spacer().frame(minWidth: 80, idealWidth: 80, maxWidth: 80, alignment: .center)
+                    Spacer().frame(minWidth: 60, idealWidth: 60, maxWidth: 60, alignment: .center)
                     NavigationLink(destination: MessageView()) {
                         Image(systemName: "message.circle.fill")
                             .resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
@@ -70,12 +71,12 @@ struct HomeView: View {
                     NavigationLink(destination: NotificationListView(viewModel: NotificationListViewModel())) {
                         Image(systemName: "bell.circle.fill")
                             .resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
-                            .foregroundColor(Color.black)
+                            .foregroundColor(Color("Notifications"))
                             .frame(width: 25.0, height: 25.0)
                     }
 
                 }
-                .padding(.leading, 140)
+                .padding(.leading, 120)
             }
                 
         }

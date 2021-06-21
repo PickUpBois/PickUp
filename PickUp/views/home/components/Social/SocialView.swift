@@ -19,7 +19,7 @@ struct SocialView: View {
             HStack{ Text("Social Feed")                .font(.title3)
                 .fontWeight(.bold)
                 .lineLimit(1)
-                .foregroundColor(Color.black)
+                .foregroundColor(Color("Text"))
                 Image(systemName:"newspaper.fill")
                     .foregroundColor(Color.green)
             }
@@ -52,7 +52,7 @@ struct SocialView: View {
                         .cornerRadius(9)
                         .padding(.horizontal, 20)
                 })
-                Spacer().frame(height: 50)
+                Spacer().frame(height: 10)
             })
             
           

@@ -59,7 +59,7 @@ struct PastPickupView: View {
                 }.padding(.trailing, 60)
                         }
                     }.padding(.vertical, 15.0)
-                .background(Color.gray.opacity(0.15))
+                .background(Color("Background_Events"))
                 .cornerRadius(8)
                 .padding(.horizontal, 20)
                 }

@@ -37,6 +37,8 @@ struct MapMainView: View {
                     .cornerRadius(20)
                     
                     
+                    Spacer().frame(height: 5)
+                    
                     // Displaying Results...
                     if !mapData.places.isEmpty && mapData.searchTxt != ""{
                         
@@ -79,7 +81,7 @@ struct MapMainView: View {
                         .foregroundColor(Color.black)
                         .font(.title2)
                         .padding(10)
-                        .background(Color.green)
+                        .background(Color.white)
                         .clipShape(Circle())
                     
                 })
@@ -97,7 +99,7 @@ struct MapMainView: View {
                             .foregroundColor(Color.black)
                             .font(.title2)
                             .padding(10)
-                            .background(Color.green)
+                            .background(Color.white)
                             .clipShape(Circle())
                     })
                     
@@ -106,7 +108,7 @@ struct MapMainView: View {
                             .foregroundColor(Color.black)
                             .font(.title2)
                             .padding(10)
-                            .background(Color.green)
+                            .background(Color.white)
                             .clipShape(Circle())
                     })
                     
@@ -134,10 +136,10 @@ struct MapMainView: View {
             .toolbar{
                 ToolbarItem(placement: .principal) {
                     HStack {
-                        Image("logo2")
+                        Image("logo")
                             .resizable()
-                            .padding(.top, -15)
-                            .frame(width: 125, height: 30)
+                            .padding(.top, -5)
+                            .frame(width: 130, height: 40)
                             .scaledToFit()
                         
                     }

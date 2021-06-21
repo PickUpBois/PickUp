@@ -114,7 +114,8 @@ struct MainView: View {
             
         }
         .onAppear() {
-            UITabBar.appearance().barTintColor = .white
+            UITabBar.appearance().barTintColor = UIColor(named: "Tabbar")
+            
         }
         .accentColor(.green)
     }

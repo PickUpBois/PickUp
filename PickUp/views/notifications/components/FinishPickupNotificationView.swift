@@ -28,7 +28,7 @@ struct FinishPickupNotificationView: View {
     var body: some View {
         VStack{
                 HStack {
-                    Image("logo2")
+                    Image("logo")
                         .resizable()
                         .foregroundColor(.blue)
                         .frame(width: 25, height: 25, alignment: .center)

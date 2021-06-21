@@ -75,14 +75,14 @@ struct ProfileView: View {
                     
                     if auth {
                         
-                        Spacer().frame(minWidth: 38, idealWidth: 38, maxWidth: 38, alignment: .center)
-                        Image("logo2")
+                        Spacer().frame(minWidth: 55.5, idealWidth: 55.5, maxWidth: 55.5, alignment: .center)
+                        Image("logo")
                             .resizable()
-                            .padding(.top, -15)
-                            .frame(width: 125, height: 30)
+                            .padding(.top, -5)
+                            .frame(width: 130, height: 40)
                             .scaledToFit()
                         
-                        Spacer().frame(minWidth: 110, idealWidth: 110, maxWidth: 110, alignment: .center)
+                        Spacer().frame(minWidth: 107, idealWidth: 107, maxWidth: 107, alignment: .center)
                         NavigationLink(destination: ProfileSettingsView().environmentObject(self.viewModel)) {
                             Image(systemName: "gearshape.fill").resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
                                 .foregroundColor(Color.green)
@@ -93,13 +93,15 @@ struct ProfileView: View {
                     }
                     
                     else{
-                        Image("logo2")
+                        
+                        Spacer().frame(minWidth: 10.5, idealWidth: 10.5, maxWidth: 10.5, alignment: .center)
+                        Image("logo")
                             .resizable()
-                            .padding(.top, -15)
-                            .frame(width: 125, height: 30)
+                            .padding(.top, -5)
+                            .frame(width: 130, height: 40)
                             .scaledToFit()
                         
-                        Spacer().frame(minWidth: 110, idealWidth: 110, maxWidth: 110, alignment: .center)
+                        Spacer().frame(minWidth: 107, idealWidth: 107, maxWidth: 107, alignment: .center)
                         Button( action: {
                             withAnimation(.easeIn){popover.toggle()}
 
@@ -107,12 +109,12 @@ struct ProfileView: View {
                             Image(systemName: "square.and.arrow.up.fill")
                                 .resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
                                 .foregroundColor(Color.green)
-                                .frame(width: 25.0, height: 25.0)
+                                .frame(width: 20.0, height: 25.0)
                         })
                     }
                     
                 }
-                .padding(.leading, 102.5)
+                .padding(.leading, 81.5)
             }
         }
         
@@ -128,43 +130,3 @@ struct ProfileView_Previews: PreviewProvider {
     }
 }
 
-
-
-
-//                    Button(action: {
-//                        self.showPopUp.toggle()
-//                    },label: {
-//                        VStack{
-//                            Text("Team").font(.headline).foregroundColor(Color.black)
-//                            Text("Members").font(.headline).foregroundColor(Color.black)
-//                            Text("50").font(.title).fontWeight(.bold).foregroundColor(Color.black)
-//
-//                            Spacer()
-//                        }
-//                    })
-//                }.sheet(isPresented: $showPopUp, content: {
-//
-//                    FinishPickupView()
-//
-//                    Button(action: {
-//                        self.showPopUp.toggle()
-//                    },label: {
-//                        Text("Dismiss")
-//                            .foregroundColor(Color.white)
-//                            .frame(maxWidth: .infinity)
-//                            .padding(.vertical, 10)
-//                            .background(Color.black.opacity(0.8))
-//                            .cornerRadius(9)
-//                            .padding(.horizontal, 20)
-//                    })
-//                    //Spacer().frame(height: 300)
-//                })
-
-
-
-// friends list
-//            NavigationLink(
-//                destination: FriendsListView(viewModel: FriendsListViewModel(userId: self.viewModel.userId)),
-//                label: {
-//                    Text("Friend List")
-//                })

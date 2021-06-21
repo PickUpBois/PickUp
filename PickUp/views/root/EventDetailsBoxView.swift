@@ -79,7 +79,7 @@ struct EventDetailsBoxView: View {
                 Text(emoji).font(.system(size: 20))
                 Text(name) //self.viewModel.event.name
                     .fontWeight(.heavy)
-                    .foregroundColor(.black)
+                    .foregroundColor(Color("Text"))
                     .lineLimit(1)
             }
                 Spacer().frame(height:2)
@@ -94,15 +94,16 @@ struct EventDetailsBoxView: View {
                             .foregroundColor(Color.blue)
                         Text("Location")
                             .fontWeight(.bold)
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("Text"))
                             .lineLimit(1)
                     }
                     Spacer().frame(height: 5)
                     HStack{
                         Image(systemName:"calendar")
                             .foregroundColor(Color.red)
-                        Text(startDate)                        .fontWeight(.bold)
-                            .foregroundColor(.black)
+                        Text(startDate)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color("Text"))
                             .lineLimit(1)
                     }
                     }
@@ -111,8 +112,9 @@ struct EventDetailsBoxView: View {
                     HStack{
                         Image(systemName:"clock.fill")
                             .foregroundColor(Color.black)
-                        Text(startTime)                        .fontWeight(.bold)
-                            .foregroundColor(.black)
+                        Text(startTime)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color("Text"))
                     }
                     Spacer().frame(height: 5)
                     HStack{
@@ -121,32 +123,33 @@ struct EventDetailsBoxView: View {
                         }, label: {
                             Image(systemName:"person.3.fill")
                                 .foregroundColor(Color.purple)
-                            Text("\(numAttendees)/\(capacity)")  .fontWeight(.bold)
-                                .foregroundColor(.black)
+                            Text("\(numAttendees)/\(capacity)")
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("Text"))
                         })
-                }.sheet(isPresented: $showPopUp, content: {
+                    }.sheet(isPresented: $showPopUp, content: {
                 
-                VStack{
-                Spacer()
-                    
-                //Check mark function needs to be replaced with selector, not "follower"
-                FriendsListView(viewModel: MockFriendsListViewModel(userId: "1"))
-        
-                Spacer()
-        
-                Button(action: {
-                self.showPopUp.toggle()
-                    },label: {
-                Text("Invite")
-                .foregroundColor(Color.white)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 10)
-                .background(Color.green.opacity(0.8))
-                .cornerRadius(9)
-                .padding(.horizontal, 20)
-                    }).padding()
-                }
-            })
+                        VStack{
+                        Spacer()
+                            
+                        //Check mark function needs to be replaced with selector, not "follower"
+                        FriendsListView(viewModel: MockFriendsListViewModel(userId: "1"))
+                
+                        Spacer()
+                
+                        Button(action: {
+                        self.showPopUp.toggle()
+                            },label: {
+                        Text("Invite")
+                        .foregroundColor(Color.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(Color.green.opacity(0.8))
+                        .cornerRadius(9)
+                        .padding(.horizontal, 20)
+                            }).padding()
+                        }
+                    })
                 }
                 VStack (alignment: .leading){
                     HStack{
@@ -221,7 +224,7 @@ struct EventDetailsBoxView: View {
                     Image(systemName:"pencil.circle.fill")
                     Text(info)
                         .fontWeight(.bold)
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("Text"))
                         .lineLimit(3)
                         .frame(alignment: .leading)
                             //self.viewModel.event.info

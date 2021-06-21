@@ -67,9 +67,9 @@ struct CreateSportEventView: View {
                 }, label: {
                 Text("Invite Friends")
                 .fontWeight(.heavy)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color("Text"))
                     .padding(.all, 10.0)
-                    .background(Color(red: 0, green: 0.7, blue: 0, opacity: 0.55))
+                    .background(Color.green.opacity(0.8))
                     .cornerRadius(7)
             })
             }.sheet(isPresented: $showPopUp, content: {
@@ -105,9 +105,9 @@ struct CreateSportEventView: View {
                     self.eventAlert = true
                 }) {
                 Text("Create Pickup").fontWeight(.heavy)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color("Text"))
                     .padding(.all, 10.0)
-                    .background(Color(red: 0, green: 0.5, blue: 0.7, opacity: 0.3))
+                    .background(Color.blue.opacity(0.8))
                     .cornerRadius(7)
 
                 }

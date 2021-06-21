@@ -51,7 +51,7 @@ struct PickUpView: View, Identifiable {
                     HStack(spacing: 5){
                         Text(name)
                         .fontWeight(.bold)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color("Text"))
                         .lineLimit(1)
                         
                     }
@@ -60,13 +60,13 @@ struct PickUpView: View, Identifiable {
                         Image(systemName:"calendar")
                         .foregroundColor(Color.red)
                         Text(getDate(date: startDate))
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color("Text"))
                         .lineLimit(1)
                         }
                         HStack (spacing: 2){
                         Text("0.25")
                         Text("mi")
-                        }.foregroundColor(Color.black)
+                        }.foregroundColor(Color("Text"))
                         .lineLimit(1)
 
                     }
@@ -82,7 +82,7 @@ struct PickUpView: View, Identifiable {
                 }
                 .frame(maxWidth: 175, alignment: .center)
                 .padding(.vertical, 5)
-                .background(Color.white.opacity(0.9))
+                .background(Color("Background_SmallView"))
                 .cornerRadius(20)
                 
                 
@@ -92,7 +92,7 @@ struct PickUpView: View, Identifiable {
             Spacer().frame(height: 300)
             EventDetailsBoxView(event: self.viewModel.events[id], joinEvent: self.viewModel.joinEvent)
                 .padding(.all, 30.0)
-                .background(Color.white.opacity(0.9))
+                .background(Color("Background_Events"))
                 .cornerRadius(8)
                 .padding(.horizontal, 20)
             

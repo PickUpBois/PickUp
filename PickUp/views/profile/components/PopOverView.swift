@@ -22,8 +22,10 @@ struct PopOverView: View {
             }) {
                 if self.viewModel.user?.friendStatus == .friend {
                     Text("Remove Friend")
+                        .foregroundColor(Color("Text"))
                 } else {
                     Text("Add Friend")
+                        .foregroundColor(Color("Text"))
                 }
             }
             
@@ -31,12 +33,14 @@ struct PopOverView: View {
             Button(action:{
             }) {
                     Text("Block")
+                        .foregroundColor(Color("Text"))
             }
             
             Divider()
             Button(action:{
                 }) {
                     Text("Report")
+                        .foregroundColor(Color("Text"))
             }
             
         }

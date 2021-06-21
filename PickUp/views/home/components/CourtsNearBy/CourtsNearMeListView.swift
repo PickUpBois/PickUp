@@ -19,7 +19,7 @@ struct CourtsNearMeListView: View {
                     .font(.title3)
                     .fontWeight(.semibold)
                     .lineLimit(1)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color("Text"))
                             
             Image(systemName:"location.fill")
                     .foregroundColor(Color.blue)
