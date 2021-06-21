@@ -27,9 +27,9 @@ struct EditPickupView: View {
                         }, label: {
                         Text("Delete")
                         .fontWeight(.heavy)
-                            .foregroundColor(Color.black)
+                            .foregroundColor(Color("Text"))
                             .padding(.all, 10.0)
-                            .background(Color(red: 1, green: 0.0, blue: 0, opacity: 0.55))
+                            .background(Color.red.opacity(0.8))
                             .cornerRadius(7)
                             .alert(isPresented:$deletePickupAlert) {
                                 Alert(title: Text("Confirm Delete Event"), message: Text("Are you sure you want to delete this Pickup?"), primaryButton: .default(Text("Yes")) {
@@ -45,9 +45,9 @@ struct EditPickupView: View {
                         }, label: {
                             Text("Update")
                             .fontWeight(.heavy)
-                                .foregroundColor(Color.black)
+                                .foregroundColor(Color("Text"))
                                 .padding(.all, 10.0)
-                                .background(Color(red: 0, green: 0.7, blue: 0, opacity: 0.55))
+                                .background(Color.green.opacity(0.8))
                                 .cornerRadius(7)
                                 .alert(isPresented:$updatePickupAlert) {
                                     Alert(title: Text("Confirm Update Event"), message: Text("Are you sure you want to update this Pickup?"), primaryButton: .default(Text("Yes")) {
@@ -57,7 +57,7 @@ struct EditPickupView: View {
                     }
 
                     }.padding(.all, 25.0)
-                .background(Color.gray.opacity(0.15))
+                .background(Color("Background_Events"))
                 .cornerRadius(8)
                 .padding(.horizontal, 20)
                 }

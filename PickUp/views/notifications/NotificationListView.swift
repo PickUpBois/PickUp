@@ -45,7 +45,7 @@ struct NotificationListView: View {
                 HStack(spacing: 0.0) {
                     Text("Notifications")
                         .fontWeight(.heavy)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color("Text"))
                 }
             }
         }

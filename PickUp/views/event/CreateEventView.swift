@@ -11,7 +11,8 @@ import Combine
 struct CreateEventView: View {
     @ObservedObject var viewModel: CreateEventViewModel
     @State private var selection = 1
-    init(viewModel: CreateEventViewModel = CreateEventViewModel()) {
+    init(viewModel: CreateEventViewModel = CreateEventViewModel())
+    {
         self.viewModel = viewModel
     }
     
@@ -39,11 +40,12 @@ struct CreateEventView: View {
             .toolbar{
                 ToolbarItem(placement: .principal) {
                     HStack {
-                        Image("logo2")
+                        Image("logo")
                             .resizable()
-                            .padding(.top, -15)
-                            .frame(width: 125, height: 30)
+                            .padding(.top, -5)
+                            .frame(width: 130, height: 40)
                             .scaledToFit()
+                            
                     }
                 }
                     

@@ -10,7 +10,8 @@ import SwiftUI
 struct MainView: View {
     @State private var tabSelection = 1
     @State private var tappedTwice: Bool = false
-
+    @State var show = false
+    
             @State private var teammates = UUID()
             @State private var map = UUID()
             @State private var event = UUID()
@@ -53,6 +54,7 @@ struct MainView: View {
                     guard tappedTwice else { return }
                     map = UUID()
                     self.tappedTwice = false
+                    
             })
             }
             .tabItem {
@@ -69,6 +71,7 @@ struct MainView: View {
                     guard tappedTwice else { return }
                     event = UUID()
                     self.tappedTwice = false
+                    
             })
             }
             .tabItem {
@@ -111,11 +114,13 @@ struct MainView: View {
             
         }
         .onAppear() {
-            UITabBar.appearance().barTintColor = .white
+            UITabBar.appearance().barTintColor = UIColor(named: "Tabbar")
+            
         }
         .accentColor(.green)
     }
 }
+
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {

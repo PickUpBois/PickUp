@@ -18,10 +18,10 @@ struct SignUpView: View {
     var body: some View {
         VStack (spacing: 5) {
             //Logo Image at Top
-            Image("Logo")
+            Image("logo")
                 .resizable()
                 .padding(.top, 100.0)
-                .frame(width: 275, height: 200)
+                .frame(width: 240, height: 180)
                 .scaledToFit()
             
             Spacer()
@@ -102,7 +102,7 @@ struct SignUpView: View {
             //Login Button Settings
             Button(action: {self.presentation.wrappedValue.dismiss()}) {
                 Text("Already have an account? Log in.")
-                    .foregroundColor(.black)
+                    .foregroundColor(Color("Text"))
                     .font(.system(size: 18, weight: .medium))
                     .frame(width: /*@START_MENU_TOKEN@*/500.0/*@END_MENU_TOKEN@*/, height: 100.0)
             }.frame(maxWidth: .infinity)

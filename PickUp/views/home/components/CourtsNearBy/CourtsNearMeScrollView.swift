@@ -48,7 +48,7 @@ struct CourtsNearByScrollView: View {
                     Text("                                Courts & Gyms Near Me                                ")
                         .font(.headline)
                         .fontWeight(.heavy)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color("Text"))
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
                         .cornerRadius(9)

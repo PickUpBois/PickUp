@@ -17,15 +17,15 @@ struct LoginView: View {
     
     var body: some View {
         NavigationView {
-            VStack (spacing: 5) {
+            VStack (spacing: 2) {
                 //Logo Image at Top
-                Image("Logo")
+                Image("logo")
                     .resizable()
                     .padding(.top, 100.0)
-                    .frame(width: 275, height: 200)
+                    .frame(width: 240, height: 180)
                     .scaledToFit()
-                Spacer()
                 
+                Spacer()
                 HStack {
                     //Hstack Email
                     Image(systemName: "envelope")
@@ -69,7 +69,7 @@ struct LoginView: View {
                 //Forgot Password Button Settings
                 Button(action: {}){
                     Text("Forgot Password?")
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("Text"))
                         .font(.system(size: 18, weight: .medium))
                         }.frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
@@ -81,7 +81,7 @@ struct LoginView: View {
                 //Sign Up Button Settings
                 NavigationLink(destination: SignUpView()) {
                     Text("Don't have an account? Sign Up.")
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("Text"))
                         .font(.system(size: 18, weight: .medium))
                         .frame(width: /*@START_MENU_TOKEN@*/500.0/*@END_MENU_TOKEN@*/, height: 100.0)
                 }.frame(maxWidth: .infinity)

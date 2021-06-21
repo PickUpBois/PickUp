@@ -16,10 +16,10 @@ struct UpcomingPickupsView: View {
                 VStack {
                     HStack {
                         EventDetailsBoxView(event: event, joinEvent: { _ in return})
-                            .padding(.all, 25.0)
-                            .background(Color.gray.opacity(0.15))
-                            .cornerRadius(8)
-                            .padding(.horizontal, 20)
+                        .padding(.vertical, 15.0)
+                        .background(Color("Background_Events"))
+                        .cornerRadius(8)
+                        .padding(.horizontal, 20)
                     }
                 }
             }

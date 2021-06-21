@@ -18,7 +18,8 @@ struct CourtsNearMeListView: View {
                 Text("Courts Near Me")
                     .font(.title3)
                     .fontWeight(.semibold)
-                    .foregroundColor(Color.black)
+                    .lineLimit(1)
+                    .foregroundColor(Color("Text"))
                             
             Image(systemName:"location.fill")
                     .foregroundColor(Color.blue)
@@ -47,7 +48,8 @@ struct CourtsNearMeListView: View {
             
             ScrollView {
                 ForEach(0..<4) { _ in
-                    CourtsNearMeView(title: "example", radius: "0.25", available: "🎾 2", total: "4", open: "open")
+                    CourtsNearMeView(title: "🎾 State Gym", radius: "0.25", percentage: "100%", open: "open").frame(maxWidth: UIScreen.main.bounds.width * 0.4, maxHeight: UIScreen.main.bounds.height * 0.4)
+                        
                 }
             }
         }

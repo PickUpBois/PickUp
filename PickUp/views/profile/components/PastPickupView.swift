@@ -58,8 +58,8 @@ struct PastPickupView: View {
                             .lineLimit(1)
                 }.padding(.trailing, 60)
                         }
-                    }.padding(.all, 25.0)
-                .background(Color.gray.opacity(0.15))
+                    }.padding(.vertical, 15.0)
+                .background(Color("Background_Events"))
                 .cornerRadius(8)
                 .padding(.horizontal, 20)
                 }

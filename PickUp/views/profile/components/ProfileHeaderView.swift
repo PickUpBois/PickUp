@@ -21,6 +21,7 @@ struct ProfileHeaderView: View {
     var body: some View {
         VStack(alignment: .center) {
             HStack{Text("\(self.profileViewModel.user?.firstName ?? "NA")'s Profile").font(.title3) // Leading title on page
+            .foregroundColor(Color("Text"))
             .fontWeight(.bold)
             .padding(.top)
                 
@@ -30,7 +31,7 @@ struct ProfileHeaderView: View {
                 VStack(alignment: .center){
                     ProfilePicture(viewModel: ProfilePictureViewModel(photoUrl: self.profileViewModel.user?.photoUrl))
                     Text("\(self.profileViewModel.user?.firstName ?? "NA") \(self.profileViewModel.user?.lastName ?? "NA")")
-                        .font(.headline).fontWeight(.bold).foregroundColor(Color.black)
+                        .font(.headline).fontWeight(.bold).foregroundColor(Color("Text"))
                         .multilineTextAlignment(.center)
                         .frame(minWidth: 150, maxWidth: 1000)
                     Text(self.profileViewModel.user?.college ?? "No College").font(.headline).fontWeight(.light).foregroundColor(Color.red).multilineTextAlignment(.center)
@@ -40,10 +41,10 @@ struct ProfileHeaderView: View {
                 }
                 .frame(width: 100.0)
                 VStack {
-                Text("Total").font(.headline).foregroundColor(Color.black)
-                Text("Pickups").font(.headline).foregroundColor(Color.black)
-                Text("\(self.profileViewModel.pastEvents.count)").font(.title).fontWeight(.bold)
-                Spacer()
+                Text("Total").font(.headline).foregroundColor(Color("Text"))
+                Text("Pickups").font(.headline).foregroundColor(Color("Text"))
+                    Text("\(self.profileViewModel.pastEvents.count)").font(.title).fontWeight(.bold)
+                    Spacer()
                 }
                 VStack {
                    
@@ -51,9 +52,9 @@ struct ProfileHeaderView: View {
                         destination: FriendsListView(viewModel: FriendsListViewModel(userId: self.profileViewModel.userId)),
                         label: {
                             VStack{
-                                Text("Team").font(.headline).foregroundColor(Color.black)
-                                Text("Members").font(.headline).foregroundColor(Color.black)
-                                Text("\(self.profileViewModel.user?.friends.count ?? 0)").font(.title).fontWeight(.bold).foregroundColor(Color.black)
+                                Text("Team").font(.headline).foregroundColor(Color("Text"))
+                                Text("Members").font(.headline).foregroundColor(Color("Text"))
+                                Text("\(self.profileViewModel.user?.friends.count ?? 0)").font(.title).fontWeight(.bold).foregroundColor(Color("Text"))
                                 
                                 Spacer()
                             }
@@ -61,18 +62,22 @@ struct ProfileHeaderView: View {
                 }
 
                 VStack {
-                Text("GOAT").font(.headline).foregroundColor(Color.black)
-                Text("Meter").font(.headline).foregroundColor(Color.black)
+                Text("GOAT").font(.headline)
+                    .lineLimit(1)
+                    .foregroundColor(Color("Text"))
+                Text("Meter").font(.headline)
+                    .lineLimit(1)
+                    .foregroundColor(Color("Text"))
                     Spacer().frame(height: 8)
                ZStack(alignment: .leading){
-                    Capsule().frame(width: 50, height: 20)
+                    Capsule().frame(width: 40, height: 20)
                         .foregroundColor(.blue)
                     Capsule().frame(width: 20, height: 20)
                         .foregroundColor(.green)
                     }
                     Spacer()
                 }
-                }
+            }
             }
         }
     }

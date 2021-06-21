@@ -88,48 +88,58 @@ struct ProfileView: View {
                     return self.removeFriendAlert
                 }
             }
-            .onAppear { () in
-                print("retrieving profile state")
-                viewModel.retrieveState()
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar{
-                ToolbarItem(placement: .navigationBarLeading) {
-                    HStack {}
-                }
-                ToolbarItem(placement: .principal) {
-                    HStack {
-                        Image("logo2")
+        .onAppear { () in
+            viewModel.retrieveState()
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar{
+            ToolbarItem(placement: .principal) {
+                HStack {
+                    
+                    if auth {
+                        
+                        Spacer().frame(minWidth: 55.5, idealWidth: 55.5, maxWidth: 55.5, alignment: .center)
+                        Image("logo")
                             .resizable()
-                            .padding(.top, -15)
-                            .frame(width: 125, height: 30)
+                            .padding(.top, -5)
+                            .frame(width: 130, height: 40)
                             .scaledToFit()
+                        
+                        Spacer().frame(minWidth: 107, idealWidth: 107, maxWidth: 107, alignment: .center)
+                        NavigationLink(destination: ProfileSettingsView().environmentObject(self.viewModel)) {
+                            Image(systemName: "gearshape.fill").resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
+                                .foregroundColor(Color.green)
+                                .frame(width: 25.0, height: 25.0)
+                                .padding(.trailing, 5)
                             
-                        
-                        if auth {
-                            Spacer().frame(minWidth: 100, idealWidth: 100, maxWidth: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            NavigationLink(destination: ProfileSettingsView().environmentObject(self.viewModel)) {
-                                Image(systemName: "gearshape.fill")
-                            }
                         }
-                        
-                        else{
-                            Spacer().frame(minWidth: 120, idealWidth: 120, maxWidth: 100, alignment: .center)
-                            Button( action: {
-                                withAnimation(.easeIn){popover.toggle()}
-
-                            }, label: {
-                                Image(systemName: "list.dash")
-                                    .padding(.trailing)
-                            })
-                        }
-
-                        
                     }
-                    .padding(.leading, 110)
+                    
+                    else{
+                        
+                        Spacer().frame(minWidth: 10.5, idealWidth: 10.5, maxWidth: 10.5, alignment: .center)
+                        Image("logo")
+                            .resizable()
+                            .padding(.top, -5)
+                            .frame(width: 130, height: 40)
+                            .scaledToFit()
+                        
+                        Spacer().frame(minWidth: 107, idealWidth: 107, maxWidth: 107, alignment: .center)
+                        Button( action: {
+                            withAnimation(.easeIn){popover.toggle()}
+
+                        }, label: {
+                            Image(systemName: "square.and.arrow.up.fill")
+                                .resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
+                                .foregroundColor(Color.green)
+                                .frame(width: 20.0, height: 25.0)
+                        })
+                    }
+                    
                 }
+                .padding(.leading, 81.5)
             }
-        
+        }
             
     }
     
