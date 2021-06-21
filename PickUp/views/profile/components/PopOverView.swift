@@ -9,21 +9,24 @@ import SwiftUI
 
 struct PopOverView: View {
     @EnvironmentObject var viewModel: ProfileViewModel
+    @Binding var alertType: ProfileView.AlertType?
     var body: some View {
         
         VStack(alignment: .center, spacing: 18) {
             
             Button(action:{
                 if self.viewModel.user?.friendStatus == .friend {
-                    self.viewModel.removeFriend()
+                    alertType = .removeFriend
                 } else {
-                    self.viewModel.addFriend()
+                    alertType = .addFriend
                 }
             }) {
                 if self.viewModel.user?.friendStatus == .friend {
                     Text("Remove Friend")
+                        .foregroundColor(Color("Text"))
                 } else {
                     Text("Add Friend")
+                        .foregroundColor(Color("Text"))
                 }
             }
             
@@ -31,12 +34,14 @@ struct PopOverView: View {
             Button(action:{
             }) {
                     Text("Block")
+                        .foregroundColor(Color("Text"))
             }
             
             Divider()
             Button(action:{
                 }) {
                     Text("Report")
+                        .foregroundColor(Color("Text"))
             }
             
         }
@@ -49,6 +54,6 @@ struct PopOverView: View {
 
 struct PopOverView_Previews: PreviewProvider {
     static var previews: some View {
-        PopOverView().environmentObject(MockProfileViewModel(userId: "1"))
+        PopOverView(alertType: .constant(nil)).environmentObject(MockProfileViewModel(userId: "1"))
     }
 }

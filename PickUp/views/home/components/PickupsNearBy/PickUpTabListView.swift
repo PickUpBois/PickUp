@@ -19,9 +19,9 @@ struct PickUpTabListView: View {
                 }, label: {
             HStack{ Text("Future PickUps").font(.title3)
                 .fontWeight(.semibold)
-                .foregroundColor(Color.black)
+                .foregroundColor(Color("Text"))
             Image(systemName: "clock.fill").font(.system(size: 16, weight: .regular))
-                .foregroundColor(Color.black)
+                .foregroundColor(Color.purple)
             }
                 })
             }.sheet(isPresented: $showPopUp, content: {
