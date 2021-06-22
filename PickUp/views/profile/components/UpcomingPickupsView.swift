@@ -10,26 +10,35 @@ import SwiftUI
 struct UpcomingPickupsView: View {
     @EnvironmentObject var viewModel: ProfileViewModel
     @State var friendPopUp = false
+    
+    let threeColumns = [GridItem(), GridItem(), GridItem()]
+    
     var body: some View {
         ZStack{
         ScrollView {
-            ForEach(self.viewModel.upcomingEvents, id: \.self.id) { event in
-                Spacer().frame(height: 15)
-                VStack {
-                    HStack {
+            VStack{
+                LazyVGrid(columns: threeColumns, spacing: 5){
+                    ForEach(self.viewModel.upcomingEvents, id: \.self.id) { event in
+                        Button(action: {
+                            withAnimation{
+                            self.friendPopUp.toggle()
+                            }
+                        }, label: {
                         EventDetailsBoxSmallView(id: 0, event: event)
-                        .padding(.vertical, 15.0)
+                        .padding(.vertical, 10.0)
+                        .padding(.horizontal, 2)
                         .background(Color("Background_Events"))
-                        .cornerRadius(8)
-                        .padding(.horizontal, 20)
+                        .cornerRadius(4)
+                            
+                        })
                     }
-                }
-            }
+                }.padding(.horizontal)
+        }
         }
             if self.friendPopUp {
                 VStack(alignment:.center){
                     ZStack{
-                    PopUpList()
+                        PopUpList()
                         .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.6, alignment: .bottom)
                     
                         }

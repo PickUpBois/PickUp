@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var tabSelection = 1
+    @State private var tabSelection = 4
     @State private var tappedTwice: Bool = false
     @State var show = false
     

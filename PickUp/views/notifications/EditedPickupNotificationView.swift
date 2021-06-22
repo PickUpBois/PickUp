@@ -24,7 +24,7 @@ struct EditedPickupNotificationView: View {
                 
                 Text("Ashwin Yedavalli")
                     .fontWeight(.heavy)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color("Text"))
                     .lineLimit(1)
                 }
                 

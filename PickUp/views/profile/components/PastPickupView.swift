@@ -9,7 +9,9 @@ import SwiftUI
 
 struct PastPickupView: View {
 @EnvironmentObject var viewModel: ProfileViewModel
-    
+
+let threeColumns = [GridItem(), GridItem(), GridItem()]
+
     func getWinLoss(event: EventDetails) -> String {
         var teamIndex = 0
         for i in 0..<event.teams![1].members.count {
@@ -30,43 +32,24 @@ struct PastPickupView: View {
         
     }
     var body: some View {
+        ZStack{
         ScrollView {
-            //viewModel.upcomingEvents needs to change to Past - For Arian
+            VStack {
+            LazyVGrid(columns: threeColumns, spacing: 5){
             ForEach(self.viewModel.pastEvents, id: \.self.id) { event in
-                Spacer().frame(height: 15)
-                VStack {
-                        EventDetailsBoxView(event: event, joinEvent: { _ in return})
-                        Spacer().frame(height: 10)
-                HStack{
-                HStack(alignment: .top){
-                    Text("🐐")
-                    if event.mvp != nil {
-                        if event.mvp!.id == viewModel.user?.id {
-                            Text("MVP")
-                                .fontWeight(.bold)
-                                .foregroundColor(.black)
-                                .lineLimit(1)
-                                .frame(alignment: .leading)}
-                            Spacer()
-                        }
-                    }
-                HStack{
-                        Text("🏅")
-                        Text(getWinLoss(event: event))
-                            .fontWeight(.bold)
-                            .foregroundColor(.black)
-                            .lineLimit(1)
-                }.padding(.trailing, 60)
-                        }
-                    }.padding(.vertical, 15.0)
-                .background(Color("Background_Events"))
-                .cornerRadius(8)
-                .padding(.horizontal, 20)
-                }
+                    EventDetailsBoxSmallView(id: 0, event: event)
+                    .padding(.vertical, 10.0)
+                    .padding(.horizontal, 2)
+                    .background(Color("Background_Events"))
+                    .cornerRadius(4)
             }
+                }.padding(.horizontal)
+            }
+        }
     }
-
 }
+}
+
 
 extension PastPickupView{
     class ViewModel {
@@ -76,3 +59,25 @@ extension PastPickupView{
 }
     }
 }
+
+
+
+//HStack(alignment: .top){
+//        Text("🐐")
+//        if event.mvp != nil {
+//            if event.mvp!.id == viewModel.user?.id {
+//                Text("MVP")
+//                    .fontWeight(.bold)
+//                    .foregroundColor(.black)
+//                    .lineLimit(1)
+//                    .frame(alignment: .leading)}
+//                Spacer()
+//            }
+//        }
+//HStack{
+//        Text("🏅")
+//            Text(getWinLoss(event: event))
+//                .fontWeight(.bold)
+//                .foregroundColor(.black)
+//                .lineLimit(1)
+//    }.padding(.trailing, 60)

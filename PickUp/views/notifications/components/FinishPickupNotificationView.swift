@@ -38,7 +38,7 @@ struct FinishPickupNotificationView: View {
                     
                     Text("PickUp")
                         .fontWeight(.heavy)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color("Text"))
                         .lineLimit(1)
                     Spacer()
                     Text(getDate(date: viewModel.event!.startDate.dateFromIso!))

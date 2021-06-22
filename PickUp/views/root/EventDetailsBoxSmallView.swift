@@ -43,56 +43,75 @@ struct EventDetailsBoxSmallView: View {
     }
     
     var body: some View {
-            Button(action: {
-                self.showPopUp.toggle()
-            }, label: {
                 ZStack{
-                VStack(spacing: 5){
+                VStack(spacing: 4){
                     
                     HStack(spacing: 5){
                         Text(name)
-                            .font(.headline)
+                            .font((.system(size: 15)))
                         .fontWeight(.bold)
                         .foregroundColor(Color("Text"))
                         .lineLimit(1)
                         
                     }
+                    Divider()
                     
-                    HStack (spacing: 5){
+                    HStack (spacing: 10){
                         Image(systemName:"calendar")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width:10, height:10)
                         .foregroundColor(Color.red)
                         Text(startDate.eventDateString)
+                            .font(.footnote)
                         .foregroundColor(Color("Text"))
                         .lineLimit(1)
-                        }.frame(maxWidth: 150, alignment: .leading)
+                        }.frame(maxWidth: 140, alignment: .leading)
+                    .padding(.leading, 4)
                     
-                    HStack (spacing: 5){
+                    HStack(spacing: 10){
+                        Image(systemName:"clock.fill")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width:10, height:10)
+                            .foregroundColor(Color.orange)
                         Text(startDate.eventTimeString)
                         .foregroundColor(Color("Text"))
+                            .font(.footnote)
                         .lineLimit(1)
-                        }.frame(maxWidth: 150, alignment: .leading)
-                        .padding(.leading, 25)
+                        }.frame(maxWidth: 140, alignment: .leading)
+                    .padding(.leading, 2)
                     
-                    HStack(spacing: 5){
+                    HStack(spacing: 10){
                         Image(systemName:"location.fill")
-                        .foregroundColor(Color.blue)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width:10, height:10)
+                            .foregroundColor(Color.blue)
                         HStack (spacing: 5){
                         Text("0.25")
                         Text("mi")
                         }.foregroundColor(Color("Text"))
+                        .font(.footnote)
                         .lineLimit(1)
 
                     }.frame(maxWidth: 140, alignment: .leading)
+                    .padding(.leading, 4)
 
-                    HStack(spacing: 5){
-                        Image(systemName:"person.3.fill")
+                    HStack(spacing: 10){
+                        Image(systemName:"person.fill")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width:10, height:10)
                             .foregroundColor(Color.purple)
                         Text("\(numAttendees)/\(capacity)")
-                            .fontWeight(.semibold)
+                            .font(.footnote)
                             .foregroundColor(Color("Text"))
                             .lineLimit(1)
 
                     }.frame(maxWidth: 140, alignment: .leading)
+                    .padding(.leading, 4)
+
                 }
                 
                 VStack{
@@ -100,7 +119,7 @@ struct EventDetailsBoxSmallView: View {
                         Image("b4")
                             .resizable()
                             .renderingMode(.original)
-                            .frame(width: 35, height: 35)
+                            .frame(width: 25, height: 25)
                             .clipShape(Circle())
                             }.frame(maxWidth: 140, alignment: .trailing)
                     .padding(.trailing, 5)
@@ -110,15 +129,7 @@ struct EventDetailsBoxSmallView: View {
                 .frame(maxWidth: 140, maxHeight: 150, alignment: .center)
                 .padding(.vertical, 2)
                 .padding(.horizontal, 2)
-                .background(Color.gray.opacity(0.2))
                 .cornerRadius(20)
-                
-                
-                
-                
-            })
-        
-        
     }
 }
 

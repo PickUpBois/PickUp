@@ -38,7 +38,7 @@ struct EventInvitationNotificationView: View {
                     
                         Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName)")
                         .fontWeight(.heavy)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color("Text"))
                         .lineLimit(1)
                         
                     }
