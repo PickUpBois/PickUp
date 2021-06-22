@@ -10,7 +10,13 @@ import Combine
 import FirebaseMessaging
 
 class ProfileViewModel: ObservableObject {
-    @Published var loading: Bool = false
+    enum State {
+        case idle
+        case loading
+        case success
+        case failure(Error)
+    }
+    @Published var state: State = .idle
     var upcomingEvents: [EventDetails] = []
     var pastEvents: [EventDetails] = []
     var userId: String
@@ -21,13 +27,13 @@ class ProfileViewModel: ObservableObject {
     }
     
     func retrieveState() {
-        loading = true
+        state = .loading
         let group = DispatchGroup()
         retrieveUser(group: group)
         getEvents(status: .open, group: group)
         getEvents(status: .closed, group: group)
         group.notify(queue: .main) { [weak self] in
-            self?.loading = false
+            self?.state = .success
         }
     }
     

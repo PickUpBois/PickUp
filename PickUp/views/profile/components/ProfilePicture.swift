@@ -73,7 +73,7 @@ struct ProfilePicture: View {
     var body: some View {
         let showActionSheet: Binding<Bool> = .init(get: {self.actionType != nil}, set: {_ in })
         Group {
-            if viewModel.loading || profileViewModel.loading {
+            if viewModel.loading {
                 ProgressView()
                     .frame(width: 100, height: 100, alignment: .center)
                     .padding(.trailing, 20)
@@ -81,17 +81,27 @@ struct ProfilePicture: View {
                 Button(action: {
                     actionType = .photoSource
                 }) {
-                    WebImage(url: URL(string: viewModel.photoUrl ?? ""))
-                        .resizable()
-                        .placeholder(Image("serena")
-                                        .resizable()
-                                        )
-                        .indicator(.activity)
-                        .frame(width: 100, height: 100, alignment: .center)
-                        .clipShape(Circle())
-                        .shadow(radius: 2)
-                        .overlay(Circle().stroke(Color.black, lineWidth: 5))
-                        .padding(.trailing, 20)
+                    if viewModel.photoUrl != nil {
+                        WebImage(url: URL(string: viewModel.photoUrl ?? ""))
+                            .resizable()
+                            .placeholder {
+                                    Rectangle().foregroundColor(.gray)
+                                }
+                            .indicator(.activity)
+                            .frame(width: 100, height: 100, alignment: .center)
+                            .clipShape(Circle())
+                            .shadow(radius: 2)
+                            .overlay(Circle().stroke(Color.black, lineWidth: 5))
+                            .padding(.trailing, 20)
+                    } else {
+                        Image("placeholder")
+                            .resizable()
+                            .frame(width: 100, height: 100, alignment: .center)
+                            .clipShape(Circle())
+                            .shadow(radius: 2)
+                            .overlay(Circle().stroke(Color.black, lineWidth: 5))
+                            .padding(.trailing, 20)
+                    }
                 }
             }
         }

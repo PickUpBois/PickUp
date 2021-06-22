@@ -47,6 +47,12 @@ struct ProfileView: View {
     
     var body: some View {
         let showAlert: Binding<Bool> = .init(get: {self.alertType != nil}, set: {_ in })
+        switch viewModel.state {
+        case .idle:
+            Color.clear.onAppear(perform: viewModel.retrieveState)
+        case .loading:
+            ProgressView()
+        default:
             VStack {
             // Stacks everything on page
                 // Stacks for profile picture
@@ -88,57 +94,56 @@ struct ProfileView: View {
                     return self.removeFriendAlert
                 }
             }
-        .onAppear { () in
-            viewModel.retrieveState()
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar{
-            ToolbarItem(placement: .principal) {
-                HStack {
-                    
-                    if auth {
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar{
+                ToolbarItem(placement: .principal) {
+                    HStack {
                         
-                        Spacer().frame(minWidth: 55.5, idealWidth: 55.5, maxWidth: 55.5, alignment: .center)
-                        Image("logo")
-                            .resizable()
-                            .padding(.top, -5)
-                            .frame(width: 130, height: 40)
-                            .scaledToFit()
-                        
-                        Spacer().frame(minWidth: 107, idealWidth: 107, maxWidth: 107, alignment: .center)
-                        NavigationLink(destination: ProfileSettingsView().environmentObject(self.viewModel)) {
-                            Image(systemName: "gearshape.fill").resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
-                                .foregroundColor(Color.green)
-                                .frame(width: 25.0, height: 25.0)
-                                .padding(.trailing, 5)
+                        if auth {
                             
+                            Spacer().frame(minWidth: 55.5, idealWidth: 55.5, maxWidth: 55.5, alignment: .center)
+                            Image("logo")
+                                .resizable()
+                                .padding(.top, -5)
+                                .frame(width: 130, height: 40)
+                                .scaledToFit()
+                            
+                            Spacer().frame(minWidth: 107, idealWidth: 107, maxWidth: 107, alignment: .center)
+                            NavigationLink(destination: ProfileSettingsView().environmentObject(self.viewModel)) {
+                                Image(systemName: "gearshape.fill").resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
+                                    .foregroundColor(Color.green)
+                                    .frame(width: 25.0, height: 25.0)
+                                    .padding(.trailing, 5)
+                                
+                            }
                         }
-                    }
-                    
-                    else{
                         
-                        Spacer().frame(minWidth: 10.5, idealWidth: 10.5, maxWidth: 10.5, alignment: .center)
-                        Image("logo")
-                            .resizable()
-                            .padding(.top, -5)
-                            .frame(width: 130, height: 40)
-                            .scaledToFit()
-                        
-                        Spacer().frame(minWidth: 107, idealWidth: 107, maxWidth: 107, alignment: .center)
-                        Button( action: {
-                            withAnimation(.easeIn){popover.toggle()}
+                        else{
+                            
+                            Spacer().frame(minWidth: 10.5, idealWidth: 10.5, maxWidth: 10.5, alignment: .center)
+                            Image("logo")
+                                .resizable()
+                                .padding(.top, -5)
+                                .frame(width: 130, height: 40)
+                                .scaledToFit()
+                            
+                            Spacer().frame(minWidth: 107, idealWidth: 107, maxWidth: 107, alignment: .center)
+                            Button( action: {
+                                withAnimation(.easeIn){popover.toggle()}
 
-                        }, label: {
-                            Image(systemName: "square.and.arrow.up.fill")
-                                .resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
-                                .foregroundColor(Color.green)
-                                .frame(width: 20.0, height: 25.0)
-                        })
+                            }, label: {
+                                Image(systemName: "square.and.arrow.up.fill")
+                                    .resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
+                                    .foregroundColor(Color.green)
+                                    .frame(width: 20.0, height: 25.0)
+                            })
+                        }
+                        
                     }
-                    
+                    .padding(.leading, 81.5)
                 }
-                .padding(.leading, 81.5)
             }
+            
         }
             
     }

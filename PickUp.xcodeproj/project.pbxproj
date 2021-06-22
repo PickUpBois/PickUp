@@ -389,11 +389,10 @@
 		8D65B2572658C4450085D5EE /* profile */ = {
 			isa = PBXGroup;
 			children = (
+				8DA9D1A1268161D700513358 /* viewmodels */,
 				8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */,
 				8D09E70A2623E16E0007B871 /* ProfileView.swift */,
 				8D65B25B2658C46A0085D5EE /* components */,
-				8D65B2852658CEBE0085D5EE /* ProfileViewModel.swift */,
-				8D65B28A2658CF6F0085D5EE /* ProfileSettingsViewModel.swift */,
 			);
 			path = profile;
 			sourceTree = "<group>";
@@ -446,7 +445,6 @@
 				1A2E5BED265CBE38006A803A /* PastScoresView.swift */,
 				C06A97D226790DF2004966F0 /* PopOverView.swift */,
 				8D30B107263E2146002B4C62 /* ProfilePicture.swift */,
-				8DA9D19F268002AC00513358 /* ProfilePictureViewModel.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -547,6 +545,23 @@
 			path = interceptors;
 			sourceTree = "<group>";
 		};
+		8DA9D1A1268161D700513358 /* viewmodels */ = {
+			isa = PBXGroup;
+			children = (
+				8DA9D19F268002AC00513358 /* ProfilePictureViewModel.swift */,
+				8D65B28A2658CF6F0085D5EE /* ProfileSettingsViewModel.swift */,
+				8D65B2852658CEBE0085D5EE /* ProfileViewModel.swift */,
+			);
+			path = viewmodels;
+			sourceTree = "<group>";
+		};
+		8DA9D1A22681627900513358 /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		8DB8EF7926198976004AADED = {
 			isa = PBXGroup;
 			children = (
@@ -572,6 +587,7 @@
 		8DB8EF8426198976004AADED /* PickUp */ = {
 			isa = PBXGroup;
 			children = (
+				8DA9D1A22681627900513358 /* models */,
 				8D69FE9F267E5B9A009D2AFF /* PickUp.entitlements */,
 				8D69FE9B267E5706009D2AFF /* GoogleService-Info.plist */,
 				8D65B29B2658DD760085D5EE /* resources */,
