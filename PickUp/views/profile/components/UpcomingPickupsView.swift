@@ -17,7 +17,7 @@ struct UpcomingPickupsView: View {
                 Spacer().frame(height: 15)
                 VStack {
                     HStack {
-                        EventDetailsBoxView(event: event, joinEvent: { _ in return})
+                        EventDetailsBoxSmallView(id: 0, event: event)
                         .padding(.vertical, 15.0)
                         .background(Color("Background_Events"))
                         .cornerRadius(8)

@@ -104,6 +104,7 @@
 		C0151127265A36B8005EF24A /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0151126265A36B8005EF24A /* ChatView.swift */; };
 		C04BFC1C267E6643006DE620 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04BFC1B267E6643006DE620 /* LoadingView.swift */; };
 		C04BFC2026811277006DE620 /* PopUpList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04BFC1F26811276006DE620 /* PopUpList.swift */; };
+		C04BFC222681539F006DE620 /* EventDetailsBoxSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04BFC212681539F006DE620 /* EventDetailsBoxSmallView.swift */; };
 		C055C3CA2673074200FF40AA /* EditPickupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C055C3C92673074200FF40AA /* EditPickupViewModel.swift */; };
 		C06A97D326790DF2004966F0 /* PopOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A97D226790DF2004966F0 /* PopOverView.swift */; };
 		C088BBA7265780CB007301F7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088BBA6265780CB007301F7 /* MapViewModel.swift */; };
@@ -252,6 +253,7 @@
 		C0151126265A36B8005EF24A /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		C04BFC1B267E6643006DE620 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		C04BFC1F26811276006DE620 /* PopUpList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpList.swift; sourceTree = "<group>"; };
+		C04BFC212681539F006DE620 /* EventDetailsBoxSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsBoxSmallView.swift; sourceTree = "<group>"; };
 		C055C3C92673074200FF40AA /* EditPickupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPickupViewModel.swift; sourceTree = "<group>"; };
 		C06A97D226790DF2004966F0 /* PopOverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopOverView.swift; sourceTree = "<group>"; };
 		C088BBA6265780CB007301F7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 				8DFCF503262788A000BBFE66 /* MainView.swift */,
 				8D65B2672658C91D0085D5EE /* AppState.swift */,
 				8D7AC47D266D636400672918 /* EventDetailsBoxView.swift */,
+				C04BFC212681539F006DE620 /* EventDetailsBoxSmallView.swift */,
 				C04BFC1B267E6643006DE620 /* LoadingView.swift */,
 				C04BFC1F26811276006DE620 /* PopUpList.swift */,
 			);
@@ -1002,6 +1005,7 @@
 				C09773122660412D0045B978 /* CourtsNearMeScrollView.swift in Sources */,
 				C088BBAC26579A79007301F7 /* Place.swift in Sources */,
 				C0B63B36267041F4008237EE /* BusynessView.swift in Sources */,
+				C04BFC222681539F006DE620 /* EventDetailsBoxSmallView.swift in Sources */,
 				8DFB99A7264ECBE400254C57 /* CreateSportEventView.swift in Sources */,
 				8D2B0C50263819060032AE67 /* ImagePicker.swift in Sources */,
 				1A2E5BDF2658637F006A803A /* EditedPickupNotificationView.swift in Sources */,
