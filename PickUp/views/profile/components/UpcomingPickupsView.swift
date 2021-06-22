@@ -9,18 +9,52 @@ import SwiftUI
 
 struct UpcomingPickupsView: View {
     @EnvironmentObject var viewModel: ProfileViewModel
+    @State var friendPopUp = false
     var body: some View {
+        ZStack{
         ScrollView {
             ForEach(self.viewModel.upcomingEvents, id: \.self.id) { event in
                 Spacer().frame(height: 15)
                 VStack {
                     HStack {
-                        EventDetailsBoxView(event: event, joinEvent: { _ in return})
+                        EventDetailsBoxSmallView(id: 0, event: event)
                         .padding(.vertical, 15.0)
                         .background(Color("Background_Events"))
                         .cornerRadius(8)
                         .padding(.horizontal, 20)
                     }
+                }
+            }
+        }
+            if self.friendPopUp {
+                VStack(alignment:.center){
+                    ZStack{
+                    PopUpList()
+                        .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.6, alignment: .bottom)
+                    
+                        }
+                    .onTapGesture(perform: {
+                        withAnimation(.easeIn){self.friendPopUp.toggle()}
+                            })
+                    .background(Color("Friends_Popup_Background").edgesIgnoringSafeArea(.all))
+                            .cornerRadius(20)
+                    
+                    
+                    
+                    Button(action: {
+                    withAnimation{
+                        self.friendPopUp.toggle()
+                    }
+                }) {
+                    Image(systemName: "plus.square.fill").resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(Color.white)
+                        .padding(15)
+
+                }
+                .background(Color.green)
+                .clipShape(Circle())
+                .padding(.top, 5)
                 }
             }
         }

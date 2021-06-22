@@ -17,7 +17,7 @@ struct CreateEventView: View {
     }
     
     var body: some View {
-            ScrollView {
+            VStack {
                 Spacer().frame(height:15)
                     
                 Picker("", selection: $selection) {
