@@ -28,6 +28,7 @@ struct FinishPickupNotificationView: View {
     var body: some View {
         VStack{
                 HStack {
+                    
                     Image("logo")
                         .resizable()
                         .foregroundColor(.blue)
@@ -45,7 +46,8 @@ struct FinishPickupNotificationView: View {
                     .lineLimit(1)
                         
                     }
-                    Spacer().frame(height: 10)
+                    .padding(.horizontal, 10.0)
+                        Spacer().frame(height: 10)
                         HStack{
                             Button(action: {
                                 self.showPopUp.toggle()
@@ -56,7 +58,8 @@ struct FinishPickupNotificationView: View {
                                     .lineLimit(3)
                             })
                             
-                        }.sheet(isPresented: $showPopUp, content: {
+                        }.padding(.leading, 10.0)
+                        .sheet(isPresented: $showPopUp, content: {
                     
                             InputScoreView(showPopUp: $showPopUp, viewModel: viewModel)
                             
@@ -64,10 +67,10 @@ struct FinishPickupNotificationView: View {
                                 self.showPopUp.toggle()
                             },label: {
                                 Text("Dismiss")
-                                    .foregroundColor(Color.white)
+                                    .foregroundColor(Color("Text"))
                                     .frame(maxWidth: .infinity)
                                     .padding(.vertical, 10)
-                                    .background(Color.black.opacity(0.8))
+                                    .background(Color("Text_Background").opacity(0.8))
                                     .cornerRadius(9)
                                     .padding(.horizontal, 20)
                             })

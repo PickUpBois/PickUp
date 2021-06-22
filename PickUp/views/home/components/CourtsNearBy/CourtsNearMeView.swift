@@ -19,31 +19,43 @@ struct CourtsNearMeView: View {
             
             HStack(spacing: 5){
                 Text(title)
-                .fontWeight(.bold)
-                .lineLimit(1)
-                .foregroundColor(Color("Text"))
+                    .font((.system(size: 15)))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("Text"))
+                    .lineLimit(1)
                 
                 
             }
             HStack(spacing: 5){
                 Text(percentage)
-                .foregroundColor(Color("Text"))
+                    .foregroundColor(Color("Text"))
+                    .font(.footnote)
+                    .lineLimit(1)
                 ZStack(alignment: .leading){
-                Capsule().frame(width: 100, height: 20)
+                Capsule().frame(width: 100, height: 10)
                     .foregroundColor(.blue)
-                Capsule().frame(width: 50, height: 20)
+                Capsule().frame(width: 50, height: 10)
                     .foregroundColor(.orange)
                 }
             }
 
             HStack(spacing: 15){
-                Text(open)
-                    .foregroundColor(Color("Text"))
-                    .fontWeight(.semibold)
-                HStack (spacing: 2){
+                HStack (spacing: 5){
+                Image(systemName:"location.fill")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width:10, height:10)
+                    .foregroundColor(Color.blue)
                 Text(radius)
                 Text("mi")
                 }.foregroundColor(Color("Text"))
+                .font(.footnote)
+                .lineLimit(1)
+                
+                Text(open)
+                    .foregroundColor(Color.green)
+                    .font(.footnote)
+                    .lineLimit(1)
     
             }
 

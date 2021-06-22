@@ -9,7 +9,8 @@ import SwiftUI
 
 struct UpcomingPickupsView: View {
     @EnvironmentObject var viewModel: ProfileViewModel
-    @State var friendPopUp = false
+    @State var eventPopUp = false
+    @State var selectedEvent: EventDetails? = nil
     
     let threeColumns = [GridItem(), GridItem(), GridItem()]
     
@@ -20,9 +21,12 @@ struct UpcomingPickupsView: View {
                 LazyVGrid(columns: threeColumns, spacing: 5){
                     ForEach(self.viewModel.upcomingEvents, id: \.self.id) { event in
                         Button(action: {
-                            withAnimation{
-                            self.friendPopUp.toggle()
+                            withAnimation(.easeIn){
+                            self.eventPopUp = true
+                                
+                            selectedEvent = event
                             }
+                            
                         }, label: {
                         EventDetailsBoxSmallView(id: 0, event: event)
                         .padding(.vertical, 10.0)
@@ -35,36 +39,36 @@ struct UpcomingPickupsView: View {
                 }.padding(.horizontal)
         }
         }
-            if self.friendPopUp {
+        .opacity(self.eventPopUp ? 0.2: 1)
+            
+            if self.eventPopUp {
                 VStack(alignment:.center){
                     ZStack{
-                        PopUpList()
-                        .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.6, alignment: .bottom)
-                    
-                        }
-                    .onTapGesture(perform: {
-                        withAnimation(.easeIn){self.friendPopUp.toggle()}
-                            })
-                    .background(Color("Friends_Popup_Background").edgesIgnoringSafeArea(.all))
+                        EventDetailsBoxView(event: selectedEvent!, joinEvent: {_ in })
+                        .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.2, alignment: .top)
+                            .padding(.vertical, 10.0)
+                            .padding(.horizontal, 10)
+                        
+                        }.background(Color("Friends_Popup_Background").edgesIgnoringSafeArea(.all))
                             .cornerRadius(20)
-                    
-                    
                     
                     Button(action: {
                     withAnimation{
-                        self.friendPopUp.toggle()
+                        self.eventPopUp.toggle()
                     }
                 }) {
-                    Image(systemName: "plus.square.fill").resizable()
+                    Image(systemName: "x.circle.fill").resizable()
                         .frame(width: 20, height: 20)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color("Text"))
                         .padding(15)
 
                 }
-                .background(Color.green)
                 .clipShape(Circle())
                 .padding(.top, 5)
-                }
+                }                                        .onTapGesture(perform: {
+                    withAnimation(.easeIn){
+                        self.eventPopUp = false}
+                        })
             }
         }
         

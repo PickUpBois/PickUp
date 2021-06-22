@@ -50,13 +50,23 @@ struct FinishPickupView: View {
 
                 .frame(width: 270, height: 120.0)
             }
+            
+            
             Button(action: {
                 let eventId = self.viewModel.event!.id
                 let voteeId = self.viewModel.event!.attendees[selectedIndex].fragments.userDetails.id
                 self.viewModel.voteForMvp(eventId: eventId, voteeId: voteeId)
             }) {
+                
+                HStack(alignment: .center){
                 Text("Vote")
-            }
+                    .foregroundColor(.white)
+                }
+                
+            }.frame(alignment: .center)
+            .padding(.horizontal, 50)
+            .padding(.vertical, 5)
+            .background(Color.blue)
         }
         }
 }

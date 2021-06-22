@@ -80,7 +80,7 @@ struct EventDetailsBoxSmallView: View {
                             .font(.footnote)
                         .lineLimit(1)
                         }.frame(maxWidth: 140, alignment: .leading)
-                    .padding(.leading, 2)
+                    .padding(.leading, 4)
                     
                     HStack(spacing: 10){
                         Image(systemName:"location.fill")

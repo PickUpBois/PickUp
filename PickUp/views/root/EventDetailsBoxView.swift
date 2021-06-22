@@ -72,6 +72,7 @@ struct EventDetailsBoxView: View {
         self.fontColor = fontColor
     }
     @State var showPopUp = false
+
     var body: some View {
         //Stack for view
         ZStack{
@@ -132,7 +133,7 @@ struct EventDetailsBoxView: View {
                     HStack{
                             Button(action: {
                                 self.showPopUp.toggle()
-                            }, label: {
+                            }) {
                                 Image(systemName:"person.fill")
                                     .resizable()
                                     .scaledToFill()
@@ -142,32 +143,31 @@ struct EventDetailsBoxView: View {
                                     .font((.system(size: 15)))
                                     .fontWeight(.semibold)
                                     .foregroundColor(Color("Text"))
-                            })
-                        }.sheet(isPresented: $showPopUp, content: {
-                    
-                            VStack{
-                            Spacer()
-                                
-                            //Check mark function needs to be replaced with selector, not "follower"
-                            FriendsListView(viewModel: MockFriendsListViewModel(userId: "1"))
-                    
-                            Spacer()
-                    
-                            Button(action: {
-                            self.showPopUp.toggle()
-                                },label: {
-                            Text("Invite")
-                            .foregroundColor(Color.white)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 10)
-                            .background(Color.green.opacity(0.8))
-                            .cornerRadius(9)
-                            .padding(.horizontal, 20)
-                                }).padding()
                             }
-                        })
-                    
+                            }.sheet(isPresented: $showPopUp, content: {
+                                
+                                VStack{
+                                Spacer()
+                                    
+                                //Check mark function needs to be replaced with selector, not "follower"
+                                FriendsListView(viewModel: MockFriendsListViewModel(userId: "1"))
                         
+                                Spacer()
+                        
+                                Button(action: {
+                                self.showPopUp.toggle()
+                                    },label: {
+                                Text("Invite")
+                                .foregroundColor(Color.white)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 10)
+                                .background(Color.green.opacity(0.8))
+                                .cornerRadius(9)
+                                .padding(.horizontal, 20)
+                                    }).padding()
+                                }
+                            })
+                    
                     }.frame(maxWidth: 150, maxHeight: 130)
                     }
                 
