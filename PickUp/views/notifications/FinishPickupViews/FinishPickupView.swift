@@ -23,7 +23,6 @@ struct FinishPickupView: View {
                     .foregroundColor(.blue)
                     .frame(width: 25, height: 25, alignment: .center)
                     .clipShape(Circle())
-                    .shadow(radius: 2)
                     .overlay(Circle().stroke(Color.black, lineWidth: 2))
                 
                 Text("Ashwin Yedavalli")
@@ -50,13 +49,23 @@ struct FinishPickupView: View {
 
                 .frame(width: 270, height: 120.0)
             }
+            
+            
             Button(action: {
                 let eventId = self.viewModel.event!.id
                 let voteeId = self.viewModel.event!.attendees[selectedIndex].fragments.userDetails.id
                 self.viewModel.voteForMvp(eventId: eventId, voteeId: voteeId)
             }) {
+                
+                HStack(alignment: .center){
                 Text("Vote")
-            }
+                    .foregroundColor(.white)
+                }
+                
+            }.frame(alignment: .center)
+            .padding(.horizontal, 50)
+            .padding(.vertical, 5)
+            .background(Color.blue)
         }
         }
 }

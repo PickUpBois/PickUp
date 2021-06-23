@@ -35,6 +35,7 @@ struct PickUpView: View, Identifiable {
     }
     
     var body: some View {
+        ZStack{
             Button(action: {
                 self.showPopUp.toggle()
             }, label: {
@@ -42,41 +43,84 @@ struct PickUpView: View, Identifiable {
                     
                     HStack(spacing: 5){
                         Text(name)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color("Text"))
-                        .lineLimit(1)
+                            .font((.system(size: 15)))
+                            .fontWeight(.bold)
+                            .foregroundColor(Color("Text"))
+                            .lineLimit(1)
                         
                     }
-                    HStack(spacing: 5){
-                        HStack (spacing: 2){
+                    HStack (spacing: 20){
+                        HStack (spacing: 5){
                         Image(systemName:"calendar")
-                        .foregroundColor(Color.red)
-                        Text(getDate(date: startDate))
-                        .foregroundColor(Color("Text"))
-                        .lineLimit(1)
-                        }
-                        HStack (spacing: 2){
-                        Text("0.25")
-                        Text("mi")
-                        }.foregroundColor(Color("Text"))
-                        .lineLimit(1)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width:10, height:10)
+                            .foregroundColor(Color.red)
 
-                    }
+                        Text(getDate(date: startDate))
+                            .foregroundColor(Color("Text"))
+                                .font(.footnote)
+                            .lineLimit(1)
+                        }
+                        
+                        HStack (spacing: 5){
+                            Image(systemName:"clock.fill")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width:10, height:10)
+                                .foregroundColor(Color.orange)
+                            Text(startDate.eventTimeString)
+                            .foregroundColor(Color("Text"))
+                                .font(.footnote)
+                                .lineLimit(1)}
+                        .foregroundColor(Color("Text"))
+                            
+                        
+                        
+                    }.frame(maxWidth: 150, alignment: .leading)
+                    .padding(.leading, 5)
+                    
+                    HStack(spacing: 20){
+                        HStack (spacing: 5){
+                            Image(systemName:"location.fill")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width:10, height:10)
+                                .foregroundColor(Color.blue)
+                            Text("0.25")
+                                .font(.footnote)
+                                .lineLimit(1)
+                            Text("mi")
+                                .font(.footnote)
+                                .lineLimit(1)
+                            }
+                            .foregroundColor(Color("Text"))
+                        
+                        HStack(spacing: 5){
+                        Image(systemName:"person.fill")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width:10, height:10)
+                            .foregroundColor(Color.purple)
+                        Text("1/4")
+                            .font(.footnote)
+                            .font((.system(size: 15)))
+                            .foregroundColor(Color("Text"))
+                        }
+                        
+                    }.frame(maxWidth: 150, alignment: .leading)
+                    .padding(.leading, 5)
+
 
                     HStack(spacing: 5){
                         Text(going ? "Going" : "Not Going")
-                            .fontWeight(.semibold)
+                            .font(.footnote)
                             .foregroundColor(Color.green)
                             .lineLimit(1)
 
                     }
 
                 }
-                .frame(maxWidth: 175, alignment: .center)
-                .padding(.vertical, 5)
-                .background(Color("Background_SmallView"))
-                .cornerRadius(20)
-                
                 
                 
                 
@@ -84,7 +128,7 @@ struct PickUpView: View, Identifiable {
             Spacer().frame(height: 300)
                 EventDetailsBoxView(event: self.viewModel.events[id], viewModel: EventDetailsBoxViewModel(event: self.viewModel.events[id], refresh: self.viewModel.getUpcomingEvents))
                 .padding(.all, 30.0)
-                .background(Color("Background_Events"))
+                .background(Color("Friends_Popup_Background"))
                 .cornerRadius(8)
                 .padding(.horizontal, 20)
             
@@ -93,7 +137,7 @@ struct PickUpView: View, Identifiable {
             },label: {
                 Text("Dismiss")
                     .foregroundColor(Color.white)
-                    .frame(maxWidth: .infinity)
+                    .frame(maxWidth: 400)
                     .padding(.vertical, 10)
                     .background(Color.black.opacity(0.8))
                     .cornerRadius(9)
@@ -102,7 +146,21 @@ struct PickUpView: View, Identifiable {
             Spacer().frame(height: 300)
             .background(BackgroundClearView())
         })
-        
+            VStack{
+                HStack{
+                    Image("b4")
+                        .resizable()
+                        .renderingMode(.original)
+                        .frame(width: 20, height: 20)
+                        .clipShape(Circle())
+                        }.frame(maxWidth: 160, alignment: .trailing)
+                .padding(.trailing, 5)
+                }.frame(maxHeight: 140, alignment: .bottom)
+            
+        }.frame(maxWidth: 175, maxHeight: 90, alignment: .center)
+        .padding(.vertical, 5)
+        .background(Color("Background_SmallView"))
+        .cornerRadius(20)
         
     }
 }

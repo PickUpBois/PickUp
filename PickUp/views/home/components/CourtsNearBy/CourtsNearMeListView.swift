@@ -15,13 +15,13 @@ struct CourtsNearMeListView: View {
                 Button(action: {
                     self.showPopUp.toggle()
                 }, label: {
-                Text("Courts Near Me")
+                Text("BusyBars")
                     .font(.title3)
                     .fontWeight(.semibold)
                     .lineLimit(1)
                     .foregroundColor(Color("Text"))
                             
-            Image(systemName:"location.fill")
+            Image(systemName:"sportscourt")
                     .foregroundColor(Color.blue)
                         })
                 }.sheet(isPresented: $showPopUp, content: {

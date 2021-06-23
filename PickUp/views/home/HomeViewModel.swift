@@ -14,6 +14,7 @@ class HomeViewModel: ObservableObject {
     var cancellables = Set<AnyCancellable>()
     @Published var events: [EventDetails] = []
     func getUpcomingEvents() {
+        print("getting events")
         if (AppState.shared.authId != nil) {
             Services.shared.apollo.fetch(query: QueryEventsQuery(userId: nil, type: nil, status: .open), cachePolicy: .fetchIgnoringCacheCompletely) { response in
                 switch response {

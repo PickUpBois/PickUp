@@ -16,7 +16,7 @@ struct SocialView: View {
                 Button(action: {
                     self.showPopUp.toggle()
                 }, label: {
-            HStack{ Text("Social Feed")                .font(.title3)
+            HStack{ Text("Social")                .font(.title3)
                 .fontWeight(.bold)
                 .lineLimit(1)
                 .foregroundColor(Color("Text"))

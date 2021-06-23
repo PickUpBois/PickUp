@@ -58,13 +58,13 @@ struct InputScoreView: View {
             EventDetailsBoxView(event: viewModel.event!, fontColor: .white)
                 .frame(width: 300)
                 .padding(.all, 30.0)
-                .background(Color.white.opacity(0.9))
+                .background(Color("Background_SmallView"))
                 .cornerRadius(8)
                 .padding(.horizontal, 20)
             TeamatePickerView(attendees: mapAttendees(attendees: viewModel.event!.attendees), teamSelections: $teamSelections, winningTeam: $winningTeam)
                 .frame(width: 300)
                 .padding(.all, 30.0)
-                .background(Color.white.opacity(0.9))
+                .background(Color("Background_SmallView"))
                 .cornerRadius(8)
             
             VStack{
@@ -73,7 +73,7 @@ struct InputScoreView: View {
                 }
                 .padding(.all, 5.0)
                 .font(.body)
-                .background(Color.white.opacity(0.9))
+                .background(Color("Background_SmallView"))
                 .cornerRadius(8)
                 .frame(alignment: .topLeading)
                 Spacer().frame(height: 10)
@@ -94,7 +94,7 @@ struct InputScoreView: View {
             }
             .frame(width: 300)
             .padding(.all, 30.0)
-            .background(Color.white.opacity(0.9))
+            .background(Color("Background_SmallView"))
             .cornerRadius(8)
             
             Button(action: finishEvent,
@@ -110,7 +110,7 @@ struct InputScoreView: View {
         }
         .frame(width: 300)
         .padding(.all, 30.0)
-        .background(Color.white.opacity(0.9))
+        .background(Color("Background_SmallView"))
         .cornerRadius(8)
         
     }

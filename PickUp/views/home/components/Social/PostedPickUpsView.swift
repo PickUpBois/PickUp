@@ -26,22 +26,37 @@ struct PostedPickUpsView: View {
                         //HStack for W/L, Date, and Location
                         HStack{
                             Text("W or L")
-                                .fontWeight(.heavy)
+                                .font((.system(size: 15)))
+                                .fontWeight(.bold)
+                                .lineLimit(1)
                                 .foregroundColor(Color.purple)
                         Spacer().frame(minWidth: 10, maxWidth: 45)
                             Image(systemName:"calendar")
                                 .foregroundColor(Color.red)
                             Text("Date")
+                                .font((.system(size: 15)))
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("Text"))
+                                .lineLimit(1)
                         Spacer()
                             .frame(minWidth: 10, maxWidth: 45)
                             Image(systemName:"location.fill")
                                 .foregroundColor(Color.blue)
-                            Text("Location")}
+                            Text("Location")
+                                .font((.system(size: 15)))
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("Text"))
+                                .lineLimit(1)
+                            
+                        }
                         
                     Spacer().frame(height: 10)
                         
                         HStack{
                             Text("Caption...")
+                                .font((.system(size: 15)))
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("Text"))
                                 .lineLimit(3)
 
                         }.frame(width: 380, height: 80, alignment: .topLeading)
@@ -158,11 +173,10 @@ struct ImageOverlayPerson: View {
                     .foregroundColor(.blue)
                     .frame(width: 20, height: 20, alignment: .center)
                     .clipShape(Circle())
-                    .shadow(radius: 2)
                     .overlay(Circle().stroke(Color.black, lineWidth: 2))
                 Text("Ashwin Yedavalli  @ash56")}
-                .font(.callout)
-                .padding(6)
+                .font((.system(size: 13)))
+                .padding(5)
                 .foregroundColor(.white)
             })
         }.background(Color.black)
