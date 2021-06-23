@@ -17,7 +17,7 @@ struct PickUpTabListView: View {
                 Button(action: {
                     self.showPopUp.toggle()
                 }, label: {
-            HStack{ Text("Future PickUps").font(.title3)
+            HStack{ Text("PickUps").font(.title3)
                 .fontWeight(.semibold)
                 .foregroundColor(Color("Text"))
             Image(systemName: "clock.fill").font(.system(size: 16, weight: .regular))
