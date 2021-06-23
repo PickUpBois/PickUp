@@ -188,6 +188,8 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
   case finishEvent
   case voteForMvp
   case selectedMvp
+  case leftEvent
+  case deletedEvent
   /// Auto generated constant for unknown enum values
   case __unknown(RawValue)
 
@@ -200,6 +202,8 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
       case "finishEvent": self = .finishEvent
       case "voteForMvp": self = .voteForMvp
       case "selectedMvp": self = .selectedMvp
+      case "leftEvent": self = .leftEvent
+      case "deletedEvent": self = .deletedEvent
       default: self = .__unknown(rawValue)
     }
   }
@@ -213,6 +217,8 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
       case .finishEvent: return "finishEvent"
       case .voteForMvp: return "voteForMvp"
       case .selectedMvp: return "selectedMvp"
+      case .leftEvent: return "leftEvent"
+      case .deletedEvent: return "deletedEvent"
       case .__unknown(let value): return value
     }
   }
@@ -226,6 +232,8 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
       case (.finishEvent, .finishEvent): return true
       case (.voteForMvp, .voteForMvp): return true
       case (.selectedMvp, .selectedMvp): return true
+      case (.leftEvent, .leftEvent): return true
+      case (.deletedEvent, .deletedEvent): return true
       case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
       default: return false
     }
@@ -240,6 +248,8 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
       .finishEvent,
       .voteForMvp,
       .selectedMvp,
+      .leftEvent,
+      .deletedEvent,
     ]
   }
 }
@@ -627,6 +637,102 @@ public final class CreateEventMutation: GraphQLMutation {
         }
         set {
           resultMap.updateValue(newValue, forKey: "name")
+        }
+      }
+    }
+  }
+}
+
+public final class LeaveEventMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation LeaveEvent($userId: ID!, $eventId: ID!) {
+      leaveEvent(userId: $userId, eventId: $eventId) {
+        __typename
+        id
+      }
+    }
+    """
+
+  public let operationName: String = "LeaveEvent"
+
+  public var userId: GraphQLID
+  public var eventId: GraphQLID
+
+  public init(userId: GraphQLID, eventId: GraphQLID) {
+    self.userId = userId
+    self.eventId = eventId
+  }
+
+  public var variables: GraphQLMap? {
+    return ["userId": userId, "eventId": eventId]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("leaveEvent", arguments: ["userId": GraphQLVariable("userId"), "eventId": GraphQLVariable("eventId")], type: .object(LeaveEvent.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(leaveEvent: LeaveEvent? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "leaveEvent": leaveEvent.flatMap { (value: LeaveEvent) -> ResultMap in value.resultMap }])
+    }
+
+    public var leaveEvent: LeaveEvent? {
+      get {
+        return (resultMap["leaveEvent"] as? ResultMap).flatMap { LeaveEvent(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "leaveEvent")
+      }
+    }
+
+    public struct LeaveEvent: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Event"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID) {
+        self.init(unsafeResultMap: ["__typename": "Event", "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// id of event
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
     }

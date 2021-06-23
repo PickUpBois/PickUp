@@ -55,7 +55,7 @@ struct InputScoreView: View {
     var body: some View {
         VStack {
             Spacer().frame(height: 200)
-            EventDetailsBoxView(event: viewModel.event!, fontColor: .white, joinEvent: {_ in return})
+            EventDetailsBoxView(event: viewModel.event!, fontColor: .white)
                 .frame(width: 300)
                 .padding(.all, 30.0)
                 .background(Color.white.opacity(0.9))

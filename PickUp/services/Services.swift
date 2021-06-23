@@ -29,7 +29,17 @@ class NetworkInterceptorProvider: LegacyInterceptorProvider {
 
 class Services {
     
-    static let emulator: Bool = false
+    static let PROD_URL = "\(Bundle.main.object(forInfoDictionaryKey: "PROD_HOST") as! String)"
+    static let DEV_URL = "\(Bundle.main.object(forInfoDictionaryKey: "DEV_HOST") as! String)"
+    
+    static var emulator: Bool {
+        let env = Bundle.main.object(forInfoDictionaryKey: "ENV") as! String
+        if env == "DEV" {
+            return true
+        } else {
+            return false
+        }
+    }
     
     static var auth: Auth = buildFirebaseAuth(emulator: emulator)
     
@@ -61,7 +71,7 @@ class Services {
       
       let client = URLSessionClient()
         let provider = NetworkInterceptorProvider(store: store, client: client, auth: Services.auth)
-        let url =  URL(string: Services.emulator ? "http://localhost:3000/graphql" : "https://pickupserver.herokuapp.com/graphql")!
+        let url =  URL(string: Services.emulator ? "\(Services.DEV_URL)/graphql" : "\(Services.PROD_URL)/graphql")!
 
       let requestChainTransport = RequestChainNetworkTransport(interceptorProvider: provider,
                                                                endpointURL: url)

@@ -8,11 +8,18 @@
 import Foundation
 
 
-class EditPickUpViewModel: ObservableObject {
-    @Published var events: [EventDetails] = []
+class EditPickUpListViewModel: ObservableObject {
+    enum State {
+        case idle
+        case loading
+        case success
+        case fail(Error)
+    }
+    var events: [EventDetails] = []
+    @Published var state: State = .idle
 }
 
-class MockEditPickupViewModel: EditPickUpViewModel {
+class MockEditPickupListViewModel: EditPickUpListViewModel {
     override init(){
         super.init()
         let attendees: [EventDetails.Attendee] = []

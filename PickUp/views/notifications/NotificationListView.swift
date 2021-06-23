@@ -30,6 +30,8 @@ struct NotificationListView: View {
                     ConfirmationNotificationView(viewModel: notificationViewModel)
                 case .selectedMvp:
                     VotedForMvpNotificationView(viewModel: notificationViewModel)
+                case .leftEvent:
+                    LeftEventNotificationView(viewModel: notificationViewModel)
                 default:
                     Text("error")
                 }

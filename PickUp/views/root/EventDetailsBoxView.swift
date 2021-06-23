@@ -51,9 +51,10 @@ struct EventDetailsBoxView: View {
     var type: EventType
     let going: Bool
     let status: EventStatus
-    let joinEvent: (String) -> Void
     let fontColor: Color
-    init(event: EventDetails, fontColor: Color = .black, joinEvent: @escaping (String) -> Void) {
+    let attendeeStatus: EventAttendeeStatus?
+    let viewModel: EventDetailsBoxViewModel?
+    init(event: EventDetails, fontColor: Color = .black, viewModel: EventDetailsBoxViewModel? = nil) {
         self.name = event.name
         self.info = event.info
         self.eventId = event.id
@@ -67,11 +68,56 @@ struct EventDetailsBoxView: View {
             return attendee.fragments.userDetails.id
         }
         self.going = attendees.contains(AppState.shared.authId ?? "") ? true : false
+        var attendeeStatus: EventAttendeeStatus? {
+            for i in 0..<event.attendees.count {
+                let attendee = event.attendees[i]
+                if attendee.fragments.userDetails.id == AppState.shared.authId {
+                    return attendee.fragments.userDetails.eventAttendeeStatus
+                }
+            }
+            return nil
+        }
+        self.attendeeStatus = attendeeStatus
         self.status = event.status
-        self.joinEvent = joinEvent
         self.fontColor = fontColor
+        self.viewModel = viewModel
     }
     @State var showPopUp = false
+    
+    var eventActionView: some View {
+        var text = "Join"
+        switch attendeeStatus {
+        case .ok:
+            text = "Leave"
+        default:
+            text = "Join"
+        }
+        return Group {
+            if viewModel == nil {
+                EmptyView()
+            } else {
+                switch attendeeStatus {
+                case .none, .ok:
+                    Button(action: { viewModel!.commitAction(eventId: eventId) }) {
+                            Text(text)
+                            .fontWeight(.heavy)
+                            .foregroundColor(Color.blue)
+                            .multilineTextAlignment(.center)
+                            .opacity(0.8)
+                            .padding(.top, 12.0)
+                            .padding(.bottom, 12.0)
+                            .padding(.horizontal, 20)
+                            .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                            .cornerRadius(9.0)
+                    }
+                default:
+                    EmptyView()
+                }
+        }
+        }
+    }
+    
+    
     var body: some View {
         let emoji = type == .tennis ? "🎾" : "🏀"
             VStack(){
@@ -153,62 +199,41 @@ struct EventDetailsBoxView: View {
                 }
                 VStack (alignment: .leading){
                     HStack{
+                        eventActionView
                         //join event 'button'
-                        if !self.going {
-                            Button(action: { joinEvent(eventId) }) {
-                            Text("+ Join")
-                                .fontWeight(.heavy)
-                                .foregroundColor(Color.blue)
-                                .multilineTextAlignment(.center)
-                                .opacity(0.8)
-                                .padding(.top, 12.0)
-                                .padding(.bottom, 12.0)
-                                .padding(.horizontal, 20)
-                                .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
-                                .cornerRadius(9.0)
-                                }
-                            }
-                        else{
-                            HStack{
-                            Button(action: {
-                                self.showPopUp.toggle()
-                            }, label: {
-                            Text("+ Invite")
-                                .fontWeight(.heavy)
-                                .foregroundColor(Color.blue)
-                                .multilineTextAlignment(.center)
-                                .opacity(0.8)
-                                .padding(.top, 12.0)
-                                .padding(.bottom, 12.0)
-                                .padding(.horizontal, 20)
-                                .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
-                                .cornerRadius(9.0)
-                                })
-                        }.sheet(isPresented: $showPopUp, content: {
-                        
-                        VStack{
-                        Spacer()
-                            
-                        //Check mark function needs to be replaced with selector, not "follower"
-                        FriendsListView(viewModel: MockFriendsListViewModel(userId: "1"))
-                
-                        Spacer()
-                
-                        Button(action: {
-                        self.showPopUp.toggle()
-                            },label: {
-                        Text("Invite")
-                        .foregroundColor(Color.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 10)
-                        .background(Color.green.opacity(0.8))
-                        .cornerRadius(9)
-                        .padding(.horizontal, 20)
-                            }).padding()
-                        }
-                    })
-                            
-                        }
+//                        if !self.going {
+//                            Button(action: { joinEvent(eventId) }) {
+//                            Text("+ Join")
+//                                .fontWeight(.heavy)
+//                                .foregroundColor(Color.blue)
+//                                .multilineTextAlignment(.center)
+//                                .opacity(0.8)
+//                                .padding(.top, 12.0)
+//                                .padding(.bottom, 12.0)
+//                                .padding(.horizontal, 20)
+//                                .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+//                                .cornerRadius(9.0)
+//                                }
+//                            }
+//                        else{
+//                            HStack{
+//                            Button(action: {
+//                                self.showPopUp.toggle()
+//                            }, label: {
+//                            Text("+ Invite")
+//                                .fontWeight(.heavy)
+//                                .foregroundColor(Color.blue)
+//                                .multilineTextAlignment(.center)
+//                                .opacity(0.8)
+//                                .padding(.top, 12.0)
+//                                .padding(.bottom, 12.0)
+//                                .padding(.horizontal, 20)
+//                                .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+//                                .cornerRadius(9.0)
+//                                })
+//                        }
+//
+//                        }
                         }
                 }
             }
@@ -232,6 +257,29 @@ struct EventDetailsBoxView: View {
                     }
                 }
                 }
+            .sheet(isPresented: $showPopUp, content: {
+            
+            VStack {
+            Spacer()
+                
+            //Check mark function needs to be replaced with selector, not "follower"
+            FriendsListView(viewModel: MockFriendsListViewModel(userId: "1"))
+    
+            Spacer()
+    
+            Button(action: {
+            self.showPopUp.toggle()
+                },label: {
+            Text("Invite")
+            .foregroundColor(Color.white)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 10)
+            .background(Color.green.opacity(0.8))
+            .cornerRadius(9)
+            .padding(.horizontal, 20)
+                }).padding()
+            }
+        })
                     
     }
 }
@@ -243,8 +291,6 @@ struct EventDetailsBoxView_Previews: PreviewProvider {
     static let attendees = [EventDetails.Attendee(id: "1", firstName: "1", lastName: "last", username: "username")]
     static let eventDetails = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open)
     static var previews: some View {
-        EventDetailsBoxView(event: eventDetails, joinEvent: { eventId in
-            return
-        })
+        EventDetailsBoxView(event: eventDetails, viewModel: MockEventDetailsBoxViewModel(event: eventDetails))
     }
 }

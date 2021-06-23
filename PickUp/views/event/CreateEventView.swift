@@ -32,7 +32,7 @@ struct CreateEventView: View {
                 //second picker option
                 
                 else {
-                    EditPickupView()
+                    EditPickupListView()
                 }
 
                     

@@ -35,7 +35,7 @@ struct PastPickupView: View {
             ForEach(self.viewModel.pastEvents, id: \.self.id) { event in
                 Spacer().frame(height: 15)
                 VStack {
-                        EventDetailsBoxView(event: event, joinEvent: { _ in return})
+                        EventDetailsBoxView(event: event)
                         Spacer().frame(height: 10)
                 HStack{
                 HStack(alignment: .top){

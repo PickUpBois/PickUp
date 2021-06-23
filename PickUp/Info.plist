@@ -18,6 +18,10 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>DEV_HOST</key>
+	<string>$(DEV_HOST)</string>
+	<key>ENV</key>
+	<string>$(ENV)</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
@@ -39,6 +43,8 @@
 	<string>Need to access the camera for taking photos and videos</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>PROD_HOST</key>
+	<string>$(PROD_HOST)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

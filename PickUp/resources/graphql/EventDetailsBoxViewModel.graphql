@@ -1,0 +1,5 @@
+mutation LeaveEvent($userId: ID!, $eventId: ID!) {
+	leaveEvent(userId: $userId, eventId: $eventId) {
+	id,
+  }
+}

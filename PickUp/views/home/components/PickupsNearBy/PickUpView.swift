@@ -16,14 +16,6 @@ struct PickUpView: View, Identifiable {
     var going: Bool
     var status: EventStatus
     
-    init(name: String, startDate: Date, id: Int, going: Bool, status: EventStatus) {
-        self.name = name
-        self.startDate = startDate
-        self.id = id
-        self.going = going
-        self.status = status
-    }
-    
     init(id: Int, event: EventDetails) {
         self.name = event.name
         self.id = id
@@ -90,7 +82,7 @@ struct PickUpView: View, Identifiable {
                 
             }).sheet(isPresented: $showPopUp, content: {
             Spacer().frame(height: 300)
-            EventDetailsBoxView(event: self.viewModel.events[id], joinEvent: self.viewModel.joinEvent)
+                EventDetailsBoxView(event: self.viewModel.events[id], viewModel: EventDetailsBoxViewModel(event: self.viewModel.events[id], refresh: self.viewModel.getUpcomingEvents))
                 .padding(.all, 30.0)
                 .background(Color("Background_Events"))
                 .cornerRadius(8)
@@ -130,7 +122,8 @@ struct BackgroundClearView: UIViewRepresentable {
 }
 
 struct PickUpView_Previews: PreviewProvider {
+    static let event1 = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: [], startDate: Date().isoString, type: .tennis, status: .open)
     static var previews: some View {
-        PickUpView(name: "Event", startDate: Date(), id: 0, going: true, status: .open).environmentObject(MockHomeViewModel())
+        PickUpView(id: 0, event: event1).environmentObject(MockHomeViewModel())
     }
 }
