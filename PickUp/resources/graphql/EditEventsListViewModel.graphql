@@ -7,11 +7,3 @@ query CurrentlyOwnedEvents($userId: ID!) {
   }
 }
 
-query GetEvent($eventId: ID!) {
-  getEvent(eventId: $eventId) {
-	id,
-	invitedAttendees {
-	  id,
-	}
-  }
-}

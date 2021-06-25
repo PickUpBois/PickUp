@@ -37,8 +37,10 @@ struct NotificationListView: View {
                     LeftEventNotificationView(viewModel: notificationViewModel)
                 case .deletedEvent:
                     DeletedEventNotificationView(viewModel: notificationViewModel)
+                case .eventInvitation:
+                    EventInvitationNotificationView(viewModel: notificationViewModel)
                 default:
-                    Text("error")
+                    Text("Error")
                 }
             }
                 

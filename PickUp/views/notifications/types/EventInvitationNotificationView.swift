@@ -50,7 +50,7 @@ struct EventInvitationNotificationView: View {
 
             Spacer().frame(height: 10)
                     HStack {
-                        Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName) invited you to their event:")
+                        Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName) invited you to their event \(viewModel.event!.name)")
                             .foregroundColor(Color.purple)
                             .lineLimit(1)
                             .padding(.leading, 10.0)

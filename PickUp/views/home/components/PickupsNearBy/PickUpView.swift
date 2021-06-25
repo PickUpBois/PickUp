@@ -16,6 +16,8 @@ struct PickUpView: View, Identifiable {
     var going: Bool
     var status: EventStatus
     var event: EventDetails
+    var numAttendees: Int
+    var capacity: Int
     
     init(id: Int, event: EventDetails) {
         self.name = event.name
@@ -27,6 +29,8 @@ struct PickUpView: View, Identifiable {
         self.going = attendees.contains(AppState.shared.authId ?? "") ? true : false
         self.status = event.status
         self.event = event
+        self.numAttendees = attendees.count
+        self.capacity = event.capacity
     }
     
     func getDate(date: Date) -> String {
@@ -106,7 +110,7 @@ struct PickUpView: View, Identifiable {
                             .scaledToFill()
                             .frame(width:10, height:10)
                             .foregroundColor(Color.purple)
-                        Text("1/4")
+                        Text("\(numAttendees)/\(capacity)")
                             .font(.footnote)
                             .font((.system(size: 15)))
                             .foregroundColor(Color("Text"))

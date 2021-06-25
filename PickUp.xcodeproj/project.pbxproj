@@ -97,6 +97,7 @@
 		8DE52181266428130077AF09 /* FriendItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE52180266428130077AF09 /* FriendItemView.swift */; };
 		8DE52186266428320077AF09 /* FriendsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE52185266428320077AF09 /* FriendsListViewModel.swift */; };
 		8DE5218B266428980077AF09 /* FriendsListViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DE5218A266428980077AF09 /* FriendsListViewModel.graphql */; };
+		8DEFD478268659B1003F8CE0 /* InviteFriendViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DEFD477268659B1003F8CE0 /* InviteFriendViewModel.graphql */; };
 		8DFAD531261EBA910055BA76 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAD530261EBA910055BA76 /* LoginView.swift */; };
 		8DFB9988264E2C9F00254C57 /* EventDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */; };
 		8DFB998D264E342800254C57 /* EventLocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB998C264E342800254C57 /* EventLocationPickerView.swift */; };
@@ -258,6 +259,7 @@
 		8DE52180266428130077AF09 /* FriendItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendItemView.swift; sourceTree = "<group>"; };
 		8DE52185266428320077AF09 /* FriendsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewModel.swift; sourceTree = "<group>"; };
 		8DE5218A266428980077AF09 /* FriendsListViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FriendsListViewModel.graphql; sourceTree = "<group>"; };
+		8DEFD477268659B1003F8CE0 /* InviteFriendViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = InviteFriendViewModel.graphql; sourceTree = "<group>"; };
 		8DFAD530261EBA910055BA76 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDatePickerView.swift; sourceTree = "<group>"; };
 		8DFB998C264E342800254C57 /* EventLocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationPickerView.swift; sourceTree = "<group>"; };
@@ -573,6 +575,7 @@
 				8D0FD6A32674616D006C84D3 /* NotificationViewModel.graphql */,
 				8DA9D1AA2682901000513358 /* EventDetailsBoxViewModel.graphql */,
 				8DA9D1AE2683CFFD00513358 /* EditEventsListViewModel.graphql */,
+				8DEFD477268659B1003F8CE0 /* InviteFriendViewModel.graphql */,
 			);
 			path = graphql;
 			sourceTree = "<group>";
@@ -879,6 +882,7 @@
 				8D65B2FB265931900085D5EE /* FindTeammatesViewModel.graphql in Resources */,
 				8D65B2A52658E04E0085D5EE /* CreateEventViewModel.graphql in Resources */,
 				8D0FD6A42674616D006C84D3 /* NotificationViewModel.graphql in Resources */,
+				8DEFD478268659B1003F8CE0 /* InviteFriendViewModel.graphql in Resources */,
 				8DE5218B266428980077AF09 /* FriendsListViewModel.graphql in Resources */,
 				C0D4716C264098BF00E7B6C7 /* CreateEventView.xib in Resources */,
 				8D65B2A62658E04E0085D5EE /* HomeViewModel.graphql in Resources */,
@@ -1325,7 +1329,7 @@
 				DEVELOPMENT_TEAM = 5D593G8Q6L;
 				DEV_HOST = "http://localhost:3000";
 				ENABLE_PREVIEWS = YES;
-				ENV = PROD;
+				ENV = DEV;
 				INFOPLIST_FILE = PickUp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1353,7 +1357,7 @@
 				DEVELOPMENT_TEAM = 5D593G8Q6L;
 				DEV_HOST = "http://localhost:3000";
 				ENABLE_PREVIEWS = YES;
-				ENV = PROD;
+				ENV = DEV;
 				INFOPLIST_FILE = PickUp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

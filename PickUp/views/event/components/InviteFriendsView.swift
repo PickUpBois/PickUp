@@ -12,18 +12,33 @@ struct InviteFriendsView: View {
     @StateObject var viewModel: InviteFriendsViewModel
     @StateObject var friendsViewModel: FriendsListViewModel
     @State private var showingFollowAlert = false
+    @State var alertStatus: AlertStatus? = nil
+    enum AlertStatus {
+        case invite(String)
+        case cancelInvite(String)
+    }
     
-    var confirmInviteAlert: Alert {
+    
+    func confirmInviteAlert(userId: String) -> Alert {
         Alert(title: Text("Confirm Invite"), message: Text("Invite this person?"), primaryButton: .default(Text("Yes")) {
             //Add Action for updating - Arian
-        }, secondaryButton: .destructive(Text("Cancel")))
+            self.viewModel.inviteFriend(friendId: userId)
+            alertStatus = nil
+        }, secondaryButton: .destructive(Text("Cancel")) {
+            alertStatus = nil
+        })
     }
     
-    var cancelInviteAlert: Alert {
+    func cancelInviteAlert(userId: String) -> Alert {
         Alert(title: Text("Confirm Cancel Invite"), message: Text("Remove this person's invitation?"), primaryButton: .default(Text("Yes")) {
             //Add Action for updating - Arian
-        }, secondaryButton: .destructive(Text("Cancel")))
+            viewModel.cancelEventInvitation(friendId: userId)
+            alertStatus = nil
+        }, secondaryButton: .destructive(Text("Cancel")) {
+            alertStatus = nil
+        })
     }
+    
     
     func getStatus(friendId: String) -> EventAttendeeStatus? {
         if viewModel.invitedUsers.contains(friendId) {
@@ -35,22 +50,72 @@ struct InviteFriendsView: View {
         return .none
     }
     
+    
+    func getActionButton(userId: String) -> some View {
+        let status = getStatus(friendId: userId)
+        return Group {
+            switch status {
+            case .invited:
+                Button(action: {
+                    self.alertStatus = .cancelInvite(userId)
+                    }, label: {
+                        Text("Invited: Cancel?")
+                    })
+            case .ok:
+                Text("Joined")
+            default:
+                Button(action: {
+                    self.alertStatus = .invite(userId)
+                    }, label: {
+                        Text("Invite")
+                    })
+            }
+        }
+    }
+    
     var body: some View {
+        let alertPresent: Binding<Bool> = Binding(get: {return alertStatus != nil}, set: { _ in })
         ScrollView {
             ForEach(self.friendsViewModel.friends.indices, id: \.self) { i in
                 let friend = friendsViewModel.friends[i]
                 HStack{
-                    WebImage(url: URL(string: friend.photoUrl ?? ""))
-                        .placeholder(Image("serena")
-                                        .resizable())
-                        .resizable()
-                        .indicator(.activity)
-                        .foregroundColor(.blue)
-                        .frame(width: 60, height: 60, alignment: .center)
-                        .clipShape(Circle())
-                        .shadow(radius: 2)
-                        .overlay(Circle().stroke(Color.black, lineWidth: 2))
-                        .padding()
+//                    WebImage(url: URL(string: friend.photoUrl ?? ""))
+//                        .placeholder(Image("serena")
+//                                        .resizable())
+//                        .resizable()
+//                        .indicator(.activity)
+//                        .foregroundColor(.blue)
+//                        .frame(width: 60, height: 60, alignment: .center)
+//                        .clipShape(Circle())
+//                        .shadow(radius: 2)
+//                        .overlay(Circle().stroke(Color.black, lineWidth: 2))
+//                        .padding()
+                    Group {
+                        if friend.photoUrl != nil {
+                            WebImage(url: URL(string: friend.photoUrl ?? ""))
+                                .resizable()
+                                .placeholder {
+                                    Rectangle()
+                                        .foregroundColor(.gray)
+                                    }
+                                .indicator(.activity)
+                                .foregroundColor(.blue)
+                                .frame(width: 60, height: 60, alignment: .center)
+                                .clipShape(Circle())
+                                .shadow(radius: 2)
+                                .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                                .padding()
+                        } else {
+                            Image("placeholder")
+                                .resizable()
+                                .foregroundColor(.blue)
+                                .frame(width: 60, height: 60, alignment: .center)
+                                .clipShape(Circle())
+                                .shadow(radius: 2)
+                                .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                                .padding()
+                        }
+                    }
 
                     VStack(alignment: .leading){
                     FriendItemView(id: friend.id, username: friend.username)
@@ -63,15 +128,7 @@ struct InviteFriendsView: View {
 
                         Spacer()
 
-                        Button(action: {
-                                self.showingFollowAlert = true
-                            }, label: {
-                                Text("Join")
-                            .alert(isPresented:$showingFollowAlert) {
-                                Alert(title: Text("Confirm Follow!"), message: Text("Are you sure you want to add this person as a teammate?"), primaryButton: .default(Text("Yes")) {
-                                    //Add Action for updating - Arian
-                                }, secondaryButton: .destructive(Text("Cancel")))
-                            }})
+                            getActionButton(userId: friend.id)
 
                         }
 
@@ -81,6 +138,14 @@ struct InviteFriendsView: View {
                     }.frame(width: 300, alignment: .leading)
 
                 }.frame(alignment: .topLeading)
+            }
+        }
+        .alert(isPresented: alertPresent) {
+            switch alertStatus! {
+            case .invite(let userId):
+                return confirmInviteAlert(userId: userId)
+            case .cancelInvite(let userId):
+                return cancelInviteAlert(userId: userId)
             }
         }
         .onAppear(perform: {
