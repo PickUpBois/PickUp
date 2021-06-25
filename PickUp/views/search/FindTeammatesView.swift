@@ -19,14 +19,26 @@ struct FindTeammatesView: View {
             Spacer().frame(height: 10.0)
                 VStack(alignment: .leading){
                     
-                SearchBarView(text: $viewModel.query, placeholder: "Search")
+                    SearchBarView(text: $viewModel.query, placeholder: "Search").frame(alignment: .top)
                 Spacer().frame(height: 10.0)
-                List(viewModel.users) { user in
-                    NavigationLink(
-                        destination: ProfileView(viewModel: ProfileViewModel(userId: user.id), auth: false),
-                        label: {
-                            SearchItemView(id: user.id, username: user.username)
-                        })
+                
+                Group {
+                    switch viewModel.state {
+                    case .idle:
+                        Color.clear
+                    case .loading:
+                        VStack {
+                            ProgressView()
+                        }.frame(alignment: .center)
+                    case .success, .error:
+                        List(viewModel.users) { user in
+                            NavigationLink(
+                                destination: ProfileView(viewModel: ProfileViewModel(userId: user.id), auth: false),
+                                label: {
+                                    SearchItemView(id: user.id, username: user.username)
+                                })
+                        }.frame(alignment: .top)
+                    }
                 }
 
             }

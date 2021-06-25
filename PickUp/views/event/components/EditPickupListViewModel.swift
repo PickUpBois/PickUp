@@ -17,6 +17,29 @@ class EditPickUpListViewModel: ObservableObject {
     }
     var events: [EventDetails] = []
     @Published var state: State = .idle
+    var friendsListViewModel: FriendsListViewModel = FriendsListViewModel(userId: AppState.shared.authId!)
+    func getEvents() {
+        state = .loading
+        guard let userId = AppState.shared.authId else {
+            return
+        }
+        Services.shared.apollo.fetch(query: CurrentlyOwnedEventsQuery(userId: userId), cachePolicy: .fetchIgnoringCacheCompletely) { response in
+            switch response {
+            case .success(let result):
+                if let errors = result.errors {
+                    print(errors[0].localizedDescription)
+                    self.state = .fail(errors[0])
+                }
+                self.events = result.data?.currentlyOwnedEvents.map {
+                    return $0.fragments.eventDetails
+                } ?? []
+                self.state = .success
+            case .failure(let error):
+                print(error.localizedDescription)
+                self.state = .fail(error)
+            }
+        }
+    }
 }
 
 class MockEditPickupListViewModel: EditPickUpListViewModel {
@@ -26,6 +49,10 @@ class MockEditPickupListViewModel: EditPickUpListViewModel {
         let event1 = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open)
         let event2 = event1
         self.events = [event1, event2]
+    }
+    
+    override func getEvents() {
+        return
     }
 }
 

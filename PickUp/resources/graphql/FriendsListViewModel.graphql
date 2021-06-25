@@ -1,4 +1,4 @@
-query GetFriends($userId: String!) {
+query GetFriends($userId: ID!) {
   user(id: $userId) {
 	friends {
 	  id,

@@ -4,19 +4,19 @@ query QueryEvents($userId: String, $type: EventType, $status: EventStatus) {
   }
 }
 
-mutation AcceptFriendRequest($userId: String!, $friendId: String!) {
+mutation AcceptFriendRequest($userId: ID!, $friendId: ID!) {
   acceptFriendRequest(user_id: $userId, friend_id: $friendId) {
 	id
   }
 }
 
-mutation RejectFriendRequest($userId: String!, $friendId: String!) {
+mutation RejectFriendRequest($userId: ID!, $friendId: ID!) {
   rejectFriendRequest(user_id: $userId, friend_id: $friendId) {
 	id
   }
 }
 
-query GetNotifications($userId: String!) {
+query GetNotifications($userId: ID!) {
   user(id: $userId) {
 	id,
 	notifications {

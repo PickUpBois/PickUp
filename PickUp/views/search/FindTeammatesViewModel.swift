@@ -11,6 +11,13 @@ import Combine
 class FindTeammatesViewModel: ObservableObject {
     @Published var query: String = ""
     @Published var users: [SearchUsersQuery.Data.SearchUser] = [SearchUsersQuery.Data.SearchUser]()
+    enum State {
+        case idle
+        case loading
+        case success
+        case error(Error)
+    }
+    @Published var state: State = .idle
     var cancellables = Set<AnyCancellable>()
     
     init() {
@@ -31,23 +38,22 @@ class FindTeammatesViewModel: ObservableObject {
     
     private func searchUsers() {
         print("searching with text \(query)")
+        state = .loading
         Services.shared.apollo.fetch(query: SearchUsersQuery(query: query)) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
                     print(errors[0].localizedDescription)
                     self.users = []
+                    self.state = .error(errors[0])
                     return
                 }
-                guard let data = result.data else {
-                    print("error in query")
-                    self.users = []
-                    return
-                }
-                self.users = data.searchUsers
+                self.users = result.data?.searchUsers ?? []
+                self.state = .success
                 print(self.users)
             case .failure(let error):
                 print(error.localizedDescription)
+                self.state = .error(error)
             }
         }
     }

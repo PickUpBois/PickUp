@@ -3,3 +3,9 @@ mutation LeaveEvent($userId: ID!, $eventId: ID!) {
 	id,
   }
 }
+
+mutation DeleteEvent($userId: ID!, $eventId: ID!) {
+  deleteEvent(userId: $userId, eventId: $eventId) {
+	id,
+  }
+}

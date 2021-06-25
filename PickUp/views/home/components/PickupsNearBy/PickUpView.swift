@@ -15,6 +15,7 @@ struct PickUpView: View, Identifiable {
     var id: Int
     var going: Bool
     var status: EventStatus
+    var event: EventDetails
     
     init(id: Int, event: EventDetails) {
         self.name = event.name
@@ -25,6 +26,7 @@ struct PickUpView: View, Identifiable {
         }
         self.going = attendees.contains(AppState.shared.authId ?? "") ? true : false
         self.status = event.status
+        self.event = event
     }
     
     func getDate(date: Date) -> String {
@@ -126,7 +128,7 @@ struct PickUpView: View, Identifiable {
                 
             }).sheet(isPresented: $showPopUp, content: {
             Spacer().frame(height: 300)
-                EventDetailsBoxView(event: self.viewModel.events[id], viewModel: EventDetailsBoxViewModel(event: self.viewModel.events[id], refresh: self.viewModel.getUpcomingEvents))
+                EventDetailsBoxView(event: event, viewModel: EventDetailsBoxViewModel(event: event, refresh: self.viewModel.getUpcomingEvents))
                 .padding(.all, 30.0)
                 .background(Color("Friends_Popup_Background"))
                 .cornerRadius(8)

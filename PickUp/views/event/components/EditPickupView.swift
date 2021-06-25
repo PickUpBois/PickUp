@@ -10,6 +10,8 @@ import SwiftUI
 struct EditPickupView: View {
     @Binding var deletePickupAlert: Bool
     @Binding var updatePickupAlert: Bool
+    @Binding var selectedEvent: EventDetails?
+    @Binding var friendPopUp: Bool
     let viewModel: EventDetailsBoxViewModel
     var body: some View {
         VStack {
@@ -34,8 +36,24 @@ struct EditPickupView: View {
                         }, secondaryButton: .destructive(Text("Cancel")))
                     }})
                 
+                Spacer().frame(width: 50)
                 
-        Spacer().frame(width: 140)
+                
+                Button(action: {
+                    withAnimation {
+                        self.friendPopUp = true
+                        self.selectedEvent = viewModel.event
+                    }
+                }, label: {
+                Text("Invite")
+                    .fontWeight(.heavy)
+                    .foregroundColor(Color("Text"))
+                    .padding(.all, 10.0)
+                    .background(Color.purple.opacity(0.8))
+                    .cornerRadius(7)
+                })
+                
+                Spacer().frame(width: 50)
                 
                 Button(action: {
                     self.updatePickupAlert = true
@@ -60,6 +78,6 @@ struct EditPickupView: View {
 struct EditPickupView_Previews: PreviewProvider {
     static let event1 = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: [], startDate: Date().isoString, type: .tennis, status: .open)
     static var previews: some View {
-        EditPickupView(deletePickupAlert: .constant(false), updatePickupAlert: .constant(false), viewModel: EventDetailsBoxViewModel(event: event1))
+        EditPickupView(deletePickupAlert: .constant(false), updatePickupAlert: .constant(false), selectedEvent: .constant(nil), friendPopUp: .constant(false), viewModel: EventDetailsBoxViewModel(event: event1)).environmentObject(MockFriendsListViewModel(userId: "1"))
     }
 }

@@ -189,26 +189,27 @@ struct EventDetailsBoxView: View {
                                     .foregroundColor(Color("Text"))
                             }
                             }.sheet(isPresented: $showPopUp, content: {
-                                
-                                VStack{
-                                Spacer()
-                                    
-                                //Check mark function needs to be replaced with selector, not "follower"
-                                FriendsListView(viewModel: MockFriendsListViewModel(userId: "1"))
+                                NavigationView {
+                                    VStack{
+                                        Spacer()
+                                        
+                                        //Check mark function needs to be replaced with selector, not "follower"
+                                        EventAttendeesView(viewModel: viewModel!.attendeesViewModel)
+                                    }
                         
-                                Spacer()
-                        
-                                Button(action: {
-                                self.showPopUp.toggle()
-                                    },label: {
-                                Text("Invite")
-                                .foregroundColor(Color.white)
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 10)
-                                .background(Color.green.opacity(0.8))
-                                .cornerRadius(9)
-                                .padding(.horizontal, 20)
-                                    }).padding()
+//                                Spacer()
+//
+//                                Button(action: {
+//                                self.showPopUp.toggle()
+//                                    },label: {
+//                                Text("Invite")
+//                                .foregroundColor(Color.white)
+//                                .frame(maxWidth: .infinity)
+//                                .padding(.vertical, 10)
+//                                .background(Color.green.opacity(0.8))
+//                                .cornerRadius(9)
+//                                .padding(.horizontal, 20)
+//                                    }).padding()
                                 }
                             })
                     

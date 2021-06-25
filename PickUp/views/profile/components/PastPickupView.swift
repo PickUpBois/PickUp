@@ -118,7 +118,7 @@ extension PastPickupView{
         var events: [GetUserEventsQuery.Data.UserEvent]
         init(events: [GetUserEventsQuery.Data.UserEvent]) {
             self.events = events
-}
+        }
     }
 }
 

@@ -10,7 +10,7 @@ import Combine
 
 struct HomeView: View {
     @State var menuOpen: Bool = false
-    @ObservedObject var viewModel: HomeViewModel = HomeViewModel()
+    @StateObject var viewModel: HomeViewModel = HomeViewModel()
     var body: some View {
        ZStack{
             VStack{
@@ -46,9 +46,6 @@ struct HomeView: View {
             .frame(alignment: .topLeading)
                 
         }
-        .onAppear(perform: {
-            self.viewModel.getUpcomingEvents()
-        })
         .navigationBarTitleDisplayMode(.inline)
         .toolbar{
             ToolbarItem(placement: .principal) {

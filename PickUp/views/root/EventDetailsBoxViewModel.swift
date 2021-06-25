@@ -11,6 +11,7 @@ class EventDetailsBoxViewModel: ObservableObject {
     let refresh: () -> Void
     let event: EventDetails
     let attendeeStatus: EventAttendeeStatus?
+    let attendeesViewModel: EventAttendeesViewModel
     init(event: EventDetails, refresh: @escaping () -> Void = {}) {
         self.event = event
         self.refresh = refresh
@@ -24,6 +25,10 @@ class EventDetailsBoxViewModel: ObservableObject {
             return nil
         }
         self.attendeeStatus = attendeeStatus
+        let attendees = event.attendees.map { attendee in
+            return attendee.fragments.userDetails
+        }
+        self.attendeesViewModel = EventAttendeesViewModel(attendees: attendees)
     }
     
     func commitAction(eventId: String) {
@@ -75,7 +80,18 @@ class EventDetailsBoxViewModel: ObservableObject {
     }
     
     func deleteEvent(eventId: String) {
-        
+        Services.shared.apollo.perform(mutation: DeleteEventMutation(userId: AppState.shared.authId!, eventId: eventId)) { response in
+            switch response {
+            case .success(let result):
+                if let errors = result.errors {
+                    print(errors[0].localizedDescription)
+                    return
+                }
+                self.refresh()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
 }
