@@ -34,8 +34,8 @@ struct ProfileHeaderView: View {
                         .font(.headline).fontWeight(.bold).foregroundColor(Color("Text"))
                         .multilineTextAlignment(.center)
                         .frame(minWidth: 150, maxWidth: 1000)
-                    Text(self.profileViewModel.user?.college ?? "No College").font(.headline).fontWeight(.light).foregroundColor(Color.red).multilineTextAlignment(.center)
-                        .frame(minWidth: 150, maxWidth: 1000)
+                    //Text(self.profileViewModel.user?.college ?? "No College").font(.headline).fontWeight(.light).foregroundColor(Color.red).multilineTextAlignment(.center)
+                        //.frame(minWidth: 150, maxWidth: 1000)
                     Spacer()
                         //Space between profile picture center of page
                 }

@@ -1300,6 +1300,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = PickUpBois.PickUpSportsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROD_HOST = "https://pickupserver.herokuapp.com";
@@ -1327,6 +1328,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = PickUpBois.PickUpSportsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROD_HOST = "https://pickupserver.herokuapp.com";
