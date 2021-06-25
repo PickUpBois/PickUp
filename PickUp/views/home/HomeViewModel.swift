@@ -13,15 +13,24 @@ import Combine
 class HomeViewModel: ObservableObject {
     var cancellables = Set<AnyCancellable>()
     @Published var events: [EventDetails] = []
+    enum State {
+        case idle
+        case loading
+        case success
+        case error(Error)
+    }
+    @Published var eventsState: State = .idle
     func getUpcomingEvents() {
         print("getting events")
         if (AppState.shared.authId != nil) {
+            eventsState = .loading
             Services.shared.apollo.fetch(query: QueryEventsQuery(userId: nil, type: nil, status: .open), cachePolicy: .fetchIgnoringCacheCompletely) { response in
                 switch response {
                 case .success(let result):
                     if let errors = result.errors {
                         print("error in getting events")
                         print(errors[0].errorDescription)
+                        self.eventsState = .error(errors[0])
                     }
                     guard let data = result.data else {
                         print("error in graphql query")
@@ -30,10 +39,12 @@ class HomeViewModel: ObservableObject {
                     self.events = data.queryEvents.map { queryEvent in
                         return queryEvent.fragments.eventDetails
                     }
-                    
+                    self.eventsState = .success
+                    print("got events")
                     self.objectWillChange.send()
                 case .failure(let error):
                     print(error.localizedDescription)
+                    self.eventsState = .error(error)
                 }
             }
         }

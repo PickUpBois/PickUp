@@ -10,10 +10,13 @@ import SwiftUI
 struct NotificationListView: View {
     @State var showPopUp = false
     @ObservedObject var viewModel: NotificationListViewModel
+    @State var mvpPopUp: Bool = false
+    @State var selectedViewModel: NotificationViewModel? = nil
     init(viewModel: NotificationListViewModel) {
         self.viewModel = viewModel
     }
     var body: some View {
+        ZStack{
         ScrollView {
             ForEach(self.viewModel.notifications.indices, id: \.self) { i in
                 let notificationViewModel = self.viewModel.notifications[i]
@@ -27,15 +30,51 @@ struct NotificationListView: View {
                 case .finishEvent:
                     FinishPickupNotificationView(viewModel: notificationViewModel)
                 case .voteForMvp:
-                    ConfirmationNotificationView(viewModel: notificationViewModel)
+                    ConfirmationNotificationView(viewModel: notificationViewModel, mvpPopUp: $mvpPopUp, selectedViewModel: $selectedViewModel)
                 case .selectedMvp:
                     VotedForMvpNotificationView(viewModel: notificationViewModel)
                 case .leftEvent:
                     LeftEventNotificationView(viewModel: notificationViewModel)
+                case .deletedEvent:
+                    DeletedEventNotificationView(viewModel: notificationViewModel)
                 default:
                     Text("error")
                 }
             }
+                
+            if self.mvpPopUp {
+                VStack(alignment:.center){
+                    ZStack{
+                        FinishPickupView(showPopUp: $mvpPopUp, viewModel: selectedViewModel!)
+                            .background(Color("Background_SmallView"))
+                            .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.6, alignment: .bottom)
+                            .padding(.vertical, 10.0)
+                            .padding(.horizontal, 10)
+                
+                        }.background(Color("Friends_Popup_Background").edgesIgnoringSafeArea(.all))
+                            .cornerRadius(20)
+                
+                    Button(action: {
+                    withAnimation{
+                        self.mvpPopUp.toggle()
+                    }
+                }) {
+                    Image(systemName: "x.circle.fill").resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(Color("Text"))
+                        .padding(15)
+                
+                }
+                .clipShape(Circle())
+                .padding(.top, 5)
+                }.onTapGesture(perform: {
+                    withAnimation(.easeIn){
+                        self.mvpPopUp = false}
+                        })
+                
+            }
+        }
+        
         }
         .onAppear {
             self.viewModel.getNotifications()

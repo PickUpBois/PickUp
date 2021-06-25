@@ -48,10 +48,10 @@ struct UpcomingPickupsView: View {
                         .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.2, alignment: .top)
                             .padding(.vertical, 10.0)
                             .padding(.horizontal, 10)
-                        
+                
                         }.background(Color("Friends_Popup_Background").edgesIgnoringSafeArea(.all))
                             .cornerRadius(20)
-                    
+                
                     Button(action: {
                     withAnimation{
                         self.eventPopUp.toggle()
@@ -61,7 +61,7 @@ struct UpcomingPickupsView: View {
                         .frame(width: 20, height: 20)
                         .foregroundColor(Color("Text"))
                         .padding(15)
-
+                
                 }
                 .clipShape(Circle())
                 .padding(.top, 5)
@@ -69,6 +69,7 @@ struct UpcomingPickupsView: View {
                     withAnimation(.easeIn){
                         self.eventPopUp = false}
                         })
+                
             }
         }
         
@@ -105,3 +106,4 @@ extension Date {
         }
     }
 }
+

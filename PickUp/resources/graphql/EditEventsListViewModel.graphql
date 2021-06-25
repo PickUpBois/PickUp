@@ -1,0 +1,17 @@
+query CurrentlyOwnedEvents($userId: ID!) {
+  currentlyOwnedEvents(userId: $userId) {
+	... EventDetails,
+	invitedAttendees {
+		id,
+	}
+  }
+}
+
+query GetEvent($eventId: ID!) {
+  getEvent(eventId: $eventId) {
+	id,
+	invitedAttendees {
+	  id,
+	}
+  }
+}

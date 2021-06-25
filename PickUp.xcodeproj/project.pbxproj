@@ -74,6 +74,13 @@
 		8DA9D1A726828C9F00513358 /* EventDetailsBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D1A626828C9E00513358 /* EventDetailsBoxViewModel.swift */; };
 		8DA9D1AB2682901000513358 /* EventDetailsBoxViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DA9D1AA2682901000513358 /* EventDetailsBoxViewModel.graphql */; };
 		8DA9D1AD2682ED0E00513358 /* EditPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D1AC2682ED0E00513358 /* EditPickupView.swift */; };
+		8DA9D1AF2683CFFD00513358 /* EditEventsListViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DA9D1AE2683CFFD00513358 /* EditEventsListViewModel.graphql */; };
+		8DA9D1B12683F1E600513358 /* DeletedEventNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D1B02683F1E600513358 /* DeletedEventNotificationView.swift */; };
+		8DA9D1B32683F95800513358 /* EditPickupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D1B22683F95800513358 /* EditPickupViewModel.swift */; };
+		8DA9D1B5268414EF00513358 /* InviteFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D1B4268414EF00513358 /* InviteFriendsView.swift */; };
+		8DA9D1B72684155C00513358 /* InviteFriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D1B62684155C00513358 /* InviteFriendsViewModel.swift */; };
+		8DA9D1B9268555F700513358 /* EventAttendeesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D1B8268555F700513358 /* EventAttendeesView.swift */; };
+		8DA9D1BB2685560600513358 /* EventAttendeesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D1BA2685560600513358 /* EventAttendeesViewModel.swift */; };
 		8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8526198976004AADED /* PickUpApp.swift */; };
 		8DB8EF8826198976004AADED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8726198976004AADED /* ContentView.swift */; };
 		8DB8EF8A26198979004AADED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8EF8926198979004AADED /* Assets.xcassets */; };
@@ -118,6 +125,7 @@
 		C088BBB026582B4C007301F7 /* SocialViewScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088BBAF26582B4B007301F7 /* SocialViewScrollView.swift */; };
 		C09773122660412D0045B978 /* CourtsNearMeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09773112660412D0045B978 /* CourtsNearMeScrollView.swift */; };
 		C0977314266041900045B978 /* PickUpNearMeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0977313266041900045B978 /* PickUpNearMeScrollView.swift */; };
+		C0A322B12683C99900CB5919 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A322B02683C99800CB5919 /* BottomView.swift */; };
 		C0B63B36267041F4008237EE /* BusynessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B63B35267041F4008237EE /* BusynessView.swift */; };
 		C0B63B38267059A4008237EE /* CourtsNearMeFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B63B37267059A4008237EE /* CourtsNearMeFullView.swift */; };
 		C0B81C6E2657064B000555BD /* NotificationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B81C6D2657064B000555BD /* NotificationListView.swift */; };
@@ -221,6 +229,13 @@
 		8DA9D1A626828C9E00513358 /* EventDetailsBoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsBoxViewModel.swift; sourceTree = "<group>"; };
 		8DA9D1AA2682901000513358 /* EventDetailsBoxViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = EventDetailsBoxViewModel.graphql; sourceTree = "<group>"; };
 		8DA9D1AC2682ED0E00513358 /* EditPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPickupView.swift; sourceTree = "<group>"; };
+		8DA9D1AE2683CFFD00513358 /* EditEventsListViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = EditEventsListViewModel.graphql; sourceTree = "<group>"; };
+		8DA9D1B02683F1E600513358 /* DeletedEventNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedEventNotificationView.swift; sourceTree = "<group>"; };
+		8DA9D1B22683F95800513358 /* EditPickupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPickupViewModel.swift; sourceTree = "<group>"; };
+		8DA9D1B4268414EF00513358 /* InviteFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsView.swift; sourceTree = "<group>"; };
+		8DA9D1B62684155C00513358 /* InviteFriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewModel.swift; sourceTree = "<group>"; };
+		8DA9D1B8268555F700513358 /* EventAttendeesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAttendeesView.swift; sourceTree = "<group>"; };
+		8DA9D1BA2685560600513358 /* EventAttendeesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAttendeesViewModel.swift; sourceTree = "<group>"; };
 		8DB8EF8226198976004AADED /* PickUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DB8EF8526198976004AADED /* PickUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpApp.swift; sourceTree = "<group>"; };
 		8DB8EF8726198976004AADED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -271,6 +286,7 @@
 		C088BBAF26582B4B007301F7 /* SocialViewScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewScrollView.swift; sourceTree = "<group>"; };
 		C09773112660412D0045B978 /* CourtsNearMeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtsNearMeScrollView.swift; sourceTree = "<group>"; };
 		C0977313266041900045B978 /* PickUpNearMeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpNearMeScrollView.swift; sourceTree = "<group>"; };
+		C0A322B02683C99800CB5919 /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		C0B63B35267041F4008237EE /* BusynessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusynessView.swift; sourceTree = "<group>"; };
 		C0B63B37267059A4008237EE /* CourtsNearMeFullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtsNearMeFullView.swift; sourceTree = "<group>"; };
 		C0B81C6D2657064B000555BD /* NotificationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListView.swift; sourceTree = "<group>"; };
@@ -445,6 +461,9 @@
 				C04BFC1B267E6643006DE620 /* LoadingView.swift */,
 				C04BFC1F26811276006DE620 /* PopUpList.swift */,
 				8DA9D1A626828C9E00513358 /* EventDetailsBoxViewModel.swift */,
+				8DA9D1B8268555F700513358 /* EventAttendeesView.swift */,
+				8DA9D1BA2685560600513358 /* EventAttendeesViewModel.swift */,
+				C0A322B02683C99800CB5919 /* BottomView.swift */,
 			);
 			path = root;
 			sourceTree = "<group>";
@@ -473,6 +492,9 @@
 				1AB44EDA26439DB300568ECB /* TypingBlockView.swift */,
 				C055C3C92673074200FF40AA /* EditPickupListViewModel.swift */,
 				8DA9D1AC2682ED0E00513358 /* EditPickupView.swift */,
+				8DA9D1B22683F95800513358 /* EditPickupViewModel.swift */,
+				8DA9D1B4268414EF00513358 /* InviteFriendsView.swift */,
+				8DA9D1B62684155C00513358 /* InviteFriendsViewModel.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -550,6 +572,7 @@
 				8DE5218A266428980077AF09 /* FriendsListViewModel.graphql */,
 				8D0FD6A32674616D006C84D3 /* NotificationViewModel.graphql */,
 				8DA9D1AA2682901000513358 /* EventDetailsBoxViewModel.graphql */,
+				8DA9D1AE2683CFFD00513358 /* EditEventsListViewModel.graphql */,
 			);
 			path = graphql;
 			sourceTree = "<group>";
@@ -589,6 +612,7 @@
 				1A2E5BE426586698006A803A /* FinishPickupNotificationView.swift */,
 				1A2E5BE026586455006A803A /* FriendRequestNotificationView.swift */,
 				8DA9D1A426827BD300513358 /* LeftEventNotificationView.swift */,
+				8DA9D1B02683F1E600513358 /* DeletedEventNotificationView.swift */,
 			);
 			path = types;
 			sourceTree = "<group>";
@@ -864,6 +888,7 @@
 				8DD29A4F26685007005DFCB2 /* EventDetails.graphql in Resources */,
 				8DFB9A532650A73000254C57 /* SignUpViewModel.graphql in Resources */,
 				8D69FE9C267E5707009D2AFF /* GoogleService-Info.plist in Resources */,
+				8DA9D1AF2683CFFD00513358 /* EditEventsListViewModel.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1047,6 +1072,7 @@
 				8D2B0C50263819060032AE67 /* ImagePicker.swift in Sources */,
 				1A2E5BDF2658637F006A803A /* EditedPickupNotificationView.swift in Sources */,
 				8D65B28B2658CF6F0085D5EE /* ProfileSettingsViewModel.swift in Sources */,
+				8DA9D1B12683F1E600513358 /* DeletedEventNotificationView.swift in Sources */,
 				8D7AC4A1266DAC4F00672918 /* NotificationView.swift in Sources */,
 				8D65B2E626592AA00085D5EE /* SearchItemView.swift in Sources */,
 				8DA9D1AD2682ED0E00513358 /* EditPickupView.swift in Sources */,
@@ -1056,6 +1082,7 @@
 				C0B81C6E2657064B000555BD /* NotificationListView.swift in Sources */,
 				1A03F99F263F482F00C2E2CD /* UpcomingPickupsView.swift in Sources */,
 				8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
+				8DA9D1B32683F95800513358 /* EditPickupViewModel.swift in Sources */,
 				C04BFC1C267E6643006DE620 /* LoadingView.swift in Sources */,
 				8D65B2812658CE550085D5EE /* RestService.swift in Sources */,
 				8DA9D1A726828C9F00513358 /* EventDetailsBoxViewModel.swift in Sources */,
@@ -1068,6 +1095,7 @@
 				8D7AC47E266D636400672918 /* EventDetailsBoxView.swift in Sources */,
 				C0977314266041900045B978 /* PickUpNearMeScrollView.swift in Sources */,
 				1A2E5BEE265CBE38006A803A /* PastScoresView.swift in Sources */,
+				8DA9D1BB2685560600513358 /* EventAttendeesViewModel.swift in Sources */,
 				8DFCF504262788A000BBFE66 /* MainView.swift in Sources */,
 				8D30B108263E2146002B4C62 /* ProfilePicture.swift in Sources */,
 				8D5EE0372652D6AF00EE7840 /* PickUpTabListView.swift in Sources */,
@@ -1088,6 +1116,7 @@
 				8D65B2AB265904EA0085D5EE /* CreateEventViewModel.swift in Sources */,
 				8D65B2682658C91D0085D5EE /* AppState.swift in Sources */,
 				8D65B27C2658CD790085D5EE /* StorageService.swift in Sources */,
+				8DA9D1B72684155C00513358 /* InviteFriendsViewModel.swift in Sources */,
 				8D65B2D826590F310085D5EE /* HomeViewModel.swift in Sources */,
 				C0B63B38267059A4008237EE /* CourtsNearMeFullView.swift in Sources */,
 				C06A97D326790DF2004966F0 /* PopOverView.swift in Sources */,
@@ -1113,6 +1142,8 @@
 				C0151127265A36B8005EF24A /* ChatView.swift in Sources */,
 				8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */,
 				8D5EE07A26531EC200EE7840 /* ProfilePastEventView.swift in Sources */,
+				8DA9D1B5268414EF00513358 /* InviteFriendsView.swift in Sources */,
+				C0A322B12683C99900CB5919 /* BottomView.swift in Sources */,
 				8DFCF50E262788AF00BBFE66 /* FindTeammatesView.swift in Sources */,
 				1A2E5BEC265CB784006A803A /* FinishPickupView.swift in Sources */,
 				C0151120265A09FB005EF24A /* CreatePostView.swift in Sources */,
@@ -1121,6 +1152,7 @@
 				8DFB998D264E342800254C57 /* EventLocationPickerView.swift in Sources */,
 				1AB44EDB26439DB300568ECB /* TypingBlockView.swift in Sources */,
 				8DE52179266427FC0077AF09 /* FriendsListView.swift in Sources */,
+				8DA9D1B9268555F700513358 /* EventAttendeesView.swift in Sources */,
 				8D63ED24266F10160022FB79 /* NotificationListViewModel.swift in Sources */,
 				8DE52181266428130077AF09 /* FriendItemView.swift in Sources */,
 				1AB25B682668CAE500314C53 /* EditPickupListView.swift in Sources */,
@@ -1293,7 +1325,7 @@
 				DEVELOPMENT_TEAM = 5D593G8Q6L;
 				DEV_HOST = "http://localhost:3000";
 				ENABLE_PREVIEWS = YES;
-				ENV = PROD;
+				ENV = DEV;
 				INFOPLIST_FILE = PickUp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1321,7 +1353,7 @@
 				DEVELOPMENT_TEAM = 5D593G8Q6L;
 				DEV_HOST = "http://localhost:3000";
 				ENABLE_PREVIEWS = YES;
-				ENV = PROD;
+				ENV = DEV;
 				INFOPLIST_FILE = PickUp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

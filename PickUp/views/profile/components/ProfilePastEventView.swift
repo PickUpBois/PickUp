@@ -13,6 +13,8 @@ struct ProfilePastEventView: View {
     init(type: EventType) {
         self.type = type
     }
+    
+    
     var body: some View {
         let emoji: String = self.type == .tennis ? "🎾" : "🏀"
         VStack {
