@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ConfirmationNotificationView: View {
-    @State var showPopUp = false
+    @Binding var mvpPopUp: Bool
     @ObservedObject var viewModel: NotificationViewModel
+    @Binding var selectedViewModel: NotificationViewModel?
     let location: String
     var owner: UserDetails?
     
@@ -20,7 +21,7 @@ struct ConfirmationNotificationView: View {
         return formatter.string(from: date)
     }
     
-    init(viewModel: NotificationViewModel) {
+    init(viewModel: NotificationViewModel, mvpPopUp: Binding<Bool>, selectedViewModel: Binding<NotificationViewModel?>) {
         self.owner = nil
         for attendee in viewModel.event!.attendees {
             let userDetails = attendee.fragments.userDetails
@@ -31,7 +32,8 @@ struct ConfirmationNotificationView: View {
         }
         self.viewModel = viewModel
         self.location = "Lied Rec"
-        self._showPopUp = State(initialValue: false)
+        self._mvpPopUp = mvpPopUp
+        self._selectedViewModel = selectedViewModel
     }
     
     func getScoreString() -> String {
@@ -69,7 +71,8 @@ struct ConfirmationNotificationView: View {
         
     }
     var body: some View {
-      
+        
+        ZStack{
         VStack{
         HStack {
             Image("serena")
@@ -92,53 +95,64 @@ struct ConfirmationNotificationView: View {
             Spacer().frame(height: 10)
                 HStack{
                     Button(action: {
+                        withAnimation(.easeIn){
                         self.viewModel.actionStatus = .ip
+                        self.mvpPopUp = true
+                        self.selectedViewModel = viewModel
+                        }
                     },label: {
                         Text("\(owner!.firstName) has entered a score of \(getScoreString()) for the event \(viewModel.event!.name) at \(location). Press here to confirm score and finish Pickup!")
                             .foregroundColor(Color.purple)
                             .padding(.leading, 10.0)
                             .lineLimit(3)
                     })
-                }.sheet(isPresented: Binding(get: {
-                    switch self.viewModel.actionStatus {
-                    case .none, .success:
-                        return false
-                    case .ip, .failure, .loading:
-                        return true
-                    }
-                }, set: {_ in
-                    return
-                }), content: {
-                    
-                    FinishPickupView(showPopUp: $showPopUp, viewModel: viewModel)
-                        .background(Color.white.opacity(0.9))
-                    
-                    Button(action: {
-                        self.viewModel.actionStatus = .none
-                    },label: {
-                        Text("Dismiss")
-                            .foregroundColor(Color.white)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 10)
-                            .background(Color.black.opacity(0.8))
-                            .cornerRadius(9)
-                            .padding(.horizontal, 20)
-                    })
-                    //Spacer().frame(height: 300)
-                    .background(BackgroundClearView())
-
-                })
+                }
         }
             .padding(.all, 10)
             .frame(width: 400.0)
             .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
             .cornerRadius(8)
-        
+        .opacity(self.mvpPopUp ? 0.2: 1)
+            
+        }
     }
 }
 
 struct ConfirmationNotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfirmationNotificationView(viewModel: MockNotificationViewModel())
+        ConfirmationNotificationView(viewModel: MockNotificationViewModel(), mvpPopUp: .constant(false), selectedViewModel: .constant(nil))
     }
 }
+
+
+
+//
+//.sheet(isPresented: Binding(get: {
+//    switch self.viewModel.actionStatus {
+//    case .none, .success:
+//        return false
+//    case .ip, .failure, .loading:
+//        return true
+//    }
+//}, set: {_ in
+//    return
+//}), content: {
+//
+//    FinishPickupView(showPopUp: $showPopUp, viewModel: viewModel)
+//        .background(Color("Background_SmallView"))
+//
+//    Button(action: {
+//        self.viewModel.actionStatus = .none
+//    },label: {
+//        Text("Dismiss")
+//            .foregroundColor(Color("Text"))
+//            .frame(maxWidth: .infinity)
+//            .padding(.vertical, 10)
+//            .background(Color("Background_SmallView"))
+//            .cornerRadius(9)
+//            .padding(.horizontal, 20)
+//    })
+//    //Spacer().frame(height: 300)
+//    .background(BackgroundClearView())
+//
+//})

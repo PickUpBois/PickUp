@@ -27,7 +27,7 @@ struct FinishPickupView: View {
                 
                 Text("Ashwin Yedavalli")
                     .fontWeight(.heavy)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color("Text"))
                     .lineLimit(1)
                     .padding(.top, 20)
             }
@@ -57,15 +57,16 @@ struct FinishPickupView: View {
                 self.viewModel.voteForMvp(eventId: eventId, voteeId: voteeId)
             }) {
                 
-                HStack(alignment: .center){
+                HStack{
                 Text("Vote")
                     .foregroundColor(.white)
                 }
                 
             }.frame(alignment: .center)
-            .padding(.horizontal, 50)
+            .padding(.horizontal, 180)
             .padding(.vertical, 5)
             .background(Color.blue)
+            .cornerRadius(10)
         }
         }
 }
