@@ -50,7 +50,9 @@ struct PickUpView: View, Identifiable {
                             .foregroundColor(Color("Text"))
                             .lineLimit(1)
                         
-                    }
+                    }.frame(maxWidth: 140, alignment: .center)
+                    .padding(.leading, 5)
+                    
                     HStack (spacing: 20){
                         HStack (spacing: 5){
                         Image(systemName:"calendar")
