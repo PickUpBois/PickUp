@@ -42,7 +42,7 @@ struct LoginView: View {
                     //Hstack Password
                     Image(systemName: "lock")
                         .foregroundColor(.black)
-                    TextField("Password", text: $viewModel.password)
+                    SecureField("Password", text: $viewModel.password)
                 }
                 //Password Text Field Settings
                 .padding(.all, 20)
