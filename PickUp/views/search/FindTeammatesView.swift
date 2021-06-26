@@ -15,18 +15,18 @@ struct FindTeammatesView: View {
     @StateObject var viewModel: FindTeammatesViewModel = FindTeammatesViewModel()
     var body: some View {
         ZStack {
-            VStack {
+            VStack{
             // Stacks everything on page
                 Spacer().frame(height: 10.0)
-                    VStack(alignment: .leading){
+                    VStack{
                         
                         SearchBarView(text: $viewModel.query, placeholder: "Search").frame(alignment: .top)
                     Spacer().frame(height: 10.0)
-                    
-
-                }
+                    }
+            Spacer()
                 
             }.frame(alignment: .top)
+            
             Group {
                 switch viewModel.state {
                 case .idle:
@@ -42,10 +42,11 @@ struct FindTeammatesView: View {
                             label: {
                                 SearchItemView(id: user.id, username: user.username)
                             })
-                    }.frame(alignment: .top)
+                    }.frame(alignment: .center)
                 }
             }
         }
+        .frame(alignment: .top)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar{
             ToolbarItem(placement: .principal) {
@@ -54,8 +55,8 @@ struct FindTeammatesView: View {
                         .padding(.top, -5)
                         .frame(width: 130, height: 40)
                         .scaledToFit()
-            }
 
+            }
         }
     }
 }

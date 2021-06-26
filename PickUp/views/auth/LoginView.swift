@@ -34,6 +34,7 @@ struct LoginView: View {
                 }
                 //Email Text Field Settings
                 .padding(.all, 20.0)
+                .frame(width: 380)
                 .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                 .cornerRadius(8)
                 .padding(.horizontal, 20)
@@ -46,6 +47,7 @@ struct LoginView: View {
                 }
                 //Password Text Field Settings
                 .padding(.all, 20)
+                .frame(width: 380)
                 .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                 .cornerRadius(8)
                 .padding(.horizontal, 20)
@@ -55,7 +57,7 @@ struct LoginView: View {
                     Text("Login")
                         .foregroundColor(.white)
                         .font(.system(size: 20, weight: .medium))
-                        }.frame(maxWidth: .infinity)
+                        }.frame(width: 380)
                         .padding(.vertical, 10)
                         .background(Color.blue.opacity(0.8))
                         .cornerRadius(9)
