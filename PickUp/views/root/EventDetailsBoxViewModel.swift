@@ -12,7 +12,7 @@ class EventDetailsBoxViewModel: ObservableObject {
     let event: EventDetails
     let attendeeStatus: EventAttendeeStatus?
     let attendeesViewModel: EventAttendeesViewModel
-    let userId: String? = nil
+    var userId: String? = nil
     init(event: EventDetails, refresh: @escaping () -> Void = {}, userId: String? = AppState.shared.authId) {
         self.event = event
         self.refresh = refresh
@@ -30,6 +30,7 @@ class EventDetailsBoxViewModel: ObservableObject {
             return attendee.fragments.userDetails
         }
         self.attendeesViewModel = EventAttendeesViewModel(attendees: attendees)
+        self.userId = userId
     }
     
     func commitAction(eventId: String) {

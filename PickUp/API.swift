@@ -3952,6 +3952,8 @@ public struct EventDetails: GraphQLFragment {
       mvp {
         __typename
         id
+        firstName
+        lastName
       }
     }
     """
@@ -4307,6 +4309,8 @@ public struct EventDetails: GraphQLFragment {
       return [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("firstName", type: .nonNull(.scalar(String.self))),
+        GraphQLField("lastName", type: .nonNull(.scalar(String.self))),
       ]
     }
 
@@ -4316,8 +4320,8 @@ public struct EventDetails: GraphQLFragment {
       self.resultMap = unsafeResultMap
     }
 
-    public init(id: GraphQLID) {
-      self.init(unsafeResultMap: ["__typename": "User", "id": id])
+    public init(id: GraphQLID, firstName: String, lastName: String) {
+      self.init(unsafeResultMap: ["__typename": "User", "id": id, "firstName": firstName, "lastName": lastName])
     }
 
     public var __typename: String {
@@ -4336,6 +4340,26 @@ public struct EventDetails: GraphQLFragment {
       }
       set {
         resultMap.updateValue(newValue, forKey: "id")
+      }
+    }
+
+    /// first name of user
+    public var firstName: String {
+      get {
+        return resultMap["firstName"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "firstName")
+      }
+    }
+
+    /// last name of user
+    public var lastName: String {
+      get {
+        return resultMap["lastName"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "lastName")
       }
     }
   }

@@ -54,6 +54,7 @@ struct EventDetailsBoxView: View {
     let fontColor: Color
     let attendeeStatus: EventAttendeeStatus?
     let viewModel: EventDetailsBoxViewModel?
+    let event: EventDetails
     init(event: EventDetails, fontColor: Color = .black, viewModel: EventDetailsBoxViewModel? = nil) {
         self.name = event.name
         self.info = event.info
@@ -81,27 +82,28 @@ struct EventDetailsBoxView: View {
         self.status = event.status
         self.fontColor = fontColor
         self.viewModel = viewModel
+        self.event = event
     }
     
     @State var showPopUp = false
     
-//    func getWinLoss(event: EventDetails) -> String {
-//        var teamIndex = 0
-//        for i in 0..<event.teams![1].members.count {
-//            let memberId = event.teams![1].members[i].id
-//            if viewModel.user?.id == memberId {
-//                teamIndex = 1
-//                break
-//            }
-//        }
-//        let teamId = event.teams![teamIndex].id
-//        let winnerId = event.winner!.id
-//        if teamId == winnerId {
-//            return "W"
-//        } else {
-//            return "L"
-//        }
-//    }
+    func getWinLoss(event: EventDetails) -> String {
+        var teamIndex = 0
+        for i in 0..<event.teams![1].members.count {
+            let memberId = event.teams![1].members[i].id
+            if viewModel?.userId == memberId {
+                teamIndex = 1
+                break
+            }
+        }
+        let teamId = event.teams![teamIndex].id
+        let winnerId = event.winner!.id
+        if teamId == winnerId {
+            return "W"
+        } else {
+            return "L"
+        }
+    }
 
     var eventActionView: some View {
         var text = "Join"
@@ -207,7 +209,34 @@ struct EventDetailsBoxView: View {
                                     .fontWeight(.semibold)
                                     .foregroundColor(Color("Text"))
                             }
-                            }.sheet(isPresented: $showPopUp, content: {
+                            }
+                    Spacer().frame(height: 5)
+                    
+                    HStack{
+                        if viewModel?.event.mvp?.id != nil {
+                            Text("🐐")
+                            Text("\(viewModel!.event.mvp!.firstName) \(viewModel!.event.mvp!.lastName)")
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("Text"))
+                                .lineLimit(1)
+                                .frame(alignment: .leading)
+                                Spacer()
+                        }
+                    }
+                    Group {
+                        Spacer().frame(height: 5)
+                        if event.winner != nil {
+                            HStack{
+                                Text("🏅")
+                                Text(getWinLoss(event: event))
+                                            .fontWeight(.bold)
+                                            .foregroundColor(Color("Text"))
+                                            .lineLimit(1)
+                                }
+                        }
+                    }
+                    .padding(.trailing, 60)
+                    .sheet(isPresented: $showPopUp, content: {
                                 NavigationView {
                                     VStack{
                                         Spacer()

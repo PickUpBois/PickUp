@@ -23,5 +23,7 @@ fragment EventDetails on Event {
 	},
 	mvp {
 		id,
+		firstName,
+		lastName,
 	}
 }
