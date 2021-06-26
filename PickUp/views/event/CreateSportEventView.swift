@@ -52,7 +52,7 @@ struct CreateSportEventView: View {
             //People //e.g. 4 (doubles)
             TypingBlockView(title: "People", description: "e.g. 4 (doubles)", value: self.$eventViewModel.eventInfo.capacity)
             
-            Spacer().frame(height: 20)
+            Spacer().frame(height: 15)
             //Scroll Menu (Like when setting alarm on iPhone)
             
             //busyness meter??

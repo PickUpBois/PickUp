@@ -26,14 +26,14 @@ struct MapMainView: View {
                 VStack(spacing: 0 ){
                     HStack{
                         Image(systemName: "magnifyingglass")
-                            .foregroundColor(.gray)
+                            .foregroundColor(Color("Text"))
                         
                         TextField("Search...", text: $mapData.searchTxt)
-                            .colorScheme(.light)
+                            .foregroundColor(Color("Text"))
                     }
                     .padding(.vertical,10)
                     .padding(.horizontal)
-                    .background(Color.white)
+                    .background(Color("SearchBarMap"))
                     .cornerRadius(20)
                     
                     
@@ -61,7 +61,7 @@ struct MapMainView: View {
                             }
                             .padding(.top)
                         }
-                        .background(Color.white)
+                        .background(Color("SearchBarMap"))
                     }
                     
                 }
