@@ -100,6 +100,7 @@
 		8DEFD478268659B1003F8CE0 /* InviteFriendViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DEFD477268659B1003F8CE0 /* InviteFriendViewModel.graphql */; };
 		8DEFD47A2686981C003F8CE0 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFD4792686981C003F8CE0 /* util.swift */; };
 		8DEFD47C2686CF9A003F8CE0 /* JoinedEventNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFD47B2686CF9A003F8CE0 /* JoinedEventNotificationView.swift */; };
+		8DEFD47E26870997003F8CE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DEFD47D26870996003F8CE0 /* LaunchScreen.storyboard */; };
 		8DFAD531261EBA910055BA76 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAD530261EBA910055BA76 /* LoginView.swift */; };
 		8DFB9988264E2C9F00254C57 /* EventDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */; };
 		8DFB998D264E342800254C57 /* EventLocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB998C264E342800254C57 /* EventLocationPickerView.swift */; };
@@ -264,6 +265,7 @@
 		8DEFD477268659B1003F8CE0 /* InviteFriendViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = InviteFriendViewModel.graphql; sourceTree = "<group>"; };
 		8DEFD4792686981C003F8CE0 /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		8DEFD47B2686CF9A003F8CE0 /* JoinedEventNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedEventNotificationView.swift; sourceTree = "<group>"; };
+		8DEFD47D26870996003F8CE0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DFAD530261EBA910055BA76 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDatePickerView.swift; sourceTree = "<group>"; };
 		8DFB998C264E342800254C57 /* EventLocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationPickerView.swift; sourceTree = "<group>"; };
@@ -664,6 +666,7 @@
 				8DB8EF8B26198979004AADED /* Preview Content */,
 				8D65B376265B06900085D5EE /* API.swift */,
 				8DD29A442664807E005DFCB2 /* schema.json */,
+				8DEFD47D26870996003F8CE0 /* LaunchScreen.storyboard */,
 			);
 			path = PickUp;
 			sourceTree = "<group>";
@@ -891,6 +894,7 @@
 				8DEFD478268659B1003F8CE0 /* InviteFriendViewModel.graphql in Resources */,
 				8DE5218B266428980077AF09 /* FriendsListViewModel.graphql in Resources */,
 				C0D4716C264098BF00E7B6C7 /* CreateEventView.xib in Resources */,
+				8DEFD47E26870997003F8CE0 /* LaunchScreen.storyboard in Resources */,
 				8D65B2A62658E04E0085D5EE /* HomeViewModel.graphql in Resources */,
 				8DA9D1AB2682901000513358 /* EventDetailsBoxViewModel.graphql in Resources */,
 				8DD29A4A26684FEC005DFCB2 /* UserDetails.graphql in Resources */,
@@ -1333,6 +1337,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PickUp/PickUp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"PickUp/Preview Content\"";
 				DEVELOPMENT_TEAM = 5D593G8Q6L;
 				DEV_HOST = "http://localhost:3000";
@@ -1361,6 +1366,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PickUp/PickUp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"PickUp/Preview Content\"";
 				DEVELOPMENT_TEAM = 5D593G8Q6L;
 				DEV_HOST = "http://localhost:3000";

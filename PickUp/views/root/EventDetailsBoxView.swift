@@ -82,7 +82,26 @@ struct EventDetailsBoxView: View {
         self.fontColor = fontColor
         self.viewModel = viewModel
     }
+    
     @State var showPopUp = false
+    
+//    func getWinLoss(event: EventDetails) -> String {
+//        var teamIndex = 0
+//        for i in 0..<event.teams![1].members.count {
+//            let memberId = event.teams![1].members[i].id
+//            if viewModel.user?.id == memberId {
+//                teamIndex = 1
+//                break
+//            }
+//        }
+//        let teamId = event.teams![teamIndex].id
+//        let winnerId = event.winner!.id
+//        if teamId == winnerId {
+//            return "W"
+//        } else {
+//            return "L"
+//        }
+//    }
 
     var eventActionView: some View {
         var text = "Join"

@@ -12,7 +12,8 @@ class EventDetailsBoxViewModel: ObservableObject {
     let event: EventDetails
     let attendeeStatus: EventAttendeeStatus?
     let attendeesViewModel: EventAttendeesViewModel
-    init(event: EventDetails, refresh: @escaping () -> Void = {}) {
+    let userId: String? = nil
+    init(event: EventDetails, refresh: @escaping () -> Void = {}, userId: String? = AppState.shared.authId) {
         self.event = event
         self.refresh = refresh
         var attendeeStatus: EventAttendeeStatus? {

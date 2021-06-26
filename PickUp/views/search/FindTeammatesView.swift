@@ -15,37 +15,53 @@ struct FindTeammatesView: View {
     @StateObject var viewModel: FindTeammatesViewModel = FindTeammatesViewModel()
     var body: some View {
         ZStack {
-            VStack {
             // Stacks everything on page
-                Spacer().frame(height: 10.0)
-                    VStack(alignment: .leading){
-                        
-                        SearchBarView(text: $viewModel.query, placeholder: "Search").frame(alignment: .top)
-                    Spacer().frame(height: 10.0)
+            VStack(spacing: 0) {
+//                VStack {
+//                    Spacer().frame(height: 10.0)
+//                    VStack {
+                        SearchBarView(text: $viewModel.query, placeholder: "Search...")
+//                        Spacer().frame(height: 10.0)
+//                    }
                     
-
-                }
+//                    Spacer()
+//                }.frame(alignment: .top)
                 
-            }.frame(alignment: .top)
-            Group {
-                switch viewModel.state {
-                case .idle:
-                    Color.clear
-                case .loading:
-                    VStack {
+                Spacer().frame(height: 5)
+                
+                Spacer()
+                            
+                Group {
+                    switch viewModel.state {
+                    case .idle:
+                        Color.clear
+                    case .loading:
                         ProgressView()
-                    }.frame(alignment: .center)
-                case .success, .error:
-                    List(viewModel.users) { user in
-                        NavigationLink(
-                            destination: ProfileView(viewModel: ProfileViewModel(userId: user.id), auth: false),
-                            label: {
-                                SearchItemView(id: user.id, username: user.username)
-                            })
-                    }.frame(alignment: .top)
+                        Spacer()
+                    default:
+                        ScrollView{
+                            VStack(spacing: 15){
+                                
+                                ForEach(viewModel.users) { user in
+                                    NavigationLink(destination: ProfileView(viewModel: ProfileViewModel(userId: user.id), auth: false)) {
+                                        SearchItemView(id: user.id, username: user.username)
+                                            .foregroundColor(Color("Text"))
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            .padding(.leading)
+                                    }
+                                    
+                                    Divider()
+                                }
+                            }
+                            .padding(.top)
+                        }
+                        .background(Color("SearchBarBackground"))
+                    }
                 }
-            }
-        }
+            }.padding()
+                    
+        }.frame(alignment: .top)
+
         .navigationBarTitleDisplayMode(.inline)
         .toolbar{
             ToolbarItem(placement: .principal) {

@@ -30,8 +30,6 @@ let threeColumns = [GridItem(), GridItem(), GridItem()]
         } else {
             return "L"
         }
-        
-        
     }
     var body: some View {
         ZStack{

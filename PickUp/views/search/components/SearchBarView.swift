@@ -1,40 +1,22 @@
 import SwiftUI
 import UIKit
-struct SearchBarView: UIViewRepresentable {
+struct SearchBarView: View {
 
     @Binding var text: String
     var placeholder: String
 
-    class Coordinator: NSObject, UISearchBarDelegate {
-
-        @Binding var text: String
-
-        init(text: Binding<String>) {
-            _text = text
+    var body: some View {
+        HStack{
+            Image(systemName: "magnifyingglass")
+                .foregroundColor(Color("Text"))
+            
+            TextField(placeholder, text: $text)
+                .foregroundColor(Color("Text"))
         }
-
-        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            text = searchText
-        }
-        
-        
-    }
-
-    func makeCoordinator() -> SearchBarView.Coordinator {
-        return Coordinator(text: $text)
-    }
-
-    func makeUIView(context: UIViewRepresentableContext<SearchBarView>) -> UISearchBar {
-        let searchBar = UISearchBar(frame: .zero)
-        searchBar.delegate = context.coordinator
-        searchBar.placeholder = placeholder
-        searchBar.searchBarStyle = .minimal
-        searchBar.autocapitalizationType = .none
-        return searchBar
-    }
-
-    func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<SearchBarView>) {
-        uiView.text = text
+        .padding(.vertical,10)
+        .padding(.horizontal)
+        .background(Color.gray.opacity(0.3))
+        .cornerRadius(20)
     }
 }
 

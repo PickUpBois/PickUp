@@ -40,7 +40,7 @@ struct MapMainView: View {
                     Spacer().frame(height: 5)
                     
                     // Displaying Results...
-                    if !mapData.places.isEmpty && mapData.searchTxt != ""{
+                    if !mapData.places.isEmpty && mapData.searchTxt != "" {
                         
                         ScrollView{
                             
