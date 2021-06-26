@@ -21,11 +21,11 @@ struct CreatePostView: View {
                     .frame(width: 25, height: 25, alignment: .center)
                     .clipShape(Circle())
                     .shadow(radius: 2)
-                    .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                    .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                 
                 Text("Ashwin Yedavalli")
                     .fontWeight(.heavy)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color("Text"))
                     .lineLimit(1)
             }
             
@@ -62,15 +62,15 @@ struct CreatePostView: View {
             //Caption Stack
             HStack{
                 Text(" Caption...")
-                    .foregroundColor(Color.black).opacity(0.8)
+                    .foregroundColor(Color("Text")).opacity(0.8)
             }.frame(width: 380, height: 380, alignment: .topLeading)
-            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 0.5)
+            .border(Color("Text"), width: 0.5)
             
             //Add Teammates Stack
             HStack{
                 Button(action: {},
                        label: {
-                Text("Add Teammates")
+                Text("Tag Teammates")
                     .foregroundColor(Color.blue).opacity(0.8)
                     .padding(.vertical, 10)
                         .padding(.horizontal, 130)

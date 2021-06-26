@@ -23,44 +23,30 @@ struct PostedPickUpsView: View {
                     
                     Spacer().frame(height: 10)
                         
-                        //HStack for W/L, Date, and Location
+                        //HStack for Caption
+                        
                         HStack{
-                            Text("W or L")
-                                .font((.system(size: 15)))
-                                .fontWeight(.bold)
-                                .lineLimit(1)
-                                .foregroundColor(Color.purple)
-                        Spacer().frame(minWidth: 10, maxWidth: 45)
-                            Image(systemName:"calendar")
-                                .foregroundColor(Color.red)
+                            Text("Caption...")
+                                .font(.subheadline)
+                                .lineLimit(3)
+
+                        }.frame(width: 380, height: 80, alignment: .topLeading)
+                        .padding(.leading, 30)
+                        
+                        
+                        Spacer().frame(height: 10)
+                        
+                        //HStack for date and Location
+                        HStack{
                             Text("Date")
-                                .font((.system(size: 15)))
-                                .fontWeight(.bold)
-                                .foregroundColor(Color("Text"))
-                                .lineLimit(1)
-                        Spacer()
-                            .frame(minWidth: 10, maxWidth: 45)
-                            Image(systemName:"location.fill")
-                                .foregroundColor(Color.blue)
+                                .font(.footnote)
+                            Spacer().frame(width: 10)
                             Text("Location")
-                                .font((.system(size: 15)))
-                                .fontWeight(.bold)
-                                .foregroundColor(Color("Text"))
-                                .lineLimit(1)
+                                .font(.footnote)
                             
-                        }
-                        
-                    Spacer().frame(height: 10)
-                        
-                        HStack{
-                            Text("Caption...")
-                                .font((.system(size: 15)))
-                                .fontWeight(.bold)
-                                .foregroundColor(Color("Text"))
-                                .lineLimit(3)
-
-                        }.frame(width: 380, height: 80, alignment: .topLeading)
+                        }.frame(width: 380, alignment: .leading)
                         .padding(.leading, 30)
+                        
                         
                     
                     }.padding([.leading, .bottom, .trailing], 15.0)
@@ -82,29 +68,30 @@ struct PostedPickUpsView: View {
                     
                     Spacer().frame(height: 10)
                         
-                        //HStack for W/L, Date, and Location
-                        HStack{
-                            Text("W or L")
-                                .fontWeight(.heavy)
-                                .foregroundColor(Color.purple)
-                        Spacer().frame(minWidth: 10, maxWidth: 45)
-                            Image(systemName:"calendar")
-                                .foregroundColor(Color.red)
-                            Text("Date")
-                        Spacer()
-                            .frame(minWidth: 10, maxWidth: 45)
-                            Image(systemName:"location.fill")
-                                .foregroundColor(Color.blue)
-                            Text("Location")}
-                        
-                    Spacer().frame(height: 10)
+                        //HStack for Caption
                         
                         HStack{
                             Text("Caption...")
+                                .font(.subheadline)
                                 .lineLimit(3)
 
                         }.frame(width: 380, height: 80, alignment: .topLeading)
                         .padding(.leading, 30)
+                        
+                        
+                        Spacer().frame(height: 10)
+                        
+                        //HStack for date and Location
+                        HStack{
+                            Text("Date")
+                                .font(.footnote)
+                            Spacer().frame(width: 10)
+                            Text("Location")
+                                .font(.footnote)
+                            
+                        }.frame(width: 380, alignment: .leading)
+                        .padding(.leading, 30)
+                        
                         
                     
                     }.padding([.leading, .bottom, .trailing], 15.0)
@@ -126,29 +113,30 @@ struct PostedPickUpsView: View {
                     
                     Spacer().frame(height: 10)
                         
-                        //HStack for W/L, Date, and Location
-                        HStack{
-                            Text("W or L")
-                                .fontWeight(.heavy)
-                                .foregroundColor(Color.purple)
-                        Spacer().frame(minWidth: 10, maxWidth: 45)
-                            Image(systemName:"calendar")
-                                .foregroundColor(Color.red)
-                            Text("Date")
-                        Spacer()
-                            .frame(minWidth: 10, maxWidth: 45)
-                            Image(systemName:"location.fill")
-                                .foregroundColor(Color.blue)
-                            Text("Location")}
-                        
-                    Spacer().frame(height: 10)
+                        //HStack for Caption
                         
                         HStack{
                             Text("Caption...")
+                                .font(.subheadline)
                                 .lineLimit(3)
 
                         }.frame(width: 380, height: 80, alignment: .topLeading)
                         .padding(.leading, 30)
+                        
+                        
+                        Spacer().frame(height: 10)
+                        
+                        //HStack for date and Location
+                        HStack{
+                            Text("Date")
+                                .font(.footnote)
+                            Spacer().frame(width: 10)
+                            Text("Location")
+                                .font(.footnote)
+                            
+                        }.frame(width: 380, alignment: .leading)
+                        .padding(.leading, 30)
+                        
                         
                     
                     }.padding([.leading, .bottom, .trailing], 15.0)

@@ -45,19 +45,19 @@ struct FriendsListView: View {
                                         }
                                     .indicator(.activity)
                                     .foregroundColor(.blue)
-                                    .frame(width: 60, height: 60, alignment: .center)
+                                    .frame(width: 40, height: 40, alignment: .center)
                                     .clipShape(Circle())
                                     .shadow(radius: 2)
-                                    .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                                    .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                                     .padding()
                             } else {
                                 Image("placeholder")
                                     .resizable()
                                     .foregroundColor(.blue)
-                                    .frame(width: 60, height: 60, alignment: .center)
+                                    .frame(width: 40, height: 60, alignment: .center)
                                     .clipShape(Circle())
                                     .shadow(radius: 2)
-                                    .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                                    .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                                     .padding()
                             }
                         }
@@ -65,10 +65,12 @@ struct FriendsListView: View {
                         VStack(alignment: .leading){
                         FriendItemView(id: friend.id, username: friend.username)
                             .frame(alignment: .leading)
+                            .font(.subheadline)
 
                             HStack{
                                 Text("\(friend.firstName) \(friend.lastName)")
                                 .fontWeight(.light)
+                                .font(.subheadline)
                                 .foregroundColor(Color("Text"))
 
 //                            Spacer()

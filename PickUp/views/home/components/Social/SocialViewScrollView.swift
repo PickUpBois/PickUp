@@ -41,7 +41,7 @@ struct SocialViewScrollView: View {
                         self.showPopUp.toggle()
                     },label: {
                         Text("Dismiss")
-                            .foregroundColor(Color.white)
+                            .foregroundColor(Color("Text"))
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 10)
                             .background(Color.black.opacity(0.8))

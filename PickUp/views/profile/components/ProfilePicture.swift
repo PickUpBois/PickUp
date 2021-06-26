@@ -30,7 +30,7 @@ extension ProfilePicture {
 //            .frame(width: 100, height: 100, alignment: .center)
 //            .clipShape(Circle())
 //            .shadow(radius: 2)
-//            .overlay(Circle().stroke(Color.black, lineWidth: 3))
+//             .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
 //            .padding(.trailing, 20)
 //>>>>>>> backend-loading-ui
 //    }
@@ -90,14 +90,14 @@ struct ProfilePicture: View {
                             .indicator(.activity)
                             .frame(width: 100, height: 100, alignment: .center)
                             .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.black, lineWidth: 5))
+                            .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                             .padding(.trailing, 20)
                     } else {
                         Image("placeholder")
                             .resizable()
                             .frame(width: 100, height: 100, alignment: .center)
                             .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.black, lineWidth: 5))
+                            .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                             .padding(.trailing, 20)
                     }
                 }

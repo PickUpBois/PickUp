@@ -49,8 +49,6 @@ struct FindTeammatesView: View {
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                             .padding(.leading)
                                     }
-                                    
-                                    Divider()
                                 }
                             }
                             .padding(.top)

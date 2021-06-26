@@ -20,17 +20,35 @@ struct EventDatePickerView: View {
     }()
     var body: some View {
         
+        ZStack(alignment: .leading){
         HStack{
             Text("When")
                 .fontWeight(.heavy)
-            Spacer().frame(width: 5)
-        DatePicker("",
-            selection: self.$date,
+                .frame(width: 60)
+            Spacer().frame(width: 8.0)
+            
+        }.padding(.leading, 6.0)
+        .padding(.vertical, 15.0)
+        .background(Color("DescriptionEvent"))
+        .cornerRadius(20)
+         
+            HStack{
+                DatePicker("",
+                selection: self.$date,
                  in: dateRange,
                  displayedComponents: [.date, .hourAndMinute]
-        ).datePickerStyle(DefaultDatePickerStyle())
-        }.padding(.leading, 6)
+                ).datePickerStyle(DefaultDatePickerStyle())
+                .accentColor(Color("Text"))
+                
+            }
+            .padding(.trailing, 60)
+            .padding(.vertical, 8.0)
+            .background(Color("TextFieldEvent"))
+            
+        }
         .frame(width:380)
+        .cornerRadius(20)
+        
     }
 }
 

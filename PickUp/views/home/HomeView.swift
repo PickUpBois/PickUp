@@ -22,7 +22,6 @@ struct HomeView: View {
                     .padding(.vertical, 15.0)
                     .background(Color("Background"))
                     .cornerRadius(20)
-                    .opacity(0.2)
                     
                 HStack {
                     //Bottom left, near me box
@@ -31,7 +30,6 @@ struct HomeView: View {
                         .padding(.vertical, 15.0)
                         .background(Color("Background"))
                         .cornerRadius(20)
-                        .opacity(0.2)
                     
                     Spacer().frame(width: 8)
            

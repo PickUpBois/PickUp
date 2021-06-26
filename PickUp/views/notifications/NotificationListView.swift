@@ -51,7 +51,7 @@ struct NotificationListView: View {
                     ZStack{
                         FinishPickupView(showPopUp: $mvpPopUp, viewModel: selectedViewModel!)
                             .background(Color("Background_SmallView"))
-                            .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.6, alignment: .bottom)
+                            .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.6, alignment: .top)
                             .padding(.vertical, 10.0)
                             .padding(.horizontal, 10)
                 

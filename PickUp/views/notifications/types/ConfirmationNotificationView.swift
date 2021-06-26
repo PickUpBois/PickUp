@@ -81,7 +81,7 @@ struct ConfirmationNotificationView: View {
                 .frame(width: 25, height: 25, alignment: .center)
                 .clipShape(Circle())
                 .shadow(radius: 2)
-                .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
             
                 Text("\(owner!.firstName) \(owner!.lastName)")
                 .fontWeight(.heavy)

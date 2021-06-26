@@ -72,6 +72,6 @@ struct MapSideMenuView: View {
         }
         }
         .frame(width: UIScreen.main.bounds.width / 1.6)
-        .background(Color.gray.opacity(0.3).ignoresSafeArea())
+        .background(Color("MapSideMenu").ignoresSafeArea())
     }
 }

@@ -34,7 +34,7 @@ struct FriendRequestNotificationView: View {
 //                                .frame(width: 25, height: 25, alignment: .center)
 //                                .clipShape(Circle())
 //                                .shadow(radius: 2)
-//                                .overlay(Circle().stroke(Color.black, lineWidth: 2))
+//                                 .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                             if viewModel.actor!.photoUrl != nil {
                                 WebImage(url: URL(string: viewModel.actor!.photoUrl ?? ""))
                                     .resizable()
@@ -47,7 +47,7 @@ struct FriendRequestNotificationView: View {
                                     .frame(width: 25, height: 25, alignment: .center)
                                     .clipShape(Circle())
                                     .shadow(radius: 2)
-                                    .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                                    .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                                     .padding()
                             } else {
                                 Image("placeholder")
@@ -56,7 +56,7 @@ struct FriendRequestNotificationView: View {
                                     .frame(width: 25, height: 25, alignment: .center)
                                     .clipShape(Circle())
                                     .shadow(radius: 2)
-                                    .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                                    .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                                     .padding()
                             }
                         
