@@ -31,16 +31,17 @@ struct SignUpView: View {
                 TextField("First Name", text: $viewModel.firstName)
             }
             //First Name Text Field Settings
+            .frame(width: 350)
             .padding(.all, 20.0)
             .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
             .cornerRadius(8)
-            .padding(.horizontal, 20)
             
             HStack {
                 //Hstack Email
                 TextField("Last Name", text: $viewModel.lastName)
             }
             //Last Name Text Field Settings
+            .frame(width: 350)
             .padding(.all, 20.0)
             .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
             .cornerRadius(8)
@@ -51,6 +52,7 @@ struct SignUpView: View {
                 TextField("Username", text: $viewModel.username)
             }
             //Username Text Field Settings
+            .frame(width: 350)
             .padding(.all, 20.0)
             .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
             .cornerRadius(8)
@@ -64,6 +66,7 @@ struct SignUpView: View {
                 TextField("Email", text: $viewModel.email)
             }
             //Email Text Field Settings
+            .frame(width: 350)
             .padding(.all, 20.0)
             .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
             .cornerRadius(8)
@@ -77,6 +80,7 @@ struct SignUpView: View {
                 SecureField("Password", text: $viewModel.password)
             }
             //Password Text Field Settings
+            .frame(width: 350)
             .padding(.all, 20)
             .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
             .cornerRadius(8)
@@ -87,7 +91,7 @@ struct SignUpView: View {
                 Text("Sign up")
                     .foregroundColor(.white)
                     .font(.system(size: 20, weight: .medium))
-                    }.frame(maxWidth: .infinity)
+                    }.frame(width: 380)
                     .padding(.vertical, 10)
                     .background(Color.blue.opacity(0.8))
                     .cornerRadius(9)

@@ -61,7 +61,6 @@ struct FindTeammatesView: View {
             }.padding()
                     
         }.frame(alignment: .top)
-
         .navigationBarTitleDisplayMode(.inline)
         .toolbar{
             ToolbarItem(placement: .principal) {
@@ -70,8 +69,8 @@ struct FindTeammatesView: View {
                         .padding(.top, -5)
                         .frame(width: 130, height: 40)
                         .scaledToFit()
-            }
 
+            }
         }
     }
 }
