@@ -31,8 +31,10 @@ struct ProfileView: View {
         Alert(title: Text("Add Friend"), message: Text("Send friend request to \(viewModel.user?.username ?? "NA")?"), primaryButton: .default(Text("Yes")) {
             self.viewModel.addFriend()
             self.alertType = nil
+            self.popover = false
         }, secondaryButton: .destructive(Text("No")) {
             self.alertType = nil
+            self.popover = false
         })
     }
     
@@ -40,8 +42,10 @@ struct ProfileView: View {
         Alert(title: Text("Remove Friend"), message: Text("Remove \(viewModel.user?.username ?? "NA") as friend?"), primaryButton: .default(Text("Yes")) {
             self.viewModel.removeFriend()
             self.alertType = nil
+            self.popover = false
         }, secondaryButton: .destructive(Text("No")) {
             self.alertType = nil
+            self.popover = false
         })
     }
     

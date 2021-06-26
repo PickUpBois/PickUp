@@ -24,7 +24,7 @@ struct TypingBlockView: View {
                     Spacer()
                         .frame(width: 8.0)
                     TextField(description, text: $value)
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("Text"))
                         .lineLimit(0)
                         .padding(.trailing)
                         .frame(width: 200.0, alignment: .leading)

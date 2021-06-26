@@ -79,17 +79,6 @@ struct InviteFriendsView: View {
             ForEach(self.friendsViewModel.friends.indices, id: \.self) { i in
                 let friend = friendsViewModel.friends[i]
                 HStack{
-//                    WebImage(url: URL(string: friend.photoUrl ?? ""))
-//                        .placeholder(Image("serena")
-//                                        .resizable())
-//                        .resizable()
-//                        .indicator(.activity)
-//                        .foregroundColor(.blue)
-//                        .frame(width: 60, height: 60, alignment: .center)
-//                        .clipShape(Circle())
-//                        .shadow(radius: 2)
-//                        .overlay(Circle().stroke(Color.black, lineWidth: 2))
-//                        .padding()
                     Group {
                         if friend.photoUrl != nil {
                             WebImage(url: URL(string: friend.photoUrl ?? ""))

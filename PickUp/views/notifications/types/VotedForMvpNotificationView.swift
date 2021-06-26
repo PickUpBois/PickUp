@@ -30,7 +30,7 @@ struct VotedForMvpNotificationView: View {
                 }
             Spacer().frame(height: 15)
                     HStack {
-                        Text("You have been voted MVP!")
+                        Text("You have been voted MVP in event \(viewModel.event!.name)")
                             .foregroundColor(Color.purple)
                             .lineLimit(1)
                             .padding(.leading, 10.0)

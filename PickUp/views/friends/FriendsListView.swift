@@ -71,18 +71,18 @@ struct FriendsListView: View {
                                 .fontWeight(.light)
                                 .foregroundColor(Color("Text"))
 
-                            Spacer()
-
-                            Button(action: {
-                                    self.showingFollowAlert = true
-                                }, label: {
-                                    Image(systemName: "checkmark.square.fill")
-                                            .foregroundColor(Color.green)
-                                .alert(isPresented:$showingFollowAlert) {
-                                    Alert(title: Text("Confirm Follow!"), message: Text("Are you sure you want to add this person as a teammate?"), primaryButton: .default(Text("Yes")) {
-                                        //Add Action for updating - Arian
-                                    }, secondaryButton: .destructive(Text("Cancel")))
-                                }})
+//                            Spacer()
+//
+//                            Button(action: {
+//                                    self.showingFollowAlert = true
+//                                }, label: {
+//                                    Image(systemName: "checkmark.square.fill")
+//                                            .foregroundColor(Color.green)
+//                                .alert(isPresented:$showingFollowAlert) {
+//                                    Alert(title: Text("Confirm Follow!"), message: Text("Are you sure you want to add this person as a teammate?"), primaryButton: .default(Text("Yes")) {
+//                                        //Add Action for updating - Arian
+//                                    }, secondaryButton: .destructive(Text("Cancel")))
+//                                }})
 
                             }
 

@@ -21,7 +21,15 @@ enum ActionStatus {
     case failure
 }
 
-class NotificationViewModel: ObservableObject {
+class NotificationViewModel: ObservableObject, Comparable {
+    static func == (lhs: NotificationViewModel, rhs: NotificationViewModel) -> Bool {
+        return lhs.notificationId == rhs.notificationId
+    }
+    
+    static func < (lhs: NotificationViewModel, rhs: NotificationViewModel) -> Bool {
+        return lhs.timestamp < rhs.timestamp
+    }
+    
     let notificationId: String
     let type: NotificationType
     let timestamp: Date

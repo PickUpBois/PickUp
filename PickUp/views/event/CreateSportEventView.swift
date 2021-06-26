@@ -63,22 +63,22 @@ struct CreateSportEventView: View {
             Spacer().frame(height: 35.0)
             
         HStack{
-            HStack{
-                Button(action: {
-                    withAnimation{
-                    self.friendPopUp.toggle()
-                    }
-                }, label: {
-                Text("Invite Friends")
-                .fontWeight(.heavy)
-                    .foregroundColor(Color("Text"))
-                    .padding(.all, 10.0)
-                    .background(Color.green.opacity(0.8))
-                    .cornerRadius(7)
-            })
-            }
+//            HStack{
+//                Button(action: {
+//                    withAnimation{
+//                    self.friendPopUp.toggle()
+//                    }
+//                }, label: {
+//                Text("Invite Friends")
+//                .fontWeight(.heavy)
+//                    .foregroundColor(Color("Text"))
+//                    .padding(.all, 10.0)
+//                    .background(Color.green.opacity(0.8))
+//                    .cornerRadius(7)
+//            })
+//            }
             
-            Spacer().frame(width: 17.5)
+//            Spacer().frame(width: 17.5)
             
             HStack{
                 Button(action: {

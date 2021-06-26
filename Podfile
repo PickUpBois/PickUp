@@ -12,6 +12,7 @@ pod 'Firebase/Storage', '8.0'
 pod 'Firebase/Messaging'
 pod 'SDWebImageSwiftUI'
 pod 'Apollo'
+pod "SwiftUIRefresh"
 
   target 'PickUpTests' do
     inherit! :search_paths

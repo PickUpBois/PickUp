@@ -190,6 +190,7 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
   case selectedMvp
   case leftEvent
   case deletedEvent
+  case joinedEvent
   /// Auto generated constant for unknown enum values
   case __unknown(RawValue)
 
@@ -204,6 +205,7 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
       case "selectedMvp": self = .selectedMvp
       case "leftEvent": self = .leftEvent
       case "deletedEvent": self = .deletedEvent
+      case "joinedEvent": self = .joinedEvent
       default: self = .__unknown(rawValue)
     }
   }
@@ -219,6 +221,7 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
       case .selectedMvp: return "selectedMvp"
       case .leftEvent: return "leftEvent"
       case .deletedEvent: return "deletedEvent"
+      case .joinedEvent: return "joinedEvent"
       case .__unknown(let value): return value
     }
   }
@@ -234,6 +237,7 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
       case (.selectedMvp, .selectedMvp): return true
       case (.leftEvent, .leftEvent): return true
       case (.deletedEvent, .deletedEvent): return true
+      case (.joinedEvent, .joinedEvent): return true
       case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
       default: return false
     }
@@ -250,6 +254,7 @@ public enum NotificationType: RawRepresentable, Equatable, Hashable, CaseIterabl
       .selectedMvp,
       .leftEvent,
       .deletedEvent,
+      .joinedEvent,
     ]
   }
 }

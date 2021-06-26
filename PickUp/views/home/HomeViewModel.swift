@@ -20,6 +20,7 @@ class HomeViewModel: ObservableObject {
         case error(Error)
     }
     @Published var eventsState: State = .idle
+    @Published var eventsShowing: Bool = false
     func getUpcomingEvents() {
         print("getting events")
         if (AppState.shared.authId != nil) {
@@ -38,8 +39,9 @@ class HomeViewModel: ObservableObject {
                     }
                     self.events = data.queryEvents.map { queryEvent in
                         return queryEvent.fragments.eventDetails
-                    }
+                    }.sorted(by: >)
                     self.eventsState = .success
+                    self.eventsShowing = false
                     print("got events")
                     self.objectWillChange.send()
                 case .failure(let error):

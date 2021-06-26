@@ -150,14 +150,14 @@ class ProfileViewModel: ObservableObject {
                     group?.leave()
                     return
                 }
+                var events = data.userEvents.map { userEvent in
+                    return userEvent.fragments.eventDetails
+                }
+                events.sort(by: >)
                 if status == .open {
-                    self.upcomingEvents = data.userEvents.map { userEvent in
-                        return userEvent.fragments.eventDetails
-                    }
+                    self.upcomingEvents = events
                 } else {
-                    self.pastEvents = data.userEvents.map { userEvent in
-                        return userEvent.fragments.eventDetails
-                    }
+                    self.pastEvents = events
                 }
                 group?.leave()
                 return

@@ -98,6 +98,8 @@
 		8DE52186266428320077AF09 /* FriendsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE52185266428320077AF09 /* FriendsListViewModel.swift */; };
 		8DE5218B266428980077AF09 /* FriendsListViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DE5218A266428980077AF09 /* FriendsListViewModel.graphql */; };
 		8DEFD478268659B1003F8CE0 /* InviteFriendViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DEFD477268659B1003F8CE0 /* InviteFriendViewModel.graphql */; };
+		8DEFD47A2686981C003F8CE0 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFD4792686981C003F8CE0 /* util.swift */; };
+		8DEFD47C2686CF9A003F8CE0 /* JoinedEventNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFD47B2686CF9A003F8CE0 /* JoinedEventNotificationView.swift */; };
 		8DFAD531261EBA910055BA76 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAD530261EBA910055BA76 /* LoginView.swift */; };
 		8DFB9988264E2C9F00254C57 /* EventDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */; };
 		8DFB998D264E342800254C57 /* EventLocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB998C264E342800254C57 /* EventLocationPickerView.swift */; };
@@ -260,6 +262,8 @@
 		8DE52185266428320077AF09 /* FriendsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewModel.swift; sourceTree = "<group>"; };
 		8DE5218A266428980077AF09 /* FriendsListViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FriendsListViewModel.graphql; sourceTree = "<group>"; };
 		8DEFD477268659B1003F8CE0 /* InviteFriendViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = InviteFriendViewModel.graphql; sourceTree = "<group>"; };
+		8DEFD4792686981C003F8CE0 /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
+		8DEFD47B2686CF9A003F8CE0 /* JoinedEventNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedEventNotificationView.swift; sourceTree = "<group>"; };
 		8DFAD530261EBA910055BA76 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDatePickerView.swift; sourceTree = "<group>"; };
 		8DFB998C264E342800254C57 /* EventLocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationPickerView.swift; sourceTree = "<group>"; };
@@ -549,6 +553,7 @@
 				8D65B2762658CCF30085D5EE /* Services.swift */,
 				8D65B27B2658CD790085D5EE /* StorageService.swift */,
 				8D65B2802658CE550085D5EE /* RestService.swift */,
+				8DEFD4792686981C003F8CE0 /* util.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -616,6 +621,7 @@
 				1A2E5BE026586455006A803A /* FriendRequestNotificationView.swift */,
 				8DA9D1A426827BD300513358 /* LeftEventNotificationView.swift */,
 				8DA9D1B02683F1E600513358 /* DeletedEventNotificationView.swift */,
+				8DEFD47B2686CF9A003F8CE0 /* JoinedEventNotificationView.swift */,
 			);
 			path = types;
 			sourceTree = "<group>";
@@ -1099,6 +1105,7 @@
 				8D7AC47E266D636400672918 /* EventDetailsBoxView.swift in Sources */,
 				C0977314266041900045B978 /* PickUpNearMeScrollView.swift in Sources */,
 				1A2E5BEE265CBE38006A803A /* PastScoresView.swift in Sources */,
+				8DEFD47A2686981C003F8CE0 /* util.swift in Sources */,
 				8DA9D1BB2685560600513358 /* EventAttendeesViewModel.swift in Sources */,
 				8DFCF504262788A000BBFE66 /* MainView.swift in Sources */,
 				8D30B108263E2146002B4C62 /* ProfilePicture.swift in Sources */,
@@ -1119,6 +1126,7 @@
 				8D5EE0242652D1A400EE7840 /* PickUpListView.swift in Sources */,
 				8D65B2AB265904EA0085D5EE /* CreateEventViewModel.swift in Sources */,
 				8D65B2682658C91D0085D5EE /* AppState.swift in Sources */,
+				8DEFD47C2686CF9A003F8CE0 /* JoinedEventNotificationView.swift in Sources */,
 				8D65B27C2658CD790085D5EE /* StorageService.swift in Sources */,
 				8DA9D1B72684155C00513358 /* InviteFriendsViewModel.swift in Sources */,
 				8D65B2D826590F310085D5EE /* HomeViewModel.swift in Sources */,
@@ -1329,7 +1337,7 @@
 				DEVELOPMENT_TEAM = 5D593G8Q6L;
 				DEV_HOST = "http://localhost:3000";
 				ENABLE_PREVIEWS = YES;
-				ENV = PROD;
+				ENV = DEV;
 				INFOPLIST_FILE = PickUp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1357,7 +1365,7 @@
 				DEVELOPMENT_TEAM = 5D593G8Q6L;
 				DEV_HOST = "http://localhost:3000";
 				ENABLE_PREVIEWS = YES;
-				ENV = PROD;
+				ENV = DEV;
 				INFOPLIST_FILE = PickUp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

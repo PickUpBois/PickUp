@@ -55,6 +55,7 @@ struct FinishPickupView: View {
                 let eventId = self.viewModel.event!.id
                 let voteeId = self.viewModel.event!.attendees[selectedIndex].fragments.userDetails.id
                 self.viewModel.voteForMvp(eventId: eventId, voteeId: voteeId)
+                showPopUp = false
             }) {
                 
                 HStack{

@@ -32,7 +32,7 @@ class EditPickUpListViewModel: ObservableObject {
                 }
                 self.events = result.data?.currentlyOwnedEvents.map {
                     return $0.fragments.eventDetails
-                } ?? []
+                }.sorted(by: >) ?? []
                 self.state = .success
             case .failure(let error):
                 print(error.localizedDescription)

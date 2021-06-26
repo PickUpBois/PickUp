@@ -20,17 +20,41 @@ struct LeftEventNotificationView: View {
         VStack{
                 HStack {
                     NavigationLink(destination: ProfileView(viewModel: ProfileViewModel(userId: viewModel.actor!.id), auth: false)) {
-                        WebImage(url: URL(string: viewModel.actor?.photoUrl ?? ""))
-                            .placeholder(Image("serena")
-                                            .resizable())
-                            .resizable()
-                            .indicator(.activity)
-                            .foregroundColor(.blue)
-                            .frame(width: 25, height: 25, alignment: .center)
-                            .clipShape(Circle())
-                            .shadow(radius: 2)
-                            .overlay(Circle().stroke(Color.black, lineWidth: 2))
-                    
+//                        WebImage(url: URL(string: viewModel.actor?.photoUrl ?? ""))
+//                            .placeholder(Image("serena")
+//                                            .resizable())
+//                            .resizable()
+//                            .indicator(.activity)
+//                            .foregroundColor(.blue)
+//                            .frame(width: 25, height: 25, alignment: .center)
+//                            .clipShape(Circle())
+//                            .shadow(radius: 2)
+//                            .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                        if viewModel.actor!.photoUrl != nil {
+                            WebImage(url: URL(string: viewModel.actor!.photoUrl ?? ""))
+                                .resizable()
+                                .placeholder {
+                                    Rectangle()
+                                        .foregroundColor(.gray)
+                                    }
+                                .indicator(.activity)
+                                .foregroundColor(.blue)
+                                .frame(width: 25, height: 25, alignment: .center)
+                                .clipShape(Circle())
+                                .shadow(radius: 2)
+                                .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                                .padding()
+                        } else {
+                            Image("placeholder")
+                                .resizable()
+                                .foregroundColor(.blue)
+                                .frame(width: 25, height: 25, alignment: .center)
+                                .clipShape(Circle())
+                                .shadow(radius: 2)
+                                .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                                .padding()
+                        }
+                        
                         Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName)")
                         .fontWeight(.heavy)
                         .foregroundColor(Color.black)

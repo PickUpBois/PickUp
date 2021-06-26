@@ -59,13 +59,13 @@ struct EditPickupListView: View {
                                 self.friendPopUp.toggle()
                             }
                         }) {
-                            Image(systemName: "plus.square.fill").resizable()
+                            Image(systemName: "multiply").resizable()
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(Color.white)
                                 .padding(15)
 
                         }
-                        .background(Color.green)
+                        .background(Color.red)
                         .clipShape(Circle())
                         .padding(.top, 5)
                         }
