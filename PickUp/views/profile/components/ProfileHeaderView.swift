@@ -78,9 +78,50 @@ struct ProfileHeaderView: View {
                     Spacer()
                 }
             }
+            
+            
+        HStack{
+            
+                NavigationLink(
+                    destination:                       FriendsListView(viewModel: FriendsListViewModel(userId: self.profileViewModel.userId)),
+                    label: {
+            ScrollView(.horizontal, showsIndicators: false) {
+                    
+                    HStack(spacing: 18){
+                        
+                        Button(action: {
+                            
+                        }) {}
+                        ForEach(1...15,id: \.self){i in
+                            
+                            VStack{
+                            Button(action: {
+                            }) {
+                                
+                                Image("b\(i)")
+                                    .resizable()
+                                    .renderingMode(.original)
+                                    .frame(width: 25, height: 25)
+                                    .clipShape(Circle())
+                            }
+                            Text("1")
+                                .foregroundColor(Color("Text"))
+                                .font(.footnote)
+                            }
+                        }
+                    }
+            }.frame(width: .infinity)
+            .padding(.horizontal, 20)
+            
+                    })
+                
             }
-        }
+            Spacer()
+            
+            
+            }
     }
+}
 
 
 

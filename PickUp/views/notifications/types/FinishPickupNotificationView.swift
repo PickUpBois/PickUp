@@ -46,7 +46,7 @@ struct FinishPickupNotificationView: View {
                     .lineLimit(1)
                         
                     }
-                    .padding(.horizontal, 10.0)
+                .padding(.horizontal, 15.0)
                         Spacer().frame(height: 10)
                         HStack{
                             Button(action: {
@@ -54,6 +54,7 @@ struct FinishPickupNotificationView: View {
                             },label: {
                                 Text("Press here to enter score for your event '\(viewModel.event!.name)'")
                                     .foregroundColor(Color.purple)
+                                    .padding(.leading, 20.0)
                                     .frame(width: 400, alignment: .leading)
                                     .lineLimit(3)
                             })

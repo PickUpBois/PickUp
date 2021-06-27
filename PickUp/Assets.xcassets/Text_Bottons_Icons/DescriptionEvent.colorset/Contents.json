@@ -29,8 +29,8 @@
       "color" : {
         "color-space" : "gray-gamma-22",
         "components" : {
-          "alpha" : "0.400",
-          "white" : "1.000"
+          "alpha" : "0.800",
+          "white" : "0.055"
         }
       },
       "idiom" : "universal"

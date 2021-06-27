@@ -54,7 +54,7 @@ struct NotificationListView: View {
                             .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.6, alignment: .top)
                             .padding(.vertical, 10.0)
                             .padding(.horizontal, 10)
-                
+
                         }.background(Color("Friends_Popup_Background").edgesIgnoringSafeArea(.all))
                             .cornerRadius(20)
                 
@@ -71,11 +71,11 @@ struct NotificationListView: View {
                 }
                 .clipShape(Circle())
                 .padding(.top, 5)
+                    
                 }.onTapGesture(perform: {
                     withAnimation(.easeIn){
                         self.mvpPopUp = false}
                         })
-                
             }
         }
         
