@@ -48,7 +48,6 @@ struct EventInvitationNotificationView: View {
                                 .clipShape(Circle())
                                 .shadow(radius: 2)
                                 .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
-                                .padding()
                         } else {
                             Image("placeholder")
                                 .resizable()
@@ -57,7 +56,6 @@ struct EventInvitationNotificationView: View {
                                 .clipShape(Circle())
                                 .shadow(radius: 2)
                                 .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
-                                .padding()
                         }
                     
                         Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName)")

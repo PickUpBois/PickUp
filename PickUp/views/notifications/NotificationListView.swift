@@ -45,13 +45,13 @@ struct NotificationListView: View {
                     Text("Error")
                 }
             }
-                
+        }
             if self.mvpPopUp {
                 VStack(alignment:.center){
                     ZStack{
                         FinishPickupView(showPopUp: $mvpPopUp, viewModel: selectedViewModel!)
                             .background(Color("Background_SmallView"))
-                            .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.6, alignment: .top)
+                            .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.3, alignment: .center)
                             .padding(.vertical, 10.0)
                             .padding(.horizontal, 10)
 
@@ -77,7 +77,6 @@ struct NotificationListView: View {
                         self.mvpPopUp = false}
                         })
             }
-        }
         
         }
         .onAppear {

@@ -45,7 +45,6 @@ struct DeletedEventNotificationView: View {
                                 .clipShape(Circle())
                                 .shadow(radius: 2)
                                 .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
-                                .padding()
                         } else {
                             Image("placeholder")
                                 .resizable()
@@ -54,7 +53,6 @@ struct DeletedEventNotificationView: View {
                                 .clipShape(Circle())
                                 .shadow(radius: 2)
                                 .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
-                                .padding()
                         }
                     
                         Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName)")
@@ -68,13 +66,13 @@ struct DeletedEventNotificationView: View {
                     .lineLimit(1)
                     
                 }
-            Spacer().frame(height: 15)
+            Spacer().frame(height: 10)
                     HStack {
                         Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName) has deleted the event \(viewModel.event!.name)")
                             .foregroundColor(Color.purple)
                             .lineLimit(1)
-                            .padding(.leading, 10.0)
-                            .frame(width: 400, alignment: .leading)
+                            .padding(.leading, 12.0)
+                            .frame(width: 380, alignment: .leading)
                     }
             Spacer().frame(height: 15)
             HStack(alignment: .lastTextBaseline) {

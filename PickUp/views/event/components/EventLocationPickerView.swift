@@ -26,7 +26,7 @@ struct EventLocationPickerView: View {
             }
             .padding(.leading, 6.0)
             .padding(.vertical, 15.0)
-            .background(Color("DescriptionEvent"))
+            .background(Color.gray)
             .cornerRadius(20)
             
             HStack{

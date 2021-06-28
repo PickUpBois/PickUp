@@ -27,7 +27,7 @@ struct TypingBlockView: View {
                 }
                 .padding(.leading, 6.0)
                 .padding(.vertical, 15.0)
-                .background(Color("DescriptionEvent"))
+                .background(Color.gray)
                 .cornerRadius(20)
                 
                 HStack{
@@ -43,7 +43,7 @@ struct TypingBlockView: View {
                         .frame(width: 25.0)
                     }
                     .padding(.leading, 80)
-                    .padding(.vertical, 14.0)
+                .padding(.vertical, 15.0)
                     .background(Color("TextFieldEvent"))
         
                 }.frame(width: 380)

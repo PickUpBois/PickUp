@@ -48,7 +48,6 @@ struct FriendRequestNotificationView: View {
                                     .clipShape(Circle())
                                     .shadow(radius: 2)
                                     .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
-                                    .padding()
                             } else {
                                 Image("placeholder")
                                     .resizable()
@@ -57,7 +56,6 @@ struct FriendRequestNotificationView: View {
                                     .clipShape(Circle())
                                     .shadow(radius: 2)
                                     .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
-                                    .padding()
                             }
                         
                             Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName)")
@@ -78,7 +76,7 @@ struct FriendRequestNotificationView: View {
                         Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName) sent you a friend request:")
                             .foregroundColor(Color.purple)
                             .lineLimit(1)
-                            .padding(.leading, 10.0)
+                            .padding(.leading, 12.0)
                         Spacer().frame(minWidth: 5, maxWidth: 5)
                         
                         Button(action: {

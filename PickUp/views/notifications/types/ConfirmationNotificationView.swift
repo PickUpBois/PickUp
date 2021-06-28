@@ -112,7 +112,7 @@ struct ConfirmationNotificationView: View {
             .frame(width: 400.0)
             .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
             .cornerRadius(8)
-        .opacity(self.mvpPopUp ? 0.2: 1)
+            .opacity(self.mvpPopUp ? 0.2: 1)
             
         }
     }

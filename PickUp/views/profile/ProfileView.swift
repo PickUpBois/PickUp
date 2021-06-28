@@ -61,7 +61,7 @@ struct ProfileView: View {
             // Stacks everything on page
                 // Stacks for profile picture
                 ProfileHeaderView(auth: auth, alertType: $alertType).environmentObject(self.viewModel)
-                    .frame(height: 220)
+                    .frame(height: 230)
 
                 Spacer().frame(height: 10)
                 
