@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var tabSelection = 4
+    @State private var tabSelection = 1
     @State private var tappedTwice: Bool = false
     @State var show = false
     
-            @State private var teammates = UUID()
-            @State private var map = UUID()
-            @State private var event = UUID()
             @State private var home = UUID()
+            @State private var teammates = UUID()
+            @State private var event = UUID()
+            @State private var nearme = UUID()
             @State private var profile = UUID()
     
     var body: some View {
@@ -30,7 +30,23 @@ struct MainView: View {
                 }
         )}
         return TabView(selection: handler) {
-            //Teammates Tab
+            //Home Tab
+            NavigationView {
+                HomeView(viewModel: HomeViewModel())
+                    .id(home)
+                    .onChange(of: tappedTwice, perform: { tappedTwice in
+                    guard tappedTwice else { return }
+                    home = UUID()
+                    self.tappedTwice = false
+            })
+            }
+            .tabItem {
+               Image(systemName: "house.fill")
+                Text("Home")
+                
+            }.tag(1)
+            
+            //Map Tab
             NavigationView {
                 FindTeammatesView()
                     .id(teammates)
@@ -38,28 +54,12 @@ struct MainView: View {
                     guard tappedTwice else { return }
                     teammates = UUID()
                     self.tappedTwice = false
-            })
-            }
-            .tabItem {
-               Image(systemName: "magnifyingglass.circle.fill")
-                Text("Search")
-                
-            }.tag(1)
-            
-            //Map Tab
-            NavigationView {
-                MapMainView()
-                    .id(map)
-                    .onChange(of: tappedTwice, perform: { tappedTwice in
-                    guard tappedTwice else { return }
-                    map = UUID()
-                    self.tappedTwice = false
                     
             })
             }
             .tabItem {
-               Image(systemName: "location.fill")
-                Text("Map")
+               Image(systemName: "magnifyingglass")
+                Text("Search")
                
             }.tag(2)
 
@@ -80,19 +80,19 @@ struct MainView: View {
                 
             }.tag(3)
             
-            //Home Tab
+            //NearMe Tab
             NavigationView {
-                HomeView(viewModel: HomeViewModel())
-                    .id(home)
+                NearMeView()
+                    .id(nearme)
                     .onChange(of: tappedTwice, perform: { tappedTwice in
                     guard tappedTwice else { return }
-                    home = UUID()
+                    nearme = UUID()
                     self.tappedTwice = false
             })
             }
             .tabItem {
-               Image(systemName: "house.fill")
-                Text("Home")
+               Image(systemName: "mappin.and.ellipse")
+                Text("NearMe")
                 
             }.tag(4)
             

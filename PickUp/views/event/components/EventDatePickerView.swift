@@ -41,7 +41,7 @@ struct EventDatePickerView: View {
                 .accentColor(Color("Text"))
                 
             }
-            .padding(.trailing, 60)
+            .padding(.trailing, 80)
             .padding(.vertical, 8.0)
             .background(Color("TextFieldEvent"))
             

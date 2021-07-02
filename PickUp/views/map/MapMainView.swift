@@ -135,16 +135,13 @@ struct MapMainView: View {
         .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem(placement: .principal) {
-                    HStack {
-                        Image("logo")
-                            .resizable()
-                            .padding(.top, -5)
-                            .frame(width: 130, height: 40)
-                            .scaledToFit()
-                        
+                    HStack(spacing: 0.0) {
+                        Text("Map")
+                            .fontWeight(.heavy)
+                            .foregroundColor(Color.green)
                     }
                 }
-            }
+    }
         .onAppear(perform: {
                 
             //Setting Delegate

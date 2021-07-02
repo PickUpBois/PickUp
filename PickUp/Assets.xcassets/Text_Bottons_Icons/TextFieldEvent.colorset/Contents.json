@@ -13,8 +13,8 @@
       "color" : {
         "color-space" : "gray-gamma-22",
         "components" : {
-          "alpha" : "0.732",
-          "white" : "0.841"
+          "alpha" : "0.804",
+          "white" : "0.915"
         }
       },
       "idiom" : "universal"

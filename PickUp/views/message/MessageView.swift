@@ -50,7 +50,7 @@ struct MessageView: View {
                 
                 Image(systemName: "magnifyingglass")
                     .resizable()
-                    .frame(width: 18, height: 18)
+                    .frame(width: 15, height: 15)
                     .foregroundColor(Color.black.opacity(0.3))
                 
                 TextField("Search", text: self.$search)

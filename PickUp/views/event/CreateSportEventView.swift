@@ -32,7 +32,7 @@ struct CreateSportEventView: View {
                             Image("b\(i)")
                                 .resizable()
                                 .renderingMode(.original)
-                                .frame(width: 40, height: 40)
+                                .frame(width: 35, height: 35)
                                 .clipShape(Circle())
                         }
                     }

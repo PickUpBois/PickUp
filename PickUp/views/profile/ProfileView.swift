@@ -116,7 +116,7 @@ struct ProfileView: View {
                             Spacer().frame(minWidth: 107, idealWidth: 107, maxWidth: 107, alignment: .center)
                             NavigationLink(destination: ProfileSettingsView().environmentObject(self.viewModel)) {
                                 Image(systemName: "gearshape.fill").resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
-                                    .foregroundColor(Color.green)
+                                    .foregroundColor(Color("Notifications"))
                                     .frame(width: 25.0, height: 25.0)
                                     .padding(.trailing, 5)
                                 
@@ -139,8 +139,7 @@ struct ProfileView: View {
                             }, label: {
                                 Image(systemName: "square.and.arrow.up.fill")
                                     .resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
-                                    .foregroundColor(Color.green)
-                                    .frame(width: 20.0, height: 25.0)
+                                    .foregroundColor(Color("Notifications"))                 .frame(width: 20.0, height: 25.0)
                             })
                         }
                         

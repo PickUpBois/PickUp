@@ -19,7 +19,7 @@ struct MapSideMenuView: View {
                         .foregroundColor(Color.green)
                     Text("Map")
                         .fontWeight(.bold)
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("Text"))
                     Spacer(minLength: 0)
                 }
                 .padding()
