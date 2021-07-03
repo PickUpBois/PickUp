@@ -19,18 +19,6 @@ struct TypingBlockView: View {
                 ZStack(alignment: .leading){
                 
                 HStack{
-                    Text(title)
-                        .fontWeight(.heavy)
-                    .frame(width: 60)
-    
-                    Spacer().frame(width: 8.0)
-                }
-                .padding(.leading, 6.0)
-                .padding(.vertical, 15.0)
-                .background(Color.gray)
-                .cornerRadius(20)
-                
-                HStack{
                     TextField(description, text: $value)
                             .foregroundColor(Color("Text"))
                             .lineLimit(0)
@@ -43,11 +31,25 @@ struct TypingBlockView: View {
                         .frame(width: 25.0)
                     }
                     .padding(.leading, 80)
-                .padding(.vertical, 15.0)
+                    .padding(.vertical, 15.0)
                     .background(Color("TextFieldEvent"))
+                    .cornerRadius(20)
+                    
+                    
+                    HStack{
+                        Text(title)
+                            .foregroundColor(Color("Text"))
+                            .fontWeight(.heavy)
+                        .frame(width: 60)
+        
+                    }
+                    .padding(.horizontal, 6.0)
+                    .padding(.vertical, 15.0)
+                    .background(Color("DescriptionEvent"))
+                    .cornerRadius(20)
+                    
         
                 }.frame(width: 380)
-                .cornerRadius(20)
 
         //Email Text Field Settings
 

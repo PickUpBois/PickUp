@@ -38,10 +38,11 @@ struct CreatePostView: View {
                     Button(action: {},
                            label: {
                     Text("Private or Public")
+                        .fontWeight(.semibold)
                         .foregroundColor(Color("Text"))
                         .padding(.vertical, 10)
                             .padding(.horizontal, 20)
-                            .background(Color.blue.opacity(0.8))
+                        .background(Color("DescriptionEvent").opacity(0.8))
                             .cornerRadius(9)
                     })
                     
@@ -50,10 +51,11 @@ struct CreatePostView: View {
                     Button(action: {
                     },label: {
                     Text("Add Picture")
+                        .fontWeight(.semibold)
                         .foregroundColor(Color("Text"))
                         .padding(.vertical, 10)
                             .padding(.horizontal, 20)
-                            .background(Color.blue.opacity(0.8))
+                        .background(Color("DescriptionEvent").opacity(0.8))
                             .cornerRadius(9)
                     })
 
@@ -74,10 +76,10 @@ struct CreatePostView: View {
                        label: {
                 Text("Tag Teammates")
                     .foregroundColor(Color("Text"))
+                    .fontWeight(.semibold)
                     .padding(.vertical, 10)
                         .padding(.horizontal, 130)
-                        .background(Color.blue.opacity(0.8))
-                        .cornerRadius(9)
+                    .background(Color("DescriptionEvent").opacity(0.8))                      .cornerRadius(9)
             })
             }
             
@@ -87,10 +89,10 @@ struct CreatePostView: View {
                        label: {
                 Text("Tag Event")
                     .foregroundColor(Color("Text"))
+                    .fontWeight(.semibold)
                     .padding(.vertical, 10)
                         .padding(.horizontal, 152)
-                        .background(Color.blue.opacity(0.8))
-                        .cornerRadius(9)
+                    .background(Color("DescriptionEvent").opacity(0.8))                     .cornerRadius(9)
             })
             }
             
@@ -100,10 +102,10 @@ struct CreatePostView: View {
                        label: {
                 Text("Post")
                     .foregroundColor(Color("Text"))
+                    .fontWeight(.semibold)
                     .padding(.vertical, 10)
                         .padding(.horizontal, 172)
-                        .background(Color.blue.opacity(0.8))
-                        .cornerRadius(9)
+                    .background(Color("DescriptionEvent").opacity(0.8))                      .cornerRadius(9)
             })
             }
             

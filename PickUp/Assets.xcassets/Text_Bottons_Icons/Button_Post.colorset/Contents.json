@@ -13,8 +13,8 @@
       "color" : {
         "color-space" : "gray-gamma-22",
         "components" : {
-          "alpha" : "0.750",
-          "white" : "0.915"
+          "alpha" : "0.820",
+          "white" : "0.767"
         }
       },
       "idiom" : "universal"
@@ -27,11 +27,8 @@
         }
       ],
       "color" : {
-        "color-space" : "gray-gamma-22",
-        "components" : {
-          "alpha" : "0.400",
-          "white" : "1.000"
-        }
+        "platform" : "ios",
+        "reference" : "darkTextColor"
       },
       "idiom" : "universal"
     }

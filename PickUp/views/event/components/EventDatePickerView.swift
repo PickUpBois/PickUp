@@ -21,16 +21,6 @@ struct EventDatePickerView: View {
     var body: some View {
         
         ZStack(alignment: .leading){
-        HStack{
-            Text("When")
-                .fontWeight(.heavy)
-                .frame(width: 60)
-            Spacer().frame(width: 8.0)
-            
-        }.padding(.leading, 6.0)
-        .padding(.vertical, 15.0)
-        .background(Color.gray)
-        .cornerRadius(20)
          
             HStack{
                 DatePicker("",
@@ -44,10 +34,23 @@ struct EventDatePickerView: View {
             .padding(.trailing, 80)
             .padding(.vertical, 8.0)
             .background(Color("TextFieldEvent"))
+            .cornerRadius(20)
+            
+            
+            HStack{
+                Text("When")
+                    .foregroundColor(Color("Text"))
+                    .fontWeight(.heavy)
+                    .frame(width: 60)
+                
+            }.padding(.horizontal, 6.0)
+            .padding(.vertical, 15.0)
+            .background(Color("DescriptionEvent"))
+            .cornerRadius(20)
             
         }
         .frame(width:380)
-        .cornerRadius(20)
+        
         
     }
 }
