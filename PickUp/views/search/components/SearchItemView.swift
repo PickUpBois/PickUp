@@ -11,7 +11,22 @@ struct SearchItemView: View, Identifiable {
     let id: String
     let username: String
     var body: some View {
-        Text(username)
+        HStack{
+            Image("placeholder")
+                        .resizable()
+                        .foregroundColor(.blue)
+                        .frame(width: 40, height: 40, alignment: .center)
+                        .clipShape(Circle())
+                        .shadow(radius: 2)
+                        .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
+
+            VStack (alignment: .leading){
+            Text(username)
+                .font(.subheadline)
+            Text("Arian Rahbar")
+                .font(.subheadline)
+            }
+        }
     }
 }
 

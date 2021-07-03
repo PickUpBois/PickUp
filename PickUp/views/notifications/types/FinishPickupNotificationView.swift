@@ -35,7 +35,7 @@ struct FinishPickupNotificationView: View {
                         .frame(width: 25, height: 25, alignment: .center)
                         .clipShape(Circle())
                         .shadow(radius: 2)
-                        .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                        .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                     
                     Text("PickUp")
                         .fontWeight(.heavy)
@@ -46,7 +46,7 @@ struct FinishPickupNotificationView: View {
                     .lineLimit(1)
                         
                     }
-                    .padding(.horizontal, 10.0)
+                .padding(.horizontal, 15.0)
                         Spacer().frame(height: 10)
                         HStack{
                             Button(action: {
@@ -54,6 +54,7 @@ struct FinishPickupNotificationView: View {
                             },label: {
                                 Text("Press here to enter score for your event '\(viewModel.event!.name)'")
                                     .foregroundColor(Color.purple)
+                                    .padding(.leading, 20.0)
                                     .frame(width: 400, alignment: .leading)
                                     .lineLimit(3)
                             })
@@ -84,6 +85,18 @@ struct FinishPickupNotificationView: View {
                     .cornerRadius(8)
         
     }
+}
+
+struct BackgroundClearView: UIViewRepresentable {
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView()
+        DispatchQueue.main.async {
+            view.superview?.superview?.backgroundColor = .clear
+        }
+        return view
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {}
 }
 
 struct FinishPickupNotificationView_Previews: PreviewProvider {

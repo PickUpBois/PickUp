@@ -15,6 +15,7 @@ enum ProfileAlertType {
 
 struct ProfileHeaderView: View {
     @State var showPopUp = false
+    @State var selection: Int?
     @EnvironmentObject var profileViewModel: ProfileViewModel
     let auth: Bool
     @Binding var alertType: ProfileView.AlertType?
@@ -78,9 +79,45 @@ struct ProfileHeaderView: View {
                     Spacer()
                 }
             }
+            
+            
+        HStack{
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                    
+                    HStack(spacing: 18){
+                        Button(action: {
+        
+                        }) {}
+                        ForEach(1...15,id: \.self){i in
+                            
+                            VStack{
+                                NavigationLink(destination: OnevOneView(), label:
+                                    {
+                                
+                                Image("b\(i)")
+                                    .resizable()
+                                    .renderingMode(.original)
+                                    .frame(width: 25, height: 25)
+                                    .clipShape(Circle())
+                            })
+                            Text("1")
+                                .foregroundColor(Color("Text"))
+                                .font(.footnote)
+                            }
+                        }
+                    }
+            }.frame(width: .infinity)
+            .padding(.horizontal, 20)
+            
+                
             }
-        }
+            Spacer()
+            
+            
+            }
     }
+}
 
 
 

@@ -49,8 +49,6 @@ struct FindTeammatesView: View {
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                             .padding(.leading)
                                     }
-                                    
-                                    Divider()
                                 }
                             }
                             .padding(.top)
@@ -60,16 +58,16 @@ struct FindTeammatesView: View {
                 }
             }.padding()
                     
-        }.frame(alignment: .top)
-        .navigationBarTitleDisplayMode(.inline)
+        }.navigationBarTitleDisplayMode(.inline)
         .toolbar{
             ToolbarItem(placement: .principal) {
+                HStack {
                     Image("logo")
                         .resizable()
                         .padding(.top, -5)
                         .frame(width: 130, height: 40)
                         .scaledToFit()
-
+                }
             }
         }
     }

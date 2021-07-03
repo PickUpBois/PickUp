@@ -19,7 +19,7 @@ struct MapSideMenuView: View {
                         .foregroundColor(Color.green)
                     Text("Map")
                         .fontWeight(.bold)
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("Text"))
                     Spacer(minLength: 0)
                 }
                 .padding()
@@ -31,31 +31,6 @@ struct MapSideMenuView: View {
                     .foregroundColor(Color.blue)
                 Text("Sports")
                 Spacer(minLength: 0)
-            }
-            .padding()
-                
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                    
-                HStack(spacing: 18){
-                        
-                    Button(action: {
-                            
-                    }) {}
-                        
-                        ForEach(1...16,id: \.self){i in
-                            
-                            Button(action: {
-                            }) {
-                                
-                                Image("b\(i)")
-                                    .resizable()
-                                    .renderingMode(.original)
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(Circle())
-                            }
-                        }
-                }
             }
             .padding()
                 
@@ -97,6 +72,6 @@ struct MapSideMenuView: View {
         }
         }
         .frame(width: UIScreen.main.bounds.width / 1.6)
-        .background(Color.white.ignoresSafeArea())
+        .background(Color("MapSideMenu").ignoresSafeArea())
     }
 }

@@ -34,7 +34,7 @@ struct FriendRequestNotificationView: View {
 //                                .frame(width: 25, height: 25, alignment: .center)
 //                                .clipShape(Circle())
 //                                .shadow(radius: 2)
-//                                .overlay(Circle().stroke(Color.black, lineWidth: 2))
+//                                 .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                             if viewModel.actor!.photoUrl != nil {
                                 WebImage(url: URL(string: viewModel.actor!.photoUrl ?? ""))
                                     .resizable()
@@ -47,8 +47,7 @@ struct FriendRequestNotificationView: View {
                                     .frame(width: 25, height: 25, alignment: .center)
                                     .clipShape(Circle())
                                     .shadow(radius: 2)
-                                    .overlay(Circle().stroke(Color.black, lineWidth: 2))
-                                    .padding()
+                                    .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                             } else {
                                 Image("placeholder")
                                     .resizable()
@@ -56,8 +55,7 @@ struct FriendRequestNotificationView: View {
                                     .frame(width: 25, height: 25, alignment: .center)
                                     .clipShape(Circle())
                                     .shadow(radius: 2)
-                                    .overlay(Circle().stroke(Color.black, lineWidth: 2))
-                                    .padding()
+                                    .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                             }
                         
                             Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName)")
@@ -78,7 +76,7 @@ struct FriendRequestNotificationView: View {
                         Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName) sent you a friend request:")
                             .foregroundColor(Color.purple)
                             .lineLimit(1)
-                            .padding(.leading, 10.0)
+                            .padding(.leading, 12.0)
                         Spacer().frame(minWidth: 5, maxWidth: 5)
                         
                         Button(action: {

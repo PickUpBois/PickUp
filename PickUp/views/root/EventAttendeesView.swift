@@ -29,7 +29,7 @@ struct EventAttendeesView: View {
                                 .frame(width: 60, height: 60, alignment: .center)
                                 .clipShape(Circle())
                                 .shadow(radius: 2)
-                                .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                                .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                                 .padding()
                         } else {
                             Image("placeholder")
@@ -38,7 +38,7 @@ struct EventAttendeesView: View {
                                 .frame(width: 60, height: 60, alignment: .center)
                                 .clipShape(Circle())
                                 .shadow(radius: 2)
-                                .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                                .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                                 .padding()
                         }
                     }

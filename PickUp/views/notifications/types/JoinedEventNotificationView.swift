@@ -29,7 +29,7 @@ struct JoinedEventNotificationView: View {
 //                            .frame(width: 25, height: 25, alignment: .center)
 //                            .clipShape(Circle())
 //                            .shadow(radius: 2)
-//                            .overlay(Circle().stroke(Color.black, lineWidth: 2))
+//                             .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                         if viewModel.actor!.photoUrl != nil {
                             WebImage(url: URL(string: viewModel.actor!.photoUrl ?? ""))
                                 .resizable()
@@ -42,8 +42,7 @@ struct JoinedEventNotificationView: View {
                                 .frame(width: 25, height: 25, alignment: .center)
                                 .clipShape(Circle())
                                 .shadow(radius: 2)
-                                .overlay(Circle().stroke(Color.black, lineWidth: 2))
-                                .padding()
+                                .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                         } else {
                             Image("placeholder")
                                 .resizable()
@@ -51,13 +50,12 @@ struct JoinedEventNotificationView: View {
                                 .frame(width: 25, height: 25, alignment: .center)
                                 .clipShape(Circle())
                                 .shadow(radius: 2)
-                                .overlay(Circle().stroke(Color.black, lineWidth: 2))
-                                .padding()
+                                .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                         }
                     
                         Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName)")
                         .fontWeight(.heavy)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color("Text"))
                         .lineLimit(1)
                         
                     }
@@ -66,13 +64,13 @@ struct JoinedEventNotificationView: View {
                     .lineLimit(1)
                     
                 }
-            Spacer().frame(height: 15)
+            Spacer().frame(height: 10)
                     HStack {
                         Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName) has joined your event \(viewModel.event!.name)")
                             .foregroundColor(Color.purple)
                             .lineLimit(1)
-                            .padding(.leading, 10.0)
-                            .frame(width: 400, alignment: .leading)
+                            .padding(.leading, 12.0)
+                            .frame(width: 380, alignment: .leading)
                     }
             Spacer().frame(height: 15)
             HStack(alignment: .lastTextBaseline) {

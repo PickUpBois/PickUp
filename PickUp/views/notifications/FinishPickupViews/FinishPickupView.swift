@@ -29,17 +29,16 @@ struct FinishPickupView: View {
                     .fontWeight(.heavy)
                     .foregroundColor(Color("Text"))
                     .lineLimit(1)
-                    .padding(.top, 20)
             }
             
             Spacer().frame(height: 10)
             
             //Adding Picture and Public/Private Stack
             HStack{
-            Text("Vote for MVP:")
+            Text("MVP:")
                 .font(.subheadline)
                 .fontWeight(.bold)
-            Spacer().frame(width: 15)
+            Spacer().frame(width:20)
                 Picker("Names", selection: $selectedIndex) {
                     ForEach(viewModel.event!.attendees.indices, id: \.self) { i in
                         Text(viewModel.event!.attendees[i].fragments.userDetails.firstName)
@@ -64,8 +63,8 @@ struct FinishPickupView: View {
                 }
                 
             }.frame(alignment: .center)
-            .padding(.horizontal, 180)
-            .padding(.vertical, 5)
+            .padding(.horizontal, 160)
+            .padding(.vertical, 10)
             .background(Color.blue)
             .cornerRadius(10)
         }

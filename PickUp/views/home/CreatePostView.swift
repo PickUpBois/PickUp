@@ -12,6 +12,8 @@ struct CreatePostView: View {
         
         Spacer().frame(height: 20)
         
+        ZStack{
+            
         VStack (alignment: .leading){
             //Name Stack
             HStack {
@@ -21,11 +23,11 @@ struct CreatePostView: View {
                     .frame(width: 25, height: 25, alignment: .center)
                     .clipShape(Circle())
                     .shadow(radius: 2)
-                    .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                    .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
                 
                 Text("Ashwin Yedavalli")
                     .fontWeight(.heavy)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color("Text"))
                     .lineLimit(1)
             }
             
@@ -36,10 +38,10 @@ struct CreatePostView: View {
                     Button(action: {},
                            label: {
                     Text("Private or Public")
-                        .foregroundColor(Color.blue).opacity(0.8)
+                        .foregroundColor(Color("Text"))
                         .padding(.vertical, 10)
                             .padding(.horizontal, 20)
-                            .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                            .background(Color.blue.opacity(0.8))
                             .cornerRadius(9)
                     })
                     
@@ -48,10 +50,10 @@ struct CreatePostView: View {
                     Button(action: {
                     },label: {
                     Text("Add Picture")
-                        .foregroundColor(Color.blue).opacity(0.8)
+                        .foregroundColor(Color("Text"))
                         .padding(.vertical, 10)
                             .padding(.horizontal, 20)
-                            .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                            .background(Color.blue.opacity(0.8))
                             .cornerRadius(9)
                     })
 
@@ -61,20 +63,33 @@ struct CreatePostView: View {
             
             //Caption Stack
             HStack{
-                Text(" Caption...")
-                    .foregroundColor(Color.black).opacity(0.8)
+                Text(" Write Something...")
+                    .foregroundColor(Color("Text")).opacity(0.5)
             }.frame(width: 380, height: 380, alignment: .topLeading)
-            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 0.5)
+            .border(Color("Text"), width: 0.25)
             
-            //Add Teammates Stack
+            //Tag Teammates Stack
             HStack{
                 Button(action: {},
                        label: {
-                Text("Add Teammates")
-                    .foregroundColor(Color.blue).opacity(0.8)
+                Text("Tag Teammates")
+                    .foregroundColor(Color("Text"))
                     .padding(.vertical, 10)
                         .padding(.horizontal, 130)
-                        .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                        .background(Color.blue.opacity(0.8))
+                        .cornerRadius(9)
+            })
+            }
+            
+            //Tag Event/PickUp Stack
+            HStack{
+                Button(action: {},
+                       label: {
+                Text("Tag Event")
+                    .foregroundColor(Color("Text"))
+                    .padding(.vertical, 10)
+                        .padding(.horizontal, 152)
+                        .background(Color.blue.opacity(0.8))
                         .cornerRadius(9)
             })
             }
@@ -84,17 +99,18 @@ struct CreatePostView: View {
                 Button(action: {},
                        label: {
                 Text("Post")
-                    .foregroundColor(Color.blue).opacity(0.8)
+                    .foregroundColor(Color("Text"))
                     .padding(.vertical, 10)
-                        .padding(.horizontal, 175)
-                        .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
+                        .padding(.horizontal, 172)
+                        .background(Color.blue.opacity(0.8))
                         .cornerRadius(9)
             })
             }
             
             
         }
-                
+            
+        }
         
         Spacer()
         

@@ -10,6 +10,8 @@ import SwiftUIRefresh
 struct PickUpListView: View {
     @EnvironmentObject var viewModel: HomeViewModel
     var type: EventType
+    let Columns = [GridItem(), GridItem()]
+
     @State var isShowing: Bool = false
     var body: some View {
         switch viewModel.eventsState {
@@ -20,15 +22,18 @@ struct PickUpListView: View {
         case .loading:
             ProgressView()
         case .success:
-            ScrollView {
+            ScrollView(.horizontal){
+                LazyHGrid(rows: Columns, spacing: 5) {
                 ForEach(self.viewModel.events.indices, id: \.self) {i in
                     let event = self.viewModel.events[i]
                     PickUpView(id: i, event: event)
-                        .frame(maxWidth: UIScreen.main.bounds.width * 0.4, maxHeight: UIScreen.main.bounds.height * 0.4)
+                        .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height * 0.4)
                             .background(Color.white.opacity(0.9))
                             .cornerRadius(20)
                         Spacer().frame(height: 10)
                 }
+                }.frame(height: 200)
+                .padding(.horizontal, 10)
             }.pullToRefresh(isShowing: $viewModel.eventsShowing) {
                 viewModel.getUpcomingEvents()
             }
@@ -36,7 +41,7 @@ struct PickUpListView: View {
             List(self.viewModel.events.indices, id: \.self) {i in
                 let event = self.viewModel.events[i]
                 PickUpView(id: i, event: event)
-                    .frame(maxWidth: UIScreen.main.bounds.width * 0.4, maxHeight: UIScreen.main.bounds.height * 0.4)
+                    .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height * 0.4)
                         .background(Color.white.opacity(0.9))
                         .cornerRadius(20)
                     Spacer().frame(height: 10)

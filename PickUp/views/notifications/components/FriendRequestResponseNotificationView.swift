@@ -27,42 +27,20 @@ struct FriendRequestResponseNotificationView: View {
         VStack{
                 HStack {
                     NavigationLink(destination: ProfileView(viewModel: ProfileViewModel(userId: viewModel.actor!.id), auth: false)) {
-//                        WebImage(url: URL(string: viewModel.actor?.photoUrl ?? ""))
-//                            .placeholder(Image("serena")
-//                                            .resizable())
-//                            .resizable()
-//                            .indicator(.activity)
-//                            .foregroundColor(.blue)
-//                            .frame(width: 25, height: 25, alignment: .center)
-//                            .clipShape(Circle())
-//                            .shadow(radius: 2)
-//                            .overlay(Circle().stroke(Color.black, lineWidth: 2))
-                        if viewModel.actor!.photoUrl != nil {
-                            WebImage(url: URL(string: viewModel.actor!.photoUrl ?? ""))
-                                .resizable()
-                                .placeholder {
-                                    Rectangle()
-                                        .foregroundColor(.gray)
-                                    }
-                                .indicator(.activity)
-                                .foregroundColor(.blue)
-                                .frame(width: 25, height: 25, alignment: .center)
-                                .clipShape(Circle())
-                                .shadow(radius: 2)
-                                .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
-                        } else {
-                            Image("placeholder")
-                                .resizable()
-                                .foregroundColor(.blue)
-                                .frame(width: 25, height: 25, alignment: .center)
-                                .clipShape(Circle())
-                                .shadow(radius: 2)
-                                .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
-                        }
+                        WebImage(url: URL(string: viewModel.actor?.photoUrl ?? ""))
+                            .placeholder(Image("serena")
+                                            .resizable())
+                            .resizable()
+                            .indicator(.activity)
+                            .foregroundColor(.blue)
+                            .frame(width: 25, height: 25, alignment: .center)
+                            .clipShape(Circle())
+                            .shadow(radius: 2)
+                            .overlay(Circle().stroke(Color.black, lineWidth: 2))
                     
                         Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName)")
                         .fontWeight(.heavy)
-                        .foregroundColor(Color("Text"))
+                        .foregroundColor(Color.black)
                         .lineLimit(1)
                         
                     }
@@ -71,13 +49,13 @@ struct FriendRequestResponseNotificationView: View {
                     .lineLimit(1)
                     
                 }
-            Spacer().frame(height: 10)
+            Spacer().frame(height: 15)
                     HStack {
                         Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName) \(viewModel.type == NotificationType.friendRequestAccept ? "accepted" : "rejected") your friend request")
                             .foregroundColor(Color.purple)
                             .lineLimit(1)
-                            .padding(.leading, 12.0)
-                            .frame(width: 380, alignment: .leading)
+                            .padding(.leading, 10.0)
+                            .frame(width: 400, alignment: .leading)
                     }
             Spacer().frame(height: 15)
             HStack(alignment: .lastTextBaseline) {
@@ -87,7 +65,7 @@ struct FriendRequestResponseNotificationView: View {
                     Text("Mark as read")
                 })
             }
-            }
+                }
                 .padding(.all, 10)
                 .frame(width: 400.0)
                 .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
