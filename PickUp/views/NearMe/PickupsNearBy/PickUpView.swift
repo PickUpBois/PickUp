@@ -45,92 +45,79 @@ struct PickUpView: View, Identifiable {
             Button(action: {
                 self.showPopUp.toggle()
             }, label: {
-                VStack(spacing: 5){
-                    
+                VStack(alignment: .leading){
+                    //First line w/ title & Going/NotGoing
+                    HStack{
                     HStack(spacing: 5){
+                        Image("b4")
+                            .resizable()
+                            .renderingMode(.original)
+                            .frame(width: 20, height: 20)
+                            .clipShape(Circle())
                         Text(name)
-                            .font((.system(size: 15)))
+                            .font(.headline)
                             .fontWeight(.bold)
-                            .foregroundColor(Color("Text"))
                             .lineLimit(1)
+                    }
+                    Spacer()
                         
-                    }.frame(maxWidth: 140, alignment: .center)
-                    .padding(.leading, 5)
+                        if going == true {
+                        Text(going ? "Going" : "Not Going")
+                                .foregroundColor(Color.green)
+                        }
+                        else{
+                            Text(going ? "Going" : "Not Going")
+                                    .foregroundColor(Color.red)
+                        }
+                    }
                     
-                    HStack (spacing: 20){
+                    Spacer().frame(height: 8)
+                    
+                    //Second Line w/ Capacity
+                    
+                    HStack{
+                        HStack(spacing: 5){
+                        Image(systemName:"person.fill")
+                            .foregroundColor(Color.purple)
+                        Text("Attendees")
+                        }
+                        ZStack(alignment: .leading){
+                            //ZStack for capacity
+                            Capsule().frame(width: 200, height: 20)
+                                .foregroundColor(.blue)
+
+                            //ZStack for attendees
+                            ZStack(alignment: .center){
+                            Capsule().frame(width: 100, height: 20)
+                                .foregroundColor(.orange)
+                            Text("\(numAttendees)/\(capacity)")
+                            }
+                        }
+                        
+                    }
+                    
+                    //Third line w/ Date/Time & Radius
+                    HStack{
                         HStack (spacing: 5){
                         Image(systemName:"calendar")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width:10, height:10)
                             .foregroundColor(Color.red)
 
                         Text(getDate(date: startDate))
-                            .foregroundColor(Color("Text"))
-                                .font(.footnote)
-                            .lineLimit(1)
-                        }
-                        
-                        HStack (spacing: 5){
-                            Image(systemName:"clock.fill")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width:10, height:10)
-                                .foregroundColor(Color.orange)
-                            Text(startDate.eventTimeString)
-                            .foregroundColor(Color("Text"))
-                                .font(.footnote)
-                                .lineLimit(1)}
-                        .foregroundColor(Color("Text"))
+                        Text("@")
+                        Text(startDate.eventTimeString)
                             
-                        
-                        
-                    }.frame(maxWidth: 150, alignment: .leading)
-                    .padding(.leading, 5)
-                    
-                    HStack(spacing: 20){
-                        HStack (spacing: 5){
-                            Image(systemName:"location.fill")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width:10, height:10)
-                                .foregroundColor(Color.blue)
-                            Text("0.25")
-                                .font(.footnote)
-                                .lineLimit(1)
-                            Text("mi")
-                                .font(.footnote)
-                                .lineLimit(1)
-                            }
-                            .foregroundColor(Color("Text"))
-                        
-                        HStack(spacing: 5){
-                        Image(systemName:"person.fill")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width:10, height:10)
-                            .foregroundColor(Color.purple)
-                        Text("\(numAttendees)/\(capacity)")
-                            .font(.footnote)
-                            .font((.system(size: 15)))
-                            .foregroundColor(Color("Text"))
                         }
                         
-                    }.frame(maxWidth: 150, alignment: .leading)
-                    .padding(.leading, 5)
-
-
-                    HStack(spacing: 5){
-                        Text(going ? "Going" : "Not Going")
-                            .font(.footnote)
-                            .foregroundColor(Color.green)
-                            .lineLimit(1)
-
+                    Spacer()
+                            Text("0.25")
+                            Text("miles")
+                            
                     }
 
-                }
-                
-                
+                }.padding()
+                .foregroundColor(Color("Text"))
+                .background(Color("Background_SmallView"))
+                .cornerRadius(15)
                 
             }).sheet(isPresented: $showPopUp, content: {
             Spacer().frame(height: 300)
@@ -154,21 +141,8 @@ struct PickUpView: View, Identifiable {
             Spacer().frame(height: 300)
             .background(BackgroundClearView())
         })
-            VStack{
-                HStack{
-                    Image("b4")
-                        .resizable()
-                        .renderingMode(.original)
-                        .frame(width: 20, height: 20)
-                        .clipShape(Circle())
-                        }.frame(maxWidth: 160, alignment: .trailing)
-                .padding(.trailing, 5)
-                }.frame(maxHeight: 140, alignment: .bottom)
             
-        }.frame(maxWidth: 175, maxHeight: 90, alignment: .center)
-        .padding(.vertical, 5)
-        .background(Color("Background_SmallView"))
-        .cornerRadius(20)
+        }
         
     }
 }

@@ -22,29 +22,22 @@ struct PickUpListView: View {
         case .loading:
             ProgressView()
         case .success:
-            ScrollView(.horizontal){
-                LazyHGrid(rows: Columns, spacing: 5) {
+            ScrollView(){
                 ForEach(self.viewModel.events.indices, id: \.self) {i in
                     let event = self.viewModel.events[i]
                     PickUpView(id: i, event: event)
-                        .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height * 0.4)
-                            .background(Color.white.opacity(0.9))
-                            .cornerRadius(20)
-                        Spacer().frame(height: 10)
+                        .frame(maxWidth: UIScreen.main.bounds.width * 0.95, maxHeight: UIScreen.main.bounds.height * 1.0)
                 }
-                }.frame(height: 200)
-                .padding(.horizontal, 10)
             }.pullToRefresh(isShowing: $viewModel.eventsShowing) {
                 viewModel.getUpcomingEvents()
             }
         case .error(_):
+            ScrollView(){
             List(self.viewModel.events.indices, id: \.self) {i in
                 let event = self.viewModel.events[i]
                 PickUpView(id: i, event: event)
-                    .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height * 0.4)
-                        .background(Color.white.opacity(0.9))
-                        .cornerRadius(20)
-                    Spacer().frame(height: 10)
+                    .frame(maxWidth: UIScreen.main.bounds.width * 0.95, maxHeight: UIScreen.main.bounds.height * 1.0)
+                }
             }.pullToRefresh(isShowing: $viewModel.eventsShowing) {
                 viewModel.getUpcomingEvents()
             }

@@ -50,7 +50,7 @@ struct CreatePostView: View {
                     
                     Button(action: {
                     },label: {
-                    Text("Add Picture")
+                    Text("Add Picture or Video")
                         .fontWeight(.semibold)
                         .foregroundColor(Color("Text"))
                         .padding(.vertical, 10)

@@ -36,7 +36,7 @@ struct PrivateView: View {
                 
                 
             })
-            }.padding(.leading, 340)
+            }.padding(.leading, 330)
             .padding(.bottom, 20)
 
             

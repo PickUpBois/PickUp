@@ -12,41 +12,23 @@ struct PickUpTabListView: View {
     @State private var selection: EventType = .tennis
     @State var showPopUp = false
     var body: some View {
-        VStack{
+        VStack (alignment: .leading){
             HStack{
                 Text("PickUps").font(.title3)
                 .fontWeight(.semibold)
                 .foregroundColor(Color("Text"))
                 
             Image(systemName: "clock.fill").font(.system(size: 16, weight: .regular))
-                .foregroundColor(Color.purple)
+                .foregroundColor(Color.blue)
+                
+                Spacer()
+                Image(systemName: "square.grid.3x2.fill")
+                    .foregroundColor(.green)
             }
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                
-                HStack(spacing: 18){
-                    
-                    Button(action: {
-                        
-                    }) {}
-                    ForEach(1...16,id: \.self){i in
-                        
-                        Button(action: {
-                        }) {
-                            
-                            Image("b\(i)")
-                                .resizable()
-                                .renderingMode(.original)
-                                .frame(width: 25, height: 25)
-                                .clipShape(Circle())
-                        }
-                    }
-                }
-            }
-            .frame(width: .infinity)
-            .padding(.horizontal, 20)
-                        
-                PickUpListView(type: .basketball)
+            Spacer().frame(height: 15)
+            
+            PickUpListView(type: .basketball)
             
         }
     }
