@@ -1,21 +1,19 @@
 //
-//  ProfileSettingsView.swift
+//  UpdateProfileView.swift
 //  PickUp
 //
-//  Created by Arian Rahbar on 4/30/21.
+//  Created by David Reynolds on 7/5/21.
 //
 
 import SwiftUI
-import Combine
 
-struct ProfileSettingsView: View {
+struct UpdateProfileView: View {
     @ObservedObject var viewModel: ProfileSettingsViewModel
     @EnvironmentObject var userViewModel: ProfileViewModel
     init(viewModel: ProfileSettingsViewModel = ProfileSettingsViewModel()) {
         self.viewModel = viewModel
     }
     @State private var updateProfileAlert = false
-    @State private var logoutAlert = false
     @State private var showingAlert = false
     var body: some View {
         TextField("username", text: $viewModel.username)
@@ -36,30 +34,11 @@ struct ProfileSettingsView: View {
                     Alert(title: Text("Confirm Profile Update"), message: Text("Are you sure you want to update your profile to these changes?"), primaryButton: .default(Text("Yes")) {
                         self.viewModel.updateProfile()
                     }, secondaryButton: .destructive(Text("Cancel")))
-                }})
-       
-        Button(action: {
-            self.logoutAlert = true
-            },label: {
-            Text("Logout")
-                .foregroundColor(Color.green)
-                .padding(.top)
-                .alert(isPresented:$logoutAlert) {
-                    Alert(title: Text("Confirm Sign Out"), message: Text("Are you sure you want to log out?"), primaryButton: .default(Text("Yes")) {
-                        () in
-                        self.viewModel.logout()
-                    }, secondaryButton: .destructive(Text("Cancel")))
-                }})
-        
-
-    }
+                }})    }
 }
 
-
-
-struct ProfileSettingsView_Previews: PreviewProvider {
+struct UpdateProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileSettingsView(viewModel: MockProfileSettingsViewModel()).environmentObject(MockProfileViewModel(userId: "1"))
+        UpdateProfileView(viewModel: MockProfileSettingsViewModel()).environmentObject(MockProfileViewModel(userId: "1"))
     }
 }
-

@@ -34,7 +34,7 @@ struct NearMeView: View {
                     .resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
                     .foregroundColor(Color("Tabbar"))
                     .frame(width: 50, height: 50)
-                    .overlay(Image(systemName: "sportscourt").foregroundColor(Color("Text")))
+                    .overlay(Image(systemName: "chart.bar.xaxis").foregroundColor(Color("Text")))
             }
             
             else{
@@ -42,7 +42,7 @@ struct NearMeView: View {
                     .resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
                     .foregroundColor(Color("Tabbar"))
                     .frame(width: 50, height: 50)
-                    .overlay(Image(systemName: "clock.fill").foregroundColor(Color("Text")))
+                    .overlay(Image(systemName: "sportscourt").foregroundColor(Color("Text")))
             }
                 
             })

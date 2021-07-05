@@ -130,6 +130,8 @@
 		C0B63B36267041F4008237EE /* BusynessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B63B35267041F4008237EE /* BusynessView.swift */; };
 		C0B81C6E2657064B000555BD /* NotificationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B81C6D2657064B000555BD /* NotificationListView.swift */; };
 		C0D4716C264098BF00E7B6C7 /* CreateEventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D4716B264098BF00E7B6C7 /* CreateEventView.xib */; };
+		C0EA4A1B2692D07E00C1D0CB /* UpdateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA4A1A2692D07E00C1D0CB /* UpdateProfileView.swift */; };
+		C0EA4A1D2692D16100C1D0CB /* SettingsFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA4A1C2692D16100C1D0CB /* SettingsFields.swift */; };
 		C0FFBEB7268E320900B3639A /* NearMeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FFBEB6268E320900B3639A /* NearMeView.swift */; };
 		C0FFBEB9268E5DE200B3639A /* PrivateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FFBEB8268E5DE200B3639A /* PrivateView.swift */; };
 		C0FFBEBB268E5DF800B3639A /* PublicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FFBEBA268E5DF800B3639A /* PublicView.swift */; };
@@ -294,6 +296,8 @@
 		C0B63B35267041F4008237EE /* BusynessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusynessView.swift; sourceTree = "<group>"; };
 		C0B81C6D2657064B000555BD /* NotificationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListView.swift; sourceTree = "<group>"; };
 		C0D4716B264098BF00E7B6C7 /* CreateEventView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateEventView.xib; sourceTree = "<group>"; };
+		C0EA4A1A2692D07E00C1D0CB /* UpdateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileView.swift; sourceTree = "<group>"; };
+		C0EA4A1C2692D16100C1D0CB /* SettingsFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFields.swift; sourceTree = "<group>"; };
 		C0FFBEB6268E320900B3639A /* NearMeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearMeView.swift; sourceTree = "<group>"; };
 		C0FFBEB8268E5DE200B3639A /* PrivateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateView.swift; sourceTree = "<group>"; };
 		C0FFBEBA268E5DF800B3639A /* PublicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicView.swift; sourceTree = "<group>"; };
@@ -380,8 +384,8 @@
 		8D65B2542658C4340085D5EE /* views */ = {
 			isa = PBXGroup;
 			children = (
-				C0FFBEB5268E31EC00B3639A /* NearMe */,
-				C0B63B34267041CD008237EE /* Busyness */,
+				C0FFBEB5268E31EC00B3639A /* nearme */,
+				C0B63B34267041CD008237EE /* busyness */,
 				8DE52177266427EA0077AF09 /* friends */,
 				C0151123265A2DE0005EF24A /* message */,
 				8D65B25F2658C81A0085D5EE /* search */,
@@ -428,8 +432,8 @@
 			isa = PBXGroup;
 			children = (
 				8DA9D1A1268161D700513358 /* viewmodels */,
-				8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */,
 				8D09E70A2623E16E0007B871 /* ProfileView.swift */,
+				C0EA4A192692CFF300C1D0CB /* settings */,
 				8D65B25B2658C46A0085D5EE /* components */,
 			);
 			path = profile;
@@ -745,22 +749,32 @@
 			path = PickupsNearBy;
 			sourceTree = "<group>";
 		};
-		C0B63B34267041CD008237EE /* Busyness */ = {
+		C0B63B34267041CD008237EE /* busyness */ = {
 			isa = PBXGroup;
 			children = (
 				C0B63B35267041F4008237EE /* BusynessView.swift */,
 			);
-			path = Busyness;
+			path = busyness;
 			sourceTree = "<group>";
 		};
-		C0FFBEB5268E31EC00B3639A /* NearMe */ = {
+		C0EA4A192692CFF300C1D0CB /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */,
+				C0EA4A1A2692D07E00C1D0CB /* UpdateProfileView.swift */,
+				C0EA4A1C2692D16100C1D0CB /* SettingsFields.swift */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
+		C0FFBEB5268E31EC00B3639A /* nearme */ = {
 			isa = PBXGroup;
 			children = (
 				C0FFBEB6268E320900B3639A /* NearMeView.swift */,
 				C097730F266034670045B978 /* CourtsNearBy */,
 				C0977310266034A80045B978 /* PickupsNearBy */,
 			);
-			path = NearMe;
+			path = nearme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1152,11 +1166,13 @@
 				1A2E5BEC265CB784006A803A /* FinishPickupView.swift in Sources */,
 				C0151120265A09FB005EF24A /* CreatePostView.swift in Sources */,
 				8D65B2F626592FA70085D5EE /* FindTeammatesViewModel.swift in Sources */,
+				C0EA4A1B2692D07E00C1D0CB /* UpdateProfileView.swift in Sources */,
 				8D69FE9626792CC6009D2AFF /* AuthenticationInterceptor.swift in Sources */,
 				8DFB998D264E342800254C57 /* EventLocationPickerView.swift in Sources */,
 				1AB44EDB26439DB300568ECB /* TypingBlockView.swift in Sources */,
 				8DE52179266427FC0077AF09 /* FriendsListView.swift in Sources */,
 				8DA9D1B9268555F700513358 /* EventAttendeesView.swift in Sources */,
+				C0EA4A1D2692D16100C1D0CB /* SettingsFields.swift in Sources */,
 				8D63ED24266F10160022FB79 /* NotificationListViewModel.swift in Sources */,
 				8DE52181266428130077AF09 /* FriendItemView.swift in Sources */,
 				1AB25B682668CAE500314C53 /* EditPickupListView.swift in Sources */,

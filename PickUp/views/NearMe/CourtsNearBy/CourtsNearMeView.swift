@@ -122,9 +122,9 @@ struct CourtsNearMeView: View {
                         //Third line w/ Hours & Radius
                         HStack{
                             HStack (spacing: 5){
-                            Image(systemName:"calendar")
-                                .foregroundColor(Color.red)
-                            Text("Hours \(place.hours)")
+                            Image(systemName:"clock.fill")
+                                .foregroundColor(Color.blue)
+                            Text("\(place.hours)")
                             }
                             
                         Spacer()

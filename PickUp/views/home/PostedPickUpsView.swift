@@ -279,7 +279,7 @@ struct PostedPickUpsView: View {
                     }
                     .padding(.bottom, 15.0)
                     .padding(.horizontal, 0.0)
-                    .background(Color("Background_SmallView"))
+                    .background(Color("Tabbar"))
                     
                     
                     

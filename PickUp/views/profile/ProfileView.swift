@@ -121,6 +121,7 @@ struct ProfileView: View {
                                     .padding(.trailing, 5)
                                 
                             }
+
                         }
                         
                         else{
