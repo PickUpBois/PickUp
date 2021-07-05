@@ -10,6 +10,7 @@ import SwiftUI
 struct PickUpView: View, Identifiable {
     @EnvironmentObject var viewModel: HomeViewModel
     @State var showPopUp = false
+    //@Binding var eventPopUp: Bool
     var name: String
     var startDate: Date
     var id: Int
@@ -43,7 +44,7 @@ struct PickUpView: View, Identifiable {
     var body: some View {
         ZStack{
             Button(action: {
-                self.showPopUp.toggle()
+                //eventPopUp = false
             }, label: {
                 VStack(alignment: .leading){
                     //First line w/ title & Going/NotGoing
@@ -119,29 +120,7 @@ struct PickUpView: View, Identifiable {
                 .background(Color("Background_SmallView"))
                 .cornerRadius(15)
                 
-            }).sheet(isPresented: $showPopUp, content: {
-            Spacer().frame(height: 300)
-                EventDetailsBoxView(event: event, viewModel: EventDetailsBoxViewModel(event: event, refresh: self.viewModel.getUpcomingEvents))
-                .padding(.all, 30.0)
-                .background(Color("Friends_Popup_Background"))
-                .cornerRadius(8)
-                .padding(.horizontal, 20)
-            
-            Button(action: {
-                self.showPopUp.toggle()
-            },label: {
-                Text("Dismiss")
-                    .foregroundColor(Color.white)
-                    .frame(maxWidth: 400)
-                    .padding(.vertical, 10)
-                    .background(Color.black.opacity(0.8))
-                    .cornerRadius(9)
-                    .padding(.horizontal, 20)
             })
-            Spacer().frame(height: 300)
-            .background(BackgroundClearView())
-        })
-            
         }
         
     }
@@ -155,3 +134,29 @@ struct PickUpView_Previews: PreviewProvider {
         PickUpView(id: 0, event: event1).environmentObject(MockHomeViewModel())
     }
 }
+
+
+
+
+//            .sheet(isPresented: $showPopUp, content: {
+//            Spacer().frame(height: 300)
+//                EventDetailsBoxView(event: event, viewModel: EventDetailsBoxViewModel(event: event, refresh: self.viewModel.getUpcomingEvents))
+//                .padding(.all, 30.0)
+//                .background(Color("Friends_Popup_Background"))
+//                .cornerRadius(8)
+//                .padding(.horizontal, 20)
+//
+//            Button(action: {
+//                self.showPopUp.toggle()
+//            },label: {
+//                Text("Dismiss")
+//                    .foregroundColor(Color.white)
+//                    .frame(maxWidth: 400)
+//                    .padding(.vertical, 10)
+//                    .background(Color.black.opacity(0.8))
+//                    .cornerRadius(9)
+//                    .padding(.horizontal, 20)
+//            })
+//            Spacer().frame(height: 300)
+//            .background(BackgroundClearView())
+//        })
