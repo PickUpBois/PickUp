@@ -47,7 +47,7 @@ struct Centerview : View {
                 cellView(data : i)
             }
         }
-        .padding(.top, 20)
+        //.padding(.top, 20)
         .background(Color.white)
     }
 }
@@ -62,26 +62,30 @@ struct cellView : View {
             
             Image(data.img)
                 .resizable()
-                .frame(width: 55, height: 55)
+                .renderingMode(.original)
+                .frame(width: 45, height: 45)
+                .clipShape(Circle())
             
             VStack(alignment: .leading, spacing: 12) {
                 
+                HStack{
                 Text(data.name)
+                    .lineLimit(1)
+                    
+                Spacer()
+                    
+                Text(data.date)
+                    .font((.system(size: 13)))
+                    .lineLimit(1)
+                }
                 
                 Text(data.msg).font(.caption)
+                    .lineLimit(1)
                 
             }
-            
-            Spacer(minLength:  0)
-            
-            VStack{
-                
-                Text(data.date)
-                
-                Spacer()
-                
-            }
-        }.padding(.vertical)
+                        
+        }.padding(.vertical, 10)
+        
     }
 }
 

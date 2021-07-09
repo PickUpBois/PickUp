@@ -11,6 +11,7 @@ struct PickUpTabListView: View {
     @EnvironmentObject var viewModel: HomeViewModel
     @State private var selection: EventType = .tennis
     @State var expand = false
+    @Environment(\.colorScheme) var colorscheme
     //@State var eventsPopUp: Bool = false
     //Gesture Properties
     @State var offset: CGFloat = 0
@@ -47,6 +48,7 @@ struct PickUpTabListView: View {
             Spacer().frame(height: 15)
             
             PickUpListView(type: .basketball)
+
         }
             
             //Beginging
@@ -54,7 +56,7 @@ struct PickUpTabListView: View {
             //Bottom Sheet....
             //Height for Drag Gesture....
             
-           // if self.eventsPopUp {
+           //if self.eventsPopUp {
 
             GeometryReader{proxy -> AnyView in
             
@@ -63,7 +65,7 @@ struct PickUpTabListView: View {
                     return AnyView(
                         
                         ZStack{
-                            BlurView(style: .systemThinMaterialDark)
+                            BlurView(style: colorscheme == .light ? .light: .dark)
                                 .clipShape(CustomCorners(corners: [.topLeft,. topRight], radius: 30))
                             
                             VStack{
@@ -71,6 +73,11 @@ struct PickUpTabListView: View {
                                     .fill(Color.white)
                                     .frame(width: 60, height: 4)
                                     .padding(.top)
+                                
+                                
+//                                EventDetailsBoxView(event: event, viewModel: EventDetailsBoxViewModel(event: event, refresh: self.viewModel.getUpcomingEvents))
+//                                                .padding(.all, 30.0)
+//                                                .background(Color("Friends_Popup_Background"))
                                 
                             }
                             .frame(maxHeight: .infinity, alignment: .top)
@@ -123,13 +130,15 @@ struct PickUpTabListView: View {
             //Ending
             
             if expand {
-            DropDown().frame(height: expand ? 250 : 100)
+            DropDown()
                 .cornerRadius(20)
-                .padding(7)
+                .padding(4)
                 .animation(.spring())
                 .padding(.leading, 295)
-                .padding(.bottom, 400)
+                .padding(.bottom, 460)
             }
+            
+            
         }
     }
     
@@ -158,7 +167,7 @@ struct DropDown : View {
     @State var expand = false
     var body: some View {
         
-        VStack(alignment: .center){
+        VStack(alignment: .center, spacing: 0){
             
             Button(action: {
                 
@@ -166,7 +175,7 @@ struct DropDown : View {
                 Text("Radius").padding()
             }
             
-            Divider()
+            //Divider()
             
             Button(action: {
                 
@@ -174,7 +183,7 @@ struct DropDown : View {
                 Text("Date").padding()
             }
             
-            Divider()
+            //Divider()
             
             Button(action: {
                 
@@ -182,7 +191,7 @@ struct DropDown : View {
                 Text("Going").padding()
             }
             
-            Divider()
+            //Divider()
             
             Button(action: {
                 
@@ -191,7 +200,8 @@ struct DropDown : View {
             }
 
             
-        }.foregroundColor(Color("Text"))
+        }
+        .foregroundColor(Color("Text"))
         .font(.caption)
         .background(Color("Tabbar"))
         .cornerRadius(15)

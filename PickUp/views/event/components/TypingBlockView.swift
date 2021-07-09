@@ -31,7 +31,7 @@ struct TypingBlockView: View {
                         .frame(width: 25.0)
                     }
                     .padding(.leading, 80)
-                    .padding(.vertical, 15.0)
+                .padding(.vertical, 14.0)
                     .background(Color("TextFieldEvent"))
                     .cornerRadius(20)
                     

@@ -16,56 +16,67 @@ struct ProfileSettingsView: View {
     }
     @State private var logoutAlert = false
     @State private var showingAlert = false
+    //@Environment(\.colorScheme) var colorscheme
     var body: some View {
-        
         VStack{
             List {
                     Button(action:{
                     }) {
-                        SettingsFields(title: "Account", imgName: "person.circle.fill", clr: .green)
+                        SettingsFields(title: "Account", imgName: "person.circle.fill")
+                            .foregroundColor(Color("Text"))
+                            
                 }
                     Button(action:{
                     }) {
-                        SettingsFields(title: "Privacy", imgName: "lock.fill", clr: .green)
+                        SettingsFields(title: "Privacy", imgName: "lock.fill")
+                            .foregroundColor(Color("Text"))
                 }
                     Button(action:{
                     }) {
-                        SettingsFields(title: "Security", imgName: "shield.lefthalf.fill", clr: .green)
+                        SettingsFields(title: "Security", imgName: "shield.lefthalf.fill")
+                            .foregroundColor(Color("Text"))
                 }
                     Button(action:{
                     }) {
-                    SettingsFields(title: "Notifications", imgName: "bell.circle.fill", clr: .green)
+                    SettingsFields(title: "Notifications", imgName: "bell.circle.fill")
+                        .foregroundColor(Color("Text"))
                 }
                     Button(action:{
                     }) {
                         //Link to app Store
-                        SettingsFields(title: "Write a Review", imgName: "pencil.and.outline", clr: .green)
+                        SettingsFields(title: "Write a Review", imgName: "pencil.and.outline")
+                            .foregroundColor(Color("Text"))
                 }
                     Button(action:{
                     }) {
                         //Share through messaging/snapchat, etc..
-                        SettingsFields(title: "Tell Your Friends", imgName: "gift", clr: .green)
+                        SettingsFields(title: "Tell Your Friends", imgName: "gift")
+                            .foregroundColor(Color("Text"))
                 }
                     Button(action:{
                     }) {
                         //Text Field with Send Button
-                        SettingsFields(title: "Suggest a Feature", imgName: "star.circle", clr: .green)
+                        SettingsFields(title: "Suggest a Feature", imgName: "star.circle")
+                            .foregroundColor(Color("Text"))
                 }
                     Button(action:{
                     }) {
                         //Text Field with Send Button
-                        SettingsFields(title: "Report a Bug", imgName: "exclamationmark.triangle", clr: .green)
+                        SettingsFields(title: "Report a Bug", imgName: "questionmark.circle.fill")
+                            .foregroundColor(Color("Text"))
                 }
                     Button(action:{
                     }) {
                         //Text Field with Send Button
-                        SettingsFields(title: "About", imgName: "info.circle.fill", clr: .green)
+                        SettingsFields(title: "About", imgName: "info.circle.fill")
+                            .foregroundColor(Color("Text"))
                 }
                     Button(action:{
                         self.logoutAlert = true
                     }) {
                     //Text Field with Send Button
-                    SettingsFields(title: "Logout", imgName: "arrow.down.right.circle.fill", clr: .red)
+                    SettingsFields(title: "Logout", imgName: "exclamationmark.triangle")
+                        .foregroundColor(Color.red)
                         .alert(isPresented:$logoutAlert) {
                             Alert(title: Text("Confirm Sign Out"), message: Text("Are you sure you want to log out?"), primaryButton: .default(Text("Yes")) {
                                 () in
@@ -73,22 +84,9 @@ struct ProfileSettingsView: View {
                             }, secondaryButton: .destructive(Text("Cancel")))
                         }
                     }
-            }.listStyle(GroupedListStyle())
+            }
+            .listStyle(SidebarListStyle())
             .environment(\.horizontalSizeClass, .regular)
-        
-//                    Button(action: {
-//                        self.logoutAlert = true
-//                        },label: {
-//                            Text("Logout")
-//                                .foregroundColor(Color.red)
-//                                .padding(.all)
-//                                .alert(isPresented:$logoutAlert) {
-//                                    Alert(title: Text("Confirm Sign Out"), message: Text("Are you sure you want to log out?"), primaryButton: .default(Text("Yes")) {
-//                                        () in
-//                                        self.viewModel.logout()
-//                                    }, secondaryButton: .destructive(Text("Cancel")))
-//                                }})
-//            Spacer().frame(height: 200)
     
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -98,9 +96,11 @@ struct ProfileSettingsView: View {
                         Text("Settings")
                     .fontWeight(.heavy)
                     .foregroundColor(Color("Text"))
+                
             }
         }
 }
+        
 }
 }
 

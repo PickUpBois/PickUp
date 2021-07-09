@@ -90,7 +90,7 @@ struct PickUpView: View, Identifiable {
                             //ZStack for attendees
                             ZStack(alignment: .center){
                             Capsule().frame(width: 100, height: 20)
-                                .foregroundColor(.orange)
+                                .foregroundColor(.orange).opacity(0.90)
                             Text("\(numAttendees)/\(capacity)")
                             }
                         }

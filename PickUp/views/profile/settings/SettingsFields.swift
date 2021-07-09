@@ -11,18 +11,15 @@ struct SettingsFields: View {
     
     var title : String
     var imgName : String
-    var clr : Color
 
     var body: some View {
         HStack{
             
             Image(systemName: imgName)
                 .font(.headline)
-                .foregroundColor(clr)
             
             Text(title)
                 .font(.headline)
-                .foregroundColor(clr)
                 .padding(.leading, 10)
             
             Spacer()
@@ -36,6 +33,6 @@ struct SettingsFields: View {
 
 struct SettingsFields_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsFields(title: "Features", imgName: "sparks", clr: .green)
+        SettingsFields(title: "Features", imgName: "sparks")
     }
 }

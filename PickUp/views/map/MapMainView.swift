@@ -78,10 +78,10 @@ struct MapMainView: View {
                         //Open Menu
                 },label: {
                     Image(systemName: "list.bullet")
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color("Text"))
                         .font(.title2)
                         .padding(10)
-                        .background(Color.white)
+                        .background(Color("MapButton"))
                         .clipShape(Circle())
                     
                 })
@@ -96,19 +96,19 @@ struct MapMainView: View {
                     
                     Button(action: mapData.focusLocation, label: {
                         Image(systemName: "location.fill")
-                            .foregroundColor(Color.black)
+                            .foregroundColor(Color("Text"))
                             .font(.title2)
                             .padding(10)
-                            .background(Color.white)
+                            .background(Color("MapButton"))
                             .clipShape(Circle())
                     })
                     
                     Button(action: mapData.updateMapType, label: {
                         Image(systemName: mapData.mapType == .standard ? "network" : "map")
-                            .foregroundColor(Color.black)
+                            .foregroundColor(Color("Text"))
                             .font(.title2)
                             .padding(10)
-                            .background(Color.white)
+                            .background(Color("MapButton"))
                             .clipShape(Circle())
                     })
                     
@@ -138,7 +138,7 @@ struct MapMainView: View {
                     HStack(spacing: 0.0) {
                         Text("Map")
                             .fontWeight(.heavy)
-                            .foregroundColor(Color.green)
+                            .foregroundColor(Color("Text"))
                     }
                 }
     }

@@ -20,7 +20,9 @@ struct PickUpListView: View {
                 viewModel.getUpcomingEvents()
             }
         case .loading:
+            Spacer()
             ProgressView()
+            Spacer()
         case .success:
             ScrollView(){
                 ForEach(self.viewModel.events.indices, id: \.self) {i in
