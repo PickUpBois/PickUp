@@ -19,7 +19,7 @@ struct PickUpView: View, Identifiable {
     var event: EventDetails
     var numAttendees: Int
     var capacity: Int
-    
+    @EnvironmentObject var pickupViewModel: PickUpListViewModel
     init(id: Int, event: EventDetails) {
         self.name = event.name
         self.id = id
@@ -45,6 +45,7 @@ struct PickUpView: View, Identifiable {
         ZStack{
             Button(action: {
                 //eventPopUp = false
+                pickupViewModel.selectedEvent = event
             }, label: {
                 VStack(alignment: .leading){
                     //First line w/ title & Going/NotGoing
@@ -131,7 +132,7 @@ struct PickUpView: View, Identifiable {
 struct PickUpView_Previews: PreviewProvider {
     static let event1 = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: [], startDate: Date().isoString, type: .tennis, status: .open)
     static var previews: some View {
-        PickUpView(id: 0, event: event1).environmentObject(MockHomeViewModel())
+        PickUpView(id: 0, event: event1).environmentObject(MockHomeViewModel()).environmentObject(MockPickUpListViewModel())
     }
 }
 

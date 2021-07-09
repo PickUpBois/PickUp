@@ -17,6 +17,12 @@ struct PickUpTabListView: View {
     @State var offset: CGFloat = 0
     @State var lastOffset: CGFloat = 0
     @GestureState var gestureOffset: CGFloat = 0
+    @ObservedObject var pickupViewModel: PickUpListViewModel = .init()
+    var eventPopUp: Bool {
+        get {
+            return pickupViewModel.selectedEvent != nil
+        }
+    }
     var body: some View {
         ZStack{
         VStack{
@@ -47,7 +53,7 @@ struct PickUpTabListView: View {
             
             Spacer().frame(height: 15)
             
-            PickUpListView(type: .basketball)
+            PickUpListView(type: .basketball).environmentObject(pickupViewModel)
 
         }
             
@@ -56,7 +62,7 @@ struct PickUpTabListView: View {
             //Bottom Sheet....
             //Height for Drag Gesture....
             
-           //if self.eventsPopUp {
+           if self.eventPopUp {
 
             GeometryReader{proxy -> AnyView in
             
@@ -75,9 +81,9 @@ struct PickUpTabListView: View {
                                     .padding(.top)
                                 
                                 
-//                                EventDetailsBoxView(event: event, viewModel: EventDetailsBoxViewModel(event: event, refresh: self.viewModel.getUpcomingEvents))
-//                                                .padding(.all, 30.0)
-//                                                .background(Color("Friends_Popup_Background"))
+                                EventDetailsBoxView(event: pickupViewModel.selectedEvent!, viewModel: EventDetailsBoxViewModel(event: pickupViewModel.selectedEvent!, refresh: self.viewModel.getUpcomingEvents))
+                                                .padding(.all, 30.0)
+                                                .background(Color("Friends_Popup_Background"))
                                 
                             }
                             .frame(maxHeight: .infinity, alignment: .top)
@@ -111,6 +117,7 @@ struct PickUpTabListView: View {
                                 else if -offset < minHeight / 2{
                                     offset = -minHeight
                                     //Here change offset = -minHeight to popup to be false
+                                    self.pickupViewModel.selectedEvent = nil
                                 }
                                 else{
                                     offset = 0
@@ -126,7 +133,7 @@ struct PickUpTabListView: View {
                     )
                 
             }.ignoresSafeArea(.all, edges: .bottom)
-            //}
+            }
             //Ending
             
             if expand {
