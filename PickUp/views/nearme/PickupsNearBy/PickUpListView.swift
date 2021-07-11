@@ -10,7 +10,6 @@ import SwiftUIRefresh
 struct PickUpListView: View {
     @EnvironmentObject var viewModel: HomeViewModel
     var type: EventType
-    let Columns = [GridItem(), GridItem()]
 
     @State var isShowing: Bool = false
     var body: some View {

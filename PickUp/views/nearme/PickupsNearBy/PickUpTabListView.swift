@@ -60,7 +60,6 @@ struct PickUpTabListView: View {
             //Beginging
             
             //Bottom Sheet....
-            //Height for Drag Gesture....
             
            if self.eventPopUp {
 
@@ -77,13 +76,12 @@ struct PickUpTabListView: View {
                             VStack{
                                 Capsule()
                                     .fill(Color.white)
-                                    .frame(width: 60, height: 4)
+                                    .frame(width: 60, height: 2)
                                     .padding(.top)
                                 
                                 
                                 EventDetailsBoxView(event: pickupViewModel.selectedEvent!, viewModel: EventDetailsBoxViewModel(event: pickupViewModel.selectedEvent!, refresh: self.viewModel.getUpcomingEvents))
-                                                .padding(.all, 30.0)
-                                                .background(Color("Friends_Popup_Background"))
+                                    .padding(.all, 20.0)
                                 
                             }
                             .frame(maxHeight: .infinity, alignment: .top)
@@ -115,8 +113,7 @@ struct PickUpTabListView: View {
                                 }
                                 
                                 else if -offset < minHeight / 2{
-                                    offset = -minHeight
-                                    //Here change offset = -minHeight to popup to be false
+                                    
                                     self.pickupViewModel.selectedEvent = nil
                                 }
                                 else{
@@ -127,7 +124,13 @@ struct PickUpTabListView: View {
                             //Storing Last Offset..
                             //So that the gesture can continue from the last poistion...
                             
+                            if self.eventPopUp{
                             lastOffset = offset
+                            }
+                            
+                            else if self.pickupViewModel.selectedEvent == nil{
+                            offset = 0
+                            }
                         }))
                     
                     )

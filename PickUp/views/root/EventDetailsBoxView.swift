@@ -99,9 +99,9 @@ struct EventDetailsBoxView: View {
         let teamId = event.teams![teamIndex].id
         let winnerId = event.winner!.id
         if teamId == winnerId {
-            return "W"
+            return "Winner"
         } else {
-            return "L"
+            return "Loser"
         }
     }
 
@@ -147,29 +147,35 @@ struct EventDetailsBoxView: View {
                 Text(name) //self.viewModel.event.name
                     .fontWeight(.heavy)
                     .foregroundColor(Color("Text"))
-                    .lineLimit(1)
-            }
-                Spacer().frame(height:1)
-                Divider()
-            //Stack for event info and description
-            HStack{
+                    
+            }.lineLimit(2)
                 
+            Spacer().frame(height: 4)
+            Divider()
+                
+            //Stack for event info and description
+            HStack (alignment: .top){
+
             //Stack for event info
-            HStack{
+            HStack (alignment: .top){
                 VStack (alignment: .leading){
-                    HStack{
+                    HStack(alignment: .top){
                         Image(systemName:"location.fill")
                             .resizable()
                             .scaledToFill()
                             .frame(width:15, height:15)
                             .foregroundColor(Color.blue)
-                        Text("Location")
+                        VStack{
+                        Text("San Fran Tennis Courts")
                             .font((.system(size: 15)))
                             .fontWeight(.regular)
                             .foregroundColor(Color("Text"))
-                            .lineLimit(1)
+                            .lineLimit(2)
+                        }
                     }.frame(maxWidth: 150, alignment: .leading)
+                    
                     Spacer().frame(height: 5)
+    
                     HStack{
                         Image(systemName:"calendar")
                             .resizable()
@@ -182,7 +188,9 @@ struct EventDetailsBoxView: View {
                             .foregroundColor(Color("Text"))
                             .lineLimit(1)
                     }.frame(maxWidth: 150, alignment: .leading)
+                    
                     Spacer().frame(height: 5)
+                    
                     HStack{
                         Image(systemName:"clock.fill")
                             .resizable()
@@ -194,22 +202,21 @@ struct EventDetailsBoxView: View {
                             .fontWeight(.regular)
                             .foregroundColor(Color("Text"))
                     }.frame(maxWidth: 150, alignment: .leading)
+                    
                     Spacer().frame(height: 5)
+                    
                     HStack{
-                            Button(action: {
-                                self.showPopUp.toggle()
-                            }) {
-                                Image(systemName:"person.fill")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width:15, height:15)
-                                    .foregroundColor(Color.purple)
-                                Text("\(numAttendees)/\(capacity)")
-                                    .font((.system(size: 15)))
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(Color("Text"))
-                            }
-                            }
+                        Image(systemName:"person.fill")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width:15, height:15)
+                            .foregroundColor(Color.purple)
+                        Text("\(numAttendees)/\(capacity)")
+                            .font((.system(size: 15)))
+                            .fontWeight(.regular)
+                            .foregroundColor(Color("Text"))
+                    }.frame(maxWidth: 150, alignment: .leading)
+                    
                     Spacer().frame(height: 5)
                     
                     HStack{
@@ -220,22 +227,26 @@ struct EventDetailsBoxView: View {
                                 .foregroundColor(Color("Text"))
                                 .lineLimit(1)
                                 .frame(alignment: .leading)
-                                Spacer()
+                    Spacer().frame(height: 5)
                         }
                     }
-                    Group {
-                        Spacer().frame(height: 5)
+                    HStack {
                         if event.winner != nil {
-                            HStack{
-                                Text("🏅")
+                                Image(systemName: "star.circle.fill")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width:15, height:15)
+                                    .foregroundColor(Color.yellow)
                                 Text(getWinLoss(event: event))
-                                            .fontWeight(.bold)
-                                            .foregroundColor(Color("Text"))
-                                            .lineLimit(1)
-                                }
+                                    .font((.system(size: 15)))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color("Text"))
+                                    .lineLimit(1)
+                        
                         }
+                        Spacer().frame(height: 5)
                     }
-                    .padding(.trailing, 60)
+                    .frame(maxWidth: 150, alignment: .leading)
                     .sheet(isPresented: $showPopUp, content: {
                                 NavigationView {
                                     VStack{
@@ -261,34 +272,41 @@ struct EventDetailsBoxView: View {
                                 }
                             })
                     
-                    }.frame(maxWidth: 150, maxHeight: 130)
+                    }.frame(maxWidth: 160, alignment: .leading)
                     }
                 
-            //Stack for description
-                Divider()
-        
-                HStack{
-                    VStack (alignment: .leading){
-                        HStack{
-                    Image("b4")
-                        .resizable()
-                        .renderingMode(.original)
-                        .frame(width: 18, height: 18)
-                        .clipShape(Circle())
-                    Text(info)
-                        .font((.system(size: 15)))
-                        .fontWeight(.regular)
-                        .foregroundColor(Color("Text"))
-                        .lineLimit(1)
-                            //self.viewModel.event.info
+            //Stack for Members
+            Divider()
+                
+            HStack(alignment: .top){
+                    VStack(alignment: .leading) {
+                                EventAttendeesView(viewModel: viewModel!.attendeesViewModel)
+                                    
 
-                    }.frame(maxWidth: 150, maxHeight: 130, alignment: .topLeading)
-
-                    }.frame(maxWidth: 150, maxHeight: 130)
-                    
+                    }.frame(maxWidth: 160, alignment: .leading)
                 }
                 
-            }
+            }.frame(maxWidth: 320, maxHeight: 180, alignment: .topLeading)
+            
+            Divider()
+                
+                    VStack (alignment: .leading){
+                        HStack(alignment: .top){
+                            Image(systemName: "doc.circle.fill")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width:15, height:15)
+                                .foregroundColor(Color.green)
+                            Text(info)
+                                .font((.system(size: 15)))
+                                .fontWeight(.regular)
+                                .foregroundColor(Color("Text"))
+                                    //self.viewModel.event.info
+                            }
+                }.frame(maxWidth: 320, alignment: .topLeading)
+                .lineLimit(3)
+                
+                Spacer().frame(height: 15)
 
                 VStack (alignment: .leading){
                     HStack{
@@ -352,7 +370,7 @@ struct EventDetailsBoxView: View {
                 }
             }
         }
-    }.frame(maxWidth: 300, maxHeight: 167, alignment: .center)
+        }.frame(maxWidth: 320, maxHeight: 320, alignment: .top)
 }
 }
 

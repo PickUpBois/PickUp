@@ -36,7 +36,7 @@ struct EditPickupView: View {
                         }, secondaryButton: .destructive(Text("Cancel")))
                     }})
                 
-                Spacer().frame(width: 50)
+                Spacer().frame(width: 40)
                 
                 
                 Button(action: {
@@ -53,7 +53,7 @@ struct EditPickupView: View {
                     .cornerRadius(7)
                 })
                 
-                Spacer().frame(width: 50)
+                Spacer().frame(width: 40)
                 
                 Button(action: {
                     self.updatePickupAlert = true

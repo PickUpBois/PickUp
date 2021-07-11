@@ -54,69 +54,69 @@ struct CourtsNearMeListView: View {
             
             //if self.eventPopUp {
 
-            GeometryReader{proxy -> AnyView in
-            
-                let height = proxy.frame(in: .global).height
-            
-                    return AnyView(
-                        
-                        ZStack{
-                            BlurView(style: colorscheme == .light ? .light: .dark)
-                                .clipShape(CustomCorners(corners: [.topLeft,. topRight], radius: 30))
-                            
-                            VStack{
-                                Capsule()
-                                    .fill(Color.white)
-                                    .frame(width: 60, height: 4)
-                                    .padding(.top)
-                                
-                            }
-                            .frame(maxHeight: .infinity, alignment: .top)
-                        }
-                        // Initial State
-                        .offset(y: height - 300)
-                        // Up State
-                        .offset(y: -offset > 0 ? -offset <= (height - 580) ? offset : -(height - 580) : 0)
-                        // Down State
-                        .offset(y: -offset < 0 ? -offset >= (height - 1000) ? offset : -(height - 1000) : 0)
-                        .gesture(DragGesture().updating($gestureOffset, body: { value, out, _ in
-                            
-                            out = value.translation.height
-                            onChange()
-                        }).onEnded({ value in
-                            
-                            let maxHeight = height - 580
-                            let minHeight = height - 1000
-                            withAnimation{
-                               
-                                //Logic Conditions for moving states...
-                                //Up, down or mid...
-                                if -offset > 300 && -offset < maxHeight / 2 {
-                                    //mid..
-                                    offset = -(maxHeight / 3)
-                                }
-                                else if -offset > maxHeight / 2{
-                                    offset = -maxHeight
-                                }
-                                else if -offset < minHeight / 2{
-                                    offset = -minHeight
-                                    //Here change offset = -minHeight to popup to be false
-                                }
-                                    
-                                else{
-                                    offset = 0
-                                }
-                            }
-                            
-                            //Storing Last Offset..
-                            //So that the gesture can continue from the last poistion...
-                            
-                            lastOffset = offset
-                        }))
-                    
-                    )
-                
-            }.ignoresSafeArea(.all, edges: .bottom)
+//            GeometryReader{proxy -> AnyView in
+//
+//                let height = proxy.frame(in: .global).height
+//
+//                    return AnyView(
+//
+//                        ZStack{
+//                            BlurView(style: colorscheme == .light ? .light: .dark)
+//                                .clipShape(CustomCorners(corners: [.topLeft,. topRight], radius: 30))
+//
+//                            VStack{
+//                                Capsule()
+//                                    .fill(Color.white)
+//                                    .frame(width: 60, height: 4)
+//                                    .padding(.top)
+//
+//                            }
+//                            .frame(maxHeight: .infinity, alignment: .top)
+//                        }
+//                        // Initial State
+//                        .offset(y: height - 300)
+//                        // Up State
+//                        .offset(y: -offset > 0 ? -offset <= (height - 580) ? offset : -(height - 580) : 0)
+//                        // Down State
+//                        .offset(y: -offset < 0 ? -offset >= (height - 1000) ? offset : -(height - 1000) : 0)
+//                        .gesture(DragGesture().updating($gestureOffset, body: { value, out, _ in
+//
+//                            out = value.translation.height
+//                            onChange()
+//                        }).onEnded({ value in
+//
+//                            let maxHeight = height - 580
+//                            let minHeight = height - 1000
+//                            withAnimation{
+//
+//                                //Logic Conditions for moving states...
+//                                //Up, down or mid...
+//                                if -offset > 300 && -offset < maxHeight / 2 {
+//                                    //mid..
+//                                    offset = -(maxHeight / 3)
+//                                }
+//                                else if -offset > maxHeight / 2{
+//                                    offset = -maxHeight
+//                                }
+//                                else if -offset < minHeight / 2{
+//                                    offset = -minHeight
+//                                    //Here change offset = -minHeight to popup to be false
+//                                }
+//
+//                                else{
+//                                    offset = 0
+//                                }
+//                            }
+//
+//                            //Storing Last Offset..
+//                            //So that the gesture can continue from the last poistion...
+//
+//                            lastOffset = offset
+//                        }))
+//
+//                    )
+//
+//            }.ignoresSafeArea(.all, edges: .bottom)
                 
             //}
             //Ending
@@ -132,18 +132,18 @@ struct CourtsNearMeListView: View {
         }
     }
     
-    func onChange(){
-        DispatchQueue.main.async {
-            self.offset = gestureOffset + lastOffset
-        }
-    }
-    
-    //Blur Radius for BG>..
-    func getBlurRadius()->CGFloat{
-        let progress = -offset / (UIScreen.main.bounds.height - 300)
-        
-        return progress * 30
-    }
+//    func onChange(){
+//        DispatchQueue.main.async {
+//            self.offset = gestureOffset + lastOffset
+//        }
+//    }
+//
+//    //Blur Radius for BG>..
+//    func getBlurRadius()->CGFloat{
+//        let progress = -offset / (UIScreen.main.bounds.height - 300)
+//
+//        return progress * 30
+//    }
 }
 
 struct CourtsNearMeListView_Previews: PreviewProvider {

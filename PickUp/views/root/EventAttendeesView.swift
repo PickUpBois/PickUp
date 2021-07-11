@@ -15,7 +15,7 @@ struct EventAttendeesView: View {
         ScrollView {
             ForEach(self.viewModel.attendees.indices, id: \.self) { i in
                 let attendee = self.viewModel.attendees[i]
-                HStack{
+                HStack (spacing: 5){
                     Group {
                         if attendee.photoUrl != nil {
                             WebImage(url: URL(string: attendee.photoUrl ?? ""))
@@ -26,29 +26,31 @@ struct EventAttendeesView: View {
                                     }
                                 .indicator(.activity)
                                 .foregroundColor(.blue)
-                                .frame(width: 60, height: 60, alignment: .center)
+                                .frame(width: 20, height: 20, alignment: .center)
                                 .clipShape(Circle())
                                 .shadow(radius: 2)
                                 .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
-                                .padding()
+                                .padding(.trailing, 5)
                         } else {
                             Image("placeholder")
                                 .resizable()
                                 .foregroundColor(.blue)
-                                .frame(width: 60, height: 60, alignment: .center)
+                                .frame(width: 20, height: 20, alignment: .center)
                                 .clipShape(Circle())
                                 .shadow(radius: 2)
                                 .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
-                                .padding()
+                                .padding(.trailing, 5)
                         }
                     }
 
                     VStack(alignment: .leading){
                         FriendItemView(id: attendee.id, username: attendee.username)
+                        .font((.system(size: 15)))
                         .frame(alignment: .leading)
 
                         HStack{
                         Text("\(attendee.firstName) \(attendee.lastName)")
+                        .font((.system(size: 15)))
                         .fontWeight(.light)
                         .foregroundColor(Color("Text"))
 
@@ -70,22 +72,10 @@ struct EventAttendeesView: View {
 //                            Text("69 mutual friends")
 //                                .fontWeight(.light)
 
-                        }.frame(width: 300, alignment: .leading)
+                        }.frame(width: 150, alignment: .leading)
 
                     }
                 }.frame(alignment: .topLeading)
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                HStack {
-                    Image("logo")
-                        .resizable()
-                        .padding(.top, -5)
-                        .frame(width: 130, height: 40)
-                        .scaledToFit()
-                        
-                }
             }
         }
     }

@@ -50,12 +50,12 @@ struct NotificationListView: View {
                 VStack(alignment:.center){
                     ZStack{
                         FinishPickupView(showPopUp: $mvpPopUp, viewModel: selectedViewModel!)
-                            .background(Color("Background_SmallView"))
+                            .background(Color(("Tabbar")))
                             .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.3, alignment: .center)
                             .padding(.vertical, 10.0)
                             .padding(.horizontal, 10)
 
-                        }.background(Color("Friends_Popup_Background").edgesIgnoringSafeArea(.all))
+                        }.background(Color("Tabbar").edgesIgnoringSafeArea(.all))
                             .cornerRadius(20)
                 
                     Button(action: {

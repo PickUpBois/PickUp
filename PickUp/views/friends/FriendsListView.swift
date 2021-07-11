@@ -49,16 +49,20 @@ struct FriendsListView: View {
                                     .clipShape(Circle())
                                     .shadow(radius: 2)
                                     .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
-                                    .padding()
+                                    .padding(.trailing, 20)
+                                    .padding(.leading, 10)
+                                    .padding(.vertical, 10)
                             } else {
                                 Image("placeholder")
                                     .resizable()
                                     .foregroundColor(.blue)
-                                    .frame(width: 40, height: 60, alignment: .center)
+                                    .frame(width: 40, height: 40, alignment: .center)
                                     .clipShape(Circle())
                                     .shadow(radius: 2)
                                     .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
-                                    .padding()
+                                    .padding(.trailing, 20)
+                                    .padding(.leading, 10)
+                                    .padding(.vertical, 10)
                             }
                         }
 
@@ -95,7 +99,7 @@ struct FriendsListView: View {
 
                     }.frame(alignment: .topLeading)
                 }
-            }
+            }.padding(.top, 20)
             .onAppear(perform: {
             self.viewModel.getFriends()
         })

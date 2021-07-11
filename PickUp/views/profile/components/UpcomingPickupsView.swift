@@ -61,14 +61,12 @@ struct UpcomingPickupsView: View {
                                 VStack{
                                     Capsule()
                                         .fill(Color.white)
-                                        .frame(width: 60, height: 4)
+                                        .frame(width: 60, height: 2)
                                         .padding(.top)
                                     
                                     
                                             EventDetailsBoxView(event: selectedEvent!, viewModel: EventDetailsBoxViewModel(event: selectedEvent!))
-                                            .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.2, alignment: .top)
-                                                .padding(.vertical, 10.0)
-                                                .padding(.horizontal, 10)
+                                                .padding(.all, 20.0)
                                     
                                 }
                                 .frame(maxHeight: .infinity, alignment: .top)
@@ -76,7 +74,7 @@ struct UpcomingPickupsView: View {
                             // Initial State
                             .offset(y: height - 200)
                             // Up State
-                            .offset(y: -offset > 0 ? -offset <= (height - 400) ? offset : -(height - 400) : 0)
+                            .offset(y: -offset > 0 ? -offset <= (height - 250) ? offset : -(height - 250) : 0)
                             // Down State
                             .offset(y: -offset < 0 ? -offset >= (height - 800) ? offset : -(height - 800) : 0)
                             .gesture(DragGesture().updating($gestureOffset, body: { value, out, _ in
@@ -85,7 +83,7 @@ struct UpcomingPickupsView: View {
                                 onChange()
                             }).onEnded({ value in
                                 
-                                let maxHeight = height - 400
+                                let maxHeight = height - 250
                                 let minHeight = height - 800
                                 withAnimation{
                                    
@@ -111,7 +109,13 @@ struct UpcomingPickupsView: View {
                                 //Storing Last Offset..
                                 //So that the gesture can continue from the last poistion...
                                 
+                                if self.eventPopUp{
                                 lastOffset = offset
+                                }
+                                
+                                else if self.eventPopUp == false{
+                                offset = 0
+                                }
                             }))
                         
                         )
