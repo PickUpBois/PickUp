@@ -88,6 +88,9 @@ struct ProfileView: View {
                 if popover == true{
             
                     PopOverView(alertType: $alertType).environmentObject(self.viewModel)
+                        .onTapGesture {
+                        popover.toggle()
+                    }
                     
                 }
             }

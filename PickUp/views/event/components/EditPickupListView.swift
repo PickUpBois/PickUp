@@ -22,8 +22,9 @@ struct EditPickupListView: View {
                 viewModel.friendsListViewModel.getFriends()
             }
         case .loading:
-            Spacer().frame(height: 15)
+            Spacer()
             ProgressView()
+            Spacer()
         case .success, .fail:
             ScrollView {
                 ForEach(self.viewModel.events, id: \.self.id) { event in
@@ -38,20 +39,17 @@ struct EditPickupListView: View {
             }
             .opacity(self.friendPopUp ? 0.2: 1)
                     if self.friendPopUp {
-                        VStack(alignment:.center){
-                            ZStack{
+                            VStack{
                                 VStack(alignment: .center){
                                     InviteFriendsView(viewModel: InviteFriendsViewModel(event: selectedEvent!), friendsViewModel: FriendsListViewModel(userId: AppState.shared.authId!)).scaleEffect(0.7)
                                 }
-                                .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.6, alignment: .bottom)
+                                .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.6, alignment: .top)
                             
-                                }
                             .onTapGesture(perform: {
                                 withAnimation(.easeIn){self.friendPopUp.toggle()}
                                     })
-                            .background(Color("Friends_Popup_Background").edgesIgnoringSafeArea(.all))
+                                    .background(Color("Friends_Popup_Background").edgesIgnoringSafeArea(.all))
                                     .cornerRadius(20)
-                            
                             
                             
                             Button(action: {
@@ -60,17 +58,21 @@ struct EditPickupListView: View {
                             }
                         }) {
                             Image(systemName: "multiply").resizable()
-                                .frame(width: 20, height: 20)
+                                .frame(width: 15, height: 15)
                                 .foregroundColor(Color.white)
-                                .padding(15)
+                                .padding(13)
 
                         }
                         .background(Color.red)
                         .clipShape(Circle())
-                        .padding(.top, 5)
-                        }
+                        
+                        Spacer().frame(height: 50)
+                        
+                            }
+                        
                     }
-        }
+            
+                }
             }
         
     }

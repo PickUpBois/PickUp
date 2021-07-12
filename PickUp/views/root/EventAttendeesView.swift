@@ -46,12 +46,14 @@ struct EventAttendeesView: View {
                     VStack(alignment: .leading){
                         FriendItemView(id: attendee.id, username: attendee.username)
                         .font((.system(size: 15)))
+                        .lineLimit(1)
                         .frame(alignment: .leading)
 
                         HStack{
                         Text("\(attendee.firstName) \(attendee.lastName)")
                         .font((.system(size: 15)))
                         .fontWeight(.light)
+                        .lineLimit(1)
                         .foregroundColor(Color("Text"))
 
 //                        Spacer()

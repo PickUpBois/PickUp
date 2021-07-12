@@ -67,7 +67,7 @@ struct ProfileSettingsView: View {
                 }
                     Button(action:{
                     }) {
-                        //Text Field with Send Button
+                        //Need forms and documents
                         SettingsFields(title: "About", imgName: "info.circle.fill")
                             .foregroundColor(Color("Text"))
                 }
@@ -87,6 +87,9 @@ struct ProfileSettingsView: View {
             }
             .listStyle(SidebarListStyle())
             .environment(\.horizontalSizeClass, .regular)
+            .onAppear {
+                UITableView.appearance().isScrollEnabled = false
+            }
     
             }
             .navigationBarTitleDisplayMode(.inline)

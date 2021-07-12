@@ -12,7 +12,7 @@ struct PopOverView: View {
     @Binding var alertType: ProfileView.AlertType?
     var body: some View {
         
-        VStack(alignment: .center, spacing: 18) {
+        VStack(alignment: .center){
             
             Button(action:{
                 if self.viewModel.user?.friendStatus == .friend {
@@ -24,31 +24,55 @@ struct PopOverView: View {
                 if self.viewModel.user?.friendStatus == .friend {
                     Text("Remove Friend")
                         .foregroundColor(Color("Text"))
-                } else {
+                        .padding(.horizontal, 124)
+                        .padding(.vertical, 15)
+                        .background(Color.red).opacity(0.9)
+                        .cornerRadius(20)
+                }
+                
+                else {
                     Text("Add Friend")
                         .foregroundColor(Color("Text"))
+                        .padding(.horizontal, 139)
+                        .padding(.vertical, 15)
+                        .background(Color.blue).opacity(0.9)
+                        .cornerRadius(20)
                 }
             }
             
-            Divider()
+            Button(action:{
+            }) {
+                    Text("Message")
+                        .foregroundColor(Color("Text"))
+            }
+            .padding(.horizontal, 146)
+            .padding(.vertical, 15)
+            .background(Color.blue).opacity(0.9)
+            .cornerRadius(20)
+
+            
             Button(action:{
             }) {
                     Text("Block")
                         .foregroundColor(Color("Text"))
-            }
+            }.padding(.horizontal, 158)
+            .padding(.vertical, 15)
+            .background(Color.blue).opacity(0.9)
+            .cornerRadius(20)
+
             
-            Divider()
             Button(action:{
                 }) {
                     Text("Report")
                         .foregroundColor(Color("Text"))
-            }
+            }.padding(.horizontal, 153)
+            .padding(.vertical, 15)
+            .background(Color.blue).opacity(0.9)
+            .cornerRadius(20)
             
         }
-        .foregroundColor(.black)
-        .frame(width: .infinity)
-        .padding()
-        .background(Color.gray.opacity(0.1))
+        .background(Color("Tabbar").opacity(0.1))
+        .padding(.bottom, 10)
 }
 }
 

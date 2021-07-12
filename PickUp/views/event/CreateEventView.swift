@@ -35,7 +35,8 @@ struct CreateEventView: View {
                     EditPickupListView(viewModel: EditPickUpListViewModel())
                 }
 
-                    
+            Spacer()
+                
             }.navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem(placement: .principal) {
