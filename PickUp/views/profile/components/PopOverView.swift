@@ -24,18 +24,20 @@ struct PopOverView: View {
                 if self.viewModel.user?.friendStatus == .friend {
                     Text("Remove Friend")
                         .foregroundColor(Color("Text"))
-                        .padding(.horizontal, 124)
+                        .frame(width: 380)
+                        .padding(.horizontal)
                         .padding(.vertical, 15)
-                        .background(Color.red).opacity(0.9)
+                        .background(Color("DescriptionEvent"))
                         .cornerRadius(20)
                 }
                 
                 else {
                     Text("Add Friend")
                         .foregroundColor(Color("Text"))
-                        .padding(.horizontal, 139)
+                        .frame(width: 380)
+                        .padding(.horizontal)
                         .padding(.vertical, 15)
-                        .background(Color.blue).opacity(0.9)
+                        .background(Color("DescriptionEvent"))
                         .cornerRadius(20)
                 }
             }
@@ -44,31 +46,36 @@ struct PopOverView: View {
             }) {
                     Text("Message")
                         .foregroundColor(Color("Text"))
+                        .frame(width: 380)
+                        .padding(.horizontal)
+                        .padding(.vertical, 15)
+                        .background(Color("DescriptionEvent"))
+                        .cornerRadius(20)
             }
-            .padding(.horizontal, 146)
-            .padding(.vertical, 15)
-            .background(Color.blue).opacity(0.9)
-            .cornerRadius(20)
 
-            
             Button(action:{
             }) {
                     Text("Block")
                         .foregroundColor(Color("Text"))
-            }.padding(.horizontal, 158)
-            .padding(.vertical, 15)
-            .background(Color.blue).opacity(0.9)
-            .cornerRadius(20)
+                        .frame(width: 380)
+                        .padding(.horizontal)
+                        .padding(.vertical, 15)
+                        .background(Color("DescriptionEvent"))
+                        .cornerRadius(20)
+            }
 
             
             Button(action:{
                 }) {
                     Text("Report")
                         .foregroundColor(Color("Text"))
-            }.padding(.horizontal, 153)
-            .padding(.vertical, 15)
-            .background(Color.blue).opacity(0.9)
-            .cornerRadius(20)
+                        .frame(width: 380)
+                        .padding(.horizontal)
+                        .padding(.vertical, 15)
+                        .background(Color("DescriptionEvent"))
+                        .cornerRadius(20)
+            }
+
             
         }
         .background(Color("Tabbar").opacity(0.1))
