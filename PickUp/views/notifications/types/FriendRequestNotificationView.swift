@@ -75,7 +75,7 @@ struct FriendRequestNotificationView: View {
                     HStack {
                         Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName) sent you a friend request:")
                             .foregroundColor(Color.purple)
-                            .lineLimit(1)
+                            .lineLimit(2)
                             .padding(.leading, 12.0)
                         Spacer().frame(minWidth: 5, maxWidth: 5)
                         

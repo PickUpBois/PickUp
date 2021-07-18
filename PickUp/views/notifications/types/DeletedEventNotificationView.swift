@@ -70,7 +70,7 @@ struct DeletedEventNotificationView: View {
                     HStack {
                         Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName) has deleted the event \(viewModel.event!.name)")
                             .foregroundColor(Color.purple)
-                            .lineLimit(1)
+                            .lineLimit(2)
                             .padding(.leading, 12.0)
                             .frame(width: 380, alignment: .leading)
                     }

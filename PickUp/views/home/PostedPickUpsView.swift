@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct PostedPickUpsView: View {
+    @EnvironmentObject var viewModel: HomeViewModel
+    @State var postPopUp = false
+    @Environment(\.colorScheme) var colorscheme
+    //Gesture Properties
+    @State var offset: CGFloat = 0
+    @State var lastOffset: CGFloat = 0
+    @GestureState var gestureOffset: CGFloat = 0
+    
     var body: some View {
         
                 Spacer().frame(height: 5)
-        
+
                 VStack{
+                    
                     VStack{
                         //Picture Posted
                         Image("Tyrese").resizable()
@@ -28,11 +37,19 @@ struct PostedPickUpsView: View {
                         HStack{
                             
                             HStack{
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                                Button(action: {
+                                    
+                                    withAnimation(.easeIn){
+                                    self.postPopUp = true
+                                        
+                                    }
+                                        
+                                }, label: {
                                     Image(systemName: "heart")
                                         .frame(width: 20, height: 20, alignment: .center)
                                         .foregroundColor(Color("Text"))})
                             Spacer().frame(width: 5.0)
+                                
                             Text("100")
                                 .foregroundColor(Color("Text"))
                                 .font(.caption)
@@ -41,7 +58,14 @@ struct PostedPickUpsView: View {
                             Spacer().frame(width: 40)
                             
                             HStack{
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                                Button(action: {
+                                    
+                                    withAnimation(.easeIn){
+                                    self.postPopUp = true
+                                        
+                                    }
+                                    
+                                }, label: {
                                     Image(systemName: "message")
                                         .frame(width: 20, height: 20, alignment: .center)
                                         .foregroundColor(Color("Text"))})
@@ -54,7 +78,14 @@ struct PostedPickUpsView: View {
                             Spacer().frame(width: 40)
                             
                             HStack{
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                                Button(action: {
+                                    
+                                    withAnimation(.easeIn){
+                                    self.postPopUp = true
+                                        
+                                    }
+                                    
+                                }, label: {
                                     Image(systemName: "arrowshape.turn.up.right")
                                         .frame(width: 20, height: 20, alignment: .center)
                                         .foregroundColor(Color("Text"))})
@@ -284,8 +315,10 @@ struct PostedPickUpsView: View {
                     
                     
                 }
-            }
-        }
+        
+    }
+}
+
 
 //ImageOverLay over the picture - Person who posted
 struct ImageOverlayPerson: View {
@@ -341,8 +374,7 @@ struct ImageOverlayLikes: View {
 struct PostedPickUps_preview: PreviewProvider {
     static var previews: some View {
         PostedPickUpsView()
-
-            }
-        }
+    }
+}
 
 

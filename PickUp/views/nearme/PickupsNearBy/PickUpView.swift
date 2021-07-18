@@ -137,27 +137,3 @@ struct PickUpView_Previews: PreviewProvider {
 }
 
 
-
-
-//            .sheet(isPresented: $showPopUp, content: {
-//            Spacer().frame(height: 300)
-//                EventDetailsBoxView(event: event, viewModel: EventDetailsBoxViewModel(event: event, refresh: self.viewModel.getUpcomingEvents))
-//                .padding(.all, 30.0)
-//                .background(Color("Friends_Popup_Background"))
-//                .cornerRadius(8)
-//                .padding(.horizontal, 20)
-//
-//            Button(action: {
-//                self.showPopUp.toggle()
-//            },label: {
-//                Text("Dismiss")
-//                    .foregroundColor(Color.white)
-//                    .frame(maxWidth: 400)
-//                    .padding(.vertical, 10)
-//                    .background(Color.black.opacity(0.8))
-//                    .cornerRadius(9)
-//                    .padding(.horizontal, 20)
-//            })
-//            Spacer().frame(height: 300)
-//            .background(BackgroundClearView())
-//        })

@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct CreatePostView: View {
+    @State var currentPostType = "Public"
+    @State var tagPopUp = false
+    @State var attachPopUp = false
     var body: some View {
         
         Spacer().frame(height: 20)
         
         ZStack{
             
-        VStack (alignment: .leading){
+            VStack (alignment: .leading, spacing: 10){
             //Name Stack
             HStack {
                 Image("serena")
@@ -31,70 +34,127 @@ struct CreatePostView: View {
                     .lineLimit(1)
             }
             
-            Spacer().frame(height: 10)
             
-            //Adding Picture and Public/Private Stack
-            HStack {
-                    Button(action: {},
-                           label: {
-                    Text("Private or Public")
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color("Text"))
-                        .padding(.vertical, 10)
-                            .padding(.horizontal, 20)
-                        .background(Color("DescriptionEvent").opacity(0.8))
-                            .cornerRadius(9)
-                    })
+            //Public/Private Stack
+                   
+                HStack(spacing: 10 ){
                     
-                    Spacer().frame(width: 10)
+                    ForEach(["Private","Public"],id: \.self) {tab in
                     
-                    Button(action: {
-                    },label: {
-                    Text("Add Picture or Video")
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color("Text"))
-                        .padding(.vertical, 10)
-                            .padding(.horizontal, 20)
-                        .background(Color("DescriptionEvent").opacity(0.8))
-                            .cornerRadius(9)
-                    })
+                        PostTabButton(title: tab, currentType: $currentPostType)
+                    
+                    }
 
                 }
-            
-            Spacer().frame(height: 10)
-            
+                
             //Caption Stack
             HStack{
                 Text(" Write Something...")
                     .foregroundColor(Color("Text")).opacity(0.5)
-            }.frame(width: 380, height: 380, alignment: .topLeading)
+            }.frame(maxWidth: .infinity, maxHeight: 200, alignment: .topLeading)
             .border(Color("Text"), width: 0.25)
+                
+                    
             
             //Tag Teammates Stack
-            HStack{
-                Button(action: {},
-                       label: {
+            VStack(alignment: .leading, spacing: 10){
+                
                 Text("Tag Teammates")
-                    .foregroundColor(Color("Text"))
                     .fontWeight(.semibold)
-                    .padding(.vertical, 10)
-                        .padding(.horizontal, 130)
-                    .background(Color("DescriptionEvent").opacity(0.8))                      .cornerRadius(9)
-            })
-            }
+                    .foregroundColor(Color("Text"))
+                
+                HStack(spacing: 10){
+                    ForEach(1...3,id: \.self){i in
+                        
+                        Image("a\(i)")
+                            .resizable()
+                            .foregroundColor(.blue)
+                            .frame(width: 20, height: 20)
+                            .clipShape(Circle())
+                            .shadow(radius: 2)
+                            .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
+                    }
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        self.tagPopUp.toggle()
+                    },label: {
+                    Text("Tag Teammates")
+                        .font(.caption)
+                        .foregroundColor(Color("Text"))
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 10)
+                        .background(Color("DescriptionEvent").opacity(0.8))
+                            .cornerRadius(9)
+                    }).sheet(isPresented: $tagPopUp, content: {
+                        
+                        TagFriendsView()
+                        
+                        
+                    })
+
+                    
+                }
+                Divider()
+        }
             
+        
             //Tag Event/PickUp Stack
-            HStack{
-                Button(action: {},
-                       label: {
-                Text("Tag Event")
-                    .foregroundColor(Color("Text"))
+            VStack(alignment: .leading, spacing: 10){
+                
+                Text("Attach Event")
                     .fontWeight(.semibold)
+                    .foregroundColor(Color("Text"))
+                
+                HStack(spacing: 10){
+                    ForEach(1...3,id: \.self){i in
+                        
+                        Image("a\(i)")
+                            .resizable()
+                            .foregroundColor(.blue)
+                            .frame(width: 20, height: 20)
+                            .clipShape(Circle())
+                            .shadow(radius: 2)
+                            .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
+                    }
+                    
+                    Spacer(minLength: 50)
+                    
+                    Button(action: {
+                        self.attachPopUp.toggle()
+                    },label: {
+                    Text("Attach Event")
+                        .font(.caption)
+                        .foregroundColor(Color("Text"))
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 10)
+                        .background(Color("DescriptionEvent").opacity(0.8))
+                            .cornerRadius(9)
+                    }).sheet(isPresented: $attachPopUp, content: {
+                        
+                        AttachPickupView()
+                        
+                    })
+                    
+                }
+                
+                Divider()
+        }
+            
+            //Adding Picture/Video Stack
+        HStack{
+            Button(action: {
+                },label: {
+                Text("Add Picture or Video")
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color("Text"))
                     .padding(.vertical, 10)
-                        .padding(.horizontal, 152)
-                    .background(Color("DescriptionEvent").opacity(0.8))                     .cornerRadius(9)
-            })
-            }
+                    .frame(maxWidth: .infinity)
+                    .background(Color("DescriptionEvent").opacity(0.8))
+                        .cornerRadius(9)
+                })
+                }
             
             //Post Stack
             HStack{
@@ -104,13 +164,14 @@ struct CreatePostView: View {
                     .foregroundColor(Color("Text"))
                     .fontWeight(.semibold)
                     .padding(.vertical, 10)
-                        .padding(.horizontal, 172)
-                    .background(Color("DescriptionEvent").opacity(0.8))                      .cornerRadius(9)
+                    .frame(maxWidth: .infinity)
+                    .background(Color("DescriptionEvent").opacity(0.8))
+                    .cornerRadius(9)
             })
             }
             
             
-        }
+        }.padding(.horizontal, 10)
             
         }
         
@@ -119,9 +180,49 @@ struct CreatePostView: View {
         }
     }
 
+struct PostTabButton: View {
+    var title: String
+    @Binding var currentType: String
+    
+    var body: some View {
+        
+        Button{
+            
+            withAnimation{
+                
+                currentType = title
+                
+            }
+            
+        } label: {
+            Text(title)
+                .fontWeight(.semibold)
+                .foregroundColor(Color("Text"))
+                .padding(.vertical, 8)
+                .frame(maxWidth: .infinity)
+                .background(
+                    
+                    Capsule()
+                .stroke(Color.black, lineWidth: 1)
+            )
+            
+                .background(
+                    
+                    Capsule()
+                        .fill(Color("DescriptionEvent").opacity(title == currentType ? 1 : 0))
+            )
+            
+        }
+    }
+}
+
 
 struct CreatePostView_Previews: PreviewProvider {
     static var previews: some View {
         CreatePostView()
     }
 }
+
+
+
+
