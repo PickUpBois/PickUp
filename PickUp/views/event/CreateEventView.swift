@@ -21,7 +21,7 @@ struct CreateEventView: View {
                 Spacer().frame(height:15)
                     
                 Picker("", selection: $selection) {
-                    Text("Create Event").foregroundColor(Color.blue).tag(1)
+                    Text("Create Pickup").foregroundColor(Color.blue).tag(1)
                     
                     Text("Edit Your Pickup").foregroundColor(Color.red).tag(0)
                 }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)

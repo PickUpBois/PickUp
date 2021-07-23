@@ -13,7 +13,7 @@ struct FinishPickupView: View {
     let viewModel: NotificationViewModel
 
     var body: some View {
-        Spacer().frame(height: 20)
+        Spacer().frame(height: 10)
         
         VStack (alignment: .leading){
             //Name Stack

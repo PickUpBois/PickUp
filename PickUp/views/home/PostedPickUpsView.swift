@@ -18,7 +18,7 @@ struct PostedPickUpsView: View {
     
     var body: some View {
         
-                Spacer().frame(height: 5)
+                Spacer().frame(height: 10)
 
                 VStack{
                     
@@ -128,7 +128,7 @@ struct PostedPickUpsView: View {
                     }
                     .padding(.bottom, 15.0)
                     .padding(.horizontal, 0.0)
-                    .background(Color("Background_SmallView"))
+                    .background(Color("Tabbar"))
 
                     
                     Spacer().frame(height: 0)
@@ -219,7 +219,7 @@ struct PostedPickUpsView: View {
                     }
                     .padding(.bottom, 15.0)
                     .padding(.horizontal, 0.0)
-                    .background(Color("Background_SmallView"))
+                    .background(Color("Tabbar"))
 
                     
                     

@@ -24,7 +24,7 @@ struct SignUpView: View {
                 .frame(width: 240, height: 180)
                 .scaledToFit()
             
-            Spacer()
+            Spacer().frame(height: 20)
             
             HStack {
                 //Hstack Email
@@ -32,7 +32,7 @@ struct SignUpView: View {
             }
             //First Name Text Field Settings
             .frame(width: 350)
-            .padding(.all, 20.0)
+            .padding(.all, 15.0)
             .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
             .cornerRadius(8)
             
@@ -42,7 +42,7 @@ struct SignUpView: View {
             }
             //Last Name Text Field Settings
             .frame(width: 350)
-            .padding(.all, 20.0)
+            .padding(.all, 15.0)
             .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
             .cornerRadius(8)
             .padding(.horizontal, 20)
@@ -53,7 +53,7 @@ struct SignUpView: View {
             }
             //Username Text Field Settings
             .frame(width: 350)
-            .padding(.all, 20.0)
+            .padding(.all, 15.0)
             .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
             .cornerRadius(8)
             .padding(.horizontal, 20)
@@ -67,7 +67,7 @@ struct SignUpView: View {
             }
             //Email Text Field Settings
             .frame(width: 350)
-            .padding(.all, 20.0)
+            .padding(.all, 15.0)
             .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
             .cornerRadius(8)
             .padding(.horizontal, 20)
@@ -81,7 +81,7 @@ struct SignUpView: View {
             }
             //Password Text Field Settings
             .frame(width: 350)
-            .padding(.all, 20)
+            .padding(.all, 15)
             .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
             .cornerRadius(8)
             .padding(.horizontal, 20)
@@ -91,7 +91,8 @@ struct SignUpView: View {
                 Text("Sign up")
                     .foregroundColor(.white)
                     .font(.system(size: 20, weight: .medium))
-                    }.frame(width: 380)
+                    .frame(width: 380)
+                    }
                     .padding(.vertical, 10)
                     .background(Color.blue.opacity(0.8))
                     .cornerRadius(9)
@@ -115,6 +116,7 @@ struct SignUpView: View {
             .cornerRadius(9)
             .padding(.horizontal, 20)
         }
+        Spacer()
     }
 }
     

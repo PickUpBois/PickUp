@@ -95,7 +95,36 @@ struct FriendsListView: View {
 //                            Text("69 mutual friends")
 //                                .fontWeight(.light)
 
-                        }.frame(width: 300, alignment: .leading)
+                        }.frame(width: 220, alignment: .leading)
+                        
+                        
+                            HStack{
+                                Button(action: {
+                                    
+                                }, label: {
+                                    
+//                                    if friend = true {
+                                        Text("Teammate")
+                                            .foregroundColor(Color("Text"))
+                                            .font(.caption)
+                                            .padding(.horizontal, 10)
+                                            .padding(.vertical, 5)
+//                                    }
+                                    
+//                                    else{
+//                                        Text("Opponent")
+//                                            .foregroundColor(Color("Text"))
+//                                            .font(.caption)
+//                                            .padding(.horizontal, 10)
+//                                            .padding(.vertical, 5)
+//
+//                                    }
+                                    
+                                }).background(Color.green)
+                                .cornerRadius(10)
+                        }
+                        
+                        Spacer()
 
                     }.frame(alignment: .topLeading)
                 }

@@ -63,7 +63,7 @@ struct CreatePostView: View {
                     .fontWeight(.semibold)
                     .foregroundColor(Color("Text"))
                 
-                HStack(spacing: 10){
+                HStack(){
                     ForEach(1...3,id: \.self){i in
                         
                         Image("a\(i)")
@@ -108,16 +108,8 @@ struct CreatePostView: View {
                     .foregroundColor(Color("Text"))
                 
                 HStack(spacing: 10){
-                    ForEach(1...3,id: \.self){i in
-                        
-                        Image("a\(i)")
-                            .resizable()
-                            .foregroundColor(.blue)
-                            .frame(width: 20, height: 20)
-                            .clipShape(Circle())
-                            .shadow(radius: 2)
-                            .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
-                    }
+                    
+                    Text("🏀 Baskeball at State Gym")
                     
                     Spacer(minLength: 50)
                     
@@ -203,7 +195,7 @@ struct PostTabButton: View {
                 .background(
                     
                     Capsule()
-                .stroke(Color.black, lineWidth: 1)
+                .stroke(Color("DescriptionEvent"))
             )
             
                 .background(

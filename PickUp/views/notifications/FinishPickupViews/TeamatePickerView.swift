@@ -20,6 +20,12 @@ struct TeamatePickerView: View {
     
     var body: some View {
         VStack {
+            VStack{
+        Text("Team Selection")
+            .fontWeight(.bold)
+            Spacer().frame(height: 10)
+                Divider()
+            }
             HStack{
                 Text("Team 1")
                 Spacer().frame(width: 15)
@@ -30,7 +36,8 @@ struct TeamatePickerView: View {
                 ForEach(attendees.indices, id: \.self) { i in
                     Group {
                         HStack{
-                            Text("\(attendees[i].firstName) \(attendees[i].lastName)").frame(width: 180, alignment:.leading).lineLimit(1)
+                            Text("\(attendees[i].firstName) \(attendees[i].lastName)")
+                            .frame(width: 175, alignment:.leading).lineLimit(1)
                             Spacer().frame(width: 5)
                             CheckBoxView(selection: $teamSelections[i], team: .team1)
                             Spacer().frame(width: 45)
@@ -42,18 +49,24 @@ struct TeamatePickerView: View {
             }
             .frame(height: 150)
             Spacer().frame(height: 10)
-            HStack {
-                Text("Winning team")
+            
+            
+            Text("Winner")
+                .fontWeight(.bold)
+            Divider()
+            HStack{
+                Text("Team 1")
                 Spacer().frame(width: 15)
-                VStack {
-                    Text("Team 1")
+                Text("Team 2")
+            }.frame(width: 300, alignment: .trailing)
+            Spacer().frame(height: 10)
+                HStack {
+                Text("Winning team")
+                .frame(width: 175, alignment:.leading).lineLimit(1)
+                Spacer().frame(width: 6)
                     CheckBoxView(selection: $winningTeam, team: .team1)
-                }
-                Spacer().frame(width: 30)
-                VStack {
-                    Text("Team 2")
+                Spacer().frame(width: 45)
                     CheckBoxView(selection: $winningTeam, team: .team2)
-                }
             }
         }
     }

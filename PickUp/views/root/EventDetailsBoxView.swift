@@ -290,6 +290,7 @@ struct EventDetailsBoxView: View {
             
             Divider()
                 
+                ScrollView{
                     VStack (alignment: .leading){
                         HStack(alignment: .top){
                             Image(systemName: "doc.circle.fill")
@@ -367,6 +368,7 @@ struct EventDetailsBoxView: View {
 //                    })
 //
 //                    }
+                }
                 }
             }
         }

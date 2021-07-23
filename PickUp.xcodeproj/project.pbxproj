@@ -122,6 +122,9 @@
 		C04BFC222681539F006DE620 /* EventDetailsBoxSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04BFC212681539F006DE620 /* EventDetailsBoxSmallView.swift */; };
 		C055C3CA2673074200FF40AA /* EditPickupListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C055C3C92673074200FF40AA /* EditPickupListViewModel.swift */; };
 		C055E8FC268A5BA1008D456D /* OnevOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C055E8FB268A5BA1008D456D /* OnevOneView.swift */; };
+		C05E56A826A9F04F000DAF02 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05E56A726A9F04F000DAF02 /* ForgotPasswordView.swift */; };
+		C05E56AA26AA0DF9000DAF02 /* PastPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05E56A926AA0DF9000DAF02 /* PastPostView.swift */; };
+		C05E56B026AA432B000DAF02 /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05E56AF26AA432B000DAF02 /* PrivacyView.swift */; };
 		C06A97D326790DF2004966F0 /* PopOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A97D226790DF2004966F0 /* PopOverView.swift */; };
 		C088BBA7265780CB007301F7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088BBA6265780CB007301F7 /* MapViewModel.swift */; };
 		C088BBA9265785BE007301F7 /* MapMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088BBA8265785BE007301F7 /* MapMainView.swift */; };
@@ -293,6 +296,9 @@
 		C04BFC212681539F006DE620 /* EventDetailsBoxSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsBoxSmallView.swift; sourceTree = "<group>"; };
 		C055C3C92673074200FF40AA /* EditPickupListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPickupListViewModel.swift; sourceTree = "<group>"; };
 		C055E8FB268A5BA1008D456D /* OnevOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnevOneView.swift; sourceTree = "<group>"; };
+		C05E56A726A9F04F000DAF02 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		C05E56A926AA0DF9000DAF02 /* PastPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastPostView.swift; sourceTree = "<group>"; };
+		C05E56AF26AA432B000DAF02 /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
 		C06A97D226790DF2004966F0 /* PopOverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopOverView.swift; sourceTree = "<group>"; };
 		C088BBA6265780CB007301F7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		C088BBA8265785BE007301F7 /* MapMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMainView.swift; sourceTree = "<group>"; };
@@ -506,6 +512,7 @@
 				C06A97D226790DF2004966F0 /* PopOverView.swift */,
 				8D30B107263E2146002B4C62 /* ProfilePicture.swift */,
 				C055E8FB268A5BA1008D456D /* OnevOneView.swift */,
+				C05E56A926AA0DF9000DAF02 /* PastPostView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -533,6 +540,7 @@
 				8DFAD530261EBA910055BA76 /* LoginView.swift */,
 				8D65B2B2265905400085D5EE /* SignUpViewModel.swift */,
 				8D65B2B7265906290085D5EE /* LoginViewModel.swift */,
+				C05E56A726A9F04F000DAF02 /* ForgotPasswordView.swift */,
 			);
 			path = auth;
 			sourceTree = "<group>";
@@ -776,6 +784,7 @@
 				8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */,
 				C0EA4A1A2692D07E00C1D0CB /* UpdateProfileView.swift */,
 				C0EA4A1C2692D16100C1D0CB /* SettingsFields.swift */,
+				C05E56AF26AA432B000DAF02 /* PrivacyView.swift */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -1110,12 +1119,14 @@
 				8DA9D1AD2682ED0E00513358 /* EditPickupView.swift in Sources */,
 				1A03F99D263F473000C2E2CD /* PastPickupView.swift in Sources */,
 				C055E8FC268A5BA1008D456D /* OnevOneView.swift in Sources */,
+				C05E56AA26AA0DF9000DAF02 /* PastPostView.swift in Sources */,
 				C088BBA9265785BE007301F7 /* MapMainView.swift in Sources */,
 				8D09E70B2623E16E0007B871 /* ProfileView.swift in Sources */,
 				C0B81C6E2657064B000555BD /* NotificationListView.swift in Sources */,
 				1A03F99F263F482F00C2E2CD /* UpcomingPickupsView.swift in Sources */,
 				8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
 				8DA9D1B32683F95800513358 /* EditPickupViewModel.swift in Sources */,
+				C05E56A826A9F04F000DAF02 /* ForgotPasswordView.swift in Sources */,
 				C04BFC1C267E6643006DE620 /* LoadingView.swift in Sources */,
 				8D65B2812658CE550085D5EE /* RestService.swift in Sources */,
 				8DA9D1A726828C9F00513358 /* EventDetailsBoxViewModel.swift in Sources */,
@@ -1191,6 +1202,7 @@
 				1AB44EDB26439DB300568ECB /* TypingBlockView.swift in Sources */,
 				8DE52179266427FC0077AF09 /* FriendsListView.swift in Sources */,
 				C0908F1F26A4B7E000ABE1CE /* TagFriendsView.swift in Sources */,
+				C05E56B026AA432B000DAF02 /* PrivacyView.swift in Sources */,
 				8DA9D1B9268555F700513358 /* EventAttendeesView.swift in Sources */,
 				C0EA4A1D2692D16100C1D0CB /* SettingsFields.swift in Sources */,
 				8D63ED24266F10160022FB79 /* NotificationListViewModel.swift in Sources */,

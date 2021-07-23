@@ -73,18 +73,21 @@ struct PickUpTabListView: View {
                             BlurView(style: colorscheme == .light ? .light: .dark)
                                 .clipShape(CustomCorners(corners: [.topLeft,. topRight], radius: 30))
                             
+                            
                             VStack{
                                 Capsule()
                                     .fill(Color.white)
                                     .frame(width: 60, height: 2)
                                     .padding(.top)
                                 
-                                
+                                ScrollView{
                                 EventDetailsBoxView(event: pickupViewModel.selectedEvent!, viewModel: EventDetailsBoxViewModel(event: pickupViewModel.selectedEvent!, refresh: self.viewModel.getUpcomingEvents))
                                     .padding(.all, 20.0)
+                                }
                                 
                             }
                             .frame(maxHeight: .infinity, alignment: .top)
+                            
                         }
                         // Initial State
                         .offset(y: height - 300)

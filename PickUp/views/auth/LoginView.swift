@@ -33,7 +33,7 @@ struct LoginView: View {
                     TextField("Email", text: $viewModel.email)
                 }
                 //Email Text Field Settings
-                .padding(.all, 20.0)
+                .padding(.all, 15.0)
                 .frame(width: 380)
                 .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                 .cornerRadius(8)
@@ -46,7 +46,7 @@ struct LoginView: View {
                     SecureField("Password", text: $viewModel.password)
                 }
                 //Password Text Field Settings
-                .padding(.all, 20)
+                .padding(.all, 15)
                 .frame(width: 380)
                 .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                 .cornerRadius(8)
@@ -57,7 +57,8 @@ struct LoginView: View {
                     Text("Login")
                         .foregroundColor(.white)
                         .font(.system(size: 20, weight: .medium))
-                        }.frame(width: 380)
+                        .frame(width: 380)
+                        }
                         .padding(.vertical, 10)
                         .background(Color.blue.opacity(0.8))
                         .cornerRadius(9)
@@ -69,14 +70,19 @@ struct LoginView: View {
                         .padding(.horizontal, 20)
                 }
                 //Forgot Password Button Settings
-                Button(action: {}){
+                NavigationLink(destination: ForgotPasswordView(), label:
+                       {
+                        
                     Text("Forgot Password?")
                         .foregroundColor(Color("Text"))
                         .font(.system(size: 18, weight: .medium))
-                        }.frame(maxWidth: .infinity)
+                        
+                       })
+                        .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
                         .cornerRadius(9)
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, 35)
+                
                     Spacer()
                     .frame(minHeight: 70, maxHeight: 190)
                 

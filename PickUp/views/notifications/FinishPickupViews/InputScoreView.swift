@@ -10,7 +10,6 @@ import SwiftUI
 struct InputScoreView: View {
     @Binding var showPopUp: Bool
     @State private var checked = true
-    
     @State var teamSelections: [TeamSelection]
     @State var winningTeam: TeamSelection
     var viewModel: NotificationViewModel
@@ -53,23 +52,21 @@ struct InputScoreView: View {
     }
     
     var body: some View {
-        VStack {
-            Spacer().frame(height: 200)
-            EventDetailsBoxView(event: viewModel.event!, fontColor: .white)
-                .frame(width: 300)
-                .padding(.all, 30.0)
-                .background(Color("Background_SmallView"))
-                .cornerRadius(8)
-                .padding(.horizontal, 20)
+        ZStack{
+        ScrollView{
+        VStack (alignment: .center){
+//            Text("Finish Your Pickup").font(.system(size: 25, weight: .semibold))
+//            Spacer().frame(height: 20)
             TeamatePickerView(attendees: mapAttendees(attendees: viewModel.event!.attendees), teamSelections: $teamSelections, winningTeam: $winningTeam)
-                .frame(width: 300)
+                .frame(width: 300, height: 310, alignment: .top)
                 .padding(.all, 30.0)
                 .background(Color("Background_SmallView"))
                 .cornerRadius(8)
             
             VStack{
-                HStack{
-                    Text("Input Score:").fontWeight(.bold)
+                VStack{
+                    Text("Input Score").fontWeight(.bold)
+                    Divider()
                 }
                 .padding(.all, 5.0)
                 .font(.body)
@@ -96,6 +93,14 @@ struct InputScoreView: View {
             .padding(.all, 30.0)
             .background(Color("Background_SmallView"))
             .cornerRadius(8)
+            Spacer()
+        }
+        .frame(width: 300)
+        .padding(.all, 35.0)
+        .cornerRadius(8)
+        }
+            VStack{
+            Spacer()
             
             Button(action: finishEvent,
                    label: {
@@ -103,16 +108,12 @@ struct InputScoreView: View {
                         .foregroundColor(Color.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
-                        .background(Color.green.opacity(0.8))
+                        .background(Color.green.opacity(0.95))
                         .cornerRadius(9)
                     
-            })
+                   }).padding(.horizontal, 20)
+            }
         }
-        .frame(width: 300)
-        .padding(.all, 30.0)
-        .background(Color("Background_SmallView"))
-        .cornerRadius(8)
-        
     }
 }
 

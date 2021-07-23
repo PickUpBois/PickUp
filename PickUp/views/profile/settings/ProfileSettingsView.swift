@@ -26,20 +26,27 @@ struct ProfileSettingsView: View {
                             .foregroundColor(Color("Text"))
                             
                 }
-                    Button(action:{
-                    }) {
-                        SettingsFields(title: "Privacy", imgName: "lock.fill")
-                            .foregroundColor(Color("Text"))
-                }
+                    NavigationLink(
+                        destination: PrivacyView()) {
+       
+                            SettingsFields(title: "Privacy", imgName: "lock.fill")
+                                .foregroundColor(Color("Text"))
+                    }
+                
                     Button(action:{
                     }) {
                         SettingsFields(title: "Security", imgName: "shield.lefthalf.fill")
                             .foregroundColor(Color("Text"))
                 }
+                
                     Button(action:{
+                        
+                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
                     }) {
-                    SettingsFields(title: "Notifications", imgName: "bell.circle.fill")
-                        .foregroundColor(Color("Text"))
+                        
+                        SettingsFields(title: "Notifications", imgName: "bell.circle.fill")
+                            .foregroundColor(Color("Text"))
+                                
                 }
                     Button(action:{
                     }) {

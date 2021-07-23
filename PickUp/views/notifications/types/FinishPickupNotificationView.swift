@@ -61,7 +61,6 @@ struct FinishPickupNotificationView: View {
                             
                         }.padding(.leading, 10.0)
                         .sheet(isPresented: $showPopUp, content: {
-                    
                             InputScoreView(showPopUp: $showPopUp, viewModel: viewModel)
                             
                             Button(action: {
@@ -75,12 +74,12 @@ struct FinishPickupNotificationView: View {
                                     .cornerRadius(9)
                                     .padding(.horizontal, 20)
                             })
-                            Spacer().frame(height: 300)
-                            .background(BackgroundClearView())
+                            //Spacer().frame(height: 300)
+                            //.background(BackgroundClearView())
                         })
                 }
                     .padding(.all, 10)
-        .frame(width: 400.0)
+                    .frame(width: 400.0)
                     .background(Color(red: 0.68, green: 0.8, blue: 0.9, opacity: 0.2))
                     .cornerRadius(8)
         

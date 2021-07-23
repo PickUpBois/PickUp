@@ -97,10 +97,12 @@ let threeColumns = [GridItem(), GridItem(), GridItem()]
                                         .fill(Color.white)
                                         .frame(width: 60, height: 2)
                                         .padding(.top)
-                                    
+                                        
+                                    ScrollView{
                                     
                                             EventDetailsBoxView(event: selectedEvent!, viewModel: EventDetailsBoxViewModel(event: selectedEvent!))
                                                 .padding(.all, 20.0)
+                                    }
                                     
                                 }
                                 .frame(maxHeight: .infinity, alignment: .top)

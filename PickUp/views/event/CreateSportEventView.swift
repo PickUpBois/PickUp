@@ -22,7 +22,9 @@ struct CreateSportEventView: View {
                 HStack(spacing: 18){
                     
                     Button(action: {
-                        
+                        withAnimation{
+
+                        }
                     }) {}
                     ForEach(1...16,id: \.self){i in
                         

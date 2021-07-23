@@ -57,6 +57,7 @@ struct ProfileView: View {
         case .loading:
             ProgressView()
         default:
+            ZStack{
             VStack {
             // Stacks everything on page
                 // Stacks for profile picture
@@ -68,13 +69,22 @@ struct ProfileView: View {
                 Picker("", selection: $selection) {
                     Text("Past Pickups").foregroundColor(Color.blue).tag(1)
                     Text("Upcoming Pickups").foregroundColor(Color.red).tag(0)
+                    Text("Posts").foregroundColor(Color.red).tag(2)
                 }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
 
-               
+                //first picker option
+                
                 if selection == 1 {
                     PastPickupView().environmentObject(viewModel)
                 }
+                
                 //second picker option
+                
+                else if selection == 2 {
+                    PastPostView()
+                }
+                
+                //third picker option
                 
                 else {
                     UpcomingPickupsView().environmentObject(viewModel)
@@ -82,17 +92,25 @@ struct ProfileView: View {
                 
                 
                 Spacer().frame(minHeight: 5, maxHeight: 10)
-                
-                //popover for unfriending, blocking, and reporting
-                    
-                if popover == true{
-            
-                    PopOverView(alertType: $alertType).environmentObject(self.viewModel)
-                        .onTapGesture {
-                        popover.toggle()
-                    }
                     
                 }
+                
+                //popover for unfriending, blocking, and reporting
+                VStack{
+                    
+                    if popover == true{
+                        Spacer()
+                        PopOverView(alertType: $alertType).environmentObject(self.viewModel)
+                            .onTapGesture {
+                            popover.toggle()
+                        }
+                        
+                    }
+
+                }.onTapGesture {
+                    popover.toggle()
+                }
+            
             }
             .alert(isPresented: showAlert) {
                 switch alertType! {
@@ -101,6 +119,7 @@ struct ProfileView: View {
                 case .removeFriend:
                     return self.removeFriendAlert
                 }
+                
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
