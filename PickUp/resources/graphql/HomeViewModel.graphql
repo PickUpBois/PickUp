@@ -1,6 +1,6 @@
-query QueryEvents($userId: String, $type: EventType, $status: EventStatus) {
-  queryEvents(userId: $userId, type: $type, status: $status) {
-    ...EventDetails
+query GetUpcomingEvents {
+  events(where: {status: {_eq: open}}) {
+	...EventDetails
   }
 }
 
@@ -18,20 +18,17 @@ mutation RejectFriendRequest($userId: String!) {
   }
 }
 
-query GetNotifications($userId: ID!) {
-  user(id: $userId) {
+query GetNotifications($userId: String!) {
+  notifications(where: {userId: {_eq: $userId}}) {
 	id,
-	notifications {
-	  id,
-	  createdAt,
-	  type,
-	  actor {
-		... UserDetails
-	  },
-	  event {
-		... EventDetails
-	  }
-	}
+	actor {
+	  ... UserDetails
+	},
+	event {
+	  ... EventDetails
+	},
+	createdAt,
+	type
   }
 }
 
@@ -63,8 +60,8 @@ mutation DeclineEventInvitation($eventId: Int!) {
   }
 }
 
-mutation EndEvent($eventId: Int!, $team1_members: [String!]!, $team2_members: [String!]!, $team1_win: Boolean!, $team1_scores: [Int!]!, $team2_scores: [Int!]!) {
-  endEvent(eventId: $eventId, team1_members: $team1_members, team2_members: $team2_members, team1_scores: $team1_scores, team2_scores: $team2_scores, team1_win: $team1_win) {
+mutation EndEvent($input: EndEventInput!) {
+  endEvent(input: $input) {
 	status,
 	reason
   }

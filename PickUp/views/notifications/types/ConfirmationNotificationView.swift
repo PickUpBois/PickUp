@@ -6,13 +6,29 @@
 //
 
 import SwiftUI
+enum JsonError: Error {
+    case error(String)
+}
+extension String {
+    var intArray: [Int]? {
+        do {
+            let data = self.data(using: Encoding.ascii)!
+            let array = try JSONSerialization.jsonObject(with: data, options: []) as? [Int]
+            return array
+        } catch {
+            print(self)
+            print("couldnt convert string to array")
+            return nil
+        }
+    }
+}
 
 struct ConfirmationNotificationView: View {
     @Binding var mvpPopUp: Bool
     @ObservedObject var viewModel: NotificationViewModel
     @Binding var selectedViewModel: NotificationViewModel?
     let location: String
-    var owner: UserDetails?
+    var owner: AttendeeDetails?
     
     func getDate(date: Date) -> String {
         let formatter = DateFormatter()
@@ -24,9 +40,9 @@ struct ConfirmationNotificationView: View {
     init(viewModel: NotificationViewModel, mvpPopUp: Binding<Bool>, selectedViewModel: Binding<NotificationViewModel?>) {
         self.owner = nil
         for attendee in viewModel.event!.attendees {
-            let userDetails = attendee.fragments.userDetails
-            if userDetails.eventAttendeeStatus == EventAttendeeStatus.owner {
-                self.owner = userDetails
+            let attendeeDetails = attendee.fragments.attendeeDetails
+            if attendeeDetails.status == event_attendee_status_enum.owner {
+                self.owner = attendeeDetails
                 break
             }
         }
@@ -38,28 +54,31 @@ struct ConfirmationNotificationView: View {
     
     func getScoreString() -> String {
         var teamIndex = 0
-        for i in 0..<viewModel.event!.teams![1].members.count {
-            let memberId = viewModel.event!.teams![1].members[i].id
+        for i in 0..<viewModel.event!.teams[1].members.count {
+            let memberId = viewModel.event!.teams[1].members[i].fragments.attendeeDetails.user.fragments.userDetails.id
             if AppState.shared.authId! == memberId {
                 teamIndex = 1
                 break
             }
         }
-        let team1Scores = viewModel.event!.teams![0].scores
-        let team2Scores = viewModel.event!.teams![1].scores
+        let team1Scores = viewModel.event!.teams[0].scores!.intArray
+        let team2Scores = viewModel.event!.teams[1].scores!.intArray
+        if team1Scores == nil || team2Scores == nil {
+            return "NA"
+        }
         var scoreString: String = ""
-        for i in 0..<team1Scores.count {
+        for i in 0..<team1Scores!.count {
             print(team1Scores)
             switch teamIndex {
             case 0:
-                scoreString += "\(team1Scores[i])-\(team2Scores[i]) "
+                scoreString += "\(team1Scores![i])-\(team2Scores![i]) "
             case 1:
-                scoreString += "\(team2Scores[i])-\(team1Scores[i]) "
+                scoreString += "\(team2Scores![i])-\(team1Scores![i]) "
             default:
-                scoreString += "\(team1Scores[i])-\(team2Scores[i]) "
+                scoreString += "\(team1Scores![i])-\(team2Scores![i]) "
             }
         }
-        let teamId = viewModel.event!.teams![teamIndex].id
+        let teamId = viewModel.event!.teams[teamIndex].id
         let winnerId = viewModel.event!.winner!.id
         if teamId == winnerId {
             scoreString += "(W)"
@@ -83,7 +102,7 @@ struct ConfirmationNotificationView: View {
                 .shadow(radius: 2)
                 .overlay(Circle().stroke(Color("ColorThicknessPhoto")))
             
-                Text("\(owner!.firstName) \(owner!.lastName)")
+            Text("\(owner!.user.fragments.userDetails.firstName) \(owner!.user.fragments.userDetails.lastName)")
                 .fontWeight(.heavy)
                 .foregroundColor(Color("Text"))
                 .lineLimit(1)
@@ -101,7 +120,7 @@ struct ConfirmationNotificationView: View {
                         self.selectedViewModel = viewModel
                         }
                     },label: {
-                        Text("\(owner!.firstName) has entered a score of \(getScoreString()) for the event \(viewModel.event!.name) at \(location). Press here to confirm score and finish Pickup!")
+                        Text("\(owner!.user.fragments.userDetails.firstName) has entered a score of \(getScoreString()) for the event \(viewModel.event!.name) at \(location). Press here to confirm score and finish Pickup!")
                             .foregroundColor(Color.purple)
                             .padding(.leading, 10.0)
                             .lineLimit(3)

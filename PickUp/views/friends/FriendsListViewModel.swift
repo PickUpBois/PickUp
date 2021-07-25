@@ -8,7 +8,7 @@
 import Foundation
 
 class FriendsListViewModel: ObservableObject {
-    @Published var friends: [GetFriendsQuery.Data.User.Friend] = []
+    @Published var friends: [UserDetails] = []
     var userId: String
     
     init(userId: String) {
@@ -28,8 +28,10 @@ class FriendsListViewModel: ObservableObject {
                     print("error in getting friends")
                     return
                 }
-                print("found \(data.user.friends.count) friends")
-                self.friends = data.user.friends
+                print("found \(data.user!.friends!.count) friends")
+                self.friends = data.user!.friends!.map { friend in
+                    return friend.fragments.userDetails
+                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -39,13 +41,13 @@ class FriendsListViewModel: ObservableObject {
 
 class MockFriendsListViewModel: FriendsListViewModel {
     override init (userId: String) {
-        let user = GetFriendsQuery.Data.User.Friend(id: "1", username: "shwinster", firstName: "David", lastName: "Rahbar")
+        let user = UserDetails(id: "1", firstName: "shwinster", lastName: "David", username: "Rahbar")
         super.init(userId: userId)
         self.friends = [user]
     }
     
     override func getFriends() {
-        let user = GetFriendsQuery.Data.User.Friend(id: "1", username: "shwinster", firstName: "David", lastName: "Rahbar")
+        let user = UserDetails(id: "1", firstName: "shwinster", lastName: "David", username: "Rahbar")
         self.friends = [user]
     }
 }

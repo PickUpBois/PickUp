@@ -155,7 +155,7 @@ extension SignUpView {
         }
         
         func createUser(id: String) {
-            Services.shared.apollo.perform(mutation: CreateUserMutation(createUserInput: CreateUserInput(id: id, username: username, firstName: firstName, lastName: lastName))) { response in
+            Services.shared.apollo.perform(mutation: CreateUserMutation(input: CreateUserInput(college: nil, firstName: firstName, lastName: lastName, username: username))) { response in
                 switch response {
                 case .success(let result):
                     if let errors = result.errors {

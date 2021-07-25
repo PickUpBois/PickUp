@@ -5,14 +5,14 @@ mutation InviteUserToEvent($eventId: Int!, $userId: String!) {
   }
 }
 
-query GetEvent($eventId: ID!) {
-  getEvent(eventId: $eventId) {
+query GetEvent($eventId: Int!) {
+  events_by_pk(id: $eventId) {
 	id,
-	invitedAttendees {
+	invitedAttendees: attendees(where: {status: {_eq: invited}}) {
 	  id,
 	},
 	attendees {
-		id,
+	  id
 	}
   }
 }

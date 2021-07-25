@@ -43,7 +43,7 @@ class SignUpViewModel: ObservableObject {
     }
     
     func createUser(id: String) {
-        Services.shared.apollo.perform(mutation: CreateUserMutation(createUserInput: CreateUserInput(id: id, username: username, firstName: firstName, lastName: lastName))) { response in
+        Services.shared.apollo.perform(mutation: CreateUserMutation(input: CreateUserInput(college: nil, firstName: firstName, lastName: lastName, username: username))) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -65,7 +65,7 @@ class SignUpViewModel: ObservableObject {
                 return print("unable to get token: \(error.localizedDescription)")
             }
             if let token = token {
-                Services.shared.apollo.perform(mutation: PutDeviceTokenMutation(userId: id, token: token)) { response in
+                Services.shared.apollo.perform(mutation: PutDeviceTokenMutation(token: token)) { response in
                     switch response {
                     case .success(let result):
                         if let errors = result.errors {

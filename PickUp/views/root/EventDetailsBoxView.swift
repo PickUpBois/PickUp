@@ -43,16 +43,16 @@ extension String {
 struct EventDetailsBoxView: View {
     var name: String
     var info: String
-    var eventId: String
+    var eventId: Int
     var startDate: String
     var startTime: String
     var capacity: Int
     var numAttendees: Int
-    var type: EventType
+    var type: event_type_enum
     let going: Bool
-    let status: EventStatus
+    let status: event_status_enum
     let fontColor: Color
-    let attendeeStatus: EventAttendeeStatus?
+    let attendeeStatus: event_attendee_status_enum?
     let viewModel: EventDetailsBoxViewModel?
     let event: EventDetails
     init(event: EventDetails, fontColor: Color = .black, viewModel: EventDetailsBoxViewModel? = nil) {
@@ -66,14 +66,14 @@ struct EventDetailsBoxView: View {
         self.numAttendees = event.attendees.count
         self.type = event.type
         let attendees = event.attendees.map { (attendee) -> String in
-            return attendee.fragments.userDetails.id
+            return attendee.fragments.attendeeDetails.user.fragments.userDetails.id
         }
         self.going = attendees.contains(AppState.shared.authId ?? "") ? true : false
-        var attendeeStatus: EventAttendeeStatus? {
+        var attendeeStatus: event_attendee_status_enum? {
             for i in 0..<event.attendees.count {
                 let attendee = event.attendees[i]
-                if attendee.fragments.userDetails.id == AppState.shared.authId {
-                    return attendee.fragments.userDetails.eventAttendeeStatus
+                if attendee.fragments.attendeeDetails.user.fragments.userDetails.id == AppState.shared.authId {
+                    return attendee.fragments.attendeeDetails.status
                 }
             }
             return nil
@@ -89,14 +89,14 @@ struct EventDetailsBoxView: View {
     
     func getWinLoss(event: EventDetails) -> String {
         var teamIndex = 0
-        for i in 0..<event.teams![1].members.count {
-            let memberId = event.teams![1].members[i].id
+        for i in 0..<event.teams[1].members.count {
+            let memberId = event.teams[1].members[i].fragments.attendeeDetails.user.fragments.userDetails.id
             if viewModel?.userId == memberId {
                 teamIndex = 1
                 break
             }
         }
-        let teamId = event.teams![teamIndex].id
+        let teamId = event.teams[teamIndex].id
         let winnerId = event.winner!.id
         if teamId == winnerId {
             return "Winner"
@@ -380,8 +380,8 @@ struct EventDetailsBoxView: View {
 
 struct EventDetailsBoxView_Previews: PreviewProvider {
     static let actor = UserDetails(id: "1", firstName: "1", lastName: "last", username: "username")
-    static let attendees = [EventDetails.Attendee(id: "1", firstName: "1", lastName: "last", username: "username")]
-    static let eventDetails = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open)
+    static let attendees: [EventDetails.Attendee] = []
+    static let eventDetails = EventDetails(id: 1, name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open, teams: [])
     static var previews: some View {
         EventDetailsBoxView(event: eventDetails, viewModel: MockEventDetailsBoxViewModel(event: eventDetails))
     }

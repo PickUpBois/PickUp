@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PickUpTabListView: View {
     @EnvironmentObject var viewModel: HomeViewModel
-    @State private var selection: EventType = .tennis
+    @State private var selection: event_type_enum = .tennis
     @State var expand = false
     @Environment(\.colorScheme) var colorscheme
     //@State var eventsPopUp: Bool = false

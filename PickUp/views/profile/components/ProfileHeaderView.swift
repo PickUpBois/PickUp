@@ -55,7 +55,7 @@ struct ProfileHeaderView: View {
                             VStack{
                                 Text("Team").font(.headline).foregroundColor(Color("Text"))
                                 Text("Members").font(.headline).foregroundColor(Color("Text"))
-                                Text("\(self.profileViewModel.user?.friends.count ?? 0)").font(.title).fontWeight(.bold).foregroundColor(Color("Text"))
+                                Text("\(self.profileViewModel.numFriends ?? 0)").font(.title).fontWeight(.bold).foregroundColor(Color("Text"))
                                 
                                 Spacer()
                             }

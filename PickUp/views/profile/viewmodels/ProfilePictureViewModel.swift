@@ -28,7 +28,8 @@ class ProfilePictureViewModel: ObservableObject {
                 print("uploaded image")
             }
         }, receiveValue: { downloadUrl in
-            Services.shared.apollo.perform(mutation: UpdateUserMutation(input: UpdateUserInput(id: AppState.shared.authId!, photoUrl: downloadUrl))) { response in
+            let input = UpdateUserInput(college: nil, firstName: nil, lastName: nil, photoUrl: downloadUrl, username: nil)
+            Services.shared.apollo.perform(mutation: UpdateUserMutation(input: input)) { response in
                 switch response {
                 case .success(let result):
                     if let errors = result.errors {

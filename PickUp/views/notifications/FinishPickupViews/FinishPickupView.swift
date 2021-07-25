@@ -41,7 +41,7 @@ struct FinishPickupView: View {
             Spacer().frame(width:20)
                 Picker("Names", selection: $selectedIndex) {
                     ForEach(viewModel.event!.attendees.indices, id: \.self) { i in
-                        Text(viewModel.event!.attendees[i].fragments.userDetails.firstName)
+                        Text(viewModel.event!.attendees[i].fragments.attendeeDetails.user.fragments.userDetails.firstName)
                                    }
                     .pickerStyle(WheelPickerStyle())
                            }
@@ -52,7 +52,7 @@ struct FinishPickupView: View {
             
             Button(action: {
                 let eventId = self.viewModel.event!.id
-                let voteeId = self.viewModel.event!.attendees[selectedIndex].fragments.userDetails.id
+                let voteeId = self.viewModel.event!.attendees[selectedIndex].fragments.attendeeDetails.user.fragments.userDetails.id
                 self.viewModel.voteForMvp(eventId: eventId, voteeId: voteeId)
                 showPopUp = false
             }) {

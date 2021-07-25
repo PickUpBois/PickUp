@@ -11,8 +11,7 @@ class CreateEventViewModel: ObservableObject {
     @Published var eventInfo: EventInfo = EventInfo()
     
     func createEvent() {
-        self.eventInfo.attendess.append(AppState.shared.authId ?? "None")
-        let input = CreateEventInput(name: eventInfo.name, info: eventInfo.info, startDate: ISO8601DateFormatter().string(from: eventInfo.startDate), capacity: Int(eventInfo.capacity) ?? 1, attendees: eventInfo.attendess, type: eventInfo.eventType, status: EventStatus.open)
+        let input = CreateEventInput(capacity: Int(eventInfo.capacity) ?? 1, info: eventInfo.info, name: ISO8601DateFormatter().string(from: eventInfo.startDate), startDate: eventInfo.startDate.isoString, status: eventInfo.eventType.rawValue, type: event_status_enum.open.rawValue)
         Services.shared.apollo.perform(mutation: CreateEventMutation(input: input)) { response in
             switch response {
             case .success(let result):
@@ -35,7 +34,6 @@ extension CreateEventViewModel {
         var startDate: Date = Date()
         var locationId: String = ""
         var capacity: String = ""
-        var eventType: EventType = .tennis
-        var attendess: [String] = []
+        var eventType: event_type_enum = .tennis
     }
 }

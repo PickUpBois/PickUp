@@ -17,7 +17,7 @@ class ProfileSettingsViewModel: ObservableObject {
     @Published var college: String = ""
     
     func updateProfile() {
-        let input = UpdateUserInput(id: AppState.shared.authId!, firstName: !firstName.isEmpty ? firstName : nil , lastName: !lastName.isEmpty ? lastName : nil, username: !username.isEmpty ? username : nil , photoUrl: nil)
+        let input = UpdateUserInput(firstName: !firstName.isEmpty ? firstName : nil , lastName: !lastName.isEmpty ? lastName : nil, photoUrl: nil, username: !username.isEmpty ? username : nil)
         Services.shared.apollo.perform(mutation: UpdateUserMutation(input: input)) { response in
             switch response {
             case .success(let result):

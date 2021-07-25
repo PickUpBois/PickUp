@@ -22,7 +22,6 @@
 		1ADE7E36264C50E90097138F /* CourtsNearMeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE7E35264C50E90097138F /* CourtsNearMeView.swift */; };
 		1F30A886AE165751D712C11B /* Pods_PickUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D2DCFAB236044BB62AF4D7 /* Pods_PickUp.framework */; };
 		8D09E70B2623E16E0007B871 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E70A2623E16E0007B871 /* ProfileView.swift */; };
-		8D0FD6A42674616D006C84D3 /* NotificationViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8D0FD6A32674616D006C84D3 /* NotificationViewModel.graphql */; };
 		8D2094A1263C6F43009B1609 /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */; };
 		8D25D2A9269815F50094A986 /* PickUpListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D25D2A8269815F50094A986 /* PickUpListViewModel.swift */; };
 		8D2A3EF3261EC3E100521A6A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2A3EF2261EC3E100521A6A /* SignUpView.swift */; };
@@ -35,7 +34,6 @@
 		8D5EE0292652D2CD00EE7840 /* PickUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE0282652D2CD00EE7840 /* PickUpView.swift */; };
 		8D5EE02F2652D58300EE7840 /* CourtsNearMeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE02E2652D58300EE7840 /* CourtsNearMeListView.swift */; };
 		8D5EE0372652D6AF00EE7840 /* PickUpTabListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE0362652D6AF00EE7840 /* PickUpTabListView.swift */; };
-		8D5EE07A26531EC200EE7840 /* ProfilePastEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EE07926531EC200EE7840 /* ProfilePastEventView.swift */; };
 		8D63ED24266F10160022FB79 /* NotificationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D63ED23266F10160022FB79 /* NotificationListViewModel.swift */; };
 		8D63ED2A266F17910022FB79 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D63ED29266F17910022FB79 /* NotificationViewModel.swift */; };
 		8D63ED3D266FFE090022FB79 /* SetScoresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D63ED3C266FFE090022FB79 /* SetScoresViewModel.swift */; };
@@ -47,17 +45,12 @@
 		8D65B2812658CE550085D5EE /* RestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B2802658CE550085D5EE /* RestService.swift */; };
 		8D65B2862658CEBE0085D5EE /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B2852658CEBE0085D5EE /* ProfileViewModel.swift */; };
 		8D65B28B2658CF6F0085D5EE /* ProfileSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B28A2658CF6F0085D5EE /* ProfileSettingsViewModel.swift */; };
-		8D65B2972658DCF40085D5EE /* ProfileViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8D5EE002265280E100EE7840 /* ProfileViewModel.graphql */; };
-		8D65B2A32658E04E0085D5EE /* ProfileSettingsViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DFB9A682650AF0A00254C57 /* ProfileSettingsViewModel.graphql */; };
-		8D65B2A52658E04E0085D5EE /* CreateEventViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8D5EDFF526520C8300EE7840 /* CreateEventViewModel.graphql */; };
-		8D65B2A62658E04E0085D5EE /* HomeViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8D5EE0572652E09300EE7840 /* HomeViewModel.graphql */; };
 		8D65B2AB265904EA0085D5EE /* CreateEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B2AA265904EA0085D5EE /* CreateEventViewModel.swift */; };
 		8D65B2B3265905400085D5EE /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B2B2265905400085D5EE /* SignUpViewModel.swift */; };
 		8D65B2B8265906290085D5EE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B2B7265906290085D5EE /* LoginViewModel.swift */; };
 		8D65B2D826590F310085D5EE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B2D726590F310085D5EE /* HomeViewModel.swift */; };
 		8D65B2E626592AA00085D5EE /* SearchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B2E526592AA00085D5EE /* SearchItemView.swift */; };
 		8D65B2F626592FA70085D5EE /* FindTeammatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B2F526592FA70085D5EE /* FindTeammatesViewModel.swift */; };
-		8D65B2FB265931900085D5EE /* FindTeammatesViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8D65B2FA265931900085D5EE /* FindTeammatesViewModel.graphql */; };
 		8D65B377265B06900085D5EE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D65B376265B06900085D5EE /* API.swift */; };
 		8D69FE8F2676FDC5009D2AFF /* VotedForMvpNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D69FE8E2676FDC5009D2AFF /* VotedForMvpNotificationView.swift */; };
 		8D69FE9626792CC6009D2AFF /* AuthenticationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D69FE9526792CC5009D2AFF /* AuthenticationInterceptor.swift */; };
@@ -72,9 +65,7 @@
 		8DA9D1A0268002AC00513358 /* ProfilePictureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D19F268002AC00513358 /* ProfilePictureViewModel.swift */; };
 		8DA9D1A526827BD300513358 /* LeftEventNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D1A426827BD300513358 /* LeftEventNotificationView.swift */; };
 		8DA9D1A726828C9F00513358 /* EventDetailsBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D1A626828C9E00513358 /* EventDetailsBoxViewModel.swift */; };
-		8DA9D1AB2682901000513358 /* EventDetailsBoxViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DA9D1AA2682901000513358 /* EventDetailsBoxViewModel.graphql */; };
 		8DA9D1AD2682ED0E00513358 /* EditPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D1AC2682ED0E00513358 /* EditPickupView.swift */; };
-		8DA9D1AF2683CFFD00513358 /* EditEventsListViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DA9D1AE2683CFFD00513358 /* EditEventsListViewModel.graphql */; };
 		8DA9D1B12683F1E600513358 /* DeletedEventNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D1B02683F1E600513358 /* DeletedEventNotificationView.swift */; };
 		8DA9D1B32683F95800513358 /* EditPickupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D1B22683F95800513358 /* EditPickupViewModel.swift */; };
 		8DA9D1B5268414EF00513358 /* InviteFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D1B4268414EF00513358 /* InviteFriendsView.swift */; };
@@ -90,14 +81,11 @@
 		8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DB8F059261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DB8F05A261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
-		8DD29A4A26684FEC005DFCB2 /* UserDetails.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DD29A4926684FEC005DFCB2 /* UserDetails.graphql */; };
-		8DD29A4F26685007005DFCB2 /* EventDetails.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DD29A4E26685007005DFCB2 /* EventDetails.graphql */; };
+		8DC55B0926ACEBB00096C5CC /* AttendeeDetails.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DC55B0826ACEBB00096C5CC /* AttendeeDetails.graphql */; };
 		8DE5216D2663FC760077AF09 /* FriendRequestResponseNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5216C2663FC760077AF09 /* FriendRequestResponseNotificationView.swift */; };
 		8DE52179266427FC0077AF09 /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE52178266427FC0077AF09 /* FriendsListView.swift */; };
 		8DE52181266428130077AF09 /* FriendItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE52180266428130077AF09 /* FriendItemView.swift */; };
 		8DE52186266428320077AF09 /* FriendsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE52185266428320077AF09 /* FriendsListViewModel.swift */; };
-		8DE5218B266428980077AF09 /* FriendsListViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DE5218A266428980077AF09 /* FriendsListViewModel.graphql */; };
-		8DEFD478268659B1003F8CE0 /* InviteFriendViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DEFD477268659B1003F8CE0 /* InviteFriendViewModel.graphql */; };
 		8DEFD47A2686981C003F8CE0 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFD4792686981C003F8CE0 /* util.swift */; };
 		8DEFD47C2686CF9A003F8CE0 /* JoinedEventNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFD47B2686CF9A003F8CE0 /* JoinedEventNotificationView.swift */; };
 		8DEFD47E26870997003F8CE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DEFD47D26870996003F8CE0 /* LaunchScreen.storyboard */; };
@@ -105,7 +93,6 @@
 		8DFB9988264E2C9F00254C57 /* EventDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */; };
 		8DFB998D264E342800254C57 /* EventLocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB998C264E342800254C57 /* EventLocationPickerView.swift */; };
 		8DFB99A7264ECBE400254C57 /* CreateSportEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB99A6264ECBE400254C57 /* CreateSportEventView.swift */; };
-		8DFB9A532650A73000254C57 /* SignUpViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DFB9A522650A73000254C57 /* SignUpViewModel.graphql */; };
 		8DFCF504262788A000BBFE66 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF503262788A000BBFE66 /* MainView.swift */; };
 		8DFCF50E262788AF00BBFE66 /* FindTeammatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF50D262788AF00BBFE66 /* FindTeammatesView.swift */; };
 		8DFCF518262788BD00BBFE66 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCF517262788BD00BBFE66 /* MapView.swift */; };
@@ -193,7 +180,6 @@
 		49D2DCFAB236044BB62AF4D7 /* Pods_PickUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6403E9CD6469737F34F86843 /* Pods-PickUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUpTests.release.xcconfig"; path = "Target Support Files/Pods-PickUpTests/Pods-PickUpTests.release.xcconfig"; sourceTree = "<group>"; };
 		8D09E70A2623E16E0007B871 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		8D0FD6A32674616D006C84D3 /* NotificationViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = NotificationViewModel.graphql; sourceTree = "<group>"; };
 		8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsView.swift; sourceTree = "<group>"; };
 		8D25D2A8269815F50094A986 /* PickUpListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpListViewModel.swift; sourceTree = "<group>"; };
 		8D2A3EF2261EC3E100521A6A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -201,14 +187,10 @@
 		8D30B107263E2146002B4C62 /* ProfilePicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePicture.swift; sourceTree = "<group>"; };
 		8D30B10F263E232C002B4C62 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		8D3CDD3126583A92000EE754 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
-		8D5EDFF526520C8300EE7840 /* CreateEventViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CreateEventViewModel.graphql; sourceTree = "<group>"; };
-		8D5EE002265280E100EE7840 /* ProfileViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProfileViewModel.graphql; sourceTree = "<group>"; };
 		8D5EE0232652D1A400EE7840 /* PickUpListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpListView.swift; sourceTree = "<group>"; };
 		8D5EE0282652D2CD00EE7840 /* PickUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpView.swift; sourceTree = "<group>"; };
 		8D5EE02E2652D58300EE7840 /* CourtsNearMeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtsNearMeListView.swift; sourceTree = "<group>"; };
 		8D5EE0362652D6AF00EE7840 /* PickUpTabListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpTabListView.swift; sourceTree = "<group>"; };
-		8D5EE0572652E09300EE7840 /* HomeViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = HomeViewModel.graphql; sourceTree = "<group>"; };
-		8D5EE07926531EC200EE7840 /* ProfilePastEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePastEventView.swift; sourceTree = "<group>"; };
 		8D63ED23266F10160022FB79 /* NotificationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewModel.swift; sourceTree = "<group>"; };
 		8D63ED29266F17910022FB79 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		8D63ED3C266FFE090022FB79 /* SetScoresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetScoresViewModel.swift; sourceTree = "<group>"; };
@@ -226,7 +208,6 @@
 		8D65B2D726590F310085D5EE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8D65B2E526592AA00085D5EE /* SearchItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemView.swift; sourceTree = "<group>"; };
 		8D65B2F526592FA70085D5EE /* FindTeammatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindTeammatesViewModel.swift; sourceTree = "<group>"; };
-		8D65B2FA265931900085D5EE /* FindTeammatesViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FindTeammatesViewModel.graphql; sourceTree = "<group>"; };
 		8D65B376265B06900085D5EE /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8D69FE8E2676FDC5009D2AFF /* VotedForMvpNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedForMvpNotificationView.swift; sourceTree = "<group>"; };
 		8D69FE9526792CC5009D2AFF /* AuthenticationInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationInterceptor.swift; sourceTree = "<group>"; };
@@ -240,9 +221,7 @@
 		8DA9D19F268002AC00513358 /* ProfilePictureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureViewModel.swift; sourceTree = "<group>"; };
 		8DA9D1A426827BD300513358 /* LeftEventNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftEventNotificationView.swift; sourceTree = "<group>"; };
 		8DA9D1A626828C9E00513358 /* EventDetailsBoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsBoxViewModel.swift; sourceTree = "<group>"; };
-		8DA9D1AA2682901000513358 /* EventDetailsBoxViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = EventDetailsBoxViewModel.graphql; sourceTree = "<group>"; };
 		8DA9D1AC2682ED0E00513358 /* EditPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPickupView.swift; sourceTree = "<group>"; };
-		8DA9D1AE2683CFFD00513358 /* EditEventsListViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = EditEventsListViewModel.graphql; sourceTree = "<group>"; };
 		8DA9D1B02683F1E600513358 /* DeletedEventNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedEventNotificationView.swift; sourceTree = "<group>"; };
 		8DA9D1B22683F95800513358 /* EditPickupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPickupViewModel.swift; sourceTree = "<group>"; };
 		8DA9D1B4268414EF00513358 /* InviteFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsView.swift; sourceTree = "<group>"; };
@@ -263,15 +242,25 @@
 		8DB8EFA426198979004AADED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DB8EFF6261A74F7004AADED /* AuthFirebaseDataSourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebaseDataSourceTest.swift; sourceTree = "<group>"; };
 		8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpAppDelegate.swift; sourceTree = "<group>"; };
+		8DC55AF826ACEA9C0096C5CC /* NotificationViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = NotificationViewModel.graphql; sourceTree = "<group>"; };
+		8DC55AF926ACEA9C0096C5CC /* EventDetailsBoxViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = EventDetailsBoxViewModel.graphql; sourceTree = "<group>"; };
+		8DC55AFA26ACEA9C0096C5CC /* InviteFriendViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = InviteFriendViewModel.graphql; sourceTree = "<group>"; };
+		8DC55AFC26ACEA9C0096C5CC /* EventDetails.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = EventDetails.graphql; sourceTree = "<group>"; };
+		8DC55AFD26ACEA9C0096C5CC /* UserDetails.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UserDetails.graphql; sourceTree = "<group>"; };
+		8DC55AFE26ACEA9C0096C5CC /* CreateEventViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CreateEventViewModel.graphql; sourceTree = "<group>"; };
+		8DC55AFF26ACEA9C0096C5CC /* ProfileViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProfileViewModel.graphql; sourceTree = "<group>"; };
+		8DC55B0026ACEA9C0096C5CC /* EditEventsListViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = EditEventsListViewModel.graphql; sourceTree = "<group>"; };
+		8DC55B0126ACEA9C0096C5CC /* FindTeammatesViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FindTeammatesViewModel.graphql; sourceTree = "<group>"; };
+		8DC55B0226ACEA9C0096C5CC /* SignUpViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignUpViewModel.graphql; sourceTree = "<group>"; };
+		8DC55B0326ACEA9C0096C5CC /* FriendsListViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FriendsListViewModel.graphql; sourceTree = "<group>"; };
+		8DC55B0426ACEA9C0096C5CC /* ProfileSettingsViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProfileSettingsViewModel.graphql; sourceTree = "<group>"; };
+		8DC55B0526ACEA9C0096C5CC /* HomeViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = HomeViewModel.graphql; sourceTree = "<group>"; };
+		8DC55B0826ACEBB00096C5CC /* AttendeeDetails.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = AttendeeDetails.graphql; sourceTree = "<group>"; };
 		8DD29A442664807E005DFCB2 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		8DD29A4926684FEC005DFCB2 /* UserDetails.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UserDetails.graphql; sourceTree = "<group>"; };
-		8DD29A4E26685007005DFCB2 /* EventDetails.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = EventDetails.graphql; sourceTree = "<group>"; };
 		8DE5216C2663FC760077AF09 /* FriendRequestResponseNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestResponseNotificationView.swift; sourceTree = "<group>"; };
 		8DE52178266427FC0077AF09 /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		8DE52180266428130077AF09 /* FriendItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendItemView.swift; sourceTree = "<group>"; };
 		8DE52185266428320077AF09 /* FriendsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewModel.swift; sourceTree = "<group>"; };
-		8DE5218A266428980077AF09 /* FriendsListViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FriendsListViewModel.graphql; sourceTree = "<group>"; };
-		8DEFD477268659B1003F8CE0 /* InviteFriendViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = InviteFriendViewModel.graphql; sourceTree = "<group>"; };
 		8DEFD4792686981C003F8CE0 /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		8DEFD47B2686CF9A003F8CE0 /* JoinedEventNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedEventNotificationView.swift; sourceTree = "<group>"; };
 		8DEFD47D26870996003F8CE0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -279,8 +268,6 @@
 		8DFB9987264E2C9F00254C57 /* EventDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDatePickerView.swift; sourceTree = "<group>"; };
 		8DFB998C264E342800254C57 /* EventLocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationPickerView.swift; sourceTree = "<group>"; };
 		8DFB99A6264ECBE400254C57 /* CreateSportEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSportEventView.swift; sourceTree = "<group>"; };
-		8DFB9A522650A73000254C57 /* SignUpViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignUpViewModel.graphql; sourceTree = "<group>"; };
-		8DFB9A682650AF0A00254C57 /* ProfileSettingsViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProfileSettingsViewModel.graphql; sourceTree = "<group>"; };
 		8DFCF503262788A000BBFE66 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8DFCF50D262788AF00BBFE66 /* FindTeammatesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTeammatesView.swift; sourceTree = "<group>"; };
 		8DFCF517262788BD00BBFE66 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -504,7 +491,6 @@
 			isa = PBXGroup;
 			children = (
 				8D2B0C4F263819060032AE67 /* ImagePicker.swift */,
-				8D5EE07926531EC200EE7840 /* ProfilePastEventView.swift */,
 				1A03F99E263F482F00C2E2CD /* UpcomingPickupsView.swift */,
 				1A03F99C263F473000C2E2CD /* PastPickupView.swift */,
 				8D30B10F263E232C002B4C62 /* ProfileHeaderView.swift */,
@@ -580,28 +566,9 @@
 		8D65B29B2658DD760085D5EE /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				8D65B29C2658DD7D0085D5EE /* graphql */,
+				8DC55AF726ACEA9C0096C5CC /* graphql */,
 			);
 			path = resources;
-			sourceTree = "<group>";
-		};
-		8D65B29C2658DD7D0085D5EE /* graphql */ = {
-			isa = PBXGroup;
-			children = (
-				8DD29A4826684FD6005DFCB2 /* fragments */,
-				8DFB9A522650A73000254C57 /* SignUpViewModel.graphql */,
-				8DFB9A682650AF0A00254C57 /* ProfileSettingsViewModel.graphql */,
-				8D5EDFF526520C8300EE7840 /* CreateEventViewModel.graphql */,
-				8D5EE0572652E09300EE7840 /* HomeViewModel.graphql */,
-				8D5EE002265280E100EE7840 /* ProfileViewModel.graphql */,
-				8D65B2FA265931900085D5EE /* FindTeammatesViewModel.graphql */,
-				8DE5218A266428980077AF09 /* FriendsListViewModel.graphql */,
-				8D0FD6A32674616D006C84D3 /* NotificationViewModel.graphql */,
-				8DA9D1AA2682901000513358 /* EventDetailsBoxViewModel.graphql */,
-				8DA9D1AE2683CFFD00513358 /* EditEventsListViewModel.graphql */,
-				8DEFD477268659B1003F8CE0 /* InviteFriendViewModel.graphql */,
-			);
-			path = graphql;
 			sourceTree = "<group>";
 		};
 		8D69FE9426792CB3009D2AFF /* interceptors */ = {
@@ -715,11 +682,31 @@
 			path = PickUpUITests;
 			sourceTree = "<group>";
 		};
-		8DD29A4826684FD6005DFCB2 /* fragments */ = {
+		8DC55AF726ACEA9C0096C5CC /* graphql */ = {
 			isa = PBXGroup;
 			children = (
-				8DD29A4926684FEC005DFCB2 /* UserDetails.graphql */,
-				8DD29A4E26685007005DFCB2 /* EventDetails.graphql */,
+				8DC55AF826ACEA9C0096C5CC /* NotificationViewModel.graphql */,
+				8DC55AF926ACEA9C0096C5CC /* EventDetailsBoxViewModel.graphql */,
+				8DC55AFA26ACEA9C0096C5CC /* InviteFriendViewModel.graphql */,
+				8DC55AFB26ACEA9C0096C5CC /* fragments */,
+				8DC55AFE26ACEA9C0096C5CC /* CreateEventViewModel.graphql */,
+				8DC55AFF26ACEA9C0096C5CC /* ProfileViewModel.graphql */,
+				8DC55B0026ACEA9C0096C5CC /* EditEventsListViewModel.graphql */,
+				8DC55B0126ACEA9C0096C5CC /* FindTeammatesViewModel.graphql */,
+				8DC55B0226ACEA9C0096C5CC /* SignUpViewModel.graphql */,
+				8DC55B0326ACEA9C0096C5CC /* FriendsListViewModel.graphql */,
+				8DC55B0426ACEA9C0096C5CC /* ProfileSettingsViewModel.graphql */,
+				8DC55B0526ACEA9C0096C5CC /* HomeViewModel.graphql */,
+			);
+			path = graphql;
+			sourceTree = "<group>";
+		};
+		8DC55AFB26ACEA9C0096C5CC /* fragments */ = {
+			isa = PBXGroup;
+			children = (
+				8DC55AFC26ACEA9C0096C5CC /* EventDetails.graphql */,
+				8DC55AFD26ACEA9C0096C5CC /* UserDetails.graphql */,
+				8DC55B0826ACEBB00096C5CC /* AttendeeDetails.graphql */,
 			);
 			path = fragments;
 			sourceTree = "<group>";
@@ -913,23 +900,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DB8EF8D26198979004AADED /* Preview Assets.xcassets in Resources */,
-				8D65B2A32658E04E0085D5EE /* ProfileSettingsViewModel.graphql in Resources */,
 				8DB8EF8A26198979004AADED /* Assets.xcassets in Resources */,
-				8D65B2FB265931900085D5EE /* FindTeammatesViewModel.graphql in Resources */,
-				8D65B2A52658E04E0085D5EE /* CreateEventViewModel.graphql in Resources */,
-				8D0FD6A42674616D006C84D3 /* NotificationViewModel.graphql in Resources */,
-				8DEFD478268659B1003F8CE0 /* InviteFriendViewModel.graphql in Resources */,
-				8DE5218B266428980077AF09 /* FriendsListViewModel.graphql in Resources */,
 				C0D4716C264098BF00E7B6C7 /* CreateEventView.xib in Resources */,
 				8DEFD47E26870997003F8CE0 /* LaunchScreen.storyboard in Resources */,
-				8D65B2A62658E04E0085D5EE /* HomeViewModel.graphql in Resources */,
-				8DA9D1AB2682901000513358 /* EventDetailsBoxViewModel.graphql in Resources */,
-				8DD29A4A26684FEC005DFCB2 /* UserDetails.graphql in Resources */,
-				8D65B2972658DCF40085D5EE /* ProfileViewModel.graphql in Resources */,
-				8DD29A4F26685007005DFCB2 /* EventDetails.graphql in Resources */,
-				8DFB9A532650A73000254C57 /* SignUpViewModel.graphql in Resources */,
+				8DC55B0926ACEBB00096C5CC /* AttendeeDetails.graphql in Resources */,
 				8D69FE9C267E5707009D2AFF /* GoogleService-Info.plist in Resources */,
-				8DA9D1AF2683CFFD00513358 /* EditEventsListViewModel.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1031,7 +1006,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$ENV\" == \"DEV\" ]]\nthen\n    URL=\"${DEV_HOST}/graphql\"\nelse\n    URL=\"${PROD_HOST}/graphql\"\nfi\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"${URL}/graphql\" $SCRIPT_OUTPUT_FILE_0\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$ENV\" == \"DEV\" ]]\nthen\n    URL=\"${DEV_HOST}\"\nelse\n    URL=\"${PROD_HOST}\"\nfi\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"${URL}/v1/graphql\" $SCRIPT_OUTPUT_FILE_0\n";
 		};
 		8DFB9A2126509AB600254C57 /* Apollo CLI */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1187,7 +1162,6 @@
 				C088BBA7265780CB007301F7 /* MapViewModel.swift in Sources */,
 				C0151127265A36B8005EF24A /* ChatView.swift in Sources */,
 				8DB8EF8626198976004AADED /* PickUpApp.swift in Sources */,
-				8D5EE07A26531EC200EE7840 /* ProfilePastEventView.swift in Sources */,
 				8DA9D1B5268414EF00513358 /* InviteFriendsView.swift in Sources */,
 				C0A322B12683C99900CB5919 /* BottomView.swift in Sources */,
 				8DFCF50E262788AF00BBFE66 /* FindTeammatesView.swift in Sources */,
@@ -1376,9 +1350,9 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"PickUp/Preview Content\"";
 				DEVELOPMENT_TEAM = 5D593G8Q6L;
-				DEV_HOST = "http://localhost:3000";
+				DEV_HOST = "http://localhost:5000";
 				ENABLE_PREVIEWS = YES;
-				ENV = PROD;
+				ENV = DEV;
 				INFOPLIST_FILE = PickUp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1405,9 +1379,9 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"PickUp/Preview Content\"";
 				DEVELOPMENT_TEAM = 5D593G8Q6L;
-				DEV_HOST = "http://localhost:3000";
+				DEV_HOST = "http://localhost:5000";
 				ENABLE_PREVIEWS = YES;
-				ENV = PROD;
+				ENV = DEV;
 				INFOPLIST_FILE = PickUp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

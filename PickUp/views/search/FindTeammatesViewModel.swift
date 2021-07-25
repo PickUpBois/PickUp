@@ -39,7 +39,7 @@ class FindTeammatesViewModel: ObservableObject {
     private func searchUsers() {
         print("searching with text \(query)")
         state = .loading
-        Services.shared.apollo.fetch(query: SearchUsersQuery(query: query)) { response in
+        Services.shared.apollo.fetch(query: SearchUsersQuery(search: query)) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {

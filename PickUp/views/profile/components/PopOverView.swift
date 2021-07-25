@@ -15,30 +15,32 @@ struct PopOverView: View {
         VStack(alignment: .center){
             
             Button(action:{
-                if self.viewModel.user?.friendStatus == .friend {
+                if self.viewModel.user?.friendStatus == true {
                     alertType = .removeFriend
                 } else {
                     alertType = .addFriend
                 }
             }) {
-                if self.viewModel.user?.friendStatus == .friend {
-                    Text("Remove Friend")
-                        .foregroundColor(Color("Text"))
-                        .frame(width: 380)
-                        .padding(.horizontal)
-                        .padding(.vertical, 15)
-                        .background(Color("DescriptionEvent"))
-                        .cornerRadius(20)
-                }
-                
-                else {
-                    Text("Add Friend")
-                        .foregroundColor(Color("Text"))
-                        .frame(width: 380)
-                        .padding(.horizontal)
-                        .padding(.vertical, 15)
-                        .background(Color("DescriptionEvent"))
-                        .cornerRadius(20)
+                Group {
+                    if self.viewModel.user?.friendStatus == true {
+                        Text("Remove Friend")
+                            .foregroundColor(Color("Text"))
+                            .frame(width: 380)
+                            .padding(.horizontal)
+                            .padding(.vertical, 15)
+                            .background(Color("DescriptionEvent"))
+                            .cornerRadius(20)
+                    }
+                    
+                    else {
+                        Text("Add Friend")
+                            .foregroundColor(Color("Text"))
+                            .frame(width: 380)
+                            .padding(.horizontal)
+                            .padding(.vertical, 15)
+                            .background(Color("DescriptionEvent"))
+                            .cornerRadius(20)
+                    }
                 }
             }
             
