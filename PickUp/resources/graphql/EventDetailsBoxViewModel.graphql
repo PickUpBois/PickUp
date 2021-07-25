@@ -1,11 +1,13 @@
-mutation LeaveEvent($userId: ID!, $eventId: ID!) {
-	leaveEvent(userId: $userId, eventId: $eventId) {
-	id,
+mutation LeaveEvent($eventId: Int!) {
+  leaveEvent(eventId: $eventId) {
+	reason,
+	status
   }
 }
 
-mutation DeleteEvent($userId: ID!, $eventId: ID!) {
-  deleteEvent(userId: $userId, eventId: $eventId) {
-	id,
+mutation DeleteEvent($eventId: Int!) {
+  deleteEvent(eventId: $eventId) {
+	status,
+	reason
   }
 }

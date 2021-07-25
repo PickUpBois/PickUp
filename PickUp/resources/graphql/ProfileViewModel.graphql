@@ -20,26 +20,31 @@ query GetUser($id: ID!, $authId: ID!) {
   }
 }
 
-mutation SendFriendRequest($userId: ID!, $friendId: ID!) {
-  sendFriendRequest(user_id: $userId, friend_id: $friendId) {
+mutation SendFriendRequest($friendId: String!) {
+  sendFriendRequest(friendId: $friendId) {
+	status,
+	reason
+  }
+}
+
+mutation RemoveFriend($userId: String!) {
+  removeFriend(friendId: $userId) {
+	status,
+	reason
+  }
+}
+
+mutation PutDeviceToken($token: String!) {
+  putDeviceToken(token: $token) {
+	status,
+	reason,
 	id
   }
 }
 
-mutation RemoveFriend($userId: ID!, $friendId: ID!) {
-  removeFriend(userId: $userId, friendId: $friendId) {
-	id,
-  }
-}
-
-mutation PutDeviceToken($userId: ID!, $token: String!) {
-	putDeviceToken(userId: $userId, token: $token) {
-	id,
-  }
-}
-
-mutation RemoveDeviceToken($userId: ID!, $token: String!) {
-	removeDeviceToken(userId: $userId, token: $token) {
-	id,
+mutation RemoveDeviceToken($token: String!) {
+  removeDeviceToken(token: $token) {
+	status,
+	reason
   }
 }
