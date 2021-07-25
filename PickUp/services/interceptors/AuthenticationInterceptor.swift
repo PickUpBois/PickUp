@@ -23,7 +23,8 @@ class AuthenticationInterceptor: ApolloInterceptor {
             response: HTTPResponse<Operation>?,
             completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void) {
             
-            request.addHeader(name: "Authorization", value: token)
+            request.addHeader(name: "X-Hasura-Role", value: "admin")
+            request.addHeader(name: "X-Hasura-User-Id", value: token)
             chain.proceedAsync(request: request,
                                response: response,
                                completion: completion)

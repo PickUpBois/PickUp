@@ -15,7 +15,7 @@ class EditPickupViewModel {
         self.invitedAttendees = []
     }
     func getEvent() {
-        Services.shared.apollo.fetch(query: GetEventQuery(eventId: event.id), cachePolicy: .fetchIgnoringCacheCompletely) { response in
+        Services.shared.apollo.fetch(query: GetEventQuery(eventId: String(event.id)), cachePolicy: .fetchIgnoringCacheCompletely) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {

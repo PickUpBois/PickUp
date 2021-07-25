@@ -44,7 +44,7 @@ struct EventAttendeesView: View {
                     }
 
                     VStack(alignment: .leading){
-                        FriendItemView(id: attendee.id, username: attendee.username)
+                        FriendItemView(id: attendee.user.fragments.userDetails.id, username: attendee.user.fragments.userDetails.username)
                         .frame(alignment: .leading)
 
                         HStack{

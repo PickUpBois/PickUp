@@ -15,13 +15,13 @@ class InviteFriendsViewModel: ObservableObject {
         self.event = event
         self.invitedUsers = []
         let attendees = event.attendees.map { attendee in
-            return attendee.fragments.userDetails.id
+            return attendee.fragments.attendeeDetails.user.fragments.userDetails.id
         }
         self.attendees = attendees
     }
     
     func getEvent() {
-        Services.shared.apollo.fetch(query: GetEventQuery(eventId: event.id), cachePolicy: .fetchIgnoringCacheCompletely) { response in
+        Services.shared.apollo.fetch(query: GetEventQuery(eventId: String(event.id)), cachePolicy: .fetchIgnoringCacheCompletely) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -42,7 +42,7 @@ class InviteFriendsViewModel: ObservableObject {
     }
     
     func inviteFriend(friendId: String) {
-        Services.shared.apollo.perform(mutation: InviteUserMutation(actorId: AppState.shared.authId!, eventId: event.id, userId: friendId)) { response in
+        Services.shared.apollo.perform(mutation: InviteUserMutation(actorId: AppState.shared.authId!, eventId: String(event.id), userId: friendId)) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {

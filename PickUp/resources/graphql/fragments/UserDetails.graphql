@@ -1,4 +1,4 @@
-fragment UserDetails on User {
+fragment UserDetails on users {
 	__typename,
 	id,
 	firstName,
@@ -6,5 +6,4 @@ fragment UserDetails on User {
 	username,
 	photoUrl,
 	college,
-	eventAttendeeStatus,
 }

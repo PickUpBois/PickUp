@@ -25,6 +25,7 @@
 		8D0FD6A42674616D006C84D3 /* NotificationViewModel.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8D0FD6A32674616D006C84D3 /* NotificationViewModel.graphql */; };
 		8D2094A1263C6F43009B1609 /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */; };
 		8D25D2A9269815F50094A986 /* PickUpListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D25D2A8269815F50094A986 /* PickUpListViewModel.swift */; };
+		8D25D2AB269DF8290094A986 /* AttendeeDetails.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8D25D2AA269DF8290094A986 /* AttendeeDetails.graphql */; };
 		8D2A3EF3261EC3E100521A6A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2A3EF2261EC3E100521A6A /* SignUpView.swift */; };
 		8D2B0C50263819060032AE67 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B0C4F263819060032AE67 /* ImagePicker.swift */; };
 		8D30B108263E2146002B4C62 /* ProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D30B107263E2146002B4C62 /* ProfilePicture.swift */; };
@@ -191,6 +192,7 @@
 		8D0FD6A32674616D006C84D3 /* NotificationViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = NotificationViewModel.graphql; sourceTree = "<group>"; };
 		8D2094A0263C6F43009B1609 /* ProfileSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsView.swift; sourceTree = "<group>"; };
 		8D25D2A8269815F50094A986 /* PickUpListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpListViewModel.swift; sourceTree = "<group>"; };
+		8D25D2AA269DF8290094A986 /* AttendeeDetails.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = AttendeeDetails.graphql; sourceTree = "<group>"; };
 		8D2A3EF2261EC3E100521A6A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		8D2B0C4F263819060032AE67 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		8D30B107263E2146002B4C62 /* ProfilePicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePicture.swift; sourceTree = "<group>"; };
@@ -706,6 +708,7 @@
 			children = (
 				8DD29A4926684FEC005DFCB2 /* UserDetails.graphql */,
 				8DD29A4E26685007005DFCB2 /* EventDetails.graphql */,
+				8D25D2AA269DF8290094A986 /* AttendeeDetails.graphql */,
 			);
 			path = fragments;
 			sourceTree = "<group>";
@@ -910,6 +913,7 @@
 				8D65B2A62658E04E0085D5EE /* HomeViewModel.graphql in Resources */,
 				8DA9D1AB2682901000513358 /* EventDetailsBoxViewModel.graphql in Resources */,
 				8DD29A4A26684FEC005DFCB2 /* UserDetails.graphql in Resources */,
+				8D25D2AB269DF8290094A986 /* AttendeeDetails.graphql in Resources */,
 				8D65B2972658DCF40085D5EE /* ProfileViewModel.graphql in Resources */,
 				8DD29A4F26685007005DFCB2 /* EventDetails.graphql in Resources */,
 				8DFB9A532650A73000254C57 /* SignUpViewModel.graphql in Resources */,
@@ -1016,7 +1020,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$ENV\" == \"DEV\" ]]\nthen\n    URL=\"${DEV_HOST}/graphql\"\nelse\n    URL=\"${PROD_HOST}/graphql\"\nfi\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"${URL}/graphql\" $SCRIPT_OUTPUT_FILE_0\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$ENV\" == \"DEV\" ]]\nthen\n    URL=\"${DEV_HOST}/v1/graphql\"\nelse\n    URL=\"${PROD_HOST}/v1/graphql\"\nfi\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"${URL}\" $SCRIPT_OUTPUT_FILE_0\n";
 		};
 		8DFB9A2126509AB600254C57 /* Apollo CLI */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1356,9 +1360,9 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"PickUp/Preview Content\"";
 				DEVELOPMENT_TEAM = 5D593G8Q6L;
-				DEV_HOST = "http://localhost:3000";
+				DEV_HOST = "http://localhost:5000";
 				ENABLE_PREVIEWS = YES;
-				ENV = PROD;
+				ENV = DEV;
 				INFOPLIST_FILE = PickUp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1385,9 +1389,9 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"PickUp/Preview Content\"";
 				DEVELOPMENT_TEAM = 5D593G8Q6L;
-				DEV_HOST = "http://localhost:3000";
+				DEV_HOST = "http://localhost:5000";
 				ENABLE_PREVIEWS = YES;
-				ENV = PROD;
+				ENV = DEV;
 				INFOPLIST_FILE = PickUp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

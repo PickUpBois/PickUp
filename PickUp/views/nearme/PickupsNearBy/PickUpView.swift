@@ -15,7 +15,7 @@ struct PickUpView: View, Identifiable {
     var startDate: Date
     var id: Int
     var going: Bool
-    var status: EventStatus
+    var status: event_status_enum
     var event: EventDetails
     var numAttendees: Int
     var capacity: Int
@@ -25,7 +25,7 @@ struct PickUpView: View, Identifiable {
         self.id = id
         self.startDate = event.startDate.dateFromIso!
         let attendees = event.attendees.map { (attendee) -> String in
-            return attendee.fragments.userDetails.id
+            return attendee.fragments.attendeeDetails.user.fragments.userDetails.id
         }
         self.going = attendees.contains(AppState.shared.authId ?? "") ? true : false
         self.status = event.status
@@ -130,7 +130,7 @@ struct PickUpView: View, Identifiable {
 
 
 struct PickUpView_Previews: PreviewProvider {
-    static let event1 = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: [], startDate: Date().isoString, type: .tennis, status: .open)
+    static let event1 = EventDetails(id: 1, name: "event", info: "info", capacity: 4, attendees: [], startDate: Date().isoString, type: .tennis, status: .open, teams: [])
     static var previews: some View {
         PickUpView(id: 0, event: event1).environmentObject(MockHomeViewModel()).environmentObject(MockPickUpListViewModel())
     }

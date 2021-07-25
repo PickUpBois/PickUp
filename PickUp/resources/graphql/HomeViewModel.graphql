@@ -1,6 +1,6 @@
-query QueryEvents($userId: String, $type: EventType, $status: EventStatus) {
-  queryEvents(userId: $userId, type: $type, status: $status) {
-    ...EventDetails
+query GetUpcomingEvents {
+  events(where: {status: {_eq: open}}) {
+	...EventDetails
   }
 }
 
@@ -16,11 +16,10 @@ mutation RejectFriendRequest($userId: ID!, $friendId: ID!) {
   }
 }
 
-query GetNotifications($userId: ID!) {
+query GetNotifications($userId: String!) {
   user(id: $userId) {
 	id,
 	notifications {
-	  id,
 	  createdAt,
 	  type,
 	  actor {

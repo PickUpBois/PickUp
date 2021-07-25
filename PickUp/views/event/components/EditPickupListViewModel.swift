@@ -30,7 +30,7 @@ class EditPickUpListViewModel: ObservableObject {
                     print(errors[0].localizedDescription)
                     self.state = .fail(errors[0])
                 }
-                self.events = result.data?.currentlyOwnedEvents.map {
+                self.events = result.data?.events.map {
                     return $0.fragments.eventDetails
                 }.sorted(by: >) ?? []
                 self.state = .success
@@ -46,7 +46,7 @@ class MockEditPickupListViewModel: EditPickUpListViewModel {
     override init(){
         super.init()
         let attendees: [EventDetails.Attendee] = []
-        let event1 = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open)
+        let event1 = EventDetails(id: 1, name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open, teams: [])
         let event2 = event1
         self.events = [event1, event2]
     }

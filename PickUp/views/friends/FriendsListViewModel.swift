@@ -28,8 +28,8 @@ class FriendsListViewModel: ObservableObject {
                     print("error in getting friends")
                     return
                 }
-                print("found \(data.user.friends.count) friends")
-                self.friends = data.user.friends
+                print("found \(data.user!.friends!.count) friends")
+                self.friends = data.user!.friends!
             case .failure(let error):
                 print(error.localizedDescription)
             }

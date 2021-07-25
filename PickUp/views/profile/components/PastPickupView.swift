@@ -16,14 +16,14 @@ let threeColumns = [GridItem(), GridItem(), GridItem()]
 
     func getWinLoss(event: EventDetails) -> String {
         var teamIndex = 0
-        for i in 0..<event.teams![1].members.count {
-            let memberId = event.teams![1].members[i].id
+        for i in 0..<event.teams[1].members.count {
+            let memberId = event.teams[1].members[i].fragments.attendeeDetails.user.fragments.userDetails.id
             if viewModel.user?.id == memberId {
                 teamIndex = 1
                 break
             }
         }
-        let teamId = event.teams![teamIndex].id
+        let teamId = event.teams[teamIndex].id
         let winnerId = event.winner!.id
         if teamId == winnerId {
             return "W"
@@ -108,16 +108,6 @@ let threeColumns = [GridItem(), GridItem(), GridItem()]
 
     }
 }
-}
-
-
-extension PastPickupView{
-    class ViewModel {
-        var events: [GetUserEventsQuery.Data.UserEvent]
-        init(events: [GetUserEventsQuery.Data.UserEvent]) {
-            self.events = events
-        }
-    }
 }
 
 

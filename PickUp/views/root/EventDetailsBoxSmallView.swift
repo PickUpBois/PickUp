@@ -13,7 +13,7 @@ extension EventDetailsBoxSmallView {
         self.id = id
         self.startDate = event.startDate.dateFromIso!
         let attendees = event.attendees.map { (attendee) -> String in
-            return attendee.fragments.userDetails.id
+            return attendee.fragments.attendeeDetails.user.fragments.userDetails.id
         }
         self.capacity = event.capacity
         self.numAttendees = event.attendees.count
@@ -30,7 +30,7 @@ struct EventDetailsBoxSmallView: View {
     var startDate: Date
     var id: Int
     var going: Bool
-    var status: EventStatus
+    var status: event_status_enum
     var capacity: Int
     var numAttendees: Int
 
@@ -139,7 +139,7 @@ struct EventDetailsBoxSmallView_Previews: PreviewProvider {
         EventDetailsBoxSmallView(id: 0, event: event1)
     }
     
-    static let event1 = EventDetails(id: "0", name: "event", info: "info", capacity: 4, attendees: [], startDate: Date().isoString, type: .tennis, status: .open)
+    static let event1 = EventDetails(id: 0, name: "event", info: "info", capacity: 4, attendees: [], startDate: Date().isoString, type: .tennis, status: .open, teams: [])
 }
 
 

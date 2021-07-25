@@ -10,24 +10,24 @@ import Foundation
 class EventDetailsBoxViewModel: ObservableObject {
     let refresh: () -> Void
     let event: EventDetails
-    let attendeeStatus: EventAttendeeStatus?
+    let attendeeStatus: event_attendee_status_enum?
     let attendeesViewModel: EventAttendeesViewModel
     var userId: String? = nil
     init(event: EventDetails, refresh: @escaping () -> Void = {}, userId: String? = AppState.shared.authId) {
         self.event = event
         self.refresh = refresh
-        var attendeeStatus: EventAttendeeStatus? {
+        var attendeeStatus: event_attendee_status_enum? {
             for i in 0..<event.attendees.count {
                 let attendee = event.attendees[i]
-                if attendee.fragments.userDetails.id == AppState.shared.authId {
-                    return attendee.fragments.userDetails.eventAttendeeStatus
+                if attendee.fragments.attendeeDetails.user.fragments.userDetails.id == AppState.shared.authId {
+                    return attendee.fragments.attendeeDetails.status
                 }
             }
             return nil
         }
         self.attendeeStatus = attendeeStatus
         let attendees = event.attendees.map { attendee in
-            return attendee.fragments.userDetails
+            return attendee.fragments.attendeeDetails
         }
         self.attendeesViewModel = EventAttendeesViewModel(attendees: attendees)
         self.userId = userId

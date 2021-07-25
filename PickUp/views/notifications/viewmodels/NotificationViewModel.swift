@@ -23,23 +23,23 @@ enum ActionStatus {
 
 class NotificationViewModel: ObservableObject, Comparable {
     static func == (lhs: NotificationViewModel, rhs: NotificationViewModel) -> Bool {
-        return lhs.notificationId == rhs.notificationId
+        return lhs.timestamp == rhs.timestamp
     }
     
     static func < (lhs: NotificationViewModel, rhs: NotificationViewModel) -> Bool {
         return lhs.timestamp < rhs.timestamp
     }
     
-    let notificationId: String
-    let type: NotificationType
+    let type: notification_type_enum
     let timestamp: Date
     let event: EventDetails?
     let actor: UserDetails?
+    let notificationId: Int
     let getNotifications: () -> Void
     @Published var actionStatus: ActionStatus = .none
     
     
-    init(notificationId: String, type: NotificationType, timestamp: Date, event: EventDetails?, actor: UserDetails?, getNotifications: @escaping () -> Void) {
+    init(notificationId: Int, type: notification_type_enum, timestamp: Date, event: EventDetails?, actor: UserDetails?, getNotifications: @escaping () -> Void) {
         self.getNotifications = getNotifications
         self.event = event
         self.actor = actor
@@ -78,7 +78,7 @@ class NotificationViewModel: ObservableObject, Comparable {
         }
     }
     
-    func readNotification(id: String) {
+    func readNotification(id: Int) {
         Services.shared.apollo.perform(mutation: ReadNotificationMutation(id: String(id))) { response in
             switch response {
             case .success(let result):
@@ -97,8 +97,8 @@ class NotificationViewModel: ObservableObject, Comparable {
         }
     }
     
-    func acceptEventInvitation(eventId: String) {
-        Services.shared.apollo.perform(mutation: AcceptEventInvitationMutation(eventId: eventId, userId: AppState.shared.authId!)) { response in
+    func acceptEventInvitation(eventId: Int) {
+        Services.shared.apollo.perform(mutation: AcceptEventInvitationMutation(eventId: String(eventId), userId: AppState.shared.authId!)) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -117,8 +117,8 @@ class NotificationViewModel: ObservableObject, Comparable {
         }
     }
     
-    func declineEventInvitation(eventId: String) {
-        Services.shared.apollo.perform(mutation: DeclineEventInvitationMutation(eventId: eventId, userId: AppState.shared.authId!)) { response in
+    func declineEventInvitation(eventId: Int) {
+        Services.shared.apollo.perform(mutation: DeclineEventInvitationMutation(eventId: String(eventId), userId: AppState.shared.authId!)) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -153,10 +153,10 @@ class NotificationViewModel: ObservableObject, Comparable {
         }
     }
     
-    func voteForMvp(eventId: String, voteeId: String) {
+    func voteForMvp(eventId: Int, voteeId: String) {
         let voterId = AppState.shared.authId!
         self.actionStatus = .loading
-        Services.shared.apollo.perform(mutation: VoteForMvpMutation(eventId: eventId, voterId: voterId, voteeId: voteeId)) { response in
+        Services.shared.apollo.perform(mutation: VoteForMvpMutation(eventId: String(eventId), voterId: voterId, voteeId: voteeId)) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -177,7 +177,7 @@ class MockNotificationViewModel: NotificationViewModel {
     init() {
         let actor = UserDetails(id: "1", firstName: "1", lastName: "last", username: "username")
         let attendees: [EventDetails.Attendee] = []
-        let event = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open)
-        super.init(notificationId: "0", type: .friendRequestSend, timestamp: Date(), event: event, actor: actor, getNotifications: { return })
+        let event = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open, teams: [])
+        super.init(notificationId: 0, type: .friendRequestSend, timestamp: Date(), event: event, actor: actor, getNotifications: { return })
     }
 }

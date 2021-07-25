@@ -1,24 +1,20 @@
-query GetUserEvents($userId: String!, $status: EventStatus!) {
-  userEvents(userId: $userId, status: $status) {
-    ...EventDetails
+query GetJoinedEventsByStatus($userId: String!, $status: event_status_enum!) {
+  events(where: {status: {_eq: $status}, attendees: {id: {_eq: $userId}}}) {
+	... EventDetails
   }
 }
 
-query GetUser($id: ID!, $authId: ID!) {
-  user(id: $id) {
-	  id,
-	firstName,
-	lastName,
-	username,
-	college,
-	photoUrl,
-	friendStatus(user_id: $authId),
-	goatScore,
-	friends {
-		id,
-	}
+query GetUser($userId: String!) {
+  user(id: $userId) {
+	id
+	firstName
+	goatScore
+	lastName
+	photoUrl
+	username
   }
 }
+
 
 mutation SendFriendRequest($userId: ID!, $friendId: ID!) {
   sendFriendRequest(user_id: $userId, friend_id: $friendId) {

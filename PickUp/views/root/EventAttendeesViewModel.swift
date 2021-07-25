@@ -8,15 +8,15 @@
 import Foundation
 
 class EventAttendeesViewModel: ObservableObject {
-    @Published var attendees: [UserDetails] = []
+    @Published var attendees: [AttendeeDetails] = []
     
-    init(attendees: [UserDetails]) {
+    init(attendees: [AttendeeDetails]) {
         self.attendees = attendees
     }
 }
 
 class MockEventAttendeesViewModel: EventAttendeesViewModel {
-    override init(attendees: [UserDetails] = []) {
+    override init(attendees: [AttendeeDetails] = []) {
         super.init(attendees: attendees)
     }
 }

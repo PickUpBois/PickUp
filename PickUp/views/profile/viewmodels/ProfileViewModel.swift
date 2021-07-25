@@ -81,7 +81,7 @@ class ProfileViewModel: ObservableObject {
     
     func retrieveUser(group: DispatchGroup? = nil) {
         group?.enter()
-        Services.shared.apollo.fetch(query: GetUserQuery(id: userId, authId: AppState.shared.authId ?? "1"), cachePolicy: .fetchIgnoringCacheCompletely) { response in
+        Services.shared.apollo.fetch(query: GetUserQuery(userId: AppState.shared.authId!), cachePolicy: .fetchIgnoringCacheCompletely) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -139,7 +139,7 @@ class ProfileViewModel: ObservableObject {
     
     func getEvents(status: EventStatus, group: DispatchGroup? = nil) {
         group?.enter()
-        Services.shared.apollo.fetch(query: GetUserEventsQuery(userId: userId, status: status), cachePolicy: .fetchIgnoringCacheCompletely) { response in
+        Services.shared.apollo.fetch(query: GetJoinedEventsByStatusQuery(userId: userId, status: status), cachePolicy: .fetchIgnoringCacheCompletely) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -175,7 +175,7 @@ class ProfileViewModel: ObservableObject {
 class MockProfileViewModel: ProfileViewModel {
     
     override func retrieveUser(group: DispatchGroup? = nil) {
-        self.user = GetUserQuery.Data.User(id: "1", firstName: "arahbar", lastName: "David", username: "Reynolds", college: "", goatScore: 4, friends: [])
+        self.user = GetUserQuery.Data.User(id: "1", firstName: "arahbar", goatScore: 4, lastName: "David", username: "Reynolds")
     }
     
     override func logout() {
@@ -188,7 +188,7 @@ class MockProfileViewModel: ProfileViewModel {
     
     override func getEvents(status: EventStatus, group: DispatchGroup? = nil) {
         let attendees: [EventDetails.Attendee] = []
-        let event1 = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open)
+        let event1 = EventDetails(id: 1, name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open, teams: [])
         let event2 = event1
         self.upcomingEvents = [event1, event2]
         self.pastEvents = []

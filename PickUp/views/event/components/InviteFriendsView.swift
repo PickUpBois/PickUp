@@ -40,7 +40,7 @@ struct InviteFriendsView: View {
     }
     
     
-    func getStatus(friendId: String) -> EventAttendeeStatus? {
+    func getStatus(friendId: String) -> event_attendee_status_enum? {
         if viewModel.invitedUsers.contains(friendId) {
             return .invited
         }
@@ -147,7 +147,7 @@ struct InviteFriendsView: View {
 }
 
 struct InviteFriendsView_Previews: PreviewProvider {
-    static let event1 = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: [], startDate: Date().isoString, type: .tennis, status: .open)
+    static let event1 = EventDetails(id: 1, name: "event", info: "info", capacity: 4, attendees: [], startDate: Date().isoString, type: .tennis, status: .open, teams: [])
     static var previews: some View {
         InviteFriendsView(viewModel: MockInviteFriendsViewModel(event: event1), friendsViewModel: MockFriendsListViewModel(userId: "1"))
     }

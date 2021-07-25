@@ -73,7 +73,7 @@ struct FriendRequestResponseNotificationView: View {
                 }
             Spacer().frame(height: 10)
                     HStack {
-                        Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName) \(viewModel.type == NotificationType.friendRequestAccept ? "accepted" : "rejected") your friend request")
+                        Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName) \(viewModel.type == notification_type_enum.friendRequestAccept ? "accepted" : "rejected") your friend request")
                             .foregroundColor(Color.purple)
                             .lineLimit(1)
                             .padding(.leading, 12.0)

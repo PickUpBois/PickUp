@@ -1,29 +1,29 @@
-fragment EventDetails on Event {
-	  __typename,
-	  id,
-	  name,
-	  info,
-	  capacity,
-	  attendees {
-		...UserDetails,
-	  },
-	  startDate,
-	  endDate,
-	  type,
-	  status,
-	winner {
-		id,
-	},
-	teams {
-		id,
-		scores,
-		members {
-			id,
-		}
-	},
-	mvp {
-		id,
-		firstName,
-		lastName,
+fragment EventDetails on events {
+  __typename
+  id
+  name
+  info
+  capacity
+  attendees {
+	... AttendeeDetails
+  }
+  startDate
+  endDate
+  type
+  status
+  winner {
+	id
+  }
+  teams {
+	id
+	scores
+	members {
+	  ... AttendeeDetails
 	}
+  }
+  mvp {
+	id
+	firstName
+	lastName
+  }
 }

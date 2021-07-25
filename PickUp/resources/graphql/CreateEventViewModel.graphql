@@ -1,5 +1,5 @@
-mutation CreateEvent($input: CreateEventInput!) {
-  createEvent(createEventInput: $input) {
-    name
+mutation CreateEvent($userId: String!, $name: String!, $info: String!, $capacity: Int!, $type: event_type_enum) {
+  insert_events_one(object: {attendees: {data: {id: $userId, status: owner}}, capacity: $capacity, name: $name, type: $type, info: $info}) {
+	id
   }
 }

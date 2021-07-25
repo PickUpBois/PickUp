@@ -47,17 +47,6 @@ struct ProfilePastEventView: View {
     }
 }
 
-protocol IProfilePastEventViewModel: ObservableObject {
-    var event: GetUserEventsQuery.Data.UserEvent { get }
-}
-
-class ProfilePastEventViewModel: IProfilePastEventViewModel {
-    var event: GetUserEventsQuery.Data.UserEvent
-    init(event: GetUserEventsQuery.Data.UserEvent) {
-        self.event = event
-    }
-}
-
 struct ProfilePastEventView_Previews: PreviewProvider {
     static var previews: some View {
         ProfilePastEventView(type: .tennis)
