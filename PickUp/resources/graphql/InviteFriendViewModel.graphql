@@ -1,6 +1,7 @@
-mutation InviteUser($actorId: ID!, $eventId: ID!, $userId: ID!) {
-  inviteUserToEvent(actorId: $actorId, eventId: $eventId, userId: $userId) {
-	id,
+mutation InviteUserToEvent($eventId: Int!, $userId: String!) {
+  inviteUserToEvent(eventId: $eventId, userId: $userId) {
+	reason,
+	status
   }
 }
 
@@ -16,8 +17,9 @@ query GetEvent($eventId: ID!) {
   }
 }
 
-mutation CancelEventInvitation($actorId: ID!, $eventId: ID!, $userId: ID!) {
-  cancelEventInvitation(actorId: $actorId, eventId: $eventId, userId: $userId) {
-	id,
+mutation CancelEventInvitation($eventId: Int!, $userId: String!) {
+  cancelEventInvitation(eventId: $eventId, userId: $userId) {
+	status,
+	reason
   }
 }

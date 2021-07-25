@@ -1,9 +1,7 @@
-mutation CreateUser($createUserInput: CreateUserInput!) {
-  createUser(createUserInput: $createUserInput) {
-    id,
-    firstName,
-    lastName,
-    username,
-    college,
-  }
+mutation CreateUser($input: CreateUserInput!) {
+	createUser(arg1: $input) {
+		status,
+		reason,
+		id,
+	}
 }

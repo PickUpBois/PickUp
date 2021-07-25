@@ -1,5 +1,6 @@
-mutation VoteForMVP($eventId: ID!, $voterId: ID!, $voteeId: ID!) {
-	voteForMvp(eventId: $eventId, voterId: $voterId, voteeId: $voteeId) {
-	id,
+mutation VoteForMvp($eventId: Int!, $userId: String!) {
+  voteForMvp(eventId: $eventId, userId: $userId) {
+	status,
+	reason
   }
 }

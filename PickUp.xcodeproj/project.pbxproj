@@ -1007,7 +1007,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$ENV\" == \"DEV\" ]]\nthen\n    URL=\"${DEV_HOST}/graphql\"\nelse\n    URL=\"${PROD_HOST}/graphql\"\nfi\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"${URL}/graphql\" $SCRIPT_OUTPUT_FILE_0\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$ENV\" == \"DEV\" ]]\nthen\n    URL=\"${DEV_HOST}/v1/graphql\"\nelse\n    URL=\"${PROD_HOST}/v1/graphql\"\nfi\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"${URL}\" $SCRIPT_OUTPUT_FILE_0\n";
 		};
 		8DFB9A2126509AB600254C57 /* Apollo CLI */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1344,9 +1344,9 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"PickUp/Preview Content\"";
 				DEVELOPMENT_TEAM = 5D593G8Q6L;
-				DEV_HOST = "http://localhost:3000";
+				DEV_HOST = "http://localhost:5000";
 				ENABLE_PREVIEWS = YES;
-				ENV = PROD;
+				ENV = DEV;
 				INFOPLIST_FILE = PickUp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1373,9 +1373,9 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"PickUp/Preview Content\"";
 				DEVELOPMENT_TEAM = 5D593G8Q6L;
-				DEV_HOST = "http://localhost:3000";
+				DEV_HOST = "http://localhost:5000";
 				ENABLE_PREVIEWS = YES;
-				ENV = PROD;
+				ENV = DEV;
 				INFOPLIST_FILE = PickUp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
