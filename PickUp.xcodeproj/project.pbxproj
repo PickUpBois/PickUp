@@ -135,6 +135,11 @@
 		C0A322B12683C99900CB5919 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A322B02683C99800CB5919 /* BottomView.swift */; };
 		C0B63B36267041F4008237EE /* BusynessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B63B35267041F4008237EE /* BusynessView.swift */; };
 		C0B81C6E2657064B000555BD /* NotificationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B81C6D2657064B000555BD /* NotificationListView.swift */; };
+		C0C0C7D726AE583000220D57 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0C7D626AE583000220D57 /* PreferencesView.swift */; };
+		C0C0C7DA26AE790500220D57 /* LikeCommentShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0C7D926AE790500220D57 /* LikeCommentShareView.swift */; };
+		C0C0C7DC26AE796600220D57 /* LikesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0C7DB26AE796600220D57 /* LikesView.swift */; };
+		C0C0C7DE26AE798300220D57 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0C7DD26AE798300220D57 /* CommentsView.swift */; };
+		C0C0C7E026AE799700220D57 /* SharesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0C7DF26AE799700220D57 /* SharesView.swift */; };
 		C0D4716C264098BF00E7B6C7 /* CreateEventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D4716B264098BF00E7B6C7 /* CreateEventView.xib */; };
 		C0EA4A1B2692D07E00C1D0CB /* UpdateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA4A1A2692D07E00C1D0CB /* UpdateProfileView.swift */; };
 		C0EA4A1D2692D16100C1D0CB /* SettingsFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA4A1C2692D16100C1D0CB /* SettingsFields.swift */; };
@@ -309,6 +314,11 @@
 		C0A322B02683C99800CB5919 /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		C0B63B35267041F4008237EE /* BusynessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusynessView.swift; sourceTree = "<group>"; };
 		C0B81C6D2657064B000555BD /* NotificationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListView.swift; sourceTree = "<group>"; };
+		C0C0C7D626AE583000220D57 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
+		C0C0C7D926AE790500220D57 /* LikeCommentShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCommentShareView.swift; sourceTree = "<group>"; };
+		C0C0C7DB26AE796600220D57 /* LikesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesView.swift; sourceTree = "<group>"; };
+		C0C0C7DD26AE798300220D57 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		C0C0C7DF26AE799700220D57 /* SharesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharesView.swift; sourceTree = "<group>"; };
 		C0D4716B264098BF00E7B6C7 /* CreateEventView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateEventView.xib; sourceTree = "<group>"; };
 		C0EA4A1A2692D07E00C1D0CB /* UpdateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileView.swift; sourceTree = "<group>"; };
 		C0EA4A1C2692D16100C1D0CB /* SettingsFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFields.swift; sourceTree = "<group>"; };
@@ -434,6 +444,7 @@
 		8D65B2562658C4400085D5EE /* home */ = {
 			isa = PBXGroup;
 			children = (
+				C0C0C7D826AE78E300220D57 /* Social */,
 				8DFCF52B262788E100BBFE66 /* HomeView.swift */,
 				C015111F265A09FB005EF24A /* CreatePostView.swift */,
 				1A49DC0C265466BD007F28FD /* PostedPickUpsView.swift */,
@@ -529,6 +540,7 @@
 				8DA9D1B22683F95800513358 /* EditPickupViewModel.swift */,
 				8DA9D1B4268414EF00513358 /* InviteFriendsView.swift */,
 				8DA9D1B62684155C00513358 /* InviteFriendsViewModel.swift */,
+				C0C0C7D626AE583000220D57 /* PreferencesView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -776,6 +788,17 @@
 				C0B63B35267041F4008237EE /* BusynessView.swift */,
 			);
 			path = busyness;
+			sourceTree = "<group>";
+		};
+		C0C0C7D826AE78E300220D57 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				C0C0C7D926AE790500220D57 /* LikeCommentShareView.swift */,
+				C0C0C7DB26AE796600220D57 /* LikesView.swift */,
+				C0C0C7DD26AE798300220D57 /* CommentsView.swift */,
+				C0C0C7DF26AE799700220D57 /* SharesView.swift */,
+			);
+			path = Social;
 			sourceTree = "<group>";
 		};
 		C0EA4A192692CFF300C1D0CB /* settings */ = {
@@ -1126,6 +1149,7 @@
 				1A03F99F263F482F00C2E2CD /* UpcomingPickupsView.swift in Sources */,
 				8DB8F058261AAE90004AADED /* PickUpAppDelegate.swift in Sources */,
 				8DA9D1B32683F95800513358 /* EditPickupViewModel.swift in Sources */,
+				C0C0C7DC26AE796600220D57 /* LikesView.swift in Sources */,
 				C05E56A826A9F04F000DAF02 /* ForgotPasswordView.swift in Sources */,
 				C04BFC1C267E6643006DE620 /* LoadingView.swift in Sources */,
 				8D65B2812658CE550085D5EE /* RestService.swift in Sources */,
@@ -1134,6 +1158,7 @@
 				8D3CDD3226583A93000EE754 /* SearchBarView.swift in Sources */,
 				8DB8EF8826198976004AADED /* ContentView.swift in Sources */,
 				1ADE7E36264C50E90097138F /* CourtsNearMeView.swift in Sources */,
+				C0C0C7DA26AE790500220D57 /* LikeCommentShareView.swift in Sources */,
 				8D5EE0292652D2CD00EE7840 /* PickUpView.swift in Sources */,
 				8D2094A1263C6F43009B1609 /* ProfileSettingsView.swift in Sources */,
 				8D7AC47E266D636400672918 /* EventDetailsBoxView.swift in Sources */,
@@ -1156,11 +1181,13 @@
 				8D63ED3D266FFE090022FB79 /* SetScoresViewModel.swift in Sources */,
 				8D65B377265B06900085D5EE /* API.swift in Sources */,
 				8D5EE0242652D1A400EE7840 /* PickUpListView.swift in Sources */,
+				C0C0C7E026AE799700220D57 /* SharesView.swift in Sources */,
 				8D65B2AB265904EA0085D5EE /* CreateEventViewModel.swift in Sources */,
 				C0908F2126A4B93000ABE1CE /* AttachPickupView.swift in Sources */,
 				8D65B2682658C91D0085D5EE /* AppState.swift in Sources */,
 				8DEFD47C2686CF9A003F8CE0 /* JoinedEventNotificationView.swift in Sources */,
 				8D65B27C2658CD790085D5EE /* StorageService.swift in Sources */,
+				C0C0C7DE26AE798300220D57 /* CommentsView.swift in Sources */,
 				8DA9D1B72684155C00513358 /* InviteFriendsViewModel.swift in Sources */,
 				8D65B2D826590F310085D5EE /* HomeViewModel.swift in Sources */,
 				C06A97D326790DF2004966F0 /* PopOverView.swift in Sources */,
@@ -1183,6 +1210,7 @@
 				C04BFC2026811277006DE620 /* PopUpList.swift in Sources */,
 				1A49DC0D265466BD007F28FD /* PostedPickUpsView.swift in Sources */,
 				8D7AC479266D081B00672918 /* EventSportSelectionView.swift in Sources */,
+				C0C0C7D726AE583000220D57 /* PreferencesView.swift in Sources */,
 				8D69FE8F2676FDC5009D2AFF /* VotedForMvpNotificationView.swift in Sources */,
 				C088BBA7265780CB007301F7 /* MapViewModel.swift in Sources */,
 				C0151127265A36B8005EF24A /* ChatView.swift in Sources */,

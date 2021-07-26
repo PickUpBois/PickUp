@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CreateSportEventView: View {
     @EnvironmentObject var eventViewModel: CreateEventViewModel
-    @State var showPopUp = false
+    @State var invitePopUp = false
+    @State var preferencesPopUp = false
     @State private var eventAlert = false
     @State var friendPopUp = false
     var body: some View {
@@ -80,7 +81,7 @@ struct CreateSportEventView: View {
 //            })
 //            }
             
-//            Spacer().frame(width: 17.5)
+            Spacer().frame(width: 17.5)
             
             HStack{
                 Button(action: {
@@ -105,38 +106,77 @@ struct CreateSportEventView: View {
             //Spacer extends page to bottom of screen
             Spacer()
         }
-        .opacity(self.friendPopUp ? 0.2: 1)
-                if self.friendPopUp {
-                    VStack(alignment:.center){
-                        ZStack{
-                        PopUpList()
-                            .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.6, alignment: .bottom)
-                        
-                            }
-                        .onTapGesture(perform: {
-                            withAnimation(.easeIn){self.friendPopUp.toggle()}
-                                })
-                        .background(Color("Friends_Popup_Background").edgesIgnoringSafeArea(.all))
-                                .cornerRadius(20)
-                        
-                        
-                        
-                        Button(action: {
-                        withAnimation{
-                            self.friendPopUp.toggle()
-                        }
-                    }) {
-                        Image(systemName: "plus.square.fill").resizable()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(Color.white)
-                            .padding(15)
+            VStack{
+            Spacer()
+            Button(action: {
+                self.invitePopUp.toggle()
+            },label: {
+                Image(systemName: "circlebadge.fill")
+                    .resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
+                    .foregroundColor(Color("Tabbar"))
+                    .background(Circle().stroke(Color.white, lineWidth: 2))
+                    .frame(width: 50, height: 50)
+                    .overlay(Image(systemName: "person.crop.circle.fill.badge.plus").foregroundColor(Color("Text")))
+                
+            }).sheet(isPresented: $invitePopUp, content: {
+                    
+                    //PopUp for inviting friends
+               
+                })
+                
+            Spacer().frame(height: 10)
+                
+            Button(action: {
+                self.preferencesPopUp.toggle()
+            },label: {
+                Image(systemName: "circlebadge.fill")
+                    .resizable(capInsets: EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
+                    .foregroundColor(Color("Tabbar"))
+                    .background(Circle().stroke(Color.white, lineWidth: 2))
+                    .frame(width: 50, height: 50)
+                    .overlay(Image(systemName: "text.badge.plus").foregroundColor(Color("Text")))
 
-                    }
-                    .background(Color.green)
-                    .clipShape(Circle())
-                    .padding(.top, 5)
-                    }
-                }
+                
+            }).sheet(isPresented: $preferencesPopUp, content: {
+                
+                PreferencesView()
+                
+                
+            })
+            }.padding(.leading, 330)
+            .padding(.bottom, 20)
+//        .opacity(self.friendPopUp ? 0.2: 1)
+//                if self.friendPopUp {
+//                    VStack(alignment:.center){
+//                        ZStack{
+//                        PopUpList()
+//                            .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.6, alignment: .bottom)
+//
+//                            }
+//                        .onTapGesture(perform: {
+//                            withAnimation(.easeIn){self.friendPopUp.toggle()}
+//                                })
+//                        .background(Color("Friends_Popup_Background").edgesIgnoringSafeArea(.all))
+//                                .cornerRadius(20)
+//
+//
+//
+//                        Button(action: {
+//                        withAnimation{
+//                            self.friendPopUp.toggle()
+//                        }
+//                    }) {
+//                        Image(systemName: "plus.square.fill").resizable()
+//                            .frame(width: 20, height: 20)
+//                            .foregroundColor(Color.white)
+//                            .padding(15)
+//
+//                    }
+//                    .background(Color.green)
+//                    .clipShape(Circle())
+//                    .padding(.top, 5)
+//                    }
+//                }
             }
         }
     }

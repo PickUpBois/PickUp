@@ -39,7 +39,7 @@ struct CreatePostView: View {
                    
                 HStack(spacing: 10 ){
                     
-                    ForEach(["Private","Public"],id: \.self) {tab in
+                    ForEach(["Public","Private"],id: \.self) {tab in
                     
                         PostTabButton(title: tab, currentType: $currentPostType)
                     

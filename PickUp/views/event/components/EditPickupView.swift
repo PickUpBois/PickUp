@@ -49,7 +49,7 @@ struct EditPickupView: View {
                     .fontWeight(.heavy)
                     .foregroundColor(Color("Text"))
                     .padding(.all, 10.0)
-                    .background(Color.purple.opacity(0.8))
+                    .background(Color.green.opacity(0.8))
                     .cornerRadius(7)
                 })
                 
@@ -62,7 +62,7 @@ struct EditPickupView: View {
                     .fontWeight(.heavy)
                         .foregroundColor(Color("Text"))
                         .padding(.all, 10.0)
-                        .background(Color.green.opacity(0.8))
+                        .background(Color.blue.opacity(0.8))
                         .cornerRadius(7)
                         .alert(isPresented:$updatePickupAlert) {
                             Alert(title: Text("Confirm Update Event"), message: Text("Are you sure you want to update this Pickup?"), primaryButton: .default(Text("Yes")) {

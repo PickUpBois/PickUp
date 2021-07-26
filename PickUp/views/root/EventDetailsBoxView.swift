@@ -153,7 +153,7 @@ struct EventDetailsBoxView: View {
             Spacer().frame(height: 4)
             Divider()
                 
-            //Stack for event info and description
+            //Stack for event info and members
             HStack (alignment: .top){
 
             //Stack for event info
@@ -286,7 +286,7 @@ struct EventDetailsBoxView: View {
                     }.frame(maxWidth: 160, alignment: .leading)
                 }
                 
-            }.frame(maxWidth: 320, maxHeight: 180, alignment: .topLeading)
+            }.frame(minWidth: 320, maxWidth: 320,  minHeight: 140, maxHeight: 180, alignment: .topLeading)
             
             Divider()
                 
