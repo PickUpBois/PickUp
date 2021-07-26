@@ -11,7 +11,7 @@ class CreateEventViewModel: ObservableObject {
     @Published var eventInfo: EventInfo = EventInfo()
     
     func createEvent() {
-        let input = CreateEventInput(capacity: Int(eventInfo.capacity) ?? 1, info: eventInfo.info, name: ISO8601DateFormatter().string(from: eventInfo.startDate), startDate: eventInfo.startDate.isoString, status: eventInfo.eventType.rawValue, type: event_status_enum.open.rawValue)
+        let input = CreateEventInput(capacity: Int(eventInfo.capacity) ?? 1, info: eventInfo.info, name: ISO8601DateFormatter().string(from: eventInfo.startDate), startDate: eventInfo.startDate.isoString, status: event_status_enum.open.rawValue, type: event_type_enum.tennis.rawValue)
         Services.shared.apollo.perform(mutation: CreateEventMutation(input: input)) { response in
             switch response {
             case .success(let result):

@@ -71,8 +71,8 @@ class Services {
       
       let client = URLSessionClient()
         let provider = NetworkInterceptorProvider(store: store, client: client, auth: Services.auth)
-        let url =  URL(string: Services.emulator ? "\(Services.DEV_URL)/graphql" : "\(Services.PROD_URL)/graphql")!
-
+        let url =  URL(string: Services.emulator ? "\(Services.DEV_URL)/v1/graphql" : "\(Services.PROD_URL)/v1/graphql")!
+        print(url)
       let requestChainTransport = RequestChainNetworkTransport(interceptorProvider: provider,
                                                                endpointURL: url)
                                                                

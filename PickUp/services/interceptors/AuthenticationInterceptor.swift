@@ -23,7 +23,7 @@ class AuthenticationInterceptor: ApolloInterceptor {
             response: HTTPResponse<Operation>?,
             completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void) {
             
-            request.addHeader(name: "Authorization", value: token)
+            request.addHeader(name: "X-Hasura-User-Id", value: token)
             chain.proceedAsync(request: request,
                                response: response,
                                completion: completion)
@@ -31,23 +31,13 @@ class AuthenticationInterceptor: ApolloInterceptor {
     
     
     func interceptAsync<Operation>(chain: RequestChain, request: HTTPRequest<Operation>, response: HTTPResponse<Operation>?, completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void) where Operation : GraphQLOperation {
-        auth.currentUser?.getIDToken(completion: {token, error in
-            if error != nil {
-                print(error!.localizedDescription)
-                chain.handleErrorAsync(error!,
-                                       request: request,
-                                       response: response,
-                                       completion: completion)
-                return
-            }
-            guard let token = token else {
+            guard let userId = auth.currentUser?.uid else {
                 chain.handleErrorAsync(AuthError.error,
                                        request: request,
                                        response: response,
                                        completion: completion)
                 return
             }
-            self.addTokenAndProceed(token, to: request, chain: chain, response: response, completion: completion)
-        })
+            self.addTokenAndProceed(userId, to: request, chain: chain, response: response, completion: completion)
     }
 }

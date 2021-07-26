@@ -71,7 +71,8 @@ class NotificationViewModel: ObservableObject, Comparable {
                 if let errors = result.errors {
                     print(errors[0].localizedDescription)
                 }
-                self.getNotifications()
+                self.readNotification(id: self.notificationId)
+//                self.getNotifications()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -109,7 +110,8 @@ class NotificationViewModel: ObservableObject, Comparable {
                     print("error in accepting event inivitation")
                     return
                 }
-                self.getNotifications()
+                self.readNotification(id: self.notificationId)
+//                self.getNotifications()
                 return
             case .failure(let error):
                 print(error.localizedDescription)
@@ -129,7 +131,8 @@ class NotificationViewModel: ObservableObject, Comparable {
                     print("error in declining event inivitation")
                     return
                 }
-                self.getNotifications()
+                self.readNotification(id: self.notificationId)
+//                self.getNotifications()
                 return
             case .failure(let error):
                 print(error.localizedDescription)
@@ -145,7 +148,8 @@ class NotificationViewModel: ObservableObject, Comparable {
                     print(errors[0].localizedDescription)
                     return
                 }
-                self.getNotifications()
+                self.readNotification(id: self.notificationId)
+//                self.getNotifications()
             case .failure(let error):
                 print(error.localizedDescription)
                 return
@@ -164,7 +168,7 @@ class NotificationViewModel: ObservableObject, Comparable {
                     return
                 }
                 self.actionStatus = .success
-                self.getNotifications()
+                self.readNotification(id: self.notificationId)
             case .failure(let error):
                 print(error.localizedDescription)
             }
