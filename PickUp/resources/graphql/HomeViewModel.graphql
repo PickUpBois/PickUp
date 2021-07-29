@@ -1,6 +1,6 @@
 query GetUpcomingEvents {
-  events(where: {status: {_eq: open}}) {
-	...EventDetails
+  events(where: {status: {_in: [open, ip]}, deleted: {_eq: false}}) {
+	... EventDetails
   }
 }
 
@@ -19,7 +19,7 @@ mutation RejectFriendRequest($userId: String!) {
 }
 
 query GetNotifications($userId: String!) {
-  notifications(where: {userId: {_eq: $userId}}) {
+  notifications(where: {userId: {_eq: $userId}, status: {_eq: unread}}) {
 	id,
 	actor {
 	  ... UserDetails

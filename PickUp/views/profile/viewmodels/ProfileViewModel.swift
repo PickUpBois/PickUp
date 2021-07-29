@@ -31,8 +31,8 @@ class ProfileViewModel: ObservableObject {
         state = .loading
         let group = DispatchGroup()
         retrieveUser(group: group)
-        getEvents(status: .open, group: group)
-        getEvents(status: .closed, group: group)
+        getEvents(status: .open, statuses: [.open, .ip], group: group)
+        getEvents(status: .closed, statuses: [.closed], group: group)
         group.notify(queue: .main) { [weak self] in
             self?.state = .success
         }
@@ -82,7 +82,7 @@ class ProfileViewModel: ObservableObject {
     
     func retrieveUser(group: DispatchGroup? = nil) {
         group?.enter()
-        Services.shared.apollo.fetch(query: GetUserQuery(userId: AppState.shared.authId ?? "1"), cachePolicy: .fetchIgnoringCacheCompletely) { response in
+        Services.shared.apollo.fetch(query: GetUserQuery(userId: userId), cachePolicy: .fetchIgnoringCacheCompletely) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -95,6 +95,7 @@ class ProfileViewModel: ObservableObject {
                     group?.leave()
                     return
                 }
+                print("fetching user \(self.userId)")
                 print("user \(data.user?.fragments.userDetails)")
                 self.user = data.user?.fragments.userDetails
                 self.numFriends = data.user?.friends?.count ?? 0
@@ -139,9 +140,9 @@ class ProfileViewModel: ObservableObject {
     }
     
     
-    func getEvents(status: event_status_enum, group: DispatchGroup? = nil) {
+    func getEvents(status: event_status_enum, statuses: [event_status_enum], group: DispatchGroup? = nil) {
         group?.enter()
-        Services.shared.apollo.fetch(query: GetJoinedEventsByStatusQuery(userId: userId, status: status), cachePolicy: .fetchIgnoringCacheCompletely) { response in
+        Services.shared.apollo.fetch(query: GetJoinedEventsByStatusQuery(userId: userId, statuses: statuses), cachePolicy: .fetchIgnoringCacheCompletely) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -155,6 +156,7 @@ class ProfileViewModel: ObservableObject {
                 var events = data.events.map { event in
                     return event.fragments.eventDetails
                 }
+                print(events)
                 events.sort(by: >)
                 if status == .open {
                     self.upcomingEvents = events
@@ -188,7 +190,7 @@ class MockProfileViewModel: ProfileViewModel {
         return
     }
     
-    override func getEvents(status: event_status_enum, group: DispatchGroup? = nil) {
+    override func getEvents(status: event_status_enum, statuses: [event_status_enum], group: DispatchGroup? = nil) {
         let attendees: [EventDetails.Attendee] = []
         let event1 = EventDetails(id: 1, name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open, teams: [])
         let event2 = event1

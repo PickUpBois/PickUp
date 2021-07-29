@@ -57,7 +57,8 @@ class NotificationViewModel: ObservableObject, Comparable {
                     print(errors[0].localizedDescription)
                     return
                 }
-                self.getNotifications()
+                self.readNotification()
+//                self.getNotifications()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -71,7 +72,7 @@ class NotificationViewModel: ObservableObject, Comparable {
                 if let errors = result.errors {
                     print(errors[0].localizedDescription)
                 }
-                self.readNotification(id: self.notificationId)
+                self.readNotification()
 //                self.getNotifications()
             case .failure(let error):
                 print(error.localizedDescription)
@@ -79,8 +80,8 @@ class NotificationViewModel: ObservableObject, Comparable {
         }
     }
     
-    func readNotification(id: Int) {
-        Services.shared.apollo.perform(mutation: ReadNotificationMutation(notificationId: id)) { response in
+    func readNotification() {
+        Services.shared.apollo.perform(mutation: ReadNotificationMutation(notificationId: self.notificationId)) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -110,7 +111,7 @@ class NotificationViewModel: ObservableObject, Comparable {
                     print("error in accepting event inivitation")
                     return
                 }
-                self.readNotification(id: self.notificationId)
+                self.readNotification()
 //                self.getNotifications()
                 return
             case .failure(let error):
@@ -131,7 +132,7 @@ class NotificationViewModel: ObservableObject, Comparable {
                     print("error in declining event inivitation")
                     return
                 }
-                self.readNotification(id: self.notificationId)
+                self.readNotification()
 //                self.getNotifications()
                 return
             case .failure(let error):
@@ -148,7 +149,7 @@ class NotificationViewModel: ObservableObject, Comparable {
                     print(errors[0].localizedDescription)
                     return
                 }
-                self.readNotification(id: self.notificationId)
+                self.readNotification()
 //                self.getNotifications()
             case .failure(let error):
                 print(error.localizedDescription)
@@ -168,7 +169,7 @@ class NotificationViewModel: ObservableObject, Comparable {
                     return
                 }
                 self.actionStatus = .success
-                self.readNotification(id: self.notificationId)
+                self.readNotification()
             case .failure(let error):
                 print(error.localizedDescription)
             }

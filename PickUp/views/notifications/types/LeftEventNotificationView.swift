@@ -75,7 +75,7 @@ struct LeftEventNotificationView: View {
             Spacer().frame(height: 10)
             HStack(alignment: .lastTextBaseline) {
                 Button(action: {
-                    self.viewModel.readNotification(id: viewModel.notificationId)
+                    self.viewModel.readNotification()
                 }, label: {
                     Text("Mark as read")
                 })

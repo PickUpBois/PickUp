@@ -1347,7 +1347,7 @@ public final class GetUpcomingEventsQuery: GraphQLQuery {
   public let operationDefinition: String =
     """
     query GetUpcomingEvents {
-      events(where: {status: {_eq: open}}) {
+      events(where: {status: {_in: [open, ip]}, deleted: {_eq: false}}) {
         __typename
         ...EventDetails
       }
@@ -1372,7 +1372,7 @@ public final class GetUpcomingEventsQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("events", arguments: ["where": ["status": ["_eq": "open"]]], type: .nonNull(.list(.nonNull(.object(Event.selections))))),
+        GraphQLField("events", arguments: ["where": ["status": ["_in": ["open", "ip"]], "deleted": ["_eq": false]]], type: .nonNull(.list(.nonNull(.object(Event.selections))))),
       ]
     }
 
@@ -1663,7 +1663,7 @@ public final class GetNotificationsQuery: GraphQLQuery {
   public let operationDefinition: String =
     """
     query GetNotifications($userId: String!) {
-      notifications(where: {userId: {_eq: $userId}}) {
+      notifications(where: {userId: {_eq: $userId}, status: {_eq: unread}}) {
         __typename
         id
         actor {
@@ -1705,7 +1705,7 @@ public final class GetNotificationsQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("notifications", arguments: ["where": ["userId": ["_eq": GraphQLVariable("userId")]]], type: .nonNull(.list(.nonNull(.object(Notification.selections))))),
+        GraphQLField("notifications", arguments: ["where": ["userId": ["_eq": GraphQLVariable("userId")], "status": ["_eq": "unread"]]], type: .nonNull(.list(.nonNull(.object(Notification.selections))))),
       ]
     }
 
@@ -3068,8 +3068,8 @@ public final class GetJoinedEventsByStatusQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query GetJoinedEventsByStatus($userId: String!, $status: event_status_enum!) {
-      events(where: {status: {_eq: $status}, attendees: {id: {_eq: $userId}}}) {
+    query GetJoinedEventsByStatus($userId: String!, $statuses: [event_status_enum!]) {
+      events(where: {status: {_in: $statuses}, attendees: {id: {_eq: $userId}}}) {
         __typename
         ...EventDetails
       }
@@ -3087,15 +3087,15 @@ public final class GetJoinedEventsByStatusQuery: GraphQLQuery {
   }
 
   public var userId: String
-  public var status: event_status_enum
+  public var statuses: [event_status_enum]?
 
-  public init(userId: String, status: event_status_enum) {
+  public init(userId: String, statuses: [event_status_enum]?) {
     self.userId = userId
-    self.status = status
+    self.statuses = statuses
   }
 
   public var variables: GraphQLMap? {
-    return ["userId": userId, "status": status]
+    return ["userId": userId, "statuses": statuses]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -3103,7 +3103,7 @@ public final class GetJoinedEventsByStatusQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("events", arguments: ["where": ["status": ["_eq": GraphQLVariable("status")], "attendees": ["id": ["_eq": GraphQLVariable("userId")]]]], type: .nonNull(.list(.nonNull(.object(Event.selections))))),
+        GraphQLField("events", arguments: ["where": ["status": ["_in": GraphQLVariable("statuses")], "attendees": ["id": ["_eq": GraphQLVariable("userId")]]]], type: .nonNull(.list(.nonNull(.object(Event.selections))))),
       ]
     }
 

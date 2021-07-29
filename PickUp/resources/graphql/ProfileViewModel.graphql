@@ -1,5 +1,5 @@
-query GetJoinedEventsByStatus($userId: String!, $status: event_status_enum!) {
-  events(where: {status: {_eq: $status}, attendees: {id: {_eq: $userId}}}) {
+query GetJoinedEventsByStatus($userId: String!, $statuses: [event_status_enum!]) {
+  events(where: {status: {_in: $statuses}, attendees: {id: {_eq: $userId}}, deleted: {_eq: false}}) {
 	... EventDetails
   }
 }
