@@ -1,0 +1,13 @@
+fragment AttendeeDetails on event_attendees {
+	id,
+  user {
+	...UserDetails
+  }
+  status,
+  team {
+	info {
+		scores,
+		id
+	}
+  },
+}

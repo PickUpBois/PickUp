@@ -25,7 +25,7 @@ class HomeViewModel: ObservableObject {
         print("getting events")
         if (AppState.shared.authId != nil) {
             eventsState = .loading
-            Services.shared.apollo.fetch(query: QueryEventsQuery(userId: nil, type: nil, status: .open), cachePolicy: .fetchIgnoringCacheCompletely) { response in
+            Services.shared.apollo.fetch(query: GetUpcomingEventsQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { response in
                 switch response {
                 case .success(let result):
                     if let errors = result.errors {
@@ -37,7 +37,7 @@ class HomeViewModel: ObservableObject {
                         print("error in graphql query")
                         return
                     }
-                    self.events = data.queryEvents.map { queryEvent in
+                    self.events = data.events.map { queryEvent in
                         return queryEvent.fragments.eventDetails
                     }.sorted(by: >)
                     self.eventsState = .success
@@ -52,8 +52,8 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    func joinEvent(eventId: String) {
-        Services.shared.apollo.perform(mutation: JoinEventMutation(userId: AppState.shared.authId!, eventId: eventId)) { response in
+    func joinEvent(eventId: Int) {
+        Services.shared.apollo.perform(mutation: JoinEventMutation(eventId: eventId)) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -76,8 +76,6 @@ class HomeViewModel: ObservableObject {
 
 class MockHomeViewModel: HomeViewModel {
     override init() {
-        let actor = GetNotificationsQuery.Data.User.Notification.Actor(id: "1", firstName: "1", lastName: "lastName", username: "username")
-        let notification = GetNotificationsQuery.Data.User.Notification(id: "1", createdAt: Date().isoString, type: .friendRequestAccept, actor: actor, event: nil)
         super.init()
     }
     

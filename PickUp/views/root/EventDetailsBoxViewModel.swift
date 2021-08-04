@@ -10,30 +10,30 @@ import Foundation
 class EventDetailsBoxViewModel: ObservableObject {
     let refresh: () -> Void
     let event: EventDetails
-    let attendeeStatus: EventAttendeeStatus?
+    let attendeeStatus: event_attendee_status_enum?
     let attendeesViewModel: EventAttendeesViewModel
     var userId: String? = nil
     init(event: EventDetails, refresh: @escaping () -> Void = {}, userId: String? = AppState.shared.authId) {
         self.event = event
         self.refresh = refresh
-        var attendeeStatus: EventAttendeeStatus? {
+        var attendeeStatus: event_attendee_status_enum? {
             for i in 0..<event.attendees.count {
                 let attendee = event.attendees[i]
-                if attendee.fragments.userDetails.id == AppState.shared.authId {
-                    return attendee.fragments.userDetails.eventAttendeeStatus
+                if attendee.fragments.attendeeDetails.user.fragments.userDetails.id == AppState.shared.authId {
+                    return attendee.fragments.attendeeDetails.status
                 }
             }
             return nil
         }
         self.attendeeStatus = attendeeStatus
         let attendees = event.attendees.map { attendee in
-            return attendee.fragments.userDetails
+            return attendee.fragments.attendeeDetails
         }
         self.attendeesViewModel = EventAttendeesViewModel(attendees: attendees)
         self.userId = userId
     }
     
-    func commitAction(eventId: String) {
+    func commitAction(eventId: Int) {
         switch attendeeStatus {
         case .ok:
             leaveEvent(eventId: eventId)
@@ -43,8 +43,8 @@ class EventDetailsBoxViewModel: ObservableObject {
             return
         }
     }
-    func joinEvent(eventId: String) {
-        Services.shared.apollo.perform(mutation: JoinEventMutation(userId: AppState.shared.authId!, eventId: eventId)) { response in
+    func joinEvent(eventId: Int) {
+        Services.shared.apollo.perform(mutation: JoinEventMutation(eventId: eventId)) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -62,8 +62,8 @@ class EventDetailsBoxViewModel: ObservableObject {
         }
     }
     
-    func leaveEvent(eventId: String) {
-        Services.shared.apollo.perform(mutation: LeaveEventMutation(userId: AppState.shared.authId!, eventId: eventId)) { response in
+    func leaveEvent(eventId: Int) {
+        Services.shared.apollo.perform(mutation: LeaveEventMutation(eventId: eventId)) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -81,8 +81,8 @@ class EventDetailsBoxViewModel: ObservableObject {
         }
     }
     
-    func deleteEvent(eventId: String) {
-        Services.shared.apollo.perform(mutation: DeleteEventMutation(userId: AppState.shared.authId!, eventId: eventId)) { response in
+    func deleteEvent(eventId: Int) {
+        Services.shared.apollo.perform(mutation: DeleteEventMutation(eventId: eventId)) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -99,7 +99,11 @@ class EventDetailsBoxViewModel: ObservableObject {
 }
 
 class MockEventDetailsBoxViewModel: EventDetailsBoxViewModel {
-    override func joinEvent(eventId: String) {
+    override func joinEvent(eventId: Int) {
+        return
+    }
+    
+    override func leaveEvent(eventId: Int) {
         return
     }
 }

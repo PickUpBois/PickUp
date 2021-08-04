@@ -1,64 +1,68 @@
-query QueryEvents($userId: String, $type: EventType, $status: EventStatus) {
-  queryEvents(userId: $userId, type: $type, status: $status) {
-    ...EventDetails
+query GetUpcomingEvents {
+  events(where: {status: {_in: [open, ip]}, deleted: {_eq: false}}) {
+	... EventDetails
   }
 }
 
-mutation AcceptFriendRequest($userId: ID!, $friendId: ID!) {
-  acceptFriendRequest(user_id: $userId, friend_id: $friendId) {
-	id
+mutation AcceptFriendRequest($userId: String!) {
+  acceptFriendRequest(friendId: $userId) {
+	status,
+	reason
   }
 }
 
-mutation RejectFriendRequest($userId: ID!, $friendId: ID!) {
-  rejectFriendRequest(user_id: $userId, friend_id: $friendId) {
-	id
+mutation RejectFriendRequest($userId: String!) {
+  rejectFriendRequest(friendId: $userId) {
+	status,
+	reason
   }
 }
 
-query GetNotifications($userId: ID!) {
-  user(id: $userId) {
+query GetNotifications($userId: String!) {
+  notifications(where: {userId: {_eq: $userId}, status: {_eq: unread}}) {
 	id,
-	notifications {
-	  id,
-	  createdAt,
-	  type,
-	  actor {
-		... UserDetails
-	  },
-	  event {
-		... EventDetails
-	  }
-	}
+	actor {
+	  ... UserDetails
+	},
+	event {
+	  ... EventDetails
+	},
+	createdAt,
+	type
   }
 }
 
-mutation ReadNotification($id: ID!) {
-  markNotificationAsRead(id: $id) {
-	id
+mutation ReadNotification($notificationId: Int!) {
+  markNotificationAsRead(notificationId: $notificationId) {
+	status,
+	reason
   }
 }
 
-mutation JoinEvent($userId: ID!, $eventId: ID!) {
-  joinEvent(userId: $userId, eventId: $eventId) {
-	id
+mutation JoinEvent($eventId: Int!) {
+  joinEvent(eventId: $eventId) {
+	reason,
+	status
   }
 }
 
-mutation AcceptEventInvitation($eventId: ID!, $userId: ID!) {
-  acceptEventInvitation(eventId: $eventId, userId: $userId) {
-	id
+mutation AcceptEventInvitation($eventId: Int!) {
+  acceptEventInvitation(eventId: $eventId) {
+	status,
+	reason
   }
 }
 
-mutation DeclineEventInvitation($eventId: ID!, $userId: ID!) {
-  declineEventInvitation(eventId: $eventId, userId: $userId) {
-	id
+mutation DeclineEventInvitation($eventId: Int!) {
+  declineEventInvitation(eventId: $eventId) {
+	status,
+	reason
   }
 }
 
 mutation EndEvent($input: EndEventInput!) {
-	endEvent(input: $input) {
-	  id,
-	}
+  endEvent(input: $input) {
+	status,
+	reason
+  }
 }

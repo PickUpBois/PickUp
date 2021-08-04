@@ -1,23 +1,25 @@
-mutation InviteUser($actorId: ID!, $eventId: ID!, $userId: ID!) {
-  inviteUserToEvent(actorId: $actorId, eventId: $eventId, userId: $userId) {
-	id,
+mutation InviteUserToEvent($eventId: Int!, $userId: String!) {
+  inviteUserToEvent(eventId: $eventId, userId: $userId) {
+	reason,
+	status
   }
 }
 
-query GetEvent($eventId: ID!) {
-  getEvent(eventId: $eventId) {
+query GetEvent($eventId: Int!) {
+  events_by_pk(id: $eventId) {
 	id,
-	invitedAttendees {
+	invitedAttendees: attendees(where: {status: {_eq: invited}}) {
 	  id,
 	},
 	attendees {
-		id,
+	  id
 	}
   }
 }
 
-mutation CancelEventInvitation($actorId: ID!, $eventId: ID!, $userId: ID!) {
-  cancelEventInvitation(actorId: $actorId, eventId: $eventId, userId: $userId) {
-	id,
+mutation CancelEventInvitation($eventId: Int!, $userId: String!) {
+  cancelEventInvitation(eventId: $eventId, userId: $userId) {
+	status,
+	reason
   }
 }

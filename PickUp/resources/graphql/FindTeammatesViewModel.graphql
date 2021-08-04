@@ -1,5 +1,5 @@
-query SearchUsers($query: String!) {
-  searchUsers(query: $query) {
+query SearchUsers($search: String!) {
+  search_users(args: {search: $search}) {
 	id,
 	username
   }

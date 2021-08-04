@@ -1,9 +1,12 @@
-query CurrentlyOwnedEvents($userId: ID!) {
-  currentlyOwnedEvents(userId: $userId) {
-	... EventDetails,
-	invitedAttendees {
-		id,
+query CurrentlyOwnedEvents($userId: String!) {
+  events(where: {deleted: {_eq: false}, endDate: {_neq: null}, attendees: {id: {_eq: $userId}, status: {_eq: owner}}}) {
+	invitedAttendees: attendees(where: {status: {_eq: invited}}) {
+	  user {
+		id
+	  },
+	  status
 	}
+	... EventDetails
   }
 }
 

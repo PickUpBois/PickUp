@@ -1,45 +1,46 @@
-query GetUserEvents($userId: String!, $status: EventStatus!) {
-  userEvents(userId: $userId, status: $status) {
-    ...EventDetails
+query GetJoinedEventsByStatus($userId: String!) {
+  openEvents: events(where: {status: {_in: [open, ip]}, attendees: {id: {_eq: $userId}}, deleted: {_eq: false}}) {
+	  ... EventDetails
+  }
+  pastEvents: events(where: {status: {_in: [closed]}, attendees: {id: {_eq: $userId}}, deleted: {_eq: false}}) {
+	... EventDetails
   }
 }
 
-query GetUser($id: ID!, $authId: ID!) {
-  user(id: $id) {
-	  id,
-	firstName,
-	lastName,
-	username,
-	college,
-	photoUrl,
-	friendStatus(user_id: $authId),
-	goatScore,
+query GetUser($userId: String!) {
+  user(id: $userId) {
+	... UserDetails,
 	friends {
-		id,
+		id
 	}
   }
 }
 
-mutation SendFriendRequest($userId: ID!, $friendId: ID!) {
-  sendFriendRequest(user_id: $userId, friend_id: $friendId) {
+mutation SendFriendRequest($friendId: String!) {
+  sendFriendRequest(friendId: $friendId) {
+	status,
+	reason
+  }
+}
+
+mutation RemoveFriend($userId: String!) {
+  removeFriend(friendId: $userId) {
+	status,
+	reason
+  }
+}
+
+mutation PutDeviceToken($token: String!) {
+  putDeviceToken(token: $token) {
+	status,
+	reason,
 	id
   }
 }
 
-mutation RemoveFriend($userId: ID!, $friendId: ID!) {
-  removeFriend(userId: $userId, friendId: $friendId) {
-	id,
-  }
-}
-
-mutation PutDeviceToken($userId: ID!, $token: String!) {
-	putDeviceToken(userId: $userId, token: $token) {
-	id,
-  }
-}
-
-mutation RemoveDeviceToken($userId: ID!, $token: String!) {
-	removeDeviceToken(userId: $userId, token: $token) {
-	id,
+mutation RemoveDeviceToken($token: String!) {
+  removeDeviceToken(token: $token) {
+	status,
+	reason
   }
 }

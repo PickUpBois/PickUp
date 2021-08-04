@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftUIRefresh
 struct PickUpListView: View {
     @EnvironmentObject var viewModel: HomeViewModel
-    var type: EventType
+    var type: event_type_enum
 
     @State var isShowing: Bool = false
     var body: some View {
@@ -49,6 +49,6 @@ struct PickUpListView: View {
 
 struct PickUpListView_Previews: PreviewProvider {
     static var previews: some View {
-        PickUpListView(type: EventType.tennis).environmentObject(HomeViewModel())
+        PickUpListView(type: .tennis).environmentObject(HomeViewModel())
     }
 }

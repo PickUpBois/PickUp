@@ -15,7 +15,7 @@ class InviteFriendsViewModel: ObservableObject {
         self.event = event
         self.invitedUsers = []
         let attendees = event.attendees.map { attendee in
-            return attendee.fragments.userDetails.id
+            return attendee.fragments.attendeeDetails.id
         }
         self.attendees = attendees
     }
@@ -27,10 +27,10 @@ class InviteFriendsViewModel: ObservableObject {
                 if let errors = result.errors {
                     print(errors[0].localizedDescription)
                 }
-                let invitedAttendees = result.data?.getEvent.invitedAttendees.map { attendee in
+                let invitedAttendees = result.data?.eventsByPk!.invitedAttendees.map { attendee in
                     return attendee.id
                 } ?? []
-                let attendees = result.data?.getEvent.attendees.map { attendee in
+                let attendees = result.data?.eventsByPk!.attendees.map { attendee in
                     return attendee.id
                 } ?? []
                 self.invitedUsers = invitedAttendees
@@ -42,7 +42,7 @@ class InviteFriendsViewModel: ObservableObject {
     }
     
     func inviteFriend(friendId: String) {
-        Services.shared.apollo.perform(mutation: InviteUserMutation(actorId: AppState.shared.authId!, eventId: event.id, userId: friendId)) { response in
+        Services.shared.apollo.perform(mutation: InviteUserToEventMutation(eventId: event.id, userId: friendId)) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -57,7 +57,7 @@ class InviteFriendsViewModel: ObservableObject {
     }
     
     func cancelEventInvitation(friendId: String) {
-        Services.shared.apollo.perform(mutation: CancelEventInvitationMutation(actorId: AppState.shared.authId!, eventId: event.id, userId: friendId)) { response in
+        Services.shared.apollo.perform(mutation: CancelEventInvitationMutation(eventId: event.id, userId: friendId)) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {

@@ -76,7 +76,7 @@ struct EditPickupView: View {
 }
 
 struct EditPickupView_Previews: PreviewProvider {
-    static let event1 = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: [], startDate: Date().isoString, type: .tennis, status: .open)
+    static let event1 = EventDetails(id: 1, name: "event", info: "info", capacity: 4, attendees: [], startDate: Date().isoString, type: .tennis, status: .open, teams: [])
     static var previews: some View {
         EditPickupView(deletePickupAlert: .constant(false), updatePickupAlert: .constant(false), selectedEvent: .constant(nil), friendPopUp: .constant(false), viewModel: EventDetailsBoxViewModel(event: event1)).environmentObject(MockFriendsListViewModel(userId: "1"))
     }

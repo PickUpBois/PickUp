@@ -71,8 +71,8 @@ class Services {
       
       let client = URLSessionClient()
         let provider = NetworkInterceptorProvider(store: store, client: client, auth: Services.auth)
-        let url =  URL(string: Services.emulator ? "\(Services.DEV_URL)/graphql" : "\(Services.PROD_URL)/graphql")!
-
+        let url =  URL(string: Services.emulator ? "\(Services.DEV_URL)/v1/graphql" : "\(Services.PROD_URL)/v1/graphql")!
+        print(url)
       let requestChainTransport = RequestChainNetworkTransport(interceptorProvider: provider,
                                                                endpointURL: url)
                                                                
@@ -83,6 +83,10 @@ class Services {
                           store: store)
     }()
     private(set) lazy var auth = AuthService(auth: Services.auth)
+    private(set) lazy var client: GraphQLClient = {
+        let url =  Services.emulator ? "\(Services.DEV_URL)/v1/graphql" : "\(Services.PROD_URL)/v1/graphql"
+        return GraphQLClient(session: URLSession.shared, url: url)
+    }()
     private(set) lazy var storage = StorageService(storage: Services.storage)
     private(set) lazy var rest = RestService()
 }

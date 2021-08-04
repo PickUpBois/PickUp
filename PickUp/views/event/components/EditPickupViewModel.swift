@@ -21,7 +21,7 @@ class EditPickupViewModel {
                 if let errors = result.errors {
                     print(errors[0].localizedDescription)
                 }
-                let invitedAttendees = result.data?.getEvent.invitedAttendees.map { attendee in
+                let invitedAttendees = result.data?.eventsByPk!.invitedAttendees.map { attendee in
                     return attendee.id
                 } ?? []
                 self.invitedAttendees = invitedAttendees

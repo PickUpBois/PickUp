@@ -73,7 +73,7 @@ struct FriendRequestResponseNotificationView: View {
                 }
             Spacer().frame(height: 10)
                     HStack {
-                        Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName) \(viewModel.type == NotificationType.friendRequestAccept ? "accepted" : "rejected") your friend request")
+                        Text("\(viewModel.actor!.firstName) \(viewModel.actor!.lastName) \(viewModel.type == .friendRequestAccept ? "accepted" : "rejected") your friend request")
                             .foregroundColor(Color.purple)
                             .lineLimit(1)
                             .padding(.leading, 12.0)
@@ -82,7 +82,7 @@ struct FriendRequestResponseNotificationView: View {
             Spacer().frame(height: 15)
             HStack(alignment: .lastTextBaseline) {
                 Button(action: {
-                    self.viewModel.readNotification(id: viewModel.notificationId)
+                    self.viewModel.readNotification()
                 }, label: {
                     Text("Mark as read")
                 })

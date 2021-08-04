@@ -29,10 +29,10 @@ struct InputScoreView: View {
     
     func finishEvent() {
         let team1 = teamSelections.enumerated().compactMap {
-            $0.element == .team1 ?  viewModel.event!.attendees[$0.offset].fragments.userDetails.id : nil
+            $0.element == .team1 ?  viewModel.event!.attendees[$0.offset].fragments.attendeeDetails.id : nil
         }
         let team2 = teamSelections.enumerated().compactMap {
-            $0.element == .team2 ? viewModel.event!.attendees[$0.offset].fragments.userDetails.id : nil
+            $0.element == .team2 ? viewModel.event!.attendees[$0.offset].fragments.attendeeDetails.id : nil
         }
         let team1Scores = setScoreViewModel.setScores.map { set in
             return Int(set.team1Score) ?? 0
@@ -40,14 +40,14 @@ struct InputScoreView: View {
         let team2Scores = setScoreViewModel.setScores.map { set in
             return Int(set.team2Score) ?? 0
         }
-        let input = EndEventInput(eventId: viewModel.event!.id, team1Members: team1, team1Scores: team1Scores, team1Win: winningTeam == .team1, team2Members: team2, team2Scores: team2Scores, team2Win: winningTeam == .team2)
+        let input = EndEventInput(eventId: viewModel.event!.id, team1Members: team1, team1Scores: team1Scores, team1Win: winningTeam == .team1, team2Members: team2, team2Scores: team2Scores)
         self.viewModel.endEvent(input: input)
         self.showPopUp.toggle()
     }
     
     func mapAttendees(attendees: [EventDetails.Attendee]) -> [UserDetails] {
         return attendees.map { attendee in
-            return attendee.fragments.userDetails
+            return attendee.fragments.attendeeDetails.user.fragments.userDetails
         }
     }
     

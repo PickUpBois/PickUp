@@ -17,8 +17,8 @@ struct EventAttendeesView: View {
                 let attendee = self.viewModel.attendees[i]
                 HStack (spacing: 5){
                     Group {
-                        if attendee.photoUrl != nil {
-                            WebImage(url: URL(string: attendee.photoUrl ?? ""))
+                        if attendee.user.fragments.userDetails.photoUrl != nil {
+                            WebImage(url: URL(string: attendee.user.fragments.userDetails.photoUrl ?? ""))
                                 .resizable()
                                 .placeholder {
                                     Rectangle()
@@ -44,13 +44,13 @@ struct EventAttendeesView: View {
                     }
 
                     VStack(alignment: .leading){
-                        FriendItemView(id: attendee.id, username: attendee.username)
+                        FriendItemView(id: attendee.id, username: attendee.user.fragments.userDetails.username)
                         .font((.system(size: 15)))
                         .lineLimit(1)
                         .frame(alignment: .leading)
 
                         HStack{
-                        Text("\(attendee.firstName) \(attendee.lastName)")
+                        Text("\(attendee.user.fragments.userDetails.firstName) \(attendee.user.fragments.userDetails.lastName)")
                         .font((.system(size: 15)))
                         .fontWeight(.light)
                         .lineLimit(1)

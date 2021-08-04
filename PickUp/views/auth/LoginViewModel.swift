@@ -57,7 +57,7 @@ class LoginViewModel: ObservableObject {
                 return print("unable to get token: \(error.localizedDescription)")
             }
             if let token = token {
-                Services.shared.apollo.perform(mutation: PutDeviceTokenMutation(userId: id, token: token)) { response in
+                Services.shared.apollo.perform(mutation: PutDeviceTokenMutation(token: token)) { response in
                     switch response {
                     case .success(let result):
                         if let errors = result.errors {

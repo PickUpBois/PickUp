@@ -21,7 +21,8 @@ class ProfileViewModel: ObservableObject {
     var pastEvents: [EventDetails] = []
     var userId: String
     var cancellables = Set<AnyCancellable>()
-    var user: GetUserQuery.Data.User?
+    var user: UserDetails?
+    var numFriends: Int?
     init(userId: String) {
         self.userId = userId
     }
@@ -30,8 +31,7 @@ class ProfileViewModel: ObservableObject {
         state = .loading
         let group = DispatchGroup()
         retrieveUser(group: group)
-        getEvents(status: .open, group: group)
-        getEvents(status: .closed, group: group)
+        getEvents(group: group)
         group.notify(queue: .main) { [weak self] in
             self?.state = .success
         }
@@ -47,7 +47,7 @@ class ProfileViewModel: ObservableObject {
                 return print("unable to get token: \(error.localizedDescription)")
             }
             if let token = token {
-                Services.shared.apollo.perform(mutation: RemoveDeviceTokenMutation(userId: userId, token: token)) { response in
+                Services.shared.apollo.perform(mutation: RemoveDeviceTokenMutation(token: token)) { response in
                     switch response {
                     case .success(let result):
                         if let errors = result.errors {
@@ -81,7 +81,7 @@ class ProfileViewModel: ObservableObject {
     
     func retrieveUser(group: DispatchGroup? = nil) {
         group?.enter()
-        Services.shared.apollo.fetch(query: GetUserQuery(id: userId, authId: AppState.shared.authId ?? "1"), cachePolicy: .fetchIgnoringCacheCompletely) { response in
+        Services.shared.apollo.fetch(query: GetUserQuery(userId: userId), cachePolicy: .fetchIgnoringCacheCompletely) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -94,8 +94,10 @@ class ProfileViewModel: ObservableObject {
                     group?.leave()
                     return
                 }
-                print("user \(data.user)")
-                self.user = data.user
+                print("fetching user \(self.userId)")
+                print("user \(data.user?.fragments.userDetails)")
+                self.user = data.user?.fragments.userDetails
+                self.numFriends = data.user?.friends?.count ?? 0
                 group?.leave()
             case .failure(let error):
                 print(error.localizedDescription)
@@ -105,7 +107,7 @@ class ProfileViewModel: ObservableObject {
     }
     
     func addFriend() {
-        Services.shared.apollo.perform(mutation: SendFriendRequestMutation(userId: AppState.shared.authId!, friendId: userId)) { response in
+        Services.shared.apollo.perform(mutation: SendFriendRequestMutation(friendId: userId)) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -121,7 +123,7 @@ class ProfileViewModel: ObservableObject {
     }
     
     func removeFriend() {
-        Services.shared.apollo.perform(mutation: RemoveFriendMutation(userId: AppState.shared.authId!, friendId: userId)) { response in
+        Services.shared.apollo.perform(mutation: RemoveFriendMutation(userId: userId)) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -137,9 +139,9 @@ class ProfileViewModel: ObservableObject {
     }
     
     
-    func getEvents(status: EventStatus, group: DispatchGroup? = nil) {
+    func getEvents(group: DispatchGroup? = nil) {
         group?.enter()
-        Services.shared.apollo.fetch(query: GetUserEventsQuery(userId: userId, status: status), cachePolicy: .fetchIgnoringCacheCompletely) { response in
+        Services.shared.apollo.fetch(query: GetJoinedEventsByStatusQuery(userId: userId), cachePolicy: .fetchIgnoringCacheCompletely) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -150,15 +152,18 @@ class ProfileViewModel: ObservableObject {
                     group?.leave()
                     return
                 }
-                var events = data.userEvents.map { userEvent in
-                    return userEvent.fragments.eventDetails
+                var openEvents = data.openEvents.map { event in
+                    return event.fragments.eventDetails
                 }
-                events.sort(by: >)
-                if status == .open {
-                    self.upcomingEvents = events
-                } else {
-                    self.pastEvents = events
+                var pastEvents = data.pastEvents.map { event in
+                    return event.fragments.eventDetails
                 }
+                pastEvents.sort(by: >)
+                openEvents.sort(by: >)
+                print(pastEvents)
+                self.pastEvents = pastEvents
+                self.upcomingEvents = openEvents
+                
                 group?.leave()
                 return
             case .failure(let error):
@@ -175,7 +180,7 @@ class ProfileViewModel: ObservableObject {
 class MockProfileViewModel: ProfileViewModel {
     
     override func retrieveUser(group: DispatchGroup? = nil) {
-        self.user = GetUserQuery.Data.User(id: "1", firstName: "arahbar", lastName: "David", username: "Reynolds", college: "", goatScore: 4, friends: [])
+        self.user = UserDetails(id: "1", firstName: "David", lastName: "Reynolds", username: "dave")
     }
     
     override func logout() {
@@ -186,9 +191,9 @@ class MockProfileViewModel: ProfileViewModel {
         return
     }
     
-    override func getEvents(status: EventStatus, group: DispatchGroup? = nil) {
+    override func getEvents(group: DispatchGroup? = nil) {
         let attendees: [EventDetails.Attendee] = []
-        let event1 = EventDetails(id: "1", name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open)
+        let event1 = EventDetails(id: 1, name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open, teams: [])
         let event2 = event1
         self.upcomingEvents = [event1, event2]
         self.pastEvents = []

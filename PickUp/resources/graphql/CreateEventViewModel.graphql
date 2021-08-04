@@ -1,5 +1,7 @@
 mutation CreateEvent($input: CreateEventInput!) {
-  createEvent(createEventInput: $input) {
-    name
+  createEvent(arg1: $input) {
+	status,
+	reason,
+	id,
   }
 }
