@@ -390,54 +390,6 @@ public struct UpdateUserInput: GraphQLMapConvertible {
   }
 }
 
-public enum event_status_enum: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
-  public typealias RawValue = String
-  /// event is closed
-  case closed
-  /// event is in progress
-  case ip
-  /// event is open
-  case `open`
-  /// Auto generated constant for unknown enum values
-  case __unknown(RawValue)
-
-  public init?(rawValue: RawValue) {
-    switch rawValue {
-      case "closed": self = .closed
-      case "ip": self = .ip
-      case "open": self = .open
-      default: self = .__unknown(rawValue)
-    }
-  }
-
-  public var rawValue: RawValue {
-    switch self {
-      case .closed: return "closed"
-      case .ip: return "ip"
-      case .open: return "open"
-      case .__unknown(let value): return value
-    }
-  }
-
-  public static func == (lhs: event_status_enum, rhs: event_status_enum) -> Bool {
-    switch (lhs, rhs) {
-      case (.closed, .closed): return true
-      case (.ip, .ip): return true
-      case (.open, .open): return true
-      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
-      default: return false
-    }
-  }
-
-  public static var allCases: [event_status_enum] {
-    return [
-      .closed,
-      .ip,
-      .open,
-    ]
-  }
-}
-
 public struct CreateUserInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
@@ -525,6 +477,54 @@ public enum event_type_enum: RawRepresentable, Equatable, Hashable, CaseIterable
     return [
       .basketball,
       .tennis,
+    ]
+  }
+}
+
+public enum event_status_enum: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  /// event is closed
+  case closed
+  /// event is in progress
+  case ip
+  /// event is open
+  case `open`
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "closed": self = .closed
+      case "ip": self = .ip
+      case "open": self = .open
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .closed: return "closed"
+      case .ip: return "ip"
+      case .open: return "open"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: event_status_enum, rhs: event_status_enum) -> Bool {
+    switch (lhs, rhs) {
+      case (.closed, .closed): return true
+      case (.ip, .ip): return true
+      case (.open, .open): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+
+  public static var allCases: [event_status_enum] {
+    return [
+      .closed,
+      .ip,
+      .open,
     ]
   }
 }
@@ -3068,8 +3068,16 @@ public final class GetJoinedEventsByStatusQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query GetJoinedEventsByStatus($userId: String!, $statuses: [event_status_enum!]) {
-      events(where: {status: {_in: $statuses}, attendees: {id: {_eq: $userId}}}) {
+    query GetJoinedEventsByStatus($userId: String!) {
+      openEvents: events(
+        where: {status: {_in: [open, ip]}, attendees: {id: {_eq: $userId}}, deleted: {_eq: false}}
+      ) {
+        __typename
+        ...EventDetails
+      }
+      pastEvents: events(
+        where: {status: {_in: [closed]}, attendees: {id: {_eq: $userId}}, deleted: {_eq: false}}
+      ) {
         __typename
         ...EventDetails
       }
@@ -3087,15 +3095,13 @@ public final class GetJoinedEventsByStatusQuery: GraphQLQuery {
   }
 
   public var userId: String
-  public var statuses: [event_status_enum]?
 
-  public init(userId: String, statuses: [event_status_enum]?) {
+  public init(userId: String) {
     self.userId = userId
-    self.statuses = statuses
   }
 
   public var variables: GraphQLMap? {
-    return ["userId": userId, "statuses": statuses]
+    return ["userId": userId]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -3103,7 +3109,8 @@ public final class GetJoinedEventsByStatusQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("events", arguments: ["where": ["status": ["_in": GraphQLVariable("statuses")], "attendees": ["id": ["_eq": GraphQLVariable("userId")]]]], type: .nonNull(.list(.nonNull(.object(Event.selections))))),
+        GraphQLField("events", alias: "openEvents", arguments: ["where": ["status": ["_in": ["open", "ip"]], "attendees": ["id": ["_eq": GraphQLVariable("userId")]], "deleted": ["_eq": false]]], type: .nonNull(.list(.nonNull(.object(OpenEvent.selections))))),
+        GraphQLField("events", alias: "pastEvents", arguments: ["where": ["status": ["_in": ["closed"]], "attendees": ["id": ["_eq": GraphQLVariable("userId")]], "deleted": ["_eq": false]]], type: .nonNull(.list(.nonNull(.object(PastEvent.selections))))),
       ]
     }
 
@@ -3113,21 +3120,83 @@ public final class GetJoinedEventsByStatusQuery: GraphQLQuery {
       self.resultMap = unsafeResultMap
     }
 
-    public init(events: [Event]) {
-      self.init(unsafeResultMap: ["__typename": "query_root", "events": events.map { (value: Event) -> ResultMap in value.resultMap }])
+    public init(openEvents: [OpenEvent], pastEvents: [PastEvent]) {
+      self.init(unsafeResultMap: ["__typename": "query_root", "openEvents": openEvents.map { (value: OpenEvent) -> ResultMap in value.resultMap }, "pastEvents": pastEvents.map { (value: PastEvent) -> ResultMap in value.resultMap }])
     }
 
     /// fetch data from the table: "events"
-    public var events: [Event] {
+    public var openEvents: [OpenEvent] {
       get {
-        return (resultMap["events"] as! [ResultMap]).map { (value: ResultMap) -> Event in Event(unsafeResultMap: value) }
+        return (resultMap["openEvents"] as! [ResultMap]).map { (value: ResultMap) -> OpenEvent in OpenEvent(unsafeResultMap: value) }
       }
       set {
-        resultMap.updateValue(newValue.map { (value: Event) -> ResultMap in value.resultMap }, forKey: "events")
+        resultMap.updateValue(newValue.map { (value: OpenEvent) -> ResultMap in value.resultMap }, forKey: "openEvents")
       }
     }
 
-    public struct Event: GraphQLSelectionSet {
+    /// fetch data from the table: "events"
+    public var pastEvents: [PastEvent] {
+      get {
+        return (resultMap["pastEvents"] as! [ResultMap]).map { (value: ResultMap) -> PastEvent in PastEvent(unsafeResultMap: value) }
+      }
+      set {
+        resultMap.updateValue(newValue.map { (value: PastEvent) -> ResultMap in value.resultMap }, forKey: "pastEvents")
+      }
+    }
+
+    public struct OpenEvent: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["events"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLFragmentSpread(EventDetails.self),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var fragments: Fragments {
+        get {
+          return Fragments(unsafeResultMap: resultMap)
+        }
+        set {
+          resultMap += newValue.resultMap
+        }
+      }
+
+      public struct Fragments {
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public var eventDetails: EventDetails {
+          get {
+            return EventDetails(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+      }
+    }
+
+    public struct PastEvent: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["events"]
 
       public static var selections: [GraphQLSelection] {
@@ -3904,8 +3973,11 @@ public struct AttendeeDetails: GraphQLFragment {
       status
       team {
         __typename
-        id
-        scores
+        info {
+          __typename
+          scores
+          id
+        }
       }
     }
     """
@@ -4041,8 +4113,7 @@ public struct AttendeeDetails: GraphQLFragment {
     public static var selections: [GraphQLSelection] {
       return [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .nonNull(.scalar(Int.self))),
-        GraphQLField("scores", type: .scalar(String.self)),
+        GraphQLField("info", type: .object(Info.selections)),
       ]
     }
 
@@ -4052,8 +4123,8 @@ public struct AttendeeDetails: GraphQLFragment {
       self.resultMap = unsafeResultMap
     }
 
-    public init(id: Int, scores: String? = nil) {
-      self.init(unsafeResultMap: ["__typename": "event_teams", "id": id, "scores": scores])
+    public init(info: Info? = nil) {
+      self.init(unsafeResultMap: ["__typename": "event_teams", "info": info.flatMap { (value: Info) -> ResultMap in value.resultMap }])
     }
 
     public var __typename: String {
@@ -4065,21 +4136,61 @@ public struct AttendeeDetails: GraphQLFragment {
       }
     }
 
-    public var id: Int {
+    public var info: Info? {
       get {
-        return resultMap["id"]! as! Int
+        return (resultMap["info"] as? ResultMap).flatMap { Info(unsafeResultMap: $0) }
       }
       set {
-        resultMap.updateValue(newValue, forKey: "id")
+        resultMap.updateValue(newValue?.resultMap, forKey: "info")
       }
     }
 
-    public var scores: String? {
-      get {
-        return resultMap["scores"] as? String
+    public struct Info: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["EventTeam"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("scores", type: .nonNull(.list(.nonNull(.scalar(Int.self))))),
+          GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+        ]
       }
-      set {
-        resultMap.updateValue(newValue, forKey: "scores")
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(scores: [Int], id: Int) {
+        self.init(unsafeResultMap: ["__typename": "EventTeam", "scores": scores, "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var scores: [Int] {
+        get {
+          return resultMap["scores"]! as! [Int]
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "scores")
+        }
+      }
+
+      public var id: Int {
+        get {
+          return resultMap["id"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
       }
     }
   }
@@ -4109,8 +4220,11 @@ public struct EventDetails: GraphQLFragment {
       }
       teams {
         __typename
-        id
-        scores
+        info {
+          __typename
+          scores
+          id
+        }
         members {
           __typename
           ...AttendeeDetails
@@ -4373,8 +4487,7 @@ public struct EventDetails: GraphQLFragment {
     public static var selections: [GraphQLSelection] {
       return [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .nonNull(.scalar(Int.self))),
-        GraphQLField("scores", type: .scalar(String.self)),
+        GraphQLField("info", type: .object(Info.selections)),
         GraphQLField("members", type: .nonNull(.list(.nonNull(.object(Member.selections))))),
       ]
     }
@@ -4385,8 +4498,8 @@ public struct EventDetails: GraphQLFragment {
       self.resultMap = unsafeResultMap
     }
 
-    public init(id: Int, scores: String? = nil, members: [Member]) {
-      self.init(unsafeResultMap: ["__typename": "event_teams", "id": id, "scores": scores, "members": members.map { (value: Member) -> ResultMap in value.resultMap }])
+    public init(info: Info? = nil, members: [Member]) {
+      self.init(unsafeResultMap: ["__typename": "event_teams", "info": info.flatMap { (value: Info) -> ResultMap in value.resultMap }, "members": members.map { (value: Member) -> ResultMap in value.resultMap }])
     }
 
     public var __typename: String {
@@ -4398,21 +4511,12 @@ public struct EventDetails: GraphQLFragment {
       }
     }
 
-    public var id: Int {
+    public var info: Info? {
       get {
-        return resultMap["id"]! as! Int
+        return (resultMap["info"] as? ResultMap).flatMap { Info(unsafeResultMap: $0) }
       }
       set {
-        resultMap.updateValue(newValue, forKey: "id")
-      }
-    }
-
-    public var scores: String? {
-      get {
-        return resultMap["scores"] as? String
-      }
-      set {
-        resultMap.updateValue(newValue, forKey: "scores")
+        resultMap.updateValue(newValue?.resultMap, forKey: "info")
       }
     }
 
@@ -4423,6 +4527,55 @@ public struct EventDetails: GraphQLFragment {
       }
       set {
         resultMap.updateValue(newValue.map { (value: Member) -> ResultMap in value.resultMap }, forKey: "members")
+      }
+    }
+
+    public struct Info: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["EventTeam"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("scores", type: .nonNull(.list(.nonNull(.scalar(Int.self))))),
+          GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(scores: [Int], id: Int) {
+        self.init(unsafeResultMap: ["__typename": "EventTeam", "scores": scores, "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var scores: [Int] {
+        get {
+          return resultMap["scores"]! as! [Int]
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "scores")
+        }
+      }
+
+      public var id: Int {
+        get {
+          return resultMap["id"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
       }
     }
 

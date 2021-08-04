@@ -31,8 +31,7 @@ class ProfileViewModel: ObservableObject {
         state = .loading
         let group = DispatchGroup()
         retrieveUser(group: group)
-        getEvents(status: .open, statuses: [.open, .ip], group: group)
-        getEvents(status: .closed, statuses: [.closed], group: group)
+        getEvents(group: group)
         group.notify(queue: .main) { [weak self] in
             self?.state = .success
         }
@@ -140,9 +139,9 @@ class ProfileViewModel: ObservableObject {
     }
     
     
-    func getEvents(status: event_status_enum, statuses: [event_status_enum], group: DispatchGroup? = nil) {
+    func getEvents(group: DispatchGroup? = nil) {
         group?.enter()
-        Services.shared.apollo.fetch(query: GetJoinedEventsByStatusQuery(userId: userId, statuses: statuses), cachePolicy: .fetchIgnoringCacheCompletely) { response in
+        Services.shared.apollo.fetch(query: GetJoinedEventsByStatusQuery(userId: userId), cachePolicy: .fetchIgnoringCacheCompletely) { response in
             switch response {
             case .success(let result):
                 if let errors = result.errors {
@@ -153,16 +152,18 @@ class ProfileViewModel: ObservableObject {
                     group?.leave()
                     return
                 }
-                var events = data.events.map { event in
+                var openEvents = data.openEvents.map { event in
                     return event.fragments.eventDetails
                 }
-                print(events)
-                events.sort(by: >)
-                if status == .open {
-                    self.upcomingEvents = events
-                } else {
-                    self.pastEvents = events
+                var pastEvents = data.pastEvents.map { event in
+                    return event.fragments.eventDetails
                 }
+                pastEvents.sort(by: >)
+                openEvents.sort(by: >)
+                print(pastEvents)
+                self.pastEvents = pastEvents
+                self.upcomingEvents = openEvents
+                
                 group?.leave()
                 return
             case .failure(let error):
@@ -190,7 +191,7 @@ class MockProfileViewModel: ProfileViewModel {
         return
     }
     
-    override func getEvents(status: event_status_enum, statuses: [event_status_enum], group: DispatchGroup? = nil) {
+    override func getEvents(group: DispatchGroup? = nil) {
         let attendees: [EventDetails.Attendee] = []
         let event1 = EventDetails(id: 1, name: "event", info: "info", capacity: 4, attendees: attendees, startDate: Date().isoString, type: .tennis, status: .open, teams: [])
         let event2 = event1

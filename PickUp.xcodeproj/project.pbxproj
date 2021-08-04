@@ -82,6 +82,10 @@
 		8DB8F059261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DB8F05A261AAE90004AADED /* PickUpAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F057261AAE90004AADED /* PickUpAppDelegate.swift */; };
 		8DC55B0926ACEBB00096C5CC /* AttendeeDetails.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8DC55B0826ACEBB00096C5CC /* AttendeeDetails.graphql */; };
+		8DC55B0B26B365940096C5CC /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC55B0A26B365940096C5CC /* UserModel.swift */; };
+		8DC55B0D26B365FD0096C5CC /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC55B0C26B365FD0096C5CC /* EventModel.swift */; };
+		8DC55B0F26B7A8D20096C5CC /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC55B0E26B7A8D20096C5CC /* URLSession.swift */; };
+		8DC55B1126B7AAC00096C5CC /* GraphQLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC55B1026B7AAC00096C5CC /* GraphQLClient.swift */; };
 		8DE5216D2663FC760077AF09 /* FriendRequestResponseNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5216C2663FC760077AF09 /* FriendRequestResponseNotificationView.swift */; };
 		8DE52179266427FC0077AF09 /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE52178266427FC0077AF09 /* FriendsListView.swift */; };
 		8DE52181266428130077AF09 /* FriendItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE52180266428130077AF09 /* FriendItemView.swift */; };
@@ -256,6 +260,10 @@
 		8DC55B0426ACEA9C0096C5CC /* ProfileSettingsViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProfileSettingsViewModel.graphql; sourceTree = "<group>"; };
 		8DC55B0526ACEA9C0096C5CC /* HomeViewModel.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = HomeViewModel.graphql; sourceTree = "<group>"; };
 		8DC55B0826ACEBB00096C5CC /* AttendeeDetails.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = AttendeeDetails.graphql; sourceTree = "<group>"; };
+		8DC55B0A26B365940096C5CC /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		8DC55B0C26B365FD0096C5CC /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		8DC55B0E26B7A8D20096C5CC /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
+		8DC55B1026B7AAC00096C5CC /* GraphQLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLClient.swift; sourceTree = "<group>"; };
 		8DD29A442664807E005DFCB2 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		8DE5216C2663FC760077AF09 /* FriendRequestResponseNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestResponseNotificationView.swift; sourceTree = "<group>"; };
 		8DE52178266427FC0077AF09 /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
@@ -559,6 +567,8 @@
 				8D65B27B2658CD790085D5EE /* StorageService.swift */,
 				8D65B2802658CE550085D5EE /* RestService.swift */,
 				8DEFD4792686981C003F8CE0 /* util.swift */,
+				8DC55B0E26B7A8D20096C5CC /* URLSession.swift */,
+				8DC55B1026B7AAC00096C5CC /* GraphQLClient.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -592,6 +602,8 @@
 		8DA9D1A22681627900513358 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				8DC55B0A26B365940096C5CC /* UserModel.swift */,
+				8DC55B0C26B365FD0096C5CC /* EventModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -1078,6 +1090,7 @@
 			files = (
 				C055C3CA2673074200FF40AA /* EditPickupListViewModel.swift in Sources */,
 				8D7AC489266D73B000672918 /* TeamatePickerView.swift in Sources */,
+				8DC55B0F26B7A8D20096C5CC /* URLSession.swift in Sources */,
 				8DFAD531261EBA910055BA76 /* LoginView.swift in Sources */,
 				C0EA4A1F26936F2300C1D0CB /* BlurView.swift in Sources */,
 				C088BBAE2657ABE2007301F7 /* MapSideMenuView.swift in Sources */,
@@ -1137,6 +1150,7 @@
 				8DEFD47C2686CF9A003F8CE0 /* JoinedEventNotificationView.swift in Sources */,
 				8D65B27C2658CD790085D5EE /* StorageService.swift in Sources */,
 				8DA9D1B72684155C00513358 /* InviteFriendsViewModel.swift in Sources */,
+				8DC55B0D26B365FD0096C5CC /* EventModel.swift in Sources */,
 				8D65B2D826590F310085D5EE /* HomeViewModel.swift in Sources */,
 				C06A97D326790DF2004966F0 /* PopOverView.swift in Sources */,
 				8D2A3EF3261EC3E100521A6A /* SignUpView.swift in Sources */,
@@ -1146,6 +1160,7 @@
 				C0FFBEBB268E5DF800B3639A /* PublicView.swift in Sources */,
 				8DE52186266428320077AF09 /* FriendsListViewModel.swift in Sources */,
 				8DFCF522262788D000BBFE66 /* CreateEventView.swift in Sources */,
+				8DC55B0B26B365940096C5CC /* UserModel.swift in Sources */,
 				C0FFBEB9268E5DE200B3639A /* PrivateView.swift in Sources */,
 				8D63ED47267000FC0022FB79 /* SetScoreView.swift in Sources */,
 				1A2E5BE126586455006A803A /* FriendRequestNotificationView.swift in Sources */,
@@ -1179,6 +1194,7 @@
 				C05E56B026AA432B000DAF02 /* PrivacyView.swift in Sources */,
 				8DA9D1B9268555F700513358 /* EventAttendeesView.swift in Sources */,
 				C0EA4A1D2692D16100C1D0CB /* SettingsFields.swift in Sources */,
+				8DC55B1126B7AAC00096C5CC /* GraphQLClient.swift in Sources */,
 				8D63ED24266F10160022FB79 /* NotificationListViewModel.swift in Sources */,
 				8DE52181266428130077AF09 /* FriendItemView.swift in Sources */,
 				1AB25B682668CAE500314C53 /* EditPickupListView.swift in Sources */,

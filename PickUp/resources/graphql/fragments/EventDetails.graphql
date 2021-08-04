@@ -15,8 +15,10 @@ fragment EventDetails on events {
 	id
   }
   teams {
-	id
-	scores
+	info {
+	scores,
+		id
+  }
 	members {
 	  ... AttendeeDetails
 	}

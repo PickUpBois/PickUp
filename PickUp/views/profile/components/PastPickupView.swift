@@ -27,7 +27,7 @@ let threeColumns = [GridItem(), GridItem(), GridItem()]
                 break
             }
         }
-        let teamId = event.teams[teamIndex].id
+        let teamId = event.teams[teamIndex].info!.id
         let winnerId = event.winner!.id
         if teamId == winnerId {
             return "Winner"

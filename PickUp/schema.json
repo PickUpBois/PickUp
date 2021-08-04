@@ -504,6 +504,73 @@
         "possibleTypes": null
       },
       {
+        "kind": "OBJECT",
+        "name": "EventTeam",
+        "description": null,
+        "fields": [
+          {
+            "name": "eventId",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "id",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "scores",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
         "kind": "SCALAR",
         "name": "Float",
         "description": "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).",
@@ -1820,123 +1887,6 @@
         "description": null,
         "fields": null,
         "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "_int4_comparison_exp",
-        "description": "Boolean expression to compare columns of type \"_int4\". All fields are combined with logical 'AND'.",
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "_eq",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "_int4",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "_gt",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "_int4",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "_gte",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "_int4",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "_in",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "_int4",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "_is_null",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "_lt",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "_int4",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "_lte",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "_int4",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "_neq",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "_int4",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "_nin",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "_int4",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          }
-        ],
         "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
@@ -11180,7 +11130,7 @@
         "description": "columns and relationships of \"event_teams\"",
         "fields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "args": [],
             "type": {
@@ -11207,6 +11157,18 @@
                 "name": "Int",
                 "ofType": null
               }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "info",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "EventTeam",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -11388,11 +11350,26 @@
           {
             "name": "scores",
             "description": null,
-            "args": [],
+            "args": [
+              {
+                "name": "path",
+                "description": "JSON select path",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
-              "kind": "SCALAR",
-              "name": "_int4",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "jsonb",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -11749,6 +11726,27 @@
       },
       {
         "kind": "INPUT_OBJECT",
+        "name": "event_teams_append_input",
+        "description": "append existing jsonb value of filtered columns with new jsonb value",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "scores",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "jsonb",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
         "name": "event_teams_arr_rel_insert_input",
         "description": "input type for inserting array relation for remote table \"event_teams\"",
         "fields": null,
@@ -11796,7 +11794,7 @@
         "description": "aggregate avg on columns",
         "fields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "args": [],
             "type": {
@@ -11832,7 +11830,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -11909,7 +11907,7 @@
             "defaultValue": null
           },
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
@@ -11943,7 +11941,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "_int4_comparison_exp",
+              "name": "jsonb_comparison_exp",
               "ofType": null
             },
             "defaultValue": null
@@ -11972,12 +11970,83 @@
       },
       {
         "kind": "INPUT_OBJECT",
+        "name": "event_teams_delete_at_path_input",
+        "description": "delete the field or element with specified path (for JSON arrays, negative integers count from the end)",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "scores",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "event_teams_delete_elem_input",
+        "description": "delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "scores",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "event_teams_delete_key_input",
+        "description": "delete key/value pair or string element. key/value pairs are matched based on their key value",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "scores",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
         "name": "event_teams_inc_input",
         "description": "input type for incrementing numeric columns in table \"event_teams\"",
         "fields": null,
         "inputFields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -12008,7 +12077,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -12042,7 +12111,7 @@
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "_int4",
+              "name": "jsonb",
               "ofType": null
             },
             "defaultValue": null
@@ -12058,7 +12127,7 @@
         "description": "aggregate max on columns",
         "fields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "args": [],
             "type": {
@@ -12094,7 +12163,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -12124,7 +12193,7 @@
         "description": "aggregate min on columns",
         "fields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "args": [],
             "type": {
@@ -12160,7 +12229,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -12334,7 +12403,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -12404,6 +12473,27 @@
         "possibleTypes": null
       },
       {
+        "kind": "INPUT_OBJECT",
+        "name": "event_teams_prepend_input",
+        "description": "prepend existing jsonb value of filtered columns with new jsonb value",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "scores",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "jsonb",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
         "kind": "ENUM",
         "name": "event_teams_select_column",
         "description": "select columns of table \"event_teams\"",
@@ -12412,7 +12502,7 @@
         "interfaces": null,
         "enumValues": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null
@@ -12439,7 +12529,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -12463,7 +12553,7 @@
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "_int4",
+              "name": "jsonb",
               "ofType": null
             },
             "defaultValue": null
@@ -12479,7 +12569,7 @@
         "description": "aggregate stddev on columns",
         "fields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "args": [],
             "type": {
@@ -12515,7 +12605,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -12545,7 +12635,7 @@
         "description": "aggregate stddev_pop on columns",
         "fields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "args": [],
             "type": {
@@ -12581,7 +12671,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -12611,7 +12701,7 @@
         "description": "aggregate stddev_samp on columns",
         "fields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "args": [],
             "type": {
@@ -12647,7 +12737,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -12677,7 +12767,7 @@
         "description": "aggregate sum on columns",
         "fields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "args": [],
             "type": {
@@ -12713,7 +12803,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -12746,7 +12836,7 @@
         "interfaces": null,
         "enumValues": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null
@@ -12772,7 +12862,7 @@
         "description": "aggregate var_pop on columns",
         "fields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "args": [],
             "type": {
@@ -12808,7 +12898,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -12838,7 +12928,7 @@
         "description": "aggregate var_samp on columns",
         "fields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "args": [],
             "type": {
@@ -12874,7 +12964,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -12904,7 +12994,7 @@
         "description": "aggregate variance on columns",
         "fields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "args": [],
             "type": {
@@ -12940,7 +13030,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "event_id",
+            "name": "eventId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -25225,11 +25315,61 @@
             "description": "update data of the table: \"event_teams\"",
             "args": [
               {
+                "name": "_append",
+                "description": "append existing jsonb value of filtered columns with new jsonb value",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "event_teams_append_input",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "_delete_at_path",
+                "description": "delete the field or element with specified path (for JSON arrays, negative integers count from the end)",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "event_teams_delete_at_path_input",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "_delete_elem",
+                "description": "delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "event_teams_delete_elem_input",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "_delete_key",
+                "description": "delete key/value pair or string element. key/value pairs are matched based on their key value",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "event_teams_delete_key_input",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
                 "name": "_inc",
                 "description": "increments the numeric columns with given value of the filtered values",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "event_teams_inc_input",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "_prepend",
+                "description": "prepend existing jsonb value of filtered columns with new jsonb value",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "event_teams_prepend_input",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -25272,11 +25412,61 @@
             "description": "update single row of the table: \"event_teams\"",
             "args": [
               {
+                "name": "_append",
+                "description": "append existing jsonb value of filtered columns with new jsonb value",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "event_teams_append_input",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "_delete_at_path",
+                "description": "delete the field or element with specified path (for JSON arrays, negative integers count from the end)",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "event_teams_delete_at_path_input",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "_delete_elem",
+                "description": "delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "event_teams_delete_elem_input",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "_delete_key",
+                "description": "delete key/value pair or string element. key/value pairs are matched based on their key value",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "event_teams_delete_key_input",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
                 "name": "_inc",
                 "description": "increments the numeric columns with given value of the filtered values",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "event_teams_inc_input",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "_prepend",
+                "description": "prepend existing jsonb value of filtered columns with new jsonb value",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "event_teams_prepend_input",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -31465,6 +31655,37 @@
               "kind": "OBJECT",
               "name": "friend_status",
               "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "getEventTeam",
+            "description": null,
+            "args": [
+              {
+                "name": "teamId",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "EventTeam",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null

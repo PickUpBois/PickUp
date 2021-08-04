@@ -164,6 +164,7 @@ class NotificationViewModel: ObservableObject, Comparable {
             switch response {
             case .success(let result):
                 if let errors = result.errors {
+                    print("voting for mvp error")
                     print(errors[0].localizedDescription)
                     self.actionStatus = .failure
                     return
@@ -171,6 +172,7 @@ class NotificationViewModel: ObservableObject, Comparable {
                 self.actionStatus = .success
                 self.readNotification()
             case .failure(let error):
+                print("voting for mvp error")
                 print(error.localizedDescription)
             }
         }

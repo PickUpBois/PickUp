@@ -13,8 +13,8 @@ extension String {
     var intArray: [Int]? {
         do {
             let data = self.data(using: Encoding.ascii)!
-            let array = try JSONSerialization.jsonObject(with: data, options: []) as? [Int]
-            return array
+            let array = try JSONSerialization.jsonObject(with: data, options: []) as? [String: [Int]]
+            return array!["scores"]
         } catch {
             print(self)
             print("couldnt convert string to array")
@@ -61,24 +61,24 @@ struct ConfirmationNotificationView: View {
                 break
             }
         }
-        let team1Scores = viewModel.event!.teams[0].scores!.intArray
-        let team2Scores = viewModel.event!.teams[1].scores!.intArray
+        let team1Scores = viewModel.event!.teams[0].info!.scores
+        let team2Scores = viewModel.event!.teams[1].info!.scores
         if team1Scores == nil || team2Scores == nil {
             return "NA"
         }
         var scoreString: String = ""
-        for i in 0..<team1Scores!.count {
+        for i in 0..<team1Scores.count {
             print(team1Scores)
             switch teamIndex {
             case 0:
-                scoreString += "\(team1Scores![i])-\(team2Scores![i]) "
+                scoreString += "\(team1Scores[i])-\(team2Scores[i]) "
             case 1:
-                scoreString += "\(team2Scores![i])-\(team1Scores![i]) "
+                scoreString += "\(team2Scores[i])-\(team1Scores[i]) "
             default:
-                scoreString += "\(team1Scores![i])-\(team2Scores![i]) "
+                scoreString += "\(team1Scores[i])-\(team2Scores[i]) "
             }
         }
-        let teamId = viewModel.event!.teams[teamIndex].id
+        let teamId = viewModel.event!.teams[teamIndex].info!.id
         let winnerId = viewModel.event!.winner!.id
         if teamId == winnerId {
             scoreString += "(W)"

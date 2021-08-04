@@ -5,7 +5,9 @@ fragment AttendeeDetails on event_attendees {
   }
   status,
   team {
-	id,
-	scores
+	info {
+		scores,
+		id
+	}
   },
 }

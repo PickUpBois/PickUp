@@ -25,7 +25,7 @@ class NotificationListViewModel: ObservableObject {
                     self.notifications = data.notifications.map { notification in
                         return NotificationViewModel(notificationId: notification.id, type: notification.type, timestamp: notification.createdAt.dateFromIso!, event: notification.event?.fragments.eventDetails ?? nil, actor: notification.actor?.fragments.userDetails ?? nil, getNotifications: self.getNotifications)
                     }.sorted(by: >)
-                    print(self.notifications)
+                    print(self.notifications.count)
                     self.objectWillChange.send()
                 case .failure(let error):
                     print(error.localizedDescription)

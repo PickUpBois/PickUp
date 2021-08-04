@@ -83,6 +83,10 @@ class Services {
                           store: store)
     }()
     private(set) lazy var auth = AuthService(auth: Services.auth)
+    private(set) lazy var client: GraphQLClient = {
+        let url =  Services.emulator ? "\(Services.DEV_URL)/v1/graphql" : "\(Services.PROD_URL)/v1/graphql"
+        return GraphQLClient(session: URLSession.shared, url: url)
+    }()
     private(set) lazy var storage = StorageService(storage: Services.storage)
     private(set) lazy var rest = RestService()
 }
