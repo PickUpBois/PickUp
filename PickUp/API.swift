@@ -650,7 +650,7 @@ public final class CurrentlyOwnedEventsQuery: GraphQLQuery {
     """
     query CurrentlyOwnedEvents($userId: String!) {
       events(
-        where: {deleted: {_eq: false}, endDate: {_neq: null}, attendees: {id: {_eq: $userId}, status: {_eq: owner}}}
+        where: {deleted: {_eq: false}, endDate: {_is_null: true}, attendees: {id: {_eq: $userId}, status: {_eq: owner}}}
       ) {
         __typename
         invitedAttendees: attendees(where: {status: {_eq: invited}}) {
@@ -691,7 +691,7 @@ public final class CurrentlyOwnedEventsQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("events", arguments: ["where": ["deleted": ["_eq": false], "endDate": ["_neq": nil], "attendees": ["id": ["_eq": GraphQLVariable("userId")], "status": ["_eq": "owner"]]]], type: .nonNull(.list(.nonNull(.object(Event.selections))))),
+        GraphQLField("events", arguments: ["where": ["deleted": ["_eq": false], "endDate": ["_is_null": true], "attendees": ["id": ["_eq": GraphQLVariable("userId")], "status": ["_eq": "owner"]]]], type: .nonNull(.list(.nonNull(.object(Event.selections))))),
       ]
     }
 
@@ -4206,7 +4206,7 @@ public struct EventDetails: GraphQLFragment {
       name
       info
       capacity
-      attendees {
+      attendees(where: {status: {_in: [ok, owner]}}) {
         __typename
         ...AttendeeDetails
       }
@@ -4248,7 +4248,7 @@ public struct EventDetails: GraphQLFragment {
       GraphQLField("name", type: .nonNull(.scalar(String.self))),
       GraphQLField("info", type: .nonNull(.scalar(String.self))),
       GraphQLField("capacity", type: .nonNull(.scalar(Int.self))),
-      GraphQLField("attendees", type: .nonNull(.list(.nonNull(.object(Attendee.selections))))),
+      GraphQLField("attendees", arguments: ["where": ["status": ["_in": ["ok", "owner"]]]], type: .nonNull(.list(.nonNull(.object(Attendee.selections))))),
       GraphQLField("startDate", type: .nonNull(.scalar(String.self))),
       GraphQLField("endDate", type: .scalar(String.self)),
       GraphQLField("type", type: .nonNull(.scalar(event_type_enum.self))),

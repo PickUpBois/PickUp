@@ -4,7 +4,7 @@ fragment EventDetails on events {
   name
   info
   capacity
-  attendees {
+  attendees(where: {status: {_in: [ok, owner]}}) {
 	... AttendeeDetails
   }
   startDate
@@ -16,9 +16,9 @@ fragment EventDetails on events {
   }
   teams {
 	info {
-	scores,
-		id
-  }
+	  scores
+	  id
+	}
 	members {
 	  ... AttendeeDetails
 	}
